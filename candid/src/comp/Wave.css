@@ -1,0 +1,40 @@
+.svg {
+  color: white;
+  background-color: rgba(52, 52, 52);
+  border: 2px solid rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 20px rgba(226, 185, 185, 0.5);
+  overflow: hidden;
+}
+
+.p {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 50px;
+  font-weight: 500;
+ 
+}
+
+.wave0 {
+  background-image: url('./pics/svg0.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+}
+
+.wave {
+  background-image: url('./pics/svg.svg');
+  background-repeat: repeat;
+  background-size: 1600px;
+  height: 198px;
+  animation: wave 15s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite;
+}
+
+@keyframes wave {
+  0% {
+      margin-left: 0;
+  }
+  100% {
+      margin-left: -1600px;
+  }
+}

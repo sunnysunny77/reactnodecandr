@@ -1,0 +1,167 @@
+th {
+  float: left;
+  color: orange;
+}
+
+td {
+  font-size: 120%;
+}
+
+.blogCont {
+  width: 70%;
+  background-color: #2d2d2d;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  margin: 125px auto 175px auto;
+}
+
+.blogBar {
+  width: 100%;
+  background-color: black;
+  background-image: linear-gradient(
+    270deg,
+    black 0%,
+    black 15%,
+    rgb(231, 200, 0) 80%,
+    #ececec 100%
+  );
+  height: 60px;
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
+  font-size: 120%;
+}
+
+.blogBar h6 {
+  padding-top: 15px;
+}
+
+.blogCont1 {
+  scrollbar-face-color: black;
+  scrollbar-track-color: orange;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-color: black orange;
+  color: white;
+  width: 100%;
+}
+
+.blogCont1::-webkit-scrollbar {
+  width: 10px;
+}
+
+.blogCont1::-webkit-scrollbar-track {
+  background: orange;
+}
+
+.blogCont1::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+.blogCont1::-webkit-scrollbar-thumb:hover {
+  background: red;
+}
+
+.form {
+  width: 100%;
+  background-color: black;
+  color: white;
+
+  overflow: hidden;
+}
+
+.form0 {
+  width: 100%;
+  margin: auto;
+  background-color: black;
+  color: white;
+  height: 260px;
+  overflow: hidden;
+}
+
+.blogs {
+  color: white;
+}
+
+.blogsi {
+  transform: scale(1.6);
+  padding: 15px;
+  float: left;
+}
+
+.float {
+  float: right;
+  width: 75%;
+}
+
+.blogh {
+  width: 100%;
+  background-color: black;
+  background-image: linear-gradient(
+    270deg,
+    black 0%,
+    black 15%,
+    rgb(231, 200, 0) 80%,
+    #ececec 100%
+  );
+  height: 60px;
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
+  font-size: 180%;
+}
+
+.blogh h6 {
+  padding-top: 15px;
+}
+
+.custom-file-input[type="file"]::-ms-browse {
+  background-color: #ffffff00;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}
+
+.custom-file-input[type="file"]::-webkit-file-upload-button {
+  background-color: #ffffff00;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}
+
+.custom-file-input {
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  cursor: pointer;
+  width: 90%;
+}
+
+.MuiFilledInput-multiline {
+  scrollbar-face-color: black;
+  scrollbar-track-color: orange;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-color: black orange;
+}
+
+.MuiFilledInput-multiline::-webkit-scrollbar {
+  width: 10px;
+}
+
+.MuiFilledInput-multiline::-webkit-scrollbar-track {
+  background: orange;
+}
+
+.MuiFilledInput-multiline::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+.MuiFilledInput-multiline::-webkit-scrollbar-thumb:hover {
+  background: red;
+}
+
+@media only screen and (max-width: 1200px) {
+  .blogCont {
+    width: 98%;
+    margin: auto;
+  }
+}

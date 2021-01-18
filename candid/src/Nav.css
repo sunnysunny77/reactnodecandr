@@ -1,0 +1,170 @@
+/* draw  */
+
+.barDraw {
+  position: absolute;
+  z-index: 999;
+  margin: 25px 0 0 25px;
+  transform: scale(1.8);
+}
+
+.barDraw:hover {
+  cursor: pointer;
+}
+
+.menuDraw {
+  position: absolute;
+  width: 200px;
+  background-color: #fff;
+  border-right: 1.5px solid #c5c7ca;
+  border-bottom: 1.5px solid #c5c7ca;
+  animation: slide;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+  z-index: 998;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.menuDraw div button {
+  width: 100%;
+  font-size: 35px;
+  color: black;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  margin-bottom: 10px;
+}
+
+#homI {
+  color: black;
+  transform: scale(2.2);
+  margin-right: 35px;
+  margin-top: 7.5px;
+  float: right;
+}
+
+#homI:hover {
+  color: rgb(231, 200, 0);
+  cursor: pointer;
+}
+
+.menuDraw div button:hover {
+  color: rgb(231, 200, 0);
+}
+
+.menuDraw div a,
+.menuDraw div span {
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.menuDraw div a:hover {
+  color: rgb(231, 200, 0);
+}
+
+.phI {
+  
+  transform: scale(0.8);
+}
+
+/* header  */
+
+header {
+  width: 100%;
+  height: 90px;
+  background-image: linear-gradient(0deg, #fff 70%, #ececec 95%);
+}
+
+header img {
+  padding-left: 85px;
+  position: relative;
+  top: 25px;
+}
+
+/* menu  */
+
+.menu {
+  width: 100%;
+  height: 70px;
+  background-color: black;
+  z-index: 999;
+  color: #fff;
+}
+
+.menu div button {
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 17.5px;
+  color: #fff;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  margin: 22px;
+}
+
+.menu div span {
+  margin: 0 8px;
+}
+
+.menu div a {
+  color: white;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+.menu div a:hover {
+  color: rgb(231, 200, 0);
+}
+
+.mMove {
+  padding-left: 50px;
+}
+
+.mMove0 {
+  float: right;
+  padding-top: 10px;
+  font-size: 17.5px;
+}
+
+.apI {
+  padding-top: 12px;
+  margin-bottom: -4px;
+}
+
+#homIa {
+  padding-top: 12px;
+  margin: 0 15px 0 10px;
+}
+
+#homIa:hover {
+  color: rgb(231, 200, 0);
+  cursor: pointer;
+}
+
+.menu div button:hover {
+  color: rgb(231, 200, 0);
+}
+
+@keyframes slide {
+  0% {
+    transform: translate(-200px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .barDraw,
+  .menuDraw {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  #di {
+    padding-top: 0 !important;
+  }
+  .menu {
+    display: none !important;
+  }
+}

@@ -1,0 +1,139 @@
+.about0 {
+  padding-bottom: 0;
+  margin-top: 70px;
+}
+
+.about0 p {
+  width: 90%;
+  margin: 0 auto 25px auto;
+  color: white;
+  background-color: #2d2d2d;
+  border: 2px solid rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 120%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  word-wrap: break-word;
+}
+
+.about0 h4 {
+  text-align: center;
+  margin-right: 62.5%;
+}
+
+#infe {
+  float: right;
+  color: rgba(0, 0, 0, 0.644);
+  margin-right: 50px;
+}
+
+.about1 {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+
+
+.about1 h4,
+.about0 h4 {
+  font-family: "Impact, Charcoal, sans-serif";
+  color: darkorange;
+  margin-left: 10px;
+  font-size: 180%;
+}
+
+.about1 h5 {
+  font-family: "Impact, Charcoal, sans-serif";
+  color: #ff8c00;
+  margin: 30px;
+  text-align: right;
+  font-size: 90%;
+  padding-right: 7.5%;
+}
+
+.about1 #pic {
+  background-image: url("./pics/services.jpg");
+  background-repeat: no-repeat;
+
+  background-size: cover;
+  float: left;
+  padding: 15% 21%;
+}
+
+.about1 button {
+  background-color: rgba(52, 52, 52);
+  padding: 20px;
+  font-size: 80%;
+  color: white;
+  border: 1px solid white;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+#btn {
+  float: right;
+  margin-right: 135px;
+}
+
+span {
+  display: inline-block;
+}
+
+.jus {
+  text-align: center;
+}
+
+.cent0 {
+  display: block;
+  margin: auto;
+}
+
+.cent {
+  text-align: justify;
+}
+
+#serv {
+  width: 453px;
+  height: 200px;
+  padding-left: 50px;
+  border-left: 2px solid #ff8c00;
+}
+
+#rm,
+#rm1 {
+  display: none;
+}
+
+#hi {
+  height: 180px;
+}
+
+@media only screen and (max-width: 1365px) {
+  .about1 #pic {
+    transform: scale(1.2);
+    border-bottom: 2px solid #ff8c00 !important;
+    float: none !important;
+    display: block !important;
+    margin: 20px auto 90px auto !important;
+    padding: 33%;
+  }
+  .about1 #serv {
+    padding-left: 0 !important;
+    border-left: none !important;
+    width: 100% !important;
+    height: 100px !important;
+  }
+  .about1 #btn {
+    float: none !important;
+    display: block !important;
+    margin: auto !important;
+  }
+  #hi {
+    height: 140px !important;
+  }
+  .about1 .p {
+    width: initial;
+  }
+}
