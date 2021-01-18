@@ -73,11 +73,10 @@
   .c2{
     text-align: left;
     word-wrap: break-word;
-    border-radius: 0;
   }
   .c2 p{
-    border-radius: 0;
-    padding: 10px;
+    padding: 0;
     font-size: initial;
+    border-radius: 0;
   }
 }
