@@ -307,6 +307,9 @@
   background-color: #2d2d2d;
   margin-top: 10px;
 }
+.www {
+  width: 33%;
+}
 
 .react-select__menu-list {
   scrollbar-face-color: black;
@@ -393,7 +396,7 @@
   .vid4 {
     padding: 20%;
   }
-  .MuiFormControl-root {
+  .www {
     width: 98%;
   }
 }

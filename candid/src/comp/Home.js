@@ -226,7 +226,7 @@ class Home extends Component {
   render() {
     return (
       <div id="di" style={{ minHeight: "100vh" }}>
-         {this.state.w}
+        {this.state.w}
         <div className="welcome">
           <div id="w1">
             <span id="ws"></span>
@@ -457,10 +457,10 @@ class Home extends Component {
             onSubmit={this.subic}
           >
             <TextField
+              className="www"
               InputProps={{
                 style: {
                   color: "white",
-                  width: "98%",
                   marginLeft: "2%",
                   backgroundColor: "rgba(231, 200, 0, 0.85)",
                   borderRadius: 0,
@@ -479,10 +479,10 @@ class Home extends Component {
               onChange={this.change}
             />
             <TextField
+              className="www"
               InputProps={{
                 style: {
                   color: "white",
-                  width: "98%",
                   marginLeft: "2%",
                   backgroundColor: "rgba(231, 200, 0, 0.85)",
                   borderRadius: 0,
@@ -501,10 +501,10 @@ class Home extends Component {
               onChange={this.change}
             />
             <TextField
+              className="www"
               InputProps={{
                 style: {
                   color: "white",
-                  width: "98%",
                   marginLeft: "2%",
                   backgroundColor: "rgba(231, 200, 0, 0.85)",
                   borderRadius: 0,
