@@ -547,7 +547,7 @@ class Home extends Component {
               multiline
               className="text"
               rows="20"
-              fullWidth="true"
+              fullWidth={true}
               InputProps={{
                 disableUnderline: true,
                 style: {
