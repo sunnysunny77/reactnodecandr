@@ -228,7 +228,7 @@ export default class Blog extends React.Component {
   };
   render() {
     return (
-      <div id="di" style={{ minHeight: "100vh" }}>
+      <React.Fragment>
         {this.state.w}
         <div className="blogCont">
           <div className="blogBar">
@@ -470,7 +470,7 @@ export default class Blog extends React.Component {
             </StyledExpansionPanel>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

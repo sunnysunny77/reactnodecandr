@@ -66,17 +66,18 @@
   text-align: center;
 }
 @media only screen and (max-width: 1200px) {
-  .c1, .c2 {
-   float: none;
-   margin: auto;
+  .c1,
+  .c2 {
+    float: none;
+    margin: auto;
   }
-  .c2{
+  .c2 {
     text-align: left;
     word-wrap: break-word;
   }
-  .c2 p{
+  .c2 p {
+    border-radius: 0;
     padding: 0;
     font-size: initial;
-    border-radius: 0;
   }
 }

@@ -13,7 +13,7 @@ export default class Contactc extends Component {
   }
   render() {
     return (
-      <div id="di" style={{ minHeight: "100vh" }}>
+      <React.Fragment>
          {this.state.w}
         <div className="rh">
           <h6>Contact</h6>
@@ -68,7 +68,7 @@ export default class Contactc extends Component {
             </p>
           </Wave>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

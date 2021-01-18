@@ -14,7 +14,7 @@ export default class About extends React.Component {
   }
   render() {
     return (
-      <div id="di" style={{ minHeight: "100vh" }}>
+      <React.Fragment>
         {this.state.w}
         <div className="rh">
           <h6>About</h6>
@@ -195,7 +195,7 @@ export default class About extends React.Component {
             </div>
           </Wave>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

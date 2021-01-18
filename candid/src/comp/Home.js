@@ -225,7 +225,7 @@ class Home extends Component {
   };
   render() {
     return (
-      <div id="di" style={{ minHeight: "100vh" }}>
+      <React.Fragment>
         {this.state.w}
         <div className="welcome">
           <div id="w1">
@@ -589,7 +589,7 @@ class Home extends Component {
             </div>
           </form>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

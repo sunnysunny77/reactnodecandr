@@ -10,7 +10,7 @@ const images = [
     thumbnail: "https://candidcleaning.sunnyhome.site/gal/c1.jpg",
   },
   {
-    original: "https://candidcleaning.sunnyhome.sitegal/c2.jpg",
+    original: "https://candidcleaning.sunnyhome.site/gal/c2.jpg",
     thumbnail: "https://candidcleaning.sunnyhome.site/gal/c2.jpg",
   },
   {
@@ -32,7 +32,7 @@ export default class Galery extends Component {
   }
   render() {
     return (
-      <div id="di" style={{ minHeight: "100vh" }}>
+      <React.Fragment>
         {this.state.w}
         <div className="gg">
           <div className="rh">
@@ -42,7 +42,7 @@ export default class Galery extends Component {
             <ImageGallery items={images} />
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
