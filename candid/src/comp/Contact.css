@@ -71,12 +71,13 @@
    margin: auto;
   }
   .c2{
-    text-align: center;
+    text-align: left;
     word-wrap: break-word;
     border-radius: 0;
   }
   .c2 p{
     border-radius: 0;
     padding: 10px;
+    font-size: initial;
   }
 }

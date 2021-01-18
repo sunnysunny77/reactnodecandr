@@ -2,7 +2,7 @@
 
 .slick-slide img {
   width: 100%;
-  min-height: 200px;
+  min-height: 250px;
 }
 
 /* welcome */
@@ -22,7 +22,7 @@
   animation-duration: 2s;
   animation-fill-mode: forwards;
   padding: 0 1%;
-  min-width: 185px;
+  min-width: 200px;
 }
 
 #ws {
@@ -77,7 +77,7 @@
   margin: auto;
   width: 100%;
   position: relative;
-  top: -125px;
+  top: -115px;
 }
 
 .vid1 {
@@ -107,7 +107,7 @@
   background-position: center;
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  padding: 12.5%;
+  padding: 10.5%;
   box-shadow: 0 0 1.5px white;
 }
 
@@ -121,7 +121,7 @@
   opacity: 0.7;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   color: rgb(41, 41, 54);
-  width: 25%;
+  width: 21%;
   top: 10%;
   padding: 0;
   margin-left: 2.5%;
@@ -169,7 +169,7 @@
 
 .info0 {
   height: 100%;
-  width: 185px;
+  width: 200px;
   float: left;
   margin-left: 10%;
   background-color: rgba(255, 255, 81);
@@ -180,7 +180,7 @@
 .info1 {
   margin-top: 35%;
   width: 81.63%;
-  height: 30.2%;
+  height: 32.65%;
   border: 7.5px solid whitesmoke;
   background-image: url("./pics/info1.jpg");
   background-position: center;
@@ -404,6 +404,7 @@
   }
   .card1 p {
     height: initial;
+    padding: 40px;
   }
   .card1 {
     padding: 1% 0;

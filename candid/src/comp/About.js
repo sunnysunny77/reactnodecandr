@@ -23,11 +23,13 @@ export default class About extends React.Component {
           <ListAltIcon id="infe" />
           <h4>Currently Cleaning</h4>
           <p style={{ textAlign: "center" }}>
-            &#8226;&nbsp;Armadale&nbsp;&nbsp;&nbsp;&#8226;&nbsp;Fremantle&nbsp;&nbsp;&nbsp;&#8226;&nbsp;Joondalup&nbsp;&nbsp;&nbsp;&#8226;&nbsp;Midland&nbsp;&nbsp;&nbsp;
+            &#8226;&nbsp;Armadale&nbsp;&nbsp;&nbsp;&#8226;&nbsp;Fremantle
+            <br></br>
+            &#8226;&nbsp;Joondalup&nbsp;&nbsp;&nbsp;&#8226;&nbsp;Midland
             <br></br>
             &#8226;&nbsp;Northbridge&nbsp;&nbsp;&nbsp;&#8226;&nbsp;Osborne Park
             <br></br>
-            &nbsp;&nbsp;&nbsp;&#8226;&nbsp;Wangara&nbsp;&nbsp;&nbsp;&#8226;&nbsp;Como
+            &#8226;&nbsp;Wangara&nbsp;&nbsp;&nbsp;&#8226;&nbsp;Como
           </p>
           <hr />
         </div>
@@ -65,7 +67,7 @@ export default class About extends React.Component {
                 <img
                   src="breakp.jpg"
                   alt="Smiley face"
-                  width="70%"
+                  width="50%"
                   height="125px"
                 ></img>
                 <br />

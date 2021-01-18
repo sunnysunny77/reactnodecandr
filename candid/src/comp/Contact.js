@@ -16,7 +16,7 @@ export default class Contactc extends Component {
       <div id="di" style={{ minHeight: "100vh" }}>
          {this.state.w}
         <div className="rh">
-          <h6>Contact Us</h6>
+          <h6>Contact</h6>
         </div>
 
         <div className="contlink">

@@ -72,7 +72,7 @@ class Nav extends Component {
           <Link to="/gallery"><button >Gallery</button></Link>
           <br></br>
           <br></br>
-          <Link to="/contact"><button >Contact Us</button></Link>
+          <Link to="/contact"><button >Contact</button></Link>
           <br></br>
           <br></br>
           <Link to="/about"><button >About</button></Link>
@@ -99,7 +99,7 @@ class Nav extends Component {
         <img src="./logos.jpg" alt="Smiley face" width="60" height="60"></img>
       </div>
       <header>
-          <img src="./logo.jpg" alt="Smiley face" width="220" height="51"></img>
+          <img src="./logo.jpg" alt="Smiley face" width="140" height="32"></img>
       </header>
       <div className='menu'>
         <div className='mMove'>

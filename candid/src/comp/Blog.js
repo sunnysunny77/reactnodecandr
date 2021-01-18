@@ -45,12 +45,19 @@ export default class Blog extends React.Component {
     };
   }
   componentDidMount() {
-    //   axios.get(`https://candidcleaning.sunnyhome.site/ong`)
-    //     .then(res => {
-    //       return this.tab(res.data)
-    // }).catch(error => {
-    //     this.setState({ a: error.response.statusText, a0: error.response.statusText, disp0: { display: 'block', lineHeight: "75px" }, disp1: { display: 'block', lineHeight: "75px" } })
-    // })
+    axios
+      .get(`https://candidcleaning.sunnyhome.site/ong`)
+      .then((res) => {
+        return this.tab(res.data);
+      })
+      .catch((error) => {
+        this.setState({
+          a: error.response.statusText,
+          a0: error.response.statusText,
+          disp0: { display: "block", lineHeight: "75px" },
+          disp1: { display: "block", lineHeight: "75px" },
+        });
+      });
   }
   change = (event) => {
     let nam = event.target.name;
