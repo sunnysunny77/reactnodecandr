@@ -101,32 +101,36 @@ class Home extends Component {
     };
   }
   componentDidMount() {
+    this.interval = setInterval(this.myTimer, 10000);
     if (window.location.search === "?in=in") {
       window.scrollTo(0, 5000);
     }
-    this.interval = setInterval(this.myTimer, 10000);
   }
   componentWillUnmount() {
     clearInterval(this.interval);
   }
   myTimer = () => {
-    if (this.state.count === 1) {
-      this.setState({
-        count: 2,
-        dis: { display: "none" },
-        diss: { display: "inline-block" },
-      });
-    } else if (this.state.count === 2) {
-      this.setState({
-        count: 1,
-        dis: { display: "inline-block" },
-        diss: { display: "none" },
-      });
-    }
     document.querySelector(".vid").classList.add("flip");
     setTimeout(() => {
       document.querySelector(".vid").classList.remove("flip");
     }, 1000);
+    if (this.state.count < 2) {
+      this.setState({ count: this.state.count + 1 });
+    } else if (this.state.count === 2) {
+      this.setState({ count: 1 });
+    }
+    if (this.state.count === 1) {
+      this.setState({
+        dis: { display: "inline-block" },
+        diss: { display: "none" },
+      });
+    }
+    if (this.state.count === 2) {
+      this.setState({
+        dis: { display: "none" },
+        diss: { display: "inline-block" },
+      });
+    }
   };
   handleChange = (selectedOption) => {
     this.setState({ selectedOption, disp: { display: "none" } });
