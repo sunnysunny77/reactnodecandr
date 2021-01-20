@@ -104,7 +104,7 @@ export default class About extends React.Component {
                 <img
                   src="breakp.jpg"
                   alt="Smiley face"
-                  width="50%"
+                  width="60%"
                   height="125px"
                 ></img>
                 <br />
