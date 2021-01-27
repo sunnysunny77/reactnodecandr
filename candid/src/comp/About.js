@@ -208,7 +208,9 @@ export default class About extends React.Component {
                   <br></br>
                   Other Information
                   <br></br>
-                  Equal Opportunity &amp; Harassment
+                  Equal Opportunity 
+                  <br></br>
+                  &amp; Harassment
                   <br></br>
                   Basic equipment
                   <br></br>
@@ -232,9 +234,15 @@ export default class About extends React.Component {
                   <br></br>
                   Electrical equipment
                   <br></br>
-                  Noise, Eyes Damage, infection &amp; Illness
+                  Noise, Eyes Damage, infection
                   <br></br>
-                  Needle Stick Injuries &amp; Slips, Trips &amp; Falls
+                  &amp; Illness
+                  <br></br>
+                  Needle Stick Injuries
+                  <br></br>
+                  &amp; Slips, Trips 
+                  <br></br>
+                  &amp; Falls
                   <br></br>
                   Working alone
                   <br></br>
@@ -252,7 +260,9 @@ export default class About extends React.Component {
                   <br></br>
                   Fire Emergencies
                   <br></br>
-                  Equipment &amp; Machinery Checklist
+                  Equipment 
+                  <br></br>
+                  &amp; Machinery Checklist
                   <br></br>
                   Vacuum Maintenance
                   <br></br>
