@@ -102,7 +102,7 @@
 .vid4 {
   margin: 0 2.5% 0 2.5%;
   text-align: center;
-  cursor: pointer;
+  
   border-radius: 7.5px;
   background-position: center;
   background-size: 100% 100%;
@@ -112,7 +112,7 @@
 }
 
 .flip {
-  animation: flip 1s;
+  animation: flip 1s ease-out;
 }
 
 .vt {
@@ -125,6 +125,7 @@
   top: 10%;
   padding: 0;
   margin-left: 2.5%;
+  cursor: pointer;
 }
 
 .vt:hover {
@@ -371,15 +372,15 @@
 @keyframes flip {
   0% {
     transform: scale(1);
-    opacity: 1;
   }
+   
   50% {
     transform: scale(0.985);
-    opacity: 0.95;
+   
   }
   100% {
     transform: scale(1);
-    opacity: 1;
+   
   }
 }
 

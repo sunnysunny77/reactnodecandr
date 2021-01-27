@@ -77,8 +77,8 @@ class Home extends Component {
       settings: {
         dots: false,
         infinite: true,
-        speed: 1000,
-        autoplaySpeed: 10000,
+       
+        autoplaySpeed: 15000,
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
@@ -101,7 +101,7 @@ class Home extends Component {
     };
   }
   componentDidMount() {
-    this.interval = setInterval(this.myTimer, 10000);
+    this.interval = setInterval(this.myTimer, 15000);
     if (window.location.search === "?in=in") {
       document.getElementById("a1").scrollIntoView();
     }
