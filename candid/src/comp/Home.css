@@ -120,7 +120,7 @@
   position: absolute;
   opacity: 0.7;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
-  color: rgb(41, 41, 54);
+  color: black;
   width: 21%;
   top: 10%;
   padding: 0;
@@ -181,7 +181,7 @@
   margin-top: 35%;
   width: 81.63%;
   height: 32.65%;
-  border: 7.5px solid rgba(41, 41, 54, 0.91);
+  border: 7.5px solid #2d2d2d;
   background-image: url("./pics/info1.jpg");
   background-position: center;
   background-size: 100% 100%;
@@ -216,7 +216,7 @@
 
 .info2 p {
   color: white;
-  background-color: rgba(41, 41, 54, 0.91);
+  background-color: #2d2d2d;
   border: 2px solid rgba(0, 0, 0, 0.7);
   border-radius: 5px;
   padding: 25px;
@@ -371,12 +371,15 @@
 @keyframes flip {
   0% {
     transform: scale(1);
+    opacity: 1;
   }
   50% {
     transform: scale(0.985);
+    opacity: 0.95;
   }
   100% {
     transform: scale(1);
+    opacity: 1;
   }
 }
 

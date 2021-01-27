@@ -103,7 +103,7 @@ class Home extends Component {
   componentDidMount() {
     this.interval = setInterval(this.myTimer, 10000);
     if (window.location.search === "?in=in") {
-    document.getElementById("a1").scrollIntoView();
+      document.getElementById("a1").scrollIntoView();
     }
   }
   componentWillUnmount() {
@@ -252,8 +252,7 @@ class Home extends Component {
         </Slider>
         <div className="vid ">
           <span id="pn1" onClick={() => this.vidd(-1)}>
-            {" "}
-            &larr;{" "}
+            &larr;
           </span>
 
           <span
@@ -272,7 +271,7 @@ class Home extends Component {
             onClick={() => this.vid("v2")}
           >
             {" "}
-            Video Comming <PlayCircleOutlineIcon className="iv" />{" "}
+            Video Comming <PlayCircleOutlineIcon className="iv" />
           </span>
           <span className="vid2" style={this.state.dis}></span>
 
@@ -282,8 +281,7 @@ class Home extends Component {
             onClick={() => this.vid("v1")}
           >
             {" "}
-            Video Comming
-            <PlayCircleOutlineIcon className="iv" />{" "}
+            Video Comming <PlayCircleOutlineIcon className="iv" />
           </span>
           <span className="vid3" style={this.state.diss}></span>
 
@@ -293,14 +291,12 @@ class Home extends Component {
             onClick={() => this.vid("v2")}
           >
             {" "}
-            Video Comming
-            <PlayCircleOutlineIcon className="iv" />{" "}
+            Video Comming <PlayCircleOutlineIcon className="iv" />
           </span>
           <span className="vid4" style={this.state.diss}></span>
 
           <span id="pn2" onClick={() => this.vidd(+1)}>
-            {" "}
-            &rarr;{" "}
+            &rarr;
           </span>
         </div>
         <div className="info">
@@ -355,7 +351,6 @@ class Home extends Component {
               </span>
             </div>
             <p>
-              {" "}
               No harsh toxic chemicals, fumes or fragrances will be used. As
               chemicals potentialy lower the quality of life.
             </p>
@@ -416,7 +411,7 @@ class Home extends Component {
             </div>
             <p>
               We utilise National Asthma Council Australia’s Sensitive Choice™
-              products. For an allergy conscious solution.{" "}
+              products. For an allergy conscious solution.
             </p>
             <a target="asthma" href="https://www.nationalasthma.org.au/">
               URL
@@ -463,7 +458,7 @@ class Home extends Component {
             <TextField
               className="www"
               InputProps={{
-                 style: {
+                style: {
                   color: "black",
                   marginLeft: "2%",
                   backgroundColor: "white",
@@ -485,7 +480,7 @@ class Home extends Component {
             <TextField
               className="www"
               InputProps={{
-                 style: {
+                style: {
                   color: "black",
                   marginLeft: "2%",
                   backgroundColor: "white",
@@ -507,7 +502,7 @@ class Home extends Component {
             <TextField
               className="www"
               InputProps={{
-                 style: {
+                style: {
                   color: "black",
                   marginLeft: "2%",
                   backgroundColor: "white",
@@ -554,7 +549,7 @@ class Home extends Component {
               fullWidth={true}
               InputProps={{
                 disableUnderline: true,
-                 style: {
+                style: {
                   color: "black",
                   display: "block",
                   width: "100%",
@@ -580,12 +575,11 @@ class Home extends Component {
                 height: "60px",
                 fontSize: "120%",
                 paddingTop: "10px",
-                borderRadius: 0
+                borderRadius: 0,
               }}
               variant="contained"
               type="submit"
             >
-              {" "}
               Submit
             </Button>
             <div style={{ height: "75px" }}>
