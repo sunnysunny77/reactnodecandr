@@ -14,8 +14,8 @@
 }
 
 #w1 {
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.4);
+  color: black;
+  background-color: rgba(255, 255, 255, 0.25);
   border-radius: 5px;
   width: 34%;
   animation: slide1;
@@ -46,7 +46,7 @@
 }
 
 #w2 {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 255, 255,0.25);
   border-radius: 5px;
   animation: slide2;
   animation-duration: 2s;
@@ -58,7 +58,7 @@
 }
 
 #w2 h3 {
-  color: rgb(255, 221, 0);
+  color:black;
 
   margin: 0;
 }
@@ -172,16 +172,16 @@
   width: 200px;
   float: left;
   margin-left: 10%;
-  background-color: rgba(255, 255, 81);
-  box-shadow: -40px 0 40px -40px rgba(0, 0, 0, 0.5),
-    40px 0 40px -40px rgba(0, 0, 0, 0.5);
+  background-color:#fff;
+  box-shadow: -20px 0 20px -20px rgba(0, 0, 0, 0.5),
+    20px 0 20px -20px rgba(0, 0, 0, 0.5);
 }
 
 .info1 {
   margin-top: 35%;
   width: 81.63%;
   height: 32.65%;
-  border: 7.5px solid whitesmoke;
+  border: 7.5px solid rgba(41, 41, 54, 0.91);
   background-image: url("./pics/info1.jpg");
   background-position: center;
   background-size: 100% 100%;
@@ -208,7 +208,7 @@
 .info2 h4 {
   width: 70%;
   font-family: "Impact, Charcoal, sans-serif";
-  color: darkorange;
+  color: black;
   font-weight: bold;
   margin-left: 10px;
   padding: 0px;
@@ -244,7 +244,7 @@
   font-weight: 500;
   text-shadow: 0.7px 0.7 0.7 grey;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(255, 129, 5);
+  box-shadow: 0 0 10px black;
 }
 
 .cardi {
@@ -254,13 +254,13 @@
 }
 
 .cardf {
-  color: darkorange;
+  color: black;
   transform: scale(3.5);
   margin-left: calc(50% - 72px);
 }
 
 .cardff {
-  color: darkorange;
+  color: black;
   transform: scale(3.5);
   margin-left: calc(50% - 66px);
 }
@@ -308,23 +308,23 @@
   margin-top: 10px;
 }
 .www {
-  width: 33%;
+  width: 20%;
 }
 
 .react-select__menu-list {
   scrollbar-face-color: black;
-  scrollbar-track-color: orange;
+  scrollbar-track-color: white;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-color: black orange;
+  scrollbar-color: black white;
 }
 
 .MuiFilledInput-multiline {
   scrollbar-face-color: black;
-  scrollbar-track-color: orange;
+  scrollbar-track-color: white;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-color: black orange;
+  scrollbar-color: black white;
 }
 
 .react-select__menu-list::-webkit-scrollbar,
@@ -339,7 +339,7 @@
 
 .react-select__menu-list::-webkit-scrollbar-track,
 .MuiFilledInput-multiline::-webkit-scrollbar-track {
-  background: orange;
+  background: white;
 }
 
 .react-select__menu-list::-webkit-scrollbar-thumb:hover,
@@ -429,7 +429,7 @@
   .info0 {
     height: 300px;
     width: 100%;
-    background-color: rgba(255, 69, 0, 0.5);
+    background-color: lightgrey;
     padding-top: 80px;
   }
   .info1 {

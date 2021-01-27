@@ -45,9 +45,9 @@ const customStyles = {
     marginTop: "10px",
   }),
   menu: () => ({
-    backgroundColor: "rgba(231, 200, 0, 0.85)",
+    backgroundColor: "white",
     textAlign: "center",
-    color: "white",
+    color: "black",
   }),
   option: () => ({
     fontFamily: "Roboto ,Helvetica , Arial , sans-serif ",
@@ -55,13 +55,13 @@ const customStyles = {
     cursor: "pointer",
   }),
   singleValue: () => ({
-    color: "white",
+    color: "black",
     marginLeft: "10px",
   }),
   control: () => ({
-    backgroundColor: "rgba(231, 200, 0, 0.85)",
+    backgroundColor: "white",
     width: "210px",
-    color: "white",
+    color: "black",
     height: "80px",
     fontFamily: "Roboto ,Helvetica , Arial , sans-serif ",
     fontWeight: 400,
@@ -103,7 +103,7 @@ class Home extends Component {
   componentDidMount() {
     this.interval = setInterval(this.myTimer, 10000);
     if (window.location.search === "?in=in") {
-      window.scrollTo(0, 5000);
+    document.getElementById("a1").scrollIntoView();
     }
   }
   componentWillUnmount() {
@@ -225,7 +225,7 @@ class Home extends Component {
     }
   };
   scr = () => {
-    window.scrollTo(0, 5000);
+    document.getElementById("a1").scrollIntoView();
   };
   render() {
     return (
@@ -463,10 +463,10 @@ class Home extends Component {
             <TextField
               className="www"
               InputProps={{
-                style: {
-                  color: "white",
+                 style: {
+                  color: "black",
                   marginLeft: "2%",
-                  backgroundColor: "rgba(231, 200, 0, 0.85)",
+                  backgroundColor: "white",
                   borderRadius: 0,
                   fontSize: "120%",
                 },
@@ -485,10 +485,10 @@ class Home extends Component {
             <TextField
               className="www"
               InputProps={{
-                style: {
-                  color: "white",
+                 style: {
+                  color: "black",
                   marginLeft: "2%",
-                  backgroundColor: "rgba(231, 200, 0, 0.85)",
+                  backgroundColor: "white",
                   borderRadius: 0,
                   fontSize: "120%",
                 },
@@ -507,10 +507,10 @@ class Home extends Component {
             <TextField
               className="www"
               InputProps={{
-                style: {
-                  color: "white",
+                 style: {
+                  color: "black",
                   marginLeft: "2%",
-                  backgroundColor: "rgba(231, 200, 0, 0.85)",
+                  backgroundColor: "white",
                   borderRadius: 0,
                   fontSize: "120%",
                 },
@@ -554,12 +554,12 @@ class Home extends Component {
               fullWidth={true}
               InputProps={{
                 disableUnderline: true,
-                style: {
-                  color: "white",
+                 style: {
+                  color: "black",
                   display: "block",
                   width: "100%",
                   height: "150px",
-                  backgroundColor: "rgba(231, 200, 0, 0.85)",
+                  backgroundColor: "white",
                   borderRadius: 0,
                   overflowY: "auto",
                   overflowX: "hidden",
@@ -579,6 +579,8 @@ class Home extends Component {
                 width: "100%",
                 height: "60px",
                 fontSize: "120%",
+                paddingTop: "10px",
+                borderRadius: 0
               }}
               variant="contained"
               type="submit"

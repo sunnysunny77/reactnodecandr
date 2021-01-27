@@ -45,7 +45,9 @@ export default class Blog extends React.Component {
     };
   }
   componentDidMount() {
-    axios
+
+  
+   axios
       .get(`https://candidcleaning.sunnyhome.site/ong`)
       .then((res) => {
         return this.tab(res.data);
@@ -58,6 +60,9 @@ export default class Blog extends React.Component {
           disp1: { display: "block", lineHeight: "75px" },
         });
       });
+
+     
+    
   }
   change = (event) => {
     let nam = event.target.name;
@@ -262,10 +267,10 @@ export default class Blog extends React.Component {
                     className="float"
                     InputProps={{
                       style: {
-                        color: "white",
+                        color: "black",
                         fontSize: "120%",
-
-                        backgroundColor: "rgba(231, 200, 0, 0.85)",
+                        borderRadius: 0,
+                        backgroundColor: "white"
                       },
                       startAdornment: (
                         <InputAdornment position="start">
@@ -283,10 +288,10 @@ export default class Blog extends React.Component {
                     className="float"
                     InputProps={{
                       style: {
-                        color: "white",
+                        color: "black",
                         fontSize: "120%",
-
-                        backgroundColor: "rgba(231, 200, 0, 0.85)",
+                        borderRadius: 0,
+                        backgroundColor: "white"
                       },
                       startAdornment: (
                         <InputAdornment position="start">
@@ -304,10 +309,10 @@ export default class Blog extends React.Component {
                     className="float"
                     InputProps={{
                       style: {
-                        color: "white",
+                        color: "black",
                         fontSize: "120%",
-
-                        backgroundColor: "rgba(231, 200, 0, 0.85)",
+                        borderRadius: 0,
+                        backgroundColor: "white"
                       },
                       startAdornment: (
                         <InputAdornment position="start">
@@ -329,16 +334,17 @@ export default class Blog extends React.Component {
                     InputProps={{
                       disableUnderline: true,
                       style: {
-                        color: "white",
+                        color: "black",
                         fontSize: "120%",
                         display: "block",
                         width: "100%",
                         height: "135px",
-                        backgroundColor: "rgba(231, 200, 0, 0.85)",
+                        backgroundColor: "white",
                         overflowY: "auto",
                         overflowX: "hidden",
                         paddingTop: "10px",
                         marginTop: "50px",
+                        borderRadius: 0
                       },
                     }}
                     variant="filled"
@@ -368,7 +374,9 @@ export default class Blog extends React.Component {
                       width: "100%",
                       height: "60px",
                       fontSize: "120%",
+                      paddingTop: "10px",
                       marginTop: "10px",
+                      borderRadius: 0
                     }}
                     variant="contained"
                     type="submit"
@@ -406,10 +414,10 @@ export default class Blog extends React.Component {
                     className="float"
                     InputProps={{
                       style: {
-                        color: "white",
+                        color: "black",
                         fontSize: "120%",
-
-                        backgroundColor: "rgba(231, 200, 0, 0.85)",
+                        borderRadius: 0,
+                        backgroundColor: "white"
                       },
                       startAdornment: (
                         <InputAdornment position="start">
@@ -427,10 +435,10 @@ export default class Blog extends React.Component {
                     className="float"
                     InputProps={{
                       style: {
-                        color: "white",
+                        color: "black",
                         fontSize: "120%",
-
-                        backgroundColor: "rgba(231, 200, 0, 0.85)",
+                        borderRadius: 0,
+                        backgroundColor: "white"
                       },
                       startAdornment: (
                         <InputAdornment position="start">
@@ -452,7 +460,9 @@ export default class Blog extends React.Component {
                       width: "100%",
                       height: "60px",
                       fontSize: "120%",
+                      paddingTop: "10px",
                       marginTop: "10px",
+                      borderRadius: 0
                     }}
                     variant="contained"
                     type="submit"

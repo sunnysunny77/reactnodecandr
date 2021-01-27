@@ -23,7 +23,7 @@
 .c3 h4 {
   width: 50%;
   font-family: "Impact, Charcoal, sans-serif";
-  color: darkorange;
+  color: black;
   margin-left: 10px;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .c2 a:hover {
-  color: orange;
+  color: purple;
 }
 
 .infe {
@@ -58,7 +58,7 @@
 }
 
 #homc:hover {
-  color: rgb(231, 200, 0);
+  color: purple;
   cursor: pointer;
 }
 

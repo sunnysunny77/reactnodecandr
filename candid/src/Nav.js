@@ -83,13 +83,13 @@ class Nav extends Component {
         <div>
           <PhoneIcon className='phI' />
           <br></br>
-          <a href="tel:+614812345678">812345678</a>
+          <a href="tel:+0412620989">0412620989</a>
           <br></br>
           <br></br>
           <AccessTimeIcon className='phI' />
           <br></br>
           <span> 
-            9am - 5pm 
+            7am - 7pm 
             <br></br>
             Mon - Fri
           </span>
@@ -109,9 +109,9 @@ class Nav extends Component {
           <Link to="/about"><button >About</button></Link>
           <div className='mMove0'>
             <PhoneIcon className='apI' />
-            <a href="tel:+614812345678">812345678</a>
+            <a href="tel:+0412620989">0412620989</a>
             <AccessTimeIcon className='apI' />
-            <span>9am - 5pm / Mon - Fri</span>
+            <span>7am - 7pm / Mon - Fri</span>
             <Link to="/"><HomeIcon id='homIa' className='apI' /></Link>
           </div>
         </div>

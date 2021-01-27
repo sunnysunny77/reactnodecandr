@@ -1,6 +1,6 @@
 th {
   float: left;
-  color: orange;
+  color: white;
 }
 
 td {
@@ -21,8 +21,8 @@ td {
   background-image: linear-gradient(
     270deg,
     black 0%,
-    black 15%,
-    rgb(231, 200, 0) 80%,
+ #ececec  45%,
+   
     #ececec 100%
   );
   height: 60px;
@@ -37,10 +37,10 @@ td {
 
 .blogCont1 {
   scrollbar-face-color: black;
-  scrollbar-track-color: orange;
+  scrollbar-track-color: white;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-color: black orange;
+  scrollbar-color: black white;
   color: white;
   width: 100%;
 }
@@ -50,7 +50,7 @@ td {
 }
 
 .blogCont1::-webkit-scrollbar-track {
-  background: orange;
+  background: white;
 }
 
 .blogCont1::-webkit-scrollbar-thumb {
@@ -63,7 +63,7 @@ td {
 
 .form {
   width: 100%;
-  background-color: black;
+  background-color: #2d2d2d;
   color: white;
 
   overflow: hidden;
@@ -72,7 +72,7 @@ td {
 .form0 {
   width: 100%;
   margin: auto;
-  background-color: black;
+  background-color: #2d2d2d;
   color: white;
   overflow: hidden;
 }
@@ -89,7 +89,8 @@ td {
 
 .float {
   float: right;
-  width: 75%;
+  width: 40%;
+  padding-left: 60% !important;
 }
 
 .blogh {
@@ -98,8 +99,8 @@ td {
   background-image: linear-gradient(
     270deg,
     black 0%,
-    black 15%,
-    rgb(231, 200, 0) 80%,
+ #ececec  45%,
+
     #ececec 100%
   );
   height: 60px;
@@ -136,10 +137,10 @@ td {
 
 .MuiFilledInput-multiline {
   scrollbar-face-color: black;
-  scrollbar-track-color: orange;
+  scrollbar-track-color: white;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-color: black orange;
+  scrollbar-color: black white;
 }
 
 .MuiFilledInput-multiline::-webkit-scrollbar {
@@ -147,7 +148,7 @@ td {
 }
 
 .MuiFilledInput-multiline::-webkit-scrollbar-track {
-  background: orange;
+  background: white;
 }
 
 .MuiFilledInput-multiline::-webkit-scrollbar-thumb {
@@ -162,5 +163,9 @@ td {
   .blogCont {
     width: 98%;
     margin: auto;
+  }
+  .float {
+   
+    width: 100%;
   }
 }

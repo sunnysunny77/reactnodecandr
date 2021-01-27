@@ -6,14 +6,13 @@ import axios from "axios";
 import Papa from "papaparse";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 
-
 export default class About extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       w: window.scrollTo(0, 0),
       abc: null,
-      cba: null
+      cba: null,
     };
   }
   componentDidMount() {
@@ -22,10 +21,10 @@ export default class About extends React.Component {
         `https://docs.google.com/spreadsheets/d/e/2PACX-1vSX0Yy5ynVsKaFMU030TAdltTWZQ-tlQFho-na8RKmgIiZpkfyomov9uUVrhr6xQbUTrF3AHGI9olbn/pub?output=csv`
       )
       .then((res) => {
-        let parsedData = Papa.parse(res.data)
+        let parsedData = Papa.parse(res.data);
         let l = parsedData.data[0][1];
-        this.setState({cba:String(parsedData.data[0][0])})
-     
+        this.setState({ cba: String(parsedData.data[0][0]) });
+
         let a = [];
         for (let i = 1; i <= l; i++) {
           let g = i * 2;
@@ -66,9 +65,7 @@ export default class About extends React.Component {
         <div className="about0">
           <ListAltIcon id="infe" />
           <h4>Currently Cleaning</h4>
-          <p style={{ textAlign: "center" }}>
-            {this.state.cba}
-          </p>
+          <p style={{ textAlign: "center" }}>{this.state.cba}</p>
           <hr />
         </div>
         <div>{this.state.abc}</div>
@@ -104,8 +101,7 @@ export default class About extends React.Component {
                 <img
                   src="breakp.jpg"
                   alt="Smiley face"
-                  width="60%"
-                  height="125px"
+                  className="imga"
                 ></img>
                 <br />
                 <br />
@@ -174,12 +170,12 @@ export default class About extends React.Component {
                 <br />
               </div>
               <span id="pic"></span>
-              <h5>Services</h5>
+              <h5>Inductions</h5>
               <span id="serv" className="jus">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor
+                Our Cleaners determination is to ensure that the job is done
+                safely and properly every time and that hazards are reported to
+                the management team so that we can all work towards a safe work
+                environment and eliminate risks and hazards in the workplace.
               </span>
 
               <div id="hi">
@@ -197,19 +193,75 @@ export default class About extends React.Component {
               <div id="rm1" className="cent">
                 <hr />
                 <br />
+                <h5>Induction Contents</h5>
+                <br />
                 <span>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Background
+                  <br></br>
+                  Environment Management
+                  <br></br>
+                  Training
+                  <br></br>
+                  Do Not
+                  <br></br>
+                  Do
+                  <br></br>
+                  Other Information
+                  <br></br>
+                  Equal Opportunity &amp; Harassment
+                  <br></br>
+                  Basic equipment
+                  <br></br>
+                  How to Sheet
+                  <br></br>
+                  Safety At Work
+                  <br></br>
+                  Law
+                  <br></br>
+                  General Duties
+                  <br></br>
+                  Consultation
+                  <br></br>
+                  Hazard Management
+                  <br></br>
+                  Chemicals
+                  <br></br>
+                  Task Management
+                  <br></br>
+                  Bins
+                  <br></br>
+                  Electrical equipment
+                  <br></br>
+                  Noise, Eyes Damage, infection &amp; Illness
+                  <br></br>
+                  Needle Stick Injuries &amp; Slips, Trips &amp; Falls
+                  <br></br>
+                  Working alone
+                  <br></br>
+                  Manual Handling
+                  <br></br>
+                  Backpack Vacuum Safety
+                  <br></br>
+                  Incident/Accident Excuses
+                  <br></br>
+                  Injury Management
+                  <br></br>
+                  Incident/Injury Reporting
+                  <br></br>
+                  Evacuation Procedures
+                  <br></br>
+                  Fire Emergencies
+                  <br></br>
+                  Equipment &amp; Machinery Checklist
+                  <br></br>
+                  Vacuum Maintenance
+                  <br></br>
+                  Work Right
+                  <br></br>
+                  Operate Right
+                  <br></br>
+                  Troubleshooting
+                  <br></br>
                 </span>
                 <br />
                 <br />
