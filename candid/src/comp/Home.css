@@ -112,7 +112,7 @@
 }
 
 .flip {
-  animation: flip 1s ease-out;
+  animation: flip 1s;
 }
 
 .vt {

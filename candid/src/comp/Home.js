@@ -77,14 +77,12 @@ class Home extends Component {
       settings: {
         dots: false,
         infinite: true,
-       
         autoplaySpeed: 15000,
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
         autoplay: true,
-        fade: true,
-
+        speed: 0,
         pauseOnHover: false,
       },
       w: window.scrollTo(0, 0),
@@ -110,10 +108,6 @@ class Home extends Component {
     clearInterval(this.interval);
   }
   myTimer = () => {
-    document.querySelector(".vid").classList.add("flip");
-    setTimeout(() => {
-      document.querySelector(".vid").classList.remove("flip");
-    }, 1000);
     if (this.state.count < 2) {
       this.setState({ count: this.state.count + 1 });
     } else if (this.state.count === 2) {
@@ -131,6 +125,10 @@ class Home extends Component {
         diss: { display: "inline-block" },
       });
     }
+    document.querySelector(".vid").classList.add("flip");
+    setTimeout(() => {
+      document.querySelector(".vid").classList.remove("flip");
+    }, 1000);
   };
   handleChange = (selectedOption) => {
     this.setState({ selectedOption, disp: { display: "none" } });
