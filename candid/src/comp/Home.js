@@ -351,7 +351,7 @@ class Home extends Component {
               solutions that are certified and environmentally sound.
             </p>
             <StarBorderIcon className="cardi" />
-            <FilterListIcon className="cardff" />
+            <FilterListIcon className="cardf" />
           </div>
           <div className="card1">
             <div className="card2">
@@ -370,7 +370,7 @@ class Home extends Component {
               chemicals potentialy lower the quality of life.
             </p>
             <WhatshotIcon className="cardi" />
-            <FilterListIcon className="cardff" />
+            <FilterListIcon className="cardf" />
           </div>
           <div className="card1">
             <div className="card2">
@@ -389,7 +389,7 @@ class Home extends Component {
               We also strive to support local businesses.
             </p>
             <BuildIcon className="cardi" />
-            <FilterListIcon className="cardff" />
+            <FilterListIcon className="cardf" />
           </div>
           <div className="card1">
             <div className="card2">
