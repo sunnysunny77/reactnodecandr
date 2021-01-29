@@ -100,22 +100,26 @@ class Home extends Component {
     };
   }
   componentDidMount() {
+    this.interval = setInterval(this.myTimer, 15000);
+    new Vivus("my-svg", { duration: 200 });
+    window.addEventListener("resize", this.ti);
     if (window.location.search === "?in=in") {
       document.getElementById("a1").scrollIntoView();
     }
-    new Vivus("my-svg", { duration: 200 });
-    window.addEventListener("resize", this.ti);
-    this.interval = setInterval(this.myTimer, 15000);
   }
   componentWillUnmount() {
-    clearInterval(this.interval);
     window.removeEventListener("resize", this.ti);
+    clearInterval(this.interval);
   }
   ti = () => {
     clearInterval(this.interval);
     this.interval = setInterval(this.myTimer, 15000);
   };
   myTimer = () => {
+    document.querySelector(".vid").classList.add("flip");
+    setTimeout(() => {
+      document.querySelector(".vid").classList.remove("flip");
+    }, 1000);
     if (this.state.count < 2) {
       this.setState({ count: this.state.count + 1 });
     } else if (this.state.count === 2) {
@@ -133,10 +137,6 @@ class Home extends Component {
         diss: { display: "inline-block" },
       });
     }
-    document.querySelector(".vid").classList.add("flip");
-    setTimeout(() => {
-      document.querySelector(".vid").classList.remove("flip");
-    }, 1000);
   };
   handleChange = (selectedOption) => {
     this.setState({ selectedOption, disp: { display: "none" } });
