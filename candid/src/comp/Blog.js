@@ -252,7 +252,7 @@ export default class Blog extends React.Component {
                 id="panel2a-header"
               >
                 <div className="blogh">
-                  <h6>Add Blog</h6>
+                  <h6>Add</h6>
                 </div>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
@@ -399,7 +399,7 @@ export default class Blog extends React.Component {
                 id="panel2a-header"
               >
                 <div className="blogh">
-                  <h6>Remove Blog</h6>
+                  <h6>Remove</h6>
                 </div>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
