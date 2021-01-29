@@ -107,7 +107,7 @@
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   color: black;
   width: 21%;
-  top: 9.7%;
+  top: 9.4%;
   padding: 0;
   margin-left: 2.5%;
   cursor: pointer;
@@ -375,10 +375,10 @@
     width: 40%;
   }
   #pn1 {
-    left: 2%;
+    left: 0.5%;
   }
   #pn2 {
-    right: 2%;
+    right: 0.5%;
   }
   .vid1,
   .vid2,

@@ -105,7 +105,7 @@ class Home extends Component {
   componentDidMount() {   
     new Vivus("my-svg", { duration: 200 });
     if (window.location.search === "?in=in") {
-      document.getElementById("a1").scrollIntoView();
+      document.getElementById("iq").scrollIntoView();
     }
   }
   vidt = () => {
@@ -226,7 +226,7 @@ class Home extends Component {
     }
   };
   scr = () => {
-    document.getElementById("a1").scrollIntoView();
+    document.getElementById("iq").scrollIntoView();
   };
   render() {
     return (
@@ -455,7 +455,7 @@ class Home extends Component {
             <FilterListIcon className="cardf" />
           </div>
         </div>
-        <div className="inq">
+        <div id="iq" className="inq">
           <div className="rh">
             <h6>Inquiry</h6>
           </div>
