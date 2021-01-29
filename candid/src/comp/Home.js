@@ -83,8 +83,10 @@ class Home extends Component {
         slidesToScroll: 1,
         arrows: false,
         autoplay: true,
-        speed: 0,
+        speed: 1000,
         pauseOnHover: false,
+        fade: true
+     
       },
       w: window.scrollTo(0, 0),
       disp: { display: "none" },
@@ -114,6 +116,7 @@ class Home extends Component {
   ti = () => {
     clearInterval(this.interval);
     this.interval = setInterval(this.myTimer, 15000);
+  
   };
   myTimer = () => {
     document.querySelector(".vid").classList.add("flip");
