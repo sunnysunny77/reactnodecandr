@@ -276,7 +276,7 @@ class Home extends Component {
             onClick={() => this.vid("v1")}
           >
             {" "}
-            Video Comming <PlayCircleOutlineIcon className="iv" />
+            Video <PlayCircleOutlineIcon className="iv" />
           </span>
           <span className="vid1" style={this.state.dis}></span>
 
@@ -286,7 +286,7 @@ class Home extends Component {
             onClick={() => this.vid("v2")}
           >
             {" "}
-            Video Comming <PlayCircleOutlineIcon className="iv" />
+            Video <PlayCircleOutlineIcon className="iv" />
           </span>
           <span className="vid2" style={this.state.dis}></span>
 
@@ -296,7 +296,7 @@ class Home extends Component {
             onClick={() => this.vid("v1")}
           >
             {" "}
-            Video Comming <PlayCircleOutlineIcon className="iv" />
+            Video <PlayCircleOutlineIcon className="iv" />
           </span>
           <span className="vid3" style={this.state.diss}></span>
 
@@ -306,7 +306,7 @@ class Home extends Component {
             onClick={() => this.vid("v2")}
           >
             {" "}
-            Video Comming <PlayCircleOutlineIcon className="iv" />
+            Video <PlayCircleOutlineIcon className="iv" />
           </span>
           <span className="vid4" style={this.state.diss}></span>
 

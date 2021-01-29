@@ -104,11 +104,10 @@
 .vt {
   background-color: rgba(255,255,255,0.4);
   position: absolute;
- 
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   color: black;
   width: 21%;
-  top: 9.9%;
+  top: 9.8%;
   padding: 0;
   margin-left: 2.5%;
   cursor: pointer;
