@@ -25,23 +25,10 @@
   min-width: 200px;
 }
 
-#ws {
-  color: white;
-  background-image: url("./pics/svg1.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  display: inline-block;
-  height: 25px;
-  width: 25px;
-  margin: 15px 10px 0 10px;
-}
-
 #w1 h2 {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   display: inline-block;
   margin: 0;
-
   font-weight: 600;
 }
 
