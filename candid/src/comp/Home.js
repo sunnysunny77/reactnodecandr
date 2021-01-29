@@ -83,8 +83,10 @@ class Home extends Component {
         slidesToScroll: 1,
         arrows: false,
         autoplay: true,
-        speed: 0,
+        speed: 1000,
         pauseOnHover: false,
+        fade: true,
+        beforeChange: this.vidt
       },
       w: window.scrollTo(0, 0),
       disp: { display: "none" },
@@ -101,22 +103,12 @@ class Home extends Component {
     };
   }
   componentDidMount() {   
-    this.setState({ intervalId: setInterval(this.timer, 15000) });
     new Vivus("my-svg", { duration: 200 });
-    window.addEventListener("resize", this.ti);
     if (window.location.search === "?in=in") {
       document.getElementById("a1").scrollIntoView();
     }
   }
-  componentWillUnmount() {
-    clearInterval(this.state.intervalId);
-    window.removeEventListener("resize", this.ti);
-  }
-  ti = () => {
-    clearInterval(this.state.intervalId);
-    this.setState({ intervalId: setInterval(this.timer, 15000) });
-  };
-  timer = () => {
+  vidt = () => {
     document.querySelector(".vid").classList.add("flip");
     setTimeout(() => {
       document.querySelector(".vid").classList.remove("flip");
