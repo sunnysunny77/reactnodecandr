@@ -107,10 +107,14 @@
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   color: black;
   width: 21%;
-  top: 9.4%;
+  top: 9.3%;
   padding: 0;
   margin-left: 2.5%;
   cursor: pointer;
+  text-shadow: 0 0 0.5px grey;
+  line-height: 25px;
+  font-size: 90%;
+  font-style: italic;
 }
 
 .vt:hover {
@@ -124,7 +128,7 @@
 
 .iv {
   position: relative;
-  top: 4px;
+  top: 2.5px;
   padding: 0 2.5px;
 }
 
