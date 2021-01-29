@@ -31,9 +31,11 @@
 
 .about1 {
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+
   margin-top: 20px;
+}
+.p {
+  width: initial;
 }
 
 .about1 h4,
@@ -41,7 +43,6 @@
   font-family: "Impact, Charcoal, sans-serif";
   color: black;
   margin-left: 10px;
-
 }
 
 .about1 h5 {
@@ -136,17 +137,14 @@ span {
   #hi {
     height: 140px;
   }
-  .about1 .p {
-    width: initial;
-  }
 }
 
 @media only screen and (max-width: 1200px) {
   .about0 p {
-    width: 100%;
+    width: initial;
     border-radius: 0;
     font-size: initial;
-    padding: 0;
+    padding: 10px 0;
   }
   .about0 h4 {
     text-align: left;
@@ -154,7 +152,4 @@ span {
   .imga {
     width: 60%;
   }
-  
 }
-
-

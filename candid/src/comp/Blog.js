@@ -84,8 +84,8 @@ export default class Blog extends React.Component {
     ) {
       Resizer.imageFileResizer(
         event.target.files[0],
-        300,
-        300,
+        150,
+        150,
         "JPEG",
         50,
         0,

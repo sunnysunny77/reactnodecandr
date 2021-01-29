@@ -22,7 +22,7 @@
   animation-fill-mode: forwards;
   z-index: 998;
   text-align: center;
-  padding-bottom: 15px;
+  padding-top: 80px;
   font-size: 76%;
 }
 
@@ -33,15 +33,15 @@
   cursor: pointer;
   background-color: #fff;
   border: none;
-  margin-bottom: 10px;
+  padding: 10px 0;
 }
 
 #homI {
   color: black;
   transform: scale(2.2);
-  margin-right: 35px;
-  margin-top: 7.5px;
-  float: right;
+  position: absolute;
+  right: 30px;
+  top: 40px;
 }
 
 #homI:hover {
@@ -65,8 +65,10 @@
 }
 
 .phI {
-  
   transform: scale(0.8);
+}
+.menuDraw img {
+  padding: 10px 0;
 }
 
 /* header  */

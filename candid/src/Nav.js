@@ -57,28 +57,13 @@ class Nav extends Component {
       </div>
       <div className='menuDraw' style={this.state.dis}>
         <div>
-          <br></br>
-          <br></br>
-          <div>
-            <Link to="/"><HomeIcon id='homI' /></Link>
-          </div>
-          <br></br>
-          <br></br>
           <hr></hr>
-          <br></br>
+          <Link to="/"><HomeIcon id='homI' /></Link>
           <Link to="/blog"><button >Blog</button></Link>
-          <br></br>
-          <br></br>
           <Link to="/gallery"><button >Gallery</button></Link>
-          <br></br>
-          <br></br>
           <Link to="/contact"><button >Contact</button></Link>
-          <br></br>
-          <br></br>
           <Link to="/about"><button >About</button></Link>
-          <br></br>
           <hr></hr>
-          <br></br>
         </div>
         <div>
           <PhoneIcon className='phI' />
@@ -94,8 +79,6 @@ class Nav extends Component {
             Mon - Fri
           </span>
         </div>
-        <br></br>
-        <br></br>
         <img src="./logos.jpg" alt="Smiley face" width="60" height="60"></img>
       </div>
       <header>
