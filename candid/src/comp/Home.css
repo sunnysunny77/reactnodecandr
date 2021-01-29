@@ -404,6 +404,7 @@
   .card1 {
     padding: 1% 0;
     width: 88%;
+    height: initial;
   }
   .vid {
     top: -4px;
