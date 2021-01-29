@@ -228,6 +228,9 @@
 }
 
 .card p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 5% 26px;
   text-align: center;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
@@ -268,11 +271,9 @@
 }
 
 .card span {
-  float: right;
   font-family: "Impact, Charcoal, sans-serif";
   height: 60px;
   font-weight: 600;
-  text-align: right;
 }
 
 .card1 {
@@ -287,6 +288,7 @@
 
 .card2 {
   height: 60px;
+  align-self: flex-end;
 }
 
 /* inq */
