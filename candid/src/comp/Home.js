@@ -83,10 +83,8 @@ class Home extends Component {
         slidesToScroll: 1,
         arrows: false,
         autoplay: true,
-        speed: 1000,
+        speed: 0,
         pauseOnHover: false,
-        fade: true
-     
       },
       w: window.scrollTo(0, 0),
       disp: { display: "none" },
@@ -99,10 +97,11 @@ class Home extends Component {
       dis: { display: "inline-block" },
       diss: { display: "none" },
       count: 1,
+      intervalId: null
     };
   }
-  componentDidMount() {
-    this.interval = setInterval(this.myTimer, 15000);
+  componentDidMount() {   
+    this.setState({ intervalId: setInterval(this.timer, 15000) });
     new Vivus("my-svg", { duration: 200 });
     window.addEventListener("resize", this.ti);
     if (window.location.search === "?in=in") {
@@ -110,15 +109,14 @@ class Home extends Component {
     }
   }
   componentWillUnmount() {
+    clearInterval(this.state.intervalId);
     window.removeEventListener("resize", this.ti);
-    clearInterval(this.interval);
   }
   ti = () => {
-    clearInterval(this.interval);
-    this.interval = setInterval(this.myTimer, 15000);
-  
+    clearInterval(this.state.intervalId);
+    this.setState({ intervalId: setInterval(this.timer, 15000) });
   };
-  myTimer = () => {
+  timer = () => {
     document.querySelector(".vid").classList.add("flip");
     setTimeout(() => {
       document.querySelector(".vid").classList.remove("flip");
@@ -133,12 +131,14 @@ class Home extends Component {
         dis: { display: "inline-block" },
         diss: { display: "none" },
       });
+      return
     }
     if (this.state.count === 2) {
       this.setState({
         dis: { display: "none" },
         diss: { display: "inline-block" },
       });
+      return
     }
   };
   handleChange = (selectedOption) => {
