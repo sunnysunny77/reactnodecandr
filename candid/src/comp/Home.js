@@ -23,7 +23,6 @@ import ListIcon from "@material-ui/icons/List";
 import Select from "react-select";
 import Papa from "papaparse";
 
-
 const options = [
   { value: "Other", label: "Other" },
   { value: "Aged care facility", label: "Aged care facility" },
@@ -177,7 +176,7 @@ class Home extends Component {
           phone: this.state.phone,
           selectedOption: this.state.selectedOption,
           text: this.state.text,
-          emails: this.state.emails
+          emails: this.state.emails,
         })
         .then((res) => {
           if (res.data.e) {
@@ -534,10 +533,10 @@ class Home extends Component {
             <TextField
               className="www"
               inputProps={{
-                pattern: "[+]*[0-9]{8,14}" 
+                pattern: "[+]*[0-9]{8,14}",
               }}
               InputProps={{
-                  style: {
+                style: {
                   color: "black",
                   marginLeft: "2%",
                   backgroundColor: "white",
@@ -551,7 +550,7 @@ class Home extends Component {
                 ),
               }}
               variant="filled"
-             type="tel"
+              type="tel"
               name="phone"
               placeholder="Phone:"
               onChange={this.change}
