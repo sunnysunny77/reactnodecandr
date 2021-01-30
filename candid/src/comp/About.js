@@ -53,7 +53,7 @@ export default class About extends React.Component {
         }
         this.setState({ abc: <Maps data={a} /> });
       })
-      .catch((error) => {});
+      .catch((error) => {console.log(error)});
   }
   render() {
     return (

@@ -148,7 +148,7 @@ app.post('/three', function (req, res) {
   function sendMessage(auth) {
     let gmail = google.gmail({ version: 'v1', auth })
     let s = String("Name:" + '\xa0' + req.body.name + '\n\n' + "Email Address:" + '\xa0' + req.body.email + '\n\n' + "Phone #:" + '\xa0' + req.body.phone + '\n\n' + "Type:" + '\xa0' + req.body.selectedOption.value + '\n\n' + "Text:" + '\xa0' + req.body.text)
-    let str = ["Content-Type: text/plain; charset=\"UTF-8\"\n", "MIME-Version: 1.0\n", "Content-Transfer-Encoding: 7bit\n", "to: ", "", "\n", "from: ", "", "\n", "subject: ", "Candid Question", "\n\n", s].join('')
+    let str = ["Content-Type: text/plain; charset=\"UTF-8\"\n", "MIME-Version: 1.0\n", "Content-Transfer-Encoding: 7bit\n", "to: ", req.body.email , "\n", "from: ", "", "\n", "subject: ", "Candid Question", "\n\n", s].join('')
     let raw = new Buffer(str).toString("base64").replace(/\+/g, '-').replace(/\//g, '_')
     gmail.users.messages.send({
       userId: 'me',

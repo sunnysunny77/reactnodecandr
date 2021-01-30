@@ -21,6 +21,8 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import SubjectIcon from "@material-ui/icons/Subject";
 import ListIcon from "@material-ui/icons/List";
 import Select from "react-select";
+import Papa from "papaparse";
+
 
 const options = [
   { value: "Other", label: "Other" },
@@ -86,7 +88,7 @@ class Home extends Component {
         speed: 1000,
         pauseOnHover: false,
         fade: true,
-        beforeChange: this.vidt
+        beforeChange: this.vidt,
       },
       w: window.scrollTo(0, 0),
       disp: { display: "none" },
@@ -99,14 +101,28 @@ class Home extends Component {
       dis: { display: "inline-block" },
       diss: { display: "none" },
       count: 1,
-      intervalId: null
+      intervalId: null,
+      emails: null,
     };
   }
-  componentDidMount() {   
+  componentDidMount() {
     new Vivus("my-svg", { duration: 200 });
     if (window.location.search === "?in=in") {
       document.getElementById("iq").scrollIntoView();
     }
+    axios
+      .get(
+        `https://docs.google.com/spreadsheets/d/e/2PACX-1vTxrFaopZW6GRYomtmnq53N7fFznDije-jPZkhiWT0mQCtgGwo8C6L-7AT-1LRb05G9kmojifMC8k9T/pub?output=csv`
+      )
+      .then((res) => {
+        let parsedData = Papa.parse(res.data);
+        this.setState({
+          emails: String(parsedData.data[3][0]),
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   vidt = () => {
     document.querySelector(".vid").classList.add("flip");
@@ -123,14 +139,14 @@ class Home extends Component {
         dis: { display: "inline-block" },
         diss: { display: "none" },
       });
-      return
+      return;
     }
     if (this.state.count === 2) {
       this.setState({
         dis: { display: "none" },
         diss: { display: "inline-block" },
       });
-      return
+      return;
     }
   };
   handleChange = (selectedOption) => {
@@ -161,6 +177,7 @@ class Home extends Component {
           phone: this.state.phone,
           selectedOption: this.state.selectedOption,
           text: this.state.text,
+          emails: this.state.emails
         })
         .then((res) => {
           if (res.data.e) {
@@ -509,15 +526,18 @@ class Home extends Component {
                 ),
               }}
               variant="filled"
-              type="text"
+              type="email"
               name="email"
               placeholder="Email:"
               onChange={this.change}
             />
             <TextField
               className="www"
+              inputProps={{
+                pattern: "[+]*[0-9]{8,14}" 
+              }}
               InputProps={{
-                style: {
+                  style: {
                   color: "black",
                   marginLeft: "2%",
                   backgroundColor: "white",
@@ -531,7 +551,7 @@ class Home extends Component {
                 ),
               }}
               variant="filled"
-              type="text"
+             type="tel"
               name="phone"
               placeholder="Phone:"
               onChange={this.change}
