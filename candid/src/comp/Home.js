@@ -22,7 +22,6 @@ import SubjectIcon from "@material-ui/icons/Subject";
 import ListIcon from "@material-ui/icons/List";
 import Select from "react-select";
 
-
 const options = [
   { value: "Other", label: "Other" },
   { value: "Aged care facility", label: "Aged care facility" },
@@ -87,7 +86,7 @@ class Home extends Component {
         speed: 1000,
         pauseOnHover: false,
         fade: true,
-        beforeChange: this.vidt,
+        beforeChange: this.vidt
       },
       w: window.scrollTo(0, 0),
       disp: { display: "none" },
@@ -101,7 +100,7 @@ class Home extends Component {
       diss: { display: "none" },
       count: 1,
       intervalId: null,
-      emails: null,
+      emails: null
     };
   }
   componentDidMount() {
@@ -110,23 +109,22 @@ class Home extends Component {
       document.getElementById("iq").scrollIntoView();
     }
     axios
-    .post(
-      `https://candidcleaning.sunnyhome.site/hom`
-    )
-    .then((res) => {
-      if (res.data.e) {
-        this.setState({
-          emails: res.data.e.emails
-        });
-      }
-      if (res.data.a) {
-        this.setState({
-          emails: res.data.a.emails
-        });
-      }
-     
-    })
-    .catch((error) => {console.log(error)});
+      .post(`https://candidcleaning.sunnyhome.site/hom`)
+      .then((res) => {
+        if (res.data.e) {
+          this.setState({
+            emails: res.data.e.emails,
+          });
+        }
+        if (res.data.a) {
+          this.setState({
+            emails: res.data.a.emails,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   vidt = () => {
     document.querySelector(".vid").classList.add("flip");
@@ -290,7 +288,6 @@ class Home extends Component {
           <span id="pn1" onClick={() => this.vidd(-1)}>
             &larr;
           </span>
-
           <span
             className="vt"
             style={this.state.dis}
@@ -300,7 +297,6 @@ class Home extends Component {
             Video <PlayCircleOutlineIcon className="iv" />
           </span>
           <span className="vid1" style={this.state.dis}></span>
-
           <span
             className="vt"
             style={this.state.dis}
@@ -310,7 +306,6 @@ class Home extends Component {
             Video <PlayCircleOutlineIcon className="iv" />
           </span>
           <span className="vid2" style={this.state.dis}></span>
-
           <span
             className="vt"
             style={this.state.diss}
@@ -320,7 +315,6 @@ class Home extends Component {
             Video <PlayCircleOutlineIcon className="iv" />
           </span>
           <span className="vid3" style={this.state.diss}></span>
-
           <span
             className="vt"
             style={this.state.diss}
@@ -330,7 +324,6 @@ class Home extends Component {
             Video <PlayCircleOutlineIcon className="iv" />
           </span>
           <span className="vid4" style={this.state.diss}></span>
-
           <span id="pn2" onClick={() => this.vidd(+1)}>
             &rarr;
           </span>
@@ -560,7 +553,6 @@ class Home extends Component {
               placeholder="Phone:"
               onChange={this.change}
             />
-
             <div style={{ height: "220px", marginTop: "5px" }}>
               <ListIcon style={{ color: "white", marginLeft: "27.5px" }} />
               <Select

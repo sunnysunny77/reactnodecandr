@@ -5,7 +5,6 @@ import ContactsIcon from "@material-ui/icons/Contacts";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import axios from "axios";
 
-
 export default class Contactc extends Component {
   constructor(props) {
     super(props);
@@ -13,32 +12,31 @@ export default class Contactc extends Component {
       w: window.scrollTo(0, 0),
       ph: null,
       email: null,
-      avail: null
+      avail: null,
     };
   }
   componentDidMount() {
     axios
-    .post(
-      `https://candidcleaning.sunnyhome.site/cont`
-    )
-    .then((res) => {
-      if (res.data.e) {
-        this.setState({
-          ph: res.data.e.ph,
-          email: res.data.e.email,
-          avail: res.data.e.avail,
-        });
-      }
-      if (res.data.a) {
-        this.setState({
-          ph: res.data.a.ph,
-          email: res.data.a.email,
-          avail: res.data.a.avail,
-        });
-      }
-     
-    })
-    .catch((error) => {console.log(error)});
+      .post(`https://candidcleaning.sunnyhome.site/cont`)
+      .then((res) => {
+        if (res.data.e) {
+          this.setState({
+            ph: res.data.e.ph,
+            email: res.data.e.email,
+            avail: res.data.e.avail,
+          });
+        }
+        if (res.data.a) {
+          this.setState({
+            ph: res.data.a.ph,
+            email: res.data.a.email,
+            avail: res.data.a.avail,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   render() {
     return (
@@ -47,7 +45,6 @@ export default class Contactc extends Component {
         <div className="rh">
           <h6>Contact</h6>
         </div>
-
         <div className="contlink">
           <div className="c1"></div>
           <div className="c2">
@@ -83,15 +80,12 @@ export default class Contactc extends Component {
           </div>
           <br className="clearfloat" />
         </div>
-
         <div className="c3">
           <ContactsIcon className="infe" />
           <h4>Availability</h4>
           <hr></hr>
           <Wave>
-            <p className="p">
-            {this.state.avail}
-            </p>
+            <p className="p">{this.state.avail}</p>
           </Wave>
         </div>
       </React.Fragment>

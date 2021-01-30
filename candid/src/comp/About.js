@@ -3,7 +3,6 @@ import "./About.css";
 import Wave from "./Wave";
 import Maps from "./Maps.js";
 import axios from "axios";
-
 import ListAltIcon from "@material-ui/icons/ListAlt";
 
 export default class About extends React.Component {
@@ -17,25 +16,24 @@ export default class About extends React.Component {
   }
   componentDidMount() {
     axios
-    .post(
-      `https://candidcleaning.sunnyhome.site/abou`
-    )
-    .then((res) => {
-      if (res.data.e) {
-        this.setState({
-          cba: res.data.e.cba,
-          abc: res.data.e.abc,
-        });
-      }
-      if (res.data.a) {
-        this.setState({
-          cba: res.data.a.cba,
-          abc: <Maps data={res.data.a.abc} />,
-        });
-      }
-     
-    })
-    .catch((error) => {console.log(error)});
+      .post(`https://candidcleaning.sunnyhome.site/abou`)
+      .then((res) => {
+        if (res.data.e) {
+          this.setState({
+            cba: res.data.e.cba,
+            abc: res.data.e.abc,
+          });
+        }
+        if (res.data.a) {
+          this.setState({
+            cba: res.data.a.cba,
+            abc: <Maps data={res.data.a.abc} />,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   render() {
     return (
@@ -78,13 +76,8 @@ export default class About extends React.Component {
               <br />
               <br />
               <br />
-
               <div className="jus">
-                <img
-                  src="breakp.jpg"
-                  alt="Smiley face"
-                  className="imga"
-                ></img>
+                <img src="breakp.jpg" alt="Smiley face" className="imga"></img>
                 <br />
                 <br />
                 <br />
@@ -103,7 +96,6 @@ export default class About extends React.Component {
                   read more
                 </button>
               </div>
-
               <div id="rm" className="cent">
                 <br />
                 <span>
@@ -144,13 +136,10 @@ export default class About extends React.Component {
                   close
                 </button>
               </div>
-
-              <div>
-                <br />
-                <hr />
-                <br />
-                <br />
-              </div>
+              <br />
+              <hr />
+              <br />
+              <br />
               <span id="pic"></span>
               <h5>Inductions</h5>
               <span id="serv" className="jus">
@@ -159,7 +148,6 @@ export default class About extends React.Component {
                 the management team so that we can all work towards a safe work
                 environment and eliminate risks and hazards in the workplace.
               </span>
-
               <div id="hi">
                 <br />
                 <button
@@ -171,7 +159,6 @@ export default class About extends React.Component {
                   read more
                 </button>
               </div>
-
               <div id="rm1" className="cent">
                 <hr />
                 <br />
@@ -190,7 +177,7 @@ export default class About extends React.Component {
                   <br></br>
                   Other Information
                   <br></br>
-                  Equal Opportunity 
+                  Equal Opportunity
                   <br></br>
                   &amp; Harassment
                   <br></br>
@@ -222,7 +209,7 @@ export default class About extends React.Component {
                   <br></br>
                   Needle Stick Injuries
                   <br></br>
-                  &amp; Slips, Trips 
+                  &amp; Slips, Trips
                   <br></br>
                   &amp; Falls
                   <br></br>
@@ -242,7 +229,7 @@ export default class About extends React.Component {
                   <br></br>
                   Fire Emergencies
                   <br></br>
-                  Equipment 
+                  Equipment
                   <br></br>
                   &amp; Machinery Checklist
                   <br></br>

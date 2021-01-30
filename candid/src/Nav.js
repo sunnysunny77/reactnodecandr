@@ -6,7 +6,6 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import PhoneIcon from "@material-ui/icons/Phone";
 import axios from "axios";
 
-
 class Nav extends Component {
   constructor(props) {
     super(props);
@@ -44,9 +43,7 @@ class Nav extends Component {
     a.addEventListener("click", this.out);
     window.addEventListener("scroll", this.handleScroll);
     axios
-      .post(
-        `https://candidcleaning.sunnyhome.site/nav`
-      )
+      .post(`https://candidcleaning.sunnyhome.site/nav`)
       .then((res) => {
         if (res.data.e) {
           this.setState({
@@ -62,9 +59,10 @@ class Nav extends Component {
             day: res.data.a.day,
           });
         }
-       
       })
-      .catch((error) => {console.log(error)});
+      .catch((error) => {
+        console.log(error);
+      });
   }
   componentWillUnmount() {
     let a = document.getElementById("di");
@@ -206,7 +204,7 @@ class Nav extends Component {
             <AccessTimeIcon className="phI" />
             <br></br>
             <span>
-              {this.state.time} 
+              {this.state.time}
               <br></br>
               {this.state.day}
             </span>
@@ -234,7 +232,10 @@ class Nav extends Component {
               <PhoneIcon className="apI" />
               <a href="tel:+0412620989"> {this.state.ph}</a>
               <AccessTimeIcon className="apI" />
-              <span> {this.state.time} /  {this.state.day}</span>
+              <span>
+                {" "}
+                {this.state.time} / {this.state.day}
+              </span>
               <Link to="/">
                 <HomeIcon id="homIa" className="apI" />
               </Link>

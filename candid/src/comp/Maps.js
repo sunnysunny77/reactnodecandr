@@ -7,7 +7,6 @@ import MapGL, {
 } from "@urbica/react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-
 export default class Maps extends Component {
   constructor(props) {
     super(props);
@@ -60,7 +59,6 @@ export default class Maps extends Component {
       >
         <NavigationControl showCompass showZoom position="top-right" />
         <FullscreenControl container={document.querySelector("cont")} />
-
         {this.state.map}
       </MapGL>
     );

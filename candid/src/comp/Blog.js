@@ -45,9 +45,7 @@ export default class Blog extends React.Component {
     };
   }
   componentDidMount() {
-
-  
-   axios
+    axios
       .get(`https://candidcleaning.sunnyhome.site/ong`)
       .then((res) => {
         return this.tab(res.data);
@@ -60,9 +58,6 @@ export default class Blog extends React.Component {
           disp1: { display: "block", lineHeight: "75px" },
         });
       });
-
-     
-    
   }
   change = (event) => {
     let nam = event.target.name;
@@ -270,7 +265,7 @@ export default class Blog extends React.Component {
                         color: "black",
                         fontSize: "120%",
                         borderRadius: 0,
-                        backgroundColor: "white"
+                        backgroundColor: "white",
                       },
                       startAdornment: (
                         <InputAdornment position="start">
@@ -291,7 +286,7 @@ export default class Blog extends React.Component {
                         color: "black",
                         fontSize: "120%",
                         borderRadius: 0,
-                        backgroundColor: "white"
+                        backgroundColor: "white",
                       },
                       startAdornment: (
                         <InputAdornment position="start">
@@ -312,7 +307,7 @@ export default class Blog extends React.Component {
                         color: "black",
                         fontSize: "120%",
                         borderRadius: 0,
-                        backgroundColor: "white"
+                        backgroundColor: "white",
                       },
                       startAdornment: (
                         <InputAdornment position="start">
@@ -326,7 +321,6 @@ export default class Blog extends React.Component {
                     placeholder="Name:"
                     onChange={this.change}
                   />
-
                   <TextField
                     multiline
                     rows="20"
@@ -344,7 +338,7 @@ export default class Blog extends React.Component {
                         overflowX: "hidden",
                         paddingTop: "10px",
                         marginTop: "50px",
-                        borderRadius: 0
+                        borderRadius: 0,
                       },
                     }}
                     variant="filled"
@@ -353,7 +347,6 @@ export default class Blog extends React.Component {
                     placeholder="Text:"
                     onChange={this.change}
                   />
-
                   <div style={{ textAlign: "center", marginTop: "50px" }}>
                     <label htmlFor="avatar">Upload a picture:</label>
                     <br></br>
@@ -366,7 +359,6 @@ export default class Blog extends React.Component {
                       onChange={this.file}
                     />
                   </div>
-
                   <Button
                     style={{
                       color: "white",
@@ -376,7 +368,7 @@ export default class Blog extends React.Component {
                       fontSize: "120%",
                       paddingTop: "10px",
                       marginTop: "10px",
-                      borderRadius: 0
+                      borderRadius: 0,
                     }}
                     variant="contained"
                     type="submit"
@@ -417,7 +409,7 @@ export default class Blog extends React.Component {
                         color: "black",
                         fontSize: "120%",
                         borderRadius: 0,
-                        backgroundColor: "white"
+                        backgroundColor: "white",
                       },
                       startAdornment: (
                         <InputAdornment position="start">
@@ -438,7 +430,7 @@ export default class Blog extends React.Component {
                         color: "black",
                         fontSize: "120%",
                         borderRadius: 0,
-                        backgroundColor: "white"
+                        backgroundColor: "white",
                       },
                       startAdornment: (
                         <InputAdornment position="start">
@@ -452,7 +444,6 @@ export default class Blog extends React.Component {
                     placeholder="Date:"
                     onChange={this.change}
                   />
-
                   <Button
                     style={{
                       color: "white",
@@ -462,7 +453,7 @@ export default class Blog extends React.Component {
                       fontSize: "120%",
                       paddingTop: "10px",
                       marginTop: "10px",
-                      borderRadius: 0
+                      borderRadius: 0,
                     }}
                     variant="contained"
                     type="submit"

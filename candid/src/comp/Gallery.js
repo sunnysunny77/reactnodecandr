@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-
 import "./Gallery.css";
-
 import ImageGallery from "react-image-gallery";
 
 const images = [
