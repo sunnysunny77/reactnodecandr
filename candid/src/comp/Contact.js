@@ -4,7 +4,7 @@ import Wave from "./Wave";
 import ContactsIcon from "@material-ui/icons/Contacts";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import axios from "axios";
-import Papa from "papaparse";
+
 
 export default class Contactc extends Component {
   constructor(props) {
@@ -18,20 +18,27 @@ export default class Contactc extends Component {
   }
   componentDidMount() {
     axios
-      .get(
-        `https://docs.google.com/spreadsheets/d/e/2PACX-1vTxrFaopZW6GRYomtmnq53N7fFznDije-jPZkhiWT0mQCtgGwo8C6L-7AT-1LRb05G9kmojifMC8k9T/pub?output=csv`
-      )
-      .then((res) => {
-        let parsedData = Papa.parse(res.data);
+    .post(
+      `https://candidcleaning.sunnyhome.site/cont`
+    )
+    .then((res) => {
+      if (res.data.e) {
         this.setState({
-          ph: String(parsedData.data[0][0]),
-          email: String(parsedData.data[3][0]),
-          avail: String(parsedData.data[4][0]),
+          ph: res.data.e.ph,
+          email: res.data.e.email,
+          avail: res.data.e.avail,
         });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      }
+      if (res.data.a) {
+        this.setState({
+          ph: res.data.a.ph,
+          email: res.data.a.email,
+          avail: res.data.a.avail,
+        });
+      }
+     
+    })
+    .catch((error) => {console.log(error)});
   }
   render() {
     return (

@@ -5,7 +5,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import PhoneIcon from "@material-ui/icons/Phone";
 import axios from "axios";
-import Papa from "papaparse";
+
 
 class Nav extends Component {
   constructor(props) {
@@ -44,16 +44,25 @@ class Nav extends Component {
     a.addEventListener("click", this.out);
     window.addEventListener("scroll", this.handleScroll);
     axios
-      .get(
-        `https://docs.google.com/spreadsheets/d/e/2PACX-1vTxrFaopZW6GRYomtmnq53N7fFznDije-jPZkhiWT0mQCtgGwo8C6L-7AT-1LRb05G9kmojifMC8k9T/pub?output=csv`
+      .post(
+        `https://candidcleaning.sunnyhome.site/nav`
       )
       .then((res) => {
-        let parsedData = Papa.parse(res.data);
-        this.setState({
-          ph: String(parsedData.data[0][0]),
-          time: String(parsedData.data[1][0]),
-          day: String(parsedData.data[2][0]),
-        });
+        if (res.data.e) {
+          this.setState({
+            ph: res.data.e.ph,
+            time: res.data.e.time,
+            day: res.data.e.day,
+          });
+        }
+        if (res.data.a) {
+          this.setState({
+            ph: res.data.a.ph,
+            time: res.data.a.time,
+            day: res.data.a.day,
+          });
+        }
+       
       })
       .catch((error) => {console.log(error)});
   }

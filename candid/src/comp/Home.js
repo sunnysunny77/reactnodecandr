@@ -21,7 +21,7 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import SubjectIcon from "@material-ui/icons/Subject";
 import ListIcon from "@material-ui/icons/List";
 import Select from "react-select";
-import Papa from "papaparse";
+
 
 const options = [
   { value: "Other", label: "Other" },
@@ -110,18 +110,23 @@ class Home extends Component {
       document.getElementById("iq").scrollIntoView();
     }
     axios
-      .get(
-        `https://docs.google.com/spreadsheets/d/e/2PACX-1vTxrFaopZW6GRYomtmnq53N7fFznDije-jPZkhiWT0mQCtgGwo8C6L-7AT-1LRb05G9kmojifMC8k9T/pub?output=csv`
-      )
-      .then((res) => {
-        let parsedData = Papa.parse(res.data);
+    .post(
+      `https://candidcleaning.sunnyhome.site/hom`
+    )
+    .then((res) => {
+      if (res.data.e) {
         this.setState({
-          emails: String(parsedData.data[3][0]),
+          emails: res.data.e.emails
         });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      }
+      if (res.data.a) {
+        this.setState({
+          emails: res.data.a.emails
+        });
+      }
+     
+    })
+    .catch((error) => {console.log(error)});
   }
   vidt = () => {
     document.querySelector(".vid").classList.add("flip");

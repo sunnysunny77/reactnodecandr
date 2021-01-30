@@ -3,7 +3,7 @@ import "./About.css";
 import Wave from "./Wave";
 import Maps from "./Maps.js";
 import axios from "axios";
-import Papa from "papaparse";
+
 import ListAltIcon from "@material-ui/icons/ListAlt";
 
 export default class About extends React.Component {
@@ -17,43 +17,25 @@ export default class About extends React.Component {
   }
   componentDidMount() {
     axios
-      .get(
-        `https://docs.google.com/spreadsheets/d/e/2PACX-1vSX0Yy5ynVsKaFMU030TAdltTWZQ-tlQFho-na8RKmgIiZpkfyomov9uUVrhr6xQbUTrF3AHGI9olbn/pub?output=csv`
-      )
-      .then((res) => {
-        let parsedData = Papa.parse(res.data);
-        let l = parsedData.data[0][1];
-        this.setState({ cba: String(parsedData.data[0][0]) });
-
-        let a = [];
-        for (let i = 1; i <= l; i++) {
-          let g = i * 2;
-          a.push({
-            [i]: {
-              type: "Feature",
-              geometry: {
-                type: "Polygon",
-                coordinates: [[]],
-              },
-            },
-          });
-          for (let x in parsedData.data) {
-            if (x >= 1) {
-              if (
-                parsedData.data[x][g - 2].length &&
-                parsedData.data[x][g - 1].length
-              ) {
-                a[i - 1][i].geometry.coordinates[0].push([
-                  parsedData.data[x][g - 2],
-                  parsedData.data[x][g - 1],
-                ]);
-              }
-            }
-          }
-        }
-        this.setState({ abc: <Maps data={a} /> });
-      })
-      .catch((error) => {console.log(error)});
+    .post(
+      `https://candidcleaning.sunnyhome.site/abou`
+    )
+    .then((res) => {
+      if (res.data.e) {
+        this.setState({
+          cba: res.data.e.cba,
+          abc: res.data.e.abc,
+        });
+      }
+      if (res.data.a) {
+        this.setState({
+          cba: res.data.a.cba,
+          abc: <Maps data={res.data.a.abc} />,
+        });
+      }
+     
+    })
+    .catch((error) => {console.log(error)});
   }
   render() {
     return (
