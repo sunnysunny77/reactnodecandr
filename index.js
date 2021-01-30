@@ -261,3 +261,13 @@ app.post('/hom', function (req, res) {
    return res.json({e: { cba: "error", abc: "error" }})
   }
  })
+
+ app.get('/reset', function (req, res) {
+
+  res.json({ reset: "yes" })
+ 
+ process.exit()
+ 
+  })
+ 
+ 
