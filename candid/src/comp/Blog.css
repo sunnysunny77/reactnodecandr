@@ -31,7 +31,7 @@ td {
 }
 
 .blogBar h6 {
-  padding-top: 5px;
+  padding-top: 15px;
 }
 
 .blogCont1 {
@@ -107,7 +107,7 @@ td {
 }
 
 .blogh h6 {
-  padding-top: 15px;
+  padding-top: 5px;
 }
 
 .custom-file-input[type="file"]::-ms-browse {
