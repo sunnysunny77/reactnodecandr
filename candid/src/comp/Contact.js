@@ -85,7 +85,7 @@ export default class Contactc extends Component {
           <h4>Availability</h4>
           <hr></hr>
           <Wave>
-            <p className="p">{this.state.avail}</p>
+            <div className="prop" ><span>{this.state.avail}</span></div>
           </Wave>
         </div>
       </React.Fragment>

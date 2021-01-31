@@ -43,7 +43,7 @@ class Nav extends Component {
     a.addEventListener("click", this.out);
     window.addEventListener("scroll", this.handleScroll);
     axios
-      .post(`https://candidcleaning.sunnyhome.site/nav`)
+      .post(`/nav`)
       .then((res) => {
         if (res.data.e) {
           this.setState({

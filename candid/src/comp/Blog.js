@@ -12,7 +12,7 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import { hexToRgb, withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import axios from "axios";
 import Resizer from "react-image-file-resizer";

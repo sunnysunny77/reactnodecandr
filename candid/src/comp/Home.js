@@ -100,7 +100,6 @@ class Home extends Component {
       diss: { display: "none" },
       count: 1,
       intervalId: null,
-      emails: null
     };
   }
   componentDidMount() {
@@ -113,12 +112,12 @@ class Home extends Component {
       .then((res) => {
         if (res.data.e) {
           this.setState({
-            emails: res.data.e.emails,
+           
           });
         }
         if (res.data.a) {
           this.setState({
-            emails: res.data.a.emails,
+           
           });
         }
       })
@@ -178,8 +177,7 @@ class Home extends Component {
           email: this.state.email,
           phone: this.state.phone,
           selectedOption: this.state.selectedOption,
-          text: this.state.text,
-          emails: this.state.emails,
+          text: this.state.text
         })
         .then((res) => {
           if (res.data.e) {

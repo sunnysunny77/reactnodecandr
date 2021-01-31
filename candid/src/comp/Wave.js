@@ -6,7 +6,7 @@ export default class Wave extends Component {
     return (
       <div className="svg">
         <div className="wave0"></div>
-        <div className="p">{this.props.children}</div>
+        {this.props.children} 
         <div className="wave"></div>
       </div>
     );

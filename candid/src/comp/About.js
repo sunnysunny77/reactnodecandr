@@ -12,6 +12,16 @@ export default class About extends React.Component {
       w: window.scrollTo(0, 0),
       abc: null,
       cba: null,
+      hmap: null,
+      hm: null,
+      h1: null,
+      span1: null,
+      span2: null,
+      h2: null,
+      span3: null,
+      span4: null,
+      btn1: null,
+      btn2: null,
     };
   }
   componentDidMount() {
@@ -22,69 +32,80 @@ export default class About extends React.Component {
           this.setState({
             cba: res.data.e.cba,
             abc: res.data.e.abc,
+            hamp: res.data.e.hmap,
+            hm: res.data.e.hm,
+            h1: res.data.e.h1,
+            span1: res.data.e.span1,
+            span2: res.data.e.span2,
+            h2: res.data.e.h2,
+            span3: res.data.e.span3,
+            span4: res.data.e.span4,
+            btn1: res.data.e.btn1,
+            btn2: res.data.e.btn2,
           });
         }
         if (res.data.a) {
           this.setState({
             cba: res.data.a.cba,
             abc: <Maps data={res.data.a.abc} />,
+            hamp: res.data.a.hmap,
+            hm: res.data.a.hm,
+            h1: res.data.a.h1,
+            span1: res.data.a.span1,
+            span2: res.data.a.span2,
+            h2: res.data.a.h2,
+            span3: res.data.a.span3,
+            span4: res.data.a.span4,
+            btn1: res.data.a.btn1,
+            btn2: res.data.a.btn2,
           });
         }
+      })
+      .then((res) => {
+        document.getElementById("s0").innerHTML = this.state.cba;
+        document.getElementById("s1").innerHTML = this.state.span1;
+        document.getElementById("s2").innerHTML = this.state.span2;
+        document.getElementById("s3").innerHTML = this.state.span3;
+        document.getElementById("s4").innerHTML = this.state.span4;
       })
       .catch((error) => {
         console.log(error);
       });
+      
   }
   render() {
     return (
       <React.Fragment>
         {this.state.w}
+
         <div className="rh">
           <h6>About</h6>
         </div>
-        <div className="about0">
+
+        <section className="about0">
           <ListAltIcon id="infe" />
-          <h4>Currently Cleaning</h4>
-          <p style={{ textAlign: "center" }}>{this.state.cba}</p>
+          <h4>{this.state.hmap}</h4>
+          <p className="jus" id="s0"></p>
           <hr />
-        </div>
+        </section>
+
         <div>{this.state.abc}</div>
-        <div className="about1">
+
+        <section className="about1">
+
           <ListAltIcon id="infe" />
-          <h4>Summary</h4>
+          <h4>{this.state.hm}</h4>
           <hr />
+
           <Wave>
-            <div className="p">
-              <h5>From The Supervisor</h5>
+
+            <div className="prop">
+
+              <h5>{this.state.h1}</h5>
+
+              <div className="jus"><span id="s1"></span></div>
+             
               <div className="jus">
-                <span>
-                  My name is Naomi, over the last 14 years whilst I have been
-                  working within the cleaning industry, I experienced an
-                  increased frustration with how often cleaners were not
-                  provided with all the necessary procedures, training and
-                  realistic time frames to perform their work satisfactorily.
-                  Further exasperation watching greed and intense profit not
-                  shared with those doing the hard work, the cleaners!
-                  Eventually this vexation forced a realisation that I needed to
-                  be an independent business owner/operator to ensure the
-                  cleaners and clientele are cared for. I created a business
-                  where the cleaners do benefit from their efforts, financially
-                  and personally. A happy cleaner means a happy client. Both are
-                  very important to me.
-                </span>
-              </div>
-              <br />
-              <br />
-              <br />
-              <div className="jus">
-                <img src="breakp.jpg" alt="Smiley face" className="imga"></img>
-                <br />
-                <br />
-                <br />
-                <span>So here I am!</span>
-                <br />
-                <br />
-                <span>Welcome to CANDID CLEANING!</span>
                 <br />
                 <br />
                 <button
@@ -93,37 +114,17 @@ export default class About extends React.Component {
                     document.getElementById("rm").style.display = "block";
                   }}
                 >
-                  read more
+                  {this.state.btn1}
                 </button>
+                <br />
+                <br />
               </div>
+              
               <div id="rm" className="cent">
-                <br />
-                <span>
-                  Candid Cleaning offers work to proven and experienced cleaners
-                  located in many metropolitan areas of Perth and we value the
-                  support of local community businesses. We also offer training
-                  and guidance to all our new and current cleaners to ensure
-                  each premise, and the occupants within, receive respect and
-                  consideration whist Candid Cleaning work towards maintaining
-                  your office and/or your investment.
-                </span>
+                <hr />
                 <br />
                 <br />
-                <span>
-                  One of our priorities at Candid Cleaning is to assist in the
-                  elimination of toxic chemicals used in cleaning products and
-                  focus on a cleaning solution that is environmentally sound and
-                  certified without any harsh toxic chemicals, fumes or
-                  fragrances. The products used are designed to reduce cleaning
-                  time and get results where other products have failed.
-                </span>
-                <br />
-                <br />
-                <span>
-                  At Candid Cleaning our cleaners are genuinely happy, they
-                  respect the environment and they will look after your
-                  workspace as if it were their own.
-                </span>
+                <span id="s2"></span>
                 <br />
                 <br />
                 <button
@@ -132,116 +133,44 @@ export default class About extends React.Component {
                     document.getElementById("rm").style.display = "none";
                   }}
                 >
-                  {" "}
-                  close
+                  {this.state.btn2}
                 </button>
+                <br />
               </div>
+
+              <div className="jus">
+                <br />
+                <br />
+                <img src="breakp.jpg" alt="Smiley face" className="imga "></img>
+                <br />
+                <br />
+              </div>
+            
               <br />
-              <hr />
               <br />
+              <h5>{this.state.h2}</h5>
               <br />
               <span id="pic"></span>
-              <h5>Inductions</h5>
-              <span id="serv" className="jus">
-                Our Cleaners determination is to ensure that the job is done
-                safely and properly every time and that hazards are reported to
-                the management team so that we can all work towards a safe work
-                environment and eliminate risks and hazards in the workplace.
-              </span>
-              <div id="hi">
-                <br />
-                <button
-                  id="btn"
-                  onClick={() => {
-                    document.getElementById("rm1").style.display = "block";
-                  }}
-                >
-                  read more
-                </button>
-              </div>
+              <span id="s3" className="jus"></span>
+              <br />
+              <br />
+              <button
+                id="btn"
+                onClick={() => {
+                  document.getElementById("rm1").style.display = "block";
+                }}
+              >         
+                {this.state.btn1}
+              </button>
+              <br /> 
+              <br />
+              <br />
+              
               <div id="rm1" className="cent">
                 <hr />
                 <br />
-                <h5>Induction Contents</h5>
                 <br />
-                <span>
-                  Background
-                  <br></br>
-                  Environment Management
-                  <br></br>
-                  Training
-                  <br></br>
-                  Do Not
-                  <br></br>
-                  Do
-                  <br></br>
-                  Other Information
-                  <br></br>
-                  Equal Opportunity
-                  <br></br>
-                  &amp; Harassment
-                  <br></br>
-                  Basic equipment
-                  <br></br>
-                  How to Sheet
-                  <br></br>
-                  Safety At Work
-                  <br></br>
-                  Law
-                  <br></br>
-                  General Duties
-                  <br></br>
-                  Consultation
-                  <br></br>
-                  Hazard Management
-                  <br></br>
-                  Chemicals
-                  <br></br>
-                  Task Management
-                  <br></br>
-                  Bins
-                  <br></br>
-                  Electrical equipment
-                  <br></br>
-                  Noise, Eyes Damage, infection
-                  <br></br>
-                  &amp; Illness
-                  <br></br>
-                  Needle Stick Injuries
-                  <br></br>
-                  &amp; Slips, Trips
-                  <br></br>
-                  &amp; Falls
-                  <br></br>
-                  Working alone
-                  <br></br>
-                  Manual Handling
-                  <br></br>
-                  Backpack Vacuum Safety
-                  <br></br>
-                  Incident/Accident Excuses
-                  <br></br>
-                  Injury Management
-                  <br></br>
-                  Incident/Injury Reporting
-                  <br></br>
-                  Evacuation Procedures
-                  <br></br>
-                  Fire Emergencies
-                  <br></br>
-                  Equipment
-                  <br></br>
-                  &amp; Machinery Checklist
-                  <br></br>
-                  Vacuum Maintenance
-                  <br></br>
-                  Work Right
-                  <br></br>
-                  Operate Right
-                  <br></br>
-                  Troubleshooting
-                  <br></br>
-                </span>
+                <span id="s4"></span>
                 <br />
                 <br />
                 <button
@@ -250,14 +179,17 @@ export default class About extends React.Component {
                     document.getElementById("rm1").style.display = "none";
                   }}
                 >
-                  {" "}
-                  close
+                  {this.state.btn2}
                 </button>
                 <br />
               </div>
+
             </div>
+
           </Wave>
-        </div>
+
+        </section>
+
       </React.Fragment>
     );
   }

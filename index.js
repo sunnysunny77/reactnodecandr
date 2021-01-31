@@ -57,7 +57,7 @@ let parsedData0
 
 axios
   .get(
-    `https://docs.google.com/spreadsheets/d/e/2PACX-1vTxrFaopZW6GRYomtmnq53N7fFznDije-jPZkhiWT0mQCtgGwo8C6L-7AT-1LRb05G9kmojifMC8k9T/pub?output=csv`
+    `https://docs.google.com/spreadsheets/d/1gLb1KAZd-dY1Jlw1z-JPVev1WkeOL_tIitvzkrW97dQ/gviz/tq?tqx=out:csv&sheet=data`
   )
   .then((res) => {
     return Papa.parse(res.data);
@@ -69,7 +69,7 @@ axios
 
 axios
   .get(
-    `https://docs.google.com/spreadsheets/d/e/2PACX-1vSX0Yy5ynVsKaFMU030TAdltTWZQ-tlQFho-na8RKmgIiZpkfyomov9uUVrhr6xQbUTrF3AHGI9olbn/pub?output=csv`
+    `https://docs.google.com/spreadsheets/d/1IouN-lz5mjCpEBqa2wER0swruvmUedhDMJyitlgJysU/gviz/tq?tqx=out:csv&sheet=data`
   )
   .then((res) => {
     let parsedData = Papa.parse(res.data);
@@ -100,7 +100,7 @@ axios
         }
       }
     }
-    let k = [parsedData.data[1][0], a]
+    let k = [parsedData.data[1][0], a, parsedData.data[1][2]]
     return k
   })
   .then((res) => {
@@ -199,7 +199,7 @@ app.post('/three', function (req, res) {
   function sendMessage(auth) {
     let gmail = google.gmail({ version: 'v1', auth })
     let s = String("Name:" + '\xa0' + req.body.name + '\n\n' + "Email Address:" + '\xa0' + req.body.email + '\n\n' + "Phone #:" + '\xa0' + req.body.phone + '\n\n' + "Type:" + '\xa0' + req.body.selectedOption.value + '\n\n' + "Text:" + '\xa0' + req.body.text)
-    let str = ["Content-Type: text/plain; charset=\"UTF-8\"\n", "MIME-Version: 1.0\n", "Content-Transfer-Encoding: 7bit\n", "to: ", req.body.emails, "\n", "from: ", "", "\n", "subject: ", "Candid Question", "\n\n", s].join('')
+    let str = ["Content-Type: text/plain; charset=\"UTF-8\"\n", "MIME-Version: 1.0\n", "Content-Transfer-Encoding: 7bit\n", "to: ", parsedData.data[4][1], "\n", "from: ", "", "\n", "subject: ", "Candid Question", "\n\n", s].join('')
     let raw = new Buffer(str).toString("base64").replace(/\+/g, '-').replace(/\//g, '_')
     gmail.users.messages.send({
       userId: 'me',
@@ -224,7 +224,7 @@ app.get('/ong', function (req, res) {
 
 app.post('/nav', function (req, res) {
   if (parsedData !== undefined) {
-    return res.json({ a: { ph: parsedData.data[0][1], time: parsedData.data[1][1], day: parsedData.data[2][1] } })
+    return res.json({ a: { ph: parsedData.data[1][1], time: parsedData.data[2][1], day: parsedData.data[3][1] } })
   } else {
     return res.json({ e: { ph: "error", time: "error", day: "error" } })
   }
@@ -232,7 +232,7 @@ app.post('/nav', function (req, res) {
 
 app.post('/hom', function (req, res) {
   if (parsedData !== undefined) {
-    return res.json({ a: { emails: parsedData.data[3][1] } })
+    return res.json({ a: { emails: parsedData.data[4][1] } })
   } else {
     return res.json({ e: { emails: "error" } })
   }
@@ -240,17 +240,17 @@ app.post('/hom', function (req, res) {
 
 app.post('/cont', function (req, res) {
   if (parsedData !== undefined) {
-    return res.json({ a: { ph: parsedData.data[0][1], email: parsedData.data[3][1], avail: parsedData.data[4][1] } })
+    return res.json({ a: { ph: parsedData.data[1][1], email: parsedData.data[4][1], avail: parsedData.data[5][1] } })
   } else {
     return res.json({ e: { ph: "error", email: "error", avail: "error" } })
   }
 })
 
 app.post('/abou', function (req, res) {
-  if (parsedData0 !== undefined) {
-    return res.json({ a: { cba: parsedData0[0], abc: parsedData0[1] } })
+  if (parsedData0 !== undefined && parsedData !== undefined)  {
+    return res.json({ a: { cba: parsedData0[0], abc: parsedData0[1], hmap: parsedData0[2] , hm: parsedData.data[7][1], h1: parsedData.data[8][1], span1: parsedData.data[9][1], span2: parsedData.data[10][1], h2: parsedData.data[11][1] , span3: parsedData.data[12][1], span4: parsedData.data[13][1], btn1: parsedData.data[14][1], btn2: parsedData.data[15][1] } })
   } else {
-    return res.json({ e: { cba: "error", abc: "error" } })
+    return res.json({ e: { cba: "error", abc: "error", hmap: "error", hm: "error", h1: "error", span1: "error", span2: "error", h2: "error" , span3: "error", span4: "error", btn11: "error", btn2: "error" }})
   }
 })
 
