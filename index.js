@@ -73,7 +73,7 @@ axios
   )
   .then((res) => {
     let parsedData = Papa.parse(res.data);
-    let l = parsedData.data[0][1];
+    let l = parsedData.data[1][1];
     let a = [];
     for (let i = 1; i <= l; i++) {
       let g = i * 2;
@@ -87,7 +87,7 @@ axios
         },
       });
       for (let x in parsedData.data) {
-        if (x >= 1) {
+        if (x >= 4) {
           if (
             parsedData.data[x][g - 2].length &&
             parsedData.data[x][g - 1].length
@@ -100,7 +100,7 @@ axios
         }
       }
     }
-    let k = [parsedData.data[0][0], a]
+    let k = [parsedData.data[1][0], a]
     return k
   })
   .then((res) => {
@@ -224,7 +224,7 @@ app.get('/ong', function (req, res) {
 
 app.post('/nav', function (req, res) {
   if (parsedData !== undefined) {
-    return res.json({ a: { ph: parsedData.data[0][0], time: parsedData.data[1][0], day: parsedData.data[2][0] } })
+    return res.json({ a: { ph: parsedData.data[0][1], time: parsedData.data[1][1], day: parsedData.data[2][1] } })
   } else {
     return res.json({ e: { ph: "error", time: "error", day: "error" } })
   }
@@ -232,7 +232,7 @@ app.post('/nav', function (req, res) {
 
 app.post('/hom', function (req, res) {
   if (parsedData !== undefined) {
-    return res.json({ a: { emails: parsedData.data[3][0] } })
+    return res.json({ a: { emails: parsedData.data[3][1] } })
   } else {
     return res.json({ e: { emails: "error" } })
   }
@@ -240,7 +240,7 @@ app.post('/hom', function (req, res) {
 
 app.post('/cont', function (req, res) {
   if (parsedData !== undefined) {
-    return res.json({ a: { ph: parsedData.data[0][0], email: parsedData.data[3][0], avail: parsedData.data[4][0] } })
+    return res.json({ a: { ph: parsedData.data[0][1], email: parsedData.data[3][1], avail: parsedData.data[4][1] } })
   } else {
     return res.json({ e: { ph: "error", email: "error", avail: "error" } })
   }
