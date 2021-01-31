@@ -20,8 +20,6 @@ export default class About extends React.Component {
       h2: null,
       span3: null,
       span4: null,
-      btn1: null,
-      btn2: null,
     };
   }
   componentDidMount() {
@@ -40,8 +38,6 @@ export default class About extends React.Component {
             h2: res.data.e.h2,
             span3: res.data.e.span3,
             span4: res.data.e.span4,
-            btn1: res.data.e.btn1,
-            btn2: res.data.e.btn2,
           });
         }
         if (res.data.a) {
@@ -56,8 +52,6 @@ export default class About extends React.Component {
             h2: res.data.a.h2,
             span3: res.data.a.span3,
             span4: res.data.a.span4,
-            btn1: res.data.a.btn1,
-            btn2: res.data.a.btn2,
           });
         }
       })
@@ -114,7 +108,7 @@ export default class About extends React.Component {
                     document.getElementById("rm").style.display = "block";
                   }}
                 >
-                  {this.state.btn1}
+                  read more
                 </button>
                 <br />
                 <br />
@@ -133,7 +127,7 @@ export default class About extends React.Component {
                     document.getElementById("rm").style.display = "none";
                   }}
                 >
-                  {this.state.btn2}
+                  close
                 </button>
                 <br />
               </div>
@@ -160,7 +154,7 @@ export default class About extends React.Component {
                   document.getElementById("rm1").style.display = "block";
                 }}
               >         
-                {this.state.btn1}
+                read more
               </button>
               <br /> 
               <br />
@@ -179,7 +173,7 @@ export default class About extends React.Component {
                     document.getElementById("rm1").style.display = "none";
                   }}
                 >
-                  {this.state.btn2}
+                  close
                 </button>
                 <br />
               </div>
