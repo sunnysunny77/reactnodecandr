@@ -10,11 +10,14 @@ v5.2                          package.json
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "googleapis": "^66.0.0",
     "moment": "^2.29.1",
-    "mongoose": "^5.11.9"
+    "mongoose": "^5.11.9",
+    "papaparse": "^5.3.0"
   }
 }
+
 
 
