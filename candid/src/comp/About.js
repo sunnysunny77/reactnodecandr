@@ -30,7 +30,7 @@ export default class About extends React.Component {
           this.setState({
             cba: res.data.e.cba,
             abc: res.data.e.abc,
-            hamp: res.data.e.hmap,
+            hmap: res.data.e.hmap,
             hm: res.data.e.hm,
             h1: res.data.e.h1,
             span1: res.data.e.span1,
@@ -44,7 +44,7 @@ export default class About extends React.Component {
           this.setState({
             cba: res.data.a.cba,
             abc: <Maps data={res.data.a.abc} />,
-            hamp: res.data.a.hmap,
+            hmap: res.data.a.hmap,
             hm: res.data.a.hm,
             h1: res.data.a.h1,
             span1: res.data.a.span1,
