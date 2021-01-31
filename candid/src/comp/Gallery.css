@@ -35,5 +35,5 @@
 }
 
 .image-gallery-image {
-  width: 65%;
+  width: 65% !important;
 }

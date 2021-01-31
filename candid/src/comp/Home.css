@@ -2,7 +2,7 @@
 
 .slick-slide img {
   width: 100%;
-  min-height: 250px;
+  min-height: 140px;
 }
 
 /* welcome */
@@ -392,6 +392,9 @@
 }
 
 @media only screen and (max-width: 992px) {
+  .welcome {
+    font-size: 80%;
+  }
   .card {
     padding: 75px 0;
   }
