@@ -31,7 +31,7 @@ td {
 }
 
 .blogBar h6 {
-  padding-top: 15px;
+  padding-top: 5px;
 }
 
 .blogCont1 {
@@ -129,7 +129,7 @@ td {
   border-radius: 3px;
   padding: 5px 8px;
   cursor: pointer;
-  width: 90%;
+  width: 35%;
 }
 
 .MuiFilledInput-multiline {
@@ -163,5 +163,8 @@ td {
   }
   .float {
     width: 100%;
+  }
+  .custom-file-input {
+    width: 90%;
   }
 }

@@ -33,3 +33,7 @@
   max-width: 85%;
   margin: auto;
 }
+
+.image-gallery-image {
+  width: 65%;
+}

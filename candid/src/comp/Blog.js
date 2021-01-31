@@ -350,7 +350,6 @@ export default class Blog extends React.Component {
                   <div style={{ textAlign: "center", marginTop: "50px" }}>
                     <label htmlFor="avatar">Upload a picture:</label>
                     <br></br>
-                    <br></br>
                     <input
                       id="avatar"
                       className="custom-file-input"
