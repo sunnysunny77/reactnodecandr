@@ -4,20 +4,20 @@ import ImageGallery from "react-image-gallery";
 
 const images = [
   {
-    original: "https://candidcleaning.sunnyhome.site/gal/c1.jpg",
-    thumbnail: "https://candidcleaning.sunnyhome.site/gal/c1.jpg",
+    original: "https://" + window.location.hostname + "/gal/c1.jpg",
+    thumbnail: "https://" + window.location.hostname + "/gal/c1.jpg",
   },
   {
-    original: "https://candidcleaning.sunnyhome.site/gal/c2.jpg",
-    thumbnail: "https://candidcleaning.sunnyhome.site/gal/c2.jpg",
+    original: "https://" + window.location.hostname + "/gal/c2.jpg",
+    thumbnail: "https://" + window.location.hostname + "/gal/c2.jpg",
   },
   {
-    original: "https://candidcleaning.sunnyhome.site/gal/c3.jpg",
-    thumbnail: "https://candidcleaning.sunnyhome.site/gal/c3.jpg",
+    original: "https://" + window.location.hostname + "/gal/c3.jpg",
+    thumbnail: "https://" + window.location.hostname + "/gal/c3.jpg",
   },
   {
-    original: "https://candidcleaning.sunnyhome.site/gal/c4.jpg",
-    thumbnail: "https://candidcleaning.sunnyhome.site/gal/c4.jpg",
+    original: "https://" + window.location.hostname + "/gal/c4.jpg",
+    thumbnail: "https://" + window.location.hostname + "/gal/c4.jpg",
   },
 ];
 

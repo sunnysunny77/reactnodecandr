@@ -17,7 +17,7 @@ export default class Contactc extends Component {
   }
   componentDidMount() {
     axios
-      .post(`https://candidcleaning.sunnyhome.site/cont`)
+      .post(`/cont`)
       .then((res) => {
         if (res.data.e) {
           this.setState({

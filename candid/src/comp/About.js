@@ -16,7 +16,7 @@ export default class About extends React.Component {
   }
   componentDidMount() {
     axios
-      .post(`https://candidcleaning.sunnyhome.site/abou`)
+      .post(`/abou`)
       .then((res) => {
         if (res.data.e) {
           this.setState({

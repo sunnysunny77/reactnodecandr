@@ -12,7 +12,7 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import { withStyles } from "@material-ui/core/styles";
+import { hexToRgb, withStyles } from "@material-ui/core/styles";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import axios from "axios";
 import Resizer from "react-image-file-resizer";
@@ -41,12 +41,12 @@ export default class Blog extends React.Component {
       disp1: { display: "none" },
       a: null,
       a0: null,
-      w: window.scrollTo(0, 0),
-    };
+      w: window.scrollTo(0, 0)
+     };
   }
   componentDidMount() {
-    axios
-      .get(`https://candidcleaning.sunnyhome.site/ong`)
+   axios
+      .get(`/ong`)
       .then((res) => {
         return this.tab(res.data);
       })
@@ -106,7 +106,7 @@ export default class Blog extends React.Component {
       this.state.file
     ) {
       axios
-        .post(`https://candidcleaning.sunnyhome.site/one`, {
+        .post(`/one`, {
           passw: this.state.passw,
           blogers: this.state.blogers,
           name: this.state.name,
@@ -149,7 +149,7 @@ export default class Blog extends React.Component {
   sub0 = (event) => {
     event.preventDefault();
     axios
-      .post(`https://candidcleaning.sunnyhome.site/two`, {
+      .post(`/two`, {
         passw0: this.state.passw0,
         ddate: this.state.ddate,
       })
@@ -201,7 +201,7 @@ export default class Blog extends React.Component {
               </tr>
               <tr key={_id + "img"}>
                 <td>
-                  <img alt="Smiley face" src={loc} />
+                  <img alt="Smiley face" src={ "https://" + window.location.hostname + loc} />
                 </td>
               </tr>
               <tr key={_id + "3"}>

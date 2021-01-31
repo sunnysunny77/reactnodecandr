@@ -125,7 +125,7 @@ app.post('/one', function (req, res) {
     let d = new Date()
     let date = moment(d).format("MMM Do YY' HH:mm:ssss")
     var id = mongoose.Types.ObjectId()
-    let b = new mod({ _id: id, date: date, blogers: req.body.blogers, name: req.body.name, title: req.body.title, loc: 'https://candidcleaning.sunnyhome.site/pic/' + id + '.jpg' })
+    let b = new mod({ _id: id, date: date, blogers: req.body.blogers, name: req.body.name, title: req.body.title, loc: '/pic/' + id + '.jpg' })
     b.save(function (err, doc) {
       fs.writeFile(__dirname + '/public/pic/' + id + '.jpg', imageBuffer.data, function (err) { })
       mod.find({}).sort({ date: -1 }).exec(function (err, doc) {

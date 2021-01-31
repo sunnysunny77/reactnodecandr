@@ -109,7 +109,7 @@ class Home extends Component {
       document.getElementById("iq").scrollIntoView();
     }
     axios
-      .post(`https://candidcleaning.sunnyhome.site/hom`)
+      .post(`/hom`)
       .then((res) => {
         if (res.data.e) {
           this.setState({
@@ -173,7 +173,7 @@ class Home extends Component {
         disp: { display: "block", lineHeight: "75px" },
       });
       axios
-        .post(`https://candidcleaning.sunnyhome.site/three`, {
+        .post(`/three`, {
           name: this.state.name,
           email: this.state.email,
           phone: this.state.phone,
@@ -216,10 +216,10 @@ class Home extends Component {
   };
   vid = (v) => {
     if (v === "v1") {
-      window.open("https://candidcleaning.sunnyhome.site/vid/v1.mp4");
+      window.open("https://" + window.location.hostname + "/vid/v1.mp4");
     }
     if (v === "v2") {
-      window.open("https://candidcleaning.sunnyhome.site/vid/v2.mp4");
+      window.open("https://" + window.location.hostname + "/vid/v2.mp4");
     }
   };
   vidd = (v) => {
