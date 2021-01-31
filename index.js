@@ -110,7 +110,7 @@ axios
 
 
 app.post('/one', function (req, res) {
-  if (req.body.passw === "") {
+  if (req.body.passw === "blogs") {
     function decodeBase64Image(dataString) {
       var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
         response = {};
@@ -138,7 +138,7 @@ app.post('/one', function (req, res) {
 })
 
 app.post('/two', function (req, res) {
-  if (req.body.passw0 === "") {
+  if (req.body.passw0 === "blogs") {
     mod.find({ date: req.body.ddate }, function (err, doc) {
       if (doc.length) {
         fs.unlink(__dirname + '/public/pic/' + doc[0]._id + '.jpg', function (err) { })
