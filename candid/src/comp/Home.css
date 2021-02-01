@@ -11,6 +11,15 @@
   position: absolute;
   margin: 2.5% 0 0 5%;
   z-index: 997;
+  
+}
+
+#my-svg {
+  stroke:black;
+  stroke-width: 16;
+  fill: none;
+  height: 25px;
+  width: 25px;
 }
 
 #w1 {
