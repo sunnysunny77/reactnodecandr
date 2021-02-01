@@ -37,6 +37,7 @@ class Nav extends Component {
       ph: null,
       time: null,
       day: null,
+      buttons: [],
     };
   }
   componentDidMount() {
@@ -51,6 +52,7 @@ class Nav extends Component {
             ph: res.data.e.ph,
             time: res.data.e.time,
             day: res.data.e.day,
+            buttons: res.data.e.buttons,
           });
         }
         if (res.data.a) {
@@ -58,6 +60,7 @@ class Nav extends Component {
             ph: res.data.a.ph,
             time: res.data.a.time,
             day: res.data.a.day,
+            buttons: res.data.a.buttons,
           });
         }
       })
@@ -183,16 +186,16 @@ class Nav extends Component {
               <HomeIcon id="homI" />
             </Link>
             <Link to="/blog">
-              <button>Blog</button>
+              <button>{ReactHtmlParser (this.state.buttons[0])}</button> 
             </Link>
             <Link to="/gallery">
-              <button>Gallery</button>
+              <button>{ReactHtmlParser (this.state.buttons[1])}</button>
             </Link>
             <Link to="/contact">
-              <button>Contact</button>
+              <button>{ReactHtmlParser (this.state.buttons[2])}</button>
             </Link>
             <Link to="/about">
-              <button>About</button>
+              <button>{ReactHtmlParser (this.state.buttons[3])}</button>
             </Link>
             <hr></hr>
           </div>
@@ -220,16 +223,16 @@ class Nav extends Component {
         <div className="menu">
           <div className="mMove">
             <Link to="/blog">
-              <button>Blog</button>
+              <button>{ReactHtmlParser (this.state.buttons[0])}</button> 
             </Link>
             <Link to="/gallery">
-              <button>Gallery</button>
+              <button>{ReactHtmlParser (this.state.buttons[1])}</button>
             </Link>
             <Link to="/contact">
-              <button>Contact</button>
+              <button>{ReactHtmlParser (this.state.buttons[2])}</button>
             </Link>
             <Link to="/about">
-              <button>About</button>
+              <button>{ReactHtmlParser (this.state.buttons[3])}</button>
             </Link>
             <div className="mMove0">
               <PhoneIcon className="apI" />

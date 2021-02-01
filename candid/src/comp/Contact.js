@@ -14,6 +14,13 @@ export default class Contactc extends Component {
       ph: null,
       email: null,
       avail: null,
+      h: null,
+      er: null,
+      pt: null,
+      it: null,
+      it2: null,
+      h2: null,
+      buttons: [],
     };
   }
   componentDidMount() {
@@ -22,17 +29,31 @@ export default class Contactc extends Component {
       .then((res) => {
         if (res.data.e) {
           this.setState({
-            ph: res.data.e.ph,
-            email: res.data.e.email,
+            ph: res.data.e.ph, 
+            email: res.data.e.email, 
             avail: res.data.e.avail,
-          });
+            h: res.data.e.h,
+            et: res.data.e.et,
+            pt: res.data.e.pt, 
+            it: res.data.e.it, 
+            it2: res.data.e.it2,
+            h2: res.data.e.h2,
+            buttons: res.data.e.buttons, 
+           })
         }
         if (res.data.a) {
           this.setState({
-            ph: res.data.a.ph,
-            email: res.data.a.email,
+            ph: res.data.a.ph, 
+            email: res.data.a.email, 
             avail: res.data.a.avail,
-          });
+            h: res.data.a.h,
+            et: res.data.a.et,
+            pt: res.data.a.pt, 
+            it: res.data.a.it, 
+            it2: res.data.a.it2,
+            h2: res.data.a.h2,
+            buttons: res.data.a.buttons, 
+           })
         }
       })
       .catch((error) => {
@@ -44,16 +65,16 @@ export default class Contactc extends Component {
       <React.Fragment>
         {this.state.w}
         <div className="rh">
-          <h1>Contact</h1>
+          <h1>{ReactHtmlParser (this.state.buttons[0])}</h1>
         </div>
         <section className="contlink">
           <div className="c1"></div>
           <div className="c2">
             <ContactsIcon className="infe" />
-            <h2>Quick Contact</h2>
+            <h2>{ReactHtmlParser (this.state.h)}</h2>
             <hr></hr>
             <p>
-              &nbsp;&#8226;&nbsp;Email:
+              &nbsp;&#8226;&nbsp;{ReactHtmlParser (this.state.et)}
               <br></br>
               &nbsp;&nbsp;
               <a href={"mailto:" + this.state.email}>
@@ -61,16 +82,16 @@ export default class Contactc extends Component {
               </a>
               <br></br>
               <br></br>
-              &nbsp;&#8226;&nbsp;Phone:
+              &nbsp;&#8226;&nbsp;{ReactHtmlParser (this.state.pt)}
               <br></br>
               &nbsp;&nbsp;<a href={"tel:" + this.state.ph}> 
               {this.state.ph}
               </a>
               <br></br>
               <br></br>
-              &nbsp;&#8226;&nbsp;Inquiries:
+              &nbsp;&#8226;&nbsp;{ReactHtmlParser (this.state.it)}
               <br></br>
-              &nbsp; <span> Click the querry icon</span>
+              &nbsp; <span> {ReactHtmlParser (this.state.it2)}</span>
               <HelpOutlineIcon
                 id="homc"
                 onClick={() => {
@@ -85,7 +106,7 @@ export default class Contactc extends Component {
         </section>
         <section className="c3">
           <ContactsIcon className="infe" />
-          <h2>Availability</h2>
+          <h2>{ReactHtmlParser (this.state.h2)}</h2>
           <hr></hr>
           <Wave>
             <div className="prop" ><span>{ReactHtmlParser (this.state.avail)}</span></div>

@@ -16,6 +16,7 @@ import { withStyles } from "@material-ui/core/styles";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import axios from "axios";
 import Resizer from "react-image-file-resizer";
+import ReactHtmlParser from 'react-html-parser'; 
 
 const StyledExpansionPanel = withStyles(() => ({
   root: {
@@ -41,14 +42,20 @@ export default class Blog extends React.Component {
       disp1: { display: "none" },
       a: null,
       a0: null,
-      w: window.scrollTo(0, 0)
+      w: window.scrollTo(0, 0),
+      buttons: [],
      };
   }
   componentDidMount() {
    axios
       .get(`/ong`)
       .then((res) => {
-        return this.tab(res.data);
+       
+        this.setState({
+          buttons: res.data.buttons,
+        });
+        console.log(res.data.doc)
+        return this.tab(res.data.doc);
       })
       .catch((error) => {
         this.setState({
@@ -232,7 +239,7 @@ export default class Blog extends React.Component {
         {this.state.w}
         <section className="blogCont">
           <div className="blogBar">
-            <h1>Blog</h1>
+            <h1>{ReactHtmlParser (this.state.buttons[0])}</h1>
           </div>
           <div className="blogCont1">
             <br></br>
@@ -247,7 +254,7 @@ export default class Blog extends React.Component {
                 id="panel2a-header"
               >
                 <div className="blogh">
-                  <h2>Add</h2>
+                  <h2>{ReactHtmlParser (this.state.buttons[1])}</h2>
                 </div>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
@@ -373,7 +380,7 @@ export default class Blog extends React.Component {
                     type="submit"
                   >
                     {" "}
-                    Submit
+                    {ReactHtmlParser (this.state.buttons[3])}
                   </Button>
                   <div style={{ height: "75px" }}>
                     <div style={this.state.disp0}>
@@ -390,7 +397,7 @@ export default class Blog extends React.Component {
                 id="panel2a-header"
               >
                 <div className="blogh">
-                  <h2>Remove</h2>
+                  <h2>{ReactHtmlParser (this.state.buttons[2])}</h2>
                 </div>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
@@ -458,7 +465,7 @@ export default class Blog extends React.Component {
                     type="submit"
                   >
                     {" "}
-                    Delete
+                    {ReactHtmlParser (this.state.buttons[3])}
                   </Button>
                   <div style={{ height: "75px" }}>
                     <div style={this.state.disp1}>

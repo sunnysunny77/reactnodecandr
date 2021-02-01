@@ -108,6 +108,7 @@ class Home extends Component {
       u5: null,
       u6: null,
       options: null,
+      buttons: [],
     };
   }
   componentDidMount() {
@@ -145,6 +146,7 @@ class Home extends Component {
             u6: res.data.e.u6,
             options: res.data.e.options,
             svg: res.data.e.svg,
+            buttons: res.data.e.buttons,
           });
         }
         if (res.data.a) {
@@ -173,6 +175,7 @@ class Home extends Component {
             u5: res.data.a.u5,
             u6: res.data.a.u6,
             options: res.data.a.options,
+            buttons: res.data.a.buttons,
            
           });
           document.getElementById("my-svg").innerHTML = res.data.a.svg
@@ -451,7 +454,7 @@ class Home extends Component {
             </div>
             <p>{ReactHtmlParser (this.state.c4)}</p>
             <a target="4" href={this.state.u4}>
-              URL
+            {ReactHtmlParser (this.state.buttons[0])}
             </a>
             <FilterListIcon className="cardf" />
           </div>
@@ -469,7 +472,7 @@ class Home extends Component {
             </div>
             <p>{ReactHtmlParser (this.state.c5)}</p>
             <a target="5" href={this.state.u5}>
-              URL
+            {ReactHtmlParser (this.state.buttons[0])}
             </a>
             <FilterListIcon className="cardf" />
           </div>
@@ -487,14 +490,14 @@ class Home extends Component {
             </div>
             <p>{ReactHtmlParser (this.state.c6)}</p>
             <a target="6" href={this.state.u6}>
-              URL
+            {ReactHtmlParser (this.state.buttons[0])}
             </a>
             <FilterListIcon className="cardf" />
           </div>
         </section>
         <section id="iq" className="inq">
           <div className="rh">
-            <h1>Inquiry</h1>
+            <h1>{ReactHtmlParser (this.state.buttons[1])}</h1>
           </div>
           <br></br>
           <form
@@ -634,7 +637,7 @@ class Home extends Component {
               variant="contained"
               type="submit"
             >
-              Submit
+              {ReactHtmlParser (this.state.buttons[2])}
             </Button>
             <div style={{ height: "75px" }}>
               <div style={this.state.disp}>

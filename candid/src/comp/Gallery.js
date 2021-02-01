@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Gallery.css";
 import ImageGallery from "react-image-gallery";
 import axios from "axios";
+import ReactHtmlParser from 'react-html-parser'; 
 
 export default class Galery extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ export default class Galery extends Component {
     this.state = {
       w: window.scrollTo(0, 0),
       images: [],
+      buttons: [],
     };
   }
   componentDidMount() {
@@ -16,10 +18,10 @@ export default class Galery extends Component {
       .post(`/g`)
       .then((res) => {
         if (res.data.e) {
-          this.setState({images: res.data.e.images})
+          this.setState({images: res.data.e.images, buttons: res.data.e.buttons})
         }
         if (res.data.a) {
-         this.setState({images: res.data.a.images})
+         this.setState({images: res.data.a.images, buttons: res.data.a.buttons})
         }
       })
       .catch((error) => {
@@ -31,7 +33,7 @@ export default class Galery extends Component {
       <React.Fragment>
         {this.state.w}
         <div className="rh">
-          <h1>Gallery</h1>
+          <h1> {ReactHtmlParser (this.state.buttons[0])}</h1>
         </div>
         <section id="gl">
           <ImageGallery items={this.state.images} />
