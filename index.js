@@ -55,6 +55,30 @@ app.use(express.static('public'))
 let parsedData
 let parsedData0
 let a
+let b
+
+
+axios
+  .get(
+    `https://docs.google.com/spreadsheets/d/1LjDGLbRSaQ4Y7ilLy0LMPpgUZN6ynI8QRg--a2ltLt4/gviz/tq?tqx=out:csv&sheet=data`
+  )
+  .then((res) => {
+    let parsedData = Papa.parse(res.data);
+    let l = parsedData.data[1][0];
+    let b = [];
+ for (let i = 1; i <= l; i++) {
+
+      b.push({ original: parsedData.data[i][1], thumbnail: parsedData.data[i][1] })
+    }
+
+      return { b: b }
+  })
+  .then((res) => {
+    
+    b = res.b
+  })
+  .catch((error) => { console.log(error) });
+
 
 axios
   .get(
@@ -292,7 +316,8 @@ app.post('/hom', function (req, res) {
       u4: "error",
       u5: "error",
       u6: "error",
-      options: { value: "error", label: "error" },
+      options: [{ value: "error", label: "error" }],
+
     }  })
   }
 })
@@ -312,6 +337,15 @@ app.post('/abou', function (req, res) {
     return res.json({ e: { cba: "error", abc: "error", hmap: "error", hm: "error", h1: "error", span1: "error", span2: "error", h2: "error" , span3: "error", span4: "error" }})
   }
 })
+
+app.post('/g', function (req, res) {
+  if (b !== undefined) {
+    return res.json({ a: { images: b } })
+  } else {
+    return res.json({ e: { images: [{original: "error", thumbnail: "error" }]} })
+  }
+})
+
 
 app.get('/reset', function (req, res) {
   res.json({ reset: "yes" })
