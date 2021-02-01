@@ -4,6 +4,7 @@ import Wave from "./Wave";
 import ContactsIcon from "@material-ui/icons/Contacts";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import axios from "axios";
+import ReactHtmlParser from 'react-html-parser'; 
 
 export default class Contactc extends Component {
   constructor(props) {
@@ -56,7 +57,7 @@ export default class Contactc extends Component {
               <br></br>
               &nbsp;&nbsp;
               <a href="mailto:candidcleaningservice@gmail.com">
-                {this.state.email}
+              {this.state.email}
               </a>
               <br></br>
               <br></br>
@@ -85,7 +86,7 @@ export default class Contactc extends Component {
           <h2>Availability</h2>
           <hr></hr>
           <Wave>
-            <div className="prop" ><span>{this.state.avail}</span></div>
+            <div className="prop" ><span>{ReactHtmlParser (this.state.avail)}</span></div>
           </Wave>
         </section>
       </React.Fragment>

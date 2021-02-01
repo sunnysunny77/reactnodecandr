@@ -4,6 +4,7 @@ import Wave from "./Wave";
 import Maps from "./Maps.js";
 import axios from "axios";
 import ListAltIcon from "@material-ui/icons/ListAlt";
+import ReactHtmlParser from 'react-html-parser'; 
 
 export default class About extends React.Component {
   constructor(props) {
@@ -55,13 +56,6 @@ export default class About extends React.Component {
           });
         }
       })
-      .then((res) => {
-        document.getElementById("s0").innerHTML = this.state.cba;
-        document.getElementById("s1").innerHTML = this.state.span1;
-        document.getElementById("s2").innerHTML = this.state.span2;
-        document.getElementById("s3").innerHTML = this.state.span3;
-        document.getElementById("s4").innerHTML = this.state.span4;
-      })
       .catch((error) => {
         console.log(error);
       });
@@ -77,8 +71,8 @@ export default class About extends React.Component {
 
         <section className="about0">
           <ListAltIcon id="infe" />
-          <h2>{this.state.hmap}</h2>
-          <p className="jus" id="s0"></p>
+          <h2>{ReactHtmlParser (this.state.hmap)}</h2>
+          <p className="jus" >{ReactHtmlParser (this.state.cba)}</p>
           <hr />
         </section>
 
@@ -87,16 +81,16 @@ export default class About extends React.Component {
         <section className="about1">
 
           <ListAltIcon id="infe" />
-          <h2>{this.state.hm}</h2>
+          <h2>{ReactHtmlParser (this.state.hm)}</h2>
           <hr />
 
           <Wave>
 
             <div className="prop">
 
-              <h3>{this.state.h1}</h3>
+              <h3>{ReactHtmlParser (this.state.h1)}</h3>
 
-              <div className="jus"><span id="s1"></span></div>
+              <div className="jus"><span >{ReactHtmlParser (this.state.span1)}</span></div>
              
               <div className="jus">
                 <br />
@@ -117,7 +111,7 @@ export default class About extends React.Component {
                 <hr />
                 <br />
                 <br />
-                <span id="s2"></span>
+                <span >{ReactHtmlParser (this.state.span2)}</span>
                 <br />
                 <br />
                 <button
@@ -141,10 +135,10 @@ export default class About extends React.Component {
             
               <br />
               <br />
-              <h3>{this.state.h2}</h3>
+              <h3>{ReactHtmlParser (this.state.h2)}</h3>
               <br />
               <span id="pic"></span>
-              <span id="s3" className="jus"></span>
+              <span id="s3" className="jus">{ReactHtmlParser (this.state.span3)}</span>
               <br />
               <br />
               <button
@@ -163,7 +157,7 @@ export default class About extends React.Component {
                 <hr />
                 <br />
                 <br />
-                <span id="s4"></span>
+                <span >{ReactHtmlParser (this.state.span4)}</span>
                 <br />
                 <br />
                 <button
