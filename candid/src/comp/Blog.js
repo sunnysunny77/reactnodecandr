@@ -230,9 +230,9 @@ export default class Blog extends React.Component {
     return (
       <React.Fragment>
         {this.state.w}
-        <div className="blogCont">
+        <section className="blogCont">
           <div className="blogBar">
-            <h6>Blog</h6>
+            <h1>Blog</h1>
           </div>
           <div className="blogCont1">
             <br></br>
@@ -247,7 +247,7 @@ export default class Blog extends React.Component {
                 id="panel2a-header"
               >
                 <div className="blogh">
-                  <h6>Add</h6>
+                  <h2>Add</h2>
                 </div>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
@@ -390,7 +390,7 @@ export default class Blog extends React.Component {
                 id="panel2a-header"
               >
                 <div className="blogh">
-                  <h6>Remove</h6>
+                  <h2>Remove</h2>
                 </div>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
@@ -469,7 +469,7 @@ export default class Blog extends React.Component {
               </ExpansionPanelDetails>
             </StyledExpansionPanel>
           </div>
-        </div>
+        </section>
       </React.Fragment>
     );
   }

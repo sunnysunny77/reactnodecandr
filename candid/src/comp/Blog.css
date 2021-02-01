@@ -30,7 +30,7 @@ td {
   font-size: 120%;
 }
 
-.blogBar h6 {
+.blogBar h1 {
   padding-top: 15px;
 }
 
@@ -106,8 +106,14 @@ td {
   font-size: 180%;
 }
 
-.blogh h6 {
-  padding-top: 5px;
+.blogh h2 {
+  padding-top: 8px;
+  font-family: Arial Black, Gadget, sans-serif;
+  color: #fff;
+  float: right;
+  margin: 0;
+  padding-right: 20px;
+  font-size: 60%;
 }
 
 .custom-file-input[type="file"]::-ms-browse {

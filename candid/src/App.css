@@ -6,13 +6,18 @@ button {
   outline: none;
 }
 
-h6 {
+h1 {
   font-family: Arial Black, Gadget, sans-serif;
   color: #fff;
   float: right;
   margin: 0;
   padding-right: 20px;
   padding-top: 15px;
+  font-size: 80%;
+}
+
+h2 {
+  font-size: 100%;
 }
 
 .rh {
@@ -28,7 +33,7 @@ h6 {
   font-size: 120%;
 }
 
-.rh h6 {
+.rh h1 {
   padding-top: 15px;
 }
 

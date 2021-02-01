@@ -14,22 +14,25 @@
 }
 
 #w1 {
-  color: black;
   background-color: rgba(255, 255, 255, 0.25);
   border-radius: 5px;
-  width: 34%;
+  width: 27%;
   animation: slide1;
   animation-duration: 2s;
   animation-fill-mode: forwards;
   padding: 0 1%;
-  min-width: 200px;
+  min-width: 130px;
 }
 
-#w1 h2 {
+#w1 h1 {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   display: inline-block;
   margin: 0;
   font-weight: 600;
+  color: black;
+  font-size: 130%;
+  float: none;
+  padding: inherit;
 }
 
 #w2 {
@@ -39,17 +42,18 @@
   animation-duration: 2s;
   animation-fill-mode: forwards;
   margin: 2% 0 0 1%;
-  width: 36%;
+  width: 32%;
   padding: 2.5%;
-  min-width: 200px;
+  min-width: 175px;
 }
 
-#w2 h3 {
+#w2 h2 {
   color: black;
   margin: 0;
+  font-size: 110%;
 }
 
-.welcome h3:hover {
+.welcome h2:hover {
   text-decoration: underline;
   animation: slide2;
   animation-duration: 1.5s;
@@ -190,7 +194,7 @@
   margin-top: 10px;
 }
 
-.info2 h4 {
+.info2 h2 {
   width: 70%;
   font-family: "Impact, Charcoal, sans-serif";
   color: black;
@@ -235,7 +239,15 @@
   box-shadow: 0 0 10px black;
   height: 50%;
 }
-
+.card h3 {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-family: "Impact, Charcoal, sans-serif";
+  
+  font-weight: 600;
+  display: inline;
+}
 .cardi {
   color: rgba(0, 0, 0, 0.644);
   float: left;
@@ -263,12 +275,7 @@
 
 .card span img {
   margin-left: 10px;
-}
-
-.card span {
-  font-family: "Impact, Charcoal, sans-serif";
-  height: 60px;
-  font-weight: 600;
+  vertical-align: middle;
 }
 
 .card1 {
@@ -282,7 +289,6 @@
 }
 
 .card2 {
-  height: 60px;
   align-self: flex-end;
 }
 

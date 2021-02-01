@@ -43,13 +43,13 @@ export default class Contactc extends Component {
       <React.Fragment>
         {this.state.w}
         <div className="rh">
-          <h6>Contact</h6>
+          <h1>Contact</h1>
         </div>
-        <div className="contlink">
+        <section className="contlink">
           <div className="c1"></div>
           <div className="c2">
             <ContactsIcon className="infe" />
-            <h4>Quick Contact</h4>
+            <h2>Quick Contact</h2>
             <hr></hr>
             <p>
               &nbsp;&#8226;&nbsp;Email:
@@ -79,15 +79,15 @@ export default class Contactc extends Component {
             </p>
           </div>
           <br className="clearfloat" />
-        </div>
-        <div className="c3">
+        </section>
+        <section className="c3">
           <ContactsIcon className="infe" />
-          <h4>Availability</h4>
+          <h2>Availability</h2>
           <hr></hr>
           <Wave>
             <div className="prop" ><span>{this.state.avail}</span></div>
           </Wave>
-        </div>
+        </section>
       </React.Fragment>
     );
   }

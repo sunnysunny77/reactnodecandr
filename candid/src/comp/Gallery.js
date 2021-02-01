@@ -32,14 +32,12 @@ export default class Galery extends Component {
     return (
       <React.Fragment>
         {this.state.w}
-        <div className="gg">
-          <div className="rh">
-            <h6>Gallery</h6>
-          </div>
-          <div id="gl">
-            <ImageGallery items={images} />
-          </div>
+        <div className="rh">
+          <h1>Gallery</h1>
         </div>
+        <section id="gl">
+          <ImageGallery items={images} />
+        </section>
       </React.Fragment>
     );
   }

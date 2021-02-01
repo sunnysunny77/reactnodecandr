@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <Nav />
-      <div id="di">
+      <main id="di">
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/blog" component={Blog} exact />
@@ -19,7 +19,7 @@ function App() {
         <Route path="/contact" component={Contact} exact />
         <Route path="/about" component={About} exact />
       </Switch>
-      </div>
+      </main>
       <footer>
         <img
           style={{ paddingBottom: "10px", paddingTop: "10px" }}

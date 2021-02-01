@@ -65,7 +65,6 @@ export default class About extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-      
   }
   render() {
     return (
@@ -73,12 +72,12 @@ export default class About extends React.Component {
         {this.state.w}
 
         <div className="rh">
-          <h6>About</h6>
+          <h1>About</h1>
         </div>
 
         <section className="about0">
           <ListAltIcon id="infe" />
-          <h4>{this.state.hmap}</h4>
+          <h2>{this.state.hmap}</h2>
           <p className="jus" id="s0"></p>
           <hr />
         </section>
@@ -88,14 +87,14 @@ export default class About extends React.Component {
         <section className="about1">
 
           <ListAltIcon id="infe" />
-          <h4>{this.state.hm}</h4>
+          <h2>{this.state.hm}</h2>
           <hr />
 
           <Wave>
 
             <div className="prop">
 
-              <h5>{this.state.h1}</h5>
+              <h3>{this.state.h1}</h3>
 
               <div className="jus"><span id="s1"></span></div>
              
@@ -142,7 +141,7 @@ export default class About extends React.Component {
             
               <br />
               <br />
-              <h5>{this.state.h2}</h5>
+              <h3>{this.state.h2}</h3>
               <br />
               <span id="pic"></span>
               <span id="s3" className="jus"></span>

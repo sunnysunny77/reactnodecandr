@@ -18,7 +18,7 @@
   padding: 1%;
 }
 
-.about0 h4 {
+.about0 h2 {
   text-align: center;
   margin-right: 43.5%;
 }
@@ -34,14 +34,14 @@
   margin-top: 20px;
 }
 
-.about1 h4,
-.about0 h4 {
+.about1 h2,
+.about0 h2 {
   font-family: "Impact, Charcoal, sans-serif";
   color: black;
   margin-left: 10px;
 }
 
-.about1 h5 {
+.about1 h3 {
   font-family: "Impact, Charcoal, sans-serif";
   color: white;
   margin: 30px;
@@ -74,7 +74,7 @@
   margin-right: 135px;
 }
 
-span {
+.about1 span {
   display: inline-block;
 }
 
@@ -138,7 +138,7 @@ span {
     font-size: initial;
     padding: 10px 0;
   }
-  .about0 h4 {
+  .about0 h2 {
     text-align: left;
   }
   .imga {
