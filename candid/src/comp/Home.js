@@ -401,7 +401,7 @@ class Home extends Component {
               <span>
                 <h3>{ReactHtmlParser (this.state.ch1)}</h3>
                 <img
-                  src="https://candid.s3-ap-southeast-2.amazonaws.com/imp.jpg"
+                  src="https://candid.s3-ap-southeast-2.amazonaws.com/cadr1.jpg"
                   alt="Smiley face"
                   width="50"
                   height="50"
@@ -417,7 +417,7 @@ class Home extends Component {
               <span>
                 <h3>{ReactHtmlParser (this.state.ch2)}</h3>
                 <img
-                  src="https://candid.s3-ap-southeast-2.amazonaws.com/eco.jpg"
+                  src="https://candid.s3-ap-southeast-2.amazonaws.com/card2.jpg"
                   alt="Smiley face"
                   width="50"
                   height="50"
@@ -433,7 +433,7 @@ class Home extends Component {
               <span>
                 <h3>{ReactHtmlParser (this.state.ch3)}</h3>
                 <img
-                  src="https://candid.s3-ap-southeast-2.amazonaws.com/exp.jpg"
+                  src="https://candid.s3-ap-southeast-2.amazonaws.com/card3.jpg"
                   alt="Smiley face"
                   width="50"
                   height="50"
@@ -449,7 +449,7 @@ class Home extends Component {
               <span>
                 <h3>{ReactHtmlParser (this.state.ch4)}</h3>
                 <img
-                  src="https://candid.s3-ap-southeast-2.amazonaws.com/geca.jpg"
+                  src="https://candid.s3-ap-southeast-2.amazonaws.com/card4.jpg"
                   alt="Smiley face"
                   width="50"
                   height="50"
@@ -467,7 +467,7 @@ class Home extends Component {
               <span>
                 <h3>{ReactHtmlParser (this.state.ch5)}</h3>
                 <img
-                  src="https://candid.s3-ap-southeast-2.amazonaws.com/nac.jpg"
+                  src="https://candid.s3-ap-southeast-2.amazonaws.com/card5.jpg"
                   alt="Smiley face"
                   width="50"
                   height="50"
@@ -485,7 +485,7 @@ class Home extends Component {
               <span>
                 <h3>{ReactHtmlParser (this.state.ch6)}</h3>
                 <img
-                  src="https://candid.s3-ap-southeast-2.amazonaws.com/enz.jpg"
+                  src="https://candid.s3-ap-southeast-2.amazonaws.com/card6.jpg"
                   alt="Smiley face"
                   width="50"
                   height="50"
