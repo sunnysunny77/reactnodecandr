@@ -274,10 +274,10 @@ class Home extends Component {
       window.open("https://candid.s3-ap-southeast-2.amazonaws.com/v1.mp4");
     }
     if (v === "v3") {
-      window.open("https://candid.s3-ap-southeast-2.amazonaws.com/v2.mp4");
+      window.open("https://candid.s3-ap-southeast-2.amazonaws.com/v3.mp4");
     }
     if (v === "v4") {
-      window.open("https://candid.s3-ap-southeast-2.amazonaws.com/v2.mp4");
+      window.open("https://candid.s3-ap-southeast-2.amazonaws.com/v4.mp4");
     }
   };
   vidd = (v) => {
