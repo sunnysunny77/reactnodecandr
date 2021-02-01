@@ -5,7 +5,7 @@
 
 .c1 {
   float: left;
-  background-image: url("./pics/cont.jpg");
+  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/cont.jpg");
   background-position: center;
   background-size: 100% 100%;
   background-repeat: no-repeat;

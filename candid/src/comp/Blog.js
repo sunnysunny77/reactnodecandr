@@ -191,7 +191,7 @@ export default class Blog extends React.Component {
               <tr key={_id + "2"}>
                 <th style={{ color: "rgba(147,112,219, 0.9)" }}>
                   <img
-                    src="ikon.jpg"
+                    src="https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg"
                     alt="Smiley face"
                     width="10"
                     height="10"

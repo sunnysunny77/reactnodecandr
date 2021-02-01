@@ -71,19 +71,19 @@
 }
 
 .vid1 {
-  background-image: url("./pics/v1.jpg");
+  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/v1.jpg");
 }
 
 .vid2 {
-  background-image: url("./pics/v2.jpg");
+  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/v2.jpg");
 }
 
 .vid3 {
-  background-image: url("./pics/v3.jpg");
+  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/v3.jpg");
 }
 
 .vid4 {
-  background-image: url("./pics/v4.jpg");
+  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/v4.jpg");
 }
 
 .vid1,
@@ -171,7 +171,7 @@
   width: 81.63%;
   height: 32.65%;
   border: 7.5px solid #2d2d2d;
-  background-image: url("./pics/info1.jpg");
+  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info1.jpg");
   background-position: center;
   background-size: 100% 100%;
   margin-left: auto;

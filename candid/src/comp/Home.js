@@ -268,10 +268,16 @@ class Home extends Component {
   };
   vid = (v) => {
     if (v === "v1") {
-      window.open("https://" + window.location.hostname + "/vid/v1.mp4");
+      window.open("https://candid.s3-ap-southeast-2.amazonaws.com/v1.mp4");
     }
     if (v === "v2") {
-      window.open("https://" + window.location.hostname + "/vid/v2.mp4");
+      window.open("https://candid.s3-ap-southeast-2.amazonaws.com/v1.mp4");
+    }
+    if (v === "v3") {
+      window.open("https://candid.s3-ap-southeast-2.amazonaws.com/v2.mp4");
+    }
+    if (v === "v4") {
+      window.open("https://candid.s3-ap-southeast-2.amazonaws.com/v2.mp4");
     }
   };
   vidd = (v) => {
@@ -328,10 +334,10 @@ class Home extends Component {
         </section>
         <Slider id="slide" {...this.state.settings}>
           <div>
-            <img src="./wel1.jpg" alt="wel1"></img>
+            <img src="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg" alt="wel1"></img>
           </div>
           <div>
-            <img src="./wel2.jpg" alt="wel1"></img>
+            <img src="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg" alt="wel1"></img>
           </div>
         </Slider>
         <section className="vid ">
@@ -357,7 +363,7 @@ class Home extends Component {
           <span
             className="vt"
             style={this.state.diss}
-            onClick={() => this.vid("v1")}
+            onClick={() => this.vid("v3")}
           >
             {ReactHtmlParser (this.state.v3)} <PlayCircleOutlineIcon className="iv" />
           </span>
@@ -365,7 +371,7 @@ class Home extends Component {
           <span
             className="vt"
             style={this.state.diss}
-            onClick={() => this.vid("v2")}
+            onClick={() => this.vid("v4")}
           >
             {ReactHtmlParser (this.state.v4)} <PlayCircleOutlineIcon className="iv" />
           </span>
@@ -395,7 +401,7 @@ class Home extends Component {
               <span>
                 <h3>{ReactHtmlParser (this.state.ch1)}</h3>
                 <img
-                  src="imp.jpg"
+                  src="https://candid.s3-ap-southeast-2.amazonaws.com/imp.jpg"
                   alt="Smiley face"
                   width="50"
                   height="50"
@@ -411,7 +417,7 @@ class Home extends Component {
               <span>
                 <h3>{ReactHtmlParser (this.state.ch2)}</h3>
                 <img
-                  src="eco.jpg"
+                  src="https://candid.s3-ap-southeast-2.amazonaws.com/eco.jpg"
                   alt="Smiley face"
                   width="50"
                   height="50"
@@ -427,7 +433,7 @@ class Home extends Component {
               <span>
                 <h3>{ReactHtmlParser (this.state.ch3)}</h3>
                 <img
-                  src="exp.jpg"
+                  src="https://candid.s3-ap-southeast-2.amazonaws.com/exp.jpg"
                   alt="Smiley face"
                   width="50"
                   height="50"
@@ -443,7 +449,7 @@ class Home extends Component {
               <span>
                 <h3>{ReactHtmlParser (this.state.ch4)}</h3>
                 <img
-                  src="geca.jpg"
+                  src="https://candid.s3-ap-southeast-2.amazonaws.com/geca.jpg"
                   alt="Smiley face"
                   width="50"
                   height="50"
@@ -461,7 +467,7 @@ class Home extends Component {
               <span>
                 <h3>{ReactHtmlParser (this.state.ch5)}</h3>
                 <img
-                  src="nac.jpg"
+                  src="https://candid.s3-ap-southeast-2.amazonaws.com/nac.jpg"
                   alt="Smiley face"
                   width="50"
                   height="50"
@@ -479,7 +485,7 @@ class Home extends Component {
               <span>
                 <h3>{ReactHtmlParser (this.state.ch6)}</h3>
                 <img
-                  src="enz.jpg"
+                  src="https://candid.s3-ap-southeast-2.amazonaws.com/enz.jpg"
                   alt="Smiley face"
                   width="50"
                   height="50"

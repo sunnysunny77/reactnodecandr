@@ -212,10 +212,10 @@ class Nav extends Component {
               {ReactHtmlParser (this.state.day)}
             </span>
           </div>
-          <img src="./logos.jpg" alt="Smiley face" width="60" height="60"></img>
+          <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logos.jpg" alt="Smiley face" width="60" height="60"></img>
         </div>
         <header>
-          <img src="./logo.jpg" alt="Smiley face" width="140" height="32"></img>
+          <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logo.jpg" alt="Smiley face" width="140" height="32"></img>
         </header>
         <div className="menu">
           <div className="mMove">

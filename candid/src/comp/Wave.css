@@ -15,14 +15,14 @@
 }
 
 .wave0 {
-  background-image: url("./pics/svg0.svg");
+  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 300px;
 }
 
 .wave {
-  background-image: url("./pics/svg.svg");
+  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg.svg");
   background-repeat: repeat;
   background-size: 1600px;
   height: 198px;

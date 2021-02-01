@@ -128,7 +128,7 @@ export default class About extends React.Component {
               <div className="jus">
                 <br />
                 <br />
-                <img src="breakp.jpg" alt="Smiley face" className="imga "></img>
+                <img src="https://candid.s3-ap-southeast-2.amazonaws.com/breakp.jpg" alt="Smiley face" className="imga "></img>
                 <br />
                 <br />
               </div>

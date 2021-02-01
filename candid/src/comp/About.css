@@ -51,7 +51,7 @@
 }
 
 .about1 #pic {
-  background-image: url("./pics/services.jpg");
+  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/services.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   float: left;

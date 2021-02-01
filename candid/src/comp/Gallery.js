@@ -4,20 +4,20 @@ import ImageGallery from "react-image-gallery";
 
 const images = [
   {
-    original: "https://" + window.location.hostname + "/gal/c1.jpg",
-    thumbnail: "https://" + window.location.hostname + "/gal/c1.jpg",
+    original: "https://candid.s3-ap-southeast-2.amazonaws.com/c1.jpg",
+    thumbnail: "https://candid.s3-ap-southeast-2.amazonaws.com/c1.jpg",
   },
   {
-    original: "https://" + window.location.hostname + "/gal/c2.jpg",
-    thumbnail: "https://" + window.location.hostname + "/gal/c2.jpg",
+    original: "https://candid.s3-ap-southeast-2.amazonaws.com/c2.jpg",
+    thumbnail: "https://candid.s3-ap-southeast-2.amazonaws.com/c2.jpg",
   },
   {
-    original: "https://" + window.location.hostname + "/gal/c3.jpg",
-    thumbnail: "https://" + window.location.hostname + "/gal/c3.jpg",
+    original: "https://candid.s3-ap-southeast-2.amazonaws.com/c3.jpg",
+    thumbnail: "https://candid.s3-ap-southeast-2.amazonaws.com/c3.jpg",
   },
   {
-    original: "https://" + window.location.hostname + "/gal/c4.jpg",
-    thumbnail: "https://" + window.location.hostname + "/gal/c4.jpg",
+    original: "https://candid.s3-ap-southeast-2.amazonaws.com/c4.jpg",
+    thumbnail: "https://candid.s3-ap-southeast-2.amazonaws.com/c4.jpg",
   },
 ];
 
