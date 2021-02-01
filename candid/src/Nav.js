@@ -5,6 +5,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import PhoneIcon from "@material-ui/icons/Phone";
 import axios from "axios";
+import ReactHtmlParser from 'react-html-parser'; 
 
 class Nav extends Component {
   constructor(props) {
@@ -198,15 +199,17 @@ class Nav extends Component {
           <div>
             <PhoneIcon className="phI" />
             <br></br>
-            <a href="tel:+0412620989">{this.state.ph}</a>
+            <a href={"tel:" + this.state.ph}> 
+              {this.state.ph}
+            </a>
             <br></br>
             <br></br>
             <AccessTimeIcon className="phI" />
             <br></br>
             <span>
-              {this.state.time}
+              {ReactHtmlParser (this.state.time)}
               <br></br>
-              {this.state.day}
+              {ReactHtmlParser (this.state.day)}
             </span>
           </div>
           <img src="./logos.jpg" alt="Smiley face" width="60" height="60"></img>
@@ -230,11 +233,12 @@ class Nav extends Component {
             </Link>
             <div className="mMove0">
               <PhoneIcon className="apI" />
-              <a href="tel:+0412620989"> {this.state.ph}</a>
+              <a href={"tel:" + this.state.ph}> 
+              {this.state.ph}
+              </a>
               <AccessTimeIcon className="apI" />
               <span>
-                {" "}
-                {this.state.time} / {this.state.day}
+              {ReactHtmlParser (this.state.time)} / {ReactHtmlParser (this.state.day)}
               </span>
               <Link to="/">
                 <HomeIcon id="homIa" className="apI" />

@@ -56,14 +56,16 @@ export default class Contactc extends Component {
               &nbsp;&#8226;&nbsp;Email:
               <br></br>
               &nbsp;&nbsp;
-              <a href="mailto:candidcleaningservice@gmail.com">
+              <a href={"mailto:" + this.state.email}>
               {this.state.email}
               </a>
               <br></br>
               <br></br>
               &nbsp;&#8226;&nbsp;Phone:
               <br></br>
-              &nbsp;&nbsp;<a href="tel:+0412620989"> {this.state.ph}</a>
+              &nbsp;&nbsp;<a href={"tel:" + this.state.ph}> 
+              {this.state.ph}
+              </a>
               <br></br>
               <br></br>
               &nbsp;&#8226;&nbsp;Inquiries:
