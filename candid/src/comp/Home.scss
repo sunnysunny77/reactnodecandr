@@ -33,7 +33,7 @@
   animation: slide1;
   animation-duration: 2s;
   animation-fill-mode: forwards;
-  min-width: 140px;
+  min-width: 150px;
   padding: 0 1%;
 }
 
@@ -252,6 +252,7 @@
   border-radius: 10px;
   box-shadow: 0 0 10px $c3;
   height: 50%;
+  background-color: $c1;
 }
 .card h3 {
   margin: 0;
