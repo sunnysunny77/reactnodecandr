@@ -303,7 +303,7 @@ app.post("/three", function (req, res) {
         "\xa0" +
         req.body.phone +
         "\n\n" +
-        "Type:" +
+        "Select Type:" +
         "\xa0" +
         req.body.selectedOption.value +
         "\n\n" +
