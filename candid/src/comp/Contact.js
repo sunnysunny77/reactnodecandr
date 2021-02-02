@@ -109,7 +109,7 @@ export default class Contactc extends Component {
           <h2>{ReactHtmlParser (this.state.h2)}</h2>
           <hr></hr>
           <Wave>
-            <div className="prop" ><span>{ReactHtmlParser (this.state.avail)}</span></div>
+            <div className="prop" ><span id="sc" >{ReactHtmlParser (this.state.avail)}</span></div>
           </Wave>
         </section>
       </React.Fragment>

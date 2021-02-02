@@ -63,6 +63,11 @@
   cursor: pointer;
 }
 
+#sc {
+  text-align: center;
+  display: inline-block;
+}
+
 @media only screen and (max-width: 1200px) {
   .c1,
   .c2 {

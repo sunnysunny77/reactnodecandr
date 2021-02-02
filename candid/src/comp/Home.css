@@ -20,6 +20,8 @@
   fill: none;
   height: 25px;
   width: 25px;
+  vertical-align: bottom;
+  margin: 3%;
 }
 
 #w1 {
@@ -29,8 +31,7 @@
   animation: slide1;
   animation-duration: 2s;
   animation-fill-mode: forwards;
-  padding: 0 1%;
-  min-width: 130px;
+  min-width: 140px;
 }
 
 #w1 h1 {
@@ -41,7 +42,8 @@
   color: black;
   font-size: 130%;
   float: none;
-  padding: inherit;
+  padding: 1% 0;
+  line-height: 30px;
 }
 
 #w2 {
