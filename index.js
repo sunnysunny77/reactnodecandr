@@ -66,6 +66,7 @@ let a;
 let b;
 let c;
 
+//gal
 axios
   .get(
     `https://docs.google.com/spreadsheets/d/1LjDGLbRSaQ4Y7ilLy0LMPpgUZN6ynI8QRg--a2ltLt4/gviz/tq?tqx=out:csv&sheet=data`
@@ -90,6 +91,7 @@ axios
     console.log(error);
   });
 
+//content
 axios
   .get(
     `https://docs.google.com/spreadsheets/d/1gLb1KAZd-dY1Jlw1z-JPVev1WkeOL_tIitvzkrW97dQ/gviz/tq?tqx=out:csv&sheet=data`
@@ -108,6 +110,7 @@ axios
       parsedData.data[9][4],
       parsedData.data[10][4],
       parsedData.data[11][4],
+      parsedData.data[12][4],
     ];
     let l = parsedData.data[44][1];
     let a = [];
@@ -128,6 +131,7 @@ axios
     console.log(error);
   });
 
+//maps
 axios
   .get(
     `https://docs.google.com/spreadsheets/d/1IouN-lz5mjCpEBqa2wER0swruvmUedhDMJyitlgJysU/gviz/tq?tqx=out:csv&sheet=data`
@@ -404,7 +408,7 @@ app.post("/hom", function (req, res) {
         u6: parsedData.data[43][1],
         options: a,
         svg: parsedData.data[1][2],
-        buttons: [c[10], c[9], c[8]],
+        buttons: [c[10], c[9], c[8],c[11]],
       },
     });
   } else {

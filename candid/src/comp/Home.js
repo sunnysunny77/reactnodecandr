@@ -588,7 +588,7 @@ class Home extends Component {
                 onChange={this.handleChange}
                 options={this.state.options}
                 styles={customStyles}
-                placeholder="Select type of cleaning:"
+                placeholder={ReactHtmlParser (this.state.buttons[3])}
               />
             </div>
             <SubjectIcon
