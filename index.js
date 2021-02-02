@@ -439,7 +439,7 @@ app.post("/hom", function (req, res) {
         u6: "error",
         options: [{ value: "error", label: "error" }],
         svg: "error",
-        buttons: ["error", "error", "error"],
+        buttons: ["error", "error", "error", "error"],
       },
     });
   }
