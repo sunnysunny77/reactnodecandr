@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Nav.css";
+import "./Nav.scss";
 import { Link } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";

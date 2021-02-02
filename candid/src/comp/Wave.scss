@@ -1,12 +1,13 @@
+@import "../Variables.scss";
+
 .svg {
-  color: white;
-  background-color: rgba(52, 52, 52);
-  border: 2px solid rgba(0, 0, 0, 0.7);
-  box-shadow: 0 0 20px rgba(226, 185, 185, 0.5);
+  color: $c1;
+  background-color: $c4;
+  border: 2px solid $c2;
   overflow: hidden;
 }
 .prop {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: $font3;
   padding-left: 5%;
   padding-right: 5%;
   padding-bottom: 50px;

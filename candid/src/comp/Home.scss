@@ -1,3 +1,5 @@
+@import "../Variables.scss";
+
 /* silde */
 
 .slick-slide img {
@@ -15,7 +17,7 @@
 }
 
 #my-svg {
-  stroke:black;
+  stroke:$c3;
   stroke-width: 16;
   fill: none;
   height: 25px;
@@ -25,7 +27,7 @@
 }
 
 #w1 {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: $c9;
   border-radius: 5px;
   width: 27%;
   animation: slide1;
@@ -35,11 +37,11 @@
 }
 
 #w1 h1 {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: $font3;
   display: inline-block;
   margin: 0;
   font-weight: 600;
-  color: black;
+  color: $c3;
   font-size: 130%;
   float: none;
   padding: 1% 0;
@@ -47,7 +49,7 @@
 }
 
 #w2 {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: $c9;
   border-radius: 5px;
   animation: slide2;
   animation-duration: 2s;
@@ -59,7 +61,7 @@
 }
 
 #w2 h2 {
-  color: black;
+  color: $c3;
   margin: 0;
   font-size: 110%;
 }
@@ -108,7 +110,7 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   padding: 10.5%;
-  box-shadow: 0 0 1.5px white;
+  box-shadow: 0 0 1.5px $c1;
 }
 
 .flip {
@@ -116,26 +118,26 @@
 }
 
 .vt {
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: $c9;
   position: absolute;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
-  color: black;
+  font-family: $font3;
+  color: $c3;
   width: 21%;
   top: 9.3%;
   margin-left: 2.5%;
   cursor: pointer;
-  text-shadow: 0 0 0.5px grey;
+  text-shadow: 0 0 0.5px $c9;
   font-size: 90%;
   font-style: italic;
 }
 
 .vt:hover {
-  color: red;
+  color:$c7;
 }
 
 #pn1:hover,
 #pn2:hover {
-  color: red;
+  color:$c7;
 }
 
 .iv {
@@ -146,7 +148,7 @@
 #pn2 {
   position: absolute;
   top: 50%;
-  color: black;
+  color: $c3;
 
   opacity: 0.7;
 }
@@ -163,8 +165,8 @@
 
 .info {
   height: 500px;
-  background-color: #fff;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  background-color: $c1;
+  box-shadow: 0 0 40px $c2;
 }
 
 .info0 {
@@ -172,16 +174,16 @@
   width: 200px;
   float: left;
   margin-left: 10%;
-  background-color: #fff;
-  box-shadow: -20px 0 20px -20px rgba(0, 0, 0, 0.5),
-    20px 0 20px -20px rgba(0, 0, 0, 0.5);
+  background-color: $c1;
+  box-shadow: -20px 0 20px -20px $c2,
+    20px 0 20px -20px $c2;
 }
 
 .info1 {
   margin-top: 35%;
   width: 81.63%;
   height: 32.65%;
-  border: 7.5px solid #2d2d2d;
+  border: 7.5px solid $c5;
   background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info1.jpg");
   background-position: center;
   background-size: 100% 100%;
@@ -192,7 +194,7 @@
 
 .info2 {
   width: 58.5%;
-  color: rgba(0, 0, 0, 0.9);
+  color: $c3;
   float: left;
   margin-top: 5%;
   margin-left: 6%;
@@ -200,24 +202,24 @@
 
 #inf {
   float: right;
-  color: black;
+  color: $c3;
   margin-right: 50px;
   margin-top: 10px;
 }
 
 .info2 h2 {
   width: 70%;
-  font-family: "Impact, Charcoal, sans-serif";
-  color: black;
+  font-family: $font2;
+  color: $c3;
   font-weight: bold;
   margin-left: 10px;
   padding: 0px;
 }
 
 .info2 p {
-  color: white;
-  background-color: #2d2d2d;
-  border: 2px solid rgba(0, 0, 0, 0.7);
+  color: $c1;
+  background-color: $c5;
+  border: 2px solid $c2;
   border-radius: 5px;
   padding: 25px;
   text-align: center;
@@ -243,36 +245,35 @@
   justify-content: center;
   padding: 5% 26px;
   text-align: center;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: $font3;
   font-weight: 500;
-  text-shadow: 0 0 0.5px grey;
+  text-shadow: 0 0 0.5px $c9;
   border-radius: 10px;
-  box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px $c3;
   height: 50%;
 }
 .card h3 {
   margin: 0;
   padding: 0;
   font-size: inherit;
-  font-family: "Impact, Charcoal, sans-serif";
-  
+  font-family: $font2;
   font-weight: 600;
   display: inline;
 }
 .cardi {
-  color: rgba(0, 0, 0, 0.644);
+  color: $c2;
   float: left;
   margin-left: 30px;
 }
 
 .cardf {
-  color: black;
+  color: $c3;
   transform: scale(3.5);
   align-self: center;
 }
 
 .card1 a {
-  color: rgba(0, 0, 0, 0.644);
+  color: $c2;
   float: left;
   margin-left: 30px;
   width: 30px;
@@ -281,7 +282,7 @@
 }
 
 .card1 a:hover {
-  color: purple;
+  color: $c8;
 }
 
 .card span img {
@@ -292,7 +293,7 @@
 .card1 {
   width: 350px;
   margin: auto;
-  color: black;
+  color: $c3;
   padding: 2.5% 20px;
   height: 400px;
   display: flex;
@@ -306,7 +307,7 @@
 /* inq */
 
 .inq {
-  background-color: #2d2d2d;
+  background-color: $c5;
   margin-top: 10px;
 }
 .www {
@@ -314,19 +315,19 @@
 }
 
 .react-select__menu-list {
-  scrollbar-face-color: black;
-  scrollbar-track-color: white;
+  scrollbar-face-color: $c3;
+  scrollbar-track-color: $c1;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-color: black white;
+  scrollbar-color: $c3 $c1;
 }
 
 .MuiFilledInput-multiline {
-  scrollbar-face-color: black;
-  scrollbar-track-color: white;
+  scrollbar-face-color: $c3;
+  scrollbar-track-color: $c1;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-color: black white;
+  scrollbar-color: $c3 $c1;
 }
 
 .react-select__menu-list::-webkit-scrollbar,
@@ -336,17 +337,17 @@
 
 .react-select__menu-list::-webkit-scrollbar-thumb,
 .MuiFilledInput-multiline::-webkit-scrollbar-thumb {
-  background: black;
+  background: $c3;
 }
 
 .react-select__menu-list::-webkit-scrollbar-track,
 .MuiFilledInput-multiline::-webkit-scrollbar-track {
-  background: white;
+  background: $c1;
 }
 
 .react-select__menu-list::-webkit-scrollbar-thumb:hover,
 .MuiFilledInput-multiline::-webkit-scrollbar-thumb:hover {
-  background: red;
+  background:$c7;
 }
 
 @keyframes slide1 {
@@ -445,7 +446,7 @@
   .info0 {
     height: 300px;
     width: 100%;
-    background-color: lightgrey;
+    background-color: $c6;
     padding-top: 80px;
   }
   .info1 {

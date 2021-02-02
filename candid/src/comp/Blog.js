@@ -1,5 +1,5 @@
 import React from "react";
-import "./Blog.css";
+import "./Blog.scss";
 import Alertm from "./Alertm.js";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";

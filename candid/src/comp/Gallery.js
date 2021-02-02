@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Gallery.css";
+import "./Gallery.scss";
 import ImageGallery from "react-image-gallery";
 import axios from "axios";
 import ReactHtmlParser from 'react-html-parser'; 

@@ -1,6 +1,8 @@
+@import "../Variables.scss";
+
 th {
   float: left;
-  color: white;
+  color: $c1;
 }
 
 td {
@@ -9,7 +11,7 @@ td {
 
 .blogCont {
   width: 70%;
-  background-color: #2d2d2d;
+  background-color: $c5;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   margin: 100px auto;
@@ -17,12 +19,12 @@ td {
 
 .blogBar {
   width: 100%;
-  background-color: black;
+  background-color: $c3;
   background-image: linear-gradient(
     270deg,
-    black 0%,
-    #ececec 45%,
-    #ececec 100%
+    $c3 0%,
+    $c6 45%,
+    $c6 100%
   );
   height: 60px;
   border-top-left-radius: 11px;
@@ -35,12 +37,12 @@ td {
 }
 
 .blogCont1 {
-  scrollbar-face-color: black;
-  scrollbar-track-color: white;
+  scrollbar-face-color: $c3;
+  scrollbar-track-color: $c1;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-color: black white;
-  color: white;
+  scrollbar-color: $c3 $c1;
+  color: $c1;
   width: 100%;
 }
 
@@ -49,34 +51,34 @@ td {
 }
 
 .blogCont1::-webkit-scrollbar-track {
-  background: white;
+  background: $c1;
 }
 
 .blogCont1::-webkit-scrollbar-thumb {
-  background: black;
+  background: $c3;
 }
 
 .blogCont1::-webkit-scrollbar-thumb:hover {
-  background: red;
+  background:$c7;
 }
 
 .form {
   width: 100%;
-  background-color: #2d2d2d;
-  color: white;
+  background-color: $c5;
+  color: $c1;
   overflow: hidden;
 }
 
 .form0 {
   width: 100%;
   margin: auto;
-  background-color: #2d2d2d;
-  color: white;
+  background-color: $c5;
+  color: $c1;
   overflow: hidden;
 }
 
 .blogs {
-  color: white;
+  color: $c1;
 }
 
 .blogsi {
@@ -93,12 +95,12 @@ td {
 
 .blogh {
   width: 100%;
-  background-color: black;
+  background-color: $c3;
   background-image: linear-gradient(
     270deg,
-    black 0%,
-    #ececec 45%,
-    #ececec 100%
+    $c3 0%,
+    $c6 45%,
+    $c6 100%
   );
   height: 60px;
   border-top-left-radius: 11px;
@@ -108,8 +110,8 @@ td {
 
 .blogh h2 {
   padding-top: 12.5px;
-  font-family: Arial Black, Gadget, sans-serif;
-  color: #fff;
+  font-family: $font1;
+  color: $c1;
   float: right;
   margin: 0;
   padding-right: 20px;
@@ -117,21 +119,21 @@ td {
 }
 
 .custom-file-input[type="file"]::-ms-browse {
-  background-color: #ffffff00;
+  background-color: $c1;
   margin: 0px;
   padding: 0px;
   border: 0px;
 }
 
 .custom-file-input[type="file"]::-webkit-file-upload-button {
-  background-color: #ffffff00;
+  background-color: $c1;
   margin: 0px;
   padding: 0px;
   border: 0px;
 }
 
 .custom-file-input {
-  border: 1px solid #999;
+  border: 1px solid $c9;
   border-radius: 3px;
   padding: 5px 8px;
   cursor: pointer;
@@ -139,11 +141,11 @@ td {
 }
 
 .MuiFilledInput-multiline {
-  scrollbar-face-color: black;
-  scrollbar-track-color: white;
+  scrollbar-face-color: $c3;
+  scrollbar-track-color: $c1;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-color: black white;
+  scrollbar-color: $c3 $c1;
 }
 
 .MuiFilledInput-multiline::-webkit-scrollbar {
@@ -151,15 +153,15 @@ td {
 }
 
 .MuiFilledInput-multiline::-webkit-scrollbar-track {
-  background: white;
+  background: $c1;
 }
 
 .MuiFilledInput-multiline::-webkit-scrollbar-thumb {
-  background: black;
+  background: $c3;
 }
 
 .MuiFilledInput-multiline::-webkit-scrollbar-thumb:hover {
-  background: red;
+  background:$c7;
 }
 
 @media only screen and (max-width: 1200px) {

@@ -1,5 +1,5 @@
 import React from "react";
-import "./About.css";
+import "./About.scss";
 import Wave from "./Wave";
 import Maps from "./Maps.js";
 import axios from "axios";

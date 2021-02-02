@@ -1,3 +1,5 @@
+@import "../Variables.scss";
+
 .contlink {
   margin: 60px auto auto auto;
   max-width: 1200px;
@@ -22,32 +24,32 @@
 .c2 h2,
 .c3 h2 {
   width: 50%;
-  font-family: "Impact, Charcoal, sans-serif";
-  color: black;
+  font-family: $font2;
+  color: $c3;
   margin-left: 10px;
 }
 
 .c2 p {
-  color: white;
-  background-color: #2d2d2d;
-  border: 2px solid rgba(0, 0, 0, 0.7);
+  color: $c1;
+  background-color: $c5;
+  border: 2px solid $c2;
   border-radius: 5px;
   padding: 25px;
-  font-family: "Arial Black", Gadget, sans-serif;
+  font-family: $font1;
   min-width: 555px;
 }
 
 .c2 a {
-  color: white;
+  color: $c1;
   text-decoration: none;
 }
 
 .c2 a:hover {
-  color: purple;
+  color: $c8;
 }
 
 .infe {
-  color: rgba(0, 0, 0, 0.644);
+  color: $c2;
   margin-right: 50px;
   float: right;
 }
@@ -59,7 +61,7 @@
 }
 
 #homc:hover {
-  color: purple;
+  color: $c8;
   cursor: pointer;
 }
 

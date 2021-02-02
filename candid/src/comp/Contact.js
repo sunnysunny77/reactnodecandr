@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Contact.css";
+import "./Contact.scss";
 import Wave from "./Wave";
 import ContactsIcon from "@material-ui/icons/Contacts";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";

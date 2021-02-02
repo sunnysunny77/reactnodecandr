@@ -1,9 +1,10 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
+@import "../Variables.scss";
 
 #gl {
   margin: auto;
   padding: 100px 0;
-  background-color: #2d2d2d;
+  background-color: $c5;
   min-height: 100vh;
 }
 

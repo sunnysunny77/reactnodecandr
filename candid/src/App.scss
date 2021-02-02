@@ -1,3 +1,5 @@
+@import "./Variables.scss";
+
 #di {
   min-height: 100vh;
 }
@@ -7,8 +9,8 @@ button {
 }
 
 h1 {
-  font-family: Arial Black, Gadget, sans-serif;
-  color: #fff;
+  font-family: $font1;
+  color: $c1;
   float: right;
   margin: 0;
   padding-right: 20px;
@@ -22,12 +24,12 @@ h2 {
 
 .rh {
   width: 100%;
-  background-color: black;
+  background-color: $c3;
   background-image: linear-gradient(
     270deg,
-    black 0%,
-    #ececec 45%,
-    #ececec 100%
+    $c3 0%,
+    $c6 45%,
+    $c6 100%
   );
   height: 60px;
   font-size: 120%;
@@ -40,9 +42,9 @@ h2 {
 footer {
   width: 100%;
   height: 65px;
-  background-image: linear-gradient(180deg, #fff 70%, #ececec 95%);
-  border-top: solid gray 2px;
-  border-bottom: solid gray 2px;
+  background-image: linear-gradient(180deg, $c1 70%, $c6 95%);
+  border-top: solid $c4 2px;
+  border-bottom: solid $c4 2px;
   margin-top: 4px;
   margin-bottom: 4px;
 }
