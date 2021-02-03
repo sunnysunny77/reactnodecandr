@@ -72,16 +72,15 @@ axios
     `https://docs.google.com/spreadsheets/d/1LjDGLbRSaQ4Y7ilLy0LMPpgUZN6ynI8QRg--a2ltLt4/gviz/tq?tqx=out:csv&sheet=data`
   )
   .then((res) => {
-    let parsedData = Papa.parse(res.data);
-    let l = parsedData.data[1][0];
+    let parsedData = Papa.parse(res.data,{skipEmptyLines: true});
     let b = [];
-    for (let i = 1; i <= l; i++) {
+    let l = parsedData.data.length - 1
+    for (let i = 1; i<= l; i++) {
       b.push({
-        original: parsedData.data[i][1],
-        thumbnail: parsedData.data[i][1],
+          original: parsedData.data[i][0],
+          thumbnail: parsedData.data[i][0],
       });
-    }
-
+   }
     return { b: b };
   })
   .then((res) => {
@@ -97,7 +96,7 @@ axios
     `https://docs.google.com/spreadsheets/d/1gLb1KAZd-dY1Jlw1z-JPVev1WkeOL_tIitvzkrW97dQ/gviz/tq?tqx=out:csv&sheet=data`
   )
   .then((res) => {
-    let parsedData = Papa.parse(res.data);
+    let parsedData = Papa.parse(res.data,{skipEmptyLines: true});
     let c = [
       parsedData.data[1][4],
       parsedData.data[2][4],
@@ -112,12 +111,12 @@ axios
       parsedData.data[11][4],
       parsedData.data[12][4],
     ];
-    let l = parsedData.data[44][1];
+    let l = parsedData.data.length - 44;
     let a = [];
     for (let i = 1; i <= l; i++) {
       a.push({
-        value: parsedData.data[44 + i][1],
-        label: parsedData.data[44 + i][1],
+        value: parsedData.data[43 + i][1],
+        label: parsedData.data[43 + i][1],
       });
     }
     return { parsedData: parsedData, a: a, c: c };
@@ -137,7 +136,7 @@ axios
     `https://docs.google.com/spreadsheets/d/1IouN-lz5mjCpEBqa2wER0swruvmUedhDMJyitlgJysU/gviz/tq?tqx=out:csv&sheet=data`
   )
   .then((res) => {
-    let parsedData = Papa.parse(res.data);
+    let parsedData = Papa.parse(res.data,{skipEmptyLines: true});
     let l = parsedData.data[1][1];
     let a = [];
     for (let i = 1; i <= l; i++) {
