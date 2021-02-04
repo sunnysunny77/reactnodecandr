@@ -210,15 +210,15 @@ axios
                   ]);
                 }
               } else {
-              return undefined;
-            }
-          } 
+                return undefined;
+              }
+            } 
+          }
         }
-      }
         return [parsedData.data[1][0], parsedData0, parsedData.data[1][2]];
     } else {
-    return undefined;
-  }
+      return undefined;
+    }
   })
   .then((res) => {
     parsedData0 = res;
