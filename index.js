@@ -106,6 +106,7 @@ axios
   })
   .then((res) => {
     parsedData3 = res.parsedData3;
+
   })
   .catch((error) => {
     console.log(error);
@@ -183,36 +184,41 @@ axios
   .then((res) => {
     let parsedData = Papa.parse(res.data, { skipEmptyLines: true });
     if (parsedData.data[3].length % 2 === 0) {
-      let l = parsedData.data[1][1];
+      let l = parsedData.data[3].length  / 2;
       let parsedData0 = [];
       for (let i = 1; i <= l; i++) {
-        let g = i * 2;
-        parsedData0.push({
-          [i]: {
-            type: "Feature",
-            geometry: {
-              type: "Polygon",
-              coordinates: [[]],
+          let g = i * 2;
+          parsedData0.push({
+            [i]: {
+              type: "Feature",
+              geometry: {
+                type: "Polygon",
+                coordinates: [[]],
+              },
             },
-          },
-        });
-        for (let x in parsedData.data) {
-          if (x >= 4) {
-            if (
-              parsedData.data[x][g - 2].length &&
-              parsedData.data[x][g - 1].length
-            ) {
-              parsedData0[i - 1][i].geometry.coordinates[0].push([
-                parsedData.data[x][g - 2],
-                parsedData.data[x][g - 1],
-              ]);
-            }
+          });
+          for (let x in parsedData.data) {
+            if (x >= 3) {
+              if (
+                parsedData.data[x][g - 2].length &&
+                parsedData.data[x][g - 1].length
+                
+                ) {
+                  console.log(parsedData.data[3][g - 2].length === 0 , parsedData.data[3][g - 1].length === 0)
+                  parsedData0[i - 1][i].geometry.coordinates[0].push([
+                  parsedData.data[x][g - 2],
+                  parsedData.data[x][g - 1],
+                ]);
+              }
+            
+            } 
           }
         }
-      }
-      return [parsedData.data[1][0], parsedData0, parsedData.data[1][2]];
-    } else {
-      return undefined;
+        console.log("ygoo")
+        return [parsedData.data[1][0], parsedData0, parsedData.data[1][2]];
+      } else {
+        console.log("yoe")
+        return undefined;
     }
   })
   .then((res) => {
