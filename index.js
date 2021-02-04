@@ -199,27 +199,26 @@ axios
           });
           for (let x in parsedData.data) {
             if (x >= 3) {
-              if (
-                parsedData.data[x][g - 2].length &&
-                parsedData.data[x][g - 1].length
-                
-                ) {
-                  console.log(parsedData.data[3][g - 2].length === 0 , parsedData.data[3][g - 1].length === 0)
-                  parsedData0[i - 1][i].geometry.coordinates[0].push([
-                  parsedData.data[x][g - 2],
-                  parsedData.data[x][g - 1],
-                ]);
-              }
-            
-            } 
-          }
+              if (parsedData.data[3][g - 2].length !== 0 , parsedData.data[3][g - 1].length !== 0) {
+                if (
+                  parsedData.data[x][g - 2].length &&
+                  parsedData.data[x][g - 1].length
+                  ) {
+                    parsedData0[i - 1][i].geometry.coordinates[0].push([
+                    parsedData.data[x][g - 2],
+                    parsedData.data[x][g - 1],
+                  ]);
+                }
+              } else {
+              return undefined;
+            }
+          } 
         }
-        console.log("ygoo")
+      }
         return [parsedData.data[1][0], parsedData0, parsedData.data[1][2]];
-      } else {
-        console.log("yoe")
-        return undefined;
-    }
+    } else {
+    return undefined;
+  }
   })
   .then((res) => {
     parsedData0 = res;
