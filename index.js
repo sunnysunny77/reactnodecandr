@@ -106,7 +106,6 @@ axios
   })
   .then((res) => {
     parsedData3 = res.parsedData3;
-    console.log(res.parsedData3);
   })
   .catch((error) => {
     console.log(error);
