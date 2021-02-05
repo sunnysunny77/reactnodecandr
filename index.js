@@ -276,7 +276,7 @@ app.post("/two", function (req, res) {
     mod.find({ date: req.body.ddate }, function (err, doc) {
       if (doc.length) {
         fs.unlink(
-          __dirname + "/public/pic/" + dob[0]._id + ".jpg",
+          __dirname + "/public/pic/" + doc[0]._id + ".jpg",
           function (err) {}
         );
         mod.deleteOne({ date: req.body.ddate }, function (err) {
