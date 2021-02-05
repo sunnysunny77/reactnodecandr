@@ -4,7 +4,7 @@
 
 .slick-slide img {
   width: 100%;
-  min-height: 140px;
+  min-height: 150px;
 }
 
 /* welcome */
@@ -33,7 +33,7 @@
   animation: slide1;
   animation-duration: 2s;
   animation-fill-mode: forwards;
-  min-width: 150px;
+  min-width: 140px;
   padding: 0 1%;
 }
 
@@ -75,7 +75,6 @@
 }
 
 /* vid */
-
 .vid {
   text-align: center;
   margin: auto;
@@ -84,26 +83,8 @@
   top: -115px;
 }
 
-.vid1 {
-  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/v1.jpg");
-}
 
-.vid2 {
-  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/v2.jpg");
-}
-
-.vid3 {
-  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/v3.jpg");
-}
-
-.vid4 {
-  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/v4.jpg");
-}
-
-.vid1,
-.vid2,
-.vid3,
-.vid4 {
+.vidn {
   margin: 0 2.5% 0 2.5%;
   text-align: center;
   border-radius: 7.5px;

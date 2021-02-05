@@ -21,7 +21,7 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import SubjectIcon from "@material-ui/icons/Subject";
 import ListIcon from "@material-ui/icons/List";
 import Select from "react-select";
-import ReactHtmlParser from 'react-html-parser'; 
+import ReactHtmlParser from "react-html-parser";
 
 const customStyles = {
   placeholder: () => ({
@@ -80,16 +80,8 @@ class Home extends Component {
       selectedOption: null,
       text: null,
       a: null,
-      dis: { display: "inline-block" },
-      diss: { display: "none" },
-      count: 1,
-      intervalId: null,
       m1: null,
       m2: null,
-      v1: null,
-      v2: null,
-      v3: null,
-      v4: null,
       qh: null,
       q: null,
       ch1: null,
@@ -109,10 +101,12 @@ class Home extends Component {
       u6: null,
       options: null,
       buttons: [],
+      vid: [],
+      vi: null,
+      count: 1,
     };
   }
   componentDidMount() {
-   
     if (window.location.search === "?in=in") {
       document.getElementById("iq").scrollIntoView();
     }
@@ -123,10 +117,6 @@ class Home extends Component {
           this.setState({
             m1: res.data.e.m1,
             m2: res.data.e.m2,
-            v1: res.data.e.v1,
-            v2: res.data.e.v2,
-            v3: res.data.e.v3,
-            v4: res.data.e.v4,
             qh: res.data.e.qh,
             q: res.data.e.q,
             ch1: res.data.e.ch1,
@@ -147,6 +137,7 @@ class Home extends Component {
             options: res.data.e.options,
             svg: res.data.e.svg,
             buttons: res.data.e.buttons,
+            vid: res.data.e.vid,
           });
         }
         if (res.data.a) {
@@ -176,43 +167,116 @@ class Home extends Component {
             u6: res.data.a.u6,
             options: res.data.a.options,
             buttons: res.data.a.buttons,
-           
+            vid: res.data.a.vid,
           });
-          document.getElementById("my-svg").innerHTML = res.data.a.svg
+          document.getElementById("my-svg").innerHTML = res.data.a.svg;
         }
       })
       .then(() => {
         new Vivus("my-svg", { duration: 200 });
       })
+      .then(() => {
+        this.setState({
+          vi: this.state.vid.map((key, index) => {
+            let d;
+            if (index === 0) {
+              d = "inline-block";
+            } else {
+              d = "none";
+            }
+            return (
+              <React.Fragment>
+                <span
+                  className={ReactHtmlParser("vt &nbsp d" + [index + 1])}
+                  style={{ display: d }}
+                  onClick={() => this.vid(this.state.vid[index][1])}
+                >
+                  {ReactHtmlParser(this.state.vid[index][2])}{" "}
+                  <PlayCircleOutlineIcon className="iv" />
+                </span>
+                <span
+                  className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
+                  style={{
+                    backgroundImage: "url('" + this.state.vid[index][0] + "')",
+                    display: d,
+                  }}
+                ></span>
+
+                <span
+                  className={ReactHtmlParser("vt &nbsp d" + [index + 1])}
+                  style={{ display: d }}
+                  onClick={() => this.vid(this.state.vid[index][4])}
+                >
+                  {ReactHtmlParser(this.state.vid[index][5])}{" "}
+                  <PlayCircleOutlineIcon className="iv" />
+                </span>
+                <span
+                  className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
+                  style={{
+                    backgroundImage: "url('" + this.state.vid[index][3] + "')",
+                    display: d,
+                  }}
+                ></span>
+              </React.Fragment>
+            );
+          }),
+        });
+      })
       .catch((error) => {
         console.log(error);
       });
-      
   }
+  vid = (v) => {
+    window.open(v);
+  };
+  vidd = (v) => {
+    let c = this.state.count + v;
+    if (c > 0 && c <= this.state.vid.length) {
+      document.getElementsByClassName("d" + this.state.count)[1].style.display =
+        "none";
+      document.getElementsByClassName("d" + this.state.count)[3].style.display =
+        "none";
+      document.getElementsByClassName("d" + this.state.count)[0].style.display =
+        "none";
+      document.getElementsByClassName("d" + this.state.count)[2].style.display =
+        "none";
+      document.getElementsByClassName("d" + c)[1].style.display =
+        "inline-block";
+      document.getElementsByClassName("d" + c)[3].style.display =
+        "inline-block";
+      document.getElementsByClassName("d" + c)[0].style.display =
+        "inline-block";
+      document.getElementsByClassName("d" + c)[2].style.display =
+        "inline-block";
+      this.setState({ count: c });
+    }
+  };
   vidt = () => {
+    document.getElementsByClassName("d" + this.state.count)[1].style.display =
+      "none";
+    document.getElementsByClassName("d" + this.state.count)[3].style.display =
+      "none";
+    document.getElementsByClassName("d" + this.state.count)[0].style.display =
+      "none";
+    document.getElementsByClassName("d" + this.state.count)[2].style.display =
+      "none";
+    if (this.state.count < this.state.vid.length) {
+      this.setState({ count: this.state.count + 1 });
+    } else {
+      this.setState({ count: 1 });
+    }
+    document.getElementsByClassName("d" + this.state.count)[1].style.display =
+      "inline-block";
+    document.getElementsByClassName("d" + this.state.count)[3].style.display =
+      "inline-block";
+    document.getElementsByClassName("d" + this.state.count)[0].style.display =
+      "inline-block";
+    document.getElementsByClassName("d" + this.state.count)[2].style.display =
+      "inline-block";
     document.querySelector(".vid").classList.add("flip");
     setTimeout(() => {
       document.querySelector(".vid").classList.remove("flip");
     }, 1000);
-    if (this.state.count < 2) {
-      this.setState({ count: this.state.count + 1 });
-    } else if (this.state.count === 2) {
-      this.setState({ count: 1 });
-    }
-    if (this.state.count === 1) {
-      this.setState({
-        dis: { display: "inline-block" },
-        diss: { display: "none" },
-      });
-      return;
-    }
-    if (this.state.count === 2) {
-      this.setState({
-        dis: { display: "none" },
-        diss: { display: "inline-block" },
-      });
-      return;
-    }
   };
   handleChange = (selectedOption) => {
     this.setState({ selectedOption, disp: { display: "none" } });
@@ -276,42 +340,6 @@ class Home extends Component {
       });
     }
   };
-  vid = (v) => {
-    if (v === "v1") {
-      window.open("https://candid.s3-ap-southeast-2.amazonaws.com/v1.mp4");
-    }
-    if (v === "v2") {
-      window.open("https://candid.s3-ap-southeast-2.amazonaws.com/v1.mp4");
-    }
-    if (v === "v3") {
-      window.open("https://candid.s3-ap-southeast-2.amazonaws.com/v3.mp4");
-    }
-    if (v === "v4") {
-      window.open("https://candid.s3-ap-southeast-2.amazonaws.com/v4.mp4");
-    }
-  };
-  vidd = (v) => {
-    let f = this.state.count + v;
-    if (f > 0 && f < 3) {
-      this.setState({ count: f });
-      if (f === 1) {
-        this.setState({
-          dis: { display: "inline-block" },
-          diss: { display: "none" },
-        });
-      }
-      if (f === 2) {
-        this.setState({
-          dis: { display: "none" },
-          diss: { display: "inline-block" },
-        });
-      }
-      document.querySelector(".vid").classList.add("flip");
-      setTimeout(() => {
-        document.querySelector(".vid").classList.remove("flip");
-      }, 1000);
-    }
-  };
   scr = () => {
     document.getElementById("iq").scrollIntoView();
   };
@@ -321,57 +349,32 @@ class Home extends Component {
         {this.state.w}
         <section className="welcome">
           <div id="w1">
-            <svg id="my-svg"  viewBox="0 0 512.062 512.062"/>
-            <h1>{ReactHtmlParser (this.state.m1)}</h1>
+            <svg id="my-svg" viewBox="0 0 512.062 512.062" />
+            <h1>{ReactHtmlParser(this.state.m1)}</h1>
           </div>
           <div id="w2">
-            <h2 onClick={this.scr}>{ReactHtmlParser (this.state.m2)}</h2>
+            <h2 onClick={this.scr}>{ReactHtmlParser(this.state.m2)}</h2>
           </div>
         </section>
         <Slider id="slide" {...this.state.settings}>
           <div>
-            <img src="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg" alt="wel1"></img>
+            <img
+              src="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg"
+              alt="wel1"
+            ></img>
           </div>
           <div>
-            <img src="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg" alt="wel1"></img>
+            <img
+              src="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg"
+              alt="wel1"
+            ></img>
           </div>
         </Slider>
         <section className="vid ">
           <span id="pn1" onClick={() => this.vidd(-1)}>
             &larr;
           </span>
-          <span
-            className="vt"
-            style={this.state.dis}
-            onClick={() => this.vid("v1")}
-          >
-            {ReactHtmlParser (this.state.v1)} <PlayCircleOutlineIcon className="iv" />
-          </span>
-          <span className="vid1" style={this.state.dis}></span>
-          <span
-            className="vt"
-            style={this.state.dis}
-            onClick={() => this.vid("v2")}
-          >
-            {ReactHtmlParser (this.state.v2)} <PlayCircleOutlineIcon className="iv" />
-          </span>
-          <span className="vid2" style={this.state.dis}></span>
-          <span
-            className="vt"
-            style={this.state.diss}
-            onClick={() => this.vid("v3")}
-          >
-            {ReactHtmlParser (this.state.v3)} <PlayCircleOutlineIcon className="iv" />
-          </span>
-          <span className="vid3" style={this.state.diss}></span>
-          <span
-            className="vt"
-            style={this.state.diss}
-            onClick={() => this.vid("v4")}
-          >
-            {ReactHtmlParser (this.state.v4)} <PlayCircleOutlineIcon className="iv" />
-          </span>
-          <span className="vid4" style={this.state.diss}></span>
+          {this.state.vi}
           <span id="pn2" onClick={() => this.vidd(+1)}>
             &rarr;
           </span>
@@ -383,10 +386,10 @@ class Home extends Component {
           <div className="info2">
             <hr />
             <InfoIcon id="inf" />
-            <h2>{ReactHtmlParser (this.state.qh)}</h2>
+            <h2>{ReactHtmlParser(this.state.qh)}</h2>
             <hr />
             <p>
-              <q>{ReactHtmlParser (this.state.q)}</q>
+              <q>{ReactHtmlParser(this.state.q)}</q>
             </p>
             <hr />
           </div>
@@ -395,7 +398,7 @@ class Home extends Component {
           <div className="card1">
             <div className="card2">
               <span>
-                <h3>{ReactHtmlParser (this.state.ch1)}</h3>
+                <h3>{ReactHtmlParser(this.state.ch1)}</h3>
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/card1.jpg"
                   alt="Smiley face"
@@ -404,14 +407,14 @@ class Home extends Component {
                 ></img>
               </span>
             </div>
-            <p>{ReactHtmlParser (this.state.c1)}</p>
+            <p>{ReactHtmlParser(this.state.c1)}</p>
             <StarBorderIcon className="cardi" />
             <FilterListIcon className="cardf" />
           </div>
           <div className="card1">
             <div className="card2">
               <span>
-                <h3>{ReactHtmlParser (this.state.ch2)}</h3>
+                <h3>{ReactHtmlParser(this.state.ch2)}</h3>
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/card2.jpg"
                   alt="Smiley face"
@@ -420,14 +423,14 @@ class Home extends Component {
                 ></img>
               </span>
             </div>
-            <p>{ReactHtmlParser (this.state.c2)}</p>
+            <p>{ReactHtmlParser(this.state.c2)}</p>
             <WhatshotIcon className="cardi" />
             <FilterListIcon className="cardf" />
           </div>
           <div className="card1">
             <div className="card2">
               <span>
-                <h3>{ReactHtmlParser (this.state.ch3)}</h3>
+                <h3>{ReactHtmlParser(this.state.ch3)}</h3>
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/card3.jpg"
                   alt="Smiley face"
@@ -436,14 +439,14 @@ class Home extends Component {
                 ></img>
               </span>
             </div>
-            <p>{ReactHtmlParser (this.state.c3)}</p>
+            <p>{ReactHtmlParser(this.state.c3)}</p>
             <BuildIcon className="cardi" />
             <FilterListIcon className="cardf" />
           </div>
           <div className="card1">
             <div className="card2">
               <span>
-                <h3>{ReactHtmlParser (this.state.ch4)}</h3>
+                <h3>{ReactHtmlParser(this.state.ch4)}</h3>
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/card4.jpg"
                   alt="Smiley face"
@@ -452,16 +455,16 @@ class Home extends Component {
                 ></img>
               </span>
             </div>
-            <p>{ReactHtmlParser (this.state.c4)}</p>
+            <p>{ReactHtmlParser(this.state.c4)}</p>
             <a target="4" href={this.state.u4}>
-            {ReactHtmlParser (this.state.buttons[0])}
+              {ReactHtmlParser(this.state.buttons[0])}
             </a>
             <FilterListIcon className="cardf" />
           </div>
           <div className="card1">
             <div className="card2">
               <span>
-                <h3>{ReactHtmlParser (this.state.ch5)}</h3>
+                <h3>{ReactHtmlParser(this.state.ch5)}</h3>
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/card5.jpg"
                   alt="Smiley face"
@@ -470,16 +473,16 @@ class Home extends Component {
                 ></img>
               </span>
             </div>
-            <p>{ReactHtmlParser (this.state.c5)}</p>
+            <p>{ReactHtmlParser(this.state.c5)}</p>
             <a target="5" href={this.state.u5}>
-            {ReactHtmlParser (this.state.buttons[0])}
+              {ReactHtmlParser(this.state.buttons[0])}
             </a>
             <FilterListIcon className="cardf" />
           </div>
           <div className="card1">
             <div className="card2">
               <span>
-                <h3>{ReactHtmlParser (this.state.ch6)}</h3>
+                <h3>{ReactHtmlParser(this.state.ch6)}</h3>
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/card6.jpg"
                   alt="Smiley face"
@@ -488,16 +491,16 @@ class Home extends Component {
                 ></img>
               </span>
             </div>
-            <p>{ReactHtmlParser (this.state.c6)}</p>
+            <p>{ReactHtmlParser(this.state.c6)}</p>
             <a target="6" href={this.state.u6}>
-            {ReactHtmlParser (this.state.buttons[0])}
+              {ReactHtmlParser(this.state.buttons[0])}
             </a>
             <FilterListIcon className="cardf" />
           </div>
         </section>
         <section id="iq" className="inq">
           <div className="rh">
-            <h1>{ReactHtmlParser (this.state.buttons[1])}</h1>
+            <h1>{ReactHtmlParser(this.state.buttons[1])}</h1>
           </div>
           <br></br>
           <form
@@ -588,7 +591,7 @@ class Home extends Component {
                 onChange={this.handleChange}
                 options={this.state.options}
                 styles={customStyles}
-                placeholder={ReactHtmlParser (this.state.buttons[3])}
+                placeholder={ReactHtmlParser(this.state.buttons[3])}
               />
             </div>
             <SubjectIcon
@@ -637,7 +640,7 @@ class Home extends Component {
               variant="contained"
               type="submit"
             >
-              {ReactHtmlParser (this.state.buttons[2])}
+              {ReactHtmlParser(this.state.buttons[2])}
             </Button>
             <div style={{ height: "75px" }}>
               <div style={this.state.disp}>

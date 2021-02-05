@@ -82,19 +82,21 @@ axios
         if (
           parsedData.data[i * 2 - 1][0] &&
           parsedData.data[i * 2 - 1][1] &&
+          parsedData.data[i * 2 - 1][2] &&
           parsedData.data[i * 2][0] &&
-          parsedData.data[i * 2][1]
+          parsedData.data[i * 2][1] &&
+          parsedData.data[i * 2][2]
         ) {
-          parsedData3.push({
-            ["seti" + i]: [
+          parsedData3.push(
+            [
               parsedData.data[i * 2 - 1][0],
-              parsedData.data[i * 2][0],
-            ],
-            ["setm" + i]: [
               parsedData.data[i * 2 - 1][1],
+              parsedData.data[i * 2 - 1][2],
+              parsedData.data[i * 2][0],
               parsedData.data[i * 2][1],
-            ],
-          });
+              parsedData.data[i * 2][2],
+            ]
+          );
         } else {
           return { parsedData3: undefined };
         }
@@ -157,12 +159,12 @@ axios
       parsedData.data[11][4],
       parsedData.data[12][4],
     ];
-    let l = parsedData.data.length - 44;
+    let l = parsedData.data.length - 40;
     let parsedData1 = [];
     for (let i = 1; i <= l; i++) {
       parsedData1.push({
-        value: parsedData.data[43 + i][1],
-        label: parsedData.data[43 + i][1],
+        value: parsedData.data[39 + i][1],
+        label: parsedData.data[39 + i][1],
       });
     }
     return { parsedData: parsedData, parsedData1: parsedData1, b: b };
@@ -449,27 +451,23 @@ app.post("/hom", function (req, res) {
       a: {
         m1: parsedData.data[21][1],
         m2: parsedData.data[22][1],
-        v1: parsedData.data[23][1],
-        v2: parsedData.data[24][1],
-        v3: parsedData.data[25][1],
-        v4: parsedData.data[26][1],
-        qh: parsedData.data[27][1],
-        q: parsedData.data[28][1],
-        ch1: parsedData.data[29][1],
-        ch2: parsedData.data[30][1],
-        ch3: parsedData.data[31][1],
-        ch4: parsedData.data[32][1],
-        ch5: parsedData.data[33][1],
-        ch6: parsedData.data[34][1],
-        c1: parsedData.data[35][1],
-        c2: parsedData.data[36][1],
-        c3: parsedData.data[37][1],
-        c4: parsedData.data[38][1],
-        c5: parsedData.data[39][1],
-        c6: parsedData.data[40][1],
-        u4: parsedData.data[41][1],
-        u5: parsedData.data[42][1],
-        u6: parsedData.data[43][1],
+        qh: parsedData.data[23][1],
+        q: parsedData.data[24][1],
+        ch1: parsedData.data[25][1],
+        ch2: parsedData.data[26][1],
+        ch3: parsedData.data[27][1],
+        ch4: parsedData.data[28][1],
+        ch5: parsedData.data[29][1],
+        ch6: parsedData.data[30][1],
+        c1: parsedData.data[31][1],
+        c2: parsedData.data[32][1],
+        c3: parsedData.data[33][1],
+        c4: parsedData.data[34][1],
+        c5: parsedData.data[35][1],
+        c6: parsedData.data[36][1],
+        u4: parsedData.data[37][1],
+        u5: parsedData.data[38][1],
+        u6: parsedData.data[39][1],
         options: parsedData1,
         svg: parsedData.data[1][2],
         buttons: [b[10], b[9], b[8], b[11]],
@@ -505,6 +503,7 @@ app.post("/hom", function (req, res) {
         options: [{ value: "error", label: "error" }],
         svg: "error",
         buttons: ["error", "error", "error", "error"],
+        vid: ["error"],
       },
     });
   }
