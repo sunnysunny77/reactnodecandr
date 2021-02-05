@@ -50,11 +50,9 @@ export default class Blog extends React.Component {
    axios
       .get(`/ong`)
       .then((res) => {
-       
-        this.setState({
+       this.setState({
           buttons: res.data.buttons,
         });
-        console.log(res.data.doc)
         return this.tab(res.data.doc);
       })
       .catch((error) => {
