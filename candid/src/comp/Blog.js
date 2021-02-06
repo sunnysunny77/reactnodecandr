@@ -1,5 +1,6 @@
 import React from "react";
 import "./Blog.scss";
+import styles from './Blog.module.scss'; 
 import Alertm from "./Alertm.js";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -21,7 +22,7 @@ import ReactHtmlParser from 'react-html-parser';
 const StyledExpansionPanel = withStyles(() => ({
   root: {
     margin: 0,
-    backgroundColor: "black",
+    backgroundColor: styles.bl,
   },
 }))(ExpansionPanel);
 
@@ -244,7 +245,7 @@ export default class Blog extends React.Component {
             <br></br>
             {this.state.txt}
           </div>
-          <div style={{ backgroundColor: "black" }}>
+          <div style={{ backgroundColor: styles.bl }}>
             <StyledExpansionPanel>
               <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon className="blogs" />}
@@ -267,10 +268,10 @@ export default class Blog extends React.Component {
                     className="float"
                     InputProps={{
                       style: {
-                        color: "black",
+                        color: styles.bl,
                         fontSize: "120%",
                         borderRadius: 0,
-                        backgroundColor: "white",
+                        backgroundColor: styles.wi,
                       },
                       startAdornment: (
                         <InputAdornment position="start">
@@ -288,10 +289,10 @@ export default class Blog extends React.Component {
                     className="float"
                     InputProps={{
                       style: {
-                        color: "black",
+                        color: styles.bl,
                         fontSize: "120%",
                         borderRadius: 0,
-                        backgroundColor: "white",
+                        backgroundColor: styles.wi,
                       },
                       startAdornment: (
                         <InputAdornment position="start">
@@ -309,10 +310,10 @@ export default class Blog extends React.Component {
                     className="float"
                     InputProps={{
                       style: {
-                        color: "black",
+                        color: styles.bl,
                         fontSize: "120%",
                         borderRadius: 0,
-                        backgroundColor: "white",
+                        backgroundColor: styles.wi,
                       },
                       startAdornment: (
                         <InputAdornment position="start">
@@ -333,12 +334,12 @@ export default class Blog extends React.Component {
                     InputProps={{
                       disableUnderline: true,
                       style: {
-                        color: "black",
+                        color: styles.bl,
                         fontSize: "120%",
                         display: "block",
                         width: "100%",
                         height: "135px",
-                        backgroundColor: "white",
+                        backgroundColor: styles.wi,
                         overflowY: "auto",
                         overflowX: "hidden",
                         paddingTop: "10px",
@@ -365,8 +366,8 @@ export default class Blog extends React.Component {
                   </div>
                   <Button
                     style={{
-                      color: "white",
-                      backgroundColor: "black",
+                      color: styles.wi,
+                      backgroundColor: styles.bl,
                       width: "100%",
                       height: "60px",
                       fontSize: "120%",
@@ -410,10 +411,10 @@ export default class Blog extends React.Component {
                     className="float"
                     InputProps={{
                       style: {
-                        color: "black",
+                        color: styles.bl,
                         fontSize: "120%",
                         borderRadius: 0,
-                        backgroundColor: "white",
+                        backgroundColor: styles.wi,
                       },
                       startAdornment: (
                         <InputAdornment position="start">
@@ -431,10 +432,10 @@ export default class Blog extends React.Component {
                     className="float"
                     InputProps={{
                       style: {
-                        color: "black",
+                        color: styles.bl,
                         fontSize: "120%",
                         borderRadius: 0,
-                        backgroundColor: "white",
+                        backgroundColor: styles.wi,
                       },
                       startAdornment: (
                         <InputAdornment position="start">
@@ -450,8 +451,8 @@ export default class Blog extends React.Component {
                   />
                   <Button
                     style={{
-                      color: "white",
-                      backgroundColor: "black",
+                      color: styles.wi,
+                      backgroundColor: styles.bl,
                       width: "100%",
                       height: "60px",
                       fontSize: "120%",

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import Vivus from "vivus";
-import "./Home.scss";
+import './Home.scss'; 
+import styles from './Home.module.scss'; 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
@@ -30,25 +31,25 @@ const customStyles = {
     marginTop: "10px",
   }),
   menu: () => ({
-    backgroundColor: "white",
+    backgroundColor: styles.wi,
     textAlign: "center",
-    color: "black",
+    color: styles.bl,
   }),
   option: () => ({
-    fontFamily: "Roboto ,Helvetica , Arial , sans-serif ",
+    fontFamily: styles.f3,
     fontWeight: 400,
     cursor: "pointer",
   }),
   singleValue: () => ({
-    color: "black",
+    color: styles.bl,
     marginLeft: "10px",
   }),
   control: () => ({
-    backgroundColor: "white",
+    backgroundColor: styles.wi,
     width: "210px",
-    color: "black",
+    color: styles.bl,
     height: "80px",
-    fontFamily: "Roboto ,Helvetica , Arial , sans-serif ",
+    fontFamily: styles.f3,
     fontWeight: 400,
     marginLeft: "2%",
     borderTopRightRadius: 5,
@@ -349,7 +350,7 @@ class Home extends Component {
         {this.state.w}
         <section className="welcome">
           <div id="w1">
-            <svg id="my-svg" viewBox="0 0 500 500" />
+            <svg id="my-svg" viewBox="0 0 512.062 512.062" />
             <h1>{ReactHtmlParser(this.state.m1)}</h1>
           </div>
           <div id="w2">
@@ -508,8 +509,8 @@ class Home extends Component {
             autoComplete="off"
             style={{
               width: "100%",
-              fontFamily: "Lucida Sans Unicode, Lucida Grande, sans-serif",
-              color: "white",
+              fontFamily: styles.f3,
+              color: styles.wi,
             }}
             onSubmit={this.subic}
           >
@@ -517,9 +518,9 @@ class Home extends Component {
               className="www"
               InputProps={{
                 style: {
-                  color: "black",
+                  color: styles.bl,
                   marginLeft: "2%",
-                  backgroundColor: "white",
+                  backgroundColor: styles.wi,
                   borderRadius: 0,
                   fontSize: "120%",
                 },
@@ -539,9 +540,9 @@ class Home extends Component {
               className="www"
               InputProps={{
                 style: {
-                  color: "black",
+                  color: styles.bl,
                   marginLeft: "2%",
-                  backgroundColor: "white",
+                  backgroundColor: styles.wi,
                   borderRadius: 0,
                   fontSize: "120%",
                 },
@@ -564,9 +565,9 @@ class Home extends Component {
               }}
               InputProps={{
                 style: {
-                  color: "black",
+                  color: styles.bl,
                   marginLeft: "2%",
-                  backgroundColor: "white",
+                  backgroundColor: styles.wi,
                   borderRadius: 0,
                   fontSize: "120%",
                 },
@@ -583,7 +584,7 @@ class Home extends Component {
               onChange={this.change}
             />
             <div style={{ height: "220px", marginTop: "5px" }}>
-              <ListIcon style={{ color: "white", marginLeft: "27.5px" }} />
+              <ListIcon style={{ color: styles.wi, marginLeft: "27.5px" }} />
               <Select
                 classNamePrefix="react-select"
                 maxMenuHeight={100}
@@ -596,7 +597,7 @@ class Home extends Component {
             </div>
             <SubjectIcon
               style={{
-                color: "white",
+                color: styles.wi,
                 marginLeft: "12.5px",
                 marginBottom: "7.5px",
                 display: "block",
@@ -610,11 +611,11 @@ class Home extends Component {
               InputProps={{
                 disableUnderline: true,
                 style: {
-                  color: "black",
+                  color: styles.bl,
                   display: "block",
                   width: "100%",
                   height: "150px",
-                  backgroundColor: "white",
+                  backgroundColor: styles.wi,
                   borderRadius: 0,
                   overflowY: "auto",
                   overflowX: "hidden",
@@ -629,8 +630,8 @@ class Home extends Component {
             />
             <Button
               style={{
-                color: "white",
-                backgroundColor: "black",
+                color: styles.wi,
+                backgroundColor: styles.bl,
                 width: "100%",
                 height: "60px",
                 fontSize: "120%",
