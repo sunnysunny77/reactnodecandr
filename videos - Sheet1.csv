@@ -1,4 +1,4 @@
-images ↓ Must be multiple of 2,Videos ↓ Must be multiple of 2,Names ↓ Must be multiple of 2
+images ↓ Must be multiple of 2 400X400,Videos ↓ Must be multiple of 2,Names ↓ Must be multiple of 2
 https://candid.s3-ap-southeast-2.amazonaws.com/v1.jpg,https://candid.s3-ap-southeast-2.amazonaws.com/v1.mp4,Video 
 https://candid.s3-ap-southeast-2.amazonaws.com/v2.jpg,https://candid.s3-ap-southeast-2.amazonaws.com/v2.mp4,Video 
 https://candid.s3-ap-southeast-2.amazonaws.com/v3.jpg,https://candid.s3-ap-southeast-2.amazonaws.com/v3.mp4,Video 
