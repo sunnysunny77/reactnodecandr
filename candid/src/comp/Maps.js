@@ -24,7 +24,7 @@ export default class Maps extends Component {
     this.setState({
       map: this.state.data.map((key, index) => {
         return (
-          <React.Fragment>
+          <React.Fragment key={index}>
             <Source
               id={"data" + index}
               type="geojson"

@@ -178,7 +178,7 @@ class Home extends Component {
       })
       .then(() => {
         this.setState({
-          vi: this.state.vid.map((key, index) => {
+          vi: this.state.vid.map(( key,index) => {
             let d;
             if (index === 0) {
               d = "inline-block";
@@ -186,7 +186,7 @@ class Home extends Component {
               d = "none";
             }
             return (
-              <React.Fragment>
+              <React.Fragment key={index}>
                 <span
                   className={ReactHtmlParser("vt &nbsp d" + [index + 1])}
                   style={{ display: d }}

@@ -10,21 +10,21 @@ import TitleIcon from "@material-ui/icons/Title";
 import Button from "@material-ui/core/Button";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
 import { withStyles } from "@material-ui/core/styles";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import axios from "axios";
 import Resizer from "react-image-file-resizer";
 import ReactHtmlParser from 'react-html-parser'; 
 
-const StyledExpansionPanel = withStyles(() => ({
+const StyledAccordion = withStyles(() => ({
   root: {
     margin: 0,
     backgroundColor: styles.bl,
   },
-}))(ExpansionPanel);
+}))(Accordion);
 
 export default class Blog extends React.Component {
   constructor(props) {
@@ -246,8 +246,8 @@ export default class Blog extends React.Component {
             {this.state.txt}
           </div>
           <div style={{ backgroundColor: styles.bl }}>
-            <StyledExpansionPanel>
-              <ExpansionPanelSummary
+            <StyledAccordion>
+              <AccordionSummary
                 expandIcon={<ExpandMoreIcon className="blogs" />}
                 aria-controls="panel2a-content"
                 id="panel2a-header"
@@ -255,8 +255,8 @@ export default class Blog extends React.Component {
                 <div className="blogh">
                   <h2>{ReactHtmlParser (this.state.buttons[1])}</h2>
                 </div>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
+              </AccordionSummary>
+              <AccordionDetails>
                 <form
                   id="a6"
                   className="form"
@@ -387,10 +387,10 @@ export default class Blog extends React.Component {
                     </div>
                   </div>
                 </form>
-              </ExpansionPanelDetails>
-            </StyledExpansionPanel>
-            <StyledExpansionPanel>
-              <ExpansionPanelSummary
+              </AccordionDetails>
+            </StyledAccordion>
+            <StyledAccordion>
+              <AccordionSummary
                 expandIcon={<ExpandMoreIcon className="blogs" />}
                 aria-controls="panel2a-content"
                 id="panel2a-header"
@@ -398,8 +398,8 @@ export default class Blog extends React.Component {
                 <div className="blogh">
                   <h2>{ReactHtmlParser (this.state.buttons[2])}</h2>
                 </div>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
+              </AccordionSummary>
+              <AccordionDetails>
                 <form
                   id="a2"
                   className="form0"
@@ -472,8 +472,8 @@ export default class Blog extends React.Component {
                     </div>
                   </div>
                 </form>
-              </ExpansionPanelDetails>
-            </StyledExpansionPanel>
+              </AccordionDetails>
+            </StyledAccordion>
           </div>
         </section>
       </React.Fragment>
