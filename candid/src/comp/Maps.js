@@ -24,7 +24,7 @@ export default class Maps extends Component {
     this.setState({
       map: this.state.data.map((key, index) => {
         return (
-          <div key={index}>
+          <React.Fragment>
             <Source
               id={"data" + index}
               type="geojson"
@@ -39,7 +39,7 @@ export default class Maps extends Component {
                 "fill-opacity": 0.8,
               }}
             />
-          </div>
+          </React.Fragment>
         );
       }),
     });
