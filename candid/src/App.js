@@ -23,7 +23,7 @@ function App() {
       <footer>
         <img
           style={{ paddingBottom: "10px", paddingTop: "10px" }}
-          src="https://candid.s3-ap-southeast-2.amazonaws.com/foot.jpg"
+          src="https://candid.s3-ap-southeast-2.amazonaws.com/foot.png"
           alt="Smiley face"
           width="40"
           height="40"
