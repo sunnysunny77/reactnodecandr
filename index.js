@@ -503,7 +503,14 @@ app.post("/hom", function (req, res) {
         options: [{ value: "error", label: "error" }],
         svg: "error",
         buttons: ["error", "error", "error", "error"],
-        vid: ["error"],
+        vid: [[
+          "error",
+          "error",
+          "error",
+          "error",
+          "error",
+          "error",
+        ]],
       },
     });
   }
