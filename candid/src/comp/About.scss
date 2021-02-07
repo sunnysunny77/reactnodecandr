@@ -11,7 +11,7 @@
   color: $c1;
   background-color: $c5;
   border: 2px solid $c2;
-  border-radius: 5px;
+  border-radius: 2.5px;
   font-family: $font1;
   font-size: 120%;
   box-shadow: 0 0 20px $c2;
@@ -59,6 +59,7 @@
   float: left;
   padding: 190px 285px;
   margin-left: 130px;
+  border-radius: 10px;
 }
 
 .about1 button {
@@ -118,6 +119,7 @@
     display: block;
     margin: 20px auto 90px auto;
     padding: 33%;
+    border-radius: 0;
   }
   .about1 #s3 {
     padding-left: 0;
