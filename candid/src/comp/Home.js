@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import Vivus from "vivus";
-import './Home.scss'; 
-import styles from './Home.module.scss'; 
+import "./Home.scss";
+import styles from "./Home.module.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
@@ -68,7 +68,7 @@ class Home extends Component {
         slidesToScroll: 1,
         arrows: false,
         autoplay: true,
-        speed: 1000,
+        speed: 500,
         pauseOnHover: false,
         fade: true,
         beforeChange: this.vidt,
@@ -178,7 +178,7 @@ class Home extends Component {
       })
       .then(() => {
         this.setState({
-          vi: this.state.vid.map(( key,index) => {
+          vi: this.state.vid.map((key, index) => {
             let d;
             if (index === 0) {
               d = "inline-block";
@@ -199,6 +199,7 @@ class Home extends Component {
                   className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
                   style={{
                     backgroundImage: "url('" + this.state.vid[index][0] + "')",
+                    backgroundColor: styles.wg,
                     display: d,
                   }}
                 ></span>
@@ -215,6 +216,7 @@ class Home extends Component {
                   className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
                   style={{
                     backgroundImage: "url('" + this.state.vid[index][3] + "')",
+                    backgroundColor: styles.wg,
                     display: d,
                   }}
                 ></span>
@@ -232,52 +234,62 @@ class Home extends Component {
   };
   vidd = (v) => {
     let c = this.state.count + v;
+    let x = this.state.count;
     if (c > 0 && c <= this.state.vid.length) {
-      document.getElementsByClassName("d" + this.state.count)[1].style.display =
-        "none";
-      document.getElementsByClassName("d" + this.state.count)[3].style.display =
-        "none";
-      document.getElementsByClassName("d" + this.state.count)[0].style.display =
-        "none";
-      document.getElementsByClassName("d" + this.state.count)[2].style.display =
+      document.querySelector(".vid").classList.add("flip");
+      setTimeout(() => {
+        document.querySelector(".vid").classList.remove("flip");
+      }, 500);
+      document.getElementsByClassName("d" + x)[1].style.display =
         "none";
       document.getElementsByClassName("d" + c)[1].style.display =
         "inline-block";
+      document.getElementsByClassName("d" + x)[3].style.display =
+        "none";
       document.getElementsByClassName("d" + c)[3].style.display =
         "inline-block";
+      document.getElementsByClassName("d" + x)[0].style.display =
+        "none";
       document.getElementsByClassName("d" + c)[0].style.display =
         "inline-block";
+      document.getElementsByClassName("d" + x)[2].style.display =
+        "none";
       document.getElementsByClassName("d" + c)[2].style.display =
         "inline-block";
       this.setState({ count: c });
     }
   };
   vidt = () => {
-    document.getElementsByClassName("d" + this.state.count)[1].style.display =
-      "none";
-    document.getElementsByClassName("d" + this.state.count)[3].style.display =
-      "none";
-    document.getElementsByClassName("d" + this.state.count)[0].style.display =
-      "none";
-    document.getElementsByClassName("d" + this.state.count)[2].style.display =
-      "none";
-    if (this.state.count < this.state.vid.length) {
-      this.setState({ count: this.state.count + 1 });
-    } else {
-      this.setState({ count: 1 });
-    }
-    document.getElementsByClassName("d" + this.state.count)[1].style.display =
-      "inline-block";
-    document.getElementsByClassName("d" + this.state.count)[3].style.display =
-      "inline-block";
-    document.getElementsByClassName("d" + this.state.count)[0].style.display =
-      "inline-block";
-    document.getElementsByClassName("d" + this.state.count)[2].style.display =
-      "inline-block";
     document.querySelector(".vid").classList.add("flip");
     setTimeout(() => {
       document.querySelector(".vid").classList.remove("flip");
-    }, 1000);
+    }, 500);
+    let c = this.state.count;
+    if (c < this.state.vid.length) {
+      document.getElementsByClassName("d" + c)[1].style.display = "none";
+      document.getElementsByClassName("d" + [c + 1])[1].style.display =
+        "inline-block";
+      document.getElementsByClassName("d" + c)[3].style.display = "none";
+      document.getElementsByClassName("d" + [c + 1])[3].style.display =
+        "inline-block";
+      document.getElementsByClassName("d" + c)[0].style.display = "none";
+      document.getElementsByClassName("d" + [c + 1])[0].style.display =
+        "inline-block";
+      document.getElementsByClassName("d" + c)[2].style.display = "none";
+      document.getElementsByClassName("d" + [c + 1])[2].style.display =
+        "inline-block";
+      this.setState({ count: c + 1 });
+    } else {
+      document.getElementsByClassName("d" + c)[1].style.display = "none";
+      document.getElementsByClassName("d1")[1].style.display = "inline-block";
+      document.getElementsByClassName("d" + c)[3].style.display = "none";
+      document.getElementsByClassName("d1")[3].style.display = "inline-block";
+      document.getElementsByClassName("d" + c)[0].style.display = "none";
+      document.getElementsByClassName("d1")[0].style.display = "inline-block";
+      document.getElementsByClassName("d" + c)[2].style.display = "none";
+      document.getElementsByClassName("d1")[2].style.display = "inline-block";
+      this.setState({ count: 1 });
+    }
   };
   handleChange = (selectedOption) => {
     this.setState({ selectedOption, disp: { display: "none" } });
