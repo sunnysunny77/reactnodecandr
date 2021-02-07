@@ -4,14 +4,14 @@
 
 .slick-slide img {
   width: 100%;
-  min-height: 140px;
+  min-height: 130px;
 }
 
 /* welcome */
 
 .welcome {
   position: absolute;
-  margin: 2.5% 0 0 5%;
+  margin: 2% 0 0 5%;
   z-index: 997;
 }
 
@@ -53,9 +53,9 @@
   animation: slide2;
   animation-duration: 2s;
   animation-fill-mode: forwards;
-  margin: 1% 0 0 1%;
-  padding: 1%;
-  width: 265px;
+  margin: 3% 0 0 2.5%;
+  padding: 2%;
+  width: 285px;
 }
 
 #w2 h2 {
