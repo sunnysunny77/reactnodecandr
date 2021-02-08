@@ -362,7 +362,7 @@ class Home extends Component {
         {this.state.w}
         <section className="welcome">
           <div id="w1">
-            <svg id="my-svg" viewBox="0 0 512.062 512.062" />
+            <svg id="my-svg" viewBox="0 0 500 500" />
             <h1>{ReactHtmlParser(this.state.m1)}</h1>
           </div>
           <div id="w2">
