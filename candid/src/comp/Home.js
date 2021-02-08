@@ -397,14 +397,13 @@ class Home extends Component {
             <div className="info1"></div>
           </div>
           <div className="info2">
-            <hr />
-            <InfoIcon id="inf" />
-            <h2>{ReactHtmlParser(this.state.qh)}</h2>
-            <hr />
+            <hr style={{ boxShadow: `0 -5px 5px -5px ${styles.hbs}`, border: "7.5px solid transparent"}} />
+            <h2>{ReactHtmlParser(this.state.qh)}<InfoIcon id="inf" /></h2>
+            <hr style={{ boxShadow: ` 0 5px 5px -5px ${styles.hbs}`, border: "7.5px solid transparent"}} />
             <p>
               <q>{ReactHtmlParser(this.state.q)}</q>
             </p>
-            <hr />
+            <hr style={{ boxShadow: `0 -5px 5px -5px ${styles.hbs}` , border: "7.5px solid transparent"}} />
           </div>
         </section>
         <section className="card">

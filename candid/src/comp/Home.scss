@@ -145,8 +145,8 @@
 
 .info {
   height: 500px;
-  background-color: $c1;
-  box-shadow: 0 0 10px $c2;
+  background-color: $c12;
+  box-shadow: 0 0 7.5px $c2;
 }
 
 .info0 {
@@ -154,16 +154,16 @@
   width: 200px;
   float: left;
   margin-left: 10%;
-  background-color: $c1;
-  box-shadow: -5px 0 5px -5px $c2,
-    5px 0 5px -5px $c2;
+  background-color: $c12;
+  box-shadow: -7.5px 0 7.5px -7.5px $c2,
+  7.5px 0 7.5px -7.5px $c2;
 }
 
 .info1 {
   margin-top: 35%;
   width: 81.63%;
   height: 32.65%;
-  border: 5px solid $c3;
+  border: 2.5px solid $c4;
   background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info1.jpg");
   background-position: center;
   background-size: 100% 100%;
@@ -181,26 +181,25 @@
 }
 
 #inf {
-  float: right;
   color: $c3;
-  margin-right: 50px;
-  margin-top: 10px;
+  margin: 0 10px;
 }
 
 .info2 h2 {
-  width: 70%;
+  width: 100%;
+  text-align: right;
   font-family: $font2;
   color: $c3;
   font-weight: bold;
-  margin-left: 10px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 .info2 p {
   color: $c1;
-  border: 2px solid $c4;
-  border-radius: 2.5px;
   background-color: $c4;
+  border: 2px solid $c2;
+  border-radius: 2.5px;
   padding: 25px;
   text-align: center;
 }
