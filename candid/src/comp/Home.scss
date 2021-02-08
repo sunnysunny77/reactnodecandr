@@ -420,6 +420,7 @@
   .vid {
     top: -4px;
     padding: 5% 0;
+    background-color: $c12;
   }
   .vidn {
     border-radius: 0;
@@ -434,12 +435,15 @@
     margin: 0;
   }
   .info0 {
+    background-color: $c11;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;    
     height: 300px;
     width: 100%;
-    background-color: $c6;
-    padding-top: 80px;
     box-shadow: inset 0px -7.5px 7.5px -7.5px $c2;
   }
+
   .info1 {
     margin-top: 0;
     width: 200px;
