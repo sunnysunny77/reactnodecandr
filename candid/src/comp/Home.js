@@ -176,14 +176,17 @@ class Home extends Component {
       })
       .then(() => {
         new Vivus("my-svg", { duration: 200 });
+        function preloadImage(url) {
+          new Image().src = url;
+        }
+        for (let index in this.state.vid) {
+        preloadImage(this.state.vid[index][0])
+        preloadImage(this.state.vid[index][3])
+        }
       })
       .then(() => {
         this.setState({
           vi: this.state.vid.map((key, index) => {
-            let img = new Image();
-            img.src = this.state.vid[index][0];
-            let img0 = new Image();
-            img0.src = this.state.vid[index][3];
             let d;
             if (index === 0) {
               d = "inline-block";
@@ -205,6 +208,7 @@ class Home extends Component {
                   style={{
                   backgroundImage: "url('" +this.state.vid[index][0] + "')",
                   display: d,
+                  backgroundColor: styles.wg,
                   }}
                 ></span>
                 <span
@@ -220,6 +224,7 @@ class Home extends Component {
                   style={{
                     backgroundImage: "url('" + this.state.vid[index][3] + "')",
                     display: d,
+                    backgroundColor: styles.wg,
                   }}
                 ></span>
               </React.Fragment>
@@ -258,36 +263,37 @@ class Home extends Component {
     }
   };
   vidt = () => {
-    document.querySelector(".vid").classList.add("flip");
-    setTimeout(() => {
-      document.querySelector(".vid").classList.remove("flip");
-    }, 500);
     let c = this.state.count;
     if (c < this.state.vid.length) {
       document.getElementsByClassName("d" + c)[1].style.display = "none";
-      document.getElementsByClassName("d" + [c + 1])[1].style.display =
-        "inline-block";
       document.getElementsByClassName("d" + c)[3].style.display = "none";
+      document.getElementsByClassName("d" + [c + 1])[1].style.display =
+      "inline-block";
       document.getElementsByClassName("d" + [c + 1])[3].style.display =
         "inline-block";
       document.getElementsByClassName("d" + c)[0].style.display = "none";
-      document.getElementsByClassName("d" + [c + 1])[0].style.display =
-        "inline-block";
+     
       document.getElementsByClassName("d" + c)[2].style.display = "none";
+      document.getElementsByClassName("d" + [c + 1])[0].style.display =
+      "inline-block";
       document.getElementsByClassName("d" + [c + 1])[2].style.display =
         "inline-block";
       this.setState({ count: c + 1 });
     } else {
       document.getElementsByClassName("d" + c)[1].style.display = "none";
-      document.getElementsByClassName("d1")[1].style.display = "inline-block";
       document.getElementsByClassName("d" + c)[3].style.display = "none";
+      document.getElementsByClassName("d1")[1].style.display = "inline-block";
       document.getElementsByClassName("d1")[3].style.display = "inline-block";
       document.getElementsByClassName("d" + c)[0].style.display = "none";
-      document.getElementsByClassName("d1")[0].style.display = "inline-block";
       document.getElementsByClassName("d" + c)[2].style.display = "none";
+      document.getElementsByClassName("d1")[0].style.display = "inline-block";
       document.getElementsByClassName("d1")[2].style.display = "inline-block";
       this.setState({ count: 1 });
     }
+    document.querySelector(".vid").classList.add("flip");
+    setTimeout(() => {
+      document.querySelector(".vid").classList.remove("flip");
+    }, 500);
   };
   handleChange = (selectedOption) => {
     this.setState({ selectedOption, disp: { display: "none" } });
