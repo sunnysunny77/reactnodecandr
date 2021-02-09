@@ -24,6 +24,7 @@ import ListIcon from "@material-ui/icons/List";
 import Select from "react-select";
 import ReactHtmlParser from "react-html-parser";
 
+
 const customStyles = {
   placeholder: () => ({
     opacity: 0.5,
@@ -179,6 +180,10 @@ class Home extends Component {
       .then(() => {
         this.setState({
           vi: this.state.vid.map((key, index) => {
+            let img = new Image();
+            img.src = this.state.vid[index][0];
+            let img0 = new Image();
+            img0.src = this.state.vid[index][3];
             let d;
             if (index === 0) {
               d = "inline-block";
@@ -198,12 +203,10 @@ class Home extends Component {
                 <span
                   className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
                   style={{
-                    backgroundImage: "url('" + this.state.vid[index][0] + "')",
-                    backgroundColor: styles.wg,
-                    display: d,
+                  backgroundImage: "url('" +this.state.vid[index][0] + "')",
+                  display: d,
                   }}
                 ></span>
-
                 <span
                   className={ReactHtmlParser("vt &nbsp d" + [index + 1])}
                   style={{ display: d }}
@@ -216,7 +219,6 @@ class Home extends Component {
                   className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
                   style={{
                     backgroundImage: "url('" + this.state.vid[index][3] + "')",
-                    backgroundColor: styles.wg,
                     display: d,
                   }}
                 ></span>
@@ -236,10 +238,6 @@ class Home extends Component {
     let c = this.state.count + v;
     let x = this.state.count;
     if (c > 0 && c <= this.state.vid.length) {
-      document.querySelector(".vid").classList.add("flip");
-      setTimeout(() => {
-        document.querySelector(".vid").classList.remove("flip");
-      }, 500);
       document.getElementsByClassName("d" + x)[1].style.display =
         "none";
       document.getElementsByClassName("d" + c)[1].style.display =
