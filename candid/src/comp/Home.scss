@@ -81,15 +81,10 @@
   top: -115px;
 }
 
-
 .vidn {
   margin: 0 2.5% 0 2.5%;
-  text-align: center;
   border-radius: 5px;
-  background-position: center;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  padding: 10.5%;
+  width: 21%;
   box-shadow: 0 0 1.5px $c1;
 }
 
@@ -382,17 +377,14 @@
   #w1 {
     line-height: 20px;  
   }
-  .vt {
-    width: 40%;
+  .vidn, .vt {
+    width: 40%
   }
   #pn1 {
     left: 1.5%;
   }
   #pn2 {
     right: 1.5%;
-  }
-  .vidn {
-    padding: 20%;
   }
   .www {
     width: 98%;

@@ -180,8 +180,8 @@ class Home extends Component {
           new Image().src = url;
         }
         for (let index in this.state.vid) {
-        preloadImage(this.state.vid[index][0])
-        preloadImage(this.state.vid[index][3])
+          preloadImage(this.state.vid[index][0])
+          preloadImage(this.state.vid[index][3])
         }
       })
       .then(() => {
@@ -203,14 +203,13 @@ class Home extends Component {
                   {ReactHtmlParser(this.state.vid[index][2])}{" "}
                   <PlayCircleOutlineIcon className="iv" />
                 </span>
-                <span
+                <img
                   className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
+                  src={this.state.vid[index][0]}
                   style={{
-                  backgroundImage: "url('" +this.state.vid[index][0] + "')",
-                  display: d,
-                  backgroundColor: styles.wg,
-                  }}
-                ></span>
+                    display: d,
+                }}
+                />
                 <span
                   className={ReactHtmlParser("vt &nbsp d" + [index + 1])}
                   style={{ display: d }}
@@ -219,14 +218,13 @@ class Home extends Component {
                   {ReactHtmlParser(this.state.vid[index][5])}{" "}
                   <PlayCircleOutlineIcon className="iv" />
                 </span>
-                <span
+                <img
                   className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
+                  src={this.state.vid[index][3]}
                   style={{
-                    backgroundImage: "url('" + this.state.vid[index][3] + "')",
                     display: d,
-                    backgroundColor: styles.wg,
                   }}
-                ></span>
+                />
               </React.Fragment>
             );
           }),
@@ -245,18 +243,18 @@ class Home extends Component {
     if (c > 0 && c <= this.state.vid.length) {
       document.getElementsByClassName("d" + x)[1].style.display =
         "none";
-      document.getElementsByClassName("d" + c)[1].style.display =
-        "inline-block";
       document.getElementsByClassName("d" + x)[3].style.display =
         "none";
+      document.getElementsByClassName("d" + c)[1].style.display =
+        "inline-block"; 
       document.getElementsByClassName("d" + c)[3].style.display =
         "inline-block";
       document.getElementsByClassName("d" + x)[0].style.display =
         "none";
-      document.getElementsByClassName("d" + c)[0].style.display =
-        "inline-block";
       document.getElementsByClassName("d" + x)[2].style.display =
         "none";
+      document.getElementsByClassName("d" + c)[0].style.display =
+        "inline-block"; 
       document.getElementsByClassName("d" + c)[2].style.display =
         "inline-block";
       this.setState({ count: c });
@@ -272,7 +270,6 @@ class Home extends Component {
       document.getElementsByClassName("d" + [c + 1])[3].style.display =
         "inline-block";
       document.getElementsByClassName("d" + c)[0].style.display = "none";
-     
       document.getElementsByClassName("d" + c)[2].style.display = "none";
       document.getElementsByClassName("d" + [c + 1])[0].style.display =
       "inline-block";
