@@ -383,11 +383,11 @@ class Home extends Component {
         </Slider>
         <section className="vid ">
           <span id="pn1" onClick={() => this.vidd(-1)}>
-            &#8636;
+            &#x21bc;
           </span>
           {this.state.vi}
           <span id="pn2" onClick={() => this.vidd(+1)}>
-            &#8640;
+           &#x21c0;
           </span>
         </section>
         <section className="info">
