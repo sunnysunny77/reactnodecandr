@@ -109,6 +109,8 @@
   text-shadow: 0 0 0.5px $c9;
   font-size: 90%;
   font-style: italic;
+  line-height: 0;
+  padding: 5px 0;
 }
 
 .vt:hover {
@@ -130,6 +132,7 @@
   top: 50%;
   color: $c4;
   opacity: 0.7;
+  font-size: 70%;
 }
 
 #pn1 {
