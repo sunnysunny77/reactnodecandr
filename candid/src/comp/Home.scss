@@ -391,6 +391,15 @@
   }
 }
 
+@media only screen and (max-width: 1200px) and (orientation: landscape) {
+  #pn1 {
+    left: 2.5%;
+  }
+  #pn2 {
+    right: 2.5%;
+  }
+}
+
 @media only screen and (max-width: 992px) {
   #w1 {
     width: 140px;
