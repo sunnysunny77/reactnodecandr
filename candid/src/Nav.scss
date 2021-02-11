@@ -26,6 +26,7 @@
   text-align: center;
   padding-top: 80px;
   font-size: 76%;
+  font-family: $font3;
 }
 
 .menuDraw div button {
@@ -95,10 +96,10 @@ header img {
   background-color: $c3;
   z-index: 999;
   color: $c1;
+  font-family: $font3;
 }
 
 .menu div button {
-  font-family: $font3;
   font-size: 17.5px;
   color: $c1;
   background-color: $c3;

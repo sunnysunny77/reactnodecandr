@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import PhoneIcon from "@material-ui/icons/Phone";
-import axios from "axios";
 import ReactHtmlParser from 'react-html-parser'; 
 
 class Nav extends Component {
@@ -34,39 +33,12 @@ class Nav extends Component {
       },
       s: false,
       dis: { display: "none" },
-      ph: null,
-      time: null,
-      day: null,
-      buttons: [],
     };
   }
   componentDidMount() {
     let a = document.getElementById("di");
     a.addEventListener("click", this.out);
     window.addEventListener("scroll", this.handleScroll);
-    axios
-      .post(`/nav`)
-      .then((res) => {
-        if (res.data.e) {
-          this.setState({
-            ph: res.data.e.ph,
-            time: res.data.e.time,
-            day: res.data.e.day,
-            buttons: res.data.e.buttons,
-          });
-        }
-        if (res.data.a) {
-          this.setState({
-            ph: res.data.a.ph,
-            time: res.data.a.time,
-            day: res.data.a.day,
-            buttons: res.data.a.buttons,
-          });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   }
   componentWillUnmount() {
     let a = document.getElementById("di");
@@ -186,33 +158,33 @@ class Nav extends Component {
               <HomeIcon id="homI" />
             </Link>
             <Link to="/blog">
-              <button>{ReactHtmlParser (this.state.buttons[0])}</button> 
+              <button>{ReactHtmlParser (this.props.buttons[0])}</button> 
             </Link>
             <Link to="/gallery">
-              <button>{ReactHtmlParser (this.state.buttons[1])}</button>
+              <button>{ReactHtmlParser (this.props.buttons[1])}</button>
             </Link>
             <Link to="/contact">
-              <button>{ReactHtmlParser (this.state.buttons[2])}</button>
+              <button>{ReactHtmlParser (this.props.buttons[2])}</button>
             </Link>
             <Link to="/about">
-              <button>{ReactHtmlParser (this.state.buttons[3])}</button>
+              <button>{ReactHtmlParser (this.props.buttons[3])}</button>
             </Link>
             <hr></hr>
           </div>
           <div>
             <PhoneIcon className="phI" />
             <br></br>
-            <a href={"tel:" + this.state.ph}> 
-              {this.state.ph}
+            <a href={"tel:" + this.props.ph}> 
+              {this.props.ph}
             </a>
             <br></br>
             <br></br>
             <AccessTimeIcon className="phI" />
             <br></br>
             <span>
-              {ReactHtmlParser (this.state.time)}
+              {ReactHtmlParser (this.props.time)}
               <br></br>
-              {ReactHtmlParser (this.state.day)}
+              {ReactHtmlParser (this.props.day)}
             </span>
           </div>
           <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logos.png" alt="Smiley face" width="60" height="60"></img>
@@ -223,25 +195,25 @@ class Nav extends Component {
         <div className="menu">
           <div className="mMove">
             <Link to="/blog">
-              <button>{ReactHtmlParser (this.state.buttons[0])}</button> 
+              <button>{ReactHtmlParser (this.props.buttons[0])}</button> 
             </Link>
             <Link to="/gallery">
-              <button>{ReactHtmlParser (this.state.buttons[1])}</button>
+              <button>{ReactHtmlParser (this.props.buttons[1])}</button>
             </Link>
             <Link to="/contact">
-              <button>{ReactHtmlParser (this.state.buttons[2])}</button>
+              <button>{ReactHtmlParser (this.props.buttons[2])}</button>
             </Link>
             <Link to="/about">
-              <button>{ReactHtmlParser (this.state.buttons[3])}</button>
+              <button>{ReactHtmlParser (this.props.buttons[3])}</button>
             </Link>
             <div className="mMove0">
               <PhoneIcon className="apI" />
-              <a href={"tel:" + this.state.ph}> 
-              {this.state.ph}
+              <a href={"tel:" + this.props.ph}> 
+              {this.props.ph}
               </a>
               <AccessTimeIcon className="apI" />
               <span>
-              {ReactHtmlParser (this.state.time)} / {ReactHtmlParser (this.state.day)}
+              {ReactHtmlParser (this.props.time)} / {ReactHtmlParser (this.props.day)}
               </span>
               <Link to="/">
                 <HomeIcon id="homIa" className="apI" />
