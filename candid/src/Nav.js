@@ -180,7 +180,6 @@ class Nav extends Component {
               {ReactHtmlParser (this.props.day)}
             </span>
             <br></br>
-            <br></br>
             <PhoneIcon className="phI" />
             <br></br>
             <a href={"tel:" + this.props.ph}> 

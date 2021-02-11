@@ -1,0 +1,62 @@
+@import "./Variables.scss";
+
+footer {
+  width: 100%;
+  background-image: linear-gradient(180deg, $c11 70%, $c6 95%);
+  border-top: solid $c4 2px;
+  border-bottom: solid $c4 2px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+footer ul {
+  list-style-type: none;
+  text-align: center;
+  margin: 5px auto;
+  background-color: $c11;
+  padding: 0;
+  font-size: 20px;
+  font-family: $font3;
+}
+
+footer ul li {
+  display: inline-block;
+  height: 23px;
+  padding: 0 5px;
+}
+
+footer img {
+  display: block;
+  margin: auto;
+  padding-bottom: 5px;
+}
+
+footer ul li a {
+  color: $c3;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+}
+
+.bl {
+  display: block;
+}
+
+ul li a:hover {
+  color:$c10;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 1200px) {
+  #ul {
+    display: none;
+  }
+  footer {
+    height: 65px;
+  }
+  footer img {
+    padding: 10px  0 10px 0;
+  }
+}
+

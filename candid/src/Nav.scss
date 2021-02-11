@@ -24,8 +24,8 @@
   animation-fill-mode: forwards;
   z-index: 998;
   text-align: center;
-  padding-top: 80px;
-  font-size: 76%;
+  padding-top: 87px;
+  font-size: 5px;
   font-family: $font3;
 }
 
@@ -79,7 +79,7 @@
 header {
   width: 100%;
   height: 90px;
-  background-image: linear-gradient(0deg, $c1 70%, $c6 95%);
+  background-image: linear-gradient(0deg, $c11 70%, $c6 95%);
 }
 
 header img {
@@ -165,9 +165,6 @@ header img {
 }
 
 @media only screen and (max-width: 1200px) {
-  #di {
-    padding-top: 0 !important;
-  }
   .menu {
     display: none !important;
   }
