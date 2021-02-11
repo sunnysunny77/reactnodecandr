@@ -151,7 +151,7 @@ class Nav extends Component {
           <div style={this.state.bar2}></div>
           <div style={this.state.bar3}></div>
         </div>
-        <div className="menuDraw" style={this.state.dis}>
+        <nav className="menuDraw" style={this.state.dis}>
           <div>
             <hr></hr>
             <Link to="/">
@@ -172,13 +172,6 @@ class Nav extends Component {
             <hr></hr>
           </div>
           <div>
-            <PhoneIcon className="phI" />
-            <br></br>
-            <a href={"tel:" + this.props.ph}> 
-              {this.props.ph}
-            </a>
-            <br></br>
-            <br></br>
             <AccessTimeIcon className="phI" />
             <br></br>
             <span>
@@ -186,14 +179,20 @@ class Nav extends Component {
               <br></br>
               {ReactHtmlParser (this.props.day)}
             </span>
+            <br></br>
+            <br></br>
+            <PhoneIcon className="phI" />
+            <br></br>
+            <a href={"tel:" + this.props.ph}> 
+              {this.props.ph}
+            </a>
           </div>
           <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logos.png" alt="Smiley face" width="60" height="60"></img>
-        </div>
+        </nav>
         <header>
           <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logo.png" alt="Smiley face" width="140" height="32"></img>
         </header>
-        <div className="menu">
-          <div className="mMove">
+        <nav className="menu">
             <Link to="/blog">
               <button>{ReactHtmlParser (this.props.buttons[0])}</button> 
             </Link>
@@ -219,8 +218,7 @@ class Nav extends Component {
                 <HomeIcon id="homIa" className="apI" />
               </Link>
             </div>
-          </div>
-        </div>
+        </nav>
       </React.Fragment>
     );
   }

@@ -91,15 +91,16 @@ header img {
 /* menu  */
 
 .menu {
-  width: 100%;
+  width: calc(100% - 50px);
   height: 70px;
   background-color: $c3;
   z-index: 999;
   color: $c1;
   font-family: $font3;
+  padding-left: 50px;
 }
 
-.menu div button {
+.menu button {
   font-size: 17.5px;
   color: $c1;
   background-color: $c3;
@@ -108,22 +109,18 @@ header img {
   margin: 22px;
 }
 
-.menu div span {
+.menu span {
   margin: 0 8px;
 }
 
-.menu div a {
+.menu a {
   color: $c1;
   text-decoration: none;
   margin: 0 8px;
 }
 
-.menu div a:hover {
+.menu a:hover {
   color:$c10;
-}
-
-.mMove {
-  padding-left: 50px;
 }
 
 .mMove0 {
@@ -147,7 +144,7 @@ header img {
   cursor: pointer;
 }
 
-.menu div button:hover {
+.menu button:hover {
   color:$c10;
 }
 

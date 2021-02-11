@@ -60,7 +60,7 @@ footer ul {
 footer ul li {
   display: inline-block;
   height: 23px;
-  padding: 2.5px 5px;
+  padding: 0 5px;
 }
 
 footer img {
@@ -84,6 +84,10 @@ footer ul li a {
 ul li a:hover {
   color:$c10;
   cursor: pointer;
+}
+
+.br {
+  border-right: solid 1px;
 }
 
 .clearfloat {
