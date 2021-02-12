@@ -15,4 +15,6 @@
 
 .image-gallery-image {
   width: 65% !important;
+  border: 2px solid $c2;
+  max-height: initial !important;
 }
