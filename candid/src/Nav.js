@@ -144,6 +144,7 @@ class Nav extends Component {
         });
   };
   render() {
+    let {ph, time, day, buttons} = this.props
     return (
       <React.Fragment>
         <div className="barDraw" onClick={this.bars}>
@@ -158,16 +159,16 @@ class Nav extends Component {
               <HomeIcon id="homI" />
             </Link>
             <Link to="/blog">
-              <button>{ReactHtmlParser (this.props.buttons[0])}</button> 
+              <button>{ReactHtmlParser (buttons[0])}</button> 
             </Link>
             <Link to="/gallery">
-              <button>{ReactHtmlParser (this.props.buttons[1])}</button>
+              <button>{ReactHtmlParser (buttons[1])}</button>
             </Link>
             <Link to="/contact">
-              <button>{ReactHtmlParser (this.props.buttons[2])}</button>
+              <button>{ReactHtmlParser (buttons[2])}</button>
             </Link>
             <Link to="/about">
-              <button>{ReactHtmlParser (this.props.buttons[3])}</button>
+              <button>{ReactHtmlParser (buttons[3])}</button>
             </Link>
             <hr></hr>
           </div>
@@ -175,15 +176,15 @@ class Nav extends Component {
             <AccessTimeIcon className="phI" />
             <br></br>
             <span>
-              {ReactHtmlParser (this.props.time)}
+              {ReactHtmlParser (time)}
               <br></br>
-              {ReactHtmlParser (this.props.day)}
+              {ReactHtmlParser (day)}
             </span>
             <br></br>
             <PhoneIcon className="phI" />
             <br></br>
-            <a href={"tel:" + this.props.ph}> 
-              {this.props.ph}
+            <a href={"tel:" + ph}> 
+              {ph}
             </a>
           </div>
           <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logos.png" alt="Smiley face" width="60" height="60"></img>
@@ -193,25 +194,25 @@ class Nav extends Component {
         </header>
         <nav className="menu">
             <Link to="/blog">
-              <button>{ReactHtmlParser (this.props.buttons[0])}</button> 
+              <button>{ReactHtmlParser (buttons[0])}</button> 
             </Link>
             <Link to="/gallery">
-              <button>{ReactHtmlParser (this.props.buttons[1])}</button>
+              <button>{ReactHtmlParser (buttons[1])}</button>
             </Link>
             <Link to="/contact">
-              <button>{ReactHtmlParser (this.props.buttons[2])}</button>
+              <button>{ReactHtmlParser (buttons[2])}</button>
             </Link>
             <Link to="/about">
-              <button>{ReactHtmlParser (this.props.buttons[3])}</button>
+              <button>{ReactHtmlParser (buttons[3])}</button>
             </Link>
             <div className="mMove0">
               <PhoneIcon className="apI" />
-              <a href={"tel:" + this.props.ph}> 
-              {this.props.ph}
+              <a href={"tel:" + ph}> 
+              {ph}
               </a>
               <AccessTimeIcon className="apI" />
               <span>
-              {ReactHtmlParser (this.props.time)} / {ReactHtmlParser (this.props.day)}
+              {ReactHtmlParser (time)} / {ReactHtmlParser (day)}
               </span>
               <Link to="/">
                 <HomeIcon id="homIa" className="apI" />

@@ -4,6 +4,7 @@ import "./Footer.scss";
 import ReactHtmlParser from "react-html-parser";
 import { Link } from "react-router-dom";
 function Footer(props) {
+ let {ph, time, day, buttons} = props
   return (
     <footer>
       <ul >
@@ -13,23 +14,23 @@ function Footer(props) {
           </Link>
         </li>
         <li className="lid" >
-          <Link to={"/" + props.buttons[0]}>
-            {ReactHtmlParser(props.buttons[0])}
+          <Link to={"/" + buttons[0]}>
+            {ReactHtmlParser(buttons[0])}
           </Link>
         </li>
         <li className="lid">
-          <Link to={"/" + props.buttons[1]}>
-            {ReactHtmlParser(props.buttons[1])}
+          <Link to={"/" + buttons[1]}>
+            {ReactHtmlParser(buttons[1])}
           </Link>
         </li>
         <li  className="lid">
-          <Link to={"/" + props.buttons[2]}>
-            {ReactHtmlParser(props.buttons[2])}
+          <Link to={"/" + buttons[2]}>
+            {ReactHtmlParser(buttons[2])}
           </Link>
         </li>
         <li className="lid">
-          <Link to={"/" + props.buttons[3]}>
-            {ReactHtmlParser(props.buttons[3])}
+          <Link to={"/" + buttons[3]}>
+            {ReactHtmlParser(buttons[3])}
           </Link>
         </li>
         <li className="bl" id="imh">
@@ -41,10 +42,10 @@ function Footer(props) {
         />
         </li>  
         <li className="bl lid">
-          {ReactHtmlParser(props.time)} / {ReactHtmlParser(props.day)}
+          {ReactHtmlParser(time)} / {ReactHtmlParser(day)}
         </li>
         <li className="bl lid">
-          <a href={"tel:" + props.ph}>{props.ph}</a>
+          <a href={"tel:" + ph}>{ph}</a>
         </li>
       </ul>
       
