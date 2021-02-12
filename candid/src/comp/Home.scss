@@ -378,14 +378,17 @@
   #w1 {
     line-height: 20px;  
   }
+  .vid {
+    width: 90%;
+  }
   .vidn, .vt {
     width: 40%
   }
   #pn1 {
-    left: 1.5%;
+    left: -2%;
   }
   #pn2 {
-    right: 1.5%;
+    right: -2%;
   }
   .www {
     width: 98%;
@@ -394,10 +397,10 @@
 
 @media only screen and (max-width: 1200px) and (orientation: landscape) {
   #pn1 {
-    left: 2.5%;
+    left: -1%;
   }
   #pn2 {
-    right: 2.5%;
+    right: -1%;
   }
 }
 
@@ -457,5 +460,6 @@
   }
   .info2 p {
     border-radius: 25px;
+    padding: 20px;
   }
 }
