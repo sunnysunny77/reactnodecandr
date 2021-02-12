@@ -20,14 +20,16 @@
 }
 
 .about0 h2 {
-  text-align: center;
-  margin-right: 43.5%;
+  width: 80%;
+  margin-left: 20%;
+  font-family: $font2;
+  color: $c3;
 }
 
-#infe {
+.infa {
   float: right;
   color: $c2;
-  margin-right: 50px;
+  margin-right: 25px;
 }
 
 .about1 {
@@ -35,12 +37,12 @@
   margin-top: 20px;
 }
 
-.about1 h2,
-.about0 h2 {
+.about1 h2 {
   font-family: $font2;
   color: $c3;
   margin-left: 10px;
-}
+  width: calc(100% - 10px);
+} 
 
 .about1 h3 {
   font-family: $font2;
@@ -142,7 +144,8 @@
     padding: 10px 0;
   }
   .about0 h2 {
-    text-align: left;
+    width: calc(100% - 10px);
+    margin-left: 10px;
   }
   .imga {
     width: 60%;

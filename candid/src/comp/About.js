@@ -73,8 +73,7 @@ export default class About extends React.Component {
         </div>
 
         <section className="about0">
-          <ListAltIcon id="infe" />
-          <h2>{ReactHtmlParser (this.state.hmap)}</h2>
+          <h2>{ReactHtmlParser (this.state.hmap)}  <ListAltIcon className="infa" /> </h2>
           <p className="jus" >{ReactHtmlParser (this.state.cba)}</p>
           <hr />
         </section>
@@ -83,8 +82,8 @@ export default class About extends React.Component {
 
         <section className="about1">
 
-          <ListAltIcon id="infe" />
-          <h2>{ReactHtmlParser (this.state.hm)}</h2>
+          
+          <h2>{ReactHtmlParser (this.state.hm)} <ListAltIcon className="infa" /> </h2>
           <hr />
 
           <Wave>

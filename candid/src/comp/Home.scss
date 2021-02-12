@@ -178,7 +178,7 @@
 }
 
 #inf {
-  color: $c3;
+  color: $c2;
   margin: 0 10px;
 }
 
@@ -198,6 +198,8 @@
   border-radius: 100px;
   padding: 40px;
   text-align: center;
+  font-style: oblique;
+  font-family: $font4;
 }
 
 /* card */
@@ -218,7 +220,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 5% 26px;
+  padding: 2.5% 25px;
   text-align: center;
   font-family: $font3;
   font-weight: 500;
@@ -411,7 +413,7 @@
   }
   .card1 p {
     height: initial;
-    padding: 40px;
+    padding: 35px;
   }
   .card1 {
     padding: 2.5% 0;
@@ -452,5 +454,8 @@
   .info2 {
     padding: 5%;
     width: 90%;
+  }
+  .info2 p {
+    padding: 25px;
   }
 }
