@@ -71,7 +71,6 @@ export default class Contactc extends Component {
           <div className="c1"></div>
           <div className="c2">
             <h2>{ReactHtmlParser (this.state.h)} <ContactsIcon className="infe" /></h2>
-            <hr></hr>
             <p>
               &nbsp;&#8226;&nbsp;{ReactHtmlParser (this.state.et)}
               <br></br>
@@ -105,7 +104,7 @@ export default class Contactc extends Component {
         </section>
         <section className="c3">
           <h2>{ReactHtmlParser (this.state.h2)} <ContactsIcon className="infe" /> </h2>
-          <hr></hr>
+          <hr/>
           <Wave>
             <div className="prop" ><span id="sc" >{ReactHtmlParser (this.state.avail)}</span></div>
           </Wave>

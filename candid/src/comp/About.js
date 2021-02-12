@@ -84,6 +84,7 @@ export default class About extends React.Component {
 
           
           <h2>{ReactHtmlParser (this.state.hm)} <ListAltIcon className="infa" /> </h2>
+        
           <hr />
 
           <Wave>
