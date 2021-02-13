@@ -148,33 +148,20 @@
 
 .info0 {
   height: 100%;
-  width: 200px;
+  width: 400px;
   float: left;
-  margin-left: 10%;
   background-color: $c11;
-  box-shadow: -7.5px 0 7.5px -7.5px $c2,
-  7.5px 0 7.5px -7.5px $c2;
-}
-
-.info1 {
-  margin-top: 35%;
-  width: 81.63%;
-  height: 32.65%;
-  border: 2.5px solid $c4;
-  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info1.jpg");
+  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info1.png");
   background-position: center;
   background-size: 100% 100%;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 100%;
 }
 
 .info2 {
-  width: 58.5%;
+  width: 55%;
   color: $c3;
   float: left;
-  margin-top: 5%;
-  margin-left: 6%;
+  margin-top: 4%;
+  margin-left: 7.5%;
 }
 
 #inf {
@@ -393,6 +380,10 @@
   .www {
     width: 98%;
   }
+  .info2 {
+    width: 46%;
+    margin-left: 9%;
+  }
 }
 
 @media only screen and (max-width: 1200px) and (orientation: landscape) {
@@ -442,18 +433,16 @@
     margin: 0;
   }
   .info0 {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;    
     height: 250px;
     width: 100%;
     box-shadow: inset 0px -7.5px 7.5px -7.5px $c2;
+    background-color: $c11;
+    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info.png");
+    background-position: center;
+    background-size: 150px 150px;
+    background-repeat: no-repeat;
   }
-  .info1 {
-    margin-top: 0;
-    width: 150px;
-    height: 60%;
-  }
+ 
   .info2 {
     padding: 5%;
     width: 90%;

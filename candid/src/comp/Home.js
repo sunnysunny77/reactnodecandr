@@ -391,7 +391,7 @@ class Home extends Component {
         </section>
         <section className="info">
           <div className="info0">
-            <div className="info1"></div>
+        
           </div>
           <div className="info2">
             <h2>{ReactHtmlParser(this.state.qh)}<InfoIcon id="inf" /></h2>
