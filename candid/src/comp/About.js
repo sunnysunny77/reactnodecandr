@@ -67,32 +67,23 @@ export default class About extends React.Component {
     return (
       <React.Fragment>
         {this.state.w}
-
         <div className="rh">
           <h1>{ReactHtmlParser (this.state.buttons[0])}</h1>
         </div>
-
         <section className="about0">
           <h2>{ReactHtmlParser (this.state.hmap)}  <ListAltIcon className="infa" /> </h2>
           <p className="jus" >{ReactHtmlParser (this.state.cba)}</p>
           <hr />
         </section>
-
         <div>{this.state.abc}</div>
-
         <section className="about1">
-
-          
           <h2>{ReactHtmlParser (this.state.hm)} <ListAltIcon className="infa" /> </h2>
-        
           <hr />
-
           <Wave>
 
             <div className="prop">
 
               <h3>{ReactHtmlParser (this.state.h1)}</h3>
-
               <div className="jus"><span >{ReactHtmlParser (this.state.span1)}</span></div>
              
               <div className="jus">
@@ -177,9 +168,7 @@ export default class About extends React.Component {
             </div>
 
           </Wave>
-
         </section>
-
       </React.Fragment>
     );
   }

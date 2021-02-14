@@ -58,9 +58,10 @@
 .about1 #pic {
   background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/about.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
   float: left;
-  padding: 190px 285px;
+  width: 570px;
+  padding: 190px 0px;
   margin-left: 130px;
   border-radius: 10px;
 }
@@ -77,7 +78,7 @@
 
 #btn {
   float: right;
-  margin-right: 135px;
+  margin-right: 8%;
 }
 
 .about1 span {
@@ -116,13 +117,14 @@
 
 @media only screen and (max-width: 1365px) {
   .about1 #pic {
-    transform: scale(1.2);
     border-bottom: 2px solid $c1;
     float: none;
     display: block;
     margin: 20px auto 90px auto;
-    padding: 33%;
     border-radius: 0;
+    width: 66.632%;
+    padding: 22.212% 0px;
+    transform: scale(1.2);
   }
   .about1 #s3 {
     padding-left: 0;
@@ -151,5 +153,12 @@
   }
   .imga {
     width: 60%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .about1 #pic {
+    width: 100%;
+    padding: 33.334% 0px;
   }
 }

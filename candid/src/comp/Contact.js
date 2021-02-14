@@ -11,15 +11,15 @@ export default class Contactc extends Component {
     super(props);
     this.state = {
       w: window.scrollTo(0, 0),
-      ph: null,
-      email: null,
-      avail: null,
       h: null,
-      er: null,
+      et: null,
+      email: null,
       pt: null,
+      ph: null,
       it: null,
       it2: null,
       h2: null,
+      avail: null,
       buttons: [],
     };
   }
@@ -29,29 +29,29 @@ export default class Contactc extends Component {
       .then((res) => {
         if (res.data.e) {
           this.setState({
-            ph: res.data.e.ph, 
-            email: res.data.e.email, 
-            avail: res.data.e.avail,
             h: res.data.e.h,
             et: res.data.e.et,
+            email: res.data.e.email,
             pt: res.data.e.pt, 
+            ph: res.data.e.ph, 
             it: res.data.e.it, 
             it2: res.data.e.it2,
             h2: res.data.e.h2,
+            avail: res.data.e.avail,
             buttons: res.data.e.buttons, 
            })
         }
         if (res.data.a) {
           this.setState({
-            ph: res.data.a.ph, 
-            email: res.data.a.email, 
-            avail: res.data.a.avail,
             h: res.data.a.h,
             et: res.data.a.et,
+            email: res.data.a.email,
             pt: res.data.a.pt, 
+            ph: res.data.a.ph, 
             it: res.data.a.it, 
             it2: res.data.a.it2,
             h2: res.data.a.h2,
+            avail: res.data.a.avail,
             buttons: res.data.a.buttons, 
            })
         }
