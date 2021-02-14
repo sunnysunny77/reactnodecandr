@@ -217,7 +217,7 @@ axios
             } 
           }
         }
-        return [parsedData.data[1][0], parsedData0, parsedData.data[1][2]];
+        return [parsedData.data[1][0], parsedData0, parsedData.data[1][1]];
     } else {
       return undefined;
     }
