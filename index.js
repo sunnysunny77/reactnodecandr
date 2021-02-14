@@ -422,9 +422,9 @@ app.post("/nav", function (req, res) {
   if (parsedData !== undefined && b !== undefined) {
     return res.json({
       a: {
-        ph: parsedData.data[1][1],
-        time: parsedData.data[2][1],
-        day: parsedData.data[3][1],
+        ph: parsedData.data[7][1],
+        time: parsedData.data[1][1],
+        day: parsedData.data[2][1],
         buttons: [b[0], b[1], b[2], b[3]],
       },
     });
@@ -520,35 +520,36 @@ app.post("/cont", function (req, res) {
   if (parsedData !== undefined && b !== undefined) {
     return res.json({
       a: {
-        ph: parsedData.data[1][1],
-        email: parsedData.data[4][1],
-        avail: parsedData.data[5][1],
-        h: parsedData.data[6][1],
-        et: parsedData.data[7][1],
-        pt: parsedData.data[8][1],
-        it: parsedData.data[9][1],
-        it2: parsedData.data[10][1],
-        h2: parsedData.data[11][1],
+        h: parsedData.data[3][1],
+        et: parsedData.data[4][1],
+        email: parsedData.data[5][1],
+        pt: parsedData.data[6][1],
+        ph: parsedData.data[7][1],
+        it: parsedData.data[8][1],
+        it2: parsedData.data[9][1],
+        h2: parsedData.data[10][1],
+        avail: parsedData.data[11][1],
         buttons: [b[2]],
       },
     });
   } else {
     return res.json({
       e: {
-        ph: "error",
-        email: "error",
-        avail: "error",
         h: "error",
         et: "error",
+        email: "error",
         pt: "error",
+        ph: "error",
         it: "error",
         it2: "error",
         h2: "error",
+        avail: "error",
         buttons: ["error"],
       },
     });
   }
 });
+
 
 app.post("/abou", function (req, res) {
   if (
