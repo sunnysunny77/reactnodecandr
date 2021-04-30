@@ -29,7 +29,7 @@ const customStyles = {
   placeholder: () => ({
     opacity: 0.5,
     marginLeft: "10px",
-    marginTop: "10px",
+    marginTop: "5px",
   }),
   menu: () => ({
     backgroundColor: styles.wi,
@@ -640,6 +640,7 @@ class Home extends Component {
                 width: "100%",
                 height: "60px",
                 fontSize: "120%",
+                fontWeight: "bold",
                 paddingTop: "10px",
                 borderRadius: 0,
               }}

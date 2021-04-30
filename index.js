@@ -370,7 +370,7 @@ app.post("/three", function (req, res) {
       "MIME-Version: 1.0\n",
       "Content-Transfer-Encoding: 7bit\n",
       "to: ",
-      parsedData.data[4][1],
+      parsedData.data[5][1],
       "\n",
       "from: ",
       "",
