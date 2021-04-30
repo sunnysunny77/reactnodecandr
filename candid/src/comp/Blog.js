@@ -262,6 +262,11 @@ export default class Blog extends React.Component {
                   className="form"
                   onSubmit={this.sub}
                   autoComplete="off"
+                  style={{
+                    width: "100%",
+                    fontFamily: styles.f3,
+                    color: styles.wi,
+                  }}
                 >
                   <SubjectIcon className="blogsi" />
                   <TextField
@@ -270,6 +275,7 @@ export default class Blog extends React.Component {
                       style: {
                         color: styles.bl,
                         fontSize: "120%",
+                        fontWeight: "500",
                         borderRadius: 0,
                         backgroundColor: styles.wi,
                       },
@@ -291,6 +297,7 @@ export default class Blog extends React.Component {
                       style: {
                         color: styles.bl,
                         fontSize: "120%",
+                        fontWeight: "500",
                         borderRadius: 0,
                         backgroundColor: styles.wi,
                       },
@@ -312,6 +319,7 @@ export default class Blog extends React.Component {
                       style: {
                         color: styles.bl,
                         fontSize: "120%",
+                        fontWeight: "500",
                         borderRadius: 0,
                         backgroundColor: styles.wi,
                       },
@@ -336,6 +344,7 @@ export default class Blog extends React.Component {
                       style: {
                         color: styles.bl,
                         fontSize: "120%",
+                        fontWeight: "500",
                         display: "block",
                         width: "100%",
                         height: "135px",
@@ -371,7 +380,7 @@ export default class Blog extends React.Component {
                       width: "100%",
                       height: "60px",
                       fontSize: "120%",
-                      fontWeight: "bold",
+                      fontWeight: "600",
                       paddingTop: "10px",
                       marginTop: "10px",
                       borderRadius: 0,
@@ -406,6 +415,11 @@ export default class Blog extends React.Component {
                   className="form0"
                   onSubmit={this.sub0}
                   autoComplete="off"
+                  style={{
+                    width: "100%",
+                    fontFamily: styles.f3,
+                    color: styles.wi,
+                  }}
                 >
                   <br></br>
                   <TextField
@@ -414,6 +428,7 @@ export default class Blog extends React.Component {
                       style: {
                         color: styles.bl,
                         fontSize: "120%",
+                        fontWeight: "500",
                         borderRadius: 0,
                         backgroundColor: styles.wi,
                       },
@@ -435,6 +450,7 @@ export default class Blog extends React.Component {
                       style: {
                         color: styles.bl,
                         fontSize: "120%",
+                        fontWeight: "500",
                         borderRadius: 0,
                         backgroundColor: styles.wi,
                       },
@@ -457,7 +473,7 @@ export default class Blog extends React.Component {
                       width: "100%",
                       height: "60px",
                       fontSize: "120%",
-                      fontWeight: "bold",
+                      fontWeight: "600",
                       paddingTop: "10px",
                       marginTop: "10px",
                       borderRadius: 0,

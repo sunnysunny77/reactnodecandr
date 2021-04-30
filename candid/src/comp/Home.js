@@ -28,8 +28,9 @@ import ReactHtmlParser from "react-html-parser";
 const customStyles = {
   placeholder: () => ({
     opacity: 0.5,
+    fontWeight: "500",
     marginLeft: "10px",
-    marginTop: "5px",
+    marginTop: "5px"
   }),
   menu: () => ({
     backgroundColor: styles.wi,
@@ -528,6 +529,7 @@ class Home extends Component {
                   backgroundColor: styles.wi,
                   borderRadius: 0,
                   fontSize: "120%",
+                  fontWeight: "500",
                 },
                 startAdornment: (
                   <InputAdornment position="start">
@@ -550,6 +552,7 @@ class Home extends Component {
                   backgroundColor: styles.wi,
                   borderRadius: 0,
                   fontSize: "120%",
+                  fontWeight: "500",
                 },
                 startAdornment: (
                   <InputAdornment position="start">
@@ -575,6 +578,7 @@ class Home extends Component {
                   backgroundColor: styles.wi,
                   borderRadius: 0,
                   fontSize: "120%",
+                  fontWeight: "500",
                 },
                 startAdornment: (
                   <InputAdornment position="start">
@@ -625,6 +629,7 @@ class Home extends Component {
                   overflowY: "auto",
                   overflowX: "hidden",
                   fontSize: "120%",
+                  fontWeight: "500",
                 },
               }}
               variant="filled"
@@ -640,7 +645,7 @@ class Home extends Component {
                 width: "100%",
                 height: "60px",
                 fontSize: "120%",
-                fontWeight: "bold",
+                fontWeight: "600",
                 paddingTop: "10px",
                 borderRadius: 0,
               }}

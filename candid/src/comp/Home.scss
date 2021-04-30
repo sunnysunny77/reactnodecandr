@@ -41,7 +41,7 @@
   font-family: $font3;
   display: inline-block;
   margin: 0;
-  font-weight: bold;
+  font-weight: 500;
   color: $c3;
   font-size: 160%;
   float: none;
@@ -352,7 +352,7 @@
     font-size: 80%;
   }
   #w1 {
-    width: 170px;
+    width: 180px;
   }
   #w2 {
     width: 205px;
@@ -396,7 +396,7 @@
 
 @media only screen and (max-width: 992px) {
   #w1 {
-    width: 153px;
+    width: 160px;
   }
   #w2 {
     width: 185px;
