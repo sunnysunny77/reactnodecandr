@@ -49,7 +49,7 @@ export default class Blog extends React.Component {
   }
   componentDidMount() {
    axios
-      .get(`/ong`)
+      .get(`https://candidcleaning.sunnyhome.site/ong`)
       .then((res) => {
        this.setState({
           buttons: res.data.buttons,
@@ -112,7 +112,7 @@ export default class Blog extends React.Component {
       this.state.file
     ) {
       axios
-        .post(`/one`, {
+        .post(`https://candidcleaning.sunnyhome.site/one`, {
           passw: this.state.passw,
           blogers: this.state.blogers,
           name: this.state.name,
@@ -155,7 +155,7 @@ export default class Blog extends React.Component {
   sub0 = (event) => {
     event.preventDefault();
     axios
-      .post(`/two`, {
+      .post(`https://candidcleaning.sunnyhome.site/two`, {
         passw0: this.state.passw0,
         ddate: this.state.ddate,
       })
@@ -267,9 +267,13 @@ export default class Blog extends React.Component {
                     fontFamily: styles.f3,
                     color: styles.wi,
                   }}
-                >
+                >  
+                  <label for="passs" className="hiddentext">
+                     Password
+                  </label>
                   <SubjectIcon className="blogsi" />
                   <TextField
+                    id="passs"
                     className="float"
                     InputProps={{
                       style: {
@@ -291,7 +295,11 @@ export default class Blog extends React.Component {
                     placeholder="Pass:"
                     onChange={this.change}
                   />
+                  <label for="title" className="hiddentext">
+                    Title
+                  </label>
                   <TextField
+                    id="title"
                     className="float"
                     InputProps={{
                       style: {
@@ -313,7 +321,11 @@ export default class Blog extends React.Component {
                     placeholder="Title:"
                     onChange={this.change}
                   />
+                  <label for="name" className="hiddentext">
+                    Name
+                  </label>
                   <TextField
+                    id="name"
                     className="float"
                     InputProps={{
                       style: {
@@ -335,7 +347,11 @@ export default class Blog extends React.Component {
                     placeholder="Name:"
                     onChange={this.change}
                   />
+                  <label for="text" className="hiddentext">
+                    Text
+                  </label>
                   <TextField
+                    id="text"
                     multiline
                     rows="20"
                     fullWidth={true}
@@ -363,7 +379,7 @@ export default class Blog extends React.Component {
                     onChange={this.change}
                   />
                   <div style={{ textAlign: "center", marginTop: "50px" }}>
-                    <label htmlFor="avatar">Upload a picture:</label>
+                    <label for="avatar">Upload a picture:</label>
                     <br></br>
                     <input
                       id="avatar"
@@ -422,7 +438,11 @@ export default class Blog extends React.Component {
                   }}
                 >
                   <br></br>
+                  <label for="pass" className="hiddentext">
+                    Password
+                  </label>
                   <TextField
+                    id="pass"
                     className="float"
                     InputProps={{
                       style: {
@@ -444,7 +464,11 @@ export default class Blog extends React.Component {
                     placeholder="Pass:"
                     onChange={this.change}
                   />
+                  <label for="date" className="hiddentext">
+                    Date
+                  </label>
                   <TextField
+                    id="date"
                     className="float"
                     InputProps={{
                       style: {

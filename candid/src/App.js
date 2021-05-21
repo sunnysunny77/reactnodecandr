@@ -19,7 +19,7 @@ function App() {
   const [buttons, setButtons] = useState([]);
   useEffect(() => {
     axios
-      .post(`/nav`)
+      .post(`https://candidcleaning.sunnyhome.site/nav`)
       .then((res) => {
         if (res.data.e) {
           setPh(res.data.e.ph)

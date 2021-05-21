@@ -10,7 +10,8 @@ function Footer(props) {
       <ul >
         <li className="bl lid">
           <Link to="/">
-            <HomeIcon />
+              <span id="hl3" className="hiddentext">Homepage Link</span>
+              <HomeIcon aria-labelledby="hl3" role="link" >Home</HomeIcon>
           </Link>
         </li>
         <li className="lid" >
@@ -36,7 +37,7 @@ function Footer(props) {
         <li className="bl" id="imh">
           <img
           src="https://candid.s3-ap-southeast-2.amazonaws.com/foot.png"
-          alt="Smiley face"
+          alt="Candid Icon"
           width="40"
           height="40"
         />

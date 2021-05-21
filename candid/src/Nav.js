@@ -156,7 +156,8 @@ class Nav extends Component {
           <div>
             <hr></hr>
             <Link to="/">
-              <HomeIcon id="homI" />
+              <span id="hl1"className="hiddentext">Homepage Link</span>
+              <HomeIcon id="homI" aria-labelledby="hl1" role="link" >Home</HomeIcon>
             </Link>
             <Link to="/blog">
               <button>{ReactHtmlParser (buttons[0])}</button> 
@@ -187,10 +188,10 @@ class Nav extends Component {
               {ph}
             </a>
           </div>
-          <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logos.png" alt="Smiley face" width="60" height="60"></img>
+          <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logos.png" alt="Candid Icon" width="60" height="60"></img>
         </nav>
         <header>
-          <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logo.png" alt="Smiley face" width="140" height="32"></img>
+          <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logo.png" alt="Candid Logo" width="140" height="32"></img>
         </header>
         <nav className="menu">
             <Link to="/blog">
@@ -215,7 +216,8 @@ class Nav extends Component {
               {ReactHtmlParser (time)} / {ReactHtmlParser (day)}
               </span>
               <Link to="/">
-                <HomeIcon id="homIa" className="apI" />
+                <span id="hl2" className="hiddentext">Homepage Link</span>
+                <HomeIcon id="homIa" className="apI" aria-labelledby="hl2" role="link" >Home</HomeIcon>
               </Link>
             </div>
         </nav>

@@ -15,7 +15,7 @@ export default class Galery extends Component {
   }
   componentDidMount() {
    axios
-      .post(`/g`)
+      .post(`https://candidcleaning.sunnyhome.site/g`)
       .then((res) => {
         if (res.data.e) {
           this.setState({images: res.data.e.images, buttons: res.data.e.buttons})

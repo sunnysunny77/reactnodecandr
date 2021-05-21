@@ -26,7 +26,7 @@ export default class About extends React.Component {
   }
   componentDidMount() {
     axios
-      .post(`/abou`)
+      .post(`https://candidcleaning.sunnyhome.site/abou`)
       .then((res) => {
         if (res.data.e) {
           this.setState({
@@ -122,7 +122,7 @@ export default class About extends React.Component {
               <div className="jus">
                 <br />
                 <br />
-                <img src="https://candid.s3-ap-southeast-2.amazonaws.com/breakp.png" alt="Smiley face" className="imga "></img>
+                <img src="https://candid.s3-ap-southeast-2.amazonaws.com/breakp.png" alt="Swirly text divider" className="imga "></img>
                 <br />
                 <br />
               </div>

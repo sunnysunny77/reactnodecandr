@@ -114,7 +114,7 @@ class Home extends Component {
       document.getElementById("iq").scrollIntoView();
     }
     axios
-      .post(`/hom`)
+      .post(`https://candidcleaning.sunnyhome.site/hom`)
       .then((res) => {
         if (res.data.e) {
           this.setState({
@@ -207,6 +207,7 @@ class Home extends Component {
                 <img
                   className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
                   src={this.state.vid[index][0]}
+                  alt={ReactHtmlParser(this.state.vid[index][2])}
                   style={{
                     display: d,
                 }}
@@ -222,6 +223,7 @@ class Home extends Component {
                 <img
                   className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
                   src={this.state.vid[index][3]}
+                  alt={ReactHtmlParser(this.state.vid[index][5])}
                   style={{
                     display: d,
                   }}
@@ -315,7 +317,7 @@ class Home extends Component {
         disp: { display: "block", lineHeight: "75px" },
       });
       axios
-        .post(`/three`, {
+        .post(`https://candidcleaning.sunnyhome.site/three`, {
           name: this.state.name,
           email: this.state.email,
           phone: this.state.phone,
@@ -375,13 +377,13 @@ class Home extends Component {
           <div>
             <img
               src="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg"
-              alt="wel1"
+              alt="Slider image 1"
             ></img>
           </div>
           <div>
             <img
               src="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg"
-              alt="wel1"
+              alt="Slider image 2"
             ></img>
           </div>
         </Slider>
@@ -393,7 +395,7 @@ class Home extends Component {
         <section className="info">
           <div className="info0"></div>
           <div className="info2">
-            <h2>{ReactHtmlParser(this.state.qh)}<InfoIcon id="inf" /></h2>
+            <h3>{ReactHtmlParser(this.state.qh)}<InfoIcon id="inf" /></h3>
             <hr style={{ boxShadow: ` 0 5px 5px -5px ${styles.hbs}`, border: "7.5px solid transparent"}} />
             <p>
               <q>{ReactHtmlParser(this.state.q)}</q>
@@ -408,7 +410,7 @@ class Home extends Component {
                 <h3>{ReactHtmlParser(this.state.ch1)}</h3>
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/card1.png"
-                  alt="Smiley face"
+                  alt={ReactHtmlParser(this.state.ch1)}
                   width="50"
                   height="50"
                 ></img>
@@ -424,7 +426,7 @@ class Home extends Component {
                 <h3>{ReactHtmlParser(this.state.ch2)}</h3>
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/card2.png"
-                  alt="Smiley face"
+                  alt={ReactHtmlParser(this.state.ch2)}
                   width="50"
                   height="50"
                 ></img>
@@ -440,7 +442,7 @@ class Home extends Component {
                 <h3>{ReactHtmlParser(this.state.ch3)}</h3>
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/card3.png"
-                  alt="Smiley face"
+                  alt={ReactHtmlParser(this.state.ch3)}
                   width="50"
                   height="50"
                 ></img>
@@ -456,7 +458,7 @@ class Home extends Component {
                 <h3>{ReactHtmlParser(this.state.ch4)}</h3>
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/card4.png"
-                  alt="Smiley face"
+                  alt={ReactHtmlParser(this.state.ch4)}
                   width="50"
                   height="50"
                 ></img>
@@ -474,7 +476,7 @@ class Home extends Component {
                 <h3>{ReactHtmlParser(this.state.ch5)}</h3>
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/card5.png"
-                  alt="Smiley face"
+                  alt={ReactHtmlParser(this.state.ch5)}
                   width="50"
                   height="50"
                 ></img>
@@ -492,7 +494,7 @@ class Home extends Component {
                 <h3>{ReactHtmlParser(this.state.ch6)}</h3>
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/card6.png"
-                  alt="Smiley face"
+                  alt={ReactHtmlParser(this.state.ch6)}
                   width="50"
                   height="50"
                 ></img>
@@ -507,7 +509,7 @@ class Home extends Component {
         </section>
         <section id="iq" className="inq">
           <div className="rh">
-            <h1>{ReactHtmlParser(this.state.buttons[1])}</h1>
+            <h3>{ReactHtmlParser(this.state.buttons[1])}</h3>
           </div>
           <br></br>
           <form
@@ -520,7 +522,11 @@ class Home extends Component {
             }}
             onSubmit={this.subic}
           >
+            <label for="name" className="hiddentext">
+              Name
+            </label>
             <TextField
+              id="name"
               className="www"
               InputProps={{
                 style: {
@@ -543,7 +549,11 @@ class Home extends Component {
               placeholder="Name:"
               onChange={this.change}
             />
+            <label for="email" className="hiddentext">
+              Email
+            </label>
             <TextField
+              id="email"
               className="www"
               InputProps={{
                 style: {
@@ -566,7 +576,11 @@ class Home extends Component {
               placeholder="Email:"
               onChange={this.change}
             />
+            <label for="phone" className="hiddentext">
+              Phone
+            </label>
             <TextField
+              id="phone"
               className="www"
               inputProps={{
                 pattern: "[+]*[0-9]{8,14}",
@@ -594,7 +608,11 @@ class Home extends Component {
             />
             <div style={{ height: "220px", marginTop: "5px" }}>
               <ListIcon style={{ color: styles.wi, marginLeft: "27.5px" }} />
+              <label for="select" className="hiddentext">
+                  {ReactHtmlParser(this.state.buttons[3])}
+              </label>
               <Select
+                inputId="select"
                 classNamePrefix="react-select"
                 maxMenuHeight={100}
                 value={this.state.selectedOption}
@@ -612,7 +630,11 @@ class Home extends Component {
                 display: "block",
               }}
             />
+            <label for="text" className="hiddentext">
+              Text
+            </label>
             <TextField
+              id="text"
               multiline
               className="text"
               rows="20"

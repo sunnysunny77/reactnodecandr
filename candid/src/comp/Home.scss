@@ -168,7 +168,7 @@
   margin: 0 10px;
 }
 
-.info2 h2 {
+.info2 h3 {
   width: 100%;
   text-align: right;
   font-family: $font2;
@@ -269,6 +269,17 @@
 }
 
 /* inq */
+
+.inq h3 {
+  font-family: $font1;
+  color: $c1;
+  float: right;
+  margin: 0;
+  padding-right: 20px;
+  padding-top: 15px;
+  font-size: 80%;
+  padding-top: 15px;
+}
 
 .inq {
   background-color: $c5;
