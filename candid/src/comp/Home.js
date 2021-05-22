@@ -583,7 +583,7 @@ class Home extends Component {
               id="phone"
               className="www"
               inputProps={{
-                pattern: "[+]*[0-9]{8,14}",
+                pattern: "[+]?[0-9]{3,15}",
               }}
               InputProps={{
                 style: {
