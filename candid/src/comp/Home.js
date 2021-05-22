@@ -21,6 +21,7 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import SubjectIcon from "@material-ui/icons/Subject";
 import ListIcon from "@material-ui/icons/List";
+import Tooltip from '@material-ui/core/Tooltip';
 import Select from "react-select";
 import ReactHtmlParser from "react-html-parser";
 
@@ -579,34 +580,36 @@ class Home extends Component {
             <label for="phone" className="hiddentext">
               Phone
             </label>
-            <TextField
-              id="phone"
-              className="www"
-              inputProps={{
-                pattern: "[+]?[0-9]{3,15}",
-              }}
-              InputProps={{
-                style: {
-                  color: styles.bl,
-                  marginLeft: "2%",
-                  backgroundColor: styles.wi,
-                  borderRadius: 0,
-                  fontSize: "120%",
-                  fontWeight: "500",
-                },
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <PhoneIcon />
-                  </InputAdornment>
-                ),
-              }}
-              variant="filled"
-              type="tel"
-              name="phone"
-              placeholder="Phone:"
-              onChange={this.change}
-            />
-            <div style={{ height: "220px", marginTop: "5px" }}>
+            <Tooltip title="Format: +###############" placement="bottom-end">
+              <TextField
+                id="phone"
+                className="www"
+                inputProps={{
+                  pattern: "[+]?[0-9]{3,15}",
+                }}
+                InputProps={{
+                  style: {
+                    color: styles.bl,
+                    marginLeft: "2%",
+                    backgroundColor: styles.wi,
+                    borderRadius: 0,
+                    fontSize: "120%",
+                    fontWeight: "500",
+                  },
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <PhoneIcon />
+                    </InputAdornment>
+                  ),
+                }}
+                variant="filled"
+                type="tel"
+                name="phone"
+                placeholder="Phone:"
+                onChange={this.change}
+              />
+            </Tooltip>
+            <div style={{ height: "220px", marginTop: "50px" }}>
               <ListIcon style={{ color: styles.wi, marginLeft: "27.5px" }} />
               <label for="select" className="hiddentext">
                   {ReactHtmlParser(this.state.buttons[3])}
