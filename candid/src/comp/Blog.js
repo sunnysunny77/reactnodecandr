@@ -1,6 +1,6 @@
 import React from "react";
 import "./Blog.scss";
-import styles from './Blog.module.scss'; 
+import styles from "./Blog.module.scss";
 import Alertm from "./Alertm.js";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -17,7 +17,7 @@ import { withStyles } from "@material-ui/core/styles";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import axios from "axios";
 import Resizer from "react-image-file-resizer";
-import ReactHtmlParser from 'react-html-parser'; 
+import ReactHtmlParser from "react-html-parser";
 
 const StyledAccordion = withStyles(() => ({
   root: {
@@ -45,16 +45,20 @@ export default class Blog extends React.Component {
       a0: null,
       w: window.scrollTo(0, 0),
       buttons: [],
-     };
+      load: true,
+    };
   }
   componentDidMount() {
-   axios
+    axios
       .get(`https://candidcleaning.sunnyhome.site/ong`)
       .then((res) => {
-       this.setState({
+        this.setState({
           buttons: res.data.buttons,
         });
         return this.tab(res.data.doc);
+      })
+      .then(() => {
+        this.setState({ load: false });
       })
       .catch((error) => {
         this.setState({
@@ -207,7 +211,10 @@ export default class Blog extends React.Component {
               </tr>
               <tr key={_id + "img"}>
                 <td>
-                  <img alt="Smiley face" src={ "https://" + window.location.hostname + loc} />
+                  <img
+                    alt="Smiley face"
+                    src={"https://" + window.location.hostname + loc}
+                  />
                 </td>
               </tr>
               <tr key={_id + "3"}>
@@ -235,289 +242,300 @@ export default class Blog extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {this.state.w}
-        <section className="blogCont">
-          <div className="blogBar">
-            <h1>{ReactHtmlParser (this.state.buttons[0])}</h1>
-          </div>
-          <div className="blogCont1">
-            <br></br>
-            <br></br>
-            {this.state.txt}
-          </div>
-          <div style={{ backgroundColor: styles.bl }}>
-            <StyledAccordion>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon className="blogs" />}
-                aria-controls="panel2a-content"
-                id="panel2a-header"
-              >
-                <div className="blogh">
-                  <h2>{ReactHtmlParser (this.state.buttons[1])}</h2>
-                </div>
-              </AccordionSummary>
-              <AccordionDetails>
-                <form
-                  id="a6"
-                  className="form"
-                  onSubmit={this.sub}
-                  autoComplete="off"
-                  style={{
-                    width: "100%",
-                    fontFamily: styles.f3,
-                    color: styles.wi,
-                  }}
-                >  
-                  <label for="passs" className="hiddentext">
-                     Password
-                  </label>
-                  <SubjectIcon className="blogsi" />
-                  <TextField
-                    id="passs"
-                    className="float"
-                    InputProps={{
-                      style: {
-                        color: styles.bl,
-                        fontSize: "120%",
-                        fontWeight: "500",
-                        borderRadius: 0,
-                        backgroundColor: styles.wi,
-                      },
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <LockOpenIcon />
-                        </InputAdornment>
-                      ),
-                    }}
-                    variant="filled"
-                    type="password"
-                    name="passw"
-                    placeholder="Pass:"
-                    onChange={this.change}
-                  />
-                  <label for="title" className="hiddentext">
-                    Title
-                  </label>
-                  <TextField
-                    id="title"
-                    className="float"
-                    InputProps={{
-                      style: {
-                        color: styles.bl,
-                        fontSize: "120%",
-                        fontWeight: "500",
-                        borderRadius: 0,
-                        backgroundColor: styles.wi,
-                      },
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <TitleIcon />
-                        </InputAdornment>
-                      ),
-                    }}
-                    variant="filled"
-                    type="text"
-                    name="title"
-                    placeholder="Title:"
-                    onChange={this.change}
-                  />
-                  <label for="name" className="hiddentext">
-                    Name
-                  </label>
-                  <TextField
-                    id="name"
-                    className="float"
-                    InputProps={{
-                      style: {
-                        color: styles.bl,
-                        fontSize: "120%",
-                        fontWeight: "500",
-                        borderRadius: 0,
-                        backgroundColor: styles.wi,
-                      },
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <AccountCircle />
-                        </InputAdornment>
-                      ),
-                    }}
-                    variant="filled"
-                    type="text"
-                    name="name"
-                    placeholder="Name:"
-                    onChange={this.change}
-                  />
-                  <label for="text" className="hiddentext">
-                    Text
-                  </label>
-                  <TextField
-                    id="text"
-                    multiline
-                    rows="20"
-                    fullWidth={true}
-                    InputProps={{
-                      disableUnderline: true,
-                      style: {
-                        color: styles.bl,
-                        fontSize: "120%",
-                        fontWeight: "500",
-                        display: "block",
+        {this.state.load ? (
+          <img
+            className="load"
+            src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
+            alt="loading"
+          />
+        ) : (
+          <React.Fragment>
+            {this.state.w}
+            {this.props.setLoad("block")}
+            <section className="blogCont">
+              <div className="blogBar">
+                <h1>{ReactHtmlParser(this.state.buttons[0])}</h1>
+              </div>
+              <div className="blogCont1">
+                <br></br>
+                <br></br>
+                {this.state.txt}
+              </div>
+              <div style={{ backgroundColor: styles.bl }}>
+                <StyledAccordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon className="blogs" />}
+                    aria-controls="panel2a-content"
+                    id="panel2a-header"
+                  >
+                    <div className="blogh">
+                      <h2>{ReactHtmlParser(this.state.buttons[1])}</h2>
+                    </div>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <form
+                      id="a6"
+                      className="form"
+                      onSubmit={this.sub}
+                      autoComplete="off"
+                      style={{
                         width: "100%",
-                        height: "135px",
-                        backgroundColor: styles.wi,
-                        overflowY: "auto",
-                        overflowX: "hidden",
-                        paddingTop: "10px",
-                        marginTop: "50px",
-                        borderRadius: 0,
-                      },
-                    }}
-                    variant="filled"
-                    type="text"
-                    name="blogers"
-                    placeholder="Text:"
-                    onChange={this.change}
-                  />
-                  <div style={{ textAlign: "center", marginTop: "50px" }}>
-                    <label for="avatar">Upload a picture:</label>
-                    <br></br>
-                    <input
-                      id="avatar"
-                      className="custom-file-input"
-                      type="file"
-                      name="file"
-                      onChange={this.file}
-                    />
-                  </div>
-                  <Button
-                    style={{
-                      color: styles.wi,
-                      backgroundColor: styles.bl,
-                      width: "100%",
-                      height: "60px",
-                      fontSize: "120%",
-                      fontWeight: "600",
-                      paddingTop: "10px",
-                      marginTop: "10px",
-                      borderRadius: 0,
-                    }}
-                    variant="contained"
-                    type="submit"
+                        fontFamily: styles.f3,
+                        color: styles.wi,
+                      }}
+                    >
+                      <label for="passs" className="hiddentext">
+                        Password
+                      </label>
+                      <SubjectIcon className="blogsi" />
+                      <TextField
+                        id="passs"
+                        className="float"
+                        InputProps={{
+                          style: {
+                            color: styles.bl,
+                            fontSize: "120%",
+                            fontWeight: "500",
+                            borderRadius: 0,
+                            backgroundColor: styles.wi,
+                          },
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <LockOpenIcon />
+                            </InputAdornment>
+                          ),
+                        }}
+                        variant="filled"
+                        type="password"
+                        name="passw"
+                        placeholder="Pass:"
+                        onChange={this.change}
+                      />
+                      <label for="title" className="hiddentext">
+                        Title
+                      </label>
+                      <TextField
+                        id="title"
+                        className="float"
+                        InputProps={{
+                          style: {
+                            color: styles.bl,
+                            fontSize: "120%",
+                            fontWeight: "500",
+                            borderRadius: 0,
+                            backgroundColor: styles.wi,
+                          },
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <TitleIcon />
+                            </InputAdornment>
+                          ),
+                        }}
+                        variant="filled"
+                        type="text"
+                        name="title"
+                        placeholder="Title:"
+                        onChange={this.change}
+                      />
+                      <label for="name" className="hiddentext">
+                        Name
+                      </label>
+                      <TextField
+                        id="name"
+                        className="float"
+                        InputProps={{
+                          style: {
+                            color: styles.bl,
+                            fontSize: "120%",
+                            fontWeight: "500",
+                            borderRadius: 0,
+                            backgroundColor: styles.wi,
+                          },
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <AccountCircle />
+                            </InputAdornment>
+                          ),
+                        }}
+                        variant="filled"
+                        type="text"
+                        name="name"
+                        placeholder="Name:"
+                        onChange={this.change}
+                      />
+                      <label for="text" className="hiddentext">
+                        Text
+                      </label>
+                      <TextField
+                        id="text"
+                        multiline
+                        rows="20"
+                        fullWidth={true}
+                        InputProps={{
+                          disableUnderline: true,
+                          style: {
+                            color: styles.bl,
+                            fontSize: "120%",
+                            fontWeight: "500",
+                            display: "block",
+                            width: "100%",
+                            height: "135px",
+                            backgroundColor: styles.wi,
+                            overflowY: "auto",
+                            overflowX: "hidden",
+                            paddingTop: "10px",
+                            marginTop: "50px",
+                            borderRadius: 0,
+                          },
+                        }}
+                        variant="filled"
+                        type="text"
+                        name="blogers"
+                        placeholder="Text:"
+                        onChange={this.change}
+                      />
+                      <div style={{ textAlign: "center", marginTop: "50px" }}>
+                        <label for="avatar">Upload a picture:</label>
+                        <br></br>
+                        <input
+                          id="avatar"
+                          className="custom-file-input"
+                          type="file"
+                          name="file"
+                          onChange={this.file}
+                        />
+                      </div>
+                      <Button
+                        style={{
+                          color: styles.wi,
+                          backgroundColor: styles.bl,
+                          width: "100%",
+                          height: "60px",
+                          fontSize: "120%",
+                          fontWeight: "600",
+                          paddingTop: "10px",
+                          marginTop: "10px",
+                          borderRadius: 0,
+                        }}
+                        variant="contained"
+                        type="submit"
+                      >
+                        {" "}
+                        {ReactHtmlParser(this.state.buttons[3])}
+                      </Button>
+                      <div style={{ height: "75px" }}>
+                        <div style={this.state.disp0}>
+                          <Alertm alert={this.state.a} />
+                        </div>
+                      </div>
+                    </form>
+                  </AccordionDetails>
+                </StyledAccordion>
+                <StyledAccordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon className="blogs" />}
+                    aria-controls="panel2a-content"
+                    id="panel2a-header"
                   >
-                    {" "}
-                    {ReactHtmlParser (this.state.buttons[3])}
-                  </Button>
-                  <div style={{ height: "75px" }}>
-                    <div style={this.state.disp0}>
-                      <Alertm alert={this.state.a} />
+                    <div className="blogh">
+                      <h2>{ReactHtmlParser(this.state.buttons[2])}</h2>
                     </div>
-                  </div>
-                </form>
-              </AccordionDetails>
-            </StyledAccordion>
-            <StyledAccordion>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon className="blogs" />}
-                aria-controls="panel2a-content"
-                id="panel2a-header"
-              >
-                <div className="blogh">
-                  <h2>{ReactHtmlParser (this.state.buttons[2])}</h2>
-                </div>
-              </AccordionSummary>
-              <AccordionDetails>
-                <form
-                  id="a2"
-                  className="form0"
-                  onSubmit={this.sub0}
-                  autoComplete="off"
-                  style={{
-                    width: "100%",
-                    fontFamily: styles.f3,
-                    color: styles.wi,
-                  }}
-                >
-                  <br></br>
-                  <label for="pass" className="hiddentext">
-                    Password
-                  </label>
-                  <TextField
-                    id="pass"
-                    className="float"
-                    InputProps={{
-                      style: {
-                        color: styles.bl,
-                        fontSize: "120%",
-                        fontWeight: "500",
-                        borderRadius: 0,
-                        backgroundColor: styles.wi,
-                      },
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <LockOpenIcon />
-                        </InputAdornment>
-                      ),
-                    }}
-                    variant="filled"
-                    type="password"
-                    name="passw0"
-                    placeholder="Pass:"
-                    onChange={this.change}
-                  />
-                  <label for="date" className="hiddentext">
-                    Date
-                  </label>
-                  <TextField
-                    id="date"
-                    className="float"
-                    InputProps={{
-                      style: {
-                        color: styles.bl,
-                        fontSize: "120%",
-                        fontWeight: "500",
-                        borderRadius: 0,
-                        backgroundColor: styles.wi,
-                      },
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <AccessTimeIcon />
-                        </InputAdornment>
-                      ),
-                    }}
-                    variant="filled"
-                    type="text"
-                    name="ddate"
-                    placeholder="Date:"
-                    onChange={this.change}
-                  />
-                  <Button
-                    style={{
-                      color: styles.wi,
-                      backgroundColor: styles.bl,
-                      width: "100%",
-                      height: "60px",
-                      fontSize: "120%",
-                      fontWeight: "600",
-                      paddingTop: "10px",
-                      marginTop: "10px",
-                      borderRadius: 0,
-                    }}
-                    variant="contained"
-                    type="submit"
-                  >
-                    {" "}
-                    {ReactHtmlParser (this.state.buttons[3])}
-                  </Button>
-                  <div style={{ height: "75px" }}>
-                    <div style={this.state.disp1}>
-                      <Alertm alert={this.state.a0} />
-                    </div>
-                  </div>
-                </form>
-              </AccordionDetails>
-            </StyledAccordion>
-          </div>
-        </section>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <form
+                      id="a2"
+                      className="form0"
+                      onSubmit={this.sub0}
+                      autoComplete="off"
+                      style={{
+                        width: "100%",
+                        fontFamily: styles.f3,
+                        color: styles.wi,
+                      }}
+                    >
+                      <br></br>
+                      <label for="pass" className="hiddentext">
+                        Password
+                      </label>
+                      <TextField
+                        id="pass"
+                        className="float"
+                        InputProps={{
+                          style: {
+                            color: styles.bl,
+                            fontSize: "120%",
+                            fontWeight: "500",
+                            borderRadius: 0,
+                            backgroundColor: styles.wi,
+                          },
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <LockOpenIcon />
+                            </InputAdornment>
+                          ),
+                        }}
+                        variant="filled"
+                        type="password"
+                        name="passw0"
+                        placeholder="Pass:"
+                        onChange={this.change}
+                      />
+                      <label for="date" className="hiddentext">
+                        Date
+                      </label>
+                      <TextField
+                        id="date"
+                        className="float"
+                        InputProps={{
+                          style: {
+                            color: styles.bl,
+                            fontSize: "120%",
+                            fontWeight: "500",
+                            borderRadius: 0,
+                            backgroundColor: styles.wi,
+                          },
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <AccessTimeIcon />
+                            </InputAdornment>
+                          ),
+                        }}
+                        variant="filled"
+                        type="text"
+                        name="ddate"
+                        placeholder="Date:"
+                        onChange={this.change}
+                      />
+                      <Button
+                        style={{
+                          color: styles.wi,
+                          backgroundColor: styles.bl,
+                          width: "100%",
+                          height: "60px",
+                          fontSize: "120%",
+                          fontWeight: "600",
+                          paddingTop: "10px",
+                          marginTop: "10px",
+                          borderRadius: 0,
+                        }}
+                        variant="contained"
+                        type="submit"
+                      >
+                        {" "}
+                        {ReactHtmlParser(this.state.buttons[3])}
+                      </Button>
+                      <div style={{ height: "75px" }}>
+                        <div style={this.state.disp1}>
+                          <Alertm alert={this.state.a0} />
+                        </div>
+                      </div>
+                    </form>
+                  </AccordionDetails>
+                </StyledAccordion>
+              </div>
+            </section>
+          </React.Fragment>
+        )}
       </React.Fragment>
     );
   }

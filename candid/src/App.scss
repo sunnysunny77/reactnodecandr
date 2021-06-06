@@ -21,12 +21,7 @@ h2 {
 .rh {
   width: 100%;
   background-color: $c3;
-  background-image: linear-gradient(
-    270deg,
-    $c3 0%,
-    $c6 45%,
-    $c6 100%
-  );
+  background-image: linear-gradient(270deg, $c3 0%, $c6 45%, $c6 100%);
   height: 60px;
   font-size: 120%;
 }
@@ -53,6 +48,13 @@ h2 {
   width: 0;
   height: 0;
   overflow: hidden;
+}
+
+.load {
+  height: 55px;
+  position: absolute; 
+  bottom: 20px;
+  right: 40px;
 }
 
 @media only screen and (max-width: 1200px) {

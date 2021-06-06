@@ -2,9 +2,11 @@ import React from "react";
 import "./About.scss";
 import Wave from "./Wave";
 import Maps from "./Maps.js";
+import Nav from "./Nav";
+import Footer from "./Footer";
 import axios from "axios";
 import ListAltIcon from "@material-ui/icons/ListAlt";
-import ReactHtmlParser from 'react-html-parser'; 
+import ReactHtmlParser from "react-html-parser";
 
 export default class About extends React.Component {
   constructor(props) {
@@ -22,6 +24,7 @@ export default class About extends React.Component {
       span3: null,
       span4: null,
       buttons: [],
+      load: true,
     };
   }
   componentDidMount() {
@@ -59,6 +62,9 @@ export default class About extends React.Component {
           });
         }
       })
+      .then(() => {
+        this.setState({ load: false });
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -66,109 +72,130 @@ export default class About extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {this.state.w}
-        <div className="rh">
-          <h1>{ReactHtmlParser (this.state.buttons[0])}</h1>
-        </div>
-        <section className="about0">
-          <h2>{ReactHtmlParser (this.state.hmap)}  <ListAltIcon className="infa" /> </h2>
-          <p className="jus" >{ReactHtmlParser (this.state.cba)}</p>
-          <hr />
-        </section>
-        <div>{this.state.abc}</div>
-        <section className="about1">
-          <h2>{ReactHtmlParser (this.state.hm)} <ListAltIcon className="infa" /> </h2>
-          <hr />
-          <Wave>
-
-            <div className="prop">
-
-              <h3>{ReactHtmlParser (this.state.h1)}</h3>
-              <div className="jus"><span >{ReactHtmlParser (this.state.span1)}</span></div>
-             
-              <div className="jus">
-                <br />
-                <br />
-                <button
-                  className="cent0"
-                  onClick={() => {
-                    document.getElementById("rm").style.display = "block";
-                  }}
-                >
-                  {ReactHtmlParser (this.state.buttons[1])}
-                </button>
-                <br />
-                <br />
-              </div>
-              
-              <div id="rm" className="cent">
-                <hr />
-                <br />
-                <br />
-                <span >{ReactHtmlParser (this.state.span2)}</span>
-                <br />
-                <br />
-                <button
-                  className="cent0"
-                  onClick={() => {
-                    document.getElementById("rm").style.display = "none";
-                  }}
-                >
-                  {ReactHtmlParser (this.state.buttons[2])}
-                </button>
-                <br />
-              </div>
-
-              <div className="jus">
-                <br />
-                <br />
-                <img src="https://candid.s3-ap-southeast-2.amazonaws.com/breakp.png" alt="Swirly text divider" className="imga "></img>
-                <br />
-                <br />
-              </div>
-            
-              <br />
-              <br />
-              <h3>{ReactHtmlParser (this.state.h2)}</h3>
-              <br />
-              <span id="pic"></span>
-              <span id="s3" className="jus">{ReactHtmlParser (this.state.span3)}</span>
-              <br />
-              <br />
-              <button
-                id="btn"
-                onClick={() => {
-                  document.getElementById("rm1").style.display = "block";
-                }}
-              >         
-                {ReactHtmlParser (this.state.buttons[1])}
-              </button>
-              <br /> 
-              <br />
-              <br />
-              
-              <div id="rm1" className="cent">
-                <hr />
-                <br />
-                <br />
-                <span >{ReactHtmlParser (this.state.span4)}</span>
-                <br />
-                <br />
-                <button
-                  className="cent0"
-                  onClick={() => {
-                    document.getElementById("rm1").style.display = "none";
-                  }}
-                >
-                  {ReactHtmlParser (this.state.buttons[2])}
-                </button>
-                <br />
-              </div>
-
+        {this.state.load ? (
+          <img
+            className="load"
+            src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
+            alt="loading"
+          />
+        ) : (
+          <React.Fragment>
+            {this.state.w}
+            {this.props.setLoad("block")}
+            <div className="rh">
+              <h1>{ReactHtmlParser(this.state.buttons[0])}</h1>
             </div>
+            <section className="about0">
+              <h2>
+                {ReactHtmlParser(this.state.hmap)}{" "}
+                <ListAltIcon className="infa" />{" "}
+              </h2>
+              <p className="jus">{ReactHtmlParser(this.state.cba)}</p>
+              <hr />
+            </section>
+            <div>{this.state.abc}</div>
+            <section className="about1">
+              <h2>
+                {ReactHtmlParser(this.state.hm)}{" "}
+                <ListAltIcon className="infa" />{" "}
+              </h2>
+              <hr />
+              <Wave>
+                <div className="prop">
+                  <h3>{ReactHtmlParser(this.state.h1)}</h3>
+                  <div className="jus">
+                    <span>{ReactHtmlParser(this.state.span1)}</span>
+                  </div>
 
-          </Wave>
-        </section>
+                  <div className="jus">
+                    <br />
+                    <br />
+                    <button
+                      className="cent0"
+                      onClick={() => {
+                        document.getElementById("rm").style.display = "block";
+                      }}
+                    >
+                      {ReactHtmlParser(this.state.buttons[1])}
+                    </button>
+                    <br />
+                    <br />
+                  </div>
+
+                  <div id="rm" className="cent">
+                    <hr />
+                    <br />
+                    <br />
+                    <span>{ReactHtmlParser(this.state.span2)}</span>
+                    <br />
+                    <br />
+                    <button
+                      className="cent0"
+                      onClick={() => {
+                        document.getElementById("rm").style.display = "none";
+                      }}
+                    >
+                      {ReactHtmlParser(this.state.buttons[2])}
+                    </button>
+                    <br />
+                  </div>
+
+                  <div className="jus">
+                    <br />
+                    <br />
+                    <img
+                      src="https://candid.s3-ap-southeast-2.amazonaws.com/breakp.png"
+                      alt="Swirly text divider"
+                      className="imga "
+                    ></img>
+                    <br />
+                    <br />
+                  </div>
+
+                  <br />
+                  <br />
+                  <h3>{ReactHtmlParser(this.state.h2)}</h3>
+                  <br />
+                  <span id="pic"></span>
+                  <span id="s3" className="jus">
+                    {ReactHtmlParser(this.state.span3)}
+                  </span>
+                  <br />
+                  <br />
+                  <button
+                    id="btn"
+                    onClick={() => {
+                      document.getElementById("rm1").style.display = "block";
+                    }}
+                  >
+                    {ReactHtmlParser(this.state.buttons[1])}
+                  </button>
+                  <br />
+                  <br />
+                  <br />
+
+                  <div id="rm1" className="cent">
+                    <hr />
+                    <br />
+                    <br />
+                    <span>{ReactHtmlParser(this.state.span4)}</span>
+                    <br />
+                    <br />
+                    <button
+                      className="cent0"
+                      onClick={() => {
+                        document.getElementById("rm1").style.display = "none";
+                      }}
+                    >
+                      {ReactHtmlParser(this.state.buttons[2])}
+                    </button>
+                    <br />
+                  </div>
+                </div>
+              </Wave>
+            </section>
+          </React.Fragment>
+        )}
       </React.Fragment>
     );
   }

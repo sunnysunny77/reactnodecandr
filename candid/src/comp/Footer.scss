@@ -1,4 +1,4 @@
-@import "./Variables.scss";
+@import "../Variables.scss";
 
 footer {
   width: 100%;
@@ -48,6 +48,10 @@ footer ul li a {
 ul li a:hover {
   color:$c10;
   cursor: pointer;
+}
+
+.true {
+  display: none;
 }
 
 @media only screen and (min-width: 1200px) {
