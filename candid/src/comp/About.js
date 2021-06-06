@@ -2,8 +2,6 @@ import React from "react";
 import "./About.scss";
 import Wave from "./Wave";
 import Maps from "./Maps.js";
-import Nav from "./Nav";
-import Footer from "./Footer";
 import axios from "axios";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import ReactHtmlParser from "react-html-parser";
@@ -109,7 +107,6 @@ export default class About extends React.Component {
                   <div className="jus">
                     <span>{ReactHtmlParser(this.state.span1)}</span>
                   </div>
-
                   <div className="jus">
                     <br />
                     <br />
@@ -124,7 +121,6 @@ export default class About extends React.Component {
                     <br />
                     <br />
                   </div>
-
                   <div id="rm" className="cent">
                     <hr />
                     <br />
@@ -142,7 +138,6 @@ export default class About extends React.Component {
                     </button>
                     <br />
                   </div>
-
                   <div className="jus">
                     <br />
                     <br />
@@ -154,8 +149,7 @@ export default class About extends React.Component {
                     <br />
                     <br />
                   </div>
-
-                  <br />
+                   <br />
                   <br />
                   <h3>{ReactHtmlParser(this.state.h2)}</h3>
                   <br />
@@ -176,7 +170,6 @@ export default class About extends React.Component {
                   <br />
                   <br />
                   <br />
-
                   <div id="rm1" className="cent">
                     <hr />
                     <br />
