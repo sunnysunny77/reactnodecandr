@@ -15,7 +15,7 @@ function App() {
   const [ph, setPh] = useState(null);
   const [time, setTime] = useState(null);
   const [day, setDay] = useState(null);
-  const [load, setLoad] = useState("none");
+  const [load, setLoad] = useState(null);
   const [buttons, setButtons] = useState([]);
 
   useEffect(() => {

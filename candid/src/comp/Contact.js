@@ -59,6 +59,7 @@ export default class Contactc extends Component {
       })
       .then(() => {
         this.setState({ load: false });
+        this.props.setLoad("block");
       })
       .catch((error) => {
         console.log(error);
@@ -68,15 +69,17 @@ export default class Contactc extends Component {
     return (
       <React.Fragment>
         {this.state.load ? (
-          <img
-            className="load"
-            src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
-            alt="loading"
-          />
+           <React.Fragment> 
+           {this.props.setLoad("none")}
+           <img
+             className="load"
+             src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
+             alt="loading"
+           />
+           </React.Fragment> 
         ) : (
           <React.Fragment>
             {this.state.w}
-            {this.props.setLoad("block")}
             <div className="rh">
               <h1>{ReactHtmlParser(this.state.buttons[0])}</h1>
             </div>

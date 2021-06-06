@@ -228,6 +228,7 @@ class Home extends Component {
       })
       .then(() => {
         this.setState({ load: false });
+        this.props.setLoad("block");
         document.getElementById("my-svg").innerHTML = this.state.svg;
         new Vivus("my-svg", { duration: 200 });
       })
@@ -357,16 +358,18 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
-        {this.state.load ? (
+      {this.state.load ? (
+          <React.Fragment> 
+          {this.props.setLoad("none")}
           <img
             className="load"
             src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
             alt="loading"
           />
+          </React.Fragment> 
         ) : (
           <React.Fragment>
             {this.state.w}
-            {this.props.setLoad("block")}
             <section className="welcome">
               <div id="w1">
                 <svg
