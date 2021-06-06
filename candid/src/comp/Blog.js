@@ -54,8 +54,54 @@ export default class Blog extends React.Component {
       .then((res) => {
         this.setState({
           buttons: res.data.buttons,
+          txt: res.data.doc.map((key, index) => {
+            const { _id, blogers, date, name, title, loc } = key;
+            return (
+              <table key={_id}>
+                <tbody key={_id + "0"}>
+                  <tr key={_id + "1"}>
+                    <th>{title}</th>
+                  </tr>
+                  <tr key={_id + "2"}>
+                    <th style={{ color: "rgba(147,112,219, 0.9)" }}>
+                      <img
+                        src="https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg"
+                        alt="Smiley face"
+                        width="10"
+                        height="10"
+                      ></img>{" "}
+                      {"" + date}
+                    </th>
+                  </tr>
+                  <tr key={_id + "img"}>
+                    <td>
+                      <img
+                        alt="Smiley face"
+                        src={"https://" + window.location.hostname + loc}
+                      />
+                    </td>
+                  </tr>
+                  <tr key={_id + "3"}>
+                    <td>{name}:</td>
+                  </tr>
+                  <tr key={_id + "4"}>
+                    <td>{blogers}</td>
+                  </tr>
+                  <tr key={_id + "5"}>
+                    <td>
+                      <br></br>
+                    </td>
+                  </tr>
+                  <tr key={_id + "6"}>
+                    <td>
+                      <hr></hr>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            );
+          }),
         });
-        return this.tab(res.data.doc);
       })
       .then(() => {
         this.setState({ load: false });
@@ -189,69 +235,18 @@ export default class Blog extends React.Component {
         });
       });
   };
-  tab = (res) => {
-    this.setState({
-      txt: res.map((key, index) => {
-        const { _id, blogers, date, name, title, loc } = key;
-        return (
-          <table key={_id}>
-            <tbody key={_id + "0"}>
-              <tr key={_id + "1"}>
-                <th>{title}</th>
-              </tr>
-              <tr key={_id + "2"}>
-                <th style={{ color: "rgba(147,112,219, 0.9)" }}>
-                  <img
-                    src="https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg"
-                    alt="Smiley face"
-                    width="10"
-                    height="10"
-                  ></img>{" "}
-                  {"" + date}
-                </th>
-              </tr>
-              <tr key={_id + "img"}>
-                <td>
-                  <img
-                    alt="Smiley face"
-                    src={"https://" + window.location.hostname + loc}
-                  />
-                </td>
-              </tr>
-              <tr key={_id + "3"}>
-                <td>{name}:</td>
-              </tr>
-              <tr key={_id + "4"}>
-                <td>{blogers}</td>
-              </tr>
-              <tr key={_id + "5"}>
-                <td>
-                  <br></br>
-                </td>
-              </tr>
-              <tr key={_id + "6"}>
-                <td>
-                  <hr></hr>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        );
-      }),
-    });
-  };
   render() {
     return (
       <React.Fragment>
         {this.state.load ? (
-           <React.Fragment> 
-           {this.props.setLoad("none")}
-           <img
-             className="load"
-             src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
-             alt="loading"
-           />
-           </React.Fragment> 
+          <React.Fragment>
+            {this.props.setLoad("none")}
+            <img
+              className="load"
+              src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
+              alt="loading"
+            />
+          </React.Fragment>
         ) : (
           <React.Fragment>
             {this.state.w}

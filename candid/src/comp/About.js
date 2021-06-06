@@ -74,14 +74,14 @@ export default class About extends React.Component {
     return (
       <React.Fragment>
         {this.state.load ? (
-           <React.Fragment> 
-           {this.props.setLoad("none")}
-           <img
-             className="load"
-             src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
-             alt="loading"
-           />
-           </React.Fragment> 
+          <React.Fragment>
+            {this.props.setLoad("none")}
+            <img
+              className="load"
+              src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
+              alt="loading"
+            />
+          </React.Fragment>
         ) : (
           <React.Fragment>
             {this.state.w}
