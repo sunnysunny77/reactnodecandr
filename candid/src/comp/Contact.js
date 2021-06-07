@@ -11,101 +11,67 @@ export default class Contactc extends Component {
     super(props);
     this.state = {
       w: window.scrollTo(0, 0),
-      h: null,
-      et: null,
-      email: null,
-      pt: null,
-      ph: null,
-      it: null,
-      it2: null,
-      h2: null,
-      avail: null,
-      buttons: [],
+      res: {},
       load: true,
     };
   }
   componentDidMount() {
     axios
-      .post(`https://candidcleaning.sunnyhome.site/cont`)
+      .post(`http://localhost:3005/cont`)
       .then((res) => {
-        if (res.data.e) {
-          this.setState({
-            h: res.data.e.h,
-            et: res.data.e.et,
-            email: res.data.e.email,
-            pt: res.data.e.pt,
-            ph: res.data.e.ph,
-            it: res.data.e.it,
-            it2: res.data.e.it2,
-            h2: res.data.e.h2,
-            avail: res.data.e.avail,
-            buttons: res.data.e.buttons,
-          });
-        }
-        if (res.data.a) {
-          this.setState({
-            h: res.data.a.h,
-            et: res.data.a.et,
-            email: res.data.a.email,
-            pt: res.data.a.pt,
-            ph: res.data.a.ph,
-            it: res.data.a.it,
-            it2: res.data.a.it2,
-            h2: res.data.a.h2,
-            avail: res.data.a.avail,
-            buttons: res.data.a.buttons,
-          });
-        }
+        this.setState({ res: res.data });
       })
       .then(() => {
         this.setState({ load: false });
         this.props.setLoad("block");
       })
       .catch((error) => {
-        console.log(error);
+        alert(error);
       });
+    if (this.state.load) {
+      this.props.setLoad("none");
+    }
   }
   render() {
     return (
       <React.Fragment>
         {this.state.load ? (
-           <React.Fragment> 
-           {this.props.setLoad("none")}
-           <img
-             className="load"
-             src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
-             alt="loading"
-           />
-           </React.Fragment> 
+          <React.Fragment>
+            <img
+              className="load"
+              src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
+              alt="loading"
+            />
+          </React.Fragment>
         ) : (
           <React.Fragment>
             {this.state.w}
             <div className="rh">
-              <h1>{ReactHtmlParser(this.state.buttons[0])}</h1>
+              <h1>{ReactHtmlParser(this.state.res.buttons[0])}</h1>
             </div>
             <section className="contlink">
               <div className="c1"></div>
               <div className="c2">
                 <h2>
-                  {ReactHtmlParser(this.state.h)}{" "}
+                  {ReactHtmlParser(this.state.res.h)}{" "}
                   <ContactsIcon className="infe" />
                 </h2>
                 <p>
-                  &nbsp;&#8226;&nbsp;{ReactHtmlParser(this.state.et)}
+                  &nbsp;&#8226;&nbsp;{ReactHtmlParser(this.state.res.et)}
                   <br></br>
                   &nbsp;&nbsp;
-                  <a href={"mailto:" + this.state.email}>{this.state.email}</a>
+                  <a href={"mailto:" + this.state.res.email}>{this.state.res.email}</a>
                   <br></br>
                   <br></br>
-                  &nbsp;&#8226;&nbsp;{ReactHtmlParser(this.state.pt)}
+                  &nbsp;&#8226;&nbsp;{ReactHtmlParser(this.state.res.pt)}
                   <br></br>
                   &nbsp;&nbsp;
-                  <a href={"tel:" + this.state.ph}>{this.state.ph}</a>
+                  <a href={"tel:" + this.state.res.ph}>{this.state.res.ph}</a>
                   <br></br>
                   <br></br>
-                  &nbsp;&#8226;&nbsp;{ReactHtmlParser(this.state.it)}
+                  &nbsp;&#8226;&nbsp;{ReactHtmlParser(this.state.res.it)}
                   <br></br>
-                  &nbsp; <span> {ReactHtmlParser(this.state.it2)}</span>
+                  &nbsp; <span> {ReactHtmlParser(this.state.res.it2)}</span>
                   <HelpOutlineIcon
                     id="homc"
                     onClick={() => {
@@ -120,13 +86,13 @@ export default class Contactc extends Component {
             </section>
             <section className="c3">
               <h2>
-                {ReactHtmlParser(this.state.h2)}{" "}
+                {ReactHtmlParser(this.state.res.h2)}{" "}
                 <ContactsIcon className="infe" />{" "}
               </h2>
               <hr />
               <Wave>
                 <div className="prop">
-                  <span id="sc">{ReactHtmlParser(this.state.avail)}</span>
+                  <span id="sc">{ReactHtmlParser(this.state.res.avail)}</span>
                 </div>
               </Wave>
             </section>

@@ -50,7 +50,7 @@ export default class Blog extends React.Component {
   }
   componentDidMount() {
     axios
-      .get(`https://candidcleaning.sunnyhome.site/ong`)
+      .get(`http://localhost:3005/ong`)
       .then((res) => {
         this.setState({
           buttons: res.data.buttons,
@@ -108,6 +108,7 @@ export default class Blog extends React.Component {
         this.props.setLoad("block");
       })
       .catch((error) => {
+        console.log(error);
         this.setState({
           a: error.response.statusText,
           a0: error.response.statusText,
@@ -115,6 +116,9 @@ export default class Blog extends React.Component {
           disp1: { display: "block", lineHeight: "75px" },
         });
       });
+    if (this.state.load) {
+      this.props.setLoad("none");
+    }
   }
   change = (event) => {
     let nam = event.target.name;
@@ -163,7 +167,7 @@ export default class Blog extends React.Component {
       this.state.file
     ) {
       axios
-        .post(`https://candidcleaning.sunnyhome.site/one`, {
+        .post(`http://localhost:3005/one`, {
           passw: this.state.passw,
           blogers: this.state.blogers,
           name: this.state.name,
@@ -206,7 +210,7 @@ export default class Blog extends React.Component {
   sub0 = (event) => {
     event.preventDefault();
     axios
-      .post(`https://candidcleaning.sunnyhome.site/two`, {
+      .post(`http://localhost:3005/two`, {
         passw0: this.state.passw0,
         ddate: this.state.ddate,
       })
@@ -228,7 +232,7 @@ export default class Blog extends React.Component {
         }
       })
       .catch((error) => {
-        console.log(error.response.statusText);
+        console.log(error);
         this.setState({
           a0: error.response.statusText,
           disp1: { display: "block", lineHeight: "75px" },
@@ -240,7 +244,6 @@ export default class Blog extends React.Component {
       <React.Fragment>
         {this.state.load ? (
           <React.Fragment>
-            {this.props.setLoad("none")}
             <img
               className="load"
               src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"

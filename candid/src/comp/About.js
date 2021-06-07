@@ -11,69 +11,38 @@ export default class About extends React.Component {
     super(props);
     this.state = {
       w: window.scrollTo(0, 0),
+      res: {},
       abc: null,
       cba: null,
-      hmap: null,
-      hm: null,
-      h1: null,
-      span1: null,
-      span2: null,
-      h2: null,
-      span3: null,
-      span4: null,
-      buttons: [],
       load: true,
     };
   }
   componentDidMount() {
     axios
-      .post(`https://candidcleaning.sunnyhome.site/abou`)
+      .post(`http://localhost:3005/abou`)
       .then((res) => {
-        if (res.data.e) {
-          this.setState({
-            cba: res.data.e.cba,
-            abc: res.data.e.abc,
-            hmap: res.data.e.hmap,
-            hm: res.data.e.hm,
-            h1: res.data.e.h1,
-            span1: res.data.e.span1,
-            span2: res.data.e.span2,
-            h2: res.data.e.h2,
-            span3: res.data.e.span3,
-            span4: res.data.e.span4,
-            buttons: res.data.e.buttons,
-          });
-        }
-        if (res.data.a) {
-          this.setState({
-            cba: res.data.a.cba,
-            abc: <Maps data={res.data.a.abc} />,
-            hmap: res.data.a.hmap,
-            hm: res.data.a.hm,
-            h1: res.data.a.h1,
-            span1: res.data.a.span1,
-            span2: res.data.a.span2,
-            h2: res.data.a.h2,
-            span3: res.data.a.span3,
-            span4: res.data.a.span4,
-            buttons: res.data.a.buttons,
-          });
-        }
+        this.setState({
+          res: res.data.a,
+          cba: res.data.b.cba,
+          abc: <Maps data={res.data.b.abc} />,
+        });
       })
       .then(() => {
         this.setState({ load: false });
         this.props.setLoad("block");
       })
       .catch((error) => {
-        console.log(error);
+        alert(error);
       });
+    if (this.state.load) {
+      this.props.setLoad("none");
+    }
   }
   render() {
     return (
       <React.Fragment>
         {this.state.load ? (
           <React.Fragment>
-            {this.props.setLoad("none")}
             <img
               className="load"
               src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
@@ -84,11 +53,11 @@ export default class About extends React.Component {
           <React.Fragment>
             {this.state.w}
             <div className="rh">
-              <h1>{ReactHtmlParser(this.state.buttons[0])}</h1>
+              <h1>{ReactHtmlParser(this.state.res.buttons[0])}</h1>
             </div>
             <section className="about0">
               <h2>
-                {ReactHtmlParser(this.state.hmap)}{" "}
+                {ReactHtmlParser(this.state.res.hmap)}{" "}
                 <ListAltIcon className="infa" />{" "}
               </h2>
               <p className="jus">{ReactHtmlParser(this.state.cba)}</p>
@@ -97,15 +66,15 @@ export default class About extends React.Component {
             <div>{this.state.abc}</div>
             <section className="about1">
               <h2>
-                {ReactHtmlParser(this.state.hm)}{" "}
+                {ReactHtmlParser(this.state.res.hm)}{" "}
                 <ListAltIcon className="infa" />{" "}
               </h2>
               <hr />
               <Wave>
                 <div className="prop">
-                  <h3>{ReactHtmlParser(this.state.h1)}</h3>
+                  <h3>{ReactHtmlParser(this.state.res.h1)}</h3>
                   <div className="jus">
-                    <span>{ReactHtmlParser(this.state.span1)}</span>
+                    <span>{ReactHtmlParser(this.state.res.span1)}</span>
                   </div>
                   <div className="jus">
                     <br />
@@ -116,7 +85,7 @@ export default class About extends React.Component {
                         document.getElementById("rm").style.display = "block";
                       }}
                     >
-                      {ReactHtmlParser(this.state.buttons[1])}
+                      {ReactHtmlParser(this.state.res.buttons[1])}
                     </button>
                     <br />
                     <br />
@@ -125,7 +94,7 @@ export default class About extends React.Component {
                     <hr />
                     <br />
                     <br />
-                    <span>{ReactHtmlParser(this.state.span2)}</span>
+                    <span>{ReactHtmlParser(this.state.res.span2)}</span>
                     <br />
                     <br />
                     <button
@@ -134,7 +103,7 @@ export default class About extends React.Component {
                         document.getElementById("rm").style.display = "none";
                       }}
                     >
-                      {ReactHtmlParser(this.state.buttons[2])}
+                      {ReactHtmlParser(this.state.res.buttons[2])}
                     </button>
                     <br />
                   </div>
@@ -149,13 +118,13 @@ export default class About extends React.Component {
                     <br />
                     <br />
                   </div>
-                   <br />
                   <br />
-                  <h3>{ReactHtmlParser(this.state.h2)}</h3>
+                  <br />
+                  <h3>{ReactHtmlParser(this.state.res.h2)}</h3>
                   <br />
                   <span id="pic"></span>
                   <span id="s3" className="jus">
-                    {ReactHtmlParser(this.state.span3)}
+                    {ReactHtmlParser(this.state.res.span3)}
                   </span>
                   <br />
                   <br />
@@ -165,7 +134,7 @@ export default class About extends React.Component {
                       document.getElementById("rm1").style.display = "block";
                     }}
                   >
-                    {ReactHtmlParser(this.state.buttons[1])}
+                    {ReactHtmlParser(this.state.res.buttons[1])}
                   </button>
                   <br />
                   <br />
@@ -174,7 +143,7 @@ export default class About extends React.Component {
                     <hr />
                     <br />
                     <br />
-                    <span>{ReactHtmlParser(this.state.span4)}</span>
+                    <span>{ReactHtmlParser(this.state.res.span4)}</span>
                     <br />
                     <br />
                     <button
@@ -183,7 +152,7 @@ export default class About extends React.Component {
                         document.getElementById("rm1").style.display = "none";
                       }}
                     >
-                      {ReactHtmlParser(this.state.buttons[2])}
+                      {ReactHtmlParser(this.state.res.buttons[2])}
                     </button>
                     <br />
                   </div>

@@ -9,56 +9,46 @@ export default class Galery extends Component {
     super(props);
     this.state = {
       w: window.scrollTo(0, 0),
-      images: [],
-      buttons: [],
+      res: {},
       load: true,
     };
   }
   componentDidMount() {
     axios
-      .post(`https://candidcleaning.sunnyhome.site/g`)
+      .post(`http://localhost:3005/g`)
       .then((res) => {
-        if (res.data.e) {
-          this.setState({
-            images: res.data.e.images,
-            buttons: res.data.e.buttons,
-          });
-        }
-        if (res.data.a) {
-          this.setState({
-            images: res.data.a.images,
-            buttons: res.data.a.buttons,
-          });
-        }
+        this.setState({ res: res.data });
       })
       .then(() => {
         this.setState({ load: false });
         this.props.setLoad("block");
       })
       .catch((error) => {
-        console.log(error);
+        alert(error);
       });
+    if (this.state.load) {
+      this.props.setLoad("none");
+    }
   }
   render() {
     return (
       <React.Fragment>
         {this.state.load ? (
-           <React.Fragment> 
-           {this.props.setLoad("none")}
-           <img
-             className="load"
-             src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
-             alt="loading"
-           />
-           </React.Fragment> 
+          <React.Fragment>
+            <img
+              className="load"
+              src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
+              alt="loading"
+            />
+          </React.Fragment>
         ) : (
           <React.Fragment>
             {this.state.w}
             <div className="rh">
-              <h1> {ReactHtmlParser(this.state.buttons[0])}</h1>
+              <h1> {ReactHtmlParser(this.state.res.buttons[0])}</h1>
             </div>
             <section id="gl">
-              <ImageGallery items={this.state.images} />
+              <ImageGallery items={this.state.res.images} />
             </section>
           </React.Fragment>
         )}

@@ -83,28 +83,7 @@ class Home extends Component {
       selectedOption: null,
       text: null,
       a: null,
-      m1: null,
-      m2: null,
-      qh: null,
-      q: null,
-      ch1: null,
-      ch2: null,
-      ch3: null,
-      ch4: null,
-      ch5: null,
-      ch6: null,
-      c1: null,
-      c2: null,
-      c3: null,
-      c4: null,
-      c5: null,
-      c6: null,
-      u4: null,
-      u5: null,
-      u6: null,
-      options: null,
-      buttons: [],
-      vid: [],
+      res: {},
       vi: null,
       count: 1,
       svg: null,
@@ -116,125 +95,73 @@ class Home extends Component {
       document.getElementById("iq").scrollIntoView();
     }
     axios
-      .post(`https://candidcleaning.sunnyhome.site/hom`)
+      .post(`http://localhost:3005/hom`)
       .then((res) => {
-        if (res.data.e) {
-          this.setState({
-            m1: res.data.e.m1,
-            m2: res.data.e.m2,
-            qh: res.data.e.qh,
-            q: res.data.e.q,
-            ch1: res.data.e.ch1,
-            ch2: res.data.e.ch2,
-            ch3: res.data.e.ch3,
-            ch4: res.data.e.ch4,
-            ch5: res.data.e.ch5,
-            ch6: res.data.e.ch6,
-            c1: res.data.e.c1,
-            c2: res.data.e.c2,
-            c3: res.data.e.c3,
-            c4: res.data.e.c4,
-            c5: res.data.e.c5,
-            c6: res.data.e.c6,
-            u4: res.data.e.u4,
-            u5: res.data.e.u5,
-            u6: res.data.e.u6,
-            options: res.data.e.options,
-            svg: res.data.e.svg,
-            buttons: res.data.e.buttons,
-            vid: res.data.e.vid,
-          });
-        }
-        if (res.data.a) {
-          this.setState({
-            m1: res.data.a.m1,
-            m2: res.data.a.m2,
-            v1: res.data.a.v1,
-            v2: res.data.a.v2,
-            v3: res.data.a.v3,
-            v4: res.data.a.v4,
-            qh: res.data.a.qh,
-            q: res.data.a.q,
-            ch1: res.data.a.ch1,
-            ch2: res.data.a.ch2,
-            ch3: res.data.a.ch3,
-            ch4: res.data.a.ch4,
-            ch5: res.data.a.ch5,
-            ch6: res.data.a.ch6,
-            c1: res.data.a.c1,
-            c2: res.data.a.c2,
-            c3: res.data.a.c3,
-            c4: res.data.a.c4,
-            c5: res.data.a.c5,
-            c6: res.data.a.c6,
-            u4: res.data.a.u4,
-            u5: res.data.a.u5,
-            u6: res.data.a.u6,
-            options: res.data.a.options,
-            svg: res.data.a.svg,
-            buttons: res.data.a.buttons,
-            vid: res.data.a.vid,
-            vi: res.data.a.vid.map((key, index) => {
-              let d;
-              if (index === 0) {
-                d = "inline-block";
-              } else {
-                d = "none";
-              }
-              function preloadImage(url) {
-                new Image().src = url;
-              }
-              preloadImage(res.data.a.vid[index][0]);
-              preloadImage(res.data.a.vid[index][3]);
-              return (
-                <React.Fragment key={index}>
-                  <span
-                    className={ReactHtmlParser("vt &nbsp d" + [index + 1])}
-                    style={{ display: d }}
-                    onClick={() => this.vid(res.data.a.vid[index][1])}
-                  >
-                    {ReactHtmlParser(res.data.a.vid[index][2])}{" "}
-                    <PlayCircleOutlineIcon className="iv" />
-                  </span>
-                  <img
-                    className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
-                    src={res.data.a.vid[index][0]}
-                    alt={ReactHtmlParser(res.data.a.vid[index][2])}
-                    style={{
-                      display: d,
-                    }}
-                  />
-                  <span
-                    className={ReactHtmlParser("vt &nbsp d" + [index + 1])}
-                    style={{ display: d }}
-                    onClick={() => this.vid(res.data.a.vid[index][4])}
-                  >
-                    {ReactHtmlParser(res.data.a.vid[index][5])}{" "}
-                    <PlayCircleOutlineIcon className="iv" />
-                  </span>
-                  <img
-                    className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
-                    src={res.data.a.vid[index][3]}
-                    alt={ReactHtmlParser(res.data.a.vid[index][5])}
-                    style={{
-                      display: d,
-                    }}
-                  />
-                </React.Fragment>
-              );
-            }),
-          });
-        }
+        this.setState({
+          res: res.data,
+          vi: res.data.vid.map((key, index) => {
+            let d;
+            if (index === 0) {
+              d = "inline-block";
+            } else {
+              d = "none";
+            }
+            function preloadImage(url) {
+              new Image().src = url;
+            }
+            preloadImage(res.data.vid[index][0]);
+            preloadImage(res.data.vid[index][3]);
+            return (
+              <React.Fragment key={index}>
+                <span
+                  className={ReactHtmlParser("vt &nbsp d" + [index + 1])}
+                  style={{ display: d }}
+                  onClick={() => this.vid(res.data.vid[index][1])}
+                >
+                  {ReactHtmlParser(res.data.vid[index][2])}{" "}
+                  <PlayCircleOutlineIcon className="iv" />
+                </span>
+                <img
+                  className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
+                  src={res.data.vid[index][0]}
+                  alt={ReactHtmlParser(res.data.vid[index][2])}
+                  style={{
+                    display: d,
+                  }}
+                />
+                <span
+                  className={ReactHtmlParser("vt &nbsp d" + [index + 1])}
+                  style={{ display: d }}
+                  onClick={() => this.vid(res.data.vid[index][4])}
+                >
+                  {ReactHtmlParser(res.data.vid[index][5])}{" "}
+                  <PlayCircleOutlineIcon className="iv" />
+                </span>
+                <img
+                  className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
+                  src={res.data.vid[index][3]}
+                  alt={ReactHtmlParser(res.data.vid[index][5])}
+                  style={{
+                    display: d,
+                  }}
+                />
+              </React.Fragment>
+            );
+          }),
+        });
       })
       .then(() => {
         this.setState({ load: false });
         this.props.setLoad("block");
-        document.getElementById("my-svg").innerHTML = this.state.svg;
+        document.getElementById("my-svg").innerHTML = this.state.res.svg;
         new Vivus("my-svg", { duration: 200 });
       })
       .catch((error) => {
-        console.log(error);
+        alert(error);
       });
+    if (this.state.load) {
+      this.props.setLoad("none");
+    }
   }
   vid = (v) => {
     window.open(v);
@@ -242,7 +169,7 @@ class Home extends Component {
   vidd = (v) => {
     let c = this.state.count + v;
     let x = this.state.count;
-    if (c > 0 && c <= this.state.vid.length) {
+    if (c > 0 && c <= this.state.res.vid.length) {
       document.getElementsByClassName("d" + x)[1].style.display = "none";
       document.getElementsByClassName("d" + x)[3].style.display = "none";
       document.getElementsByClassName("d" + c)[1].style.display =
@@ -260,7 +187,7 @@ class Home extends Component {
   };
   vidt = () => {
     let c = this.state.count;
-    if (c < this.state.vid.length) {
+    if (c < this.state.res.vid.length) {
       document.getElementsByClassName("d" + c)[1].style.display = "none";
       document.getElementsByClassName("d" + c)[3].style.display = "none";
       document.getElementsByClassName("d" + [c + 1])[1].style.display =
@@ -312,7 +239,7 @@ class Home extends Component {
         disp: { display: "block", lineHeight: "75px" },
       });
       axios
-        .post(`https://candidcleaning.sunnyhome.site/three`, {
+        .post(`http://localhost:3005/three`, {
           name: this.state.name,
           email: this.state.email,
           phone: this.state.phone,
@@ -360,7 +287,6 @@ class Home extends Component {
       <React.Fragment>
         {this.state.load ? (
           <React.Fragment>
-            {this.props.setLoad("none")}
             <img
               className="load"
               src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
@@ -379,10 +305,10 @@ class Home extends Component {
                   viewBox="0 0 500 500"
                   xmlns="http://www.w3.org/2000/svg"
                 />
-                <h1>{ReactHtmlParser(this.state.m1)}</h1>
+                <h1>{ReactHtmlParser(this.state.res.m1)}</h1>
               </div>
               <div id="w2">
-                <h2 onClick={this.scr}>{ReactHtmlParser(this.state.m2)}</h2>
+                <h2 onClick={this.scr}>{ReactHtmlParser(this.state.res.m2)}</h2>
               </div>
             </section>
             <Slider id="slide" {...this.state.settings}>
@@ -430,7 +356,7 @@ class Home extends Component {
               <div className="info0"></div>
               <div className="info2">
                 <h3>
-                  {ReactHtmlParser(this.state.qh)}
+                  {ReactHtmlParser(this.state.res.qh)}
                   <InfoIcon id="inf" />
                 </h3>
                 <hr
@@ -440,7 +366,7 @@ class Home extends Component {
                   }}
                 />
                 <p>
-                  <q>{ReactHtmlParser(this.state.q)}</q>
+                  <q>{ReactHtmlParser(this.state.res.q)}</q>
                 </p>
                 <hr
                   style={{
@@ -454,109 +380,109 @@ class Home extends Component {
               <div className="card1">
                 <div className="card2">
                   <span>
-                    <h3>{ReactHtmlParser(this.state.ch1)}</h3>
+                    <h3>{ReactHtmlParser(this.state.res.ch1)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card1.png"
-                      alt={ReactHtmlParser(this.state.ch1)}
+                      alt={ReactHtmlParser(this.state.res.ch1)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <p>{ReactHtmlParser(this.state.c1)}</p>
+                <p>{ReactHtmlParser(this.state.res.c1)}</p>
                 <StarBorderIcon className="cardi" />
                 <FilterListIcon className="cardf" />
               </div>
               <div className="card1">
                 <div className="card2">
                   <span>
-                    <h3>{ReactHtmlParser(this.state.ch2)}</h3>
+                    <h3>{ReactHtmlParser(this.state.res.ch2)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card2.png"
-                      alt={ReactHtmlParser(this.state.ch2)}
+                      alt={ReactHtmlParser(this.state.res.ch2)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <p>{ReactHtmlParser(this.state.c2)}</p>
+                <p>{ReactHtmlParser(this.state.res.c2)}</p>
                 <WhatshotIcon className="cardi" />
                 <FilterListIcon className="cardf" />
               </div>
               <div className="card1">
                 <div className="card2">
                   <span>
-                    <h3>{ReactHtmlParser(this.state.ch3)}</h3>
+                    <h3>{ReactHtmlParser(this.state.res.ch3)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card3.png"
-                      alt={ReactHtmlParser(this.state.ch3)}
+                      alt={ReactHtmlParser(this.state.res.ch3)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <p>{ReactHtmlParser(this.state.c3)}</p>
+                <p>{ReactHtmlParser(this.state.res.c3)}</p>
                 <BuildIcon className="cardi" />
                 <FilterListIcon className="cardf" />
               </div>
               <div className="card1">
                 <div className="card2">
                   <span>
-                    <h3>{ReactHtmlParser(this.state.ch4)}</h3>
+                    <h3>{ReactHtmlParser(this.state.res.ch4)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card4.png"
-                      alt={ReactHtmlParser(this.state.ch4)}
+                      alt={ReactHtmlParser(this.state.res.ch4)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <p>{ReactHtmlParser(this.state.c4)}</p>
-                <a target="4" href={this.state.u4}>
-                  {ReactHtmlParser(this.state.buttons[0])}
+                <p>{ReactHtmlParser(this.state.res.c4)}</p>
+                <a target="4" href={this.state.res.u4}>
+                  {ReactHtmlParser(this.state.res.buttons[0])}
                 </a>
                 <FilterListIcon className="cardf" />
               </div>
               <div className="card1">
                 <div className="card2">
                   <span>
-                    <h3>{ReactHtmlParser(this.state.ch5)}</h3>
+                    <h3>{ReactHtmlParser(this.state.res.ch5)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card5.png"
-                      alt={ReactHtmlParser(this.state.ch5)}
+                      alt={ReactHtmlParser(this.state.res.ch5)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <p>{ReactHtmlParser(this.state.c5)}</p>
-                <a target="5" href={this.state.u5}>
-                  {ReactHtmlParser(this.state.buttons[0])}
+                <p>{ReactHtmlParser(this.state.res.c5)}</p>
+                <a target="5" href={this.state.res.u5}>
+                  {ReactHtmlParser(this.state.res.buttons[0])}
                 </a>
                 <FilterListIcon className="cardf" />
               </div>
               <div className="card1">
                 <div className="card2">
                   <span>
-                    <h3>{ReactHtmlParser(this.state.ch6)}</h3>
+                    <h3>{ReactHtmlParser(this.state.res.ch6)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card6.png"
-                      alt={ReactHtmlParser(this.state.ch6)}
+                      alt={ReactHtmlParser(this.state.res.ch6)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <p>{ReactHtmlParser(this.state.c6)}</p>
-                <a target="6" href={this.state.u6}>
-                  {ReactHtmlParser(this.state.buttons[0])}
+                <p>{ReactHtmlParser(this.state.res.c6)}</p>
+                <a target="6" href={this.state.res.u6}>
+                  {ReactHtmlParser(this.state.res.buttons[0])}
                 </a>
                 <FilterListIcon className="cardf" />
               </div>
             </section>
             <section id="iq" className="inq">
               <div className="rh">
-                <h3>{ReactHtmlParser(this.state.buttons[1])}</h3>
+                <h3>{ReactHtmlParser(this.state.res.buttons[1])}</h3>
               </div>
               <br></br>
               <form
@@ -569,7 +495,7 @@ class Home extends Component {
                 }}
                 onSubmit={this.subic}
               >
-                <label for="name" className="hiddentext">
+                <label htmlFor="name" className="hiddentext">
                   Name
                 </label>
                 <TextField
@@ -596,7 +522,7 @@ class Home extends Component {
                   placeholder="Name:"
                   onChange={this.change}
                 />
-                <label for="email" className="hiddentext">
+                <label htmlFor="email" className="hiddentext">
                   Email
                 </label>
                 <TextField
@@ -623,7 +549,7 @@ class Home extends Component {
                   placeholder="Email:"
                   onChange={this.change}
                 />
-                <label for="phone" className="hiddentext">
+                <label htmlFor="phone" className="hiddentext">
                   Phone
                 </label>
                 <Tooltip
@@ -662,8 +588,8 @@ class Home extends Component {
                   <ListIcon
                     style={{ color: styles.wi, marginLeft: "27.5px" }}
                   />
-                  <label for="select" className="hiddentext">
-                    {ReactHtmlParser(this.state.buttons[3])}
+                  <label htmlFor="select" className="hiddentext">
+                    {ReactHtmlParser(this.state.res.buttons[3])}
                   </label>
                   <Select
                     inputId="select"
@@ -671,9 +597,9 @@ class Home extends Component {
                     maxMenuHeight={100}
                     value={this.state.selectedOption}
                     onChange={this.handleChange}
-                    options={this.state.options}
+                    options={this.state.res.options}
                     styles={customStyles}
-                    placeholder={ReactHtmlParser(this.state.buttons[3])}
+                    placeholder={ReactHtmlParser(this.state.res.buttons[3])}
                   />
                 </div>
                 <SubjectIcon
@@ -684,7 +610,7 @@ class Home extends Component {
                     display: "block",
                   }}
                 />
-                <label for="text" className="hiddentext">
+                <label htmlFor="text" className="hiddentext">
                   Text
                 </label>
                 <TextField
@@ -728,7 +654,7 @@ class Home extends Component {
                   variant="contained"
                   type="submit"
                 >
-                  {ReactHtmlParser(this.state.buttons[2])}
+                  {ReactHtmlParser(this.state.res.buttons[2])}
                 </Button>
                 <div style={{ height: "75px" }}>
                   <div style={this.state.disp}>

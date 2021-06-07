@@ -48,6 +48,7 @@ app.use(function (req, res, next) {
   return next();
 });
 
+
 let sch = mongoose.Schema({
   date: String,
   blogers: String,
@@ -87,16 +88,14 @@ axios
           parsedData.data[i * 2][1] &&
           parsedData.data[i * 2][2]
         ) {
-          parsedData3.push(
-            [
-              parsedData.data[i * 2 - 1][0],
-              parsedData.data[i * 2 - 1][1],
-              parsedData.data[i * 2 - 1][2],
-              parsedData.data[i * 2][0],
-              parsedData.data[i * 2][1],
-              parsedData.data[i * 2][2],
-            ]
-          );
+          parsedData3.push([
+            parsedData.data[i * 2 - 1][0],
+            parsedData.data[i * 2 - 1][1],
+            parsedData.data[i * 2 - 1][2],
+            parsedData.data[i * 2][0],
+            parsedData.data[i * 2][1],
+            parsedData.data[i * 2][2],
+          ]);
         } else {
           return { parsedData3: undefined };
         }
@@ -108,7 +107,6 @@ axios
   })
   .then((res) => {
     parsedData3 = res.parsedData3;
-
   })
   .catch((error) => {
     console.log(error);
@@ -186,38 +184,41 @@ axios
   .then((res) => {
     let parsedData = Papa.parse(res.data, { skipEmptyLines: true });
     if (parsedData.data[3].length % 2 === 0) {
-      let l = parsedData.data[3].length  / 2;
+      let l = parsedData.data[3].length / 2;
       let parsedData0 = [];
       for (let i = 1; i <= l; i++) {
-          let g = i * 2;
-          parsedData0.push({
-            [i]: {
-              type: "Feature",
-              geometry: {
-                type: "Polygon",
-                coordinates: [[]],
-              },
+        let g = i * 2;
+        parsedData0.push({
+          [i]: {
+            type: "Feature",
+            geometry: {
+              type: "Polygon",
+              coordinates: [[]],
             },
-          });
-          for (let x in parsedData.data) {
-            if (x >= 3) {
-              if (parsedData.data[3][g - 2].length !== 0 , parsedData.data[3][g - 1].length !== 0) {
-                if (
-                  parsedData.data[x][g - 2].length &&
-                  parsedData.data[x][g - 1].length
-                  ) {
-                    parsedData0[i - 1][i].geometry.coordinates[0].push([
-                    parsedData.data[x][g - 2],
-                    parsedData.data[x][g - 1],
-                  ]);
-                }
-              } else {
-                return undefined;
+          },
+        });
+        for (let x in parsedData.data) {
+          if (x >= 3) {
+            if (
+              (parsedData.data[3][g - 2].length !== 0,
+              parsedData.data[3][g - 1].length !== 0)
+            ) {
+              if (
+                parsedData.data[x][g - 2].length &&
+                parsedData.data[x][g - 1].length
+              ) {
+                parsedData0[i - 1][i].geometry.coordinates[0].push([
+                  parsedData.data[x][g - 2],
+                  parsedData.data[x][g - 1],
+                ]);
               }
-            } 
+            } else {
+              return undefined;
+            }
           }
         }
-        return [parsedData.data[1][0], parsedData0, parsedData.data[1][1]];
+      }
+      return [parsedData.data[1][0], parsedData0, parsedData.data[1][1]];
     } else {
       return undefined;
     }
@@ -421,22 +422,13 @@ app.get("/ong", function (req, res) {
 app.post("/nav", function (req, res) {
   if (parsedData !== undefined && b !== undefined) {
     return res.json({
-      a: {
-        ph: parsedData.data[7][1],
-        time: parsedData.data[1][1],
-        day: parsedData.data[2][1],
-        buttons: [b[0], b[1], b[2], b[3]],
-      },
+      ph: parsedData.data[7][1],
+      time: parsedData.data[1][1],
+      day: parsedData.data[2][1],
+      buttons: [b[0], b[1], b[2], b[3]],
     });
   } else {
-    return res.json({
-      e: {
-        ph: "error",
-        time: "error",
-        day: "error",
-        buttons: ["error", "error", "error", "error"],
-      },
-    });
+    return res.sendStatus(500);
   }
 });
 
@@ -448,108 +440,53 @@ app.post("/hom", function (req, res) {
     parsedData3 !== undefined
   ) {
     return res.json({
-      a: {
-        m1: parsedData.data[21][1],
-        m2: parsedData.data[22][1],
-        qh: parsedData.data[23][1],
-        q: parsedData.data[24][1],
-        ch1: parsedData.data[25][1],
-        ch2: parsedData.data[26][1],
-        ch3: parsedData.data[27][1],
-        ch4: parsedData.data[28][1],
-        ch5: parsedData.data[29][1],
-        ch6: parsedData.data[30][1],
-        c1: parsedData.data[31][1],
-        c2: parsedData.data[32][1],
-        c3: parsedData.data[33][1],
-        c4: parsedData.data[34][1],
-        c5: parsedData.data[35][1],
-        c6: parsedData.data[36][1],
-        u4: parsedData.data[37][1],
-        u5: parsedData.data[38][1],
-        u6: parsedData.data[39][1],
-        options: parsedData1,
-        svg: parsedData.data[1][2],
-        buttons: [b[10], b[9], b[8], b[11]],
-        vid: parsedData3,
-      },
+      m1: parsedData.data[21][1],
+      m2: parsedData.data[22][1],
+      qh: parsedData.data[23][1],
+      q: parsedData.data[24][1],
+      ch1: parsedData.data[25][1],
+      ch2: parsedData.data[26][1],
+      ch3: parsedData.data[27][1],
+      ch4: parsedData.data[28][1],
+      ch5: parsedData.data[29][1],
+      ch6: parsedData.data[30][1],
+      c1: parsedData.data[31][1],
+      c2: parsedData.data[32][1],
+      c3: parsedData.data[33][1],
+      c4: parsedData.data[34][1],
+      c5: parsedData.data[35][1],
+      c6: parsedData.data[36][1],
+      u4: parsedData.data[37][1],
+      u5: parsedData.data[38][1],
+      u6: parsedData.data[39][1],
+      options: parsedData1,
+      svg: parsedData.data[1][2],
+      buttons: [b[10], b[9], b[8], b[11]],
+      vid: parsedData3,
     });
   } else {
-    return res.json({
-      e: {
-        m1: "error",
-        m2: "error",
-        v1: "error",
-        v2: "error",
-        v3: "error",
-        v4: "error",
-        qh: "error",
-        q: "error",
-        ch1: "error",
-        ch2: "error",
-        ch3: "error",
-        ch4: "error",
-        ch5: "error",
-        ch6: "error",
-        c1: "error",
-        c2: "error",
-        c3: "error",
-        c4: "error",
-        c5: "error",
-        c6: "error",
-        u4: "error",
-        u5: "error",
-        u6: "error",
-        options: [{ value: "error", label: "error" }],
-        svg: "error",
-        buttons: ["error", "error", "error", "error"],
-        vid: [[
-          "error",
-          "error",
-          "error",
-          "error",
-          "error",
-          "error",
-        ]],
-      },
-    });
+    return res.sendStatus(500);
   }
 });
 
 app.post("/cont", function (req, res) {
   if (parsedData !== undefined && b !== undefined) {
     return res.json({
-      a: {
-        h: parsedData.data[3][1],
-        et: parsedData.data[4][1],
-        email: parsedData.data[5][1],
-        pt: parsedData.data[6][1],
-        ph: parsedData.data[7][1],
-        it: parsedData.data[8][1],
-        it2: parsedData.data[9][1],
-        h2: parsedData.data[10][1],
-        avail: parsedData.data[11][1],
-        buttons: [b[2]],
-      },
+      h: parsedData.data[3][1],
+      et: parsedData.data[4][1],
+      email: parsedData.data[5][1],
+      pt: parsedData.data[6][1],
+      ph: parsedData.data[7][1],
+      it: parsedData.data[8][1],
+      it2: parsedData.data[9][1],
+      h2: parsedData.data[10][1],
+      avail: parsedData.data[11][1],
+      buttons: [b[2]],
     });
   } else {
-    return res.json({
-      e: {
-        h: "error",
-        et: "error",
-        email: "error",
-        pt: "error",
-        ph: "error",
-        it: "error",
-        it2: "error",
-        h2: "error",
-        avail: "error",
-        buttons: ["error"],
-      },
-    });
+    return res.sendStatus(500);
   }
 });
-
 
 app.post("/abou", function (req, res) {
   if (
@@ -559,8 +496,6 @@ app.post("/abou", function (req, res) {
   ) {
     return res.json({
       a: {
-        cba: parsedData0[0],
-        abc: parsedData0[1],
         hmap: parsedData0[2],
         hm: parsedData.data[13][1],
         h1: parsedData.data[14][1],
@@ -571,34 +506,21 @@ app.post("/abou", function (req, res) {
         span4: parsedData.data[19][1],
         buttons: [b[3], b[4], b[5]],
       },
-    });
-  } else {
-    return res.json({
-      e: {
-        cba: "error",
-        abc: "error",
-        hmap: "error",
-        hm: "error",
-        h1: "error",
-        span1: "error",
-        span2: "error",
-        h2: "error",
-        span3: "error",
-        span4: "error",
-        buttons: ["error", "error", "error"],
+      b: {
+        cba: parsedData0[0],
+        abc: parsedData0[1],
       },
     });
+  } else {
+    return res.sendStatus(500);
   }
 });
 
 app.post("/g", function (req, res) {
   if (parsedData2 !== undefined && b !== undefined) {
-    return res.json({ a: { images: parsedData2, buttons: [b[1]] } });
+    return res.json({ images: parsedData2, buttons: [b[1]] });
   } else {
-    return res.json({
-      e: { images: [{ original: "error", thumbnail: "error" }] },
-      buttons: ["error"],
-    });
+    return res.sendStatus(500);
   }
 });
 

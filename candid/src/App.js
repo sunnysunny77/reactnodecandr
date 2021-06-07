@@ -9,7 +9,6 @@ import About from "./comp/About";
 import axios from "axios";
 import Nav from "./comp/Nav";
 import Footer from "./comp/Footer";
-import { SettingsApplicationsOutlined } from "@material-ui/icons";
 
 function App() {
   const [ph, setPh] = useState(null);
@@ -20,23 +19,15 @@ function App() {
 
   useEffect(() => {
     axios
-      .post(`https://candidcleaning.sunnyhome.site/nav`)
+      .post(`http://localhost:3005/nav`)
       .then((res) => {
-        if (res.data.e) {
-          setPh(res.data.e.ph);
-          setTime(res.data.e.time);
-          setDay(res.data.e.day);
-          setButtons(res.data.e.buttons);
-        }
-        if (res.data.a) {
-          setPh(res.data.a.ph);
-          setTime(res.data.a.time);
-          setDay(res.data.a.day);
-          setButtons(res.data.a.buttons);
-        }
+        setPh(res.data.ph);
+        setTime(res.data.time);
+        setDay(res.data.day);
+        setButtons(res.data.buttons);
       })
       .catch((error) => {
-        console.log(error);
+        alert(error);
       });
   }, []);
 
@@ -57,7 +48,7 @@ function App() {
           <Route path="/contact" exact>
             <Contact setLoad={(x) => setLoad(x)} />
           </Route>
-          <Route  path="/about" exact>
+          <Route path="/about" exact>
             <About setLoad={(x) => setLoad(x)} />
           </Route>
         </Switch>
