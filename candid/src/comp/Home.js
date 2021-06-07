@@ -91,9 +91,6 @@ class Home extends Component {
     };
   }
   componentDidMount() {
-    if (window.location.search === "?in=in") {
-      document.getElementById("iq").scrollIntoView();
-    }
     axios
       .post(`http://localhost:3005/hom`)
       .then((res) => {
@@ -155,6 +152,9 @@ class Home extends Component {
         this.props.setLoad("block");
         document.getElementById("my-svg").innerHTML = this.state.res.svg;
         new Vivus("my-svg", { duration: 200 });
+        if (window.location.search === "?in=in") {
+          document.getElementById("iq").scrollIntoView();
+        }
       })
       .catch((error) => {
         alert(error);
@@ -239,7 +239,7 @@ class Home extends Component {
         disp: { display: "block", lineHeight: "75px" },
       });
       axios
-        .post(`http://localhost:3005/three`, {
+        .post(`https://candidcleaning.sunnyhome.site/three`, {
           name: this.state.name,
           email: this.state.email,
           phone: this.state.phone,
@@ -282,7 +282,7 @@ class Home extends Component {
   scr = () => {
     document.getElementById("iq").scrollIntoView();
   };
-  render() {
+ render() {
     return (
       <React.Fragment>
         {this.state.load ? (
