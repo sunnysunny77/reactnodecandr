@@ -104,10 +104,8 @@ export default class Blog extends React.Component {
               </table>
             );
           }),
+          load: false,
         });
-      })
-      .then(() => {
-        this.setState({ load: false });
         this.props.setLoad("block");
       })
       .catch((error) => {
@@ -118,7 +116,7 @@ export default class Blog extends React.Component {
           disp0: { display: "block", lineHeight: "75px" },
           disp1: { display: "block", lineHeight: "75px" },
         });
-    });
+      });
   }
   change = (event) => {
     let nam = event.target.name;
@@ -413,7 +411,7 @@ export default class Blog extends React.Component {
                           width: "100%",
                           height: "60px",
                           fontSize: "120%",
-                          fontWeight: "600",
+                          fontWeight: "400",
                           paddingTop: "10px",
                           marginTop: "10px",
                           borderRadius: 0,
@@ -514,7 +512,7 @@ export default class Blog extends React.Component {
                           width: "100%",
                           height: "60px",
                           fontSize: "120%",
-                          fontWeight: "600",
+                          fontWeight: "400",
                           paddingTop: "10px",
                           marginTop: "10px",
                           borderRadius: 0,

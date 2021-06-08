@@ -108,8 +108,8 @@ class Home extends Component {
             }
             return (
               <React.Fragment key={index}>
-                <link rel="preload" href={res.data.vid[index][0]} as="image"/>
-                <link rel="preload" href={res.data.vid[index][3]} as="image"/>
+                <link rel="preload" href={res.data.vid[index][0]} as="image" />
+                <link rel="preload" href={res.data.vid[index][3]} as="image" />
                 <span
                   className={ReactHtmlParser("vt &nbsp d" + [index + 1])}
                   style={{ display: d }}
@@ -149,10 +149,8 @@ class Home extends Component {
               </React.Fragment>
             );
           }),
+          load: false,
         });
-      })
-      .then(() => {
-        this.setState({ load: false });
         this.props.setLoad("block");
         document.getElementById("my-svg").innerHTML = this.state.res.svg;
         new Vivus("my-svg", { duration: 200 });
@@ -162,7 +160,7 @@ class Home extends Component {
       })
       .catch((error) => {
         alert(error);
-    });
+      });
   }
   vid = (v) => {
     window.open(v);
@@ -282,7 +280,6 @@ class Home extends Component {
   };
   scr = () => {
     document.getElementById("iq").scrollIntoView();
- 
   };
   render() {
     return (
@@ -649,7 +646,7 @@ class Home extends Component {
                     width: "100%",
                     height: "60px",
                     fontSize: "120%",
-                    fontWeight: "600",
+                    fontWeight: "400",
                     paddingTop: "10px",
                     borderRadius: 0,
                   }}
