@@ -92,7 +92,7 @@ class Home extends Component {
   }
   componentDidMount() {
     axios
-      .post(`http://localhost:3005/hom`)
+      .post(`https://candidcleaning.sunnyhome.site/hom`)
       .then((res) => {
         this.setState({
           res: res.data,
@@ -103,11 +103,8 @@ class Home extends Component {
             } else {
               d = "none";
             }
-            function preloadImage(url) {
-              new Image().src = url;
-            }
-            preloadImage(res.data.vid[index][0]);
-            preloadImage(res.data.vid[index][3]);
+            this.preloadImage(res.data.vid[index][0]);
+            this.preloadImage(res.data.vid[index][3]);
             return (
               <React.Fragment key={index}>
                 <span
@@ -122,6 +119,8 @@ class Home extends Component {
                   className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
                   src={res.data.vid[index][0]}
                   alt={ReactHtmlParser(res.data.vid[index][2])}
+                  width="21%"
+                  height="100%"
                   style={{
                     display: d,
                   }}
@@ -138,6 +137,8 @@ class Home extends Component {
                   className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
                   src={res.data.vid[index][3]}
                   alt={ReactHtmlParser(res.data.vid[index][5])}
+                  width="21%"
+                  height="100%"
                   style={{
                     display: d,
                   }}
@@ -162,6 +163,9 @@ class Home extends Component {
     if (this.state.load) {
       this.props.setLoad("none");
     }
+  }
+  preloadImage = (url) => {
+    new Image().src = url;
   }
   vid = (v) => {
     window.open(v);
