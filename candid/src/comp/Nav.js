@@ -156,8 +156,8 @@ class Nav extends Component {
           <div>
             <hr></hr>
             <Link to="/">
-              <span id="hl1"className="hiddentext">Homepage Link</span>
-              <HomeIcon id="homI" aria-labelledby="hl1" role="link" >Home</HomeIcon>
+            <HomeIcon id="homI" aria-labelledby="hl1" role="link" >Home</HomeIcon>
+            <span id="hl1"className="hiddentext">Homepage Link</span>
             </Link>
             <Link to="/blog">
               <button>{ReactHtmlParser (buttons[0])}</button> 
@@ -176,7 +176,7 @@ class Nav extends Component {
           <div>
             <AccessTimeIcon className="phI" />
             <br></br>
-            <span>
+            <span id="s1">
               {ReactHtmlParser (time)}
               <br></br>
               {ReactHtmlParser (day)}
@@ -212,12 +212,12 @@ class Nav extends Component {
               {ph}
               </a>
               <AccessTimeIcon className="apI" />
-              <span>
+              <span id="s2">
               {ReactHtmlParser (time)} / {ReactHtmlParser (day)}
               </span>
               <Link to="/">
-                <span id="hl2" className="hiddentext">Homepage Link</span>
                 <HomeIcon id="homIa" className="apI" aria-labelledby="hl2" role="link" >Home</HomeIcon>
+                <span id="hl2" className="hiddentext">Homepage Link</span>
               </Link>
             </div>
         </nav>

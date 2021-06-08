@@ -44,10 +44,13 @@ h2 {
 
 .hiddentext {
   position: absolute;
-  left: -200vw;
-  width: 0;
-  height: 0;
+  right: -200vw;
+  top: -200vw;
+  width: 0px;
+  height: 0px;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 .load {
