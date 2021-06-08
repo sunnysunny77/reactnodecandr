@@ -16,6 +16,9 @@ export default class Contactc extends Component {
     };
   }
   componentDidMount() {
+    if (this.state.load) {
+      this.props.setLoad("none");
+    }
     axios
       .post(`http://localhost:3005/cont`)
       .then((res) => {
@@ -27,10 +30,7 @@ export default class Contactc extends Component {
       })
       .catch((error) => {
         alert(error);
-      });
-    if (this.state.load) {
-      this.props.setLoad("none");
-    }
+    });
   }
   render() {
     return (

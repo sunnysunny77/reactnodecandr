@@ -18,6 +18,9 @@ export default class About extends React.Component {
     };
   }
   componentDidMount() {
+    if (this.state.load) {
+      this.props.setLoad("none");
+    }
     axios
       .post(`http://localhost:3005/abou`)
       .then((res) => {
@@ -33,10 +36,7 @@ export default class About extends React.Component {
       })
       .catch((error) => {
         alert(error);
-      });
-    if (this.state.load) {
-      this.props.setLoad("none");
-    }
+    });
   }
   render() {
     return (

@@ -91,8 +91,11 @@ class Home extends Component {
     };
   }
   componentDidMount() {
+    if (this.state.load) {
+      this.props.setLoad("none");
+    }
     axios
-      .post(`https://candidcleaning.sunnyhome.site/hom`)
+      .post(`http://localhost:3005/hom`)
       .then((res) => {
         this.setState({
           res: res.data,
@@ -103,10 +106,10 @@ class Home extends Component {
             } else {
               d = "none";
             }
-            this.preloadImage(res.data.vid[index][0]);
-            this.preloadImage(res.data.vid[index][3]);
             return (
               <React.Fragment key={index}>
+                <link rel="preload" href={res.data.vid[index][0]} as="image"/>
+                <link rel="preload" href={res.data.vid[index][3]} as="image"/>
                 <span
                   className={ReactHtmlParser("vt &nbsp d" + [index + 1])}
                   style={{ display: d }}
@@ -154,18 +157,12 @@ class Home extends Component {
         document.getElementById("my-svg").innerHTML = this.state.res.svg;
         new Vivus("my-svg", { duration: 200 });
         if (window.location.search === "?in=in") {
-          document.getElementById("iq").scrollIntoView();
+          this.scr();
         }
       })
       .catch((error) => {
         alert(error);
-      });
-    if (this.state.load) {
-      this.props.setLoad("none");
-    }
-  }
-  preloadImage = (url) => {
-    new Image().src = url;
+    });
   }
   vid = (v) => {
     window.open(v);
@@ -243,7 +240,7 @@ class Home extends Component {
         disp: { display: "block", lineHeight: "75px" },
       });
       axios
-        .post(`https://candidcleaning.sunnyhome.site/three`, {
+        .post(`http://localhost:3005/three`, {
           name: this.state.name,
           email: this.state.email,
           phone: this.state.phone,
@@ -285,8 +282,9 @@ class Home extends Component {
   };
   scr = () => {
     document.getElementById("iq").scrollIntoView();
+ 
   };
- render() {
+  render() {
     return (
       <React.Fragment>
         {this.state.load ? (

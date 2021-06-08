@@ -37,6 +37,8 @@ function App() {
       <main id="di">
         <Switch>
           <Route exact path="/">
+            <link rel="preload" href="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg" as="image"></link>
+            <link rel="preload" href="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg" as="image"></link>
             <Home setLoad={(x) => setLoad(x)} />
           </Route>
           <Route path="/blog" exact>

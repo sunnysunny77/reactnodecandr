@@ -14,6 +14,9 @@ export default class Galery extends Component {
     };
   }
   componentDidMount() {
+    if (this.state.load) {
+      this.props.setLoad("none");
+    }
     axios
       .post(`http://localhost:3005/g`)
       .then((res) => {
@@ -25,10 +28,7 @@ export default class Galery extends Component {
       })
       .catch((error) => {
         alert(error);
-      });
-    if (this.state.load) {
-      this.props.setLoad("none");
-    }
+    });
   }
   render() {
     return (

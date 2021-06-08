@@ -49,6 +49,9 @@ export default class Blog extends React.Component {
     };
   }
   componentDidMount() {
+    if (this.state.load) {
+      this.props.setLoad("none");
+    }
     axios
       .get(`http://localhost:3005/ong`)
       .then((res) => {
@@ -115,10 +118,7 @@ export default class Blog extends React.Component {
           disp0: { display: "block", lineHeight: "75px" },
           disp1: { display: "block", lineHeight: "75px" },
         });
-      });
-    if (this.state.load) {
-      this.props.setLoad("none");
-    }
+    });
   }
   change = (event) => {
     let nam = event.target.name;
