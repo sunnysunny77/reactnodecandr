@@ -12,6 +12,7 @@ mongoose.connect("mongodb://localhost/bloga", {
 
 let moment = require("moment");
 
+
 let key = fs.readFileSync(__dirname + "/certsFiles/selfsigned.key");
 let cert = fs.readFileSync(__dirname + "/certsFiles/selfsigned.crt");
 let credentials = {
@@ -28,6 +29,7 @@ https.listen(httpsPort, () => {
   console.log("Https server listing on port : " + httpsPort);
 });
 
+
 let bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,8 +37,8 @@ app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
   let allowedOrigins = [
-    "https://candidcleaning.sunnyhome.site",
-    "https://www.candidcleaning.sunnyhome.site",
+    "http://localhost:3000",
+    "",
   ];
   let origin = req.headers.origin;
   if (allowedOrigins.indexOf(origin) > -1) {
@@ -125,6 +127,8 @@ axios
       parsedData2.push({
         original: parsedData.data[i][0],
         thumbnail: parsedData.data[i][0],
+        originalAlt: parsedData.data[i][0].split("/").pop().split('.').slice(0, -1).join('.'),
+        thumbnailAlt: parsedData.data[i][0].split("/").pop().split('.').slice(0, -1).join('.') +":Thumbnail"
       });
     }
     return { parsedData2: parsedData2 };
