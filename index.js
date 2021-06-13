@@ -34,8 +34,8 @@ app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
   let allowedOrigins = [
-    "https://localhost:3005",
-    "",
+    "https://candidcleaning.sunnyhome.site",
+    "https://www.candidcleaning.sunnyhome.site",
   ];
   let origin = req.headers.origin;
   if (allowedOrigins.indexOf(origin) > -1) {
@@ -229,7 +229,7 @@ axios
         parsedData0 = [parsedDataI.data[1][0], parsedDataA, parsedDataI.data[1][1]];
         return
       } else {
-        return undefined;
+        return parsedData0 = undefined;
       }
     } else {
       parsedData0 = undefined;
@@ -241,7 +241,7 @@ axios
   });
 
 app.post("/one", function (req, res) {
-  if (req.body.passw === "") {
+  if (req.body.passw === "blogs") {
     function decodeBase64Image(dataString) {
       var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
         response = {};
@@ -283,7 +283,7 @@ app.post("/one", function (req, res) {
 });
 
 app.post("/two", function (req, res) {
-  if (req.body.passw0 === "") {
+  if (req.body.passw0 === "blogs") {
     mod.find({ date: req.body.ddate }, function (err, doc) {
       if (doc.length) {
         fs.unlink(
