@@ -72,7 +72,7 @@ axios
   )
   .then((res) => {
     let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
-    if (parsedDataI.data.length  > 0) {
+    if (parsedDataI.data.length  > 1) {
       let l = parsedDataI.data.length - 1;
       let l0 = l % 2;
       let parsedDataA = [];
@@ -118,7 +118,7 @@ axios
   )
   .then((res) => {
     let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
-    if (parsedDataI.data.length  > 0) {
+    if (parsedDataI.data.length  > 1) {
       let l = parsedDataI.data.length - 1;
       let parsedDataA = [];
         for (let i = 1; i <= l; i++) {
@@ -146,7 +146,7 @@ axios
   )
   .then((res) => {
     let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
-    if (parsedDataI.data.length  > 0) {
+    if (parsedDataI.data.length  > 40) {
       let l = parsedDataI.data.length - 40;
       let parsedDataA = [];
       for (let i = 1; i <= l; i++) {
@@ -190,7 +190,7 @@ axios
   )
   .then((res) => {
     let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
-    if (parsedDataI.data.length  > 0) {
+    if (parsedDataI.data.length  > 4) {
       if (parsedDataI.data[3].length % 2 === 0) {
         let parsedDataA = [];
         let l = parsedDataI.data[3].length / 2;
