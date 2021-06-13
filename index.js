@@ -421,10 +421,7 @@ app.get("/ong", function (req, res) {
       if (b !== undefined) {
         return res.json({ doc: doc, buttons: [b[0], b[6], b[7], b[8]] });
       } else {
-        return res.json({
-          doc: doc,
-          buttons: ["error", "error", "error", "error"],
-        });
+        return res.sendStatus(500);
       }
     });
 });
