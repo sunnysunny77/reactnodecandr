@@ -11,8 +11,6 @@ mongoose.connect("mongodb://localhost/bloga", {
 });
 
 let moment = require("moment");
-
-
 let key = fs.readFileSync(__dirname + "/certsFiles/selfsigned.key");
 let cert = fs.readFileSync(__dirname + "/certsFiles/selfsigned.crt");
 let credentials = {
@@ -29,7 +27,6 @@ https.listen(httpsPort, () => {
   console.log("Https server listing on port : " + httpsPort);
 });
 
-
 let bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -37,7 +34,7 @@ app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
   let allowedOrigins = [
-    "http://localhost:3000",
+    "https://localhost:3005",
     "",
   ];
   let origin = req.headers.origin;
@@ -49,8 +46,6 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Credentials", true);
   return next();
 });
-
-
 let sch = mongoose.Schema({
   date: String,
   blogers: String,
@@ -67,7 +62,7 @@ let parsedData;
 let parsedData0;
 let parsedData1;
 let parsedData2;
-let parsedData3;
+var parsedData3;
 let b;
 
 //vid
@@ -76,42 +71,44 @@ axios
     `https://docs.google.com/spreadsheets/d/1tkby9LJ9HDOhvABilAriVZ5ILW42BFX2-9D2QxajWRk/gviz/tq?tqx=out:csv&sheet=data`
   )
   .then((res) => {
-    let parsedData = Papa.parse(res.data, { skipEmptyLines: true });
-    let parsedData3 = [];
-    let l = parsedData.data.length - 1;
-    let l0 = l % 2;
-    if (l0 === 0) {
-      for (let i = 1; i <= l / 2; i++) {
-        if (
-          parsedData.data[i * 2 - 1][0] &&
-          parsedData.data[i * 2 - 1][1] &&
-          parsedData.data[i * 2 - 1][2] &&
-          parsedData.data[i * 2][0] &&
-          parsedData.data[i * 2][1] &&
-          parsedData.data[i * 2][2]
-        ) {
-          parsedData3.push([
-            parsedData.data[i * 2 - 1][0],
-            parsedData.data[i * 2 - 1][1],
-            parsedData.data[i * 2 - 1][2],
-            parsedData.data[i * 2][0],
-            parsedData.data[i * 2][1],
-            parsedData.data[i * 2][2],
-          ]);
-        } else {
-          return { parsedData3: undefined };
+    if (res.data) {
+      let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
+      let l = parsedDataI.data.length - 1;
+      let l0 = l % 2;
+      let parsedDataA = [];
+      if (l0 === 0) {
+        for (let i = 1; i <= l / 2; i++) {
+          if (
+            parsedDataI.data[i * 2 - 1][0] &&
+            parsedDataI.data[i * 2 - 1][1] &&
+            parsedDataI.data[i * 2 - 1][2] &&
+            parsedDataI.data[i * 2][0] &&
+            parsedDataI.data[i * 2][1] &&
+            parsedDataI.data[i * 2][2]
+          ) {
+            parsedDataA.push([
+              parsedDataI.data[i * 2 - 1][0],
+              parsedDataI.data[i * 2 - 1][1],
+              parsedDataI.data[i * 2 - 1][2],
+              parsedDataI.data[i * 2][0],
+              parsedDataI.data[i * 2][1],
+              parsedDataI.data[i * 2][2],
+            ]);
+          } else {
+            return parsedData3 = undefined;
+          }
         }
+        parsedData3 = parsedDataA;
+        return
+      } else {
+        return parsedData3 = undefined;
       }
-      return { parsedData3: parsedData3 };
     } else {
-      return { parsedData3: undefined };
+      return parsedData3 = undefined;
     }
   })
-  .then((res) => {
-    parsedData3 = res.parsedData3;
-  })
-  .catch((error) => {
-    console.log(error);
+  .catch(() => {
+    return sendStatus(500);
   });
 
 //gal
@@ -120,24 +117,26 @@ axios
     `https://docs.google.com/spreadsheets/d/1LjDGLbRSaQ4Y7ilLy0LMPpgUZN6ynI8QRg--a2ltLt4/gviz/tq?tqx=out:csv&sheet=data`
   )
   .then((res) => {
-    let parsedData = Papa.parse(res.data, { skipEmptyLines: true });
-    let parsedData2 = [];
-    let l = parsedData.data.length - 1;
-    for (let i = 1; i <= l; i++) {
-      parsedData2.push({
-        original: parsedData.data[i][0],
-        thumbnail: parsedData.data[i][0],
-        originalAlt: parsedData.data[i][0].split("/").pop().split('.').slice(0, -1).join('.'),
-        thumbnailAlt: parsedData.data[i][0].split("/").pop().split('.').slice(0, -1).join('.') +":Thumbnail"
-      });
+    if (res.data) {
+    let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
+    let l = parsedDataI.data.length - 1;
+    let parsedDataA = [];
+      for (let i = 1; i <= l; i++) {
+        parsedDataA.push({
+          original: parsedDataI.data[i][0],
+          thumbnail: parsedDataI.data[i][0],
+          originalAlt: parsedDataI.data[i][0].split("/").pop().split('.').slice(0, -1).join('.'),
+          thumbnailAlt: parsedDataI.data[i][0].split("/").pop().split('.').slice(0, -1).join('.') +":Thumbnail"
+        });
+      }
+      parsedData2 = parsedDataA;
+      return
+    } else {
+      return parsedData2 = undefined;
     }
-    return { parsedData2: parsedData2 };
   })
-  .then((res) => {
-    parsedData2 = res.parsedData2;
-  })
-  .catch((error) => {
-    console.log(error);
+  .catch(() => {
+    return sendStatus(500);
   });
 
 //content
@@ -146,38 +145,42 @@ axios
     `https://docs.google.com/spreadsheets/d/1gLb1KAZd-dY1Jlw1z-JPVev1WkeOL_tIitvzkrW97dQ/gviz/tq?tqx=out:csv&sheet=data`
   )
   .then((res) => {
-    let parsedData = Papa.parse(res.data, { skipEmptyLines: true });
-    let b = [
-      parsedData.data[1][4],
-      parsedData.data[2][4],
-      parsedData.data[3][4],
-      parsedData.data[4][4],
-      parsedData.data[5][4],
-      parsedData.data[6][4],
-      parsedData.data[7][4],
-      parsedData.data[8][4],
-      parsedData.data[9][4],
-      parsedData.data[10][4],
-      parsedData.data[11][4],
-      parsedData.data[12][4],
-    ];
-    let l = parsedData.data.length - 40;
-    let parsedData1 = [];
-    for (let i = 1; i <= l; i++) {
-      parsedData1.push({
-        value: parsedData.data[39 + i][1],
-        label: parsedData.data[39 + i][1],
-      });
+    if (res.data) {
+      let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
+     let l = parsedDataI.data.length - 40;
+      let parsedDataA = [];
+      for (let i = 1; i <= l; i++) {
+        parsedDataA.push({
+          value: parsedDataI.data[39 + i][1],
+          label: parsedDataI.data[39 + i][1],
+        });
+      }
+      parsedData = parsedDataI 
+      parsedData1 = parsedDataA 
+      b = [
+        parsedDataI.data[1][4],
+        parsedDataI.data[2][4],
+        parsedDataI.data[3][4],
+        parsedDataI.data[4][4],
+        parsedDataI.data[5][4],
+        parsedDataI.data[6][4],
+        parsedDataI.data[7][4],
+        parsedDataI.data[8][4],
+        parsedDataI.data[9][4],
+        parsedDataI.data[10][4],
+        parsedDataI.data[11][4],
+        parsedDataI.data[12][4],
+      ];
+      return
+    } else {
+      parsedData = undefined;
+      parsedData1 = undefined;
+      b = undefined; 
+      return
     }
-    return { parsedData: parsedData, parsedData1: parsedData1, b: b };
   })
-  .then((res) => {
-    parsedData = res.parsedData;
-    parsedData1 = res.parsedData1;
-    b = res.b;
-  })
-  .catch((error) => {
-    console.log(error);
+  .catch(() => {
+    return sendStatus(500);
   });
 
 //maps
@@ -186,52 +189,55 @@ axios
     `https://docs.google.com/spreadsheets/d/1IouN-lz5mjCpEBqa2wER0swruvmUedhDMJyitlgJysU/gviz/tq?tqx=out:csv&sheet=data`
   )
   .then((res) => {
-    let parsedData = Papa.parse(res.data, { skipEmptyLines: true });
-    if (parsedData.data[3].length % 2 === 0) {
-      let l = parsedData.data[3].length / 2;
-      let parsedData0 = [];
-      for (let i = 1; i <= l; i++) {
-        let g = i * 2;
-        parsedData0.push({
-          [i]: {
-            type: "Feature",
-            geometry: {
-              type: "Polygon",
-              coordinates: [[]],
+    if (res.data) {
+      let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
+      if (parsedDataI.data[3].length % 2 === 0) {
+        let parsedDataA = [];
+        let l = parsedDataI.data[3].length / 2;
+        for (let i = 1; i <= l; i++) {
+          let g = i * 2;
+          parsedDataA.push({
+            [i]: {
+              type: "Feature",
+              geometry: {
+                type: "Polygon",
+                coordinates: [[]],
+              },
             },
-          },
-        });
-        for (let x in parsedData.data) {
-          if (x >= 3) {
-            if (
-              (parsedData.data[3][g - 2].length !== 0,
-              parsedData.data[3][g - 1].length !== 0)
-            ) {
+          });
+          for (let x in parsedDataI.data) {
+            if (x >= 3) {
               if (
-                parsedData.data[x][g - 2].length &&
-                parsedData.data[x][g - 1].length
+                (parsedDataI.data[3][g - 2].length !== 0,
+                parsedDataI.data[3][g - 1].length !== 0)
               ) {
-                parsedData0[i - 1][i].geometry.coordinates[0].push([
-                  parsedData.data[x][g - 2],
-                  parsedData.data[x][g - 1],
-                ]);
+                if (
+                  parsedDataI.data[x][g - 2].length &&
+                  parsedDataI.data[x][g - 1].length
+                ) {
+                  parsedDataA[i - 1][i].geometry.coordinates[0].push([
+                    parsedDataI.data[x][g - 2],
+                    parsedDataI.data[x][g - 1],
+                  ]);
+                }
+              } else {
+                return parsedData0 = undefined;
               }
-            } else {
-              return undefined;
             }
           }
         }
+        parsedData0 = [parsedDataI.data[1][0], parsedDataA, parsedDataI.data[1][1]];
+        return
+      } else {
+        return undefined;
       }
-      return [parsedData.data[1][0], parsedData0, parsedData.data[1][1]];
     } else {
-      return undefined;
+      parsedData0 = undefined;
+      return
     }
   })
-  .then((res) => {
-    parsedData0 = res;
-  })
-  .catch((error) => {
-    console.log(error);
+  .catch(() => {
+    return sendStatus(500);
   });
 
 app.post("/one", function (req, res) {
@@ -424,6 +430,7 @@ app.get("/ong", function (req, res) {
 });
 
 app.post("/nav", function (req, res) {
+  
   if (parsedData !== undefined && b !== undefined) {
     return res.json({
       ph: parsedData.data[7][1],
