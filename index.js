@@ -71,8 +71,8 @@ axios
     `https://docs.google.com/spreadsheets/d/1tkby9LJ9HDOhvABilAriVZ5ILW42BFX2-9D2QxajWRk/gviz/tq?tqx=out:csv&sheet=data`
   )
   .then((res) => {
-    if (res.data) {
-      let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
+    let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
+    if (parsedDataI.data.length  > 0) {
       let l = parsedDataI.data.length - 1;
       let l0 = l % 2;
       let parsedDataA = [];
@@ -117,20 +117,20 @@ axios
     `https://docs.google.com/spreadsheets/d/1LjDGLbRSaQ4Y7ilLy0LMPpgUZN6ynI8QRg--a2ltLt4/gviz/tq?tqx=out:csv&sheet=data`
   )
   .then((res) => {
-    if (res.data) {
     let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
-    let l = parsedDataI.data.length - 1;
-    let parsedDataA = [];
-      for (let i = 1; i <= l; i++) {
-        parsedDataA.push({
-          original: parsedDataI.data[i][0],
-          thumbnail: parsedDataI.data[i][0],
-          originalAlt: parsedDataI.data[i][0].split("/").pop().split('.').slice(0, -1).join('.'),
-          thumbnailAlt: parsedDataI.data[i][0].split("/").pop().split('.').slice(0, -1).join('.') +":Thumbnail"
-        });
-      }
-      parsedData2 = parsedDataA;
-      return
+    if (parsedDataI.data.length  > 0) {
+      let l = parsedDataI.data.length - 1;
+      let parsedDataA = [];
+        for (let i = 1; i <= l; i++) {
+          parsedDataA.push({
+            original: parsedDataI.data[i][0],
+            thumbnail: parsedDataI.data[i][0],
+            originalAlt: parsedDataI.data[i][0].split("/").pop().split('.').slice(0, -1).join('.'),
+            thumbnailAlt: parsedDataI.data[i][0].split("/").pop().split('.').slice(0, -1).join('.') +":Thumbnail"
+          });
+        }
+        parsedData2 = parsedDataA;
+        return
     } else {
       return parsedData2 = undefined;
     }
@@ -145,9 +145,9 @@ axios
     `https://docs.google.com/spreadsheets/d/1gLb1KAZd-dY1Jlw1z-JPVev1WkeOL_tIitvzkrW97dQ/gviz/tq?tqx=out:csv&sheet=data`
   )
   .then((res) => {
-    if (res.data) {
-      let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
-     let l = parsedDataI.data.length - 40;
+    let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
+    if (parsedDataI.data.length  > 0) {
+      let l = parsedDataI.data.length - 40;
       let parsedDataA = [];
       for (let i = 1; i <= l; i++) {
         parsedDataA.push({
@@ -189,8 +189,8 @@ axios
     `https://docs.google.com/spreadsheets/d/1IouN-lz5mjCpEBqa2wER0swruvmUedhDMJyitlgJysU/gviz/tq?tqx=out:csv&sheet=data`
   )
   .then((res) => {
-    if (res.data) {
-      let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
+    let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
+    if (parsedDataI.data.length  > 0) {
       if (parsedDataI.data[3].length % 2 === 0) {
         let parsedDataA = [];
         let l = parsedDataI.data[3].length / 2;
