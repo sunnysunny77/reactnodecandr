@@ -418,10 +418,12 @@ app.get("/ong", function (req, res) {
     .find({})
     .sort({ date: -1 })
     .exec(function (err, doc) {
-      if (b !== undefined) {
+      if (b !== undefined && doc.length) {
         return res.json({ doc: doc, buttons: [b[0], b[6], b[7], b[8]] });
-      } else {
-        return res.sendStatus(500);
+      } else if (b !== undefined && !doc.length) {
+        res.status(404).send({ doc:  "No posts yet", buttons: [b[0], b[6], b[7], b[8]] }); 
+      } else if (b === undefined) {
+        res.status(500);
       }
     });
 });

@@ -109,13 +109,22 @@ export default class Blog extends React.Component {
         this.props.setLoad("block");
       })
       .catch((error) => {
-        console.log(error);
-        this.setState({
-          a: error.response.statusText,
-          a0: error.response.statusText,
-          disp0: { display: "block", lineHeight: "75px" },
-          disp1: { display: "block", lineHeight: "75px" },
-        });
+        if (error.response.status === 404) {
+          this.setState({
+            buttons: error.response.data.buttons,
+            txt: (
+              <table>
+                <tr style={{height:"35vh"}}>
+                  <th> {error.response.data.doc} </th>
+                </tr>
+              </table>
+            ),
+            load: false,
+          });
+          this.props.setLoad("block");
+        } else {
+          alert(error);
+        }
       });
   }
   change = (event) => {
