@@ -11,6 +11,7 @@ mongoose.connect("mongodb://localhost/bloga", {
 });
 
 let moment = require("moment");
+
 let key = fs.readFileSync(__dirname + "/certsFiles/selfsigned.key");
 let cert = fs.readFileSync(__dirname + "/certsFiles/selfsigned.crt");
 let credentials = {
@@ -34,8 +35,8 @@ app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
   let allowedOrigins = [
-    "https://candidcleaning.sunnyhome.site",
-    "https://www.candidcleaning.sunnyhome.site",
+    "https://localhost:3000",
+    "",
   ];
   let origin = req.headers.origin;
   if (allowedOrigins.indexOf(origin) > -1) {
@@ -72,7 +73,7 @@ axios
   )
   .then((res) => {
     let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
-    if (parsedDataI.data.length  > 1) {
+    if (parsedDataI.data.length > 1) {
       let l = parsedDataI.data.length - 1;
       let l0 = l % 2;
       let parsedDataA = [];
@@ -95,16 +96,15 @@ axios
               parsedDataI.data[i * 2][2],
             ]);
           } else {
-            return parsedData3 = undefined;
+            return (parsedData3 = undefined);
           }
         }
-        parsedData3 = parsedDataA;
-        return
+        return parsedData3 = parsedDataA;
       } else {
-        return parsedData3 = undefined;
+        return (parsedData3 = undefined);
       }
     } else {
-      return parsedData3 = undefined;
+      return (parsedData3 = undefined);
     }
   })
   .catch(() => {
@@ -118,21 +118,31 @@ axios
   )
   .then((res) => {
     let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
-    if (parsedDataI.data.length  > 1) {
+    if (parsedDataI.data.length > 1) {
       let l = parsedDataI.data.length - 1;
       let parsedDataA = [];
-        for (let i = 1; i <= l; i++) {
-          parsedDataA.push({
-            original: parsedDataI.data[i][0],
-            thumbnail: parsedDataI.data[i][0],
-            originalAlt: parsedDataI.data[i][0].split("/").pop().split('.').slice(0, -1).join('.'),
-            thumbnailAlt: parsedDataI.data[i][0].split("/").pop().split('.').slice(0, -1).join('.') +":Thumbnail"
-          });
-        }
-        parsedData2 = parsedDataA;
-        return
+      for (let i = 1; i <= l; i++) {
+        parsedDataA.push({
+          original: parsedDataI.data[i][0],
+          thumbnail: parsedDataI.data[i][0],
+          originalAlt: parsedDataI.data[i][0]
+            .split("/")
+            .pop()
+            .split(".")
+            .slice(0, -1)
+            .join("."),
+          thumbnailAlt:
+            parsedDataI.data[i][0]
+              .split("/")
+              .pop()
+              .split(".")
+              .slice(0, -1)
+              .join(".") + ":Thumbnail",
+        });
+      }
+      return (parsedData2 = parsedDataA);
     } else {
-      return parsedData2 = undefined;
+      return (parsedData2 = undefined);
     }
   })
   .catch(() => {
@@ -146,7 +156,7 @@ axios
   )
   .then((res) => {
     let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
-    if (parsedDataI.data.length  > 40) {
+    if (parsedDataI.data.length > 40) {
       let l = parsedDataI.data.length - 40;
       let parsedDataA = [];
       for (let i = 1; i <= l; i++) {
@@ -155,28 +165,28 @@ axios
           label: parsedDataI.data[39 + i][1],
         });
       }
-      parsedData = parsedDataI 
-      parsedData1 = parsedDataA 
-      b = [
-        parsedDataI.data[1][4],
-        parsedDataI.data[2][4],
-        parsedDataI.data[3][4],
-        parsedDataI.data[4][4],
-        parsedDataI.data[5][4],
-        parsedDataI.data[6][4],
-        parsedDataI.data[7][4],
-        parsedDataI.data[8][4],
-        parsedDataI.data[9][4],
-        parsedDataI.data[10][4],
-        parsedDataI.data[11][4],
-        parsedDataI.data[12][4],
-      ];
-      return
+      return (
+        (parsedData = parsedDataI),
+        (parsedData1 = parsedDataA),
+        (b = [
+          parsedDataI.data[1][4],
+          parsedDataI.data[2][4],
+          parsedDataI.data[3][4],
+          parsedDataI.data[4][4],
+          parsedDataI.data[5][4],
+          parsedDataI.data[6][4],
+          parsedDataI.data[7][4],
+          parsedDataI.data[8][4],
+          parsedDataI.data[9][4],
+          parsedDataI.data[10][4],
+          parsedDataI.data[11][4],
+          parsedDataI.data[12][4],
+        ])
+      );
     } else {
-      parsedData = undefined;
-      parsedData1 = undefined;
-      b = undefined; 
-      return
+      return (
+        (parsedData = undefined), (parsedData1 = undefined), (b = undefined)
+      );
     }
   })
   .catch(() => {
@@ -190,7 +200,7 @@ axios
   )
   .then((res) => {
     let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
-    if (parsedDataI.data.length  > 4) {
+    if (parsedDataI.data.length > 4) {
       if (parsedDataI.data[3].length % 2 === 0) {
         let parsedDataA = [];
         let l = parsedDataI.data[3].length / 2;
@@ -221,19 +231,22 @@ axios
                   ]);
                 }
               } else {
-                return parsedData0 = undefined;
+                return (parsedData0 = undefined);
               }
             }
           }
         }
-        parsedData0 = [parsedDataI.data[1][0], parsedDataA, parsedDataI.data[1][1]];
-        return
+        return (parsedData0 = [
+          parsedDataI.data[1][0],
+          parsedDataA,
+          parsedDataI.data[1][1],
+        ]);
       } else {
-        return parsedData0 = undefined;
+        return (parsedData0 = undefined);
       }
     } else {
       parsedData0 = undefined;
-      return
+      return;
     }
   })
   .catch(() => {
@@ -241,7 +254,7 @@ axios
   });
 
 app.post("/one", function (req, res) {
-  if (req.body.passw === "blogs") {
+  if (req.body.passw === "") {
     function decodeBase64Image(dataString) {
       var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
         response = {};
@@ -283,7 +296,7 @@ app.post("/one", function (req, res) {
 });
 
 app.post("/two", function (req, res) {
-  if (req.body.passw0 === "blogs") {
+  if (req.body.passw0 === "") {
     mod.find({ date: req.body.ddate }, function (err, doc) {
       if (doc.length) {
         fs.unlink(
@@ -421,7 +434,9 @@ app.get("/ong", function (req, res) {
       if (b !== undefined && doc.length) {
         return res.json({ doc: doc, buttons: [b[0], b[6], b[7], b[8]] });
       } else if (b !== undefined && !doc.length) {
-        res.status(404).send({ doc:  "No posts yet", buttons: [b[0], b[6], b[7], b[8]] }); 
+        res
+          .status(404)
+          .send({ doc: "No posts yet", buttons: [b[0], b[6], b[7], b[8]] });
       } else if (b === undefined) {
         res.status(500);
       }
@@ -429,7 +444,6 @@ app.get("/ong", function (req, res) {
 });
 
 app.post("/nav", function (req, res) {
-  
   if (parsedData !== undefined && b !== undefined) {
     return res.json({
       ph: parsedData.data[7][1],
