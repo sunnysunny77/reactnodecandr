@@ -28,15 +28,13 @@ export default class About extends React.Component {
           res: res.data.a,
           cba: res.data.b.cba,
           abc: <Maps data={res.data.b.abc} />,
+          load: false,
         });
-      })
-      .then(() => {
-        this.setState({ load: false });
         this.props.setLoad("block");
       })
       .catch((error) => {
         alert(error);
-    });
+      });
   }
   render() {
     return (

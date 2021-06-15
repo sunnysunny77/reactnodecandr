@@ -85,7 +85,15 @@ header {
 header img {
   padding-left: 85px;
   position: relative;
-  top: 25px;
+  top: 24px;
+}
+
+header img:nth-child(even) {
+  display: none;
+}
+
+header img:nth-child(odd) {
+  display: block;
 }
 
 /* menu  */
@@ -160,12 +168,19 @@ header img {
 @media only screen and (min-width: 1200px) {
   .barDraw,
   .menuDraw {
-    display: none !important;
+    display: none;
   }
 }
 
 @media only screen and (max-width: 1200px) {
   .menu {
-    display: none !important;
+    display: none;
+  }
+  header img:nth-child(even) {
+    display: block;
+  }
+  
+  header img:nth-child(odd) {
+    display: none;
   }
 }

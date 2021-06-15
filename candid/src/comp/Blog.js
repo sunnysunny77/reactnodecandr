@@ -55,55 +55,9 @@ export default class Blog extends React.Component {
     axios
       .get(`http://localhost:3005/ong`)
       .then((res) => {
+        this.tab(res.data.doc);
         this.setState({
           buttons: res.data.buttons,
-          txt: res.data.doc.map((key, index) => {
-            const { _id, blogers, date, name, title, loc } = key;
-            return (
-              <table key={_id}>
-                <tbody key={_id + "0"}>
-                  <tr key={_id + "1"}>
-                    <th>{title}</th>
-                  </tr>
-                  <tr key={_id + "2"}>
-                    <th style={{ color: "rgba(147,112,219, 0.9)" }}>
-                      <img
-                        src="https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg"
-                        alt="Smiley face"
-                        width="10"
-                        height="10"
-                      ></img>{" "}
-                      {"" + date}
-                    </th>
-                  </tr>
-                  <tr key={_id + "img"}>
-                    <td>
-                      <img
-                        alt="Smiley face"
-                        src={"https://" + window.location.hostname + loc}
-                      />
-                    </td>
-                  </tr>
-                  <tr key={_id + "3"}>
-                    <td>{name}:</td>
-                  </tr>
-                  <tr key={_id + "4"}>
-                    <td>{blogers}</td>
-                  </tr>
-                  <tr key={_id + "5"}>
-                    <td>
-                      <br></br>
-                    </td>
-                  </tr>
-                  <tr key={_id + "6"}>
-                    <td>
-                      <hr></hr>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            );
-          }),
           load: false,
         });
         this.props.setLoad("block");
@@ -114,7 +68,7 @@ export default class Blog extends React.Component {
             buttons: error.response.data.buttons,
             txt: (
               <table>
-                <tr style={{height:"35vh"}}>
+                <tr style={{ height: "35vh" }}>
                   <th> {error.response.data.doc} </th>
                 </tr>
               </table>
@@ -239,60 +193,63 @@ export default class Blog extends React.Component {
         }
       })
       .catch((error) => {
+        console.log(error);
         this.setState({
           a0: error.response.statusText,
           disp1: { display: "block", lineHeight: "75px" },
         });
       });
-  }
+  };
   tab = (x) => {
-    this.setState({ txt: x.map((key, index) => {
-      const { _id, blogers, date, name, title, loc } = key;
-      return (
-        <table key={_id}>
-          <tbody key={_id + "0"}>
-            <tr key={_id + "1"}>
-              <th>{title}</th>
-            </tr>
-            <tr key={_id + "2"}>
-              <th style={{ color: "rgba(147,112,219, 0.9)" }}>
-                <img
-                  src="https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg"
-                  alt="Smiley face"
-                  width="10"
-                  height="10"
-                ></img>{" "}
-                {"" + date}
-              </th>
-            </tr>
-            <tr key={_id + "img"}>
-              <td>
-                <img
-                  alt="Smiley face"
-                  src={"https://" + window.location.hostname + loc}
-                />
-              </td>
-            </tr>
-            <tr key={_id + "3"}>
-              <td>{name}:</td>
-            </tr>
-            <tr key={_id + "4"}>
-              <td>{blogers}</td>
-            </tr>
-            <tr key={_id + "5"}>
-              <td>
-                <br></br>
-              </td>
-            </tr>
-            <tr key={_id + "6"}>
-              <td>
-                <hr></hr>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      );
-    })})
+    this.setState({
+      txt: x.map((key, index) => {
+        const { _id, blogers, date, name, title, loc } = key;
+        return (
+          <table key={_id}>
+            <tbody key={_id + "0"}>
+              <tr key={_id + "1"}>
+                <th>{title}</th>
+              </tr>
+              <tr key={_id + "2"}>
+                <th style={{ color: "rgba(147,112,219, 0.9)" }}>
+                  <img
+                    src="https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg"
+                    alt="Smiley face"
+                    width="10"
+                    height="10"
+                  ></img>{" "}
+                  {"" + date}
+                </th>
+              </tr>
+              <tr key={_id + "img"}>
+                <td>
+                  <img
+                    alt="Smiley face"
+                    src={"https://" + window.location.hostname + loc}
+                  />
+                </td>
+              </tr>
+              <tr key={_id + "3"}>
+                <td>{name}:</td>
+              </tr>
+              <tr key={_id + "4"}>
+                <td>{blogers}</td>
+              </tr>
+              <tr key={_id + "5"}>
+                <td>
+                  <br></br>
+                </td>
+              </tr>
+              <tr key={_id + "6"}>
+                <td>
+                  <hr></hr>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        );
+      }),
+    });
   };
   render() {
     return (

@@ -20,15 +20,12 @@ export default class Galery extends Component {
     axios
       .post(`http://localhost:3005/g`)
       .then((res) => {
-        this.setState({ res: res.data });
-      })
-      .then(() => {
-        this.setState({ load: false });
+        this.setState({ res: res.data, load: false });
         this.props.setLoad("block");
       })
       .catch((error) => {
         alert(error);
-    });
+      });
   }
   render() {
     return (

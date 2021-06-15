@@ -109,7 +109,6 @@ class Home extends Component {
             return (
               <React.Fragment key={index}>
                 <link rel="preload" href={res.data.vid[index][0]} as="image" />
-                <link rel="preload" href={res.data.vid[index][3]} as="image" />
                 <span
                   className={ReactHtmlParser("vt &nbsp d" + [index + 1])}
                   style={{ display: d }}
@@ -122,12 +121,13 @@ class Home extends Component {
                   className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
                   src={res.data.vid[index][0]}
                   alt={ReactHtmlParser(res.data.vid[index][2])}
-                  width="21%"
-                  height="100%"
+                  width="275"
+                  height="275"
                   style={{
                     display: d,
                   }}
                 />
+                <link rel="preload" href={res.data.vid[index][3]} as="image" />
                 <span
                   className={ReactHtmlParser("vt &nbsp d" + [index + 1])}
                   style={{ display: d }}
@@ -140,8 +140,8 @@ class Home extends Component {
                   className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
                   src={res.data.vid[index][3]}
                   alt={ReactHtmlParser(res.data.vid[index][5])}
-                  width="21%"
-                  height="100%"
+                  width="275"
+                  height="275"
                   style={{
                     display: d,
                   }}

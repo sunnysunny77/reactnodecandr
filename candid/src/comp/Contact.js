@@ -22,15 +22,12 @@ export default class Contactc extends Component {
     axios
       .post(`http://localhost:3005/cont`)
       .then((res) => {
-        this.setState({ res: res.data });
-      })
-      .then(() => {
-        this.setState({ load: false });
+        this.setState({ res: res.data, load: false });
         this.props.setLoad("block");
       })
       .catch((error) => {
         alert(error);
-    });
+      });
   }
   render() {
     return (
@@ -60,7 +57,9 @@ export default class Contactc extends Component {
                   &nbsp;&#8226;&nbsp;{ReactHtmlParser(this.state.res.et)}
                   <br></br>
                   &nbsp;&nbsp;
-                  <a href={"mailto:" + this.state.res.email}>{this.state.res.email}</a>
+                  <a href={"mailto:" + this.state.res.email}>
+                    {this.state.res.email}
+                  </a>
                   <br></br>
                   <br></br>
                   &nbsp;&#8226;&nbsp;{ReactHtmlParser(this.state.res.pt)}
