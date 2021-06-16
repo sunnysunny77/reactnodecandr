@@ -27,19 +27,16 @@ import ReactHtmlParser from "react-html-parser";
 
 const customStyles = {
   placeholder: () => ({
-    opacity: 0.5,
-    fontWeight: "500",
+    opacity: 0.525,
     marginLeft: "10px",
-    marginTop: "5px",
   }),
-  menu: () => ({
+   menu: () => ({
     backgroundColor: styles.wi,
     textAlign: "center",
     color: styles.bl,
   }),
   option: () => ({
     fontFamily: styles.f3,
-    fontWeight: 400,
     cursor: "pointer",
   }),
   singleValue: () => ({
@@ -52,9 +49,13 @@ const customStyles = {
     color: styles.bl,
     height: "80px",
     fontFamily: styles.f3,
-    fontWeight: 400,
+    fontWeight: 500,
+    fontSize: "1.2em",
     marginLeft: "2%",
     borderTopRightRadius: 5,
+  }),
+  input: () => ({
+    color: "transparent"
   }),
 };
 
