@@ -90,10 +90,14 @@ header img {
 
 header img:nth-child(even) {
   display: none;
+  width: 140px;
+  height: 32px;
 }
 
 header img:nth-child(odd) {
   display: block;
+  width: 200px;
+  height: 46px;
 }
 
 /* menu  */
