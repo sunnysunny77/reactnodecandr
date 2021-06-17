@@ -316,16 +316,16 @@ class Home extends Component {
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg"
                   alt="Slider image 1"
-                  width="1725"
-                  height="698"
+                  width="1920"
+                  height="778"
                 ></img>
               </div>
               <div>
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg"
                   alt="Slider image 2"
-                  width="1725"
-                  height="698"
+                  width="1920"
+                  height="778"
                 ></img>
               </div>
             </Slider>
