@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .post(`http://localhost:3005/nav`)
+      .post(`https://candidcleaning.sunnyhome.site/nav`)
       .then((res) => {
         setPh(res.data.ph);
         setTime(res.data.time);
@@ -37,11 +37,34 @@ function App() {
       <main id="di">
         <Switch>
           <Route exact path="/">
-              <link rel="preload" href="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg" as="image"></link>
-              <link rel="preload" href="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg" as="image"></link>
-              <link rel="preload" href="https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg" as="image"></link>
-              <link rel="preload" href="https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg" as="image"></link>
-            <Home setLoad={(x) => setLoad(x)} />
+            {window.screen.width > 1200 ? (
+              <React.Fragment>
+                <link
+                  rel="preload"
+                  href="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg"
+                  as="image"
+                ></link>
+                <link
+                  rel="preload"
+                  href="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg"
+                  as="image"
+                ></link>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <link
+                  rel="preload"
+                  href="https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg"
+                  as="image"
+                ></link>
+                <link
+                  rel="preload"
+                  href="https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg"
+                  as="image"
+                ></link>
+              </React.Fragment>
+            )}
+          <Home setLoad={(x) => setLoad(x)} />
           </Route>
           <Route path="/blog" exact>
             <Blog setLoad={(x) => setLoad(x)} />

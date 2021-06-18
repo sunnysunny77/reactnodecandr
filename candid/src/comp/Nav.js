@@ -33,12 +33,25 @@ class Nav extends Component {
       },
       s: false,
       dis: { display: "none" },
+      wi: "",
+      hi: ""
     };
   }
   componentDidMount() {
     let a = document.getElementById("di");
     a.addEventListener("click", this.out);
     window.addEventListener("scroll", this.handleScroll);
+    if (window.screen.width > 1200) {
+      this.setState({
+        wi: "200",
+        hi: "46",
+      });
+    } else if (window.screen.width <= 1200) {
+      this.setState({
+        wi: "140",
+        hi: "32",
+      });
+    }
   }
   componentWillUnmount() {
     let a = document.getElementById("di");
@@ -191,7 +204,7 @@ class Nav extends Component {
           <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logos.png" alt="Candid Icon" width="60" height="60"></img>
         </nav>
         <header>
-          <img src="https://candid.s3.ap-southeast-2.amazonaws.com/logolarge.png" alt="Candid Logo" width="140" height="32"></img>
+          <img src="https://candid.s3.ap-southeast-2.amazonaws.com/logolarge.png" alt="Candid Logo" width={this.state.wi} height={this.state.hi}></img>
         </header>
         <nav className="menu">
             <Link to="/blog">
