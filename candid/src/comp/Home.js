@@ -316,8 +316,8 @@ class Home extends Component {
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg"
                   alt="Slider image 1"
-                  width="1024"
-                  height="441"
+                  width="1440"
+                  height="583"
                 ></img>
                   <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg"
@@ -330,8 +330,8 @@ class Home extends Component {
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg"
                   alt="Slider image 2"
-                  width="1024"
-                  height="414"
+                  width="1440"
+                  height="583"
                 ></img>
                     <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg"

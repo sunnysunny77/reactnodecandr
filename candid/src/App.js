@@ -33,7 +33,6 @@ function App() {
 
   return (
     <Router>
-      <link rel="preconnect" href="https://candid.s3-ap-southeast-2.amazonaws.com/" crossorigin></link>
       <Nav ph={ph} time={time} day={day} buttons={buttons} />
       <main id="di">
         <Switch>
