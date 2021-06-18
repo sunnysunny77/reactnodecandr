@@ -86,16 +86,6 @@ header img {
   padding-left: 85px;
   position: relative;
   top: 24px;
-}
-
-header img:nth-child(even) {
-  display: none;
-  width: 140px;
-  height: 32px;
-}
-
-header img:nth-child(odd) {
-  display: block;
   width: 200px;
   height: 46px;
 }
@@ -180,11 +170,8 @@ header img:nth-child(odd) {
   .menu {
     display: none;
   }
-  header img:nth-child(even) {
-    display: block;
-  }
-  
-  header img:nth-child(odd) {
-    display: none;
+  header img{
+    width: 140px;
+    height: 32px;
   }
 }

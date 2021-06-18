@@ -191,8 +191,7 @@ class Nav extends Component {
           <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logos.png" alt="Candid Icon" width="60" height="60"></img>
         </nav>
         <header>
-          <img src="https://candid.s3.ap-southeast-2.amazonaws.com/logolarge.png" alt="Candid Logo" width="400" height="92"></img>
-          <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logo.png" alt="Candid Logo" width="280" height="64"></img>
+          <img src="https://candid.s3.ap-southeast-2.amazonaws.com/logolarge.png" alt="Candid Logo" width="140" height="32"></img>
         </header>
         <nav className="menu">
             <Link to="/blog">

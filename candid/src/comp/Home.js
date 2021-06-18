@@ -312,12 +312,12 @@ class Home extends Component {
               </div>
             </section>
             <Slider id="slide" {...this.state.settings}>
-            <div>
-            <img
+              <div>
+                <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg"
                   alt="Slider image 1"
-                  width="1920"
-                  height="778"
+                  width="1024"
+                  height="441"
                 ></img>
                   <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg"
@@ -330,8 +330,8 @@ class Home extends Component {
                 <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg"
                   alt="Slider image 2"
-                  width="1920"
-                  height="778"
+                  width="1024"
+                  height="414"
                 ></img>
                     <img
                   src="https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg"
