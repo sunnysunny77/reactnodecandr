@@ -30,7 +30,7 @@ const customStyles = {
     opacity: 0.525,
     marginLeft: "10px",
   }),
-   menu: () => ({
+  menu: () => ({
     backgroundColor: styles.wi,
     textAlign: "center",
     color: styles.bl,
@@ -55,7 +55,7 @@ const customStyles = {
     borderTopRightRadius: 5,
   }),
   input: () => ({
-    color: "transparent"
+    color: "transparent",
   }),
 };
 
@@ -89,12 +89,17 @@ class Home extends Component {
       count: 1,
       svg: null,
       load: true,
+      src0: "",
+      src1: "",
+      wi: "",
+      hi: "",
     };
   }
   componentDidMount() {
     if (this.state.load) {
       this.props.setLoad("none");
     }
+    this.reso();
     axios
       .post(`http://localhost:3005/hom`)
       .then((res) => {
@@ -282,6 +287,55 @@ class Home extends Component {
   scr = () => {
     document.getElementById("iq").scrollIntoView();
   };
+  reso = () => {
+    if (window.screen.width > 1200) {
+      this.setState({
+        src0: "https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg",
+        src1: "https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg",
+      });
+    } else if (window.screen.width <= 1200) {
+      this.setState({
+        src0: "https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg",
+        src1: "https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg",
+      });
+    }
+    if (window.screen.width > 1920) {
+      this.setState({
+        wi: "2560",
+        hi: "1036",
+      });
+    } else if (window.screen.width <= 1920 && window.screen.width > 1792) {
+      this.setState({
+        wi: "1920",
+        hi: "777",
+      });
+    } else if (window.screen.width <= 1792 && window.screen.width > 1536) {
+      this.setState({
+        wi: "1792",
+        hi: "724",
+      });
+    } else if (window.screen.width <= 1536 && window.screen.width > 1200) {
+      this.setState({
+        wi: "1536",
+        hi: "621",
+      });
+    } else if (window.screen.width <= 1200 && window.screen.width > 992) {
+      this.setState({
+        wi: "1200",
+        hi: "485",
+      });
+    } else if (window.screen.width <= 922 && window.screen.width >= 576) {
+      this.setState({
+        wi: "992",
+        hi: "410",
+      });
+    } else if (window.screen.width < 576) {
+      this.setState({
+        wi: "360",
+        hi: "146",
+      });
+    }
+  };
   render() {
     return (
       <React.Fragment>
@@ -314,30 +368,18 @@ class Home extends Component {
             <Slider id="slide" {...this.state.settings}>
               <div>
                 <img
-                  src="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg"
+                  src={this.state.src0}
                   alt="Slider image 1"
-                  width="1440"
-                  height="583"
-                ></img>
-                  <img
-                  src="https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg"
-                  alt="Slider image 1"
-                  width="400"
-                  height="162"
+                  width={this.state.wi}
+                  height={this.state.hi}
                 ></img>
               </div>
               <div>
                 <img
-                  src="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg"
+                  src={this.state.src1}
                   alt="Slider image 2"
-                  width="1440"
-                  height="583"
-                ></img>
-                    <img
-                  src="https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg"
-                  alt="Slider image 2"
-                  width="400"
-                  height="162"
+                  width={this.state.wi}
+                  height={this.state.hi}
                 ></img>
               </div>
             </Slider>

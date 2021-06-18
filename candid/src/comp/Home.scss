@@ -8,13 +8,6 @@
   min-height: 130px;
 }
 
-.slick-slide img:nth-child(even) {
-  display: none;
-}
-.slick-slide img:nth-child(odd) {
-  display: block;
-}
-
 /* welcome */
 
 .welcome {
@@ -366,12 +359,6 @@
 }
 
 @media only screen and (max-width: 1200px) {
-  .slick-slide img:nth-child(odd) {
-    display: none;
-  }
-  .slick-slide img:nth-child(even) {
-    display: block;
-  }
   .welcome{
     font-size: 80%;
   }
