@@ -35,8 +35,7 @@ app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
   let allowedOrigins = [
-    "https://localhost:3000",
-    "",
+    "https://candidcleaning.sunnyhome.site"
   ];
   let origin = req.headers.origin;
   if (allowedOrigins.indexOf(origin) > -1) {
