@@ -53,7 +53,7 @@ export default class Blog extends React.Component {
       this.props.setLoad("none");
     }
     axios
-      .get(`http://localhost:3005/ong`)
+      .get(`/ong`)
       .then((res) => {
         this.tab(res.data.doc);
         this.setState({
@@ -128,7 +128,7 @@ export default class Blog extends React.Component {
       this.state.file
     ) {
       axios
-        .post(`http://localhost:3005/one`, {
+        .post(`/one`, {
           passw: this.state.passw,
           blogers: this.state.blogers,
           name: this.state.name,
@@ -171,7 +171,7 @@ export default class Blog extends React.Component {
   sub0 = (event) => {
     event.preventDefault();
     axios
-      .post(`http://localhost:3005/two`, {
+      .post(`/two`, {
         passw0: this.state.passw0,
         ddate: this.state.ddate,
       })

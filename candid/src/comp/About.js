@@ -22,7 +22,7 @@ export default class About extends React.Component {
       this.props.setLoad("none");
     }
     axios
-      .post(`http://localhost:3005/abou`)
+      .post(`/abou`)
       .then((res) => {
         this.setState({
           res: res.data.a,

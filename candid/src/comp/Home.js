@@ -101,7 +101,7 @@ class Home extends Component {
     }
     this.reso();
     axios
-      .post(`http://localhost:3005/hom`)
+      .post('/hom')
       .then((res) => {
         this.setState({
           res: res.data,
@@ -244,7 +244,7 @@ class Home extends Component {
         disp: { display: "block", lineHeight: "75px" },
       });
       axios
-        .post(`http://localhost:3005/three`, {
+        .post('/three', {
           name: this.state.name,
           email: this.state.email,
           phone: this.state.phone,

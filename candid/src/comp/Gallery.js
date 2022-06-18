@@ -18,7 +18,7 @@ export default class Galery extends Component {
       this.props.setLoad("none");
     }
     axios
-      .post(`http://localhost:3005/g`)
+      .post(`/g`)
       .then((res) => {
         this.setState({ res: res.data, load: false });
         this.props.setLoad("block");

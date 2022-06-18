@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .post(`https://candidcleaning.sunnyhome.site/nav`)
+      .post('/nav')
       .then((res) => {
         setPh(res.data.ph);
         setTime(res.data.time);
