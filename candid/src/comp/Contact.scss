@@ -5,20 +5,15 @@
   max-width: 1200px;
 }
 
-.c1 {
-  float: left;
-  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/cont.jpg");
-  background-position: center;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  padding: 10%;
-  width: 1%;
-  margin-left: 5%;
+.infe {
+  color: $c2;
+  margin-right: 25px;
+  float: right;
 }
 
-.c2 {
-  float: left;
-  margin-left: 20%;
+#sc {
+  text-align: center;
+  display: inline-block;
 }
 
 .c2 h2,
@@ -30,64 +25,61 @@
   margin-bottom: 0;
 }
 
-.c2 p {
-  color: $c1;
-  background-color: $c4;
-  border: 2px solid $c2;
-  border-radius: 2.5px;
-  padding: 25px;
-  font-family: $font1;
-  min-width: 555px;
-  margin-top: 0.83em;
-}
-
-.c2 a {
-  color: $c1;
-  text-decoration: none;
-}
-
-.c2 a:hover {
-  color: $c8;
-}
-
-.infe {
-  color: $c2;
-  margin-right: 25px;
-  float: right;
-}
-
-#homc {
-  padding: 0 0 2.5px 20px;
-  transform: scale(1.3);
-}
-
-#homc:hover {
-  color: $c8;
-  cursor: pointer;
-}
-
-#sc {
-  text-align: center;
-  display: inline-block;
-}
-
-@media only screen and (max-width: 1200px) {
-  .c1,
-  .c2 {
+.c1 {
+  float: left;
+  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/cont.jpg");
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 10%;
+  width: 1%;
+  margin-left: 5%;
+  @media only screen and (max-width: 1200px) {
     float: none;
     margin: auto;
-  }
-  .c1 {
     padding: 85px;
   }
-  .c2 {
+}
+
+.c2 {
+  float: left;
+  margin-left: 20%;
+  @media only screen and (max-width: 1200px) {
+    float: none;
+    margin: auto;
     text-align: left;
     word-wrap: break-word;
   }
-  .c2 p {
-    border-radius: 0;
-    padding: 0;
-    font-size: initial;
-    min-width: initial;
+  p {
+    color: $c1;
+    background-color: $c4;
+    border: 2px solid $c2;
+    border-radius: 2.5px;
+    padding: 25px;
+    font-family: $font1;
+    min-width: 555px;
+    margin-top: 0.83em;
+    @media only screen and (max-width: 1200px) {
+      border-radius: 0;
+      padding: 0;
+      font-size: initial;
+      min-width: initial;
+    }
+  }
+  a {
+    color: $c1;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+      color: $c8;
+    }
+  }
+  #homc {
+    padding: 0 0 2.5px 20px;
+    transform: scale(1.3);
+    &:hover {
+      color: $c8;
+      cursor: pointer;
+    }
   }
 }

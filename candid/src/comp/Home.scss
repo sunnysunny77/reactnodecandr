@@ -14,127 +14,166 @@
   position: absolute;
   margin: 2% 0 0 5%;
   z-index: 997;
-}
-
-#my-svg {
-  stroke: $c3;
-  stroke-width: 13;
-  fill: none;
-  vertical-align: bottom;
-  margin: 3%;
-  overflow: visible;
-}
-
-#w1 {
-  background-color: $c9;
-  border-radius: 5px;
-  animation: slide1;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
-  width: 240px;
-  padding: 0 1%;
-  line-height: 40px;
-}
-
-#w1 h1 {
-  font-family: $font3;
-  display: inline-block;
-  margin: 0;
-  font-weight: 500;
-  color: $c3;
-  font-size: 160%;
-  float: none;
-  padding: 4% 0;
-}
-
-#w2 {
-  background-color: $c9;
-  border-radius: 5px;
-  animation: slide2;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
-  margin: 3% 0 0 2.5%;
-  padding: 3%;
-  width: 253px;
-}
-
-#w2 h2 {
-  color: $c3;
-  margin: 0;
-  font-size: 110%;
-}
-
-.welcome h2:hover {
-  text-decoration: underline;
-  animation: slide2;
-  animation-duration: 1.5s;
-  animation-fill-mode: forwards;
+  @media only screen and (max-width: 1200px) {
+    font-size: 80%;
+  }
+  #my-svg {
+    stroke: $c3;
+    stroke-width: 13;
+    fill: none;
+    vertical-align: bottom;
+    margin: 3%;
+    overflow: visible;
+    @media only screen and (max-width: 1200px) {
+      height: 25px;
+      width: 25px;
+    }
+  }
+  #w1 {
+    background-color: $c9;
+    border-radius: 5px;
+    animation: slide1;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    width: 240px;
+    padding: 0 1%;
+    line-height: 40px;
+    @media only screen and (max-width: 1200px) {
+      width: 180px;
+      line-height: 20px;
+    }
+    @media only screen and (max-width: 992px) {
+      width: 160px;
+    }
+    h1 {
+      font-family: $font3;
+      display: inline-block;
+      margin: 0;
+      font-weight: 500;
+      color: $c3;
+      font-size: 160%;
+      float: none;
+      padding: 4% 0;
+    }
+  }
+  #w2 {
+    background-color: $c9;
+    border-radius: 5px;
+    animation: slide2;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    margin: 3% 0 0 2.5%;
+    padding: 3%;
+    width: 253px;
+    @media only screen and (max-width: 1200px) {
+      width: 205px;
+    }
+    @media only screen and (max-width: 992px) {
+      width: 185px;
+    }
+    h2 {
+      color: $c3;
+      margin: 0;
+      font-size: 110%;
+      &:hover {
+        text-decoration: underline;
+        animation: slide2;
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+      }
+    }
+  }
 }
 
 /* vid */
+
+.flip {
+  animation: flip 0.5s ease-in-out;
+}
+
 .vid {
   text-align: center;
   margin: auto;
   width: 100%;
   position: relative;
   top: -115px;
-}
-
-.vidn {
-  margin: 0 2.5% 0 2.5%;
-  border-radius: 5px;
-  box-shadow: 0 0 1.5px $c1;
-  width: 21%;
-  height: inherit;
-}
-
-.flip {
-  animation: flip 0.5s ease-in-out;
-}
-
-.vt {
-  background-color: $c9;
-  position: absolute;
-  font-family: $font3;
-  color: $c3;
-  width: 21%;
-  top: 10.3%;
-  margin-left: 2.5%;
-  cursor: pointer;
-  text-shadow: 0 0 0.5px $c9;
-  font-size: 80%;
-  font-style: italic;
-  padding: 5px 0;
-}
-
-.vt:hover {
-  color:$c7;
-}
-
-#pn1:hover,
-#pn2:hover {
-  fill: $c7;
-}
-
-.iv {
-  vertical-align: sub;
-}
-
-#pn1,
-#pn2 {
-  position: absolute;
-  top: 50%;
-  color: $c4;
-  opacity: 0.75;
-  fill: $c4;
-}
-
-#pn1 {
-  left: 20%;
-}
-
-#pn2 {
-  right: 20%;
+  @media only screen and (max-width: 1200px) {
+    width: 90%;
+  }
+  @media only screen and (max-width: 992px) {
+    top: -4px;
+    padding: 5% 0;
+    background-color: $c12;
+  }
+  .vidn {
+    margin: 0 2.5% 0 2.5%;
+    border-radius: 5px;
+    box-shadow: 0 0 1.5px $c1;
+    width: 21%;
+    height: inherit;
+    @media only screen and (max-width: 1200px) {
+      width: 40%;
+    }
+  }
+  .vt {
+    background-color: $c9;
+    position: absolute;
+    font-family: $font3;
+    color: $c3;
+    width: 21%;
+    top: 10.3%;
+    margin-left: 2.5%;
+    cursor: pointer;
+    text-shadow: 0 0 0.5px $c9;
+    font-size: 80%;
+    font-style: italic;
+    padding: 5px 0;
+    @media only screen and (max-width: 1200px) {
+      width: 40%;
+    }
+    @media only screen and (max-width: 992px) {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+    &:hover {
+      color: $c7;
+    }
+  }
+  #pn1 {
+    left: 20%;
+    @media only screen and (max-width: 1200px) {
+      left: -2%;
+    }
+    @media only screen and (max-width: 1200px) and (orientation: landscape) {
+      left: -1%;
+    }
+    &:hover {
+      fill: $c7;
+    }
+  }
+  #pn2 {
+    right: 20%;
+    @media only screen and (max-width: 1200px) {
+      right: -2%;
+    }
+    @media only screen and (max-width: 1200px) and (orientation: landscape) {
+      right: -1%;
+    }
+    &:hover {
+      fill: $c7;
+    }
+  }
+  #pn1,
+  #pn2 {
+    position: absolute;
+    top: 50%;
+    color: $c4;
+    opacity: 0.75;
+    fill: $c4;
+  }
+  .iv {
+    vertical-align: sub;
+  }
 }
 
 /* info */
@@ -143,49 +182,75 @@
   height: 500px;
   background-color: $c12;
   box-shadow: 0 0 7.5px $c2;
-}
+  @media only screen and (max-width: 992px) {
+    height: initial;
+    margin: 0;
+  }
+  .info0 {
+    height: 100%;
+    width: 400px;
+    float: left;
+    background-color: $c11;
+    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info1.png");
+    background-position: center;
+    background-size: 100% 100%;
+    @media only screen and (max-width: 992px) {
+      float: none;
+      margin: 0;
+      height: 250px;
+      width: 100%;
+      box-shadow: inset 0px -7.5px 7.5px -7.5px $c2;
+      background-color: $c11;
+      background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info.png");
+      background-position: center;
+      background-size: 150px 150px;
+      background-repeat: no-repeat;
+    }
+  }
+  .info2 {
+    width: 55%;
+    color: $c3;
+    float: left;
+    margin-top: 4%;
+    margin-left: 7.5%;
+    @media only screen and (max-width: 1200px) {
+      width: 46%;
+      margin-left: 9%;
+    }
 
-.info0 {
-  height: 100%;
-  width: 400px;
-  float: left;
-  background-color: $c11;
-  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info1.png");
-  background-position: center;
-  background-size: 100% 100%;
-}
-
-.info2 {
-  width: 55%;
-  color: $c3;
-  float: left;
-  margin-top: 4%;
-  margin-left: 7.5%;
-}
-
-#inf {
-  color: $c2;
-  margin: 0 10px;
-}
-
-.info2 h3 {
-  width: 100%;
-  text-align: right;
-  font-family: $font2;
-  color: $c3;
-  font-weight: bold;
-  margin: 0;
-  padding: 0;
-}
-
-.info2 p {
-  color: $c1;
-  background-color: $c4;
-  border-radius: 100px;
-  padding: 40px;
-  text-align: center;
-  font-style: oblique;
-  font-family: $font4;
+    @media only screen and (max-width: 992px) {
+      float: none;
+      margin: 0;
+      padding: 5%;
+      width: 90%;
+    }
+    #inf {
+      color: $c2;
+      margin: 0 10px;
+    }
+    h3 {
+      width: 100%;
+      text-align: right;
+      font-family: $font2;
+      color: $c3;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+    }
+    p {
+      color: $c1;
+      background-color: $c4;
+      border-radius: 100px;
+      padding: 40px;
+      text-align: center;
+      font-style: oblique;
+      font-family: $font4;
+      @media only screen and (max-width: 992px) {
+        border-radius: 25px;
+        padding: 20px;
+      }
+    }
+  }
 }
 
 /* card */
@@ -200,129 +265,120 @@
   flex-wrap: wrap;
   overflow: hidden;
   margin: auto;
-}
-
-.card p {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2.5% 25px;
-  text-align: center;
-  font-family: $font3;
-  font-weight: 500;
-  text-shadow: 0 0 0.5px $c9;
-  border-radius: 7.5px;
-  box-shadow: 0 0 5px $c3;
-  height: 50%;
-  background-color: $c1;
-}
-.card h3 {
-  margin: 0;
-  padding: 0;
-  font-size: inherit;
-  font-family: $font2;
-  font-weight: 600;
-  display: inline;
-}
-.cardi {
-  color: $c2;
-  float: left;
-  margin-left: 30px;
-}
-
-.cardf {
-  color: $c3;
-  transform: scale(3.5);
-  align-self: center;
-}
-
-.card1 a {
-  color: $c2;
-  float: left;
-  margin-left: 30px;
-  width: 30px;
-  font-weight: 900;
-  font-size: 15px;
-}
-
-.card1 a:hover {
-  color: $c8;
-}
-
-.card span img {
-  margin-left: 10px;
-  vertical-align: middle;
-}
-
-.card1 {
-  width: 350px;
-  margin: auto;
-  color: $c3;
-  padding: 2.5% 20px;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-}
-
-.card2 {
-  align-self: flex-end;
+  @media only screen and (max-width: 992px) {
+    padding: 75px 0;
+  }
+  span img {
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.5% 25px;
+    text-align: center;
+    font-family: $font3;
+    font-weight: 500;
+    text-shadow: 0 0 0.5px $c9;
+    border-radius: 7.5px;
+    box-shadow: 0 0 5px $c3;
+    height: 50%;
+    background-color: $c1;
+    @media only screen and (max-width: 992px) {
+      height: initial;
+      padding: 35px;
+    }
+  }
+  h3 {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-family: $font2;
+    font-weight: 600;
+    display: inline;
+  }
+  .card1 {
+    width: 350px;
+    margin: auto;
+    color: $c3;
+    padding: 2.5% 20px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    @media only screen and (max-width: 992px) {
+      padding: 2.5% 0;
+      width: 88%;
+      height: initial;
+    }
+    a {
+      color: $c2;
+      float: left;
+      margin-left: 30px;
+      width: 30px;
+      font-weight: 900;
+      font-size: 15px;
+      &:hover {
+        color: $c8;
+      }
+    }
+    .cardi {
+      color: $c2;
+      float: left;
+      margin-left: 30px;
+    }
+    .cardf {
+      color: $c3;
+      transform: scale(3.5);
+      align-self: center;
+    }
+  }
+  .card2 {
+    align-self: flex-end;
+  }
 }
 
 /* inq */
 
-.inq h3 {
-  font-family: $font1;
-  color: $c1;
-  float: right;
-  margin: 0;
-  padding-right: 20px;
-  padding-top: 15px;
-  font-size: 80%;
-  padding-top: 15px;
-}
-
 .inq {
   background-color: $c5;
   margin-top: 10px;
-}
-.www {
-  width: 20%;
-}
-
-.react-select__menu-list {
-  scrollbar-face-color: $c3;
-  scrollbar-track-color: $c1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-color: $c3 $c1;
-}
-
-.MuiFilledInput-multiline {
-  scrollbar-face-color: $c3;
-  scrollbar-track-color: $c1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-color: $c3 $c1;
-}
-
-.react-select__menu-list::-webkit-scrollbar,
-.MuiFilledInput-multiline::-webkit-scrollbar {
-  width: 10px;
-}
-
-.react-select__menu-list::-webkit-scrollbar-thumb,
-.MuiFilledInput-multiline::-webkit-scrollbar-thumb {
-  background: $c3;
-}
-
-.react-select__menu-list::-webkit-scrollbar-track,
-.MuiFilledInput-multiline::-webkit-scrollbar-track {
-  background: $c1;
-}
-
-.react-select__menu-list::-webkit-scrollbar-thumb:hover,
-.MuiFilledInput-multiline::-webkit-scrollbar-thumb:hover {
-  background:$c7;
+  h3 {
+    font-family: $font1;
+    color: $c1;
+    float: right;
+    margin: 0;
+    padding-right: 20px;
+    padding-top: 15px;
+    font-size: 80%;
+    padding-top: 15px;
+  }
+  .www {
+    width: 20%;
+    @media only screen and (max-width: 1200px) {
+      width: 98%;
+    }
+  }
+  .react-select__menu-list,
+  .MuiFilledInput-multiline {
+    scrollbar-face-color: $c3;
+    scrollbar-track-color: $c1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: $c3 $c1;
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $c3;
+    }
+    &::-webkit-scrollbar-track {
+      background: $c1;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: $c7;
+    }
+  }
 }
 
 @keyframes slide1 {
@@ -355,109 +411,5 @@
   }
   100% {
     transform: scale(1);
- }
-}
-
-@media only screen and (max-width: 1200px) {
-  .welcome{
-    font-size: 80%;
-  }
-  #w1 {
-    width: 180px;
-  }
-  #w2 {
-    width: 205px;
-  }
-  #my-svg {
-    height: 25px;
-    width: 25px;
-  }
-  #w1 {
-    line-height: 20px;  
-  }
-  .vid {
-    width: 90%;
-  }
-  .vidn, .vt {
-    width: 40%
-  }
-  #pn1 {
-    left: -2%;
-  }
-  #pn2 {
-    right: -2%;
-  }
-  .www {
-    width: 98%;
-  }
-  .info2 {
-    width: 46%;
-    margin-left: 9%;
-  }
-}
-
-@media only screen and (max-width: 1200px) and (orientation: landscape) {
-  #pn1 {
-    left: -1%;
-  }
-  #pn2 {
-    right: -1%;
-  }
-}
-
-@media only screen and (max-width: 992px) {
-  #w1 {
-    width: 160px;
-  }
-  #w2 {
-    width: 185px;
-  }
-  .card {
-    padding: 75px 0;
-  }
-  .card1 p {
-    height: initial;
-    padding: 35px;
-  }
-  .card1 {
-    padding: 2.5% 0;
-    width: 88%;
-    height: initial;
-  }
-  .vid {
-    top: -4px;
-    padding: 5% 0;
-    background-color: $c12;
-  }
-  .vt {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-  }
-  .info {
-    height: initial;
-    margin: 0;
-  }
-  .info0,
-  .info2 {
-    float: none;
-    margin: 0;
-  }
-  .info0 {
-    height: 250px;
-    width: 100%;
-    box-shadow: inset 0px -7.5px 7.5px -7.5px $c2;
-    background-color: $c11;
-    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info.png");
-    background-position: center;
-    background-size: 150px 150px;
-    background-repeat: no-repeat;
-  }
-  .info2 {
-    padding: 5%;
-    width: 90%;
-  }
-  .info2 p {
-    border-radius: 25px;
-    padding: 20px;
   }
 }

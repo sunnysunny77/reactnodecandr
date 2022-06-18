@@ -7,10 +7,12 @@
   z-index: 999;
   margin: 25px 0 0 25px;
   transform: scale(1.8);
-}
-
-.barDraw:hover {
-  cursor: pointer;
+  @media only screen and (min-width: 1200px) {
+    display: none;
+  }
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .menuDraw {
@@ -27,51 +29,49 @@
   padding-top: 87px;
   font-size: 5px;
   font-family: $font4;
-}
-
-.menuDraw div button {
-  width: 100%;
-  font-size: 25px;
-  color: $c3;
-  cursor: pointer;
-  background-color: $c1;
-  border: none;
-  padding: 10px 0;
-}
-
-#homI {
-  color: $c3;
-  transform: scale(1.75);
-  position: absolute;
-  right: 30px;
-  top: 40px;
-}
-
-#homI:hover {
-  color:$c10;
-  cursor: pointer;
-}
-
-.menuDraw div button:hover {
-  color:$c10;
-}
-
-.menuDraw div a,
-.menuDraw div span {
-  color: $c3;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-.menuDraw div a:hover {
-  color:$c10;
-}
-
-.phI {
-  transform: scale(0.8);
-}
-.menuDraw img {
-  padding: 10px 0;
+  @media only screen and (min-width: 1200px) {
+    display: none;
+  }
+  div {
+    a,
+    span {
+      color: $c3;
+      text-decoration: none;
+      font-size: 20px;
+    }
+    a:hover {
+      color: $c10;
+    }
+    button {
+      width: 100%;
+      font-size: 25px;
+      color: $c3;
+      cursor: pointer;
+      background-color: $c1;
+      border: none;
+      padding: 10px 0;
+      &:hover {
+        color: $c10;
+      }
+    }
+  }
+  #homI {
+    color: $c3;
+    transform: scale(1.75);
+    position: absolute;
+    right: 30px;
+    top: 40px;
+    &:hover {
+      color: $c10;
+      cursor: pointer;
+    }
+  }
+  img {
+    padding: 10px 0;
+  }
+  .phI {
+    transform: scale(0.8);
+  }
 }
 
 /* header  */
@@ -80,14 +80,17 @@ header {
   width: 100%;
   height: 90px;
   background-image: linear-gradient(0deg, $c11 70%, $c6 95%);
-}
-
-header img {
-  padding-left: 85px;
-  position: relative;
-  top: 24px;
-  width: 200px;
-  height: 46px;
+  img {
+    padding-left: 85px;
+    position: relative;
+    top: 24px;
+    width: 200px;
+    height: 46px;
+    @media only screen and (max-width: 1200px) {
+      width: 140px;
+      height: 32px;
+    }
+  }
 }
 
 /* menu  */
@@ -100,54 +103,48 @@ header img {
   color: $c1;
   font-family: $font4;
   padding-left: 50px;
-}
-
-.menu button {
-  font-size: 17.5px;
-  color: $c1;
-  background-color: $c3;
-  border: none;
-  cursor: pointer;
-  margin: 22px;
-}
-
-.menu span {
-  margin: 0 8px;
-}
-
-.menu a {
-  color: $c1;
-  text-decoration: none;
-  margin: 0 8px;
-}
-
-.menu a:hover {
-  color:$c10;
-}
-
-.mMove0 {
-  float: right;
-  padding-top: 10px;
-  font-size: 17.5px;
-}
-
-.apI {
-  padding-top: 12px;
-  margin-bottom: -4px;
-}
-
-#homIa {
-  padding-top: 12px;
-  margin: 0 15px 0 10px;
-}
-
-#homIa:hover {
-  color:$c10;
-  cursor: pointer;
-}
-
-.menu button:hover {
-  color:$c10;
+  @media only screen and (max-width: 1200px) {
+    display: none;
+  }
+  button {
+    font-size: 17.5px;
+    color: $c1;
+    background-color: $c3;
+    border: none;
+    cursor: pointer;
+    margin: 22px;
+    &:hover {
+      color: $c10;
+    }
+  }
+  span {
+    margin: 0 8px;
+  }
+  a {
+    color: $c1;
+    text-decoration: none;
+    margin: 0 8px;
+    &:hover {
+      color: $c10;
+    }
+  }
+  .mMove0 {
+    float: right;
+    padding-top: 10px;
+    font-size: 17.5px;
+  }
+  .apI {
+    padding-top: 12px;
+    margin-bottom: -4px;
+  }
+  #homIa {
+    padding-top: 12px;
+    margin: 0 15px 0 10px;
+    &:hover {
+      color: $c10;
+      cursor: pointer;
+    }
+  }
 }
 
 @keyframes slide {
@@ -156,22 +153,5 @@ header img {
   }
   100% {
     transform: translate(0);
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .barDraw,
-  .menuDraw {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  .menu {
-    display: none;
-  }
-  header img{
-    width: 140px;
-    height: 32px;
   }
 }

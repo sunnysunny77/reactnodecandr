@@ -1,164 +1,142 @@
 @import "../Variables.scss";
 
-.about0 {
-  padding-bottom: 0;
-  margin-top: 70px;
-}
-
-.about0 p {
-  width: 60%;
-  margin: 0.83em auto 25px auto;
-  color: $c1;
-  background-color: $c4;
-  border: 2px solid $c2;
-  border-radius: 2.5px;
-  font-family: $font1;
-  font-size: 120%;
-  word-wrap: break-word;
-  font-size: 90%;
-  padding: 1%;
-}
-
-.about0 h2 {
-  width: 80%;
-  margin-left: 20%;
-  font-family: $font2;
-  color: $c3;
-  margin-bottom: 0;
-}
-
 .infa {
   float: right;
   color: $c2;
   margin-right: 25px;
 }
 
-.about1 {
-  width: 100%;
-  margin-top: 20px;
-}
-
-.about1 h2 {
-  font-family: $font2;
-  color: $c3;
-  margin-left: 10px;
-  width: calc(100% - 10px);
-  margin-bottom: 0;
-} 
-
-.about1 h3 {
-  font-family: $font2;
-  color: $c1;
-  margin: 30px;
-  text-align: right;
-  font-size: 90%;
-  padding-right: 7.5%;
-}
-
-.about1 #pic {
-  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/about.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  float: left;
-  width: 570px;
-  padding: 190px 0px;
-  margin-left: 130px;
-  border-radius: 10px;
-}
-
-.about1 button {
-  background-color: transparent;
-  padding: 20px;
-  font-size: 80%;
-  color: $c1;
-  border: 1px solid $c1;
-  border-radius: 100px;
-  cursor: pointer;
-}
-
-#btn {
-  float: right;
-  margin-right: 8%;
-}
-
-.about1 span {
-  display: inline-block;
-}
-
 .jus {
   text-align: center;
 }
 
-.cent0 {
-  display: block;
-  margin: auto;
-}
-
-.cent {
-  text-align: justify;
-}
-
-#s3 {
-  width: 453px;
-  height: 200px;
-  padding-left: 50px;
-  border-left: 2px solid $c1;
-  margin-top: 90px;
-}
-
-#rm,
-#rm1 {
-  display: none;
-}
-
-.imga {
-  width: 50%;
-}
-
-@media only screen and (max-width: 1365px) {
-  .about1 #pic {
-    border-bottom: 2px solid $c1;
-    float: none;
-    display: block;
-    margin: 20px auto 90px auto;
-    border-radius: 0;
-    width: 66.632%;
-    padding: 22.212% 0px;
-    transform: scale(1.2);
+.about0 {
+  padding-bottom: 0;
+  margin-top: 70px;
+  p {
+    width: 60%;
+    margin: 0.83em auto 25px auto;
+    color: $c1;
+    background-color: $c4;
+    border: 2px solid $c2;
+    border-radius: 2.5px;
+    font-family: $font1;
+    font-size: 120%;
+    word-wrap: break-word;
+    font-size: 90%;
+    padding: 1%;
+    @media only screen and (max-width: 1200px) {
+      width: initial;
+      border-radius: 0;
+      font-size: initial;
+      padding: 10px 0;
+    }
   }
-  .about1 #s3 {
-    padding-left: 0;
-    border-left: none;
-    width: 100%;
-    height: 100px;
-    margin-top: 0;
+  h2 {
+    width: 80%;
+    margin-left: 20%;
+    font-family: $font2;
+    color: $c3;
+    margin-bottom: 0;
+    @media only screen and (max-width: 1200px) {
+      width: calc(100% - 10px);
+      margin-left: 10px;
+    }
   }
-  .about1 #btn {
-    float: none;
+}
+
+.about1 {
+  width: 100%;
+  margin-top: 20px;
+  h2 {
+    font-family: $font2;
+    color: $c3;
+    margin-left: 10px;
+    width: calc(100% - 10px);
+    margin-bottom: 0;
+  }
+  h3 {
+    font-family: $font2;
+    color: $c1;
+    margin: 30px;
+    text-align: right;
+    font-size: 90%;
+    padding-right: 7.5%;
+  }
+  #pic {
+    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/about.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    float: left;
+    width: 570px;
+    padding: 190px 0px;
+    margin-left: 130px;
+    border-radius: 10px;
+    @media only screen and (max-width: 1365px) {
+      border-bottom: 2px solid $c1;
+      float: none;
+      display: block;
+      margin: 20px auto 90px auto;
+      border-radius: 0;
+      width: 66.632%;
+      padding: 22.212% 0px;
+      transform: scale(1.2);
+    }
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      padding: 33.334% 0px;
+    }
+  }
+  button {
+    background-color: transparent;
+    padding: 20px;
+    font-size: 80%;
+    color: $c1;
+    border: 1px solid $c1;
+    border-radius: 100px;
+    cursor: pointer;
+  }
+  span {
+    display: inline-block;
+  }
+  #s3 {
+    width: 453px;
+    height: 200px;
+    padding-left: 50px;
+    border-left: 2px solid $c1;
+    margin-top: 90px;
+    @media only screen and (max-width: 1365px) {
+      padding-left: 0;
+      border-left: none;
+      width: 100%;
+      height: 100px;
+      margin-top: 0;
+    }
+  }
+  #btn {
+    float: right;
+    margin-right: 8%;
+    @media only screen and (max-width: 1365px) {
+      float: none;
+      display: block;
+      margin: auto;
+    }
+  }
+  .cent0 {
     display: block;
     margin: auto;
   }
-}
-
-@media only screen and (max-width: 1200px) {
-  .about0 p {
-    width: initial;
-    border-radius: 0;
-    font-size: initial;
-    padding: 10px 0;
+  .cent {
+    text-align: justify;
   }
-  .about0 h2 {
-    width: calc(100% - 10px);
-    margin-left: 10px;
+  #rm,
+  #rm1 {
+    display: none;
   }
   .imga {
-    width: 60%;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .about1 #pic {
-    width: 100%;
-    padding: 33.334% 0px;
+    width: 50%;
+    @media only screen and (max-width: 1200px) {
+      width: 60%;
+    }
   }
 }
