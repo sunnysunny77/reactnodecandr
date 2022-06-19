@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import PhoneIcon from "@material-ui/icons/Phone";
-import ReactHtmlParser from 'react-html-parser'; 
+import ReactHtmlParser from 'react-html-parser';
 
 class Nav extends Component {
   constructor(props) {
@@ -63,7 +63,7 @@ class Nav extends Component {
       document.querySelector(".menu").style.position = "fixed";
       document.querySelector(".menu").style.top = "0";
       document.querySelector("#di").style.position = "relative";
-      document.querySelector("#di").style.paddingTop = "70px";
+      document.querySelector("#di").style.paddingTop = "60px";
     } else {
       document.querySelector(".menu").style.position = "relative";
       document.querySelector("#di").style.paddingTop = "0";
@@ -101,63 +101,63 @@ class Nav extends Component {
   bars = () => {
     this.state.s
       ? this.setState({
-          s: false,
-          dis: { display: "none" },
-          bar1: {
-            width: "35px",
-            height: "5px",
-            backgroundColor: "black",
-            margin: "6px 0",
-            transition: "0.4s",
-          },
-          bar2: {
-            width: "35px",
-            height: "5px",
-            backgroundColor: "black",
-            margin: "6px 0",
-            transition: "0.4s",
-          },
-          bar3: {
-            width: "35px",
-            height: "5px",
-            backgroundColor: "black",
-            margin: "6px 0",
-            transition: "0.4s",
-          },
-        })
+        s: false,
+        dis: { display: "none" },
+        bar1: {
+          width: "35px",
+          height: "5px",
+          backgroundColor: "black",
+          margin: "6px 0",
+          transition: "0.4s",
+        },
+        bar2: {
+          width: "35px",
+          height: "5px",
+          backgroundColor: "black",
+          margin: "6px 0",
+          transition: "0.4s",
+        },
+        bar3: {
+          width: "35px",
+          height: "5px",
+          backgroundColor: "black",
+          margin: "6px 0",
+          transition: "0.4s",
+        },
+      })
       : this.setState({
-          s: true,
-          dis: { display: "block" },
-          bar1: {
-            width: "35px",
-            height: "5px",
-            backgroundColor: "black",
-            margin: "6px 0",
-            transition: "0.4s",
-            WebkitTransform: "rotate(-45deg) translate(-9px, 6px)",
-            transform: "rotate(-45deg) translate(-9px, 6px)",
-          },
-          bar2: {
-            width: "35px",
-            height: "5px",
-            backgroundColor: "black",
-            margin: "6px 0",
-            transition: "0.4s",
-            opacity: "0",
-          },
-          bar3: {
-            width: "35px",
-            height: "5px",
-            backgroundColor: "black",
-            margin: "6px 0",
-            transition: "0.4s",
-            WebkitTransform: "rotate(45deg) translate(-8px, -8px)",
-            transform: "rotate(45deg) translate(-8px, -8px)",
-          },
-        });
+        s: true,
+        dis: { display: "block" },
+        bar1: {
+          width: "35px",
+          height: "5px",
+          backgroundColor: "black",
+          margin: "6px 0",
+          transition: "0.4s",
+          WebkitTransform: "rotate(-45deg) translate(-9px, 6px)",
+          transform: "rotate(-45deg) translate(-9px, 6px)",
+        },
+        bar2: {
+          width: "35px",
+          height: "5px",
+          backgroundColor: "black",
+          margin: "6px 0",
+          transition: "0.4s",
+          opacity: "0",
+        },
+        bar3: {
+          width: "35px",
+          height: "5px",
+          backgroundColor: "black",
+          margin: "6px 0",
+          transition: "0.4s",
+          WebkitTransform: "rotate(45deg) translate(-8px, -8px)",
+          transform: "rotate(45deg) translate(-8px, -8px)",
+        },
+      });
   };
   render() {
-    let {ph, time, day, buttons} = this.props
+    let { ph, time, day, buttons } = this.props
     return (
       <React.Fragment>
         <div className="barDraw" onClick={this.bars}>
@@ -169,35 +169,35 @@ class Nav extends Component {
           <div>
             <hr></hr>
             <Link to="/">
-            <HomeIcon id="homI" aria-labelledby="hl1" role="link" >Home</HomeIcon>
-            <span id="hl1"className="hiddentext">Homepage Link</span>
+              <HomeIcon aria-labelledby="hl1" role="link" >Home</HomeIcon>
+              <span id="hl1" className="hiddentext">Homepage Link</span>
             </Link>
             <Link to="/blog">
-              <button>{ReactHtmlParser (buttons[0])}</button> 
+              {ReactHtmlParser(buttons[0])}
             </Link>
             <Link to="/gallery">
-              <button>{ReactHtmlParser (buttons[1])}</button>
+              {ReactHtmlParser(buttons[1])}
             </Link>
             <Link to="/contact">
-              <button>{ReactHtmlParser (buttons[2])}</button>
+              {ReactHtmlParser(buttons[2])}
             </Link>
             <Link to="/about">
-              <button>{ReactHtmlParser (buttons[3])}</button>
+              {ReactHtmlParser(buttons[3])}
             </Link>
             <hr></hr>
           </div>
           <div>
-            <AccessTimeIcon className="phI" />
+            <AccessTimeIcon />
             <br></br>
-            <span id="s1">
-              {ReactHtmlParser (time)}
+            <span>
+              {ReactHtmlParser(time)}
               <br></br>
-              {ReactHtmlParser (day)}
+              {ReactHtmlParser(day)}
             </span>
             <br></br>
-            <PhoneIcon className="phI" />
+            <PhoneIcon />
             <br></br>
-            <a href={"tel:" + ph}> 
+            <a href={"tel:" + ph}>
               {ph}
             </a>
           </div>
@@ -207,32 +207,34 @@ class Nav extends Component {
           <img src="https://candid.s3.ap-southeast-2.amazonaws.com/logolarge.png" alt="Candid Logo" width={this.state.wi} height={this.state.hi}></img>
         </header>
         <nav className="menu">
+          <div>
             <Link to="/blog">
-              <button>{ReactHtmlParser (buttons[0])}</button> 
+              {ReactHtmlParser(buttons[0])}
             </Link>
             <Link to="/gallery">
-              <button>{ReactHtmlParser (buttons[1])}</button>
+              {ReactHtmlParser(buttons[1])}
             </Link>
             <Link to="/contact">
-              <button>{ReactHtmlParser (buttons[2])}</button>
+              {ReactHtmlParser(buttons[2])}
             </Link>
             <Link to="/about">
-              <button>{ReactHtmlParser (buttons[3])}</button>
+              {ReactHtmlParser(buttons[3])}
             </Link>
-            <div className="mMove0">
-              <PhoneIcon className="apI" />
-              <a href={"tel:" + ph}> 
+          </div>
+          <div>
+            <PhoneIcon />
+            <a href={"tel:" + ph}>
               {ph}
-              </a>
-              <AccessTimeIcon className="apI" />
-              <span id="s2">
-              {ReactHtmlParser (time)} / {ReactHtmlParser (day)}
-              </span>
-              <Link to="/">
-                <HomeIcon id="homIa" className="apI" aria-labelledby="hl2" role="link" >Home</HomeIcon>
-                <span id="hl2" className="hiddentext">Homepage Link</span>
-              </Link>
-            </div>
+            </a>
+            <AccessTimeIcon />
+            <span>
+              {ReactHtmlParser(time)} / {ReactHtmlParser(day)}
+            </span>
+            <Link to="/">
+              <HomeIcon aria-labelledby="hl2" role="link" >Home</HomeIcon>
+              <span id="hl2" className="hiddentext">Homepage Link</span>
+            </Link>
+          </div>
         </nav>
       </React.Fragment>
     );

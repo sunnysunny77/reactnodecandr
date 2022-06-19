@@ -30,47 +30,41 @@
   font-size: 5px;
   font-family: $font4;
   @media only screen and (min-width: 1200px) {
-    display: none;
+    display: none !important;
   }
   div {
-    a,
     span {
       color: $c3;
       text-decoration: none;
       font-size: 20px;
     }
-    a:hover {
-      color: $c10;
+    a:nth-child(2) {
+      text-align: right;
+      svg {
+        margin-right: 20px;
+        font-size: 35px;
+        padding: 0;
+      }
     }
-    button {
+    a {
       width: 100%;
       font-size: 25px;
       color: $c3;
       cursor: pointer;
       background-color: $c1;
       border: none;
+      display: block;
+      text-decoration: none;
+      outline: none;
       padding: 10px 0;
       &:hover {
         color: $c10;
       }
     }
   }
-  #homI {
-    color: $c3;
-    transform: scale(1.75);
-    position: absolute;
-    right: 30px;
-    top: 40px;
-    &:hover {
-      color: $c10;
-      cursor: pointer;
-    }
-  }
-  img {
+  img,
+  svg {
     padding: 10px 0;
-  }
-  .phI {
-    transform: scale(0.8);
   }
 }
 
@@ -96,54 +90,44 @@ header {
 /* menu  */
 
 .menu {
-  width: calc(100% - 50px);
-  height: 70px;
+  width: 100%;
+  height: 60px;
   background-color: $c3;
   z-index: 999;
   color: $c1;
   font-family: $font4;
-  padding-left: 50px;
+  display: flex;
+  justify-content: space-between;
   @media only screen and (max-width: 1200px) {
     display: none;
   }
-  button {
+  div {
+    line-height: 60px;
     font-size: 17.5px;
+    &:nth-child(1) {
+      padding-left: 50px;
+      width: 475px;
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+  a {
+    text-decoration: none;
     color: $c1;
     background-color: $c3;
     border: none;
     cursor: pointer;
-    margin: 22px;
+    outline: none;
+    margin: 0 19px;
     &:hover {
       color: $c10;
     }
   }
   span {
-    margin: 0 8px;
+    margin: 0 19px;
   }
-  a {
-    color: $c1;
-    text-decoration: none;
-    margin: 0 8px;
-    &:hover {
-      color: $c10;
-    }
-  }
-  .mMove0 {
-    float: right;
-    padding-top: 10px;
-    font-size: 17.5px;
-  }
-  .apI {
-    padding-top: 12px;
-    margin-bottom: -4px;
-  }
-  #homIa {
-    padding-top: 12px;
-    margin: 0 15px 0 10px;
-    &:hover {
-      color: $c10;
-      cursor: pointer;
-    }
+  svg {
+    vertical-align: text-bottom;
   }
 }
 

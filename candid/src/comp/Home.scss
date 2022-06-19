@@ -111,6 +111,10 @@
     box-shadow: 0 0 1.5px $c1;
     width: 21%;
     height: inherit;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
     @media only screen and (max-width: 1200px) {
       width: 40%;
     }
@@ -128,6 +132,10 @@
     font-size: 80%;
     font-style: italic;
     padding: 5px 0;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
     @media only screen and (max-width: 1200px) {
       width: 40%;
     }
@@ -329,7 +337,7 @@
     }
     .cardf {
       color: $c3;
-      transform: scale(3.5);
+      font-size: 50px;
       align-self: center;
     }
   }
