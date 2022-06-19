@@ -1,9 +1,5 @@
 @import "./Variables.scss";
 
-button {
-  outline: none;
-}
-
 h1 {
   font-family: $font1;
   color: $c1;
@@ -18,7 +14,7 @@ h2 {
   font-size: 100%;
 }
 
-.rh {
+.headingCont {
   width: 100%;
   background-color: $c3;
   background-image: linear-gradient(270deg, $c3 0%, $c6 45%, $c6 100%);
@@ -26,7 +22,7 @@ h2 {
   font-size: 120%;
 }
 
-.rh h1 {
+.headingCont h1 {
   padding-top: 15px;
 }
 

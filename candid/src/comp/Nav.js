@@ -60,12 +60,12 @@ class Nav extends Component {
   }
   handleScroll = () => {
     if (window.scrollY >= 90) {
-      document.querySelector(".menu").style.position = "fixed";
-      document.querySelector(".menu").style.top = "0";
+      document.querySelector(".mainNav").style.position = "fixed";
+      document.querySelector(".mainNav").style.top = "0";
       document.querySelector("#di").style.position = "relative";
       document.querySelector("#di").style.paddingTop = "60px";
     } else {
-      document.querySelector(".menu").style.position = "relative";
+      document.querySelector(".mainNav").style.position = "relative";
       document.querySelector("#di").style.paddingTop = "0";
     }
   };
@@ -160,12 +160,12 @@ class Nav extends Component {
     let { ph, time, day, buttons } = this.props
     return (
       <React.Fragment>
-        <div className="barDraw" onClick={this.bars}>
+        <div className="burgerMenu" onClick={this.bars}>
           <div style={this.state.bar1}></div>
           <div style={this.state.bar2}></div>
           <div style={this.state.bar3}></div>
         </div>
-        <nav className="menuDraw" style={this.state.dis}>
+        <nav className="mobileNav" style={this.state.dis}>
           <div>
             <hr></hr>
             <Link to="/">
@@ -206,7 +206,7 @@ class Nav extends Component {
         <header>
           <img src="https://candid.s3.ap-southeast-2.amazonaws.com/logolarge.png" alt="Candid Logo" width={this.state.wi} height={this.state.hi}></img>
         </header>
-        <nav className="menu">
+        <nav className="mainNav">
           <div>
             <Link to="/blog">
               {ReactHtmlParser(buttons[0])}

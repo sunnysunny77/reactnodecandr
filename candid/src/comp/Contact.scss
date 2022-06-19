@@ -1,23 +1,13 @@
 @import "../Variables.scss";
 
-.contlink {
-  margin: 60px auto auto auto;
-  max-width: 1200px;
-}
-
-.infe {
+.contactContTwo svg, .contactContOne svg {
   color: $c2;
   margin-right: 25px;
   float: right;
 }
 
-#sc {
-  text-align: center;
-  display: inline-block;
-}
-
-.c2 h2,
-.c3 h2 {
+.contactTwo h2,
+.contactContTwo h2 {
   width: calc(100% - 10px);
   font-family: $font2;
   color: $c3;
@@ -25,7 +15,12 @@
   margin-bottom: 0;
 }
 
-.c1 {
+.contactContOne {
+  margin: 60px auto auto auto;
+  max-width: 1200px;
+}
+
+.contactOne {
   float: left;
   background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/cont.jpg");
   background-position: center;
@@ -41,7 +36,7 @@
   }
 }
 
-.c2 {
+.contactTwo {
   float: left;
   margin-left: 20%;
   @media only screen and (max-width: 1200px) {
@@ -74,12 +69,19 @@
       color: $c8;
     }
   }
-  #homc {
+  svg {
+    color: $c1;
     padding: 0 0 2.5px 20px;
-    transform: scale(1.3);
+    font-size: 35px;
+    float: none;
     &:hover {
       color: $c8;
       cursor: pointer;
     }
   }
+}
+
+#contactResponse {
+  text-align: center;
+  display: inline-block;
 }

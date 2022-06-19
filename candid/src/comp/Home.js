@@ -116,15 +116,15 @@ class Home extends Component {
               <React.Fragment key={index}>
                 <link rel="preload" href={res.data.vid[index][0]} as="image" />
                 <span
-                  className={ReactHtmlParser("vt &nbsp d" + [index + 1])}
+                  className={ReactHtmlParser("videoLink  d" + [index + 1])}
                   style={{ display: d }}
                   onClick={() => this.vid(res.data.vid[index][1])}
                 >
                   {ReactHtmlParser(res.data.vid[index][2])}{" "}
-                  <PlayCircleOutlineIcon className="iv" />
+                  <PlayCircleOutlineIcon  />
                 </span>
                 <img
-                  className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
+                  className={ReactHtmlParser("videoImg  d" + [index + 1])}
                   src={res.data.vid[index][0]}
                   alt={ReactHtmlParser(res.data.vid[index][2])}
                   width="275"
@@ -135,15 +135,15 @@ class Home extends Component {
                 />
                 <link rel="preload" href={res.data.vid[index][3]} as="image" />
                 <span
-                  className={ReactHtmlParser("vt &nbsp d" + [index + 1])}
+                  className={ReactHtmlParser("videoLink  d" + [index + 1])}
                   style={{ display: d }}
                   onClick={() => this.vid(res.data.vid[index][4])}
                 >
                   {ReactHtmlParser(res.data.vid[index][5])}{" "}
-                  <PlayCircleOutlineIcon className="iv" />
+                  <PlayCircleOutlineIcon  />
                 </span>
                 <img
-                  className={ReactHtmlParser("vidn &nbsp d" + [index + 1])}
+                  className={ReactHtmlParser("videoImg  d" + [index + 1])}
                   src={res.data.vid[index][3]}
                   alt={ReactHtmlParser(res.data.vid[index][5])}
                   width="275"
@@ -217,9 +217,9 @@ class Home extends Component {
       document.getElementsByClassName("d1")[2].style.display = "inline-block";
       this.setState({ count: 1 });
     }
-    document.querySelector(".vid").classList.add("flip");
+    document.querySelector(".video").classList.add("flip");
     setTimeout(() => {
-      document.querySelector(".vid").classList.remove("flip");
+      document.querySelector(".video").classList.remove("flip");
     }, 500);
   };
   handleChange = (selectedOption) => {
@@ -285,7 +285,7 @@ class Home extends Component {
     }
   };
   scr = () => {
-    document.getElementById("iq").scrollIntoView();
+    document.getElementById("enquiry").scrollIntoView();
   };
   reso = () => {
     if (window.screen.width > 1200) {
@@ -336,7 +336,7 @@ class Home extends Component {
           <React.Fragment>
             {this.state.w}
             <section className="welcome">
-              <div id="w1">
+              <div id="welcomeOne">
                 <svg
                   id="my-svg"
                   height="50px"
@@ -346,7 +346,7 @@ class Home extends Component {
                 />
                 <h1>{ReactHtmlParser(this.state.res.m1)}</h1>
               </div>
-              <div id="w2">
+              <div id="welcomeTwo">
                 <h2 onClick={this.scr}>{ReactHtmlParser(this.state.res.m2)}</h2>
               </div>
             </section>
@@ -368,10 +368,10 @@ class Home extends Component {
                 ></img>
               </div>
             </Slider>
-            <section className="vid ">
+            <section className="video">
               <svg
                 onClick={() => this.vidd(-1)}
-                id="pn1"
+                id="left"
                 height="17.5px"
                 viewBox="0 0 500 500"
                 width="17.5px"
@@ -384,7 +384,7 @@ class Home extends Component {
               {this.state.vi}
               <svg
                 onClick={() => this.vidd(+1)}
-                id="pn2"
+                id="right"
                 height="17.5px"
                 viewBox="0 0 500 500"
                 width="17.5px"
@@ -396,11 +396,11 @@ class Home extends Component {
               </svg>
             </section>
             <section className="info">
-              <div className="info0"></div>
-              <div className="info2">
+              <div className="infoOne"></div>
+              <div className="infoTwo">
                 <h3>
                   {ReactHtmlParser(this.state.res.qh)}
-                  <InfoIcon id="inf" />
+                  <InfoIcon />
                 </h3>
                 <hr
                   style={{
@@ -420,8 +420,8 @@ class Home extends Component {
               </div>
             </section>
             <section className="card">
-              <div className="card1">
-                <div className="card2">
+              <div className="cardOne">
+                <div className="cardTwo">
                   <span>
                     <h3>{ReactHtmlParser(this.state.res.ch1)}</h3>
                     <img
@@ -433,11 +433,11 @@ class Home extends Component {
                   </span>
                 </div>
                 <p>{ReactHtmlParser(this.state.res.c1)}</p>
-                <StarBorderIcon className="cardi" />
-                <FilterListIcon className="cardf" />
+                <StarBorderIcon  />
+                <FilterListIcon  />
               </div>
-              <div className="card1">
-                <div className="card2">
+              <div className="cardOne">
+                <div className="cardTwo">
                   <span>
                     <h3>{ReactHtmlParser(this.state.res.ch2)}</h3>
                     <img
@@ -449,11 +449,11 @@ class Home extends Component {
                   </span>
                 </div>
                 <p>{ReactHtmlParser(this.state.res.c2)}</p>
-                <WhatshotIcon className="cardi" />
-                <FilterListIcon className="cardf" />
+                <WhatshotIcon  />
+                <FilterListIcon  />
               </div>
-              <div className="card1">
-                <div className="card2">
+              <div className="cardOne">
+                <div className="cardTwo">
                   <span>
                     <h3>{ReactHtmlParser(this.state.res.ch3)}</h3>
                     <img
@@ -465,11 +465,11 @@ class Home extends Component {
                   </span>
                 </div>
                 <p>{ReactHtmlParser(this.state.res.c3)}</p>
-                <BuildIcon className="cardi" />
-                <FilterListIcon className="cardf" />
+                <BuildIcon  />
+                <FilterListIcon  />
               </div>
-              <div className="card1">
-                <div className="card2">
+              <div className="cardOne">
+                <div className="cardTwo">
                   <span>
                     <h3>{ReactHtmlParser(this.state.res.ch4)}</h3>
                     <img
@@ -484,10 +484,10 @@ class Home extends Component {
                 <a target="4" href={this.state.res.u4}>
                   {ReactHtmlParser(this.state.res.buttons[0])}
                 </a>
-                <FilterListIcon className="cardf" />
+                <FilterListIcon  />
               </div>
-              <div className="card1">
-                <div className="card2">
+              <div className="cardOne">
+                <div className="cardTwo">
                   <span>
                     <h3>{ReactHtmlParser(this.state.res.ch5)}</h3>
                     <img
@@ -502,10 +502,10 @@ class Home extends Component {
                 <a target="5" href={this.state.res.u5}>
                   {ReactHtmlParser(this.state.res.buttons[0])}
                 </a>
-                <FilterListIcon className="cardf" />
+                <FilterListIcon  />
               </div>
-              <div className="card1">
-                <div className="card2">
+              <div className="cardOne">
+                <div className="cardTwo">
                   <span>
                     <h3>{ReactHtmlParser(this.state.res.ch6)}</h3>
                     <img
@@ -520,11 +520,11 @@ class Home extends Component {
                 <a target="6" href={this.state.res.u6}>
                   {ReactHtmlParser(this.state.res.buttons[0])}
                 </a>
-                <FilterListIcon className="cardf" />
+                <FilterListIcon  />
               </div>
             </section>
-            <section id="iq" className="inq">
-              <div className="rh">
+            <section id="enquiry" className="enquiry">
+              <div className="headingCont">
                 <h3>{ReactHtmlParser(this.state.res.buttons[1])}</h3>
               </div>
               <br></br>
@@ -543,7 +543,7 @@ class Home extends Component {
                 </label>
                 <TextField
                   id="name"
-                  className="www"
+                  className="MuiFormControl-root-www"
                   InputProps={{
                     style: {
                       color: styles.bl,
@@ -570,7 +570,7 @@ class Home extends Component {
                 </label>
                 <TextField
                   id="email"
-                  className="www"
+                  className="MuiFormControl-root-www"
                   InputProps={{
                     style: {
                       color: styles.bl,
@@ -601,7 +601,7 @@ class Home extends Component {
                 >
                   <TextField
                     id="phone"
-                    className="www"
+                    className="MuiFormControl-root-www"
                     inputProps={{
                       pattern: "[+]?[0-9]{3,15}",
                     }}

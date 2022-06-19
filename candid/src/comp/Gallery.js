@@ -41,10 +41,10 @@ export default class Galery extends Component {
         ) : (
           <React.Fragment>
             {this.state.w}
-            <div className="rh">
+            <div className="headingCont">
               <h1> {ReactHtmlParser(this.state.res.buttons[0])}</h1>
             </div>
-            <section id="gl">
+            <section id="galleryCont">
               <ImageGallery items={this.state.res.images} />
             </section>
           </React.Fragment>

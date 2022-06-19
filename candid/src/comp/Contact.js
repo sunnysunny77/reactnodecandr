@@ -43,15 +43,15 @@ export default class Contactc extends Component {
         ) : (
           <React.Fragment>
             {this.state.w}
-            <div className="rh">
+            <div className="headingCont">
               <h1>{ReactHtmlParser(this.state.res.buttons[0])}</h1>
             </div>
-            <section className="contlink">
-              <div className="c1"></div>
-              <div className="c2">
+            <section className="contactContOne">
+              <div className="contactOne"></div>
+              <div className="contactTwo">
                 <h2>
                   {ReactHtmlParser(this.state.res.h)}{" "}
-                  <ContactsIcon className="infe" />
+                  <ContactsIcon  />
                 </h2>
                 <p>
                   &nbsp;&#8226;&nbsp;{ReactHtmlParser(this.state.res.et)}
@@ -72,7 +72,6 @@ export default class Contactc extends Component {
                   <br></br>
                   &nbsp; <span> {ReactHtmlParser(this.state.res.it2)}</span>
                   <HelpOutlineIcon
-                    id="homc"
                     onClick={() => {
                       var x = window.location.origin;
                       window.location.replace(x + "?in=in");
@@ -83,15 +82,15 @@ export default class Contactc extends Component {
               </div>
               <br className="clearfloat" />
             </section>
-            <section className="c3">
+            <section className="contactContTwo">
               <h2>
                 {ReactHtmlParser(this.state.res.h2)}{" "}
-                <ContactsIcon className="infe" />{" "}
+                <ContactsIcon  />{" "}
               </h2>
               <hr />
               <Wave>
-                <div className="prop">
-                  <span id="sc">{ReactHtmlParser(this.state.res.avail)}</span>
+                <div id="contactResponse" className="prop">
+                 {ReactHtmlParser(this.state.res.avail)}
                 </div>
               </Wave>
             </section>

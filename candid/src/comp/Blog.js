@@ -266,10 +266,10 @@ export default class Blog extends React.Component {
           <React.Fragment>
             {this.state.w}
             <section className="blogCont">
-              <div className="blogBar">
+              <div className="blogHeading">
                 <h1>{ReactHtmlParser(this.state.buttons[0])}</h1>
               </div>
-              <div className="blogCont1">
+              <div className="blogResponse">
                 <br></br>
                 <br></br>
                 {this.state.txt}
@@ -277,18 +277,18 @@ export default class Blog extends React.Component {
               <div style={{ backgroundColor: styles.bl }}>
                 <StyledAccordion>
                   <AccordionSummary
-                    expandIcon={<ExpandMoreIcon className="blogs" />}
+                    expandIcon={<ExpandMoreIcon style={{ color: styles.wi }} />}
                     aria-controls="panel2a-content"
                     id="panel2a-header"
                   >
-                    <div className="blogh">
+                    <div className="accordianHeading">
                       <h2>{ReactHtmlParser(this.state.buttons[1])}</h2>
                     </div>
                   </AccordionSummary>
                   <AccordionDetails>
                     <form
                       id="a6"
-                      className="form"
+                      className="formAdd"
                       onSubmit={this.sub}
                       autoComplete="off"
                       style={{
@@ -300,10 +300,10 @@ export default class Blog extends React.Component {
                       <label for="passs" className="hiddentext">
                         Password
                       </label>
-                      <SubjectIcon className="blogsi" />
+                      <SubjectIcon />
                       <TextField
                         id="passs"
-                        className="float"
+                        className="MuiFormControl-root-com"
                         InputProps={{
                           style: {
                             color: styles.bl,
@@ -329,7 +329,7 @@ export default class Blog extends React.Component {
                       </label>
                       <TextField
                         id="title"
-                        className="float"
+                        className="MuiFormControl-root-com"
                         InputProps={{
                           style: {
                             color: styles.bl,
@@ -355,7 +355,7 @@ export default class Blog extends React.Component {
                       </label>
                       <TextField
                         id="name"
-                        className="float"
+                        className="MuiFormControl-root-com"
                         InputProps={{
                           style: {
                             color: styles.bl,
@@ -446,18 +446,18 @@ export default class Blog extends React.Component {
                 </StyledAccordion>
                 <StyledAccordion>
                   <AccordionSummary
-                    expandIcon={<ExpandMoreIcon className="blogs" />}
+                    expandIcon={<ExpandMoreIcon style={{ color: styles.wi }} />}
                     aria-controls="panel2a-content"
                     id="panel2a-header"
                   >
-                    <div className="blogh">
+                    <div className="accordianHeading">
                       <h2>{ReactHtmlParser(this.state.buttons[2])}</h2>
                     </div>
                   </AccordionSummary>
                   <AccordionDetails>
                     <form
                       id="a2"
-                      className="form0"
+                      className="formRemove"
                       onSubmit={this.sub0}
                       autoComplete="off"
                       style={{
@@ -472,7 +472,7 @@ export default class Blog extends React.Component {
                       </label>
                       <TextField
                         id="pass"
-                        className="float"
+                        className="MuiFormControl-root-com"
                         InputProps={{
                           style: {
                             color: styles.bl,
@@ -498,7 +498,7 @@ export default class Blog extends React.Component {
                       </label>
                       <TextField
                         id="date"
-                        className="float"
+                        className="MuiFormControl-root-com"
                         InputProps={{
                           style: {
                             color: styles.bl,

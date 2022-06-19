@@ -19,11 +19,11 @@ footer {
     font-size: 20px;
     font-family: $font4;
     @media only screen and (min-width: 1200px) {
-      li.lid {
+      li.none {
         display: none;
       }
     }
-    .bl {
+    .block {
       display: block;
     }
     li {
@@ -47,9 +47,9 @@ footer {
           cursor: pointer;
         }
       }
+      &#imh {
+        height: initial;
+      }
     }
-  }
-  #imh {
-    height: initial;
   }
 }

@@ -1,16 +1,5 @@
 @import "../Variables.scss";
 
-table {
-  padding: 0 1%;
-  th {
-    float: left;
-    color: $c1;
-  }
-  td {
-    font-size: 120%;
-  }
-}
-
 .blogCont {
   width: 70%;
   background-color: $c5;
@@ -21,7 +10,7 @@ table {
     width: 98%;
     margin: auto;
   }
-  .blogBar {
+  .blogHeading {
     width: 100%;
     background-color: $c3;
     background-image: linear-gradient(270deg, $c3 0%, $c6 45%, $c6 100%);
@@ -33,7 +22,7 @@ table {
       padding-top: 15px;
     }
   }
-  .blogCont1 {
+  .blogResponse {
     scrollbar-face-color: $c3;
     scrollbar-track-color: $c1;
     overflow-y: auto;
@@ -54,13 +43,19 @@ table {
       background: $c7;
     }
   }
+  table {
+    padding: 0 1%;
+    th {
+      float: left;
+      color: $c1;
+    }
+    td {
+      font-size: 120%;
+    }
+  }
 }
 
-.blogs {
-  color: $c1;
-}
-
-.blogh {
+.accordianHeading {
   width: 100%;
   background-color: $c3;
   background-image: linear-gradient(270deg, $c3 0%, $c6 45%, $c6 100%);
@@ -79,7 +74,7 @@ table {
   }
 }
 
-.float {
+.MuiFormControl-root-com {
   float: right;
   width: 40%;
   padding-left: 60% !important;
@@ -88,19 +83,19 @@ table {
   }
 }
 
-.form {
+.formAdd {
   width: 100%;
   background-color: $c5;
   color: $c1;
   overflow: hidden;
-  .blogsi {
-    transform: scale(1.6);
+  svg:nth-child(2) {
+    font-size: 35px;
     padding: 15px;
     float: left;
   }
 }
 
-.form0 {
+.formRemove {
   width: 100%;
   margin: auto;
   background-color: $c5;

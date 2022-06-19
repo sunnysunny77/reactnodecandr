@@ -1,18 +1,43 @@
 @import "../Variables.scss";
 
-.infa {
+.aboutContTwo svg, .aboutContOne svg {
   float: right;
   color: $c2;
   margin-right: 25px;
 }
 
-.jus {
+.center {
   text-align: center;
 }
 
-.about0 {
+.centerBlock {
+  display: block;
+  margin: auto;
+}
+
+.justify {
+  text-align: justify;
+}
+
+#readMoreZero,
+#readMoreOne {
+  display: none;
+}
+
+.aboutContOne {
   padding-bottom: 0;
   margin-top: 70px;
+  h2 {
+    width: 80%;
+    margin-left: 20%;
+    font-family: $font2;
+    color: $c3;
+    margin-bottom: 0;
+    @media only screen and (max-width: 1200px) {
+      width: calc(100% - 10px);
+      margin-left: 10px;
+    }
+  }
   p {
     width: 60%;
     margin: 0.83em auto 25px auto;
@@ -32,20 +57,9 @@
       padding: 10px 0;
     }
   }
-  h2 {
-    width: 80%;
-    margin-left: 20%;
-    font-family: $font2;
-    color: $c3;
-    margin-bottom: 0;
-    @media only screen and (max-width: 1200px) {
-      width: calc(100% - 10px);
-      margin-left: 10px;
-    }
-  }
 }
 
-.about1 {
+.aboutContTwo {
   width: 100%;
   margin-top: 20px;
   h2 {
@@ -62,6 +76,15 @@
     text-align: right;
     font-size: 90%;
     padding-right: 7.5%;
+  }
+  span {
+    display: inline-block;
+  }
+  img {
+    width: 30%;
+    @media only screen and (max-width: 1200px) {
+      width: 60%;
+    }
   }
   #pic {
     background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/about.jpg");
@@ -87,19 +110,7 @@
       padding: 33.334% 0px;
     }
   }
-  button {
-    background-color: transparent;
-    padding: 20px;
-    font-size: 80%;
-    color: $c1;
-    border: 1px solid $c1;
-    border-radius: 100px;
-    cursor: pointer;
-  }
-  span {
-    display: inline-block;
-  }
-  #s3 {
+  #picSpan {
     width: 453px;
     height: 200px;
     padding-left: 50px;
@@ -113,30 +124,23 @@
       margin-top: 0;
     }
   }
-  #btn {
-    float: right;
-    margin-right: 8%;
-    @media only screen and (max-width: 1365px) {
-      float: none;
-      display: block;
-      margin: auto;
-    }
-  }
-  .cent0 {
-    display: block;
-    margin: auto;
-  }
-  .cent {
-    text-align: justify;
-  }
-  #rm,
-  #rm1 {
-    display: none;
-  }
-  .imga {
-    width: 50%;
-    @media only screen and (max-width: 1200px) {
-      width: 60%;
+  button {
+    background-color: transparent;
+    outline: none;
+    padding: 20px;
+    font-size: 80%;
+    color: $c1;
+    border: 1px solid $c1;
+    border-radius: 100px;
+    cursor: pointer;
+    &#btn {
+      float: right;
+      margin-right: 8%;
+      @media only screen and (max-width: 1365px) {
+        float: none;
+        display: block;
+        margin: auto;
+      }
     }
   }
 }
