@@ -56,8 +56,19 @@ h2 {
   right: 40px;
 }
 
+main {
+  max-width: 1920px;
+  margin: auto;
+}
+
 @media only screen and (max-width: 1200px) {
   #di {
     padding-top: 0 !important;
+  }
+}
+
+@media only screen and (min-width: 1921px) {
+  main {
+    box-shadow: 1px 0 rgba($c4, 0.2), -1px 0 rgba($c4, 0.2);
   }
 }

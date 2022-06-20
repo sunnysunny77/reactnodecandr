@@ -133,7 +133,7 @@
     border: 1px solid $c1;
     border-radius: 100px;
     cursor: pointer;
-    &#btn {
+    &.btn {
       float: right;
       margin-right: 8%;
       @media only screen and (max-width: 1365px) {

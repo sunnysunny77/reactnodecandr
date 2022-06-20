@@ -16,7 +16,11 @@ header {
       width: 140px;
       height: 32px;
     }
+    @media only screen and (min-width: 1921px) {
+      padding-left: calc(50vw - 960px);
+    }
   }
+ 
 }
 
 /* mobile nav  */
@@ -93,7 +97,6 @@ header {
 
 .mainNav {
   width: 100%;
-  max-width: 1920px;
   height: 60px;
   background-color: $c3;
   z-index: 999;
@@ -112,6 +115,9 @@ header {
       width: 475px;
       display: flex;
       justify-content: space-around;
+      @media only screen and (min-width: 1921px) {
+        padding-left: calc(50vw - 910px);
+      }
     }
     a {
       text-decoration: none;
@@ -127,6 +133,9 @@ header {
     }
   }
   div:nth-child(2) {
+    @media only screen and (min-width: 1921px) {
+      padding-right: calc(50vw - 960px);
+    }
     span {
       margin: 0 19px;
     }

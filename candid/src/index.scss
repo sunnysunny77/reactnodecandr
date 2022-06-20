@@ -7,8 +7,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: $c11;
-  max-width: 1920px;
-  margin: auto;
 }
 
 code {
@@ -25,11 +23,5 @@ code {
 @media only screen and (max-width: 992px) {
   body {
     font-size: 140%;
-  }
-}
-
-@media only screen and (min-width: 1920px) {
-  body {
-    box-shadow: 1px 0 rgba($c4, 0.2), -1px 0 rgba($c4, 0.2);
   }
 }
