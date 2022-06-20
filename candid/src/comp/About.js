@@ -129,7 +129,7 @@ export default class About extends React.Component {
                   <button
                    className="btn"
                     onClick={() => {
-                      document.getElementById("readMoreZero1").style.display = "block";
+                      document.getElementById("readMoreOne").style.display = "block";
                     }}
                   >
                     {ReactHtmlParser(this.state.res.buttons[1])}
@@ -137,7 +137,7 @@ export default class About extends React.Component {
                   <br />
                   <br />
                   <br />
-                  <div id="readMoreZero1" className="justify">
+                  <div id="readMoreOne" className="justify">
                     <hr />
                     <br />
                     <br />
@@ -147,7 +147,7 @@ export default class About extends React.Component {
                     <button
                       className="centerBlock"
                       onClick={() => {
-                        document.getElementById("readMoreZero1").style.display = "none";
+                        document.getElementById("readMoreOne").style.display = "none";
                       }}
                     >
                       {ReactHtmlParser(this.state.res.buttons[2])}

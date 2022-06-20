@@ -54,7 +54,6 @@
       font-size: 160%;
       float: none;
       padding: 4% 0;
-      text-shadow: 0 0 2.5px rgba($c10, 0.8);
     }
   }
   #welcomeTwo {
@@ -76,7 +75,7 @@
       color: $c3;
       margin: 0;
       font-size: 110%;
-      text-shadow: 0 0 2.5px rgba($c10, 0.8);
+      text-shadow: 0 0 2.5px rgba($c10, 0.9);
       &:hover {
         text-decoration: underline;
         animation: slide2;
@@ -130,7 +129,6 @@
     top: 10.3%;
     margin-left: 2.5%;
     cursor: pointer;
-    text-shadow: 0 0 1px rgba($c10, 0.8);
     font-size: 80%;
     font-style: italic;
     padding: 5px 0;
