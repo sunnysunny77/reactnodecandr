@@ -299,15 +299,10 @@ class Home extends Component {
         src1: "https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg",
       });
     }
-    if (window.screen.width > 1792) {
+    if (window.screen.width > 1200) {
       this.setState({
-        wi: "1792",
-        hi: "724",
-      });
-    } else if (window.screen.width <= 1792 && window.screen.width > 1200) {
-      this.setState({
-        wi: "1536",
-        hi: "621",
+        wi: "1200",
+        hi: "485",
       });
     } else if (window.screen.width <= 1200 && window.screen.width >= 576) {
       this.setState({

@@ -114,8 +114,7 @@
     margin: 0 2.5% 0 2.5%;
     border-radius: 3.75px;
     box-shadow: 0 0 1.5px $c1;
-    width: 15%;
-    min-width: 285.750px;
+    width: 275px;
     height: inherit;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -123,7 +122,6 @@
     user-select: none;
     @media only screen and (max-width: 1200px) {
       width: 35%;
-      min-width: unset;
     }
     @media only screen and (max-width: 640px) {
       width: 39%;
@@ -136,8 +134,7 @@
     position: absolute;
     font-family: $font3;
     color: $c3;
-    width: 15%;
-    min-width: 285.750px;
+    width: 275px;
     top: 10.3%;
     margin-left: 2.5%;
     cursor: pointer;
@@ -150,7 +147,6 @@
     user-select: none;
     @media only screen and (max-width: 1200px) {
       width: 35%;
-      min-width: unset;
     }
     @media only screen and (max-width: 640px) {
       width: 39%;
