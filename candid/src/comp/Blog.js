@@ -265,7 +265,6 @@ export default class Blog extends React.Component {
         ) : (
           <React.Fragment>
             {this.state.w}
-            <span className="clear" />
             <section className="blogCont">
               <div className="blogHeading">
                 <h1>{ReactHtmlParser(this.state.buttons[0])}</h1>
@@ -548,7 +547,6 @@ export default class Blog extends React.Component {
                 </StyledAccordion>
               </div>    
             </section>
-            <span className="clear" />
           </React.Fragment>
         )}
       </React.Fragment>

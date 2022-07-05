@@ -7,8 +7,8 @@
   border-top-right-radius: 15px;
   margin: 100px auto;
   @media only screen and (max-width: 1200px) {
-    width: 98%;
-    margin: auto;
+    margin: 0 auto;
+    width: 100%;
   }
   .blogHeading {
     width: 100%;
@@ -18,6 +18,11 @@
     border-top-left-radius: 11px;
     border-top-right-radius: 11px;
     font-size: 120%;
+    @media only screen and (max-width: 1200px) {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+  
+    }
     h1 {
       padding-top: 15px;
     }
@@ -30,6 +35,7 @@
     scrollbar-color: $c3 $c1;
     color: $c1;
     width: 100%;
+    min-height: 65.5vh;
     &::-webkit-scrollbar {
       width: 10px;
     }
