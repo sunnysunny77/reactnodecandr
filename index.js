@@ -266,7 +266,7 @@ app.post("/one", function (req, res) {
     }
     let imageBuffer = decodeBase64Image(req.body.file);
     let d = new Date();
-    let date = moment(d).format("MMM Do YY' HH:mm:ssss");
+    let date = moment(d).format("MMM Do YY' HH:mm:ss");
     var id = mongoose.Types.ObjectId();
     let b = new mod({
       _id: id,
