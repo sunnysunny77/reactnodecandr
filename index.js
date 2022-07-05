@@ -195,54 +195,31 @@ axios
 //maps
 axios
   .get(
-    `https://docs.google.com/spreadsheets/d/1IouN-lz5mjCpEBqa2wER0swruvmUedhDMJyitlgJysU/gviz/tq?tqx=out:csv&sheet=data`
+    `https://docs.google.com/spreadsheets/d/1BxHA12ZHfra6gva_mm7o3nlQREf45DsjeMYQ1Mpg5y8/gviz/tq?tqx=out:csv&sheet=data`
   )
   .then((res) => {
     let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
     if (parsedDataI.data.length > 4) {
-      if (parsedDataI.data[3].length % 2 === 0) {
-        let parsedDataA = [];
-        let l = parsedDataI.data[3].length / 2;
-        for (let i = 1; i <= l; i++) {
-          let g = i * 2;
+      let parsedDataA = [];
+      let l = parsedDataI.data.length - 1;
+      for (let i = 0; i <= l; i++) {
+        if (i >= 3) {
           parsedDataA.push({
-            [i]: {
+            [i - 2]: {
               type: "Feature",
               geometry: {
                 type: "Polygon",
-                coordinates: [[]],
+                coordinates: [JSON.parse("[" + parsedDataI.data[i][0] + "]")],
               },
             },
           });
-          for (let x in parsedDataI.data) {
-            if (x >= 3) {
-              if (
-                (parsedDataI.data[3][g - 2].length !== 0,
-                parsedDataI.data[3][g - 1].length !== 0)
-              ) {
-                if (
-                  parsedDataI.data[x][g - 2].length &&
-                  parsedDataI.data[x][g - 1].length
-                ) {
-                  parsedDataA[i - 1][i].geometry.coordinates[0].push([
-                    parsedDataI.data[x][g - 2],
-                    parsedDataI.data[x][g - 1],
-                  ]);
-                }
-              } else {
-                return (parsedData0 = undefined);
-              }
-            }
-          }
         }
-        return (parsedData0 = [
-          parsedDataI.data[1][0],
-          parsedDataA,
-          parsedDataI.data[1][1],
-        ]);
-      } else {
-        return (parsedData0 = undefined);
-      }
+      };
+      return (parsedData0 = [
+        parsedDataI.data[1][0],
+        parsedDataA,
+        parsedDataI.data[1][1],
+      ]);
     } else {
       parsedData0 = undefined;
       return;
@@ -280,7 +257,7 @@ app.post("/one", function (req, res) {
       fs.writeFile(
         __dirname + "/public/pic/" + id + ".jpg",
         imageBuffer.data,
-        function (err) {}
+        function (err) { }
       );
       mod
         .find({})
@@ -300,7 +277,7 @@ app.post("/two", function (req, res) {
       if (doc.length) {
         fs.unlink(
           __dirname + "/public/pic/" + doc[0]._id + ".jpg",
-          function (err) {}
+          function (err) { }
         );
         mod.deleteOne({ date: req.body.ddate }, function (err) {
           mod
@@ -369,24 +346,24 @@ app.post("/three", function (req, res) {
     let gmail = google.gmail({ version: "v1", auth });
     let s = String(
       "Name:" +
-        "\xa0" +
-        req.body.name +
-        "\n\n" +
-        "Email Address:" +
-        "\xa0" +
-        req.body.email +
-        "\n\n" +
-        "Phone #:" +
-        "\xa0" +
-        req.body.phone +
-        "\n\n" +
-        "Select Type:" +
-        "\xa0" +
-        req.body.selectedOption.value +
-        "\n\n" +
-        "Text:" +
-        "\xa0" +
-        req.body.text
+      "\xa0" +
+      req.body.name +
+      "\n\n" +
+      "Email Address:" +
+      "\xa0" +
+      req.body.email +
+      "\n\n" +
+      "Phone #:" +
+      "\xa0" +
+      req.body.phone +
+      "\n\n" +
+      "Select Type:" +
+      "\xa0" +
+      req.body.selectedOption.value +
+      "\n\n" +
+      "Text:" +
+      "\xa0" +
+      req.body.text
     );
     let str = [
       'Content-Type: text/plain; charset="UTF-8"\n',
