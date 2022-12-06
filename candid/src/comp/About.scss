@@ -94,7 +94,10 @@
     width: 570px;
     padding: 190px 0px;
     margin-left: 130px;
-    border-radius: 10px;
+    border-top-right-radius: 25%;
+    border-bottom-right-radius: 25%;
+    border-top-left-radius: 17%;
+    border-bottom-left-radius: 17%;
     @media only screen and (max-width: 1365px) {
       border-bottom: 2px solid $c1;
       float: none;
