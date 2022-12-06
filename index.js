@@ -396,7 +396,7 @@ app.post("/three", function (req, res) {
           console.log("NODEMAILER - The API returned an error: " + err);
           return res.json({ e: "Error" });
         }
-        return res.json({ a: "Inquiry email sent" });
+        return res.json({ a: "Enquiry email sent" });
       }
     );
   }

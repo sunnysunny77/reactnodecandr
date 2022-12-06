@@ -279,7 +279,7 @@ class Home extends Component {
         });
     } else {
       this.setState({
-        a: "Inquiry from incomplete",
+        a: "Enquiry from incomplete",
         disp: { display: "block", lineHeight: "75px" },
       });
     }
