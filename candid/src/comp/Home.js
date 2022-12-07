@@ -348,7 +348,7 @@ class Home extends Component {
             <Slider id="slide" {...this.state.settings}>
               <div>
                 <img
-                  src={this.state.src0}
+                  src={this.state.src1}
                   alt="Slider image 1"
                   width={this.state.wi}
                   height={this.state.hi}
@@ -356,7 +356,7 @@ class Home extends Component {
               </div>
               <div>
                 <img
-                  src={this.state.src1}
+                  src={this.state.src0}
                   alt="Slider image 2"
                   width={this.state.wi}
                   height={this.state.hi}
