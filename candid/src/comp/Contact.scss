@@ -4,7 +4,7 @@
   color: $c2;
   margin-right: 25px;
   float: right;
-  font-size: 25.6px;
+  font-size: 24px;
 }
 
 .contactTwo h2,
@@ -13,7 +13,6 @@
   font-family: $font2;
   color: $c3;
   margin-left: 10px;
-  margin-bottom: 0;
 }
 
 .contactContOne {
@@ -58,7 +57,9 @@
     margin-top: 0.83em;
     @media only screen and (max-width: 1200px) {
       border-radius: 0;
+      width: calc(99% - 4px);
       padding: 0;
+      margin: 1em auto auto auto;
       font-size: initial;
       min-width: initial;
     }

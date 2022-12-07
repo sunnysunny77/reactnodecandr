@@ -208,14 +208,13 @@
   background-color: $c12;
   box-shadow: 0 0 7.5px $c2;
   @media only screen and (max-width: 992px) {
-    height: initial;
-    margin: 0;
+    display: flex;
+    flex-direction: column-reverse;
   }
   .infoOne {
     height: 100%;
     width: 400px;
     float: left;
-    background-color: $c11;
     background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info1.png");
     background-position: center;
     background-size: 100% 100%;
@@ -224,10 +223,8 @@
       margin: 0;
       height: 200px;
       width: 100%;
-      box-shadow: inset 0px -7.5px 7.5px -7.5px $c2;
-      background-color: $c11;
       background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info.png");
-      background-position: center;
+      background-position: center top;
       background-size: 150px 150px;
       background-repeat: no-repeat;
     }
