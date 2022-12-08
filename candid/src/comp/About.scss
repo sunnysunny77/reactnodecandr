@@ -94,7 +94,7 @@
     background-size: 100% 100%;
     float: left;
     width: 570px;
-    padding: 11% 0px;
+    height: 380px;
     margin-left: 90px;
     border-top-right-radius: 25%;
     border-bottom-right-radius: 25%;
@@ -107,16 +107,13 @@
       margin: 20px auto 90px auto;
       border-radius: 0;
       width: 66.632%;
+      height: unset;
       padding: 22.212% 0px;
       transform: scale(1.2);
     }
-    @media only screen and (max-width: 768px) {
-      width: 100%;
-      padding: 33.334% 0px;
-    }
   }
   #picSpan {
-    width: 660px;
+    width: 41%;
     height: 200px;
     padding-left: 50px;
     border-left: 2px solid $c1;
