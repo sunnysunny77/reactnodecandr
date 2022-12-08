@@ -4,7 +4,8 @@
   color: $c1;
   background-color: $c5;
   border: 2px solid $c2;
-  overflow: hidden;
+  position: relative;
+  z-index: 2;
 }
 .prop {
   font-family: $font3;
@@ -12,7 +13,8 @@
   padding-right: 5%;
   padding-bottom: 50px;
   font-weight: 500;
-  
+  position: relative;
+  z-index: 4;
 }
 
 .wave0 {
@@ -20,6 +22,9 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 300px;
+  position: sticky;
+  top: 60px;
+  z-index: 3;
 }
 
 .wave {
