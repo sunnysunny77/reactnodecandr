@@ -121,7 +121,7 @@ export default class About extends React.Component {
                   <h3>{ReactHtmlParser(this.state.res.h2)}</h3>
                   <br />
                   <span id="pic"></span>
-                  <span id="picSpan" className="center">
+                  <span id="picSpan">
                     {ReactHtmlParser(this.state.res.span3)}
                   </span>
                   <br />

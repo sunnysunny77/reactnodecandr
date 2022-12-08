@@ -71,10 +71,13 @@
   h3 {
     font-family: $font2;
     color: $c1;
-    margin: 30px;
     text-align: right;
     font-size: 90%;
     padding-right: 7.5%;
+  }
+  h3 + div {
+    width: 70%;
+    margin: auto;
   }
   span {
     display: inline-block;
@@ -92,7 +95,7 @@
     float: left;
     width: 570px;
     padding: 190px 0px;
-    margin-left: 130px;
+    margin-left: 90px;
     border-top-right-radius: 25%;
     border-bottom-right-radius: 25%;
     border-top-left-radius: 17%;
@@ -113,11 +116,12 @@
     }
   }
   #picSpan {
-    width: 453px;
+    width: 660px;
     height: 200px;
     padding-left: 50px;
     border-left: 2px solid $c1;
     margin-top: 90px;
+    text-align: right;
     @media only screen and (max-width: 1365px) {
       padding-left: 0;
       border-left: none;
