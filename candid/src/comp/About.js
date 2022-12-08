@@ -21,6 +21,7 @@ export default class About extends React.Component {
     if (this.state.load) {
       this.props.setLoad("none");
     }
+    window.addEventListener("scroll", this.handleScroll);
     axios
       .post(`/abou`)
       .then((res) => {
@@ -36,6 +37,18 @@ export default class About extends React.Component {
         alert(error);
       });
   }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }
+  handleScroll = () => {
+    if (window.innerWidth > 1200) {
+      
+      document.querySelector(".wave0").style.top = "60px"; 
+    } else if (window.innerWidth  <= 1200) {
+      document.querySelector(".wave0").style.top = "0px";
+     
+    }
+  };
   render() {
     return (
       <React.Fragment>
