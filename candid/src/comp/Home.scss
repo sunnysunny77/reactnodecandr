@@ -78,7 +78,6 @@
       color: $c3;
       margin: 0;
       font-size: 110%;
-      text-shadow: 0 0 2.5px rgba($c10, 0.9);
       &:hover {
         text-decoration: underline;
         animation: slide2;
@@ -208,7 +207,6 @@
 
 .info {
   height: 500px;
-  background-color: $c12;
   box-shadow: 0 0 7.5px $c2;
   @media only screen and (max-width: 992px) {
     display: flex;
@@ -263,7 +261,7 @@
     }
     p {
       color: $c1;
-      background-color: $c4;
+      background-color: $c2;
       border-radius: 100px;
       padding: 30px;
       text-align: center;
@@ -308,7 +306,6 @@
     border-radius: 2.5px;
     box-shadow: 0 0 5px $c3;
     height: 50%;
-    background-color: $c1;
     @media only screen and (max-width: 992px) {
       height: initial;
       padding: 35px;
