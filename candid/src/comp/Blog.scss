@@ -1,14 +1,14 @@
 @import "../Variables.scss";
 
 .blogCont {
-  width: 70%;
+  width: 100%;
   background-color: $c5;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  margin: 100px auto;
+  max-width: 1200px;
+  margin: 60px auto;
   @media only screen and (max-width: 1200px) {
     margin: 0 auto;
-    width: 100%;
   }
   .blogHeading {
     width: 100%;

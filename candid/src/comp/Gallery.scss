@@ -1,6 +1,19 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 @import "../Variables.scss";
 
+.galleryHeading {
+  width: 100%;
+  max-width: 1204px;
+  margin: 60px  auto auto auto;
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
+  @media only screen and (max-width: 1200px) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin: auto;
+  }
+}
+
 #galleryCont {
   background-color: $c5;
   border-left: 2px solid $c2;
@@ -12,7 +25,10 @@
   flex-direction: column;
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 60px auto;
+  @media only screen and (max-width: 1200px) {
+    margin: auto;
+  }
   @media only screen and (max-width: 640px) {
     justify-content: flex-start;
     padding-top: 60px;
