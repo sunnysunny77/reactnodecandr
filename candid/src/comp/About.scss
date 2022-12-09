@@ -82,12 +82,12 @@
 .aboutContTwo {
   margin: 20px auto auto auto;
   width: 100%;
+  max-width: 1200px;
   h2 {
     font-family: $font2;
     font-size: inherit;
     color: $c3;
     margin-left: 10px;
-    max-width: 1200px;
     margin: auto;
     width: calc(100% - 10px);
   }
