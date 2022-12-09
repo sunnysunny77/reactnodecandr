@@ -53,6 +53,7 @@ export default class Contactc extends Component {
                   {ReactHtmlParser(this.state.res.h)}{" "}
                   <ContactsIcon  />
                 </h2>
+                <hr/>
                 <p>
                   &nbsp;&#8226;&nbsp;{ReactHtmlParser(this.state.res.et)}
                   <br></br>
