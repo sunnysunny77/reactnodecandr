@@ -48,7 +48,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 60px;
+  margin: 60px 0;
   h2 {
     font-family: $font2;
     color: $c3;
@@ -75,13 +75,15 @@
 }
 
 .aboutContTwo {
+  margin: 20px auto auto auto;
   width: 100%;
-  margin-top: 20px;
   h2 {
     font-family: $font2;
     font-size: inherit;
     color: $c3;
     margin-left: 10px;
+    max-width: 1200px;
+    margin: auto;
     width: calc(100% - 10px);
   }
   h3 {
@@ -111,7 +113,6 @@
     float: left;
     width: 570px;
     height: 380px;
-    margin-left: 5%;
     border: 1px solid $c1;
     border-top-right-radius: 25%;
     border-bottom-right-radius: 25%;
