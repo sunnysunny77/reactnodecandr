@@ -53,6 +53,7 @@
     font-family: $font2;
     color: $c3;
     margin-left: 10px;
+    font-size: inherit;
   }
   p {
     color: $c1;
@@ -78,6 +79,7 @@
   margin-top: 20px;
   h2 {
     font-family: $font2;
+    font-size: inherit;
     color: $c3;
     margin-left: 10px;
     width: calc(100% - 10px);
@@ -109,7 +111,7 @@
     float: left;
     width: 570px;
     height: 380px;
-    margin-left: 90px;
+    margin-left: 5%;
     border-top-right-radius: 25%;
     border-bottom-right-radius: 25%;
     border-top-left-radius: 17%;
@@ -120,10 +122,9 @@
       display: block;
       margin: 20px auto 90px auto;
       border-radius: 0;
-      width: 66.632%;
+      width: 25%;
       height: unset;
-      padding: 22.212% 0px;
-      transform: scale(1.2);
+      padding: 25%;
     }
   }
   #picSpan {
