@@ -139,6 +139,7 @@ export default class About extends React.Component {
                   <span id="picSpan">
                     {ReactHtmlParser(this.state.res.span3)}
                   </span>
+                  <br />
                   <button
                    className="btn"
                     onClick={() => {
