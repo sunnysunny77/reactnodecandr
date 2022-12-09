@@ -67,14 +67,16 @@ export default class About extends React.Component {
               <h1>{ReactHtmlParser(this.state.res.buttons[0])}</h1>
             </div>
             <section className="aboutContOne">
+            <div className="grid">
               <h2>
                 {ReactHtmlParser(this.state.res.hmap)}{" "}
                 <ListAltIcon />{" "}
               </h2>
-              <p className="center">{ReactHtmlParser(this.state.cba)}</p>
-              <hr />
+              <p className="center">{ReactHtmlParser(this.state.cba)}</p> 
+              <hr/>
+              </div>   
+              <div className="grid"> {this.state.abc} </div>  
             </section>
-            <div>{this.state.abc}</div>
             <section className="aboutContTwo">
               <h2>
                 {ReactHtmlParser(this.state.res.hm)}{" "}

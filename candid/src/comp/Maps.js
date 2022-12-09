@@ -47,7 +47,7 @@ export default class Maps extends Component {
   render() {
     return (
       <MapGL
-        style={{ width: "100%", height: "300px", marginBottom: "50px" }}
+        style={{ width: "100%", height: "300px" }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
         accessToken={
           "pk.eyJ1Ijoic3N1bm55Nzc3IiwiYSI6ImNramU4cDlmYzAzbjEyc2xvYTR0ajhiMzcifQ.uHe7M4xAJcfbi5UfZdU6gQ"

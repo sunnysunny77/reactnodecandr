@@ -1,6 +1,7 @@
 @import "../Variables.scss";
 
-.contactContTwo svg, .contactTwo h2 svg {
+.contactContTwo svg,
+.contactTwo h2 svg {
   color: $c2;
   margin-right: 25px;
   float: right;
@@ -30,7 +31,7 @@
   padding: 10%;
   width: 1%;
   margin-left: 5%;
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 640px) {
     float: none;
     margin: auto;
     padding: 85px;
@@ -38,9 +39,9 @@
 }
 
 .contactTwo {
-  float: left;
-  margin-left: 20%;
-  @media only screen and (max-width: 1200px) {
+  float: right;
+  margin-right: 7%;
+  @media only screen and (max-width: 640px) {
     float: none;
     margin: auto;
     text-align: left;
@@ -51,16 +52,15 @@
     background-color: $c2;
     border: 2px solid $c2;
     border-radius: 2.5px;
-    padding: 25px;
+    font-size: medium;
+    padding: 10px;
     font-family: $font1;
-    min-width: 555px;
+    min-width: 355px;
     margin-top: 0.83em;
-    @media only screen and (max-width: 1200px) {
+    @media only screen and (max-width: 640px) {
       border-radius: 0;
       width: calc(99% - 24px);
-      padding: 10px;
       margin: 1em auto auto auto;
-      font-size: initial;
       min-width: initial;
       text-align: center;
     }
