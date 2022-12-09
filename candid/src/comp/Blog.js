@@ -307,7 +307,7 @@ export default class Blog extends React.Component {
                         InputProps={{
                           style: {
                             color: styles.bl,
-                            fontSize: "120%",
+                            fontSize: "inherit",
                             fontWeight: "500",
                             borderRadius: 0,
                             backgroundColor: styles.wi,
@@ -333,7 +333,7 @@ export default class Blog extends React.Component {
                         InputProps={{
                           style: {
                             color: styles.bl,
-                            fontSize: "120%",
+                            fontSize: "inherit",
                             fontWeight: "500",
                             borderRadius: 0,
                             backgroundColor: styles.wi,
@@ -359,7 +359,7 @@ export default class Blog extends React.Component {
                         InputProps={{
                           style: {
                             color: styles.bl,
-                            fontSize: "120%",
+                            fontSize: "inherit",
                             fontWeight: "500",
                             borderRadius: 0,
                             backgroundColor: styles.wi,
@@ -388,7 +388,7 @@ export default class Blog extends React.Component {
                           disableUnderline: true,
                           style: {
                             color: styles.bl,
-                            fontSize: "120%",
+                            fontSize: "inherit",
                             fontWeight: "500",
                             display: "block",
                             width: "100%",
@@ -424,7 +424,7 @@ export default class Blog extends React.Component {
                           backgroundColor: styles.bl,
                           width: "100%",
                           height: "60px",
-                          fontSize: "120%",
+                          fontSize: "inherit",
                           fontWeight: "400",
                           paddingTop: "10px",
                           marginTop: "10px",
@@ -476,7 +476,7 @@ export default class Blog extends React.Component {
                         InputProps={{
                           style: {
                             color: styles.bl,
-                            fontSize: "120%",
+                            fontSize: "inherit",
                             fontWeight: "500",
                             borderRadius: 0,
                             backgroundColor: styles.wi,
@@ -502,7 +502,7 @@ export default class Blog extends React.Component {
                         InputProps={{
                           style: {
                             color: styles.bl,
-                            fontSize: "120%",
+                            fontSize: "inherit",
                             fontWeight: "500",
                             borderRadius: 0,
                             backgroundColor: styles.wi,
@@ -525,7 +525,7 @@ export default class Blog extends React.Component {
                           backgroundColor: styles.bl,
                           width: "100%",
                           height: "60px",
-                          fontSize: "120%",
+                          fontSize: "inherit",
                           fontWeight: "400",
                           paddingTop: "10px",
                           marginTop: "10px",

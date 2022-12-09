@@ -62,11 +62,11 @@ class Nav extends Component {
     if (window.scrollY >= 90) {
       document.querySelector(".mainNav").style.position = "fixed";
       document.querySelector(".mainNav").style.top = "0";
-      document.querySelector("#di").style.position = "relative";
+      document.querySelector("main").style.position = "relative";
       document.querySelector("#di").style.paddingTop = "60px"; 
     } else {
       document.querySelector(".mainNav").style.position = "relative";
-      document.querySelector("#di").style.paddingTop = "0";
+      document.querySelector("main").style.paddingTop = "0";
     }
   };
   out = () => {

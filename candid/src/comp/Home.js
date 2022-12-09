@@ -330,20 +330,19 @@ class Home extends Component {
         ) : (
           <React.Fragment>
             {this.state.w}
-            <section className="welcome">
-              <div id="welcomeOne">
+            <section className="welcome">    
+              <h1 id="welcomeOne"> 
                 <svg
                   id="my-svg"
-                  height="50px"
-                  width="50px"
                   viewBox="0 0 500 500"
+                  width="35px"
+                  height="35px"
                   xmlns="http://www.w3.org/2000/svg"
                 />
-                <h1>{ReactHtmlParser(this.state.res.m1)}</h1>
-              </div>
-              <div id="welcomeTwo">
-                <h2 onClick={this.scr}>{ReactHtmlParser(this.state.res.m2)}</h2>
-              </div>
+                &nbsp;
+                {ReactHtmlParser(this.state.res.m1)}
+              </h1>          
+              <h2 id="welcomeTwo" onClick={this.scr}>{ReactHtmlParser(this.state.res.m2)}</h2>
             </section>
             <Slider id="slide" {...this.state.settings}>
               <div>
