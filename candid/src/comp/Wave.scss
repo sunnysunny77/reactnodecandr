@@ -34,12 +34,23 @@
 }
 
 .wave {
-  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg.svg");
-  background-repeat: repeat;
-  height: 130px;
- 
-}
+  
 
+  height: 130px;
+position: relative;
+ overflow: hidden;
+  &::before {
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    height: 130px;
+    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg.svg");
+    animation: wave 15s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  }
+}
 @keyframes wave {
   0% {
     margin-left: 0;

@@ -2,17 +2,26 @@
 @import "../Variables.scss";
 
 #galleryCont {
-  padding: 100px 0;
   background-color: $c5;
-  min-height: 77.5vh;
-}
-
-.image-gallery {
-  margin: auto;
+  border-left: 2px solid $c2;
+  border-right: 2px solid $c2;
+  border-bottom: 2px solid $c2;
+  min-height: 84vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  @media only screen and (max-width: 640px) {
+    justify-content: flex-start;
+    padding-top: 60px;
+    min-height: 77vh;
+  }
 }
 
 #di .image-gallery-image {
-  width: 50%;
+  width: 40%;
   border: 2px solid $c2;
   max-height: initial;
 }
