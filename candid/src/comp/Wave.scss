@@ -7,10 +7,11 @@
   position: relative;
   z-index: 2;
   max-width: 1200px;
+  margin: auto auto 0.25% auto;
   @media only screen and (max-width: 1365px) {
-    width: 98%;
+    width: 92%;
+     margin: 4% auto 4% auto;
   }
-  margin: auto;
 }
 .prop {
   font-family: $font3;
