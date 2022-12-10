@@ -141,12 +141,14 @@
   #picSpan {
     width: 53%;
     padding-left: 50px;
-    margin-top: 125px;
+    margin-top: 100px;
     text-align: right;
+    height: 120px;
     @media only screen and (max-width: 1365px) {
       padding-left: 0;
       width: 100%;
       margin: auto;
+      height: unset;
     }
   }
   button {
