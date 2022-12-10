@@ -25,11 +25,10 @@
     @media only screen and (max-width: 640px) {
       width: 100%;
       padding: 0;
-      p{
+      p {
         width: calc(92% - 24px);
         margin: auto;
       }
-   
     }
   }
   &:nth-child(2) {
@@ -160,15 +159,11 @@
     border-radius: 100px;
     display: block;
     margin: 2% auto;
-
     cursor: pointer;
     &.btn {
- 
-     margin-right: 4%;
+      margin-right: 4%;
       @media only screen and (max-width: 1365px) {
-       
-     margin-right: auto;
-     
+        margin-right: auto;
       }
     }
   }
