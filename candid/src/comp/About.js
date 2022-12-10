@@ -42,11 +42,11 @@ export default class About extends React.Component {
   }
   handleScroll = () => {
     if (window.innerWidth > 1200) {
-      
-      document.querySelector(".wave0").style.top = "60px"; 
-    } else if (window.innerWidth  <= 1200) {
+
+      document.querySelector(".wave0").style.top = "60px";
+    } else if (window.innerWidth <= 1200) {
       document.querySelector(".wave0").style.top = "0px";
-     
+
     }
   };
   render() {
@@ -67,15 +67,15 @@ export default class About extends React.Component {
               <h1>{ReactHtmlParser(this.state.res.buttons[0])}</h1>
             </div>
             <section className="aboutContOne">
-            <div className="grid">
-              <h2>
-                {ReactHtmlParser(this.state.res.hmap)}{" "}
-                <ListAltIcon />{" "}
-              </h2>
-              <p className="center">{ReactHtmlParser(this.state.cba)}</p> 
-              <hr/>
-              </div>   
-              <div className="grid"> {this.state.abc} </div>  
+              <div className="grid">
+                <h2>
+                  {ReactHtmlParser(this.state.res.hmap)}{" "}
+                  <ListAltIcon />{" "}
+                </h2>
+                <p className="center">{ReactHtmlParser(this.state.cba)}</p>
+                <hr />
+              </div>
+              <div className="grid"> {this.state.abc} </div>
             </section>
             <section className="aboutContTwo">
               <h2>
@@ -86,31 +86,18 @@ export default class About extends React.Component {
               <Wave>
                 <div className="prop">
                   <h3>{ReactHtmlParser(this.state.res.h1)}</h3>
-                  <div className="center">
-                    <span>{ReactHtmlParser(this.state.res.span1)}</span>
-                  </div>
-                  <div className="center">
-                    <br />
-                    <br />
-                    <button
-                      className="btn"
-                      onClick={() => {
-                        document.getElementById("readMoreZero").style.display = "block";
-                      }}
-                    >
-                      {ReactHtmlParser(this.state.res.buttons[1])}
-                    </button>
-                    <br />
-                    <br />
-                    <br />
-                  </div>
+                  <span className="center">{ReactHtmlParser(this.state.res.span1)}</span>
+                  <button
+                    className="btn center"
+                    onClick={() => {
+                      document.getElementById("readMoreZero").style.display = "block";
+                    }}
+                  >
+                    {ReactHtmlParser(this.state.res.buttons[1])}
+                  </button>
                   <div id="readMoreZero" className="justify">
                     <hr />
-                    <br />
-                    <br />
                     <span>{ReactHtmlParser(this.state.res.span2)}</span>
-                    <br />
-                    <br />
                     <button
                       className="centerBlock"
                       onClick={() => {
@@ -119,45 +106,27 @@ export default class About extends React.Component {
                     >
                       {ReactHtmlParser(this.state.res.buttons[2])}
                     </button>
-                    <br />
                   </div>
-                  <div className="center">
-                    <br />
-                    <br />
-                    <img
-                      src="https://candid.s3-ap-southeast-2.amazonaws.com/breakp.png"
-                      alt="Swirly text divider"
-                    ></img>
-                    <br />
-                    <br />
-                  </div>
-                  <br />
-                  <br />
+                  <img
+                    src="https://candid.s3-ap-southeast-2.amazonaws.com/breakp.png"
+                    alt="Swirly text divider"
+                  />
                   <h3>{ReactHtmlParser(this.state.res.h2)}</h3>
-                  <br />
                   <span id="pic"></span>
                   <span id="picSpan">
                     {ReactHtmlParser(this.state.res.span3)}
                   </span>
-                  <br />
                   <button
-                   className="btn"
+                    className="btn"
                     onClick={() => {
                       document.getElementById("readMoreOne").style.display = "block";
                     }}
                   >
                     {ReactHtmlParser(this.state.res.buttons[1])}
                   </button>
-                  <br />
-                  <br />
-                  <br />
                   <div id="readMoreOne" className="justify">
                     <hr />
-                    <br />
-                    <br />
                     <span>{ReactHtmlParser(this.state.res.span4)}</span>
-                    <br />
-                    <br />
                     <button
                       className="centerBlock"
                       onClick={() => {
@@ -166,7 +135,6 @@ export default class About extends React.Component {
                     >
                       {ReactHtmlParser(this.state.res.buttons[2])}
                     </button>
-                    <br />
                   </div>
                 </div>
               </Wave>

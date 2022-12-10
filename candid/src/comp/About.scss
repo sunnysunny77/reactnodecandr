@@ -98,15 +98,18 @@
     font-size: 90%;
     padding-right: 7.5%;
   }
-  h3 + div {
+  h3 + span {
     width: 71%;
     margin: auto;
+    display: block;
   }
   span {
     display: inline-block;
   }
   img {
     width: 30%;
+    display: block;
+    margin: 8% auto;
     @media only screen and (max-width: 1200px) {
       width: 60%;
     }
@@ -138,15 +141,13 @@
   }
   #picSpan {
     width: 53%;
-    height: 160px;
     padding-left: 50px;
-    margin-top: 90px;
+    margin-top: 125px;
     text-align: right;
     @media only screen and (max-width: 1365px) {
       padding-left: 0;
       width: 100%;
-      height: unset;
-      margin: auto auto 12% auto;
+      margin: auto;
     }
   }
   button {
@@ -157,14 +158,17 @@
     color: $c1;
     border: 1px solid $c1;
     border-radius: 100px;
+    display: block;
+    margin: 2% auto;
+
     cursor: pointer;
     &.btn {
-      float: right;
-      margin-right: 8%;
+ 
+     margin-right: 4%;
       @media only screen and (max-width: 1365px) {
-        float: none;
-        display: block;
-        margin: auto;
+       
+     margin-right: auto;
+     
       }
     }
   }
