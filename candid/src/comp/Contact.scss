@@ -33,11 +33,11 @@
   float: left;
   background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/cont.jpg");
   background-position: center;
-  background-size: 100% 100%;
+  background-size: contain;
   background-repeat: no-repeat;
   padding: 8%;
-  width: 3%;
-  margin-left: 6%;
+  width: 8%;
+  margin-left: 4%;
   @media only screen and (max-width: 640px) {
     float: none;
     margin: auto;
