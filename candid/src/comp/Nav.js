@@ -63,7 +63,7 @@ class Nav extends Component {
       document.querySelector(".mainNav").style.position = "fixed";
       document.querySelector(".mainNav").style.top = "0";
       document.querySelector("main").style.position = "relative";
-      document.querySelector("#di").style.paddingTop = "60px"; 
+      document.querySelector("#di").style.paddingTop = "60px";
     } else {
       document.querySelector(".mainNav").style.position = "relative";
       document.querySelector("main").style.paddingTop = "0";
@@ -166,75 +166,106 @@ class Nav extends Component {
           <div style={this.state.bar3}></div>
         </div>
         <nav className="mobileNav" style={this.state.dis}>
-          <div>
+          <ul>
             <hr></hr>
-            <Link to="/">
-              <HomeIcon aria-labelledby="hl1" role="link" >Home</HomeIcon>
-              <span id="hl1" className="hiddentext">Homepage Link</span>
-            </Link>
-            <Link to="/blog">
-              {ReactHtmlParser(buttons[0])}
-            </Link>
-            <Link to="/gallery">
-              {ReactHtmlParser(buttons[1])}
-            </Link>
-            <Link to="/contact">
-              {ReactHtmlParser(buttons[2])}
-            </Link>
-            <Link to="/about">
-              {ReactHtmlParser(buttons[3])}
-            </Link>
+            <li>
+              <Link to="/">
+                <HomeIcon aria-labelledby="hl1" role="link" >Home</HomeIcon>
+                <span id="hl1" className="hiddentext">Homepage Link</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/blog">
+                {ReactHtmlParser(buttons[0])}
+              </Link>
+            </li>
+            <li>
+              <Link to="/gallery">
+                {ReactHtmlParser(buttons[1])}
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact">
+                {ReactHtmlParser(buttons[2])}
+              </Link>
+            </li>
+            <li>
+              <Link to="/about">
+                {ReactHtmlParser(buttons[3])}
+              </Link>
+            </li>
             <hr></hr>
-          </div>
-          <div>
-            <AccessTimeIcon />
-            <br></br>
-            <span>
-              {ReactHtmlParser(time)}
-              <br></br>
-              {ReactHtmlParser(day)}
-            </span>
-            <br></br>
-            <PhoneIcon />
-            <br></br>
-            <a href={"tel:" + ph}>
-              {ph}
-            </a>
-          </div>
-          <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logos.png" alt="Candid Icon" width="60" height="60"></img>
+          </ul>
+          <ul>
+            <li>
+              <AccessTimeIcon />
+            </li>
+            <li>
+              <span>
+                {ReactHtmlParser(time)}
+                <br></br>
+                {ReactHtmlParser(day)}
+              </span>
+            </li>
+            <li>
+              <PhoneIcon />
+            </li>
+            <li>
+              <a href={"tel:" + ph}>
+                {ph}
+              </a>
+            </li>
+            <li>
+              <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logos.png" alt="Candid Icon" width="60" height="60"></img>
+            </li>
+          </ul>
         </nav>
         <header>
           <img src="https://candid.s3.ap-southeast-2.amazonaws.com/logolarge.png" alt="Candid Logo" width={this.state.wi} height={this.state.hi}></img>
         </header>
         <nav className="mainNav">
-          <div>
-            <Link to="/blog">
-              {ReactHtmlParser(buttons[0])}
-            </Link>
-            <Link to="/gallery">
-              {ReactHtmlParser(buttons[1])}
-            </Link>
-            <Link to="/contact">
-              {ReactHtmlParser(buttons[2])}
-            </Link>
-            <Link to="/about">
-              {ReactHtmlParser(buttons[3])}
-            </Link>
-          </div>
-          <div>
-            <PhoneIcon />
-            <a href={"tel:" + ph}>
-              {ph}
-            </a>
-            <AccessTimeIcon />
-            <span>
-              {ReactHtmlParser(time)} / {ReactHtmlParser(day)}
-            </span>
-            <Link to="/">
-              <HomeIcon aria-labelledby="hl2" role="link" >Home</HomeIcon>
-              <span id="hl2" className="hiddentext">Homepage Link</span>
-            </Link>
-          </div>
+          <ul>
+            <li>
+              <Link to="/blog">
+                {ReactHtmlParser(buttons[0])}
+              </Link>
+            </li>
+            <li>
+              <Link to="/gallery">
+                {ReactHtmlParser(buttons[1])}
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact">
+                {ReactHtmlParser(buttons[2])}
+              </Link>
+            </li>
+            <li>
+              <Link to="/about">
+                {ReactHtmlParser(buttons[3])}
+              </Link>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <PhoneIcon />
+              <a href={"tel:" + ph}>
+                {ph}
+              </a>
+            </li>
+            <li>
+              <AccessTimeIcon />
+              <span>
+                {ReactHtmlParser(time)} / {ReactHtmlParser(day)}
+              </span>
+            </li>
+            <li>
+              <Link to="/">
+                <HomeIcon aria-labelledby="hl2" role="link" >Home</HomeIcon>
+                <span id="hl2" className="hiddentext">Homepage Link</span>
+              </Link>
+            </li>
+          </ul>
         </nav>
       </React.Fragment>
     );

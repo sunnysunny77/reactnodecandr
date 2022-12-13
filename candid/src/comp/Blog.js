@@ -214,7 +214,7 @@ export default class Blog extends React.Component {
                 <th style={{ color: "rgba(147,112,219, 0.9)" }}>
                   <img
                     src="https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg"
-                    alt="Smiley face"
+                    alt="icon"
                     width="10"
                     height="10"
                   ></img>{" "}
@@ -224,7 +224,7 @@ export default class Blog extends React.Component {
               <tr key={_id + "img"}>
                 <td>
                   <img
-                    alt="Smiley face"
+                    alt={title}
                     src={"https://" + window.location.hostname + loc}
                   />
                 </td>
