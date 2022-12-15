@@ -185,25 +185,29 @@
 /* info */
 
 .info {
-  height: 500px;
   box-shadow: 0 0 7.5px $c2;
   @media only screen and (max-width: 992px) {
     display: flex;
     flex-direction: column-reverse;
-    height: unset;
   }
   .infoOne {
-    height: 100%;
-    width: 400px;
+    width: 21%;
+    padding: 13% 0;
+    min-height: 362px;
+    min-width: 285px;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
     float: left;
     background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info1.png");
     background-position: center;
-    background-size: 100% 100%;
+    background-size: cover;
     @media only screen and (max-width: 992px) {
       float: none;
       margin: 0;
       height: 200px;
       width: 100%;
+      min-height: unset;
+      min-width: unset;
       background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info.png");
       background-position: center top;
       background-size: 150px 150px;
@@ -211,14 +215,12 @@
     }
   }
   .infoTwo {
-    width: 55%;
+    width: 62.5%;
     color: $c3;
-    float: left;
-    margin-top: 4%;
-    margin-left: 7.5%;
+    float: right;
+    margin: 3% 8% auto auto;
     @media only screen and (max-width: 1200px) {
-      width: 46%;
-      margin-left: 9%;
+      margin: 3% 5% auto auto;
     }
     @media only screen and (max-width: 992px) {
       float: none;
@@ -236,20 +238,19 @@
       font-family: $font2;
       color: $c3;
       font-weight: bold;
-      margin: 0 0 5% 0;
+      margin: 0 0 3% 0;
       padding: 0;
     }
     p {
       color: $c1;
       background-color: $c2;
       border-radius: 100px;
-      padding: 30px;
+      padding: 3%;
       text-align: center;
       font-style: oblique;
       font-family: $font4;
       @media only screen and (max-width: 992px) {
         border-radius: 2.5px;
-        padding: 20px;
       }
     }
   }
