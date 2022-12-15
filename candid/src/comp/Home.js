@@ -121,7 +121,7 @@ class Home extends Component {
                   onClick={() => this.vid(res.data.vid[index][1])}
                 >
                   {ReactHtmlParser(res.data.vid[index][2])}{" "}
-                  <PlayCircleOutlineIcon  />
+                  <PlayCircleOutlineIcon />
                 </span>
                 <img
                   className={ReactHtmlParser("videoImg  d" + [index + 1])}
@@ -140,7 +140,7 @@ class Home extends Component {
                   onClick={() => this.vid(res.data.vid[index][4])}
                 >
                   {ReactHtmlParser(res.data.vid[index][5])}{" "}
-                  <PlayCircleOutlineIcon  />
+                  <PlayCircleOutlineIcon />
                 </span>
                 <img
                   className={ReactHtmlParser("videoImg  d" + [index + 1])}
@@ -330,8 +330,8 @@ class Home extends Component {
         ) : (
           <React.Fragment>
             {this.state.w}
-            <section className="welcome">    
-              <h1 id="welcomeOne"> 
+            <section className="welcome">
+              <h1 id="welcomeOne">
                 <svg
                   id="my-svg"
                   viewBox="0 0 500 500"
@@ -341,7 +341,7 @@ class Home extends Component {
                 />
                 &nbsp;
                 {ReactHtmlParser(this.state.res.m1)}
-              </h1>          
+              </h1>
               <h2 id="welcomeTwo" onClick={this.scr}>{ReactHtmlParser(this.state.res.m2)}</h2>
             </section>
             <Slider id="slide" {...this.state.settings}>
@@ -426,9 +426,9 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <p>{ReactHtmlParser(this.state.res.c1)}</p>
-                <StarBorderIcon  />
-                <FilterListIcon  />
+                <p><hr />{ReactHtmlParser(this.state.res.c1)}</p>
+                <StarBorderIcon />
+                <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
@@ -442,9 +442,9 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <p>{ReactHtmlParser(this.state.res.c2)}</p>
-                <WhatshotIcon  />
-                <FilterListIcon  />
+                <p><hr />{ReactHtmlParser(this.state.res.c2)}</p>
+                <WhatshotIcon />
+                <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
@@ -458,9 +458,9 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <p>{ReactHtmlParser(this.state.res.c3)}</p>
-                <BuildIcon  />
-                <FilterListIcon  />
+                <p><hr />{ReactHtmlParser(this.state.res.c3)}</p>
+                <BuildIcon />
+                <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
@@ -474,11 +474,11 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <p>{ReactHtmlParser(this.state.res.c4)}</p>
+                <p><hr />{ReactHtmlParser(this.state.res.c4)}</p>
                 <a target="4" href={this.state.res.u4}>
                   {ReactHtmlParser(this.state.res.buttons[0])}
                 </a>
-                <FilterListIcon  />
+                <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
@@ -492,11 +492,11 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <p>{ReactHtmlParser(this.state.res.c5)}</p>
+                <p><hr />{ReactHtmlParser(this.state.res.c5)}</p>
                 <a target="5" href={this.state.res.u5}>
                   {ReactHtmlParser(this.state.res.buttons[0])}
                 </a>
-                <FilterListIcon  />
+                <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
@@ -510,11 +510,11 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <p>{ReactHtmlParser(this.state.res.c6)}</p>
+                <p><hr />{ReactHtmlParser(this.state.res.c6)}</p>
                 <a target="6" href={this.state.res.u6}>
                   {ReactHtmlParser(this.state.res.buttons[0])}
                 </a>
-                <FilterListIcon  />
+                <FilterListIcon />
               </div>
             </section>
             <section id="enquiry" className="enquiry">
