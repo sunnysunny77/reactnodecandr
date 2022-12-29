@@ -101,6 +101,9 @@
     width: 71%;
     margin: auto;
     display: block;
+    @media only screen and (max-width: 640px) {
+      width: 100%;
+    }
   }
   span {
     display: inline-block;
