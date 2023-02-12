@@ -420,11 +420,11 @@ app.get("/ong", function (req, res) {
       if (buttons !== undefined && doc.length) {
         return res.json({ doc: doc, buttons: [buttons[0], buttons[6], buttons[7], buttons[8]] });
       } else if (buttons !== undefined && !doc.length) {
-        res
+        return res
           .status(404)
           .send({ doc: "No posts yet", buttons: [buttons[0], buttons[6], buttons[7], buttons[8]] });
       } else if (buttons === undefined) {
-        res.status(500);
+        return res.sendStatus(500);
       }
     });
 });
