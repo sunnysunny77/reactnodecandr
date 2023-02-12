@@ -46,6 +46,7 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Credentials", true);
   return next();
 });
+
 let sch = mongoose.Schema({
   date: String,
   blogers: String,
@@ -58,176 +59,185 @@ let mod = mongoose.model("blogs", sch);
 
 app.use(express.static("public"));
 
-let parsedData;
-let parsedData0;
-let parsedData1;
-let parsedData2;
-var parsedData3;
-let b;
+let parsedDataContent;
+let parsedDataMaps;
+let parsedDataForm;
+let parsedDataGallery;
+let parsedDataVideo;
+let buttons;
 
-//vid
-axios
-  .get(
-    `https://docs.google.com/spreadsheets/d/1tkby9LJ9HDOhvABilAriVZ5ILW42BFX2-9D2QxajWRk/gviz/tq?tqx=out:csv&sheet=data`
-  )
-  .then((res) => {
-    let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
-    if (parsedDataI.data.length > 1) {
-      let l = parsedDataI.data.length - 1;
-      let l0 = l % 2;
-      let parsedDataA = [];
-      if (l0 === 0) {
-        for (let i = 1; i <= l / 2; i++) {
-          if (
-            parsedDataI.data[i * 2 - 1][0] &&
-            parsedDataI.data[i * 2 - 1][1] &&
-            parsedDataI.data[i * 2 - 1][2] &&
-            parsedDataI.data[i * 2][0] &&
-            parsedDataI.data[i * 2][1] &&
-            parsedDataI.data[i * 2][2]
-          ) {
-            parsedDataA.push([
-              parsedDataI.data[i * 2 - 1][0],
-              parsedDataI.data[i * 2 - 1][1],
-              parsedDataI.data[i * 2 - 1][2],
-              parsedDataI.data[i * 2][0],
-              parsedDataI.data[i * 2][1],
-              parsedDataI.data[i * 2][2],
-            ]);
-          } else {
-            return (parsedData3 = undefined);
+function video() {
+  axios
+    .get(
+      `https://docs.google.com/spreadsheets/d/1tkby9LJ9HDOhvABilAriVZ5ILW42BFX2-9D2QxajWRk/gviz/tq?tqx=out:csv&sheet=data`
+    )
+    .then((res) => {
+      let parsedDataInital = Papa.parse(res.data, { skipEmptyLines: true });
+      if (parsedDataInital.data.length > 1) {
+        let l = parsedDataInital.data.length - 1;
+        let l0 = l % 2;
+        let parsedDataArray = [];
+        if (l0 === 0) {
+          for (let i = 1; i <= l / 2; i++) {
+            if (
+              parsedDataInital.data[i * 2 - 1][0] &&
+              parsedDataInital.data[i * 2 - 1][1] &&
+              parsedDataInital.data[i * 2 - 1][2] &&
+              parsedDataInital.data[i * 2][0] &&
+              parsedDataInital.data[i * 2][1] &&
+              parsedDataInital.data[i * 2][2]
+            ) {
+              parsedDataArray.push([
+                parsedDataInital.data[i * 2 - 1][0],
+                parsedDataInital.data[i * 2 - 1][1],
+                parsedDataInital.data[i * 2 - 1][2],
+                parsedDataInital.data[i * 2][0],
+                parsedDataInital.data[i * 2][1],
+                parsedDataInital.data[i * 2][2],
+              ]);
+            } else {
+              return (parsedDataVideo = undefined);
+            }
           }
+          return parsedDataVideo = parsedDataArray;
+        } else {
+          return (parsedDataVideo = undefined);
         }
-        return parsedData3 = parsedDataA;
       } else {
-        return (parsedData3 = undefined);
+        return (parsedDataVideo = undefined);
       }
-    } else {
-      return (parsedData3 = undefined);
-    }
-  })
-  .catch(() => {
-    return sendStatus(500);
-  });
+    })
+    .catch(() => {
+      return sendStatus(500);
+    });
+}
 
-//gal
-axios
-  .get(
-    `https://docs.google.com/spreadsheets/d/1LjDGLbRSaQ4Y7ilLy0LMPpgUZN6ynI8QRg--a2ltLt4/gviz/tq?tqx=out:csv&sheet=data`
-  )
-  .then((res) => {
-    let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
-    if (parsedDataI.data.length > 1) {
-      let l = parsedDataI.data.length - 1;
-      let parsedDataA = [];
-      for (let i = 1; i <= l; i++) {
-        parsedDataA.push({
-          original: parsedDataI.data[i][0],
-          thumbnail: parsedDataI.data[i][0],
-          originalAlt: parsedDataI.data[i][0]
-            .split("/")
-            .pop()
-            .split(".")
-            .slice(0, -1)
-            .join("."),
-          thumbnailAlt:
-            parsedDataI.data[i][0]
+function gallery() {
+  axios
+    .get(
+      `https://docs.google.com/spreadsheets/d/1LjDGLbRSaQ4Y7ilLy0LMPpgUZN6ynI8QRg--a2ltLt4/gviz/tq?tqx=out:csv&sheet=data`
+    )
+    .then((res) => {
+      let parsedDataInital = Papa.parse(res.data, { skipEmptyLines: true });
+      if (parsedDataInital.data.length > 1) {
+        let l = parsedDataInital.data.length - 1;
+        let parsedDataArray = [];
+        for (let i = 1; i <= l; i++) {
+          parsedDataArray.push({
+            original: parsedDataInital.data[i][0],
+            thumbnail: parsedDataInital.data[i][0],
+            originalAlt: parsedDataInital.data[i][0]
               .split("/")
               .pop()
               .split(".")
               .slice(0, -1)
-              .join(".") + ":Thumbnail",
-        });
-      }
-      return (parsedData2 = parsedDataA);
-    } else {
-      return (parsedData2 = undefined);
-    }
-  })
-  .catch(() => {
-    return sendStatus(500);
-  });
-
-//content
-axios
-  .get(
-    `https://docs.google.com/spreadsheets/d/1gLb1KAZd-dY1Jlw1z-JPVev1WkeOL_tIitvzkrW97dQ/gviz/tq?tqx=out:csv&sheet=data`
-  )
-  .then((res) => {
-    let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
-    if (parsedDataI.data.length > 40) {
-      let l = parsedDataI.data.length - 40;
-      let parsedDataA = [];
-      for (let i = 1; i <= l; i++) {
-        parsedDataA.push({
-          value: parsedDataI.data[39 + i][1],
-          label: parsedDataI.data[39 + i][1],
-        });
-      }
-      return (
-        (parsedData = parsedDataI),
-        (parsedData1 = parsedDataA),
-        (b = [
-          parsedDataI.data[1][4],
-          parsedDataI.data[2][4],
-          parsedDataI.data[3][4],
-          parsedDataI.data[4][4],
-          parsedDataI.data[5][4],
-          parsedDataI.data[6][4],
-          parsedDataI.data[7][4],
-          parsedDataI.data[8][4],
-          parsedDataI.data[9][4],
-          parsedDataI.data[10][4],
-          parsedDataI.data[11][4],
-          parsedDataI.data[12][4],
-        ])
-      );
-    } else {
-      return (
-        (parsedData = undefined), (parsedData1 = undefined), (b = undefined)
-      );
-    }
-  })
-  .catch(() => {
-    return sendStatus(500);
-  });
-
-//maps
-axios
-  .get(
-    `https://docs.google.com/spreadsheets/d/1BxHA12ZHfra6gva_mm7o3nlQREf45DsjeMYQ1Mpg5y8/gviz/tq?tqx=out:csv&sheet=data`
-  )
-  .then((res) => {
-    let parsedDataI = Papa.parse(res.data, { skipEmptyLines: true });
-    if (parsedDataI.data.length > 4) {
-      let parsedDataA = [];
-      let l = parsedDataI.data.length - 1;
-      for (let i = 0; i <= l; i++) {
-        if (i >= 3) {
-          parsedDataA.push({
-            [i - 2]: {
-              type: "Feature",
-              geometry: {
-                type: "Polygon",
-                coordinates: [JSON.parse("[" + parsedDataI.data[i][0] + "]")],
-              },
-            },
+              .join("."),
+            thumbnailAlt:
+              parsedDataInital.data[i][0]
+                .split("/")
+                .pop()
+                .split(".")
+                .slice(0, -1)
+                .join(".") + ":Thumbnail",
           });
         }
-      };
-      return (parsedData0 = [
-        parsedDataI.data[1][0],
-        parsedDataA,
-        parsedDataI.data[1][1],
-      ]);
-    } else {
-      parsedData0 = undefined;
-      return;
-    }
-  })
-  .catch(() => {
-    return sendStatus(500);
-  });
+        return (parsedDataGallery = parsedDataArray);
+      } else {
+        return (parsedDataGallery = undefined);
+      }
+    })
+    .catch(() => {
+      return sendStatus(500);
+    });
+}
+
+function content() {
+  axios
+    .get(
+      `https://docs.google.com/spreadsheets/d/1gLb1KAZd-dY1Jlw1z-JPVev1WkeOL_tIitvzkrW97dQ/gviz/tq?tqx=out:csv&sheet=data`
+    )
+    .then((res) => {
+      let parsedDataInital = Papa.parse(res.data, { skipEmptyLines: true });
+      if (parsedDataInital.data.length > 40) {
+        let l = parsedDataInital.data.length - 40;
+        let parsedDataArray = [];
+        for (let i = 1; i <= l; i++) {
+          parsedDataArray.push({
+            value: parsedDataInital.data[39 + i][1],
+            label: parsedDataInital.data[39 + i][1],
+          });
+        }
+        return (
+          (parsedDataContent = parsedDataInital),
+          (parsedDataForm = parsedDataArray),
+          (buttons = [
+            parsedDataInital.data[1][4],
+            parsedDataInital.data[2][4],
+            parsedDataInital.data[3][4],
+            parsedDataInital.data[4][4],
+            parsedDataInital.data[5][4],
+            parsedDataInital.data[6][4],
+            parsedDataInital.data[7][4],
+            parsedDataInital.data[8][4],
+            parsedDataInital.data[9][4],
+            parsedDataInital.data[10][4],
+            parsedDataInital.data[11][4],
+            parsedDataInital.data[12][4],
+          ])
+        );
+      } else {
+        return (
+          (parsedDataContent = undefined), (parsedDataForm = undefined), (buttons = undefined)
+        );
+      }
+    })
+    .catch(() => {
+      return sendStatus(500);
+    });
+}
+
+function maps() {
+  axios
+    .get(
+      `https://docs.google.com/spreadsheets/d/1BxHA12ZHfra6gva_mm7o3nlQREf45DsjeMYQ1Mpg5y8/gviz/tq?tqx=out:csv&sheet=data`
+    )
+    .then((res) => {
+      let parsedDataInital = Papa.parse(res.data, { skipEmptyLines: true });
+      if (parsedDataInital.data.length > 4) {
+        let parsedDataArray = [];
+        let l = parsedDataInital.data.length - 1;
+        for (let i = 0; i <= l; i++) {
+          if (i >= 3) {
+            parsedDataArray.push({
+              [i - 2]: {
+                type: "Feature",
+                geometry: {
+                  type: "Polygon",
+                  coordinates: [JSON.parse("[" + parsedDataInital.data[i][0] + "]")],
+                },
+              },
+            });
+          }
+        };
+        return (parsedDataMaps = [
+          parsedDataInital.data[1][0],
+          parsedDataArray,
+          parsedDataInital.data[1][1],
+        ]);
+      } else {
+        parsedDataMaps = undefined;
+        return;
+      }
+    })
+    .catch(() => {
+      return sendStatus(500);
+    });
+}
+
+video();
+gallery();
+content();
+maps();
 
 app.post("/one", function (req, res) {
   if (req.body.passw === "") {
@@ -245,7 +255,7 @@ app.post("/one", function (req, res) {
     let d = new Date();
     let date = moment(d).format("MMM Do YY' HH:mm:ss");
     var id = mongoose.Types.ObjectId();
-    let b = new mod({
+    let buttons = new mod({
       _id: id,
       date: date,
       blogers: req.body.blogers,
@@ -370,7 +380,7 @@ app.post("/three", function (req, res) {
       "MIME-Version: 1.0\n",
       "Content-Transfer-Encoding: 7bit\n",
       "to: ",
-      parsedData.data[5][1],
+      parsedDataContent.data[5][1],
       "\n",
       "from: ",
       "",
@@ -407,25 +417,25 @@ app.get("/ong", function (req, res) {
     .find({})
     .sort({ date: -1 })
     .exec(function (err, doc) {
-      if (b !== undefined && doc.length) {
-        return res.json({ doc: doc, buttons: [b[0], b[6], b[7], b[8]] });
-      } else if (b !== undefined && !doc.length) {
+      if (buttons !== undefined && doc.length) {
+        return res.json({ doc: doc, buttons: [buttons[0], buttons[6], buttons[7], buttons[8]] });
+      } else if (buttons !== undefined && !doc.length) {
         res
           .status(404)
-          .send({ doc: "No posts yet", buttons: [b[0], b[6], b[7], b[8]] });
-      } else if (b === undefined) {
+          .send({ doc: "No posts yet", buttons: [buttons[0], buttons[6], buttons[7], buttons[8]] });
+      } else if (buttons === undefined) {
         res.status(500);
       }
     });
 });
 
 app.post("/nav", function (req, res) {
-  if (parsedData !== undefined && b !== undefined) {
+  if (parsedDataContent !== undefined && buttons !== undefined) {
     return res.json({
-      ph: parsedData.data[7][1],
-      time: parsedData.data[1][1],
-      day: parsedData.data[2][1],
-      buttons: [b[0], b[1], b[2], b[3]],
+      ph: parsedDataContent.data[7][1],
+      time: parsedDataContent.data[1][1],
+      day: parsedDataContent.data[2][1],
+      buttons: [buttons[0], buttons[1], buttons[2], buttons[3]],
     });
   } else {
     return res.sendStatus(500);
@@ -434,35 +444,36 @@ app.post("/nav", function (req, res) {
 
 app.post("/hom", function (req, res) {
   if (
-    parsedData !== undefined &&
-    parsedData0 !== undefined &&
-    b !== undefined &&
-    parsedData3 !== undefined
+    parsedDataContent !== undefined &&
+    parsedDataMaps !== undefined &&
+    buttons !== undefined &&
+    parsedDataVideo !== undefined &&
+    parsedDataForm !== undefined
   ) {
     return res.json({
-      m1: parsedData.data[21][1],
-      m2: parsedData.data[22][1],
-      qh: parsedData.data[23][1],
-      q: parsedData.data[24][1],
-      ch1: parsedData.data[25][1],
-      ch2: parsedData.data[26][1],
-      ch3: parsedData.data[27][1],
-      ch4: parsedData.data[28][1],
-      ch5: parsedData.data[29][1],
-      ch6: parsedData.data[30][1],
-      c1: parsedData.data[31][1],
-      c2: parsedData.data[32][1],
-      c3: parsedData.data[33][1],
-      c4: parsedData.data[34][1],
-      c5: parsedData.data[35][1],
-      c6: parsedData.data[36][1],
-      u4: parsedData.data[37][1],
-      u5: parsedData.data[38][1],
-      u6: parsedData.data[39][1],
-      options: parsedData1,
-      svg: parsedData.data[1][2],
-      buttons: [b[10], b[9], b[8], b[11]],
-      vid: parsedData3,
+      m1: parsedDataContent.data[21][1],
+      m2: parsedDataContent.data[22][1],
+      qh: parsedDataContent.data[23][1],
+      q: parsedDataContent.data[24][1],
+      ch1: parsedDataContent.data[25][1],
+      ch2: parsedDataContent.data[26][1],
+      ch3: parsedDataContent.data[27][1],
+      ch4: parsedDataContent.data[28][1],
+      ch5: parsedDataContent.data[29][1],
+      ch6: parsedDataContent.data[30][1],
+      c1: parsedDataContent.data[31][1],
+      c2: parsedDataContent.data[32][1],
+      c3: parsedDataContent.data[33][1],
+      c4: parsedDataContent.data[34][1],
+      c5: parsedDataContent.data[35][1],
+      c6: parsedDataContent.data[36][1],
+      u4: parsedDataContent.data[37][1],
+      u5: parsedDataContent.data[38][1],
+      u6: parsedDataContent.data[39][1],
+      options: parsedDataForm,
+      svg: parsedDataContent.data[1][2],
+      buttons: [buttons[10], buttons[9], buttons[8], buttons[11]],
+      vid: parsedDataVideo,
     });
   } else {
     return res.sendStatus(500);
@@ -470,18 +481,18 @@ app.post("/hom", function (req, res) {
 });
 
 app.post("/cont", function (req, res) {
-  if (parsedData !== undefined && b !== undefined) {
+  if (parsedDataContent !== undefined && buttons !== undefined) {
     return res.json({
-      h: parsedData.data[3][1],
-      et: parsedData.data[4][1],
-      email: parsedData.data[5][1],
-      pt: parsedData.data[6][1],
-      ph: parsedData.data[7][1],
-      it: parsedData.data[8][1],
-      it2: parsedData.data[9][1],
-      h2: parsedData.data[10][1],
-      avail: parsedData.data[11][1],
-      buttons: [b[2]],
+      h: parsedDataContent.data[3][1],
+      et: parsedDataContent.data[4][1],
+      email: parsedDataContent.data[5][1],
+      pt: parsedDataContent.data[6][1],
+      ph: parsedDataContent.data[7][1],
+      it: parsedDataContent.data[8][1],
+      it2: parsedDataContent.data[9][1],
+      h2: parsedDataContent.data[10][1],
+      avail: parsedDataContent.data[11][1],
+      buttons: [buttons[2]],
     });
   } else {
     return res.sendStatus(500);
@@ -490,25 +501,25 @@ app.post("/cont", function (req, res) {
 
 app.post("/abou", function (req, res) {
   if (
-    parsedData0 !== undefined &&
-    parsedData !== undefined &&
-    b !== undefined
+    parsedDataMaps !== undefined &&
+    parsedDataContent !== undefined &&
+    buttons !== undefined
   ) {
     return res.json({
       a: {
-        hmap: parsedData0[2],
-        hm: parsedData.data[13][1],
-        h1: parsedData.data[14][1],
-        span1: parsedData.data[15][1],
-        span2: parsedData.data[16][1],
-        h2: parsedData.data[17][1],
-        span3: parsedData.data[18][1],
-        span4: parsedData.data[19][1],
-        buttons: [b[3], b[4], b[5]],
+        hmap: parsedDataMaps[2],
+        hm: parsedDataContent.data[13][1],
+        h1: parsedDataContent.data[14][1],
+        span1: parsedDataContent.data[15][1],
+        span2: parsedDataContent.data[16][1],
+        h2: parsedDataContent.data[17][1],
+        span3: parsedDataContent.data[18][1],
+        span4: parsedDataContent.data[19][1],
+        buttons: [buttons[3], buttons[4], buttons[5]],
       },
       b: {
-        cba: parsedData0[0],
-        abc: parsedData0[1],
+        cba: parsedDataMaps[0],
+        abc: parsedDataMaps[1],
       },
     });
   } else {
@@ -517,14 +528,17 @@ app.post("/abou", function (req, res) {
 });
 
 app.post("/g", function (req, res) {
-  if (parsedData2 !== undefined && b !== undefined) {
-    return res.json({ images: parsedData2, buttons: [b[1]] });
+  if (parsedDataGallery !== undefined && buttons !== undefined) {
+    return res.json({ images: parsedDataGallery, buttons: [buttons[1]] });
   } else {
     return res.sendStatus(500);
   }
 });
 
 app.get("/reset", function (req, res) {
-  res.json({ reset: "yes" });
-  process.exit();
+  res.json({ content: "reloaded" });
+  video();
+  gallery();
+  content();
+  maps();
 });
