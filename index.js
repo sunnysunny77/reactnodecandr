@@ -240,7 +240,7 @@ content();
 maps();
 
 app.post("/one", function (req, res) {
-  if (req.body.passw === "") {
+  if (req.body.passw === "blogs") {
     function decodeBase64Image(dataString) {
       var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
         response = {};
@@ -255,7 +255,7 @@ app.post("/one", function (req, res) {
     let d = new Date();
     let date = moment(d).format("MMM Do YY' HH:mm:ss");
     var id = mongoose.Types.ObjectId();
-    let buttons = new mod({
+    let blog = new mod({
       _id: id,
       date: date,
       blogers: req.body.blogers,
@@ -263,7 +263,7 @@ app.post("/one", function (req, res) {
       title: req.body.title,
       loc: "/pic/" + id + ".jpg",
     });
-    b.save(function (err, doc) {
+    blog.save(function (err, doc) {
       fs.writeFile(
         __dirname + "/public/pic/" + id + ".jpg",
         imageBuffer.data,
@@ -282,7 +282,7 @@ app.post("/one", function (req, res) {
 });
 
 app.post("/two", function (req, res) {
-  if (req.body.passw0 === "") {
+  if (req.body.passw0 === "blogs") {
     mod.find({ date: req.body.ddate }, function (err, doc) {
       if (doc.length) {
         fs.unlink(
