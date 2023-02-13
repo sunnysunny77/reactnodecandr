@@ -252,40 +252,28 @@ app.post("/one", function (req, res) {
       title: req.body.title,
       loc: "/pic/" + id + ".jpg",
     });
-    blog.save(function (err, doc) {
-      fs.writeFileSync(
-        __dirname + "/public/pic/" + id + ".jpg",
-        new Buffer(req.body.file.split(';base64,').pop(), "base64")
-      );
-      mod
-        .find({})
-        .sort({ date: -1 })
-        .exec(function (err, doc) {
-          return res.json(doc);
-        });
-    });
+    fs.writeFileSync(
+      __dirname + "/public/pic/" + id + ".jpg",
+      new Buffer(req.body.file.split(';base64,').pop(), "base64")
+    );
+    blog.save(async function () {
+      return res.json(await mod.find({}).sort({ date: -1 }).exec());
+    })
   } else {
     return res.json({ e: "Incorrect password" });
   }
 });
 
-app.post("/two", function (req, res) {
+app.post("/two", async function (req, res) {
   if (req.body.passw0 === "blogs") {
-    mod.find({ date: req.body.ddate }, function (err, doc) {
-      if (doc.length) {
-        fs.unlinkSync(__dirname + "/public/pic/" + doc[0]._id + ".jpg");
-        mod.deleteOne({ date: req.body.ddate }, function (err) {
-          mod
-            .find({})
-            .sort({ date: -1 })
-            .exec(function (err, doc) {
-              return res.json(doc);
-            });
-        });
-      } else {
-        return res.json({ e: "Incorrect date" });
-      }
-    });
+    let doc = await mod.find({ date: req.body.ddate });
+    if (doc.length) {
+      fs.unlinkSync(__dirname + "/public/pic/" + doc[0]._id + ".jpg");
+      await mod.deleteOne({ date: req.body.ddate });
+      return res.json(await mod.find({}).sort({ date: -1 }).exec());
+    } else {
+      return res.json({ e: "Incorrect date" });
+    }
   } else {
     return res.json({ e: "Incorrect password" });
   }
