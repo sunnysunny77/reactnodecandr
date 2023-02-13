@@ -339,11 +339,11 @@ app.post("/three", function (req, res) {
       "\n\n",
       "<html>" +
       "<h1>Candid Question</h1>" +
-      "<b>Name: </b>" + req.body.name +  "<br><br>" +
-      "<b>Email Address: </b>" + req.body.email +  "<br><br>" +
-      "<b>Phone #: </b>" + req.body.phone +  "<br><br>" +
-      "<b>Select Type: </b>" + req.body.selectedOption.value +  "<br><br>" +
-      "<b>Text: </b>" + req.body.text  + 
+      "<b>Name: </b>" + req.body.name + "<br><br>" +
+      "<b>Email Address: </b>" + req.body.email + "<br><br>" +
+      "<b>Phone #: </b>" + req.body.phone + "<br><br>" +
+      "<b>Select Type: </b>" + req.body.selectedOption.value + "<br><br>" +
+      "<b>Text: </b>" + req.body.text +
       "</html>",
     ].join("");
     gmail.users.messages.send(
@@ -366,14 +366,11 @@ app.post("/three", function (req, res) {
 
 app.get("/ong", async function (req, res) {
   let doc = await mod.find({}).sort({ date: -1 }).exec();
-  if (buttons !== undefined && doc.length) {
+  if (buttons !== undefined) {
     return res.json({ doc: doc, buttons: [buttons[0], buttons[6], buttons[7], buttons[8]] });
-  } else if (buttons !== undefined && !doc.length) {
-    return res.status(404).send({ doc: "No posts yet", buttons: [buttons[0], buttons[6], buttons[7], buttons[8]] });
-  } else if (buttons === undefined) {
+  } else {
     return res.sendStatus(500);
   }
-
 });
 
 app.post("/nav", function (req, res) {

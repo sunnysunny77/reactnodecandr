@@ -55,30 +55,26 @@ export default class Blog extends React.Component {
     axios
       .get(`/ong`)
       .then((res) => {
-        this.tab(res.data.doc);
         this.setState({
           buttons: res.data.buttons,
           load: false,
         });
         this.props.setLoad("block");
-      })
-      .catch((error) => {
-        if (error.response.status === 404) {
-          this.setState({
-            buttons: error.response.data.buttons,
+        if (!res.data.doc.length) {
+          return this.setState({
             txt: (
               <table>
                 <tr style={{ height: "35vh" }}>
-                  <th> {error.response.data.doc} </th>
+                  <th> No posts yet </th>
                 </tr>
               </table>
             ),
-            load: false,
           });
-          this.props.setLoad("block");
-        } else {
-          alert(error);
         }
+        this.tab(res.data.doc);
+      })
+      .catch((error) => {
+        alert(error);
       });
   }
   change = (event) => {
@@ -189,6 +185,17 @@ export default class Blog extends React.Component {
             ddate: null,
           });
           document.getElementById("a2").reset();
+          if (!res.data.length) {
+            return this.setState({
+              txt: (
+                <table>
+                  <tr style={{ height: "35vh" }}>
+                    <th> No posts yet </th>
+                  </tr>
+                </table>
+              ),
+            });
+          }
           return this.tab(res.data);
         }
       })
@@ -545,7 +552,7 @@ export default class Blog extends React.Component {
                     </form>
                   </AccordionDetails>
                 </StyledAccordion>
-              </div>    
+              </div>
             </section>
           </React.Fragment>
         )}
