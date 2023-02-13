@@ -241,13 +241,6 @@ maps();
 
 app.post("/one", function (req, res) {
   if (req.body.passw === "blogs") {
-    function decodeBase64Image(dataString) {
-      let matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
-      if (matches.length !== 3) {
-        return res.json({ e: "Invalid input string" });
-      }
-      return new Buffer(matches[2], "base64");
-    }
     let newdate = new Date();
     let date = moment(newdate).format("MMM Do YY' HH:mm:ss");
     let id = mongoose.Types.ObjectId();
@@ -262,7 +255,7 @@ app.post("/one", function (req, res) {
     blog.save(function (err, doc) {
       fs.writeFileSync(
         __dirname + "/public/pic/" + id + ".jpg",
-        decodeBase64Image(req.body.file)
+        new Buffer(req.body.file.split(';base64,').pop(), "base64")
       );
       mod
         .find({})
