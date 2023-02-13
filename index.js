@@ -328,7 +328,7 @@ app.post("/three", function (req, res) {
   function sendMessage(auth) {
     let gmail = google.gmail({ version: "v1", auth });
     let str = [
-      'Content-Type: text/plain; charset="UTF-8"\n',
+      'Content-Type: text/html; charset="UTF-8"\n',
       "MIME-Version: 1.0\n",
       "Content-Transfer-Encoding: 7bit\n",
       "to: ",
@@ -340,25 +340,13 @@ app.post("/three", function (req, res) {
       "subject: ",
       "Candid Question",
       "\n\n",
-      "Name:" +
-      "\xa0" +
-      req.body.name +
-      "\n\n" +
-      "Email Address:" +
-      "\xa0" +
-      req.body.email +
-      "\n\n" +
-      "Phone #:" +
-      "\xa0" +
-      req.body.phone +
-      "\n\n" +
-      "Select Type:" +
-      "\xa0" +
-      req.body.selectedOption.value +
-      "\n\n" +
-      "Text:" +
-      "\xa0" +
-      req.body.text,
+      "<html>" +
+      "<b>Name: " + req.body.name +  "</b><br><br>" +
+      "<b>Email Address: " + req.body.email +  "</b><br><br>" +
+      "<b>Phone #: " + req.body.phone +  "</b><br><br>" +
+      "<b>Select Type: " + req.body.selectedOption.value +  "</b><br><br>" +
+      "<b>Text: " + req.body.text  +  "</b>" +
+      "</html>",
     ].join("");
     gmail.users.messages.send(
       {
@@ -416,7 +404,7 @@ app.post("/hom", function (req, res) {
       m2: parsedDataContent.data[22][1],
       qh: parsedDataContent.data[23][1],
       q: parsedDataContent.data[24][1],
-      ch1: parsedDataContent.data[25][1],
+      cb: parsedDataContent.data[25][1],
       ch2: parsedDataContent.data[26][1],
       ch3: parsedDataContent.data[27][1],
       ch4: parsedDataContent.data[28][1],
@@ -470,7 +458,7 @@ app.post("/abou", function (req, res) {
       a: {
         hmap: parsedDataMaps[2],
         hm: parsedDataContent.data[13][1],
-        h1: parsedDataContent.data[14][1],
+        b: parsedDataContent.data[14][1],
         span1: parsedDataContent.data[15][1],
         span2: parsedDataContent.data[16][1],
         h2: parsedDataContent.data[17][1],
