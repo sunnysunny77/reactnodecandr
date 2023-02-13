@@ -334,18 +334,16 @@ app.post("/three", function (req, res) {
       "to: ",
       parsedDataContent.data[5][1],
       "\n",
-      "from: ",
-      "",
-      "\n",
       "subject: ",
       "Candid Question",
       "\n\n",
       "<html>" +
-      "<b>Name: " + req.body.name +  "</b><br><br>" +
-      "<b>Email Address: " + req.body.email +  "</b><br><br>" +
-      "<b>Phone #: " + req.body.phone +  "</b><br><br>" +
-      "<b>Select Type: " + req.body.selectedOption.value +  "</b><br><br>" +
-      "<b>Text: " + req.body.text  +  "</b>" +
+      "<h1>Candid Question</h1>" +
+      "<b>Name: </b>" + req.body.name +  "<br><br>" +
+      "<b>Email Address: </b>" + req.body.email +  "<br><br>" +
+      "<b>Phone #: </b>" + req.body.phone +  "<br><br>" +
+      "<b>Select Type: </b>" + req.body.selectedOption.value +  "<br><br>" +
+      "<b>Text: </b>" + req.body.text  + 
       "</html>",
     ].join("");
     gmail.users.messages.send(
