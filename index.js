@@ -254,7 +254,7 @@ app.post("/one", function (req, res) {
     });
     fs.writeFileSync(
       __dirname + "/public/pic/" + id + ".jpg",
-      new Buffer(req.body.file.split(';base64,').pop(), "base64")
+      Buffer.from(req.body.file.split(';base64,').pop(), "base64")
     );
     blog.save(async function () {
       return res.json(await mod.find({}).sort({ date: -1 }).exec());
@@ -350,7 +350,7 @@ app.post("/three", function (req, res) {
       {
         userId: "me",
         resource: {
-          raw: new Buffer(str).toString("base64").replace(/\+/g, "-").replace(/\//g, "_"),
+          raw: Buffer.from(str).toString("base64").replace(/\+/g, "-").replace(/\//g, "_"),
         },
       },
       (err, result) => {
@@ -392,7 +392,6 @@ app.post("/nav", function (req, res) {
 app.post("/hom", function (req, res) {
   if (
     parsedDataContent !== undefined &&
-    parsedDataMaps !== undefined &&
     buttons !== undefined &&
     parsedDataVideo !== undefined &&
     parsedDataForm !== undefined
