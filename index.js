@@ -284,10 +284,7 @@ app.post("/two", function (req, res) {
   if (req.body.passw0 === "blogs") {
     mod.find({ date: req.body.ddate }, function (err, doc) {
       if (doc.length) {
-        fs.unlink(
-          __dirname + "/public/pic/" + doc[0]._id + ".jpg",
-          function (err) { }
-        );
+        fs.unlinkSync(__dirname + "/public/pic/" + doc[0]._id + ".jpg");
         mod.deleteOne({ date: req.body.ddate }, function (err) {
           mod
             .find({})
