@@ -385,21 +385,16 @@ app.post("/three", function (req, res) {
   }
 });
 
-app.get("/ong", function (req, res) {
-  mod
-    .find({})
-    .sort({ date: -1 })
-    .exec(function (err, doc) {
-      if (buttons !== undefined && doc.length) {
-        return res.json({ doc: doc, buttons: [buttons[0], buttons[6], buttons[7], buttons[8]] });
-      } else if (buttons !== undefined && !doc.length) {
-        return res
-          .status(404)
-          .send({ doc: "No posts yet", buttons: [buttons[0], buttons[6], buttons[7], buttons[8]] });
-      } else if (buttons === undefined) {
-        return res.sendStatus(500);
-      }
-    });
+app.get("/ong", async function (req, res) {
+  let doc = await mod.find({}).sort({ date: -1 }).exec();
+  if (buttons !== undefined && doc.length) {
+    return res.json({ doc: doc, buttons: [buttons[0], buttons[6], buttons[7], buttons[8]] });
+  } else if (buttons !== undefined && !doc.length) {
+    return res.status(404).send({ doc: "No posts yet", buttons: [buttons[0], buttons[6], buttons[7], buttons[8]] });
+  } else if (buttons === undefined) {
+    return res.sendStatus(500);
+  }
+
 });
 
 app.post("/nav", function (req, res) {
