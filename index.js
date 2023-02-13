@@ -327,7 +327,19 @@ app.post("/three", function (req, res) {
   }
   function sendMessage(auth) {
     let gmail = google.gmail({ version: "v1", auth });
-    let s = String(
+    let str = [
+      'Content-Type: text/plain; charset="UTF-8"\n',
+      "MIME-Version: 1.0\n",
+      "Content-Transfer-Encoding: 7bit\n",
+      "to: ",
+      parsedDataContent.data[5][1],
+      "\n",
+      "from: ",
+      "",
+      "\n",
+      "subject: ",
+      "Candid Question",
+      "\n\n",
       "Name:" +
       "\xa0" +
       req.body.name +
@@ -346,32 +358,13 @@ app.post("/three", function (req, res) {
       "\n\n" +
       "Text:" +
       "\xa0" +
-      req.body.text
-    );
-    let str = [
-      'Content-Type: text/plain; charset="UTF-8"\n',
-      "MIME-Version: 1.0\n",
-      "Content-Transfer-Encoding: 7bit\n",
-      "to: ",
-      parsedDataContent.data[5][1],
-      "\n",
-      "from: ",
-      "",
-      "\n",
-      "subject: ",
-      "Candid Question",
-      "\n\n",
-      s,
+      req.body.text,
     ].join("");
-    let raw = new Buffer(str)
-      .toString("base64")
-      .replace(/\+/g, "-")
-      .replace(/\//g, "_");
     gmail.users.messages.send(
       {
         userId: "me",
         resource: {
-          raw: raw,
+          raw: new Buffer(str).toString("base64").replace(/\+/g, "-").replace(/\//g, "_"),
         },
       },
       (err, result) => {
