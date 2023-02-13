@@ -264,10 +264,9 @@ app.post("/one", function (req, res) {
       loc: "/pic/" + id + ".jpg",
     });
     blog.save(function (err, doc) {
-      fs.writeFile(
+      fs.writeFileSync(
         __dirname + "/public/pic/" + id + ".jpg",
-        imageBuffer.data,
-        function (err) { }
+        imageBuffer.data
       );
       mod
         .find({})
