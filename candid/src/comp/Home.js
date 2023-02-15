@@ -623,7 +623,7 @@ class Home extends Component {
                     onChange={this.change}
                   />
                 </Tooltip>
-                <div style={{ height: "177px", margin: "50px 0" }}>
+                <div style={{ height: "177px", margin: "50px 0 60px 0" }}>
                   <ListIcon
                     style={{ color: styles.wi, marginLeft: "27.5px" }}
                   />
