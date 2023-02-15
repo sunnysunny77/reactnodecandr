@@ -31,15 +31,12 @@ class Nav extends Component {
         margin: "6px 0",
         transition: "0.4s",
       },
-      s: false,
-      dis: { display: "none" },
       wi: "",
-      hi: ""
+      hi: "",
+      dis: ""
     };
   }
   componentDidMount() {
-    let a = document.querySelector("body");
-    a.addEventListener("click", this.out);
     window.addEventListener("scroll", this.handleScroll);
     if (window.screen.width > 1200) {
       this.setState({
@@ -54,8 +51,6 @@ class Nav extends Component {
     }
   }
   componentWillUnmount() {
-    let a = document.querySelector("body");
-    a.removeEventListener("click", this.out);
     window.removeEventListener("scroll", this.handleScroll);
   }
   handleScroll = () => {
@@ -71,92 +66,60 @@ class Nav extends Component {
       document.querySelector("main").style.paddingTop = "0";
     }
   };
-  out = () => {
-    if (this.state.s === true) {
-      this.setState({
-        s: false,
-        dis: { display: "none" },
-        bar1: {
-          width: "35px",
-          height: "5px",
-          backgroundColor: "black",
-          margin: "6px 0",
-          transition: "0.4s",
-        },
-        bar2: {
-          width: "35px",
-          height: "5px",
-          backgroundColor: "black",
-          margin: "6px 0",
-          transition: "0.4s",
-        },
-        bar3: {
-          width: "35px",
-          height: "5px",
-          backgroundColor: "black",
-          margin: "6px 0",
-          transition: "0.4s",
-        },
-      });
-    }
-  };
   bars = () => {
-    this.state.s
-      ? this.setState({
-        s: false,
-        dis: { display: "none" },
-        bar1: {
-          width: "35px",
-          height: "5px",
-          backgroundColor: "black",
-          margin: "6px 0",
-          transition: "0.4s",
-        },
-        bar2: {
-          width: "35px",
-          height: "5px",
-          backgroundColor: "black",
-          margin: "6px 0",
-          transition: "0.4s",
-        },
-        bar3: {
-          width: "35px",
-          height: "5px",
-          backgroundColor: "black",
-          margin: "6px 0",
-          transition: "0.4s",
-        },
-      })
-      : this.setState({
-        s: true,
-        dis: { display: "block" },
-        bar1: {
-          width: "35px",
-          height: "5px",
-          backgroundColor: "black",
-          margin: "6px 0",
-          transition: "0.4s",
-          WebkitTransform: "rotate(-45deg) translate(-9px, 6px)",
-          transform: "rotate(-45deg) translate(-9px, 6px)",
-        },
-        bar2: {
-          width: "35px",
-          height: "5px",
-          backgroundColor: "black",
-          margin: "6px 0",
-          transition: "0.4s",
-          opacity: "0",
-        },
-        bar3: {
-          width: "35px",
-          height: "5px",
-          backgroundColor: "black",
-          margin: "6px 0",
-          transition: "0.4s",
-          WebkitTransform: "rotate(45deg) translate(-8px, -8px)",
-          transform: "rotate(45deg) translate(-8px, -8px)",
-        },
-      });
+    if (this.state.dis !== "slide") return this.setState({
+      dis: "slide",
+      bar1: {
+        width: "35px",
+        height: "5px",
+        backgroundColor: "black",
+        margin: "6px 0",
+        transition: "0.4s",
+        WebkitTransform: "rotate(-45deg) translate(-9px, 6px)",
+        transform: "rotate(-45deg) translate(-9px, 6px)",
+      },
+      bar2: {
+        width: "35px",
+        height: "5px",
+        backgroundColor: "black",
+        margin: "6px 0",
+        transition: "0.4s",
+        opacity: "0",
+      },
+      bar3: {
+        width: "35px",
+        height: "5px",
+        backgroundColor: "black",
+        margin: "6px 0",
+        transition: "0.4s",
+        WebkitTransform: "rotate(45deg) translate(-8px, -8px)",
+        transform: "rotate(45deg) translate(-8px, -8px)",
+      },
+    });
+    this.setState({
+      dis: "out",
+      bar1: {
+        width: "35px",
+        height: "5px",
+        backgroundColor: "black",
+        margin: "6px 0",
+        transition: "0.4s",
+      },
+      bar2: {
+        width: "35px",
+        height: "5px",
+        backgroundColor: "black",
+        margin: "6px 0",
+        transition: "0.4s",
+      },
+      bar3: {
+        width: "35px",
+        height: "5px",
+        backgroundColor: "black",
+        margin: "6px 0",
+        transition: "0.4s",
+      },
+    })
   };
   render() {
     let { ph, time, day, buttons } = this.props
@@ -167,7 +130,7 @@ class Nav extends Component {
           <div style={this.state.bar2}></div>
           <div style={this.state.bar3}></div>
         </div>
-        <nav className="mobileNav" style={this.state.dis}>
+        <nav className={`mobileNav ${this.state.dis}`} >
           <ul>
             <hr></hr>
             <li>

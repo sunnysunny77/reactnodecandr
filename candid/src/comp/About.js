@@ -43,7 +43,7 @@ export default class About extends React.Component {
   handleScroll = () => {
     if (window.innerWidth > 1200) {
 
-      document.querySelector(".wave0").style.top = "60px";
+      document.querySelector(".wave0").style.top = "40px";
     } else if (window.innerWidth <= 1200) {
       document.querySelector(".wave0").style.top = "0px";
 

@@ -43,16 +43,25 @@ header {
   background-color: $c1;
   border-right: 1.5px solid $c9;
   border-bottom: 1.5px solid $c9;
-  animation: slide;
   animation-duration: 0.6s;
   animation-fill-mode: forwards;
   z-index: 998;
   text-align: center;
   padding-top: 87px;
+  transform: translate(-200px);
   font-size: 5px;
   font-family: $font4;
   @media only screen and (min-width: 1200px) {
     visibility: hidden;
+  }
+  &.slide {
+    animation: slide;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+  }
+  &.out {
+    animation: out;
+    animation-duration: 0.6s;
   }
   ul {
     list-style-type: none;
@@ -78,7 +87,7 @@ header {
       padding: 10px 0;
     }
   }
- ul:nth-child(1) li:nth-child(2) {
+  ul:nth-child(1) li:nth-child(2) {
     text-align: right;
     svg {
       margin-right: 20px;
@@ -153,7 +162,6 @@ header {
       }
     }
   }
-
 }
 
 @keyframes slide {
@@ -162,5 +170,14 @@ header {
   }
   100% {
     transform: translate(0);
+  }
+}
+
+@keyframes out {
+  0% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(-200px);
   }
 }
