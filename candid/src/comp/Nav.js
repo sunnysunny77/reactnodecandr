@@ -38,7 +38,7 @@ class Nav extends Component {
     };
   }
   componentDidMount() {
-    let a = document.getElementById("di");
+    let a = document.querySelector("body");
     a.addEventListener("click", this.out);
     window.addEventListener("scroll", this.handleScroll);
     if (window.screen.width > 1200) {
@@ -54,7 +54,7 @@ class Nav extends Component {
     }
   }
   componentWillUnmount() {
-    let a = document.getElementById("di");
+    let a = document.querySelector("body");
     a.removeEventListener("click", this.out);
     window.removeEventListener("scroll", this.handleScroll);
   }
@@ -62,10 +62,14 @@ class Nav extends Component {
     if (window.scrollY >= 90) {
       document.querySelector(".mainNav").style.position = "fixed";
       document.querySelector(".mainNav").style.top = "0";
+      document.querySelector(".mainNav").style.transition = "height 1s";
+      document.querySelector(".mainNav").style.height = "40px";
       document.querySelector("main").style.position = "relative";
-      document.querySelector("#di").style.paddingTop = "60px";
+      document.querySelector("#di").style.paddingTop = "40px";
     } else {
       document.querySelector(".mainNav").style.position = "relative";
+      document.querySelector(".mainNav").style.transition = "none";
+      document.querySelector(".mainNav").style.height = "60px";
       document.querySelector("main").style.paddingTop = "0";
     }
   };

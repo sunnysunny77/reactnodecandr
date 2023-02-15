@@ -23,6 +23,9 @@ footer {
         display: none;
       }
     }
+    @media only screen and (max-width: 640px) {
+      font-size: medium;
+    }
     .block {
       display: block;
     }
