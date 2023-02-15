@@ -14,7 +14,7 @@
     width: 100%;
     background-color: $c3;
     background-image: linear-gradient(270deg, $c3 0%, $c6 45%, $c6 100%);
-    height: 60px;
+    height: 40px;
     border-top-left-radius: 11px;
     border-top-right-radius: 11px;
     font-size: inherit;
@@ -24,7 +24,7 @@
   
     }
     h1 {
-      padding-top: 15px;
+      line-height: 40px;
     }
   }
   .blogResponse {
@@ -35,7 +35,7 @@
     scrollbar-color: $c3 $c1;
     color: $c1;
     width: 100%;
-    min-height: 65.5vh;
+    min-height: 72.3vh;
     &::-webkit-scrollbar {
       width: 10px;
     }
@@ -65,12 +65,12 @@
   width: 100%;
   background-color: $c3;
   background-image: linear-gradient(270deg, $c3 0%, $c6 45%, $c6 100%);
-  height: 60px;
+  height: 40px;
   border-top-left-radius: 11px;
   border-top-right-radius: 11px;
   font-size: 180%;
   h2 {
-    padding-top: 12.5px;
+    line-height: 40px;
     font-family: $font1;
     color: $c1;
     float: right;
@@ -107,6 +107,7 @@
   background-color: $c5;
   color: $c1;
   overflow: hidden;
+  padding-top: 10px;
 }
 
 .custom-file-input[type="file"] {

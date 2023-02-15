@@ -110,7 +110,7 @@ export default class Blog extends React.Component {
     } else {
       this.setState({
         a: "choose || jpg || png",
-        disp0: { display: "block", lineHeight: "75px" },
+        disp0: { display: "block", lineHeight: "50px" },
       });
     }
   };
@@ -135,12 +135,12 @@ export default class Blog extends React.Component {
           if (res.data.e) {
             this.setState({
               a: res.data.e,
-              disp0: { display: "block", lineHeight: "75px" },
+              disp0: { display: "block", lineHeight: "50px" },
             });
           } else {
             this.setState({
               a: "Blog sent",
-              disp0: { display: "block", lineHeight: "75px" },
+              disp0: { display: "block", lineHeight: "50px" },
               passw: null,
               blogers: null,
               name: null,
@@ -154,13 +154,13 @@ export default class Blog extends React.Component {
         .catch((error) => {
           this.setState({
             a: error.response.statusText,
-            disp0: { display: "block", lineHeight: "75px" },
+            disp0: { display: "block", lineHeight: "50px" },
           });
         });
     } else {
       this.setState({
         a: "Blog from incomplete",
-        disp0: { display: "block", lineHeight: "75px" },
+        disp0: { display: "block", lineHeight: "50px" },
       });
     }
   };
@@ -175,12 +175,12 @@ export default class Blog extends React.Component {
         if (res.data.e) {
           this.setState({
             a0: res.data.e,
-            disp1: { display: "block", lineHeight: "75px" },
+            disp1: { display: "block", lineHeight: "50px" },
           });
         } else {
           this.setState({
             a0: "Blog delete",
-            disp1: { display: "block", lineHeight: "75px" },
+            disp1: { display: "block", lineHeight: "50px" },
             passw0: null,
             ddate: null,
           });
@@ -203,7 +203,7 @@ export default class Blog extends React.Component {
         console.log(error);
         this.setState({
           a0: error.response.statusText,
-          disp1: { display: "block", lineHeight: "75px" },
+          disp1: { display: "block", lineHeight: "50px" },
         });
       });
   };
@@ -404,7 +404,7 @@ export default class Blog extends React.Component {
                             overflowY: "auto",
                             overflowX: "hidden",
                             paddingTop: "10px",
-                            marginTop: "50px",
+                            marginTop: "10px",
                             borderRadius: 0,
                           },
                         }}
@@ -414,7 +414,7 @@ export default class Blog extends React.Component {
                         placeholder="Text:"
                         onChange={this.change}
                       />
-                      <div style={{ textAlign: "center", marginTop: "50px" }}>
+                      <div style={{ textAlign: "center", marginTop: "10px" }}>
                         <label for="avatar">Upload a picture:</label>
                         <br></br>
                         <input
@@ -430,7 +430,7 @@ export default class Blog extends React.Component {
                           color: styles.wi,
                           backgroundColor: styles.bl,
                           width: "100%",
-                          height: "60px",
+                          height: "50px",
                           fontSize: "inherit",
                           fontWeight: "400",
                           paddingTop: "10px",
@@ -443,7 +443,7 @@ export default class Blog extends React.Component {
                         {" "}
                         {ReactHtmlParser(this.state.buttons[3])}
                       </Button>
-                      <div style={{ height: "75px" }}>
+                      <div style={{ height: "50px" }}>
                         <div style={this.state.disp0}>
                           <Alertm alert={this.state.a} />
                         </div>
@@ -473,7 +473,6 @@ export default class Blog extends React.Component {
                         color: styles.wi,
                       }}
                     >
-                      <br></br>
                       <label for="pass" className="hiddentext">
                         Password
                       </label>
@@ -531,7 +530,7 @@ export default class Blog extends React.Component {
                           color: styles.wi,
                           backgroundColor: styles.bl,
                           width: "100%",
-                          height: "60px",
+                          height: "50px",
                           fontSize: "inherit",
                           fontWeight: "400",
                           paddingTop: "10px",
@@ -544,7 +543,7 @@ export default class Blog extends React.Component {
                         {" "}
                         {ReactHtmlParser(this.state.buttons[3])}
                       </Button>
-                      <div style={{ height: "75px" }}>
+                      <div style={{ height: "50px" }}>
                         <div style={this.state.disp1}>
                           <Alertm alert={this.state.a0} />
                         </div>

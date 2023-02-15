@@ -27,8 +27,10 @@ import ReactHtmlParser from "react-html-parser";
 
 const customStyles = {
   placeholder: () => ({
-    opacity: 0.525,
-    marginLeft: "10px",
+    padding: "10px",
+    backgroundColor: styles.wi,
+    borderTopRightRadius: 5,
+    color: styles.g,
   }),
   menu: () => ({
     backgroundColor: styles.wi,
@@ -41,18 +43,18 @@ const customStyles = {
   }),
   singleValue: () => ({
     color: styles.bl,
-    marginLeft: "10px",
+    padding: "10px",
+    backgroundColor: styles.wi,
+    borderTopRightRadius: 5,
   }),
   control: () => ({
-    backgroundColor: styles.wi,
-    width: "210px",
+    width: "fit-content",
     color: styles.bl,
-    height: "80px",
     fontFamily: styles.f3,
     fontWeight: 500,
     fontSize: "1.2em",
     marginLeft: "2%",
-    borderTopRightRadius: 5,
+    marginBottom: "10px",
   }),
   input: () => ({
     color: "transparent",
@@ -241,7 +243,7 @@ class Home extends Component {
     ) {
       this.setState({
         a: "Waiting...",
-        disp: { display: "block", lineHeight: "75px" },
+        disp: { display: "block", lineHeight: "50px" },
       });
       axios
         .post('/three', {
@@ -255,13 +257,13 @@ class Home extends Component {
           if (res.data.e) {
             this.setState({
               a: res.data.e,
-              disp: { display: "block", lineHeight: "75px" },
+              disp: { display: "block", lineHeight: "50px" },
             });
           }
           if (res.data.a) {
             this.setState({
               a: res.data.a,
-              disp: { display: "block", lineHeight: "75px" },
+              disp: { display: "block", lineHeight: "50px" },
               name: null,
               email: null,
               phone: null,
@@ -274,13 +276,13 @@ class Home extends Component {
         .catch((error) => {
           this.setState({
             a: error.response.statusText,
-            disp: { display: "block", lineHeight: "75px" },
+            disp: { display: "block", lineHeight: "50px" },
           });
         });
     } else {
       this.setState({
         a: "Enquiry from incomplete",
-        disp: { display: "block", lineHeight: "75px" },
+        disp: { display: "block", lineHeight: "50px" },
       });
     }
   };
@@ -621,7 +623,7 @@ class Home extends Component {
                     onChange={this.change}
                   />
                 </Tooltip>
-                <div style={{ height: "220px", marginTop: "50px" }}>
+                <div style={{ height: "177px", margin: "50px 0" }}>
                   <ListIcon
                     style={{ color: styles.wi, marginLeft: "27.5px" }}
                   />
@@ -682,7 +684,7 @@ class Home extends Component {
                     color: styles.wi,
                     backgroundColor: styles.bl,
                     width: "100%",
-                    height: "60px",
+                    height: "50px",
                     fontSize: "120%",
                     fontWeight: "400",
                     paddingTop: "10px",
@@ -693,7 +695,7 @@ class Home extends Component {
                 >
                   {ReactHtmlParser(this.state.res.buttons[2])}
                 </Button>
-                <div style={{ height: "75px" }}>
+                <div style={{ height: "50px" }}>
                   <div style={this.state.disp}>
                     <Alertm alert={this.state.a} />
                   </div>
