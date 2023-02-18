@@ -90,16 +90,13 @@ export default class Blog extends React.Component {
     let extension = event.target.value.split(".").pop();
     if (
       extension === "jpg" ||
-      extension === "png" ||
-      extension === "jpeg" ||
-      extension === "JPEG" ||
-      extension === "PNG"
+      extension === "png" 
     ) {
       Resizer.imageFileResizer(
         event.target.files[0],
         150,
         150,
-        "JPEG",
+        extension,
         50,
         0,
         (uri) => {

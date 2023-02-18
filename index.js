@@ -244,16 +244,17 @@ app.post("/one", function (req, res) {
     let newdate = new Date();
     let date = moment(newdate).format("MMM Do YY' HH:mm:ss");
     let id = mongoose.Types.ObjectId();
+    let ext = req.body.file.split(';')[0].split('/')[1];
     let blog = new mod({
       _id: id,
       date: date,
       blogers: req.body.blogers,
       name: req.body.name,
       title: req.body.title,
-      loc: "/pic/" + id + ".jpg",
+      loc: "/pic/" + id + "." + ext,
     });
     fs.writeFileSync(
-      __dirname + "/public/pic/" + id + ".jpg",
+      __dirname + "/public/pic/" + id + "." + ext,
       Buffer.from(req.body.file.split(';base64,').pop(), "base64")
     );
     blog.save(async function () {
@@ -268,7 +269,7 @@ app.post("/two", async function (req, res) {
   if (req.body.passw0 === "blogs") {
     let doc = await mod.find({ date: req.body.ddate });
     if (doc.length) {
-      fs.unlinkSync(__dirname + "/public/pic/" + doc[0]._id + ".jpg");
+      fs.unlinkSync(__dirname + "/public" + doc[0].loc);
       await mod.deleteOne({ date: req.body.ddate });
       return res.json(await mod.find({}).sort({ date: -1 }).exec());
     } else {
