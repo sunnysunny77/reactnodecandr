@@ -58,11 +58,13 @@ class Nav extends Component {
       document.querySelector(".mainNav").style.position = "fixed";
       document.querySelector(".mainNav").style.top = "0";
       document.querySelector(".mainNav").style.height = "40px";
+      document.querySelector(".mainNav").style.transition = "height 1s";
       document.querySelector("main").style.position = "relative";
       document.querySelector("#di").style.paddingTop = "40px";
     } else {
       document.querySelector(".mainNav").style.position = "relative";
       document.querySelector(".mainNav").style.height = "60px";
+      document.querySelector(".mainNav").style.transition = "height 0.25s";
       document.querySelector("main").style.paddingTop = "0";
     }
   };
