@@ -90,7 +90,7 @@ export default class Blog extends React.Component {
     let extension = event.target.value.split(".").pop();
     if (
       extension === "jpg" ||
-      extension === "png" 
+      extension === "png"
     ) {
       Resizer.imageFileResizer(
         event.target.files[0],
@@ -113,50 +113,57 @@ export default class Blog extends React.Component {
   };
   sub = (event) => {
     event.preventDefault();
-    if (
-      this.state.passw &&
-      this.state.blogers &&
-      this.state.name &&
-      this.state.title &&
-      this.state.file
-    ) {
-      axios
-        .post(`/one`, {
-          passw: this.state.passw,
-          blogers: this.state.blogers,
-          name: this.state.name,
-          title: this.state.title,
-          file: this.state.file,
-        })
-        .then((res) => {
-          if (res.data.e) {
+    if (this.state.file[0].split(".").pop() === "png" || "jpg") {
+      if (
+        this.state.passw &&
+        this.state.blogers &&
+        this.state.name &&
+        this.state.title &&
+        this.state.file
+      ) {
+        axios
+          .post(`/one`, {
+            passw: this.state.passw,
+            blogers: this.state.blogers,
+            name: this.state.name,
+            title: this.state.title,
+            file: this.state.file,
+          })
+          .then((res) => {
+            if (res.data.e) {
+              this.setState({
+                a: res.data.e,
+                disp0: { display: "block", lineHeight: "50px" },
+              });
+            } else {
+              this.setState({
+                a: "Blog sent",
+                disp0: { display: "block", lineHeight: "50px" },
+                passw: null,
+                blogers: null,
+                name: null,
+                title: null,
+                file: null,
+              });
+              document.getElementById("a6").reset();
+              return this.tab(res.data);
+            }
+          })
+          .catch((error) => {
             this.setState({
-              a: res.data.e,
+              a: error.response.statusText,
               disp0: { display: "block", lineHeight: "50px" },
             });
-          } else {
-            this.setState({
-              a: "Blog sent",
-              disp0: { display: "block", lineHeight: "50px" },
-              passw: null,
-              blogers: null,
-              name: null,
-              title: null,
-              file: null,
-            });
-            document.getElementById("a6").reset();
-            return this.tab(res.data);
-          }
-        })
-        .catch((error) => {
-          this.setState({
-            a: error.response.statusText,
-            disp0: { display: "block", lineHeight: "50px" },
           });
+      } else {
+        this.setState({
+          a: "Blog from incomplete",
+          disp0: { display: "block", lineHeight: "50px" },
         });
+      }
     } else {
       this.setState({
-        a: "Blog from incomplete",
+        a: "choose || jpg || png",
         disp0: { display: "block", lineHeight: "50px" },
       });
     }
