@@ -48,7 +48,7 @@ header {
   z-index: 998;
   text-align: center;
   padding-top: 87px;
-  transform: translate(-201px);
+  transform: translate(-202px);
   font-size: 5px;
   font-family: $font4;
   @media only screen and (min-width: 1200px) {
@@ -165,7 +165,7 @@ header {
 
 @keyframes slide {
   0% {
-    transform: translate(-201px);
+    transform: translate(-202px);
   }
   100% {
     transform: translate(0);
@@ -177,6 +177,6 @@ header {
     transform: translate(0);
   }
   100% {
-    transform: translate(-201px);
+    transform: translate(-202px);
   }
 }
