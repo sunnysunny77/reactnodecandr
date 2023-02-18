@@ -34,8 +34,11 @@
     overflow-x: hidden;
     scrollbar-color: $c3 $c1;
     color: $c1;
-    width: 100%;
-    min-height: 72.3vh;
+    width: calc(100% - 4px);
+    border-left: 2px solid $c2;
+    border-right: 2px solid $c2;
+    border-bottom: 2px solid $c2;
+    min-height: caLc(89.5vh - 42px);
     &::-webkit-scrollbar {
       width: 10px;
     }
