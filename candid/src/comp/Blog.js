@@ -46,36 +46,34 @@ export default class Blog extends React.Component {
       w: window.scrollTo(0, 0),
       buttons: [],
       load: true,
+      extension: null,
     };
   }
   componentDidMount() {
-    if (this.state.load) {
-      this.props.setLoad("none");
-    }
-    axios
-      .get(`/ong`)
-      .then((res) => {
-        this.setState({
-          buttons: res.data.buttons,
-          load: false,
-        });
-        this.props.setLoad("block");
-        if (!res.data.doc.length) {
-          return this.setState({
-            txt: (
-              <table>
-                <tr style={{ height: "35vh" }}>
-                  <th> No posts yet </th>
-                </tr>
-              </table>
-            ),
-          });
-        }
-        this.tab(res.data.doc);
-      })
+    if (this.state.load) this.props.setLoad("none");
+    axios.get(`/ong`).then((res) => {
+      this.props.setLoad("block");
+      this.setState({
+        buttons: res.data.buttons,
+        load: false,
+      });
+      if (!res.data.doc.length) return this.postcount();
+      this.tab(res.data.doc);
+    })
       .catch((error) => {
         alert(error);
       });
+  }
+  postcount = () => {
+    this.setState({
+      txt: (
+        <table>
+          <tr style={{ height: "35vh" }}>
+            <th> No posts yet </th>
+          </tr>
+        </table>
+      ),
+    });
   }
   change = (event) => {
     let nam = event.target.name;
@@ -88,128 +86,93 @@ export default class Blog extends React.Component {
   };
   file = (event) => {
     let extension = event.target.value.split(".").pop();
-    if (
-      extension === "jpg" ||
-      extension === "png"
-    ) {
-      Resizer.imageFileResizer(
-        event.target.files[0],
-        150,
-        150,
-        extension,
-        50,
-        0,
-        (uri) => {
-          this.setState({ file: uri, disp0: { display: "none" } });
-        },
-        "base64"
-      );
-    } else {
-      this.setState({
-        a: "choose || jpg || png",
+    if (extension === "jpg" || extension === "png") return Resizer.imageFileResizer(
+      event.target.files[0],
+      150,
+      150,
+      extension,
+      50,
+      0,
+      (uri) => {
+        this.setState({ file: uri, extension: extension, disp0: { display: "none" } });
+      },
+      "base64"
+    );
+    this.setState({
+      a: "choose || jpg || png",
+      disp0: { display: "block", lineHeight: "50px"},
+      extension: extension,
+    });
+  };
+  submit = (event) => {
+    event.preventDefault();
+    const types = ["jpg", "png"];
+    if (!types.includes(this.state.extension)) return this.setState({
+      a: "choose || jpg || png",
+      disp0: { display: "block", lineHeight: "50px" },
+    });
+    if (this.state.passw && this.state.blogers && this.state.name && this.state.title && this.state.file) return axios.post(`/one`, {
+      passw: this.state.passw,
+      blogers: this.state.blogers,
+      name: this.state.name,
+      title: this.state.title,
+      file: this.state.file,
+    })
+    .then((res) => {
+      if (res.data.e) return this.setState({
+        a: res.data.e,
         disp0: { display: "block", lineHeight: "50px" },
       });
-    }
-  };
-  sub = (event) => {
-    event.preventDefault();
-    if (this.state.file[0].split(".").pop() === "png" || "jpg") {
-      if (
-        this.state.passw &&
-        this.state.blogers &&
-        this.state.name &&
-        this.state.title &&
-        this.state.file
-      ) {
-        axios
-          .post(`/one`, {
-            passw: this.state.passw,
-            blogers: this.state.blogers,
-            name: this.state.name,
-            title: this.state.title,
-            file: this.state.file,
-          })
-          .then((res) => {
-            if (res.data.e) {
-              this.setState({
-                a: res.data.e,
-                disp0: { display: "block", lineHeight: "50px" },
-              });
-            } else {
-              this.setState({
-                a: "Blog sent",
-                disp0: { display: "block", lineHeight: "50px" },
-                passw: null,
-                blogers: null,
-                name: null,
-                title: null,
-                file: null,
-              });
-              document.getElementById("a6").reset();
-              return this.tab(res.data);
-            }
-          })
-          .catch((error) => {
-            this.setState({
-              a: error.response.statusText,
-              disp0: { display: "block", lineHeight: "50px" },
-            });
-          });
-      } else {
-        this.setState({
-          a: "Blog from incomplete",
-          disp0: { display: "block", lineHeight: "50px" },
-        });
-      }
-    } else {
       this.setState({
-        a: "choose || jpg || png",
+        a: "Blog sent",
+        disp0: { display: "block", lineHeight: "50px" },
+        passw: null,
+        blogers: null,
+        name: null,
+        title: null,
+        file: null,
+      });
+      document.getElementById("a6").reset();
+      this.tab(res.data);
+    })
+    .catch((error) => {
+      this.setState({
+        a: error.response.statusText,
         disp0: { display: "block", lineHeight: "50px" },
       });
-    }
+    });
+    this.setState({
+      a: "Blog from incomplete",
+      disp0: { display: "block", lineHeight: "50px" },
+    });
   };
-  sub0 = (event) => {
+  submittwo = (event) => {
     event.preventDefault();
-    axios
-      .post(`/two`, {
-        passw0: this.state.passw0,
-        ddate: this.state.ddate,
-      })
-      .then((res) => {
-        if (res.data.e) {
-          this.setState({
-            a0: res.data.e,
-            disp1: { display: "block", lineHeight: "50px" },
-          });
-        } else {
-          this.setState({
-            a0: "Blog delete",
-            disp1: { display: "block", lineHeight: "50px" },
-            passw0: null,
-            ddate: null,
-          });
-          document.getElementById("a2").reset();
-          if (!res.data.length) {
-            return this.setState({
-              txt: (
-                <table>
-                  <tr style={{ height: "35vh" }}>
-                    <th> No posts yet </th>
-                  </tr>
-                </table>
-              ),
-            });
-          }
-          return this.tab(res.data);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        this.setState({
-          a0: error.response.statusText,
-          disp1: { display: "block", lineHeight: "50px" },
-        });
+    axios.post(`/two`, {
+      passw0: this.state.passw0,
+      ddate: this.state.ddate,
+    })
+    .then((res) => {
+      if (res.data.e) return this.setState({
+        a0: res.data.e,
+        disp1: { display: "block", lineHeight: "50px" },
       });
+      this.setState({
+        a0: "Blog delete",
+        disp1: { display: "block", lineHeight: "50px" },
+        passw0: null,
+        ddate: null,
+      });
+      document.getElementById("a2").reset();
+      if (!res.data.length) return this.postcount();
+      this.tab(res.data);
+    })
+    .catch((error) => {
+      this.setState({
+        a0: error.response.statusText,
+        disp1: { display: "block", lineHeight: "50px" },
+      });
+    });
   };
   tab = (x) => {
     this.setState({
@@ -300,7 +263,7 @@ export default class Blog extends React.Component {
                     <form
                       id="a6"
                       className="formAdd"
-                      onSubmit={this.sub}
+                      onSubmit={this.submit}
                       autoComplete="off"
                       style={{
                         width: "100%",
@@ -314,6 +277,7 @@ export default class Blog extends React.Component {
                       <SubjectIcon />
                       <TextField
                         id="passs"
+                        autoComplete="true"
                         className="MuiFormControl-root-com"
                         InputProps={{
                           style: {
@@ -469,7 +433,7 @@ export default class Blog extends React.Component {
                     <form
                       id="a2"
                       className="formRemove"
-                      onSubmit={this.sub0}
+                      onSubmit={this.submittwo}
                       autoComplete="off"
                       style={{
                         width: "100%",
@@ -482,6 +446,7 @@ export default class Blog extends React.Component {
                       </label>
                       <TextField
                         id="pass"
+                        autoComplete="true"
                         className="MuiFormControl-root-com"
                         InputProps={{
                           style: {

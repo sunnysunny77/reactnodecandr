@@ -38,17 +38,14 @@ class Nav extends Component {
   }
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
-    if (window.screen.width > 1200) {
-      this.setState({
-        wi: "200",
-        hi: "46",
-      });
-    } else if (window.screen.width <= 1200) {
-      this.setState({
-        wi: "140",
-        hi: "32",
-      });
-    }
+    if (window.screen.width > 1200) return this.setState({
+      wi: "200",
+      hi: "46",
+    });
+    if (window.screen.width <= 1200) return this.setState({
+      wi: "140",
+      hi: "32",
+    });
   }
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);

@@ -16,18 +16,14 @@ export default class Contactc extends Component {
     };
   }
   componentDidMount() {
-    if (this.state.load) {
-      this.props.setLoad("none");
-    }
-    axios
-      .post(`/cont`)
-      .then((res) => {
-        this.setState({ res: res.data, load: false });
-        this.props.setLoad("block");
-      })
-      .catch((error) => {
-        alert(error);
-      });
+    if (this.state.load) this.props.setLoad("none");
+    axios.post(`/cont`).then((res) => {
+      this.props.setLoad("block");
+      this.setState({ res: res.data, load: false });
+    })
+    .catch((error) => {
+      alert(error);
+    });
   }
   render() {
     return (

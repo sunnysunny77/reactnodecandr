@@ -76,7 +76,7 @@ class Home extends Component {
         speed: 500,
         pauseOnHover: false,
         fade: true,
-        beforeChange: this.vidt,
+        beforeChange: this.vidtoggle,
       },
       w: window.scrollTo(0, 0),
       disp: { display: "none" },
@@ -98,115 +98,128 @@ class Home extends Component {
     };
   }
   componentDidMount() {
-    if (this.state.load) {
-      this.props.setLoad("none");
-    }
-    this.reso();
-    axios
-      .post('/hom')
-      .then((res) => {
-        this.setState({
-          res: res.data,
-          vi: res.data.vid.map((key, index) => {
-            let d;
-            if (index === 0) {
-              d = "inline-block";
-            } else {
-              d = "none";
-            }
-            return (
-              <React.Fragment key={index}>
-                <link rel="preload" href={res.data.vid[index][0]} as="image" />
-                <span
-                  className={ReactHtmlParser("videoLink  d" + [index + 1])}
-                  style={{ display: d }}
-                  onClick={() => this.vid(res.data.vid[index][1])}
-                >
-                  {ReactHtmlParser(res.data.vid[index][2])}{" "}
-                  <PlayCircleOutlineIcon />
-                </span>
-                <img
-                  className={ReactHtmlParser("videoImg  d" + [index + 1])}
-                  src={res.data.vid[index][0]}
-                  alt={ReactHtmlParser(res.data.vid[index][2])}
-                  width="275"
-                  height="275"
-                  style={{
-                    display: d,
-                  }}
-                />
-                <link rel="preload" href={res.data.vid[index][3]} as="image" />
-                <span
-                  className={ReactHtmlParser("videoLink  d" + [index + 1])}
-                  style={{ display: d }}
-                  onClick={() => this.vid(res.data.vid[index][4])}
-                >
-                  {ReactHtmlParser(res.data.vid[index][5])}{" "}
-                  <PlayCircleOutlineIcon />
-                </span>
-                <img
-                  className={ReactHtmlParser("videoImg  d" + [index + 1])}
-                  src={res.data.vid[index][3]}
-                  alt={ReactHtmlParser(res.data.vid[index][5])}
-                  width="275"
-                  height="275"
-                  style={{
-                    display: d,
-                  }}
-                />
-              </React.Fragment>
-            );
-          }),
-          load: false,
-        });
-        this.props.setLoad("block");
-        document.getElementById("my-svg").innerHTML = this.state.res.svg;
-        new Vivus("my-svg", { duration: 200 });
-        if (window.location.search === "?in=in") {
-          this.scr();
-        }
-      })
-      .catch((error) => {
-        alert(error);
+    if (this.state.load) this.props.setLoad("none");
+    if (window.location.search === "?in=in") this.scr();
+    this.resolution();
+    axios.post('/hom').then((res) => {
+      this.props.setLoad("block");
+      this.setState({
+        res: res.data,
+        load: false,
+        vi: res.data.vid.map((key, index) => {
+          let d = "none";
+          if (index === 0) d = "inline-block";
+          return (
+            <React.Fragment key={index}>
+              <link rel="preload" href={res.data.vid[index][0]} as="image" />
+              <span
+                className={ReactHtmlParser("videoLink  d" + [index + 1])}
+                style={{ display: d }}
+                onClick={() => this.vid(res.data.vid[index][1])}
+              >
+                {ReactHtmlParser(res.data.vid[index][2])}{" "}
+                <PlayCircleOutlineIcon />
+              </span>
+              <img
+                className={ReactHtmlParser("videoImg  d" + [index + 1])}
+                src={res.data.vid[index][0]}
+                alt={ReactHtmlParser(res.data.vid[index][2])}
+                width="275"
+                height="275"
+                style={{
+                  display: d,
+                }}
+              />
+              <link rel="preload" href={res.data.vid[index][3]} as="image" />
+              <span
+                className={ReactHtmlParser("videoLink  d" + [index + 1])}
+                style={{ display: d }}
+                onClick={() => this.vid(res.data.vid[index][4])}
+              >
+                {ReactHtmlParser(res.data.vid[index][5])}{" "}
+                <PlayCircleOutlineIcon />
+              </span>
+              <img
+                className={ReactHtmlParser("videoImg  d" + [index + 1])}
+                src={res.data.vid[index][3]}
+                alt={ReactHtmlParser(res.data.vid[index][5])}
+                width="275"
+                height="275"
+                style={{
+                  display: d,
+                }}
+              />
+            </React.Fragment>
+          );
+        }),
       });
+      document.getElementById("my-svg").innerHTML = this.state.res.svg;
+      new Vivus("my-svg", { duration: 200 });
+    })
+    .catch((error) => {
+      alert(error);
+    });
   }
+  resolution = () => {
+    let width = window.screen.width;
+    width > 1200 ?
+      this.setState({
+        src0: "https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg",
+        src1: "https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg",
+      })
+      :
+      this.setState({
+        src0: "https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg",
+        src1: "https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg",
+      });
+
+    if (width > 1200) return this.setState({
+      wi: "1200",
+      hi: "485",
+    });
+
+    if (width <= 1200 && width >= 576) return this.setState({
+      wi: "992",
+      hi: "410",
+    });
+
+    if (width < 576) return this.setState({
+      wi: "360",
+      hi: "146",
+    });
+  };
+  scr = () => {
+    document.getElementById("enquiry").scrollIntoView();
+  };
   vid = (v) => {
     window.open(v);
   };
-  vidd = (v) => {
+  viddisplay = (v) => {
     let c = this.state.count + v;
     let x = this.state.count;
     if (c > 0 && c <= this.state.res.vid.length) {
       document.getElementsByClassName("d" + x)[1].style.display = "none";
       document.getElementsByClassName("d" + x)[3].style.display = "none";
-      document.getElementsByClassName("d" + c)[1].style.display =
-        "inline-block";
-      document.getElementsByClassName("d" + c)[3].style.display =
-        "inline-block";
+      document.getElementsByClassName("d" + c)[1].style.display = "inline-block";
+      document.getElementsByClassName("d" + c)[3].style.display = "inline-block";
       document.getElementsByClassName("d" + x)[0].style.display = "none";
       document.getElementsByClassName("d" + x)[2].style.display = "none";
-      document.getElementsByClassName("d" + c)[0].style.display =
-        "inline-block";
-      document.getElementsByClassName("d" + c)[2].style.display =
-        "inline-block";
+      document.getElementsByClassName("d" + c)[0].style.display = "inline-block";
+      document.getElementsByClassName("d" + c)[2].style.display = "inline-block";
       this.setState({ count: c });
     }
   };
-  vidt = () => {
+  vidtoggle = () => {
     let c = this.state.count;
     if (c < this.state.res.vid.length) {
       document.getElementsByClassName("d" + c)[1].style.display = "none";
       document.getElementsByClassName("d" + c)[3].style.display = "none";
-      document.getElementsByClassName("d" + [c + 1])[1].style.display =
-        "inline-block";
-      document.getElementsByClassName("d" + [c + 1])[3].style.display =
-        "inline-block";
+      document.getElementsByClassName("d" + [c + 1])[1].style.display = "inline-block";
+      document.getElementsByClassName("d" + [c + 1])[3].style.display = "inline-block";
       document.getElementsByClassName("d" + c)[0].style.display = "none";
       document.getElementsByClassName("d" + c)[2].style.display = "none";
-      document.getElementsByClassName("d" + [c + 1])[0].style.display =
-        "inline-block";
-      document.getElementsByClassName("d" + [c + 1])[2].style.display =
-        "inline-block";
+      document.getElementsByClassName("d" + [c + 1])[0].style.display = "inline-block";
+      document.getElementsByClassName("d" + [c + 1])[2].style.display = "inline-block";
       this.setState({ count: c + 1 });
     } else {
       document.getElementsByClassName("d" + c)[1].style.display = "none";
@@ -232,91 +245,45 @@ class Home extends Component {
     let val = event.target.value;
     this.setState({ [nam]: val, disp: { display: "none" } });
   };
-  subic = (event) => {
+  submit = (event) => {
     event.preventDefault();
-    if (
-      this.state.name &&
-      this.state.email &&
-      this.state.phone &&
-      this.state.selectedOption &&
-      this.state.text
-    ) {
-      this.setState({
-        a: "Waiting...",
-        disp: { display: "block", lineHeight: "50px" },
-      });
-      axios
-        .post('/three', {
-          name: this.state.name,
-          email: this.state.email,
-          phone: this.state.phone,
-          selectedOption: this.state.selectedOption,
-          text: this.state.text,
-        })
-        .then((res) => {
-          if (res.data.e) {
-            this.setState({
-              a: res.data.e,
-              disp: { display: "block", lineHeight: "50px" },
-            });
-          }
-          if (res.data.a) {
-            this.setState({
-              a: res.data.a,
-              disp: { display: "block", lineHeight: "50px" },
-              name: null,
-              email: null,
-              phone: null,
-              selectedOption: null,
-              text: null,
-            });
-            document.getElementById("a1").reset();
-          }
-        })
-        .catch((error) => {
-          this.setState({
-            a: error.response.statusText,
-            disp: { display: "block", lineHeight: "50px" },
-          });
+    this.setState({
+      a: "Waiting...",
+      disp: { display: "block", lineHeight: "50px" },
+    });
+    if (this.state.name && this.state.email && this.state.phone && this.state.selectedOption && this.state.text) return axios.post('/three', {
+      name: this.state.name,
+      email: this.state.email,
+      phone: this.state.phone,
+      selectedOption: this.state.selectedOption,
+      text: this.state.text,
+    })
+      .then((res) => {
+        if (res.data.e) return this.setState({
+          a: res.data.e,
+          disp: { display: "block", lineHeight: "50px" },
         });
-    } else {
-      this.setState({
-        a: "Enquiry from incomplete",
-        disp: { display: "block", lineHeight: "50px" },
+        this.setState({
+          a: res.data.a,
+          disp: { display: "block", lineHeight: "50px" },
+          name: null,
+          email: null,
+          phone: null,
+          selectedOption: null,
+          text: null,
+        });
+        document.getElementById("a1").reset();
+      })
+      .catch((error) => {
+        this.setState({
+          a: error.response.statusText,
+          disp: { display: "block", lineHeight: "50px" },
+        });
       });
-    }
-  };
-  scr = () => {
-    document.getElementById("enquiry").scrollIntoView();
-  };
-  reso = () => {
-    if (window.screen.width > 1200) {
-      this.setState({
-        src0: "https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg",
-        src1: "https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg",
-      });
-    } else if (window.screen.width <= 1200) {
-      this.setState({
-        src0: "https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg",
-        src1: "https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg",
-      });
-    }
-    if (window.screen.width > 1200) {
-      this.setState({
-        wi: "1200",
-        hi: "485",
-      });
-    } else if (window.screen.width <= 1200 && window.screen.width >= 576) {
-      this.setState({
-        wi: "992",
-        hi: "410",
-      });
-    } else if (window.screen.width < 576) {
-      this.setState({
-        wi: "360",
-        hi: "146",
-      });
-    }
+    this.setState({
+      a: "Enquiry from incomplete",
+      disp: { display: "block", lineHeight: "50px" },
+    });
   };
   render() {
     return (
@@ -366,7 +333,7 @@ class Home extends Component {
             </Slider>
             <section className="video">
               <svg
-                onClick={() => this.vidd(-1)}
+                onClick={() => this.viddisplay(-1)}
                 id="left"
                 height="25px"
                 viewBox="0 0 500 500"
@@ -379,7 +346,7 @@ class Home extends Component {
               </svg>
               {this.state.vi}
               <svg
-                onClick={() => this.vidd(+1)}
+                onClick={() => this.viddisplay(+1)}
                 id="right"
                 height="25px"
                 viewBox="0 0 500 500"
@@ -532,7 +499,7 @@ class Home extends Component {
                   fontFamily: styles.f3,
                   color: styles.wi,
                 }}
-                onSubmit={this.subic}
+                onSubmit={this.submit}
               >
                 <label htmlFor="name" className="hiddentext">
                   Name

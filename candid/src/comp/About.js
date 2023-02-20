@@ -18,36 +18,27 @@ export default class About extends React.Component {
     };
   }
   componentDidMount() {
-    if (this.state.load) {
-      this.props.setLoad("none");
-    }
+    if (this.state.load) this.props.setLoad("none");
     window.addEventListener("scroll", this.handleScroll);
-    axios
-      .post(`/abou`)
-      .then((res) => {
-        this.setState({
-          res: res.data.a,
-          cba: res.data.b.cba,
-          abc: <Maps data={res.data.b.abc} />,
-          load: false,
-        });
-        this.props.setLoad("block");
-      })
-      .catch((error) => {
-        alert(error);
+    axios.post(`/abou`).then((res) => {
+      this.props.setLoad("block");
+      this.setState({
+        res: res.data.a,
+        cba: res.data.b.cba,
+        abc: <Maps data={res.data.b.abc} />,
+        load: false,
       });
+    })
+    .catch((error) => {
+      alert(error);
+    });
   }
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
   }
   handleScroll = () => {
-    if (window.innerWidth > 1200) {
-
-      document.querySelector(".wave0").style.top = "40px";
-    } else if (window.innerWidth <= 1200) {
-      document.querySelector(".wave0").style.top = "0px";
-
-    }
+    if (window.innerWidth > 1200) return document.querySelector(".wave0").style.top = "40px";
+    if (window.innerWidth <= 1200) return document.querySelector(".wave0").style.top = "0px";
   };
   render() {
     return (
