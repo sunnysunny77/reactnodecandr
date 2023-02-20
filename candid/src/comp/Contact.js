@@ -16,26 +16,22 @@ export default class Contactc extends Component {
     };
   }
   componentDidMount() {
-    if (this.state.load) this.props.setLoad("none");
     axios.post(`/cont`).then((res) => {
-      this.props.setLoad("block");
       this.setState({ res: res.data, load: false });
     })
-    .catch((error) => {
-      alert(error);
-    });
+      .catch((error) => {
+        alert(error);
+      });
   }
   render() {
     return (
       <React.Fragment>
         {this.state.load ? (
-          <React.Fragment>
-            <img
-              className="load"
-              src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
-              alt="loading"
-            />
-          </React.Fragment>
+          <img
+            className="load"
+            src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
+            alt="loading"
+          />
         ) : (
           <React.Fragment>
             {this.state.w}
@@ -47,9 +43,9 @@ export default class Contactc extends Component {
               <div className="contactTwo">
                 <h2>
                   {ReactHtmlParser(this.state.res.h)}{" "}
-                  <ContactsIcon  />
+                  <ContactsIcon />
                 </h2>
-                <hr/>
+                <hr />
                 <p>
                   &nbsp;&#8226;&nbsp;{ReactHtmlParser(this.state.res.et)}
                   <br></br>
@@ -82,12 +78,12 @@ export default class Contactc extends Component {
             <section className="contactContTwo">
               <h2>
                 {ReactHtmlParser(this.state.res.h2)}{" "}
-                <ContactsIcon  />{" "}
+                <ContactsIcon />{" "}
               </h2>
               <hr />
               <Wave>
                 <div id="contactResponse" className="prop">
-                 {ReactHtmlParser(this.state.res.avail)}
+                  {ReactHtmlParser(this.state.res.avail)}
                 </div>
               </Wave>
             </section>

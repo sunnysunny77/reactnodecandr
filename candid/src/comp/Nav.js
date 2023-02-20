@@ -42,7 +42,7 @@ class Nav extends Component {
       wi: "200",
       hi: "46",
     });
-    if (window.screen.width <= 1200) return this.setState({
+    if (window.screen.width <= 1200) this.setState({
       wi: "140",
       hi: "32",
     });

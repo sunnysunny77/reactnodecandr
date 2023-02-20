@@ -18,10 +18,8 @@ export default class About extends React.Component {
     };
   }
   componentDidMount() {
-    if (this.state.load) this.props.setLoad("none");
     window.addEventListener("scroll", this.handleScroll);
     axios.post(`/abou`).then((res) => {
-      this.props.setLoad("block");
       this.setState({
         res: res.data.a,
         cba: res.data.b.cba,
@@ -29,28 +27,26 @@ export default class About extends React.Component {
         load: false,
       });
     })
-    .catch((error) => {
-      alert(error);
-    });
+      .catch((error) => {
+        alert(error);
+      });
   }
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
   }
   handleScroll = () => {
     if (window.innerWidth > 1200) return document.querySelector(".wave0").style.top = "40px";
-    if (window.innerWidth <= 1200) return document.querySelector(".wave0").style.top = "0px";
+    if (window.innerWidth <= 1200) document.querySelector(".wave0").style.top = "0px";
   };
   render() {
     return (
       <React.Fragment>
         {this.state.load ? (
-          <React.Fragment>
-            <img
-              className="load"
-              src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
-              alt="loading"
-            />
-          </React.Fragment>
+          <img
+            className="load"
+            src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
+            alt="loading"
+          />
         ) : (
           <React.Fragment>
             {this.state.w}

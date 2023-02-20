@@ -50,9 +50,7 @@ export default class Blog extends React.Component {
     };
   }
   componentDidMount() {
-    if (this.state.load) this.props.setLoad("none");
     axios.get(`/ong`).then((res) => {
-      this.props.setLoad("block");
       this.setState({
         buttons: res.data.buttons,
         load: false,
@@ -100,7 +98,7 @@ export default class Blog extends React.Component {
     );
     this.setState({
       a: "choose || jpg || png",
-      disp0: { display: "block", lineHeight: "50px"},
+      disp0: { display: "block", lineHeight: "50px" },
       extension: extension,
     });
   };
@@ -118,29 +116,29 @@ export default class Blog extends React.Component {
       title: this.state.title,
       file: this.state.file,
     })
-    .then((res) => {
-      if (res.data.e) return this.setState({
-        a: res.data.e,
-        disp0: { display: "block", lineHeight: "50px" },
+      .then((res) => {
+        if (res.data.e) return this.setState({
+          a: res.data.e,
+          disp0: { display: "block", lineHeight: "50px" },
+        });
+        this.setState({
+          a: "Blog sent",
+          disp0: { display: "block", lineHeight: "50px" },
+          passw: null,
+          blogers: null,
+          name: null,
+          title: null,
+          file: null,
+        });
+        document.getElementById("a6").reset();
+        this.tab(res.data);
+      })
+      .catch((error) => {
+        this.setState({
+          a: error.response.statusText,
+          disp0: { display: "block", lineHeight: "50px" },
+        });
       });
-      this.setState({
-        a: "Blog sent",
-        disp0: { display: "block", lineHeight: "50px" },
-        passw: null,
-        blogers: null,
-        name: null,
-        title: null,
-        file: null,
-      });
-      document.getElementById("a6").reset();
-      this.tab(res.data);
-    })
-    .catch((error) => {
-      this.setState({
-        a: error.response.statusText,
-        disp0: { display: "block", lineHeight: "50px" },
-      });
-    });
     this.setState({
       a: "Blog from incomplete",
       disp0: { display: "block", lineHeight: "50px" },
@@ -152,27 +150,27 @@ export default class Blog extends React.Component {
       passw0: this.state.passw0,
       ddate: this.state.ddate,
     })
-    .then((res) => {
-      if (res.data.e) return this.setState({
-        a0: res.data.e,
-        disp1: { display: "block", lineHeight: "50px" },
+      .then((res) => {
+        if (res.data.e) return this.setState({
+          a0: res.data.e,
+          disp1: { display: "block", lineHeight: "50px" },
+        });
+        this.setState({
+          a0: "Blog delete",
+          disp1: { display: "block", lineHeight: "50px" },
+          passw0: null,
+          ddate: null,
+        });
+        document.getElementById("a2").reset();
+        if (!res.data.length) return this.postcount();
+        this.tab(res.data);
+      })
+      .catch((error) => {
+        this.setState({
+          a0: error.response.statusText,
+          disp1: { display: "block", lineHeight: "50px" },
+        });
       });
-      this.setState({
-        a0: "Blog delete",
-        disp1: { display: "block", lineHeight: "50px" },
-        passw0: null,
-        ddate: null,
-      });
-      document.getElementById("a2").reset();
-      if (!res.data.length) return this.postcount();
-      this.tab(res.data);
-    })
-    .catch((error) => {
-      this.setState({
-        a0: error.response.statusText,
-        disp1: { display: "block", lineHeight: "50px" },
-      });
-    });
   };
   tab = (x) => {
     this.setState({
@@ -229,13 +227,11 @@ export default class Blog extends React.Component {
     return (
       <React.Fragment>
         {this.state.load ? (
-          <React.Fragment>
-            <img
-              className="load"
-              src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
-              alt="loading"
-            />
-          </React.Fragment>
+          <img
+            className="load"
+            src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
+            alt="loading"
+          />
         ) : (
           <React.Fragment>
             {this.state.w}

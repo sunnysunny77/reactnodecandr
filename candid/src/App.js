@@ -14,7 +14,7 @@ function App() {
   const [ph, setPh] = useState(null);
   const [time, setTime] = useState(null);
   const [day, setDay] = useState(null);
-  const [load, setLoad] = useState(null);
+  const [load, setLoad] = useState(false);
   const [buttons, setButtons] = useState([]);
 
   useEffect(() => {
@@ -25,62 +25,70 @@ function App() {
         setTime(res.data.time);
         setDay(res.data.day);
         setButtons(res.data.buttons);
+        setLoad(true);
       })
       .catch((error) => {
         alert(error);
       });
   }, []);
-
   return (
     <Router>
-      <Nav ph={ph} time={time} day={day} buttons={buttons} />
-      <main id="di">
-        <Switch>
-          <Route exact path="/">
-            {window.screen.width > 1200 ? (
-              <React.Fragment>
-                <link
-                  rel="preload"
-                  href="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg"
-                  as="image"
-                ></link>
-                <link
-                  rel="preload"
-                  href="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg"
-                  as="image"
-                ></link>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                <link
-                  rel="preload"
-                  href="https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg"
-                  as="image"
-                ></link>
-                <link
-                  rel="preload"
-                  href="https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg"
-                  as="image"
-                ></link>
-              </React.Fragment>
-            )}
-          <Home setLoad={(x) => setLoad(x)} />
-          </Route>
-          <Route path="/blog" exact>
-            <Blog setLoad={(x) => setLoad(x)} />
-          </Route>
-          <Route path="/gallery" exact>
-            <Gallery setLoad={(x) => setLoad(x)} />
-          </Route>
-          <Route path="/contact" exact>
-            <Contact setLoad={(x) => setLoad(x)} />
-          </Route>
-          <Route path="/about" exact>
-            <About setLoad={(x) => setLoad(x)} />
-          </Route>
-        </Switch>
-      </main>
-      <Footer ph={ph} time={time} day={day} buttons={buttons} load={load} />
+      {load ? (<React.Fragment>
+        <Nav ph={ph} time={time} day={day} buttons={buttons} />
+        <main id="di">
+          <Switch>
+            <Route exact path="/">
+              {window.screen.width > 1200 ? (
+                <React.Fragment>
+                  <link
+                    rel="preload"
+                    href="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg"
+                    as="image"
+                  ></link>
+                  <link
+                    rel="preload"
+                    href="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg"
+                    as="image"
+                  ></link>
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  <link
+                    rel="preload"
+                    href="https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg"
+                    as="image"
+                  ></link>
+                  <link
+                    rel="preload"
+                    href="https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg"
+                    as="image"
+                  ></link>
+                </React.Fragment>
+              )}
+              <Home />
+            </Route>
+            <Route path="/blog" exact>
+              <Blog />
+            </Route>
+            <Route path="/gallery" exact>
+              <Gallery />
+            </Route>
+            <Route path="/contact" exact>
+              <Contact />
+            </Route>
+            <Route path="/about" exact>
+              <About />
+            </Route>
+          </Switch>
+        </main>
+        <Footer ph={ph} time={time} day={day} buttons={buttons} />
+      </React.Fragment>) : (
+        <img style={{ top: "0" }}
+          className="load"
+          src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
+          alt="loading"
+        />
+      )}
     </Router>
   );
 }

@@ -8,6 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: larger;
+  overflow: scroll;
   @media only screen and (max-width: 640px) {
     font-size: medium;
   }
@@ -64,8 +65,9 @@ h1 {
 
 .load {
   height: 55px;
+  width: 55px;
   position: absolute; 
-  bottom: 20px;
+  top: -150px;
   right: 40px;
 }
 

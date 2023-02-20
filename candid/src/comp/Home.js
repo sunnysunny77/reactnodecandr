@@ -98,10 +98,8 @@ class Home extends Component {
     };
   }
   componentDidMount() {
-    if (this.state.load) this.props.setLoad("none");
     this.resolution();
     axios.post('/hom').then((res) => {
-      this.props.setLoad("block");
       this.setState({
         res: res.data,
         load: false,
@@ -156,9 +154,9 @@ class Home extends Component {
       new Vivus("my-svg", { duration: 200 });
       if (window.location.search === "?in=in") this.scr();
     })
-    .catch((error) => {
-      alert(error);
-    });
+      .catch((error) => {
+        alert(error);
+      });
   }
   resolution = () => {
     let width = window.screen.width;
@@ -172,18 +170,15 @@ class Home extends Component {
         src0: "https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg",
         src1: "https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg",
       });
-
     if (width > 1200) return this.setState({
       wi: "1200",
       hi: "485",
     });
-
     if (width <= 1200 && width >= 576) return this.setState({
       wi: "992",
       hi: "410",
     });
-
-    if (width < 576) return this.setState({
+    if (width < 576) this.setState({
       wi: "360",
       hi: "146",
     });
@@ -289,13 +284,11 @@ class Home extends Component {
     return (
       <React.Fragment>
         {this.state.load ? (
-          <React.Fragment>
-            <img
-              className="load"
-              src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
-              alt="loading"
-            />
-          </React.Fragment>
+          <img
+            className="load"
+            src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
+            alt="loading"
+          />
         ) : (
           <React.Fragment>
             {this.state.w}

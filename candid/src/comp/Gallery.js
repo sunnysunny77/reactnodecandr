@@ -14,26 +14,22 @@ export default class Galery extends Component {
     };
   }
   componentDidMount() {
-    if (this.state.load) this.props.setLoad("none");
     axios.post(`/g`).then((res) => {
-      this.props.setLoad("block");
       this.setState({ res: res.data, load: false });
     })
-    .catch((error) => {
-      alert(error);
-    });
+      .catch((error) => {
+        alert(error);
+      });
   }
   render() {
     return (
       <React.Fragment>
         {this.state.load ? (
-          <React.Fragment>
-            <img
-              className="load"
-              src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
-              alt="loading"
-            />
-          </React.Fragment>
+          <img
+            className="load"
+            src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
+            alt="loading"
+          />
         ) : (
           <React.Fragment>
             {this.state.w}
