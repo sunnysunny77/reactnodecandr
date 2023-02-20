@@ -68,10 +68,21 @@ h1 {
   width: 40px;
   position: absolute; 
   top: 0;
-  @media only screen and (max-width: 1200px) {
-    top: 60px;
-  }
   right: 40px;
+  @media only screen and (max-width: 1200px) {
+    top: -50px;
+  }
+}
+
+.loadfront {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: 150px; 
+  right: 40px;
+  @media only screen and (max-width: 1200px) {
+    top: 40px;
+  }
 }
 
 main {

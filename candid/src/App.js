@@ -83,8 +83,8 @@ function App() {
         </main>
         <Footer ph={ph} time={time} day={day} buttons={buttons} />
       </React.Fragment>) : (
-        <img style={{ top: "150px" }}
-          className="load"
+        <img
+          className="loadfront"
           src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
           alt="loading"
         />
