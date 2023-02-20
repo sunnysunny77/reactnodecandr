@@ -64,12 +64,12 @@ h1 {
 }
 
 .load {
-  height: 55px;
-  width: 55px;
+  height: 40px;
+  width: 40px;
   position: absolute; 
-  top: 12.5px;
+  top: 0;
   @media only screen and (max-width: 1200px) {
-    top: 100px;
+    top: 60px;
   }
   right: 40px;
 }
