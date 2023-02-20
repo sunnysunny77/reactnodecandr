@@ -99,7 +99,6 @@ class Home extends Component {
   }
   componentDidMount() {
     if (this.state.load) this.props.setLoad("none");
-    if (window.location.search === "?in=in") this.scr();
     this.resolution();
     axios.post('/hom').then((res) => {
       this.props.setLoad("block");
@@ -155,6 +154,7 @@ class Home extends Component {
       });
       document.getElementById("my-svg").innerHTML = this.state.res.svg;
       new Vivus("my-svg", { duration: 200 });
+      if (window.location.search === "?in=in") this.scr();
     })
     .catch((error) => {
       alert(error);
