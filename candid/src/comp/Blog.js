@@ -271,7 +271,7 @@ export default class Blog extends React.Component {
                         color: styles.wi,
                       }}
                     >
-                      <label for="passs" className="hiddentext">
+                      <label htmlFor="passs" className="hiddentext">
                         Password
                       </label>
                       <SubjectIcon />
@@ -299,7 +299,7 @@ export default class Blog extends React.Component {
                         placeholder="Pass:"
                         onChange={this.change}
                       />
-                      <label for="title" className="hiddentext">
+                      <label htmlFor="title" className="hiddentext">
                         Title
                       </label>
                       <TextField
@@ -325,7 +325,7 @@ export default class Blog extends React.Component {
                         placeholder="Title:"
                         onChange={this.change}
                       />
-                      <label for="name" className="hiddentext">
+                      <label htmlFor="name" className="hiddentext">
                         Name
                       </label>
                       <TextField
@@ -351,13 +351,13 @@ export default class Blog extends React.Component {
                         placeholder="Name:"
                         onChange={this.change}
                       />
-                      <label for="text" className="hiddentext">
+                      <label htmlFor="text" className="hiddentext">
                         Text
                       </label>
                       <TextField
                         id="text"
                         multiline
-                        rows="20"
+                        minRows="20"
                         fullWidth={true}
                         InputProps={{
                           disableUnderline: true,
@@ -383,7 +383,7 @@ export default class Blog extends React.Component {
                         onChange={this.change}
                       />
                       <div style={{ textAlign: "center", marginTop: "10px" }}>
-                        <label for="avatar">Upload a picture:</label>
+                        <label htmlFor="avatar">Upload a picture:</label>
                         <br></br>
                         <input
                           id="avatar"
@@ -441,7 +441,7 @@ export default class Blog extends React.Component {
                         color: styles.wi,
                       }}
                     >
-                      <label for="pass" className="hiddentext">
+                      <label htmlFor="pass" className="hiddentext">
                         Password
                       </label>
                       <TextField
@@ -468,7 +468,7 @@ export default class Blog extends React.Component {
                         placeholder="Pass:"
                         onChange={this.change}
                       />
-                      <label for="date" className="hiddentext">
+                      <label htmlFor="date" className="hiddentext">
                         Date
                       </label>
                       <TextField

@@ -395,7 +395,7 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <p><hr />{ReactHtmlParser(this.state.res.c1)}</p>
+                <hr /><p>{ReactHtmlParser(this.state.res.c1)}</p>
                 <StarBorderIcon />
                 <FilterListIcon />
               </div>
@@ -411,7 +411,7 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <p><hr />{ReactHtmlParser(this.state.res.c2)}</p>
+                <hr /><p>{ReactHtmlParser(this.state.res.c2)}</p>
                 <WhatshotIcon />
                 <FilterListIcon />
               </div>
@@ -427,7 +427,7 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <p><hr />{ReactHtmlParser(this.state.res.c3)}</p>
+                <hr /><p>{ReactHtmlParser(this.state.res.c3)}</p>
                 <BuildIcon />
                 <FilterListIcon />
               </div>
@@ -443,7 +443,7 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <p><hr />{ReactHtmlParser(this.state.res.c4)}</p>
+                <hr /><p>{ReactHtmlParser(this.state.res.c4)}</p>
                 <a target="4" href={this.state.res.u4}>
                   {ReactHtmlParser(this.state.res.buttons[0])}
                 </a>
@@ -461,7 +461,7 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <p><hr />{ReactHtmlParser(this.state.res.c5)}</p>
+                <hr /><p>{ReactHtmlParser(this.state.res.c5)}</p>
                 <a target="5" href={this.state.res.u5}>
                   {ReactHtmlParser(this.state.res.buttons[0])}
                 </a>
@@ -479,7 +479,7 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <p><hr />{ReactHtmlParser(this.state.res.c6)}</p>
+                <hr /><p>{ReactHtmlParser(this.state.res.c6)}</p>
                 <a target="6" href={this.state.res.u6}>
                   {ReactHtmlParser(this.state.res.buttons[0])}
                 </a>
@@ -623,7 +623,7 @@ class Home extends Component {
                   id="text"
                   multiline
                   className="text"
-                  rows="20"
+                  minRows="20"
                   fullWidth={true}
                   InputProps={{
                     disableUnderline: true,
