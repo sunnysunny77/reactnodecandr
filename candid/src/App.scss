@@ -67,7 +67,10 @@ h1 {
   height: 55px;
   width: 55px;
   position: absolute; 
-  top: -150px;
+  top: 40px;
+  @media only screen and (max-width: 1200px) {
+    top: 100px;
+  }
   right: 40px;
 }
 
