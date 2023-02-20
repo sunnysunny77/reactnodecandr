@@ -74,8 +74,8 @@ export default class Blog extends React.Component {
     });
   }
   change = (event) => {
-    let nam = event.target.name;
-    let val = event.target.value;
+    const nam = event.target.name;
+    const val = event.target.value;
     this.setState({
       [nam]: val,
       disp0: { display: "none" },

@@ -42,7 +42,7 @@ class Nav extends Component {
       wi: "200",
       hi: "46",
     });
-    if (window.screen.width <= 1200) this.setState({
+    this.setState({
       wi: "140",
       hi: "32",
     });
@@ -51,18 +51,20 @@ class Nav extends Component {
     window.removeEventListener("scroll", this.handleScroll);
   }
   handleScroll = () => {
-    if (window.scrollY >= 90) {
-      document.querySelector(".mainNav").style.position = "fixed";
-      document.querySelector(".mainNav").style.top = "0";
-      document.querySelector(".mainNav").style.height = "40px";
-      document.querySelector(".mainNav").style.transition = "height 1s";
-      document.querySelector("main").style.position = "relative";
-      document.querySelector("#di").style.paddingTop = "40px";
+    const mainNav = document.querySelector(".mainNav");
+    const di = document.querySelector("#di")
+    if (window.scrollY >= 90 && window.innerWidth > 1200) {
+      mainNav.style.position = "fixed";
+      mainNav.style.top = "0";
+      mainNav.style.height = "40px";
+      mainNav.style.transition = "height 1s";
+      di.style.position = "relative";
+      di.style.paddingTop = "40px";
     } else {
-      document.querySelector(".mainNav").style.position = "relative";
-      document.querySelector(".mainNav").style.height = "60px";
-      document.querySelector(".mainNav").style.transition = "height 0.25s";
-      document.querySelector("main").style.paddingTop = "0";
+      mainNav.style.position = "relative";
+      mainNav.style.height = "60px";
+      mainNav.style.transition = "height 0.25s";
+      di.style.paddingTop = "0";
     }
   };
   bars = () => {

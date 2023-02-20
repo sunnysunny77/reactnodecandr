@@ -190,8 +190,8 @@ class Home extends Component {
     window.open(v);
   };
   viddisplay = (v) => {
-    let c = this.state.count + v;
-    let x = this.state.count;
+    const c = this.state.count + v;
+    const x = this.state.count;
     if (c > 0 && c <= this.state.res.vid.length) {
       document.getElementsByClassName("d" + x)[1].style.display = "none";
       document.getElementsByClassName("d" + x)[3].style.display = "none";
@@ -205,7 +205,7 @@ class Home extends Component {
     }
   };
   vidtoggle = () => {
-    let c = this.state.count;
+    const c = this.state.count;
     if (c < this.state.res.vid.length) {
       document.getElementsByClassName("d" + c)[1].style.display = "none";
       document.getElementsByClassName("d" + c)[3].style.display = "none";
@@ -227,17 +227,18 @@ class Home extends Component {
       document.getElementsByClassName("d1")[2].style.display = "inline-block";
       this.setState({ count: 1 });
     }
-    document.querySelector(".video").classList.add("flip");
+    const video = document.querySelector(".video");
+    video.classList.add("flip");
     setTimeout(() => {
-      document.querySelector(".video").classList.remove("flip");
+      video.classList.remove("flip");
     }, 500);
   };
   handleChange = (selectedOption) => {
     this.setState({ selectedOption, disp: { display: "none" } });
   };
   change = (event) => {
-    let nam = event.target.name;
-    let val = event.target.value;
+    const nam = event.target.name;
+    const val = event.target.value;
     this.setState({ [nam]: val, disp: { display: "none" } });
   };
   submit = (event) => {
