@@ -16,6 +16,7 @@ function App() {
   const [day, setDay] = useState(null);
   const [load, setLoad] = useState(false);
   const [buttons, setButtons] = useState([]);
+  const [main, setMain] = useState("navRelative");
 
   useEffect(() => {
     axios
@@ -34,8 +35,8 @@ function App() {
   return (
     <Router>
       {load ? (<React.Fragment>
-        <Nav ph={ph} time={time} day={day} buttons={buttons} />
-        <main id="di">
+        <Nav ph={ph} time={time} day={day} buttons={buttons} main={(x) => setMain(x)} />
+        <main className={main} id="di">
           <Switch>
             <Route exact path="/">
               {window.screen.width > 1200 ? (
@@ -84,7 +85,7 @@ function App() {
         <Footer ph={ph} time={time} day={day} buttons={buttons} />
       </React.Fragment>) : (
         <img
-          className="loadfront"
+          id="loadfront"
           src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
           alt="loading"
         />

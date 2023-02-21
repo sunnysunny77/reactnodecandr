@@ -43,7 +43,7 @@ export default class About extends React.Component {
       <React.Fragment>
         {this.state.load ? (
           <img
-            className="load"
+            id="load"
             src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
             alt="loading"
           />

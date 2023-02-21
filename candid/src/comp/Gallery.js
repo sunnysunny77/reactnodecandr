@@ -26,14 +26,14 @@ export default class Galery extends Component {
       <React.Fragment>
         {this.state.load ? (
           <img
-            className="load"
+            id="load"
             src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
             alt="loading"
           />
         ) : (
           <React.Fragment>
             {this.state.w}
-            <div className="galleryHeading">
+            <div className="galleryHeading headingCont">
               <h1> {ReactHtmlParser(this.state.res.buttons[0])}</h1>
             </div>
             <section id="galleryCont">

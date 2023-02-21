@@ -2,9 +2,8 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: larger;
@@ -15,29 +14,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-h1 {
-  font-family: $font1;
-  color: $c1;
-  float: right;
-  margin: 0;
-  padding-right: 20px;
-
-  font-size: inherit;
-}
-
-.headingCont {
-  width: 100%;
-  background-color: $c3;
-  background-image: linear-gradient(270deg, $c3 0%, $c6 45%, $c6 100%);
-  height: 40px;
-}
-
-.headingCont h1 {
-  line-height: 40px;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .clearfloat {
@@ -63,22 +40,11 @@ h1 {
   padding: 0;
 }
 
-.load {
-  height: 40px;
-  width: 40px;
-  position: absolute; 
-  top: 0;
-  right: 40px;
-  @media only screen and (max-width: 1200px) {
-    top: -50px;
-  }
-}
-
-.loadfront {
+#loadfront {
   height: 40px;
   width: 40px;
   position: absolute;
-  top: 150px; 
+  top: 150px;
   right: 40px;
   @media only screen and (max-width: 1200px) {
     top: 40px;
@@ -92,11 +58,38 @@ main {
   min-height: 89.5vh;
   display: flex;
   flex-direction: column;
-}
-
-@media only screen and (max-width: 1200px) {
-  #di {
-    padding-top: 0 !important;
+  h1 {
+    font-family: $font1;
+    color: $c1;
+    float: right;
+    margin: 0;
+    padding-right: 20px;
+    font-size: inherit;
+    line-height: 40px;
+  }
+  .headingCont {
+    width: 100%;
+    background-color: $c3;
+    background-image: linear-gradient(270deg, $c3 0%, $c6 45%, $c6 100%);
+    height: 40px;
+  }
+  #load {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: 0;
+    right: 40px;
+    @media only screen and (max-width: 1200px) {
+      top: -50px;
+    }
+  }
+  @media only screen and (min-width: 1199px) {
+    &.navRelative {
+      padding-top: 0;
+    }
+    &.navFixed {
+      padding-top: 40px;
+    }
   }
 }
 

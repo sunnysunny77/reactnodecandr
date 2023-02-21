@@ -10,6 +10,7 @@ class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      class: "navRelative",
       bar1: {
         width: "35px",
         height: "5px",
@@ -53,18 +54,12 @@ class Nav extends Component {
   handleScroll = () => {
     const mainNav = document.querySelector(".mainNav");
     const di = document.querySelector("#di")
-    if (window.scrollY >= 90 && window.innerWidth > 1200) {
-      mainNav.style.position = "fixed";
-      mainNav.style.top = "0";
-      mainNav.style.height = "40px";
-      mainNav.style.transition = "height 1s";
-      di.style.position = "relative";
-      di.style.paddingTop = "40px";
+    if (window.scrollY >= 90) {
+      this.setState({ class: "navFixed"});
+      this.props.main("navFixed")
     } else {
-      mainNav.style.position = "relative";
-      mainNav.style.height = "60px";
-      mainNav.style.transition = "height 0.25s";
-      di.style.paddingTop = "0";
+      this.setState({ class: "navRelative"});
+      this.props.main("navRelative")
     }
   };
   bars = () => {
@@ -189,7 +184,7 @@ class Nav extends Component {
         <header>
           <img src="https://candid.s3.ap-southeast-2.amazonaws.com/logolarge.png" alt="Candid Logo" width={this.state.wi} height={this.state.hi}></img>
         </header>
-        <nav className="mainNav">
+        <nav className={`mainNav ${this.state.class}`}>
           <ul>
             <li>
               <Link to="/blog">
