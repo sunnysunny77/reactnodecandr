@@ -1,80 +1,62 @@
 @import "../Variables.scss";
 
-.center {
-  text-align: center;
-}
-
-.centerBlock {
-  display: block;
-  margin: auto;
-}
-
-.justify {
-  text-align: justify;
-}
-
-#readMoreZero,
-#readMoreOne {
-  display: none;
-}
-
-.grid {
-  &:nth-child(1) {
-    width: 36%;
-    padding: 0 4% 0 4%;
-    @media only screen and (max-width: 640px) {
-      width: 100%;
-      padding: 0;
-      p {
-        width: calc(92% - 24px);
-        margin: auto;
-      }
-    }
-  }
-  &:nth-child(2) {
-    width: 52%;
-    padding-right: 4%;
-    @media only screen and (max-width: 640px) {
-      width: 92%;
-      padding: 0;
-    }
-    div {
-      border-radius: 10px;
-      @media only screen and (max-width: 640px) {
-        border-radius: 0;
-      }
-    }
-  }
-}
-
 .aboutContOne {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   margin: 60px 0;
-  h2 {
-    font-family: $font2;
-    color: $c3;
-    margin-left: 10px;
-    font-size: inherit;
-  }
-  p {
-    color: $c1;
-    background-color: $c2;
-    border: 2px solid $c2;
-    border-radius: 2.5px;
-    font-family: $font1;
-    word-wrap: break-word;
-    padding: 10px;
-    @media only screen and (max-width: 1200px) {
-      border-radius: 0;
+  .grid {
+    &:nth-child(1) {
+      width: 36%;
+      padding: 0 4% 0 4%;
+      @media only screen and (max-width: 640px) {
+        width: 100%;
+        padding: 0;
+      }
+      h2 {
+        font-family: $font2;
+        color: $c3;
+        margin-left: 10px;
+        font-size: inherit;
+        svg {
+          vertical-align: sub;
+          float: right;
+          margin-right: 25px;
+        }
+      }
+      p {
+        text-align: center;
+        color: $c1;
+        background-color: $c2;
+        border: 2px solid $c2;
+        border-radius: 2.5px;
+        font-family: $font1;
+        word-wrap: break-word;
+        padding: 10px;
+        @media only screen and (max-width: 1200px) {
+          border-radius: 0;
+        }
+        @media only screen and (max-width: 640px) {
+          width: calc(92% - 24px);
+          margin: auto;
+        }
+      }
     }
-  }
-  svg {
-    vertical-align: sub;
-    float: right;
-    margin-right: 25px;
+    &:nth-child(2) {
+      width: 52%;
+      padding-right: 4%;
+      @media only screen and (max-width: 640px) {
+        width: 92%;
+        padding: 0;
+      }
+      div {
+        border-radius: 10px;
+        @media only screen and (max-width: 640px) {
+          border-radius: 0;
+        }
+      }
+    }
   }
 }
 
@@ -101,6 +83,7 @@
     width: 71%;
     margin: auto;
     display: block;
+    text-align: center;
     @media only screen and (max-width: 640px) {
       width: 100%;
     }
@@ -176,5 +159,10 @@
     float: right;
     color: $c2;
     margin-right: 25px;
+  }
+  #readMoreZero,
+  #readMoreOne {
+    display: none;
+    text-align: justify;
   }
 }

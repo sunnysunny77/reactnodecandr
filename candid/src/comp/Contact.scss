@@ -1,98 +1,104 @@
 @import "../Variables.scss";
 
-.contactContTwo svg,
-.contactTwo h2 svg {
-  color: $c2;
-  margin-right: 25px;
-  float: right;
-  font-size: 24px;
-}
-
-.contactTwo h2,
-.contactContTwo h2 {
-  width: calc(100% - 10px);
-  font-family: $font2;
-  color: $c3;
-  margin-left: 10px;
-  font-size: inherit;
-  margin: auto;
-}
-
 .contactContOne {
   margin: 60px auto 60px auto;
   max-width: 1200px;
   width: 100%;
+  .contactOne {
+    float: left;
+    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/cont.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 8%;
+    width: 8%;
+    margin-left: 4%;
+    @media only screen and (max-width: 640px) {
+      float: none;
+      margin: 10% auto;
+      padding: 85px;
+    }
+  }
+  .contactTwo {
+    float: right;
+    margin-right: 8%;
+    @media only screen and (max-width: 640px) {
+      float: none;
+      margin: auto;
+      text-align: left;
+      word-wrap: break-word;
+    }
+    h2 {
+      width: calc(100% - 10px);
+      font-family: $font2;
+      color: $c3;
+      margin-left: 10px;
+      font-size: inherit;
+      margin: auto;
+      svg {
+        color: $c2;
+        margin-right: 25px;
+        float: right;
+        font-size: 24px;
+      }
+    }
+    p {
+      color: $c1;
+      background-color: $c2;
+      border: 2px solid $c2;
+      border-radius: 2.5px;
+      padding: 10px;
+      font-family: $font1;
+      min-width: 355px;
+      margin-top: 0.83em;
+      @media only screen and (max-width: 640px) {
+        border-radius: 0;
+        width: calc(92% - 24px);
+        margin: 1em auto auto auto;
+        min-width: initial;
+        text-align: center;
+      }
+      svg {
+        color: $c1;
+        padding: 0 0 0 5px;
+        font-size: 35px;
+        float: none;
+        &:hover {
+          color: $c8;
+          cursor: pointer;
+        }
+      }
+    }
+    a {
+      color: $c1;
+      text-decoration: none;
+      &:hover,
+      &:focus {
+        color: $c8;
+      }
+    }
+  }
 }
 
 .contactContTwo {
   max-width: 1200px;
   margin: auto;
-}
-
-.contactOne {
-  float: left;
-  background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/cont.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  padding: 8%;
-  width: 8%;
-  margin-left: 4%;
-  @media only screen and (max-width: 640px) {
-    float: none;
-    margin: 10% auto;
-    padding: 85px;
-  }
-}
-
-.contactTwo {
-  float: right;
-  margin-right: 8%;
-  @media only screen and (max-width: 640px) {
-    float: none;
+  h2 {
+    width: calc(100% - 10px);
+    font-family: $font2;
+    color: $c3;
+    margin-left: 10px;
+    font-size: inherit;
     margin: auto;
-    text-align: left;
-    word-wrap: break-word;
+  svg {
+    color: $c2;
+    margin-right: 25px;
+    float: right;
+    font-size: 24px;
   }
-  p {
-    color: $c1;
-    background-color: $c2;
-    border: 2px solid $c2;
-    border-radius: 2.5px;
-    padding: 10px;
-    font-family: $font1;
-    min-width: 355px;
-    margin-top: 0.83em;
-    @media only screen and (max-width: 640px) {
-      border-radius: 0;
-      width: calc(92% - 24px);
-      margin: 1em auto auto auto;
-      min-width: initial;
-      text-align: center;
-    }
-    svg {
-      color: $c1;
-      padding: 0 0 0 5px;
-      font-size: 35px;
-      float: none;
-      &:hover {
-        color: $c8;
-        cursor: pointer;
-      }
-    }
-  }
-  a {
-    color: $c1;
-    text-decoration: none;
-    &:hover,
-    &:focus {
-      color: $c8;
-    }
-  }
- 
 }
-
-#contactResponse {
-  text-align: center;
-  display: inline-block;
+  #contactResponse {
+    text-align: center;
+    display: inline-block;
+  }
 }

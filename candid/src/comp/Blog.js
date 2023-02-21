@@ -251,7 +251,7 @@ export default class Blog extends React.Component {
                     aria-controls="panel2a-content"
                     id="panel2a-header"
                   >
-                    <div className="accordianHeading">
+                    <div className="accordianHeading headingCont">
                       <h2>{ReactHtmlParser(this.state.buttons[1])}</h2>
                     </div>
                   </AccordionSummary>
@@ -421,7 +421,7 @@ export default class Blog extends React.Component {
                     aria-controls="panel2a-content"
                     id="panel2a-header"
                   >
-                    <div className="accordianHeading">
+                    <div className="accordianHeading headingCont">
                       <h2>{ReactHtmlParser(this.state.buttons[2])}</h2>
                     </div>
                   </AccordionSummary>

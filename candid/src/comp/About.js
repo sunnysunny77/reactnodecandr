@@ -59,7 +59,7 @@ export default class About extends React.Component {
                   {ReactHtmlParser(this.state.res.hmap)}{" "}
                   <ListAltIcon />{" "}
                 </h2>
-                <p className="center">{ReactHtmlParser(this.state.cba)}</p>
+                <p>{ReactHtmlParser(this.state.cba)}</p>
                 <hr />
               </div>
               <div className="grid"> {this.state.abc} </div>
@@ -73,20 +73,19 @@ export default class About extends React.Component {
               <Wave>
                 <div className="prop">
                   <h3>{ReactHtmlParser(this.state.res.h1)}</h3>
-                  <span className="center">{ReactHtmlParser(this.state.res.span1)}</span>
+                  <span>{ReactHtmlParser(this.state.res.span1)}</span>
                   <button
-                    className="btn center"
+                    className="btn"
                     onClick={() => {
                       document.getElementById("readMoreZero").style.display = "block";
                     }}
                   >
                     {ReactHtmlParser(this.state.res.buttons[1])}
                   </button>
-                  <div id="readMoreZero" className="justify">
+                  <div id="readMoreZero">
                     <hr />
                     <span>{ReactHtmlParser(this.state.res.span2)}</span>
                     <button
-                      className="centerBlock"
                       onClick={() => {
                         document.getElementById("readMoreZero").style.display = "none";
                       }}
@@ -111,11 +110,10 @@ export default class About extends React.Component {
                   >
                     {ReactHtmlParser(this.state.res.buttons[1])}
                   </button>
-                  <div id="readMoreOne" className="justify">
+                  <div id="readMoreOne">
                     <hr />
                     <span>{ReactHtmlParser(this.state.res.span4)}</span>
                     <button
-                      className="centerBlock"
                       onClick={() => {
                         document.getElementById("readMoreOne").style.display = "none";
                       }}

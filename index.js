@@ -399,7 +399,7 @@ app.post("/hom", function (req, res) {
       m2: parsedDataContent.data[22][1],
       qh: parsedDataContent.data[23][1],
       q: parsedDataContent.data[24][1],
-      cb: parsedDataContent.data[25][1],
+      ch1: parsedDataContent.data[25][1],
       ch2: parsedDataContent.data[26][1],
       ch3: parsedDataContent.data[27][1],
       ch4: parsedDataContent.data[28][1],
@@ -453,7 +453,7 @@ app.post("/abou", function (req, res) {
       a: {
         hmap: parsedDataMaps[2],
         hm: parsedDataContent.data[13][1],
-        b: parsedDataContent.data[14][1],
+        h1: parsedDataContent.data[14][1],
         span1: parsedDataContent.data[15][1],
         span2: parsedDataContent.data[16][1],
         h2: parsedDataContent.data[17][1],
