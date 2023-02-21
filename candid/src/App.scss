@@ -58,6 +58,9 @@ main {
   min-height: 89.5vh;
   display: flex;
   flex-direction: column;
+  @media only screen and (min-width: 1921px) {
+    box-shadow: 1px 0 rgba($c4, 0.2), -1px 0 rgba($c4, 0.2);
+  }
   h1 {
     font-family: $font1;
     color: $c1;
@@ -90,11 +93,5 @@ main {
     &.navFixed {
       padding-top: 40px;
     }
-  }
-}
-
-@media only screen and (min-width: 1921px) {
-  main {
-    box-shadow: 1px 0 rgba($c4, 0.2), -1px 0 rgba($c4, 0.2);
   }
 }
