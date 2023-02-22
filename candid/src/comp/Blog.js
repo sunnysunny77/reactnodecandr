@@ -84,7 +84,8 @@ export default class Blog extends React.Component {
   };
   file = (event) => {
     let extension = event.target.value.split(".").pop();
-    if (extension === "jpg" || extension === "png") return Resizer.imageFileResizer(
+    const types = ["jpg", "JPG", "png", "PNG", "jpeg", "JPEG"];
+    if (types.includes(extension)) return Resizer.imageFileResizer(
       event.target.files[0],
       150,
       150,
@@ -104,7 +105,7 @@ export default class Blog extends React.Component {
   };
   submit = (event) => {
     event.preventDefault();
-    const types = ["jpg", "png"];
+    const types = ["jpg", "JPG", "png", "PNG", "jpeg", "JPEG"];
     if (!types.includes(this.state.extension)) return this.setState({
       a: "choose || jpg || png",
       disp0: { display: "block", lineHeight: "50px" },
