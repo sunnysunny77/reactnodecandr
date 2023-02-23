@@ -73,7 +73,7 @@ export default class About extends React.Component {
               <Wave>
                 <div className="prop">
                   <h3>{ReactHtmlParser(this.state.res.h1)}</h3>
-                  <span>{ReactHtmlParser(this.state.res.span1)}</span>
+                  <span id="topSpan">{ReactHtmlParser(this.state.res.span1)}</span>
                   <button
                     className="btn"
                     onClick={() => {

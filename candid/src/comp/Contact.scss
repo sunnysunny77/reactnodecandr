@@ -58,6 +58,14 @@
         min-width: initial;
         text-align: center;
       }
+      a {
+        color: $c1;
+        text-decoration: none;
+        &:hover,
+        &:focus {
+          color: $c8;
+        }
+      }
       svg {
         color: $c1;
         padding: 0 0 0 5px;
@@ -67,14 +75,6 @@
           color: $c8;
           cursor: pointer;
         }
-      }
-    }
-    a {
-      color: $c1;
-      text-decoration: none;
-      &:hover,
-      &:focus {
-        color: $c8;
       }
     }
   }
@@ -90,13 +90,13 @@
     margin-left: 10px;
     font-size: inherit;
     margin: auto;
-  svg {
-    color: $c2;
-    margin-right: 25px;
-    float: right;
-    font-size: 24px;
+    svg {
+      color: $c2;
+      margin-right: 25px;
+      float: right;
+      font-size: 24px;
+    }
   }
-}
   #contactResponse {
     text-align: center;
     display: inline-block;

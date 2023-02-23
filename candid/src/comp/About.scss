@@ -71,6 +71,11 @@
     margin-left: 10px;
     margin: auto;
     width: calc(100% - 10px);
+    svg {
+      float: right;
+      color: $c2;
+      margin-right: 25px;
+    }
   }
   h3 {
     font-family: $font2;
@@ -79,7 +84,7 @@
     font-size: 90%;
     padding-right: 7.5%;
   }
-  h3 + span {
+  #topSpan {
     width: 71%;
     margin: auto;
     display: block;
@@ -154,11 +159,6 @@
         margin-right: auto;
       }
     }
-  }
-  svg {
-    float: right;
-    color: $c2;
-    margin-right: 25px;
   }
   #readMoreZero,
   #readMoreOne {

@@ -28,29 +28,29 @@ import ReactHtmlParser from "react-html-parser";
 const customStyles = {
   placeholder: () => ({
     padding: "10px",
-    backgroundColor: styles.wi,
+    backgroundColor: styles.c11,
     borderTopRightRadius: 5,
-    color: styles.g,
+    color: styles.c13,
   }),
   menu: () => ({
-    backgroundColor: styles.wi,
+    backgroundColor: styles.c11,
     textAlign: "center",
-    color: styles.bl,
+    color: styles.c3,
   }),
   option: () => ({
-    fontFamily: styles.f3,
+    fontFamily: styles.font3,
     cursor: "pointer",
   }),
   singleValue: () => ({
-    color: styles.bl,
+    color: styles.c3,
     padding: "10px",
-    backgroundColor: styles.wi,
+    backgroundColor: styles.c11,
     borderTopRightRadius: 5,
   }),
   control: () => ({
     width: "fit-content",
-    color: styles.bl,
-    fontFamily: styles.f3,
+    color: styles.c3,
+    fontFamily: styles.font3,
     fontWeight: 500,
     fontSize: "1.2em",
     marginLeft: "2%",
@@ -361,7 +361,7 @@ class Home extends Component {
                 </h3>
                 <hr
                   style={{
-                    boxShadow: ` 0 5px 5px -5px ${styles.hbs}`,
+                    boxShadow: ` 0 5px 5px -5px ${styles.c2}`,
                     border: "7.5px solid transparent",
                   }}
                 />
@@ -370,7 +370,7 @@ class Home extends Component {
                 </p>
                 <hr
                   style={{
-                    boxShadow: `0 -5px 5px -5px ${styles.hbs}`,
+                    boxShadow: `0 -5px 5px -5px ${styles.c2}`,
                     border: "7.5px solid transparent",
                   }}
                 />
@@ -490,8 +490,8 @@ class Home extends Component {
                 autoComplete="off"
                 style={{
                   width: "100%",
-                  fontFamily: styles.f3,
-                  color: styles.wi,
+                  fontFamily: styles.font3,
+                  color: styles.c11,
                 }}
                 onSubmit={this.submit}
               >
@@ -503,9 +503,9 @@ class Home extends Component {
                   className="MuiFormControl-root-www"
                   InputProps={{
                     style: {
-                      color: styles.bl,
+                      color: styles.c3,
                       marginLeft: "2%",
-                      backgroundColor: styles.wi,
+                      backgroundColor: styles.c11,
                       borderRadius: 0,
                       fontSize: "120%",
                       fontWeight: "500",
@@ -530,9 +530,9 @@ class Home extends Component {
                   className="MuiFormControl-root-www"
                   InputProps={{
                     style: {
-                      color: styles.bl,
+                      color: styles.c3,
                       marginLeft: "2%",
-                      backgroundColor: styles.wi,
+                      backgroundColor: styles.c11,
                       borderRadius: 0,
                       fontSize: "120%",
                       fontWeight: "500",
@@ -564,9 +564,9 @@ class Home extends Component {
                     }}
                     InputProps={{
                       style: {
-                        color: styles.bl,
+                        color: styles.c3,
                         marginLeft: "2%",
-                        backgroundColor: styles.wi,
+                        backgroundColor: styles.c11,
                         borderRadius: 0,
                         fontSize: "120%",
                         fontWeight: "500",
@@ -586,7 +586,7 @@ class Home extends Component {
                 </Tooltip>
                 <div style={{ height: "177px", margin: "50px 0 60px 0" }}>
                   <ListIcon
-                    style={{ color: styles.wi, marginLeft: "27.5px" }}
+                    style={{ color: styles.c11, marginLeft: "27.5px" }}
                   />
                   <label htmlFor="select" className="hiddentext">
                     {ReactHtmlParser(this.state.res.buttons[3])}
@@ -604,7 +604,7 @@ class Home extends Component {
                 </div>
                 <SubjectIcon
                   style={{
-                    color: styles.wi,
+                    color: styles.c11,
                     marginLeft: "12.5px",
                     marginBottom: "7.5px",
                     display: "block",
@@ -622,11 +622,11 @@ class Home extends Component {
                   InputProps={{
                     disableUnderline: true,
                     style: {
-                      color: styles.bl,
+                      color: styles.c3,
                       display: "block",
                       width: "100%",
                       height: "150px",
-                      backgroundColor: styles.wi,
+                      backgroundColor: styles.c11,
                       borderRadius: 0,
                       overflowY: "auto",
                       overflowX: "hidden",
@@ -642,8 +642,8 @@ class Home extends Component {
                 />
                 <Button
                   style={{
-                    color: styles.wi,
-                    backgroundColor: styles.bl,
+                    color: styles.c11,
+                    backgroundColor: styles.c3,
                     width: "100%",
                     height: "50px",
                     fontSize: "120%",

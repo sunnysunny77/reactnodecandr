@@ -42,15 +42,15 @@
     &::-webkit-scrollbar-thumb:hover {
       background: $c7;
     }
-  }
-  table {
-    padding: 0 1%;
-    th {
-      float: left;
-      color: $c1;
-    }
-    td {
-      font-size: inherit;
+    table {
+      padding: 0 1%;
+      th {
+        float: left;
+        color: $c1;
+      }
+      td {
+        font-size: inherit;
+      }
     }
   }
   .accordianHeading {
@@ -64,16 +64,6 @@
       font-size: inherit;
       margin: 0;
       padding-right: 20px;
-    }
-  }
-  .MuiFormControl-root-com {
-    float: right;
-    width: 40%;
-    padding-left: 60%;
-    @media only screen and (max-width: 1200px) {
-      padding-left: 1%;
-      float: none;
-      width: 98%;
     }
   }
   .formAdd {
@@ -135,5 +125,15 @@
     color: $c1;
     overflow: hidden;
     padding-top: 10px;
+  }
+  .MuiFormControl-root-com {
+    float: right;
+    width: 40%;
+    padding-left: 60%;
+    @media only screen and (max-width: 1200px) {
+      padding-left: 1%;
+      float: none;
+      width: 98%;
+    }
   }
 }

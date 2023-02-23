@@ -22,7 +22,7 @@ import ReactHtmlParser from "react-html-parser";
 const StyledAccordion = withStyles(() => ({
   root: {
     margin: 0,
-    backgroundColor: styles.bl,
+    backgroundColor: styles.c3,
   },
 }))(Accordion);
 
@@ -245,10 +245,10 @@ export default class Blog extends React.Component {
                 <br></br>
                 {this.state.txt}
               </div>
-              <div style={{ backgroundColor: styles.bl }}>
+              <div style={{ backgroundColor: styles.c3 }}>
                 <StyledAccordion>
                   <AccordionSummary
-                    expandIcon={<ExpandMoreIcon style={{ color: styles.wi }} />}
+                    expandIcon={<ExpandMoreIcon style={{ color: styles.c11 }} />}
                     aria-controls="panel2a-content"
                     id="panel2a-header"
                   >
@@ -264,8 +264,8 @@ export default class Blog extends React.Component {
                       autoComplete="off"
                       style={{
                         width: "100%",
-                        fontFamily: styles.f3,
-                        color: styles.wi,
+                        fontFamily: styles.font3,
+                        color: styles.c11,
                       }}
                     >
                       <label htmlFor="passs" className="hiddentext">
@@ -278,11 +278,11 @@ export default class Blog extends React.Component {
                         className="MuiFormControl-root-com"
                         InputProps={{
                           style: {
-                            color: styles.bl,
+                            color: styles.c3,
                             fontSize: "inherit",
                             fontWeight: "500",
                             borderRadius: 0,
-                            backgroundColor: styles.wi,
+                            backgroundColor: styles.c11,
                           },
                           startAdornment: (
                             <InputAdornment position="start">
@@ -304,11 +304,11 @@ export default class Blog extends React.Component {
                         className="MuiFormControl-root-com"
                         InputProps={{
                           style: {
-                            color: styles.bl,
+                            color: styles.c3,
                             fontSize: "inherit",
                             fontWeight: "500",
                             borderRadius: 0,
-                            backgroundColor: styles.wi,
+                            backgroundColor: styles.c11,
                           },
                           startAdornment: (
                             <InputAdornment position="start">
@@ -330,11 +330,11 @@ export default class Blog extends React.Component {
                         className="MuiFormControl-root-com"
                         InputProps={{
                           style: {
-                            color: styles.bl,
+                            color: styles.c3,
                             fontSize: "inherit",
                             fontWeight: "500",
                             borderRadius: 0,
-                            backgroundColor: styles.wi,
+                            backgroundColor: styles.c11,
                           },
                           startAdornment: (
                             <InputAdornment position="start">
@@ -359,13 +359,13 @@ export default class Blog extends React.Component {
                         InputProps={{
                           disableUnderline: true,
                           style: {
-                            color: styles.bl,
+                            color: styles.c3,
                             fontSize: "inherit",
                             fontWeight: "500",
                             display: "block",
                             width: "100%",
                             height: "135px",
-                            backgroundColor: styles.wi,
+                            backgroundColor: styles.c11,
                             overflowY: "auto",
                             overflowX: "hidden",
                             paddingTop: "10px",
@@ -392,8 +392,8 @@ export default class Blog extends React.Component {
                       </div>
                       <Button
                         style={{
-                          color: styles.wi,
-                          backgroundColor: styles.bl,
+                          color: styles.c11,
+                          backgroundColor: styles.c3,
                           width: "100%",
                           height: "50px",
                           fontSize: "inherit",
@@ -418,7 +418,7 @@ export default class Blog extends React.Component {
                 </StyledAccordion>
                 <StyledAccordion>
                   <AccordionSummary
-                    expandIcon={<ExpandMoreIcon style={{ color: styles.wi }} />}
+                    expandIcon={<ExpandMoreIcon style={{ color: styles.c11 }} />}
                     aria-controls="panel2a-content"
                     id="panel2a-header"
                   >
@@ -434,8 +434,8 @@ export default class Blog extends React.Component {
                       autoComplete="off"
                       style={{
                         width: "100%",
-                        fontFamily: styles.f3,
-                        color: styles.wi,
+                        fontFamily: styles.font3,
+                        color: styles.c11,
                       }}
                     >
                       <label htmlFor="pass" className="hiddentext">
@@ -447,11 +447,11 @@ export default class Blog extends React.Component {
                         className="MuiFormControl-root-com"
                         InputProps={{
                           style: {
-                            color: styles.bl,
+                            color: styles.c3,
                             fontSize: "inherit",
                             fontWeight: "500",
                             borderRadius: 0,
-                            backgroundColor: styles.wi,
+                            backgroundColor: styles.c11,
                           },
                           startAdornment: (
                             <InputAdornment position="start">
@@ -473,11 +473,11 @@ export default class Blog extends React.Component {
                         className="MuiFormControl-root-com"
                         InputProps={{
                           style: {
-                            color: styles.bl,
+                            color: styles.c3,
                             fontSize: "inherit",
                             fontWeight: "500",
                             borderRadius: 0,
-                            backgroundColor: styles.wi,
+                            backgroundColor: styles.c11,
                           },
                           startAdornment: (
                             <InputAdornment position="start">
@@ -493,8 +493,8 @@ export default class Blog extends React.Component {
                       />
                       <Button
                         style={{
-                          color: styles.wi,
-                          backgroundColor: styles.bl,
+                          color: styles.c11,
+                          backgroundColor: styles.c3,
                           width: "100%",
                           height: "50px",
                           fontSize: "inherit",

@@ -12,15 +12,6 @@
     width: 92%;
     margin: 4% auto 4% auto;
   }
-  .prop {
-    font-family: $font3;
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-bottom: 50px;
-    font-weight: 500;
-    position: relative;
-    z-index: 4;
-  }
   .wave0 {
     background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg");
     background-repeat: no-repeat;
@@ -29,6 +20,15 @@
     position: sticky;
     background-position: center;
     z-index: 3;
+  }
+  .prop {
+    font-family: $font3;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 50px;
+    font-weight: 500;
+    position: relative;
+    z-index: 4;
   }
   .wave {
     height: 130px;
