@@ -104,47 +104,39 @@ class Home extends Component {
         res: res.data,
         load: false,
         vi: res.data.vid.map((key, index) => {
-          let d = "none";
+          let d = "";
           if (index === 0) d = "inline-block";
           return (
             <React.Fragment key={index}>
               <link rel="preload" href={res.data.vid[index][0]} as="image" />
               <span
-                className={ReactHtmlParser("videoLink  d" + [index + 1])}
-                style={{ display: d }}
+                className={ReactHtmlParser("videoLink " + d + " d" + [index + 1])}
                 onClick={() => this.vid(res.data.vid[index][1])}
               >
                 {ReactHtmlParser(res.data.vid[index][2])}{" "}
                 <PlayCircleOutlineIcon />
               </span>
               <img
-                className={ReactHtmlParser("videoImg  d" + [index + 1])}
+                className={ReactHtmlParser("videoImg " + d + " d" + [index + 1])}
                 src={res.data.vid[index][0]}
                 alt={ReactHtmlParser(res.data.vid[index][2])}
                 width="275"
                 height="275"
-                style={{
-                  display: d,
-                }}
               />
               <link rel="preload" href={res.data.vid[index][3]} as="image" />
               <span
-                className={ReactHtmlParser("videoLink  d" + [index + 1])}
-                style={{ display: d }}
+                className={ReactHtmlParser("videoLink " + d + " d" + [index + 1])}
                 onClick={() => this.vid(res.data.vid[index][4])}
               >
                 {ReactHtmlParser(res.data.vid[index][5])}{" "}
                 <PlayCircleOutlineIcon />
               </span>
               <img
-                className={ReactHtmlParser("videoImg  d" + [index + 1])}
+                className={ReactHtmlParser("videoImg " + d + " d" + [index + 1])}
                 src={res.data.vid[index][3]}
                 alt={ReactHtmlParser(res.data.vid[index][5])}
                 width="275"
                 height="275"
-                style={{
-                  display: d,
-                }}
               />
             </React.Fragment>
           );
@@ -190,42 +182,43 @@ class Home extends Component {
     window.open(v);
   };
   viddisplay = (v) => {
-    const c = this.state.count + v;
-    const x = this.state.count;
-    if (c > 0 && c <= this.state.res.vid.length) {
-      document.getElementsByClassName("d" + x)[1].style.display = "none";
-      document.getElementsByClassName("d" + x)[3].style.display = "none";
-      document.getElementsByClassName("d" + c)[1].style.display = "inline-block";
-      document.getElementsByClassName("d" + c)[3].style.display = "inline-block";
-      document.getElementsByClassName("d" + x)[0].style.display = "none";
-      document.getElementsByClassName("d" + x)[2].style.display = "none";
-      document.getElementsByClassName("d" + c)[0].style.display = "inline-block";
-      document.getElementsByClassName("d" + c)[2].style.display = "inline-block";
-      this.setState({ count: c });
+    const count = this.state.count;
+    const removeCount = document.getElementsByClassName("d" + count);
+    const newCount = this.state.count + v;
+    const addNewCount = document.getElementsByClassName("d" + newCount);
+    if (newCount > 0 && newCount <= this.state.res.vid.length) {
+      [...removeCount].forEach((item) => {
+        item.classList.remove("inline-block");
+      });
+      [...addNewCount].forEach((item) => {
+        item.classList.add("inline-block");
+      });
+      this.setState({ count: newCount });
     }
   };
   vidtoggle = () => {
-    const c = this.state.count;
-    if (c < this.state.res.vid.length) {
-      document.getElementsByClassName("d" + c)[1].style.display = "none";
-      document.getElementsByClassName("d" + c)[3].style.display = "none";
-      document.getElementsByClassName("d" + [c + 1])[1].style.display = "inline-block";
-      document.getElementsByClassName("d" + [c + 1])[3].style.display = "inline-block";
-      document.getElementsByClassName("d" + c)[0].style.display = "none";
-      document.getElementsByClassName("d" + c)[2].style.display = "none";
-      document.getElementsByClassName("d" + [c + 1])[0].style.display = "inline-block";
-      document.getElementsByClassName("d" + [c + 1])[2].style.display = "inline-block";
-      this.setState({ count: c + 1 });
+    const count = this.state.count;
+    const removeCount = document.getElementsByClassName("d" + count);
+    if (count < this.state.res.vid.length) {
+      [...removeCount].forEach((item) => {
+        item.classList.remove("inline-block");
+      });
+      const newCount = this.state.count + 1;
+      const addNewCount = document.getElementsByClassName("d" + newCount);
+      [...addNewCount].forEach((item) => {
+        item.classList.add("inline-block");
+      });
+      this.setState({ count: newCount  });
     } else {
-      document.getElementsByClassName("d" + c)[1].style.display = "none";
-      document.getElementsByClassName("d" + c)[3].style.display = "none";
-      document.getElementsByClassName("d1")[1].style.display = "inline-block";
-      document.getElementsByClassName("d1")[3].style.display = "inline-block";
-      document.getElementsByClassName("d" + c)[0].style.display = "none";
-      document.getElementsByClassName("d" + c)[2].style.display = "none";
-      document.getElementsByClassName("d1")[0].style.display = "inline-block";
-      document.getElementsByClassName("d1")[2].style.display = "inline-block";
-      this.setState({ count: 1 });
+      [...removeCount].forEach((item) => {
+        item.classList.remove("inline-block");
+      });
+      const newCount = 1;
+      const addNewCount = document.getElementsByClassName("d" + newCount);
+      [...addNewCount].forEach((item) => {
+        item.classList.add("inline-block");
+      });
+      this.setState({ count: newCount });
     }
     const video = document.querySelector(".video");
     video.classList.add("flip");
