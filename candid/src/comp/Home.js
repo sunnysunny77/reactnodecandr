@@ -104,37 +104,36 @@ class Home extends Component {
         res: res.data,
         load: false,
         vi: res.data.vid.map((key, index) => {
-          let d = "";
-          if (index === 0) d = "inline-block";
+          const d = index === 0 ?  "inline-block": "";
           return (
             <React.Fragment key={index}>
-              <link rel="preload" href={res.data.vid[index][0]} as="image" />
+              <link rel="preload" href={key[0]} as="image" />
               <span
                 className={ReactHtmlParser("videoLink " + d + " d" + [index + 1])}
-                onClick={() => this.vid(res.data.vid[index][1])}
+                onClick={() => this.vid(key[1])}
               >
-                {ReactHtmlParser(res.data.vid[index][2])}{" "}
+                {ReactHtmlParser(key[2])}{" "}
                 <PlayCircleOutlineIcon />
               </span>
               <img
                 className={ReactHtmlParser("videoImg " + d + " d" + [index + 1])}
-                src={res.data.vid[index][0]}
-                alt={ReactHtmlParser(res.data.vid[index][2])}
+                src={key[0]}
+                alt={ReactHtmlParser(key[2])}
                 width="275"
                 height="275"
               />
-              <link rel="preload" href={res.data.vid[index][3]} as="image" />
+              <link rel="preload" href={key[3]} as="image" />
               <span
                 className={ReactHtmlParser("videoLink " + d + " d" + [index + 1])}
-                onClick={() => this.vid(res.data.vid[index][4])}
+                onClick={() => this.vid(key[4])}
               >
-                {ReactHtmlParser(res.data.vid[index][5])}{" "}
+                {ReactHtmlParser(key[5])}{" "}
                 <PlayCircleOutlineIcon />
               </span>
               <img
                 className={ReactHtmlParser("videoImg " + d + " d" + [index + 1])}
-                src={res.data.vid[index][3]}
-                alt={ReactHtmlParser(res.data.vid[index][5])}
+                src={key[3]}
+                alt={ReactHtmlParser(key[5])}
                 width="275"
                 height="275"
               />
