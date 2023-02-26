@@ -29,9 +29,9 @@
         text-align: center;
         color: $c1;
         background-color: $c2;
-        border: 2px solid $c2;
+        border: 2px outset $c2;
         border-radius: 2.5px;
-        font-family: $font1;
+        font-family: $font3;
         word-wrap: break-word;
         padding: 10px;
         @media only screen and (max-width: 1200px) {

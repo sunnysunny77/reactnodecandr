@@ -178,13 +178,14 @@ export default class Blog extends React.Component {
       txt: x.map((key, index) => {
         const { _id, blogers, date, name, title, loc } = key;
         return (
+          <React.Fragment>
           <table key={_id}>
             <tbody key={_id + "0"}>
               <tr key={_id + "1"}>
-                <th>{title}</th>
+                <td>{title}</td>
               </tr>
               <tr key={_id + "2"}>
-                <th style={{ color: "rgba(147,112,219, 0.9)" }}>
+                <td style={{ color: "rgba(147,112,219, 0.9)" }}>
                   <img
                     src="https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg"
                     alt="icon"
@@ -192,7 +193,7 @@ export default class Blog extends React.Component {
                     height="10"
                   ></img>{" "}
                   {"" + date}
-                </th>
+                </td>
               </tr>
               <tr key={_id + "img"}>
                 <td>
@@ -208,18 +209,11 @@ export default class Blog extends React.Component {
               <tr key={_id + "4"}>
                 <td>{blogers}</td>
               </tr>
-              <tr key={_id + "5"}>
-                <td>
-                  <br></br>
-                </td>
-              </tr>
-              <tr key={_id + "6"}>
-                <td>
-                  <hr></hr>
-                </td>
-              </tr>
             </tbody>
           </table>
+          <br/>
+          <hr/>
+          </React.Fragment>
         );
       }),
     });

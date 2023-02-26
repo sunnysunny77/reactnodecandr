@@ -44,13 +44,12 @@
     }
     table {
       padding: 0 1%;
-      th {
-        float: left;
-        color: $c1;
-      }
       td {
         font-size: inherit;
       }
+    }
+    hr {
+      width: 60%;
     }
   }
   .accordianHeading {

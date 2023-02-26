@@ -27,7 +27,7 @@
   #welcomeOne {
     font-family: $font3;
     margin: 0;
-    padding: 2%;
+    padding: 2% 4%;
     font-weight: 500;
     color: $c3;
     background-color: $c9;
@@ -57,7 +57,7 @@
     font-weight: 500;
     font-size: inherit;
     width: min-content;
-    min-width: 178px;
+    min-width: 180px;
     color: $c3;
     &:hover {
       text-decoration: underline;

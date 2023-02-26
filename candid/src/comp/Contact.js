@@ -47,21 +47,19 @@ export default class Contactc extends Component {
                 </h2>
                 <hr />
                 <p>
-                  &nbsp;&#8226;&nbsp;{ReactHtmlParser(this.state.res.et)}
+                  {ReactHtmlParser(this.state.res.et)}
                   <br></br>
                   &nbsp;&nbsp;
                   <a href={"mailto:" + this.state.res.email}>
                     {this.state.res.email}
                   </a>
                   <br></br>
-                  <br></br>
-                  &nbsp;&#8226;&nbsp;{ReactHtmlParser(this.state.res.pt)}
+                  {ReactHtmlParser(this.state.res.pt)}
                   <br></br>
                   &nbsp;&nbsp;
                   <a href={"tel:" + this.state.res.ph}>{this.state.res.ph}</a>
                   <br></br>
-                  <br></br>
-                  &nbsp;&#8226;&nbsp;{ReactHtmlParser(this.state.res.it)}
+                  {ReactHtmlParser(this.state.res.it)}
                   <br></br>
                   &nbsp; <span> {ReactHtmlParser(this.state.res.it2)}</span>
                   <HelpOutlineIcon

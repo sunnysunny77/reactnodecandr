@@ -45,10 +45,10 @@
     p {
       color: $c1;
       background-color: $c2;
-      border: 2px solid $c2;
+      border: 2px outset $c2;
       border-radius: 2.5px;
       padding: 10px;
-      font-family: $font1;
+      font-family: $font3;
       min-width: 355px;
       margin-top: 0.83em;
       @media only screen and (max-width: 640px) {
@@ -61,6 +61,8 @@
       a {
         color: $c1;
         text-decoration: none;
+        margin: 10px 0;
+        display: inline-block;
         &:hover,
         &:focus {
           color: $c8;
@@ -69,7 +71,7 @@
       svg {
         color: $c1;
         padding: 0 0 0 5px;
-        font-size: 35px;
+        font-size: 25px;
         float: none;
         &:hover {
           color: $c8;
