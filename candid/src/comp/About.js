@@ -36,8 +36,8 @@ export default class About extends React.Component {
     window.removeEventListener("resize", this.handleScroll);
   }
   handleScroll = () => {
-    if (window.innerWidth > 1200) return document.querySelector(".wave0").style.top = "40px";
-    if (window.innerWidth <= 1200) document.querySelector(".wave0").style.top = "0px";
+    if (window.innerWidth > 1365) return document.querySelector(".wave0").style.top = "40px";
+    if (window.innerWidth <= 1365) document.querySelector(".wave0").style.top = "0px";
   };
   render() {
     return (
