@@ -158,13 +158,13 @@ function content() {
     )
     .then((res) => {
       let parsedDataInital = Papa.parse(res.data, { skipEmptyLines: true });
-      if (parsedDataInital.data.length > 40) {
-        let l = parsedDataInital.data.length - 40;
+      if (parsedDataInital.data.length > 39) {
+        let l = parsedDataInital.data.length - 39;
         let parsedDataArray = [];
         for (let i = 1; i <= l; i++) {
           parsedDataArray.push({
-            value: parsedDataInital.data[39 + i][1],
-            label: parsedDataInital.data[39 + i][1],
+            value: parsedDataInital.data[38 + i][1],
+            label: parsedDataInital.data[38 + i][1],
           });
         }
         return (
@@ -396,24 +396,23 @@ app.post("/hom", function (req, res) {
   ) {
     return res.json({
       m1: parsedDataContent.data[21][1],
-      m2: parsedDataContent.data[22][1],
-      qh: parsedDataContent.data[23][1],
-      q: parsedDataContent.data[24][1],
-      ch1: parsedDataContent.data[25][1],
-      ch2: parsedDataContent.data[26][1],
-      ch3: parsedDataContent.data[27][1],
-      ch4: parsedDataContent.data[28][1],
-      ch5: parsedDataContent.data[29][1],
-      ch6: parsedDataContent.data[30][1],
-      c1: parsedDataContent.data[31][1],
-      c2: parsedDataContent.data[32][1],
-      c3: parsedDataContent.data[33][1],
-      c4: parsedDataContent.data[34][1],
-      c5: parsedDataContent.data[35][1],
-      c6: parsedDataContent.data[36][1],
-      u4: parsedDataContent.data[37][1],
-      u5: parsedDataContent.data[38][1],
-      u6: parsedDataContent.data[39][1],
+      qh: parsedDataContent.data[22][1],
+      q: parsedDataContent.data[23][1],
+      ch1: parsedDataContent.data[24][1],
+      ch2: parsedDataContent.data[25][1],
+      ch3: parsedDataContent.data[26][1],
+      ch4: parsedDataContent.data[27][1],
+      ch5: parsedDataContent.data[28][1],
+      ch6: parsedDataContent.data[29][1],
+      c1: parsedDataContent.data[30][1],
+      c2: parsedDataContent.data[31][1],
+      c3: parsedDataContent.data[32][1],
+      c4: parsedDataContent.data[33][1],
+      c5: parsedDataContent.data[34][1],
+      c6: parsedDataContent.data[35][1],
+      u4: parsedDataContent.data[36][1],
+      u5: parsedDataContent.data[37][1],
+      u6: parsedDataContent.data[38][1],
       options: parsedDataForm,
       svg: parsedDataContent.data[1][2],
       buttons: [buttons[10], buttons[9], buttons[8], buttons[11]],

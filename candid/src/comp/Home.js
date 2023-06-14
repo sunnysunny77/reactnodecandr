@@ -297,7 +297,7 @@ class Home extends Component {
                 &nbsp;
                 {ReactHtmlParser(this.state.res.m1)}
               </h1>
-              <h2 id="welcomeTwo" onClick={this.scr}>{ReactHtmlParser(this.state.res.m2)}</h2>
+              <div id="welcomeTwo" onClick={this.scr}></div>
             </section>
             <Slider id="slide" {...this.state.settings}>
               <div>

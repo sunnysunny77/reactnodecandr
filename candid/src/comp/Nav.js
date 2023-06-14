@@ -12,24 +12,24 @@ class Nav extends Component {
     this.state = {
       class: "navRelative",
       bar1: {
-        width: "35px",
-        height: "5px",
+        width: "25px",
+        height: "3px",
         backgroundColor: "black",
-        margin: "6px 0",
+        margin: "6px auto",
         transition: "0.4s",
       },
       bar2: {
-        width: "35px",
-        height: "5px",
+        width: "25px",
+        height: "3px",
         backgroundColor: "black",
-        margin: "6px 0",
+        margin: "6px auto",
         transition: "0.4s",
       },
       bar3: {
-        width: "35px",
-        height: "5px",
+        width: "25px",
+        height: "3px",
         backgroundColor: "black",
-        margin: "6px 0",
+        margin: "6px auto",
         transition: "0.4s",
       },
       wi: "",
@@ -52,8 +52,6 @@ class Nav extends Component {
     window.removeEventListener("scroll", this.handleScroll);
   }
   handleScroll = () => {
-    const mainNav = document.querySelector(".mainNav");
-    const di = document.querySelector("#di")
     if (window.scrollY >= 90) {
       this.setState({ class: "navFixed"});
       this.props.main("navFixed")
@@ -66,27 +64,27 @@ class Nav extends Component {
     if (this.state.dis !== "slide") return this.setState({
       dis: "slide",
       bar1: {
-        width: "35px",
-        height: "5px",
+        width: "25px",
+        height: "3px",
         backgroundColor: "black",
-        margin: "6px 0",
+        margin: "6px auto",
         transition: "0.4s",
-        WebkitTransform: "rotate(-45deg) translate(-9px, 6px)",
-        transform: "rotate(-45deg) translate(-9px, 6px)",
+        WebkitTransform: "rotate(-45deg) translate(-6px, 4px)",
+        transform: "rotate(-45deg) translate(-6px, 4px)",
       },
       bar2: {
-        width: "35px",
-        height: "5px",
+        width: "25px",
+        height: "3px",
         backgroundColor: "black",
-        margin: "6px 0",
+        margin: "6px auto",
         transition: "0.4s",
         opacity: "0",
       },
       bar3: {
-        width: "35px",
-        height: "5px",
+        width: "25px",
+        height: "3px",
         backgroundColor: "black",
-        margin: "6px 0",
+        margin: "6px auto",
         transition: "0.4s",
         WebkitTransform: "rotate(45deg) translate(-8px, -8px)",
         transform: "rotate(45deg) translate(-8px, -8px)",
@@ -95,24 +93,24 @@ class Nav extends Component {
     this.setState({
       dis: "out",
       bar1: {
-        width: "35px",
-        height: "5px",
+        width: "25px",
+        height: "3px",
         backgroundColor: "black",
-        margin: "6px 0",
+        margin: "6px auto",
         transition: "0.4s",
       },
       bar2: {
-        width: "35px",
-        height: "5px",
+        width: "25px",
+        height: "3px",
         backgroundColor: "black",
-        margin: "6px 0",
+        margin: "6px auto",
         transition: "0.4s",
       },
       bar3: {
-        width: "35px",
-        height: "5px",
+        width: "25px",
+        height: "3px",
         backgroundColor: "black",
-        margin: "6px 0",
+        margin: "6px auto",
         transition: "0.4s",
       },
     })
