@@ -175,7 +175,7 @@ class Home extends Component {
     });
   };
   scr = () => {
-    document.getElementById("enquiry").scrollIntoView();
+    document.getElementById("enquiry").scrollIntoView({behavior: "smooth"});
   };
   vid = (v) => {
     window.open(v);
@@ -303,7 +303,7 @@ class Home extends Component {
               <div>
                 <img
                   src={this.state.src1}
-                  alt="Slider image 1"
+                  alt="Slider 1"
                   width={this.state.wi}
                   height={this.state.hi}
                 ></img>
@@ -311,7 +311,7 @@ class Home extends Component {
               <div>
                 <img
                   src={this.state.src0}
-                  alt="Slider image 2"
+                  alt="Slider 2"
                   width={this.state.wi}
                   height={this.state.hi}
                 ></img>
