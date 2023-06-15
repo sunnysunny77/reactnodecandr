@@ -213,6 +213,8 @@ export default class Blog extends React.Component {
           </table>
           <br/>
           <hr/>
+          <br/>
+          <br/>
           </React.Fragment>
         );
       }),
