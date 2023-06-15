@@ -54,21 +54,16 @@
     background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/welcome.png);
     background-size: cover;
     background-repeat: no-repeat;
-    transition: transform 0.3s linear,  background-color 0.3s linear;
+    transition: transform 0.3s linear, background-color 0.3s linear;
     transform: translate(0, 0);
     &:hover {
       transform: translate(4%, 2%);
-      background-color : $c8;
+      background-color: $c8;
     }
   }
 }
 
 /* vid */
-
-.flip {
-  animation: flip 0.5s ease-in-out;
-}
-
 .video {
   text-align: center;
   margin: auto;
@@ -101,6 +96,7 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
+    transition: filter 0.3s linear;
     @media only screen and (max-width: 1200px) {
       width: 35%;
     }
@@ -108,11 +104,15 @@
       width: 39%;
       border-radius: 2.5px;
     }
+    &.flip {
+      filter: grayscale(50%);
+    }
   }
   .videoLink {
     display: none;
     background-color: $c9;
     position: absolute;
+    z-index: 990;
     font-family: $font3;
     color: $c3;
     width: 275px;
@@ -134,7 +134,6 @@
       border-top-right-radius: 2.5px;
       font-size: 90%;
     }
-
     &:hover {
       color: $c7;
     }
@@ -180,6 +179,52 @@
   }
   .inline-block {
     display: inline-block;
+  }
+  .overlay {
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    transform: translateX(100%);
+    will-change: transform;
+    transition: transform 0.5s cubic-bezier(0.03, 0.5, 0.25, 0.6);
+    padding-bottom: 56.25%;
+    background-color: $c1;
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      @media only screen and (min-width: 1201px) {
+        object-fit: cover;
+      }
+    }
+    .controlls {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      button {
+        border: none;
+        background-color: transparent;
+        float: right;
+        font-size: 20px;
+        margin-right: 1.25rem;
+        margin-top: 1.25rem;
+        &:hover,
+        &:focus {
+          color: $c8;
+        }
+      }
+    }
+    &.fixed {
+      transform: translateX(0);
+    }
   }
 }
 
@@ -376,17 +421,5 @@
   }
   100% {
     transform: translate(0, 0);
-  }
-}
-
-@keyframes flip {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.99);
-  }
-  100% {
-    transform: scale(1);
   }
 }
