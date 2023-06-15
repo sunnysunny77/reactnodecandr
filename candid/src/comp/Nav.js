@@ -34,10 +34,11 @@ class Nav extends Component {
       },
       wi: "",
       hi: "",
-      dis: ""
+      dis: false
     };
   }
   componentDidMount() {
+    document.body.addEventListener("click", this.window);
     window.addEventListener("scroll", this.handleScroll);
     if (window.screen.width > 1200) return this.setState({
       wi: "200",
@@ -49,7 +50,9 @@ class Nav extends Component {
     });
   }
   componentWillUnmount() {
+    document.body.removeEventListener("click", this.window);
     window.removeEventListener("scroll", this.handleScroll);
+  
   }
   handleScroll = () => {
     if (window.scrollY >= 90) {
@@ -60,6 +63,32 @@ class Nav extends Component {
       this.props.main("navRelative")
     }
   };
+  window = () => {
+    if (this.state.dis === "slide") return this.setState({
+      dis: "out",
+      bar1: {
+        width: "25px",
+        height: "3px",
+        backgroundColor: "black",
+        margin: "6px auto",
+        transition: "0.4s",
+      },
+      bar2: {
+        width: "25px",
+        height: "3px",
+        backgroundColor: "black",
+        margin: "6px auto",
+        transition: "0.4s",
+      },
+      bar3: {
+        width: "25px",
+        height: "3px",
+        backgroundColor: "black",
+        margin: "6px auto",
+        transition: "0.4s",
+      },
+    })
+  }
   bars = () => {
     if (this.state.dis !== "slide") return this.setState({
       dis: "slide",

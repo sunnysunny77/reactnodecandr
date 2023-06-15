@@ -6,9 +6,9 @@
   width: 100%;
   .contactOne {
     float: left;
-    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/cont.jpg");
+    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/cont.png");
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     padding: 8%;
     width: 8%;
@@ -45,7 +45,7 @@
     p {
       color: $c1;
       background-color: $c2;
-      border: 2px outset $c2;
+      border: 2px solid $c2;
       border-radius: 2.5px;
       padding: 10px;
       font-family: $font3;

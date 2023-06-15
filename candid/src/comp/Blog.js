@@ -235,8 +235,7 @@ export default class Blog extends React.Component {
                 <h1>{ReactHtmlParser(this.state.buttons[0])}</h1>
               </div>
               <div className="blogResponse">
-                <br></br>
-                <br></br>
+                <div className="wave0"></div>
                 {this.state.txt}
               </div>
               <div style={{ backgroundColor: styles.c3 }}>

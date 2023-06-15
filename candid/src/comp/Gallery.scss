@@ -20,17 +20,20 @@
   border-bottom: 2px solid $c2;
   min-height: caLc(89.5vh - 42px);
   display: flex;
-  justify-content: center;
   flex-direction: column;
   width: calc(100% - 4px);
   max-width: 1200px;
   margin: 0 auto 60px auto;
+  position: relative;
   @media only screen and (max-width: 1200px) {
     margin: auto;
   }
-  @media only screen and (max-width: 640px) {
-    justify-content: flex-start;
-    padding-top: 60px;
+  .wave0 {
+    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;
+    background-position: center;
   }
   .image-gallery-image {
     width: 40%;

@@ -30,6 +30,13 @@
     border-right: 2px solid $c2;
     border-bottom: 2px solid $c2;
     min-height: caLc(89.5vh - 170px);
+    .wave0 {
+      background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 250px;
+      background-position: center;
+    }
     &::-webkit-scrollbar {
       width: 10px;
     }
