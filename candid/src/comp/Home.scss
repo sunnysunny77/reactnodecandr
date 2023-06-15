@@ -20,8 +20,12 @@
   animation: slide1;
   animation-duration: 1s;
   animation-fill-mode: forwards;
+  display: flex;
+  right: 0;
+  left: 0;
+  flex-direction: column;
   @media only screen and (max-width: 1200px) {
-    margin: 2% 0 0 4%;
+    margin: 2% auto auto 4%;
     font-size: medium;
   }
   @media only screen and (max-width: 640px) {
@@ -30,14 +34,14 @@
   #welcomeOne {
     font-family: $font3;
     margin: 0;
-    padding: 2% 4%;
+    padding: 2px 4px;
     font-weight: 500;
     color: $c3;
     background-color: $c9;
     border-radius: 5px;
     line-height: 35px;
-    width: 100%;
-    float: none;
+    display: flex;
+    width: fit-content;
     #my-svg {
       stroke: $c3;
       stroke-width: 13;
@@ -49,13 +53,17 @@
   #welcomeTwo {
     background-color: $c9;
     border-radius: 5px;
-    padding: 40% 66%;
-    margin: 6% auto auto 4%;
+    margin: 6px 0 0 4px;
+    padding: 50px 85px;
     background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/welcome.png);
     background-size: cover;
     background-repeat: no-repeat;
     transition: transform 0.3s linear, background-color 0.3s linear;
     transform: translate(0, 0);
+    width: fit-content;
+    @media only screen and (max-width: 1200px) {
+      padding: 35px 59px;
+    }
     &:hover {
       transform: translate(4%, 2%);
       background-color: $c8;
