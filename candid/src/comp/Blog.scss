@@ -1,41 +1,47 @@
 @import "../Variables.scss";
 
+.blogHeading {
+  max-width: 1204px;
+  margin: 60px auto 0 auto;
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
+  @media only screen and (max-width: 1200px) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin: auto;
+  }
+}
+
 .blogCont {
   width: 100%;
+  border-left: 2px solid $c2;
+  border-right: 2px solid $c2;
+  border-bottom: 2px solid $c2;
   background-color: $c5;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
   max-width: 1200px;
-  margin: 60px auto;
+  width: calc(100% - 4px);
+  margin: 0 auto 60px auto;
   @media only screen and (max-width: 1200px) {
     margin: 0 auto;
-  }
-  .blogHeading {
-    border-top-left-radius: 11px;
-    border-top-right-radius: 11px;
-    @media only screen and (max-width: 1200px) {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
   }
   .blogResponse {
     scrollbar-face-color: $c3;
     scrollbar-track-color: $c1;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow-y: scroll;
     scrollbar-color: $c3 $c1;
     color: $c1;
-    width: calc(100% - 4px);
-    border-left: 2px solid $c2;
-    border-right: 2px solid $c2;
-    border-bottom: 2px solid $c2;
-    min-height: caLc(89.5vh - 170px);
+    height: caLc(89.5vh - 170px);
+    position: relative;
     .wave0 {
       background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg");
       background-repeat: no-repeat;
       background-size: cover;
       height: 250px;
       background-position: center;
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      width: 100%;
     }
     &::-webkit-scrollbar {
       width: 10px;
@@ -51,6 +57,8 @@
     }
     table {
       padding: 0 1%;
+      position: relative;
+      z-index: 4;
       td {
         font-size: inherit;
       }

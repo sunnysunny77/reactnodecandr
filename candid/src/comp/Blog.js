@@ -232,12 +232,13 @@ export default class Blog extends React.Component {
         ) : (
           <React.Fragment>
             {this.state.w}
-            <section className="blogCont">
-              <div className="headingCont blogHeading">
+            <div className="headingCont blogHeading">
                 <h1>{ReactHtmlParser(this.state.buttons[0])}</h1>
-              </div>
+            </div>
+            <section className="blogCont">
+           
               <div className="blogResponse">
-                <div className="wave0"></div>
+              <div className="wave0"></div>
                 {this.state.txt}
               </div>
               <div style={{ backgroundColor: styles.c3 }}>

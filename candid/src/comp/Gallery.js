@@ -14,6 +14,8 @@ export default class Galery extends Component {
     };
   }
   componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("resize", this.handleScroll);
     axios.post(`/g`).then((res) => {
       this.setState({ res: res.data, load: false });
     })
@@ -21,6 +23,14 @@ export default class Galery extends Component {
         alert(error);
       });
   }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener("resize", this.handleScroll);
+  }
+  handleScroll = () => {
+    if (window.innerWidth > 1200) return document.querySelector(".wave0").style.top = "40px";
+    if (window.innerWidth <= 1200) document.querySelector(".wave0").style.top = "0px";
+  };
   render() {
     return (
       <React.Fragment>
