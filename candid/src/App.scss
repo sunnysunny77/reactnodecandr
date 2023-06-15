@@ -47,7 +47,7 @@ code {
   top: 150px;
   right: 40px;
   @media only screen and (max-width: 1200px) {
-    top: 40px;
+    top: 0;
   }
 }
 
@@ -83,7 +83,7 @@ main {
     top: 0;
     right: 40px;
     @media only screen and (max-width: 1200px) {
-      top: -50px;
+      top: -90px;
     }
   }
   @media only screen and (min-width: 1201px) {
