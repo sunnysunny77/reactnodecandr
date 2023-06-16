@@ -56,19 +56,16 @@
     &::-webkit-scrollbar-thumb:hover {
       background: $c7;
     }
-    .table-container {
+    table {
+      padding: 0 1%;
       position: relative;
       z-index: 4;
-      table {
-        padding: 0 1%;
-
-        td {
-          font-size: inherit;
-        }
+      td {
+        font-size: inherit;
       }
-      hr {
-        width: 60%;
-      }
+    }
+    hr {
+      width: 60%;
     }
   }
   .accordianHeading {

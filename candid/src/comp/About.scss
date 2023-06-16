@@ -162,7 +162,9 @@
   }
   #readMoreZero,
   #readMoreOne {
-    display: none;
+    height: 0;
+    overflow: hidden;
+    transition: height 1s;
     text-align: justify;
   }
 }

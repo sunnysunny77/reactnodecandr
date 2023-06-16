@@ -78,9 +78,10 @@ export default class About extends React.Component {
                   <span id="topSpan">{ReactHtmlParser(this.state.res.span1)}</span>
                   <button
                     className="btn"
-                    onClick={() => {
-                      document.getElementById("readMoreZero").style.display = "block";
-                    }}
+                    onClick={ function () {
+                      const obj = document.getElementById("readMoreZero");
+                      obj.style.height = obj.scrollHeight + "px";
+                 }}
                   >
                     {ReactHtmlParser(this.state.res.buttons[1])}
                   </button>
@@ -89,7 +90,7 @@ export default class About extends React.Component {
                     <span>{ReactHtmlParser(this.state.res.span2)}</span>
                     <button
                       onClick={() => {
-                        document.getElementById("readMoreZero").style.display = "none";
+                        document.getElementById("readMoreZero").style.height = "0";
                       }}
                     >
                       {ReactHtmlParser(this.state.res.buttons[2])}
@@ -107,7 +108,8 @@ export default class About extends React.Component {
                   <button
                     className="btn"
                     onClick={() => {
-                      document.getElementById("readMoreOne").style.display = "block";
+                      const obj = document.getElementById("readMoreOne");
+                      obj.style.height = obj.scrollHeight + "px";
                     }}
                   >
                     {ReactHtmlParser(this.state.res.buttons[1])}
@@ -117,7 +119,7 @@ export default class About extends React.Component {
                     <span>{ReactHtmlParser(this.state.res.span4)}</span>
                     <button
                       onClick={() => {
-                        document.getElementById("readMoreOne").style.display = "none";
+                        document.getElementById("readMoreOne").style.height = "0";
                       }}
                     >
                       {ReactHtmlParser(this.state.res.buttons[2])}

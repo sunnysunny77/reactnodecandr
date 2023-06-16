@@ -178,7 +178,7 @@ export default class Blog extends React.Component {
       txt: x.map((key, index) => {
         const { _id, blogers, date, name, title, loc } = key;
         return (
-          <div className="table-container">
+          <React.Fragment>
             <table key={_id}>
               <tbody key={_id + "0"}>
                 <tr key={_id + "1"}>
@@ -216,7 +216,7 @@ export default class Blog extends React.Component {
             <hr/>
             <br/>
             <br/>
-          </div>
+          </React.Fragment>
         );
       }),
     });
