@@ -26,6 +26,7 @@
   margin: 0 auto 60px auto;
   position: relative;
   padding-bottom: 60px;
+  min-height: 100vh;
   @media only screen and (max-width: 1200px) {
     margin: auto;
   }
@@ -39,22 +40,21 @@
     z-index: 0;
   }
   .image-gallery {
-    .image-gallery-image {
-      width: 40%;
-      border: 2px solid $c2;
-      max-height: initial;
-    }
     .fullscreen {
-      .image-gallery-image {
-        width: 100%;
-        height: 100vh;
-        object-fit: cover;
-      }
-      .image-gallery-thumbnails-wrapper {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        left: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .image-gallery-image {
+      width: auto;
+      object-fit: cover;
+      border: 2px solid $c2;
+      @media only screen and (max-width: 1200px) {
+        max-width: 75vw;
+        @media only screen and (orientation: landscape) {
+          width: 100vw;
+        }
       }
     }
   }

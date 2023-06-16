@@ -178,44 +178,45 @@ export default class Blog extends React.Component {
       txt: x.map((key, index) => {
         const { _id, blogers, date, name, title, loc } = key;
         return (
-          <React.Fragment>
-          <table key={_id}>
-            <tbody key={_id + "0"}>
-              <tr key={_id + "1"}>
-                <td>{title}</td>
-              </tr>
-              <tr key={_id + "2"}>
-                <td style={{ color: "rgba(147,112,219, 0.9)" }}>
-                  <img
-                    src="https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg"
-                    alt="icon"
-                    width="10"
-                    height="10"
-                  ></img>{" "}
-                  {"" + date}
-                </td>
-              </tr>
-              <tr key={_id + "img"}>
-                <td>
-                  <img
-                    alt={title}
-                    src={"https://" + window.location.hostname + loc}
-                  />
-                </td>
-              </tr>
-              <tr key={_id + "3"}>
-                <td>{name}:</td>
-              </tr>
-              <tr key={_id + "4"}>
-                <td>{blogers}</td>
-              </tr>
-            </tbody>
-          </table>
-          <br/>
-          <hr/>
-          <br/>
-          <br/>
-          </React.Fragment>
+          <div className="table-container">
+            <table key={_id}>
+              <tbody key={_id + "0"}>
+                <tr key={_id + "1"}>
+                  <td>{title}</td>
+                </tr>
+                <tr key={_id + "2"}>
+                  <td style={{ color: "rgba(147,112,219, 0.9)" }}>
+                    <img
+                      src="https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg"
+                      alt="icon"
+                      width="10"
+                      height="10"
+                    ></img>{" "}
+                    {"" + date}
+                  </td>
+                </tr>
+                <tr key={_id + "img"}>
+                  <td>
+                    <img
+                      alt={title}
+                      src={"https://" + window.location.hostname + loc}
+                    />
+                  </td>
+                </tr>
+                <tr key={_id + "3"}>
+                  <td>{name}:</td>
+                </tr>
+                <tr key={_id + "4"}>
+                  <td>{blogers}</td>
+                </tr>
+              </tbody>
+            </table>
+            <br/>
+            <br/>
+            <hr/>
+            <br/>
+            <br/>
+          </div>
         );
       }),
     });

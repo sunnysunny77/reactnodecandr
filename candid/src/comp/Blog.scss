@@ -30,8 +30,9 @@
     overflow-y: scroll;
     scrollbar-color: $c3 $c1;
     color: $c1;
-    height: caLc(89.5vh - 170px);
+    height: 100vh;
     position: relative;
+    overscroll-behavior: none;
     .wave0 {
       background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg");
       background-repeat: no-repeat;
@@ -55,16 +56,19 @@
     &::-webkit-scrollbar-thumb:hover {
       background: $c7;
     }
-    table {
-      padding: 0 1%;
+    .table-container {
       position: relative;
       z-index: 4;
-      td {
-        font-size: inherit;
+      table {
+        padding: 0 1%;
+
+        td {
+          font-size: inherit;
+        }
       }
-    }
-    hr {
-      width: 60%;
+      hr {
+        width: 60%;
+      }
     }
   }
   .accordianHeading {
