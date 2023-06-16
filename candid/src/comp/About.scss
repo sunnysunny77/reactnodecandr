@@ -153,6 +153,12 @@
     display: block;
     margin: 25px auto;
     cursor: pointer;
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: $c1;
+      border: 1PX solid  $c2;
+      color: $c5;
+    }
     &.btn {
       margin-right: 4%;
       @media only screen and (max-width: 1365px) {
