@@ -33,16 +33,31 @@
     height: 100vh;
     position: relative;
     overscroll-behavior: none;
+    @media only screen and (max-width: 1200px) {
+      height: caLc(89.5vh - 170px);
+      @media only screen and (orientation: landscape) {
+        height: 85vh;
+      }
+    }
     .wave0 {
-      background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg");
-      background-repeat: no-repeat;
-      background-size: cover;
       height: 250px;
-      background-position: center;
+      @media only screen and (max-width: 1200px) {
+        height: 60px;
+      }
+      overflow: visible;
       position: sticky;
       top: 0;
       z-index: 3;
-      width: 100%;
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 250px;
+        background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
     }
     &::-webkit-scrollbar {
       width: 10px;
