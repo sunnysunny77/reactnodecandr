@@ -34,10 +34,7 @@
     position: relative;
     overscroll-behavior: none;
     @media only screen and (max-width: 1200px) {
-      height: caLc(89.5vh - 170px);
-      @media only screen and (orientation: landscape) {
-        height: 85vh;
-      }
+      height: 70vh;
     }
     .wave0 {
       height: 250px;
