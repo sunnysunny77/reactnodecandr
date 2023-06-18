@@ -133,6 +133,8 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
+    background-image: url(./img/handmade-paper.png);
+    background-blend-mode: color;
     @media only screen and (max-width: 1200px) {
       width: 35%;
     }
@@ -313,6 +315,8 @@
       text-align: center;
       font-style: oblique;
       font-family: $font4;
+      background-image: url(./img/handmade-paper.png);
+      background-blend-mode: hard-light;
       @media only screen and (max-width: 992px) {
         border-radius: 2.5px;
       }
@@ -395,6 +399,8 @@
 
 .enquiry {
   background-color: $c5;
+  background-image: url(./img/handmade-paper.png);
+  background-blend-mode: color;
   h3 {
     font-family: $font1;
     color: $c1;

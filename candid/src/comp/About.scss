@@ -34,6 +34,8 @@
         font-family: $font3;
         word-wrap: break-word;
         padding: 10px;
+        background-image: url(./img/handmade-paper.png);
+        background-blend-mode: hard-light;
         @media only screen and (max-width: 1200px) {
           border-radius: 0;
         }

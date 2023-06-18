@@ -21,6 +21,8 @@
   max-width: 1200px;
   width: calc(100% - 4px);
   margin: 0 auto 60px auto;
+  background-image: url(./img/handmade-paper.png);
+  background-blend-mode: color;
   @media only screen and (max-width: 1200px) {
     margin: 0 auto;
   }
@@ -96,6 +98,8 @@
   .formAdd {
     width: 100%;
     background-color: $c5;
+    background-image: url(./img/handmade-paper.png);
+    background-blend-mode: color;
     color: $c1;
     overflow: hidden;
     svg:nth-child(2) {
@@ -149,6 +153,8 @@
     width: 100%;
     margin: auto;
     background-color: $c5;
+    background-image: url(./img/handmade-paper.png);
+    background-blend-mode: color;
     color: $c1;
     overflow: hidden;
     padding-top: 10px;

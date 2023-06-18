@@ -8,6 +8,8 @@
   z-index: 2;
   max-width: 1200px;
   margin: auto auto 4% auto;
+  background-image: url(./img/handmade-paper.png);
+  background-blend-mode: color;
   @media only screen and (max-width: 1365px) {
     width: 92%;
     margin: 4% auto 4% auto;
@@ -19,6 +21,7 @@
     height: 250px;
     position: sticky;
     background-position: center;
+    opacity: 0.9;
     z-index: 3;
   }
   .prop {
@@ -42,6 +45,7 @@
       left: 0;
       position: absolute;
       height: 130px;
+      opacity: 0.9;
       background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg.svg");
       animation: wave 15s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
     }

@@ -51,6 +51,8 @@
       font-family: $font3;
       min-width: 355px;
       margin-top: 0.83em;
+      background-image: url(./img/handmade-paper.png);
+      background-blend-mode: hard-light;
       @media only screen and (max-width: 640px) {
         border-radius: 0;
         width: calc(92% - 24px);
