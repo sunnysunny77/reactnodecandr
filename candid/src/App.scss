@@ -51,6 +51,10 @@ code {
   }
 }
 
+a {
+  transition: 0.2s ease-in-out color;
+}
+
 main {
   max-width: 1920px;
   margin: auto;
@@ -58,7 +62,6 @@ main {
   min-height: 89.5vh;
   display: flex;
   flex-direction: column;
-
   @media only screen and (min-width: 1921px) {
     box-shadow: 1px 0 rgba($c4, 0.2), -1px 0 rgba($c4, 0.2);
   }
@@ -83,6 +86,7 @@ main {
     padding-right: 20px;
     font-size: inherit;
     line-height: 40px;
+    font-weight: 500;
   }
   .headingCont {
     width: 100%;
