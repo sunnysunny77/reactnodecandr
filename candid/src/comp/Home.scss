@@ -135,7 +135,7 @@
     -moz-user-select: none;
     user-select: none;
     background-image: url(./img/handmade-paper.png);
-    background-blend-mode: color;
+    background-blend-mode: color-burn;
     @media only screen and (max-width: 1200px) {
       width: 35%;
     }
