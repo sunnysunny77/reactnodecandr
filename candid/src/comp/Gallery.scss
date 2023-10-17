@@ -33,13 +33,24 @@
     margin: auto;
   }
   .wave0 {
-    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
     height: 250px;
-    background-position: center;
-    position: sticky;
-    z-index: 0;
+      @media only screen and (max-width: 1200px) {
+        height: 60px;
+      }
+      overflow: visible;
+      position: sticky;
+      top: 0;
+      z-index: 0;
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 250px;
+        background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
   }
   .image-gallery {
     .fullscreen {
@@ -47,6 +58,9 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      @media only screen and (max-width: 1200px) {
+        justify-content: initial;
+      }
     }
     .image-gallery-image {
       width: auto;
