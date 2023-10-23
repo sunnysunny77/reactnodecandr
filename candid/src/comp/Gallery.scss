@@ -26,7 +26,9 @@
   position: relative;
   background-image: url(./img/handmade-paper.png);
   background-blend-mode: color;
+  min-height: calc(100vh - 40px);
   @media only screen and (max-width: 1200px) {
+    min-height: 100vh;
     margin: auto;
   }
   .wave0 {
@@ -50,24 +52,37 @@
     }
   }
   .image-gallery {
-    min-height: calc(100vh - 240px);
-    @media only screen and (max-width: 1200px) {
-      min-height: calc(100vh - 60px);
-    }
-    .fullscreen {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      @media only screen and (max-width: 1200px) {
-        justify-content: initial;
+    width: 75%;
+    margin: 0 auto;
+    .image-gallery-swipe {
+      position: relative;
+      width: 100%;
+      margin: auto;
+      padding-top: 56.25%;
+      .image-gallery-slides {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        img {
+          height: 100%;
+          object-fit: cover;
+          border: 2px solid $c2;
+          box-sizing: border-box;
+        }
       }
     }
-    .image-gallery-image {
-      width: 50%;
-      object-fit: cover;
-      border: 2px solid $c2;
-      max-height: 380px;
+    .fullscreen {
+      .image-gallery-swipe {
+        padding-top: initial;
+        .image-gallery-slides {
+          position: relative;
+          img {
+            object-fit: contain;
+          }
+        }
+      }
     }
   }
 }
