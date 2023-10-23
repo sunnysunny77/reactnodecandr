@@ -18,41 +18,42 @@
   border-left: 2px solid $c2;
   border-right: 2px solid $c2;
   border-bottom: 2px solid $c2;
-  min-height: caLc(89.5vh - 42px);
   display: flex;
   flex-direction: column;
   width: calc(100% - 4px);
   max-width: 1200px;
   margin: 0 auto 60px auto;
   position: relative;
-  padding-bottom: 60px;
-  min-height: 100vh;
   background-image: url(./img/handmade-paper.png);
   background-blend-mode: color;
   @media only screen and (max-width: 1200px) {
     margin: auto;
   }
   .wave0 {
-    height: 250px;
-      @media only screen and (max-width: 1200px) {
-        height: 60px;
-      }
-      overflow: visible;
-      position: sticky;
-      top: 0;
-      z-index: 0;
-      &::after {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 250px;
-        background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-      }
+    height: 200px;
+    @media only screen and (max-width: 1200px) {
+      height: 60px;
+    }
+    overflow: visible;
+    position: sticky;
+    top: 0;
+    z-index: 0;
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 200px;
+      background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
   }
   .image-gallery {
+    min-height: calc(100vh - 240px);
+    @media only screen and (max-width: 1200px) {
+      min-height: calc(100vh - 60px);
+    }
     .fullscreen {
       height: 100%;
       display: flex;
@@ -63,15 +64,10 @@
       }
     }
     .image-gallery-image {
-      width: auto;
+      width: 50%;
       object-fit: cover;
       border: 2px solid $c2;
-      @media only screen and (max-width: 1200px) {
-        max-width: 75vw;
-        @media only screen and (orientation: landscape) {
-          width: 100vw;
-        }
-      }
+      max-height: 380px;
     }
   }
 }

@@ -59,9 +59,12 @@ main {
   max-width: 1920px;
   margin: auto;
   position: relative;
-  min-height: 89.5vh;
   display: flex;
   flex-direction: column;
+  min-height: calc(100vh - 227px);
+  @media only screen and (max-width: 1200px) { 
+    min-height: calc(100vh - 254px);
+  }
   @media only screen and (min-width: 1921px) {
     box-shadow: 1px 0 rgba($c4, 0.2), -1px 0 rgba($c4, 0.2);
   }
