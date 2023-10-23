@@ -59,7 +59,9 @@
     background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/welcome.png);
     background-size: cover;
     background-repeat: no-repeat;
-    transition: transform 0.3s linear, background-color 0.3s linear;
+    transition:
+      transform 0.3s linear,
+      background-color 0.3s linear;
     transform: translate(0, 0);
     width: fit-content;
     @media only screen and (max-width: 1200px) {
@@ -308,22 +310,11 @@
       padding: 0;
     }
     p {
-      color: $c1;
-      background-color: $c5;
-      border-radius: 100px;
+      color: $c3;
       padding: 3%;
       text-align: center;
       font-style: oblique;
       font-family: $font4;
-      background-image: url(./img/handmade-paper.png);
-      background-blend-mode: color;
-      @media only screen and (max-width: 992px) {
-        border-radius: 0;
-        color: $c3;
-        background-image: initial;
-        background-color: initial;
-        background-blend-mode: initial;
-      }
     }
   }
 }
