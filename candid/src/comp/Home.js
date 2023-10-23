@@ -696,6 +696,7 @@ class Home extends Component {
                   }}
                   variant="contained"
                   type="submit"
+                  className="button"
                 >
                   {ReactHtmlParser(this.state.res.buttons[2])}
                 </Button>

@@ -432,6 +432,10 @@
       background: $c7;
     }
   }
+  .button {
+    background-image: url(./img/handmade-paper.png);
+    background-blend-mode: color-burn;
+  }
 }
 
 @keyframes slide1 {

@@ -135,7 +135,7 @@
     }
   }
   #picSpan {
-    width: 53%;
+    width: 50%;
     padding-left: 50px;
     margin-top: 100px;
     text-align: right;
@@ -177,5 +177,6 @@
     overflow: hidden;
     transition: height 1s;
     text-align: justify;
+    font-size: medium;
   }
 }

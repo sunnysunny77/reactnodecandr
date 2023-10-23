@@ -401,6 +401,7 @@ export default class Blog extends React.Component {
                         }}
                         variant="contained"
                         type="submit"
+                        className="button"
                       >
                         {" "}
                         {ReactHtmlParser(this.state.buttons[3])}
@@ -501,6 +502,7 @@ export default class Blog extends React.Component {
                           borderRadius: 0,
                         }}
                         variant="contained"
+                        className="button"
                         type="submit"
                       >
                         {" "}
