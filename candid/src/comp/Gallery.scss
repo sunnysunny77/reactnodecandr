@@ -18,6 +18,8 @@
   border-left: 2px solid $c2;
   border-right: 2px solid $c2;
   border-bottom: 2px solid $c2;
+  padding-bottom: 60px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   width: calc(100% - 4px);
