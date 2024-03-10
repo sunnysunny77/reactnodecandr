@@ -31,12 +31,14 @@ function Footer(props) {
           <Link to={"/" + buttons[3]}>{ReactHtmlParser(buttons[3])}</Link>
         </li>
         <li className="block" id="imh">
-          <img
-            src="https://candid.s3-ap-southeast-2.amazonaws.com/foot.png"
-            alt="Candid Icon"
-            width="40"
-            height="40"
-          />
+          <Link to="/">
+            <img
+              src="https://candid.s3-ap-southeast-2.amazonaws.com/foot.png"
+              alt="Candid Icon"
+              width="40"
+              height="40"
+            />
+          </Link>
         </li>
         <li className="block none">
           {ReactHtmlParser(time)} / {ReactHtmlParser(day)}
