@@ -204,12 +204,16 @@ class Nav extends Component {
               </a>
             </li>
             <li>
-              <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logos.png" alt="Candid Icon" width="60" height="60"></img>
+              <Link to="/">
+                <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logos.png" alt="Candid Icon" width="60" height="60"></img>
+              </Link>
             </li>
           </ul>
         </nav>
         <header>
-          <img src="https://candid.s3.ap-southeast-2.amazonaws.com/logolarge.png" alt="Candid Logo" width={this.state.wi} height={this.state.hi}></img>
+          <Link to="/">
+            <img src="https://candid.s3.ap-southeast-2.amazonaws.com/logolarge.png" alt="Candid Logo" width={this.state.wi} height={this.state.hi}></img>
+          </Link>
         </header>
         <nav className={`mainNav ${this.state.class}`}>
           <ul>
