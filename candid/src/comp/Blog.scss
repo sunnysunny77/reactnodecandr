@@ -36,7 +36,7 @@
     overscroll-behavior: none;
     min-height: calc(100vh - 160px);
     @media only screen and (max-width: 1200px) {
-      min-height: calc(100vh - 130px);
+      min-height: 100vh;
     }
     .wave0 {
       height: 200px;
@@ -115,22 +115,23 @@
     .custom-file-input[type="file"] {
       border: 1px solid $c9;
       border-radius: 3px;
-      padding: 5px 8px;
+      margin-top: 10px;
+      padding: 4px 8px;
       cursor: pointer;
       width: 35%;
       @media only screen and (max-width: 1200px) {
-        width: 90%;
+        width: 75%;
       }
       &::-ms-browse {
         background-color: $c1;
-        margin: 0px;
-        padding: 0px;
+        margin: 4px;
+        padding: 8px;
         border: 0px;
       }
       &::-webkit-file-upload-button {
         background-color: $c1;
-        margin: 0px;
-        padding: 0px;
+        margin: 4px;
+        padding: 8px;
         border: 0px;
       }
     }
@@ -140,6 +141,10 @@
       overflow-y: auto;
       overflow-x: hidden;
       scrollbar-color: $c3 $c1;
+      @media only screen and (max-width: 1200px) {
+        width: 90%;
+        margin-left: 5%;
+      }
       &::-webkit-scrollbar {
         width: 10px;
       }
@@ -162,16 +167,17 @@
     background-blend-mode: color;
     color: $c1;
     overflow: hidden;
-    padding-top: 10px;
+    padding-top: 50px;
   }
   .MuiFormControl-root-com {
     float: right;
     width: 40%;
     padding-left: 60%;
     @media only screen and (max-width: 1200px) {
-      padding-left: 1%;
+      margin: auto;
       float: none;
-      width: 98%;
+      width: 90%;
+      padding-left: 5%;
     }
   }
 }

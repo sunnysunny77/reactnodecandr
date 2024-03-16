@@ -52,6 +52,11 @@ footer {
       }
       &#imh {
         height: initial;
+        a {
+          display: block;
+          width: fit-content;
+          margin: auto;
+        }
       }
     }
   }

@@ -360,13 +360,12 @@ export default class Blog extends React.Component {
                             fontSize: "inherit",
                             fontWeight: "500",
                             display: "block",
-                            width: "100%",
                             height: "135px",
                             backgroundColor: styles.c11,
                             overflowY: "auto",
                             overflowX: "hidden",
                             paddingTop: "10px",
-                            marginTop: "10px",
+                            marginTop: "25px",
                             borderRadius: 0,
                           },
                         }}
@@ -376,7 +375,7 @@ export default class Blog extends React.Component {
                         placeholder="Text:"
                         onChange={this.change}
                       />
-                      <div style={{ textAlign: "center", marginTop: "10px" }}>
+                      <div style={{ textAlign: "center", marginTop: "25px" }}>
                         <label htmlFor="avatar">Upload a picture:</label>
                         <br></br>
                         <input
@@ -396,7 +395,7 @@ export default class Blog extends React.Component {
                           fontSize: "inherit",
                           fontWeight: "400",
                           paddingTop: "10px",
-                          marginTop: "10px",
+                          marginTop: "50px",
                           borderRadius: 0,
                         }}
                         variant="contained"
@@ -498,7 +497,7 @@ export default class Blog extends React.Component {
                           fontSize: "inherit",
                           fontWeight: "400",
                           paddingTop: "10px",
-                          marginTop: "10px",
+                          marginTop: "50px",
                           borderRadius: 0,
                         }}
                         variant="contained"

@@ -64,7 +64,7 @@ class Nav extends Component {
     }
   };
   window = () => {
-    if (this.state.dis === "slide") return this.setState({
+    this.setState({
       dis: "out",
       bar1: {
         width: "25px",
@@ -90,7 +90,7 @@ class Nav extends Component {
     })
   }
   bars = () => {
-    if (this.state.dis !== "slide") return this.setState({
+    this.setState({
       dis: "slide",
       bar1: {
         width: "25px",
@@ -119,6 +119,8 @@ class Nav extends Component {
         transform: "rotate(45deg) translate(-8px, -8px)",
       },
     });
+  };
+  barsOut = () => {
     this.setState({
       dis: "out",
       bar1: {
@@ -143,15 +145,18 @@ class Nav extends Component {
         transition: "0.4s",
       },
     })
-  };
+  }
   render() {
     let { ph, time, day, buttons } = this.props
     return (
       <React.Fragment>
-        <div className="burgerMenu" onClick={this.bars}>
-          <div style={this.state.bar1}></div>
-          <div style={this.state.bar2}></div>
-          <div style={this.state.bar3}></div>
+        <div className="burgerContainer">
+          <div className="burgerMenu" onClick={this.bars}>
+            <div style={this.state.bar1}></div>
+            <div style={this.state.bar2}></div>
+            <div style={this.state.bar3}></div>
+          </div>
+          <div className={`barsOut ${this.state.dis}`} onClick={this.barsOut}> </div>
         </div>
         <nav className={`mobileNav ${this.state.dis}`} >
           <ul>

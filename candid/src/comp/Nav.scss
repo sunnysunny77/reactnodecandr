@@ -6,10 +6,11 @@ header {
   width: 100%;
   height: 90px;
   background-image: linear-gradient(-90deg, $c1 0%, $c6 50%);
-  img {
-    padding-left: 85px;
+  a {
+    margin-left: 85px;
     padding-right: initial;
     position: relative;
+    display: block;
     top: 24px;
     width: 200px;
     height: 46px;
@@ -17,45 +18,69 @@ header {
     @media only screen and (max-width: 1200px) {
       float: right;
       top: 32px;
-      padding-right: 20px;
+      margin-right: 20px;
       width: 140px;
       height: 32px;
     }
     @media only screen and (min-width: 1921px) {
-      padding-left: calc(50vw - 960px);
+      margin-left: calc(50vw - 960px);
+    }
+    img {
+      width: 100%;
+      height: auto;
     }
   }
 }
 
 /* mobile nav  */
 
-.burgerMenu {
+
+.burgerContainer {
+  width: 200px;
+  height: 90px;
   position: absolute;
-  z-index: 999;
-  margin: 25px 0 0 25px;
-  transform: scale(1.8);
-  @media only screen and (min-width: 1201px) {
-    display: none;
+  .burgerMenu {
+    position: absolute;
+    z-index: 999;
+    padding: 28.5px 148.5px 28.5px 26.5px;
+    box-sizing: border-box;
+    height: fit-content;
+    @media only screen and (min-width: 1201px) {
+      display: none;
+    }
+    &:hover {
+      cursor: pointer;
+    }
   }
-  &:hover {
-    cursor: pointer;
+  .barsOut {
+    &.slide {
+      position: absolute;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     left: 0;
+     z-index: 1000;
+    }
   }
+
 }
+
+
 
 .mobileNav {
   position: absolute;
   width: 200px;
-  background-color: $c1;
+  background-image: linear-gradient(-90deg, $c1 0%, $c6 50%);
   border-right: 1.5px solid $c9;
   border-bottom: 1.5px solid $c9;
   animation-duration: 0.6s;
   animation-fill-mode: forwards;
   z-index: 998;
   text-align: center;
-  padding-top: 87px;
   transform: translate(-202px);
   font-size: 5px;
   font-family: $font4;
+  margin-top: 90px;
   @media only screen and (min-width: 1201px) {
     visibility: hidden;
   }
@@ -72,12 +97,14 @@ header {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    hr {
+      margin-top: 0;
+    }
     a {
       width: 100%;
       font-size: initial;
       color: $c3;
       cursor: pointer;
-      background-color: $c1;
       border: none;
       display: block;
       text-decoration: none;
@@ -87,8 +114,7 @@ header {
         color: $c10;
       }
     }
-    svg,
-    img {
+    svg {
       padding: 10px 0;
     }
   }
