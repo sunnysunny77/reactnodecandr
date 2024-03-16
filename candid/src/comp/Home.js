@@ -40,6 +40,8 @@ const customStyles = {
   option: () => ({
     fontFamily: styles.font3,
     cursor: "pointer",
+    margin: "8px 0",
+    fontSize: "medium",
   }),
   singleValue: () => ({
     color: styles.c3,

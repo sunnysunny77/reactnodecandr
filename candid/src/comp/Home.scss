@@ -26,7 +26,7 @@
   left: 0;
   flex-direction: column;
   @media only screen and (max-width: 1200px) {
-    margin: 2% auto auto 4%;
+    margin: 20px auto auto 4%;
     font-size: medium;
   }
   @media only screen and (max-width: 640px) {
@@ -43,19 +43,26 @@
     line-height: 35px;
     display: flex;
     width: fit-content;
+    @media only screen and (max-width: 1200px) {
+      line-height: 25px;
+    }
     #my-svg {
       stroke: $c3;
       stroke-width: 13;
       fill: none;
       vertical-align: bottom;
       overflow: visible;
+      @media only screen and (max-width: 1200px) {
+        width: 25px;
+        height: 25px;
+        }
     }
   }
   #welcomeTwo {
     background-color: $c9;
     border-radius: 5px;
-    margin: 6px 0 0 4px;
-    padding: 50px 85px;
+    margin: 8px 0 0 8px;
+    padding: 47px 80px;
     background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/welcome.png);
     background-size: cover;
     background-repeat: no-repeat;
@@ -423,11 +430,9 @@
   }
   .react-select__menu-list,
   .MuiFilledInput-multiline {
-    scrollbar-face-color: $c3;
-    scrollbar-track-color: $c1;
     overflow-y: auto;
     overflow-x: hidden;
-    scrollbar-color: $c3 $c1;
+    scrollbar-color: $c3 transparent;
     &::-webkit-scrollbar {
       width: 10px;
     }
@@ -435,7 +440,7 @@
       background: $c3;
     }
     &::-webkit-scrollbar-track {
-      background: $c1;
+      background: transparent;
     }
     &::-webkit-scrollbar-thumb:hover {
       background: $c7;

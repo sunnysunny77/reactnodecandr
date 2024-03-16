@@ -27,8 +27,6 @@
     margin: auto;
   }
   .blogResponse {
-    scrollbar-face-color: $c3;
-    scrollbar-track-color: $c1;
     overflow-y: scroll;
     scrollbar-color: $c3 $c1;
     color: $c1;
@@ -121,31 +119,19 @@
       background-color: $c1;
       cursor: pointer;
       width: fit-content;
-      &::-ms-browse {
+      &::file-selector-button {
         background-color: $c1;
         border: 1px solid $c3;
         color: $c3;
-        margin: 4px;
-        padding: 8px;
-        border-radius: 3px;
-        margin-right: 10px;
-      }
-      &::-webkit-file-upload-button {
-        background-color: $c1;
-        border: 1px solid $c3;
-        color: $c3;
-        margin: 4px;
         padding: 8px;
         border-radius: 3px;
         margin-right: 10px;
       }
     }
     .MuiFilledInput-multiline {
-      scrollbar-face-color: $c3;
-      scrollbar-track-color: $c1;
       overflow-y: auto;
       overflow-x: hidden;
-      scrollbar-color: $c3 $c1;
+      scrollbar-color: $c3 transparent;
       @media only screen and (max-width: 1200px) {
         width: 90%;
         margin-left: 5%;
@@ -154,7 +140,7 @@
         width: 10px;
       }
       &::-webkit-scrollbar-track {
-        background: $c1;
+        background: transparent;
       }
       &::-webkit-scrollbar-thumb {
         background: $c3;
