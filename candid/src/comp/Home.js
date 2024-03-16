@@ -53,7 +53,7 @@ const customStyles = {
     fontFamily: styles.font3,
     fontWeight: 500,
     fontSize: "1.2em",
-    marginLeft: "2%",
+    marginLeft: "25px",
     marginBottom: "10px",
   }),
   input: () => ({
@@ -547,7 +547,6 @@ class Home extends Component {
                   InputProps={{
                     style: {
                       color: styles.c3,
-                      marginLeft: "2%",
                       backgroundColor: styles.c11,
                       borderRadius: 0,
                       fontSize: "120%",
@@ -574,7 +573,6 @@ class Home extends Component {
                   InputProps={{
                     style: {
                       color: styles.c3,
-                      marginLeft: "2%",
                       backgroundColor: styles.c11,
                       borderRadius: 0,
                       fontSize: "120%",
@@ -608,7 +606,6 @@ class Home extends Component {
                     InputProps={{
                       style: {
                         color: styles.c3,
-                        marginLeft: "2%",
                         backgroundColor: styles.c11,
                         borderRadius: 0,
                         fontSize: "120%",
@@ -627,7 +624,7 @@ class Home extends Component {
                     onChange={this.change}
                   />
                 </Tooltip>
-                <div style={{ height: "177px", margin: "50px 0 60px 0" }}>
+                <div className="selectContainer">
                   <ListIcon
                     style={{ color: styles.c11, marginLeft: "27.5px" }}
                   />

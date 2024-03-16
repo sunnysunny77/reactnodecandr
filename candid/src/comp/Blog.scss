@@ -117,22 +117,27 @@
       border-radius: 3px;
       margin-top: 10px;
       padding: 4px 8px;
+      color: $c3;
+      background-color: $c1;
       cursor: pointer;
-      width: 35%;
-      @media only screen and (max-width: 1200px) {
-        width: 75%;
-      }
+      width: fit-content;
       &::-ms-browse {
         background-color: $c1;
+        border: 1px solid $c3;
+        color: $c3;
         margin: 4px;
         padding: 8px;
-        border: 0px;
+        border-radius: 3px;
+        margin-right: 10px;
       }
       &::-webkit-file-upload-button {
         background-color: $c1;
+        border: 1px solid $c3;
+        color: $c3;
         margin: 4px;
         padding: 8px;
-        border: 0px;
+        border-radius: 3px;
+        margin-right: 10px;
       }
     }
     .MuiFilledInput-multiline {
