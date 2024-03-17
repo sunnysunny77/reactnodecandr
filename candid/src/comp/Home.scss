@@ -431,9 +431,7 @@
   .react-select__indicator{
     color: $c11;
   }
-  .react-select__indicator:hover,
-  .react-select__indicator:focus,
-  .react-select__indicator:active {
+  .react-select__indicator:hover {
     color: $c13;
   }
   .react-select__menu-list,
