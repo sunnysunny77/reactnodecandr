@@ -37,6 +37,7 @@
     height: 130px;
     position: relative;
     overflow: hidden;
+    z-index: 4;
     &::before {
       content: "";
       top: 0;
@@ -44,7 +45,6 @@
       bottom: 0;
       left: 0;
       position: absolute;
-      z-index: 4;
       height: 130px;
       opacity: 0.9;
       background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg.svg");
