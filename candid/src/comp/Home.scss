@@ -55,7 +55,7 @@
       @media only screen and (max-width: 1200px) {
         width: 25px;
         height: 25px;
-        }
+      }
     }
   }
   #welcomeTwo {
@@ -416,19 +416,18 @@
   .MuiFormControl-root-www {
     width: 20%;
     margin: 0 0 25px 25px;
-  
+
     @media only screen and (max-width: 1200px) {
       display: flex;
       justify-content: center;
       width: calc(100% - 50px);
-  
     }
   }
   .selectContainer {
     height: 177px;
     margin: 50px 0 60px 0;
   }
-  .react-select__indicator{
+  .react-select__indicator {
     color: $c11;
   }
   .react-select__indicator:hover {
