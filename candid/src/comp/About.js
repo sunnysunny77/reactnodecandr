@@ -3,8 +3,8 @@ import "./About.scss";
 import Wave from "./Wave";
 import Maps from "./Maps.js";
 import axios from "axios";
-import ListAltIcon from "@material-ui/icons/ListAlt";
-import ReactHtmlParser from "react-html-parser";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import parse from 'html-react-parser';
 
 export default class About extends React.Component {
   constructor(props) {
@@ -18,8 +18,6 @@ export default class About extends React.Component {
     };
   }
   componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
-    window.addEventListener("resize", this.handleScroll);
     axios.post(`/abou`).then((res) => {
       this.setState({
         res: res.data.a,
@@ -31,6 +29,8 @@ export default class About extends React.Component {
       .catch((error) => {
         alert(error);
       });
+    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("resize", this.handleScroll);
   }
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -53,29 +53,29 @@ export default class About extends React.Component {
           <React.Fragment>
             {this.state.w}
             <div className="headingCont">
-              <h1>{ReactHtmlParser(this.state.res.buttons[0])}</h1>
+              <h1>{parse(this.state.res.buttons[0])}</h1>
             </div>
             <section className="aboutContOne">
               <div className="grid">
                 <h2>
-                  {ReactHtmlParser(this.state.res.hmap)}{" "}
+                  {parse(this.state.res.hmap)}{" "}
                   <ListAltIcon />{" "}
                 </h2>
-                <p>{ReactHtmlParser(this.state.cba)}</p>
+                <p>{parse(this.state.cba)}</p>
                 <hr />
               </div>
               <div className="grid"> {this.state.abc} </div>
             </section>
             <section className="aboutContTwo">
               <h2>
-                {ReactHtmlParser(this.state.res.hm)}{" "}
+                {parse(this.state.res.hm)}{" "}
                 <ListAltIcon />{" "}
               </h2>
               <hr />
               <Wave>
                 <div className="prop">
-                  <h3>{ReactHtmlParser(this.state.res.h1)}</h3>
-                  <span id="topSpan">{ReactHtmlParser(this.state.res.span1)}</span>
+                  <h3>{parse(this.state.res.h1)}</h3>
+                  <span id="topSpan">{parse(this.state.res.span1)}</span>
                   <button
                     className="btn"
                     onClick={ function () {
@@ -83,27 +83,27 @@ export default class About extends React.Component {
                       obj.style.height = obj.scrollHeight + "px";
                  }}
                   >
-                    {ReactHtmlParser(this.state.res.buttons[1])}
+                    {parse(this.state.res.buttons[1])}
                   </button>
                   <div id="readMoreZero">
                     <hr />
-                    <span>{ReactHtmlParser(this.state.res.span2)}</span>
+                    <span>{parse(this.state.res.span2)}</span>
                     <button
                       onClick={() => {
                         document.getElementById("readMoreZero").style.height = "0";
                       }}
                     >
-                      {ReactHtmlParser(this.state.res.buttons[2])}
+                      {parse(this.state.res.buttons[2])}
                     </button>
                   </div>
                   <img
                     src="https://candid.s3-ap-southeast-2.amazonaws.com/breakp.png"
                     alt="Swirly text divider"
                   />
-                  <h3>{ReactHtmlParser(this.state.res.h2)}</h3>
+                  <h3>{parse(this.state.res.h2)}</h3>
                   <span id="pic"></span>
                   <span id="picSpan">
-                    {ReactHtmlParser(this.state.res.span3)}
+                    {parse(this.state.res.span3)}
                   </span>
                   <button
                     className="btn"
@@ -112,17 +112,17 @@ export default class About extends React.Component {
                       obj.style.height = obj.scrollHeight + "px";
                     }}
                   >
-                    {ReactHtmlParser(this.state.res.buttons[1])}
+                    {parse(this.state.res.buttons[1])}
                   </button>
                   <div id="readMoreOne">
                     <hr />
-                    <span>{ReactHtmlParser(this.state.res.span4)}</span>
+                    <span>{parse(this.state.res.span4)}</span>
                     <button
                       onClick={() => {
                         document.getElementById("readMoreOne").style.height = "0";
                       }}
                     >
-                      {ReactHtmlParser(this.state.res.buttons[2])}
+                      {parse(this.state.res.buttons[2])}
                     </button>
                   </div>
                 </div>

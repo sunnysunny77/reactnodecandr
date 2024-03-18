@@ -2,29 +2,28 @@ import React from "react";
 import "./Blog.scss";
 import styles from "./Blog.module.scss";
 import Alertm from "./Alertm.js";
-import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import SubjectIcon from "@material-ui/icons/Subject";
-import TitleIcon from "@material-ui/icons/Title";
-import Button from "@material-ui/core/Button";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import { withStyles } from "@material-ui/core/styles";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import SubjectIcon from "@mui/icons-material/Subject";
+import TitleIcon from "@mui/icons-material/Title";
+import Button from "@mui/material/Button";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import { styled } from "@mui/material/styles";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import axios from "axios";
 import Resizer from "react-image-file-resizer";
-import ReactHtmlParser from "react-html-parser";
+import parse from 'html-react-parser';
 
-const StyledAccordion = withStyles(() => ({
-  root: {
-    margin: 0,
-    backgroundColor: styles.c3,
-  },
-}))(Accordion);
+
+const StyledAccordion =styled(Accordion)({
+  margin: 0, 
+  backgroundColor: styles.c3,
+});
 
 export default class Blog extends React.Component {
   constructor(props) {
@@ -234,7 +233,7 @@ export default class Blog extends React.Component {
           <React.Fragment>
             {this.state.w}
             <div className="headingCont blogHeading">
-                <h1>{ReactHtmlParser(this.state.buttons[0])}</h1>
+                <h1>{parse(this.state.buttons[0])}</h1>
             </div>
             <section className="blogCont">
            
@@ -250,7 +249,7 @@ export default class Blog extends React.Component {
                     id="panel2a-header"
                   >
                     <div className="accordianHeading headingCont">
-                      <h2>{ReactHtmlParser(this.state.buttons[1])}</h2>
+                      <h2>{parse(this.state.buttons[1])}</h2>
                     </div>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -403,7 +402,7 @@ export default class Blog extends React.Component {
                         className="button"
                       >
                         {" "}
-                        {ReactHtmlParser(this.state.buttons[3])}
+                        {parse(this.state.buttons[3])}
                       </Button>
                       <div style={{ height: "50px" }}>
                         <div style={this.state.disp0}>
@@ -420,7 +419,7 @@ export default class Blog extends React.Component {
                     id="panel2a-header"
                   >
                     <div className="accordianHeading headingCont">
-                      <h2>{ReactHtmlParser(this.state.buttons[2])}</h2>
+                      <h2>{parse(this.state.buttons[2])}</h2>
                     </div>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -505,7 +504,7 @@ export default class Blog extends React.Component {
                         type="submit"
                       >
                         {" "}
-                        {ReactHtmlParser(this.state.buttons[3])}
+                        {parse(this.state.buttons[3])}
                       </Button>
                       <div style={{ height: "50px" }}>
                         <div style={this.state.disp1}>

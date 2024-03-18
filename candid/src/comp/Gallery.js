@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Gallery.scss";
 import ImageGallery from "react-image-gallery";
 import axios from "axios";
-import ReactHtmlParser from "react-html-parser";
+import parse from 'html-react-parser';
 
 export default class Galery extends Component {
   constructor(props) {
@@ -14,14 +14,14 @@ export default class Galery extends Component {
     };
   }
   componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
-    window.addEventListener("resize", this.handleScroll);
     axios.post(`/g`).then((res) => {
       this.setState({ res: res.data, load: false });
     })
       .catch((error) => {
         alert(error);
       });
+    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("resize", this.handleScroll);
   }
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -44,7 +44,7 @@ export default class Galery extends Component {
           <React.Fragment>
             {this.state.w}
             <div className="galleryHeading headingCont">
-              <h1> {ReactHtmlParser(this.state.res.buttons[0])}</h1>
+              <h1> {parse(this.state.res.buttons[0])}</h1>
             </div>
             <section id="galleryCont">
               <div className="wave0"></div>

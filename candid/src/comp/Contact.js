@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./Contact.scss";
 import Wave from "./Wave";
-import ContactsIcon from "@material-ui/icons/Contacts";
-import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+import ContactsIcon from "@mui/icons-material/Contacts";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import axios from "axios";
-import ReactHtmlParser from "react-html-parser";
+import parse from 'html-react-parser';
 
 export default class Contactc extends Component {
   constructor(props) {
@@ -16,14 +16,14 @@ export default class Contactc extends Component {
     };
   }
   componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
-    window.addEventListener("resize", this.handleScroll);
     axios.post(`/cont`).then((res) => {
       this.setState({ res: res.data, load: false });
     })
       .catch((error) => {
         alert(error);
       });
+    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("resize", this.handleScroll);
   }
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -46,32 +46,32 @@ export default class Contactc extends Component {
           <React.Fragment>
             {this.state.w}
             <div className="headingCont">
-              <h1>{ReactHtmlParser(this.state.res.buttons[0])}</h1>
+              <h1>{parse(this.state.res.buttons[0])}</h1>
             </div>
             <section className="contactContOne">
               <div className="contactOne"></div>
               <div className="contactTwo">
                 <h2>
-                  {ReactHtmlParser(this.state.res.h)}{" "}
+                  {parse(this.state.res.h)}{" "}
                   <ContactsIcon />
                 </h2>
                 <hr />
                 <p>
-                  {ReactHtmlParser(this.state.res.et)}
+                  {parse(this.state.res.et)}
                   <br></br>
                   &nbsp;&nbsp;
                   <a href={"mailto:" + this.state.res.email}>
                     {this.state.res.email}
                   </a>
                   <br></br>
-                  {ReactHtmlParser(this.state.res.pt)}
+                  {parse(this.state.res.pt)}
                   <br></br>
                   &nbsp;&nbsp;
                   <a href={"tel:" + this.state.res.ph}>{this.state.res.ph}</a>
                   <br></br>
-                  {ReactHtmlParser(this.state.res.it)}
+                  {parse(this.state.res.it)}
                   <br></br>
-                  &nbsp; <span> {ReactHtmlParser(this.state.res.it2)}</span>
+                  &nbsp; <span> {parse(this.state.res.it2)}</span>
                   <HelpOutlineIcon
                     onClick={() => {
                       var x = window.location.origin;
@@ -85,13 +85,13 @@ export default class Contactc extends Component {
             </section>
             <section className="contactContTwo">
               <h2>
-                {ReactHtmlParser(this.state.res.h2)}{" "}
+                {parse(this.state.res.h2)}{" "}
                 <ContactsIcon />{" "}
               </h2>
               <hr />
               <Wave>
                 <div id="contactResponse" className="prop">
-                  {ReactHtmlParser(this.state.res.avail)}
+                  {parse(this.state.res.avail)}
                 </div>
               </Wave>
             </section>

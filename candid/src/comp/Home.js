@@ -6,24 +6,24 @@ import styles from "./Home.module.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
-import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
-import InfoIcon from "@material-ui/icons/Info";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
-import WhatshotIcon from "@material-ui/icons/Whatshot";
-import FilterListIcon from "@material-ui/icons/FilterList";
-import BuildIcon from "@material-ui/icons/Build";
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import InfoIcon from "@mui/icons-material/Info";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import WhatshotIcon from "@mui/icons-material/Whatshot";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import BuildIcon from "@mui/icons-material/Build";
 import Alertm from "./Alertm.js";
-import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import Button from "@material-ui/core/Button";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import PhoneIcon from "@material-ui/icons/Phone";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import SubjectIcon from "@material-ui/icons/Subject";
-import ListIcon from "@material-ui/icons/List";
-import Tooltip from "@material-ui/core/Tooltip";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+import Button from "@mui/material/Button";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import PhoneIcon from "@mui/icons-material/Phone";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import SubjectIcon from "@mui/icons-material/Subject";
+import ListIcon from "@mui/icons-material/List";
+import Tooltip from "@mui/material/Tooltip";
 import Select from "react-select";
-import ReactHtmlParser from "react-html-parser";
+import parse from 'html-react-parser';
 
 const customStyles = {
   placeholder: () => ({
@@ -100,88 +100,97 @@ class Home extends Component {
     };
   }
   componentDidMount() {
-    this.resolution();
     axios.post('/hom').then((res) => {
       this.setState({
         res: res.data,
-        load: false,
-        vi: res.data.vid.map((key, index) => {
-          const d = index === 0 ?  "inline-block": "";
-          const idOne = "videoOne-" + index + 1;
-          const idTwo = "videoTwo-" + index + 1;
-          return (
-            <React.Fragment key={index}>
-              <link rel="preload" href={key[0]} as="image" />
-              <span
-                className={ReactHtmlParser("videoLink " + d + " d" + [index + 1])}
-                onClick={() => this.vid(idOne)}
-              >
-                {ReactHtmlParser(key[2])}{" "}
-                <PlayCircleOutlineIcon />
-              </span>
-              <img
-                className={ReactHtmlParser("videoImg " + d + " d" + [index + 1])}
-                src={key[0]}
-                alt={ReactHtmlParser(key[2])}
-                width="275"
-                height="275"
-              />
-              <div id={idOne} className="overlay">  
-                <video loop playsInline>
-                  <source src={key[1]}/>
-
-                  Your browser does not support the video tag.
-                </video>
-                <div className="controlls">
-                  <button onClick={() => {
-                    document.body.style.overflow = "auto";
-                    document.body.style.paddingRight = 0;
-                    document.getElementById(idOne).classList.remove("fixed");
-                    document.getElementById(idOne).children[0].pause();
-                    }}> &#10006; </button>
-                </div>
-              </div>
-              <link rel="preload" href={key[3]} as="image" />
-              <span
-                className={ReactHtmlParser("videoLink " + d + " d" + [index + 1])}
-                onClick={() => this.vid(idTwo)}
-              >
-                {ReactHtmlParser(key[5])}{" "}
-                <PlayCircleOutlineIcon />
-              </span>
-              <img
-                className={ReactHtmlParser("videoImg " + d + " d" + [index + 1])}
-                src={key[3]}
-                alt={ReactHtmlParser(key[5])}
-                width="275"
-                height="275"
-              />
-              <div id={idTwo} className="overlay">  
-                <video loop playsInline>
-                  <source src={key[4]}/>
-
-                  Your browser does not support the video tag.
-                </video>
-                <div className="controlls">
-                  <button onClick={() => {
-                     document.body.style.overflow = "auto";
-                     document.body.style.paddingRight = 0;
-                     document.getElementById(idTwo).classList.remove("fixed");
-                     document.getElementById(idTwo).children[0].pause();
-                    }}> &#10006; </button>
-                </div>
-              </div>
-            </React.Fragment>
-          );
-        }),
+        load: false
       });
-      document.getElementById("my-svg").innerHTML = this.state.res.svg;
-      new Vivus("my-svg", { duration: 200 });
-      if (window.location.search === "?in=in") this.scr();
+      this.vi(res.data.vid);
+      this.resolution();
     })
       .catch((error) => {
         alert(error);
       });
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.load !== this.state.load) {
+      if (window.location.search === "?in=in") this.scr();
+      new Vivus("my-svg", { duration: 200 });
+    }
+  }
+  scr = () => {
+    document.getElementById("enquiry").scrollIntoView({behavior: "smooth"});
+  }
+  vi = (res) => {
+    this.setState({ vi: res.map((key, index) => {
+      const d = index === 0 ?  "inline-block": "";
+      const idOne = "videoOne-" + index + 1;
+      const idTwo = "videoTwo-" + index + 1;
+      return (
+        <React.Fragment key={index}>
+          <link rel="preload" href={key[0]} as="image" />
+          <span
+            className={parse("videoLink " + d + " d" + [index + 1])}
+            onClick={() => this.vid(idOne)}
+          >
+            {parse(key[2])}{" "}
+            <PlayCircleOutlineIcon />
+          </span>
+          <img
+            className={parse("videoImg " + d + " d" + [index + 1])}
+            src={key[0]}
+            alt={parse(key[2])}
+            width="275"
+            height="275"
+          />
+          <div id={idOne} className="overlay">  
+            <video loop playsInline>
+              <source src={key[1]}/>
+
+              Your browser does not support the video tag.
+            </video>
+            <div className="controlls">
+              <button onClick={() => {
+                document.body.style.overflow = "auto";
+                document.body.style.paddingRight = 0;
+                document.getElementById(idOne).classList.remove("fixed");
+                document.getElementById(idOne).children[0].pause();
+                }}> &#10006; </button>
+            </div>
+          </div>
+          <link rel="preload" href={key[3]} as="image" />
+          <span
+            className={parse("videoLink " + d + " d" + [index + 1])}
+            onClick={() => this.vid(idTwo)}
+          >
+            {parse(key[5])}{" "}
+            <PlayCircleOutlineIcon />
+          </span>
+          <img
+            className={parse("videoImg " + d + " d" + [index + 1])}
+            src={key[3]}
+            alt={parse(key[5])}
+            width="275"
+            height="275"
+          />
+          <div id={idTwo} className="overlay">  
+            <video loop playsInline>
+              <source src={key[4]}/>
+
+              Your browser does not support the video tag.
+            </video>
+            <div className="controlls">
+              <button onClick={() => {
+                 document.body.style.overflow = "auto";
+                 document.body.style.paddingRight = 0;
+                 document.getElementById(idTwo).classList.remove("fixed");
+                 document.getElementById(idTwo).children[0].pause();
+                }}> &#10006; </button>
+            </div>
+          </div>
+        </React.Fragment>
+    )})
+    })
   }
   resolution = () => {
     let width = window.screen.width;
@@ -207,9 +216,6 @@ class Home extends Component {
       wi: "360",
       hi: "146",
     });
-  };
-  scr = () => {
-    document.getElementById("enquiry").scrollIntoView({behavior: "smooth"});
   };
   vid = (v) => {
     const overlay = document.getElementById(v); 
@@ -340,15 +346,9 @@ class Home extends Component {
             {this.state.w}
             <section className="welcome">
               <h1 id="welcomeOne">
-                <svg
-                  id="my-svg"
-                  viewBox="0 0 500 500"
-                  width="35px"
-                  height="35px"
-                  xmlns="http://www.w3.org/2000/svg"
-                />
+                {parse(this.state.res.svg)}
                 &nbsp;
-                {ReactHtmlParser(this.state.res.m1)}
+                {parse(this.state.res.m1)}
               </h1>
               <div id="welcomeTwo" onClick={this.scr}></div>
             </section>
@@ -401,7 +401,7 @@ class Home extends Component {
               <div className="infoOne"></div>
               <div className="infoTwo">
                 <h3>
-                  {ReactHtmlParser(this.state.res.qh)}
+                  {parse(this.state.res.qh)}
                   <InfoIcon />
                 </h3>
                 <hr
@@ -411,7 +411,7 @@ class Home extends Component {
                   }}
                 />
                 <p>
-                  <q>{ReactHtmlParser(this.state.res.q)}</q>
+                  <q>{parse(this.state.res.q)}</q>
                 </p>
                 <hr
                   style={{
@@ -425,109 +425,109 @@ class Home extends Component {
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{ReactHtmlParser(this.state.res.ch1)}</h3>
+                    <h3>{parse(this.state.res.ch1)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card1.png"
-                      alt={ReactHtmlParser(this.state.res.ch1)}
+                      alt={parse(this.state.res.ch1)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{ReactHtmlParser(this.state.res.c1)}</p>
+                <hr /><p>{parse(this.state.res.c1)}</p>
                 <StarBorderIcon />
                 <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{ReactHtmlParser(this.state.res.ch2)}</h3>
+                    <h3>{parse(this.state.res.ch2)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card2.png"
-                      alt={ReactHtmlParser(this.state.res.ch2)}
+                      alt={parse(this.state.res.ch2)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{ReactHtmlParser(this.state.res.c2)}</p>
+                <hr /><p>{parse(this.state.res.c2)}</p>
                 <WhatshotIcon />
                 <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{ReactHtmlParser(this.state.res.ch3)}</h3>
+                    <h3>{parse(this.state.res.ch3)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card3.png"
-                      alt={ReactHtmlParser(this.state.res.ch3)}
+                      alt={parse(this.state.res.ch3)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{ReactHtmlParser(this.state.res.c3)}</p>
+                <hr /><p>{parse(this.state.res.c3)}</p>
                 <BuildIcon />
                 <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{ReactHtmlParser(this.state.res.ch4)}</h3>
+                    <h3>{parse(this.state.res.ch4)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card4.png"
-                      alt={ReactHtmlParser(this.state.res.ch4)}
+                      alt={parse(this.state.res.ch4)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{ReactHtmlParser(this.state.res.c4)}</p>
+                <hr /><p>{parse(this.state.res.c4)}</p>
                 <a target="4" href={this.state.res.u4}>
-                  {ReactHtmlParser(this.state.res.buttons[0])}
+                  {parse(this.state.res.buttons[0])}
                 </a>
                 <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{ReactHtmlParser(this.state.res.ch5)}</h3>
+                    <h3>{parse(this.state.res.ch5)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card5.png"
-                      alt={ReactHtmlParser(this.state.res.ch5)}
+                      alt={parse(this.state.res.ch5)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{ReactHtmlParser(this.state.res.c5)}</p>
+                <hr /><p>{parse(this.state.res.c5)}</p>
                 <a target="5" href={this.state.res.u5}>
-                  {ReactHtmlParser(this.state.res.buttons[0])}
+                  {parse(this.state.res.buttons[0])}
                 </a>
                 <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{ReactHtmlParser(this.state.res.ch6)}</h3>
+                    <h3>{parse(this.state.res.ch6)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card6.png"
-                      alt={ReactHtmlParser(this.state.res.ch6)}
+                      alt={parse(this.state.res.ch6)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{ReactHtmlParser(this.state.res.c6)}</p>
+                <hr /><p>{parse(this.state.res.c6)}</p>
                 <a target="6" href={this.state.res.u6}>
-                  {ReactHtmlParser(this.state.res.buttons[0])}
+                  {parse(this.state.res.buttons[0])}
                 </a>
                 <FilterListIcon />
               </div>
             </section>
             <section id="enquiry" className="enquiry">
               <div className="headingCont">
-                <h3>{ReactHtmlParser(this.state.res.buttons[1])}</h3>
+                <h3>{parse(this.state.res.buttons[1])}</h3>
               </div>
               <br></br>
               <form
@@ -631,7 +631,7 @@ class Home extends Component {
                     style={{ color: styles.c11, marginLeft: "27.5px" }}
                   />
                   <label htmlFor="select" className="hiddentext">
-                    {ReactHtmlParser(this.state.res.buttons[3])}
+                    {parse(this.state.res.buttons[3])}
                   </label>
                   <Select
                     inputId="select"
@@ -641,7 +641,7 @@ class Home extends Component {
                     onChange={this.handleChange}
                     options={this.state.res.options}
                     styles={customStyles}
-                    placeholder={ReactHtmlParser(this.state.res.buttons[3])}
+                    placeholder={parse(this.state.res.buttons[3])}
                   />
                 </div>
                 <SubjectIcon
@@ -697,7 +697,7 @@ class Home extends Component {
                   type="submit"
                   className="button"
                 >
-                  {ReactHtmlParser(this.state.res.buttons[2])}
+                  {parse(this.state.res.buttons[2])}
                 </Button>
                 <div style={{ height: "50px" }}>
                   <div style={this.state.disp}>

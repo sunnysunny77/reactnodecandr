@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./Nav.scss";
 import { Link } from "react-router-dom";
-import HomeIcon from "@material-ui/icons/Home";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import PhoneIcon from "@material-ui/icons/Phone";
-import ReactHtmlParser from 'react-html-parser';
+import HomeIcon from "@mui/icons-material/Home";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import PhoneIcon from "@mui/icons-material/Phone";
+import parse from 'html-react-parser';
 
 class Nav extends Component {
   constructor(props) {
@@ -169,22 +169,22 @@ class Nav extends Component {
             </li>
             <li>
               <Link to="/blog">
-                {ReactHtmlParser(buttons[0])}
+                {parse(buttons[0])}
               </Link>
             </li>
             <li>
               <Link to="/gallery">
-                {ReactHtmlParser(buttons[1])}
+                {parse(buttons[1])}
               </Link>
             </li>
             <li>
               <Link to="/contact">
-                {ReactHtmlParser(buttons[2])}
+                {parse(buttons[2])}
               </Link>
             </li>
             <li>
               <Link to="/about">
-                {ReactHtmlParser(buttons[3])}
+                {parse(buttons[3])}
               </Link>
             </li>
             <hr></hr>
@@ -195,9 +195,9 @@ class Nav extends Component {
             </li>
             <li>
               <span>
-                {ReactHtmlParser(time)}
+                {parse(time)}
                 <br></br>
-                {ReactHtmlParser(day)}
+                {parse(day)}
               </span>
             </li>
             <li>
@@ -224,22 +224,22 @@ class Nav extends Component {
           <ul>
             <li>
               <Link to="/blog">
-                {ReactHtmlParser(buttons[0])}
+                {parse(buttons[0])}
               </Link>
             </li>
             <li>
               <Link to="/gallery">
-                {ReactHtmlParser(buttons[1])}
+                {parse(buttons[1])}
               </Link>
             </li>
             <li>
               <Link to="/contact">
-                {ReactHtmlParser(buttons[2])}
+                {parse(buttons[2])}
               </Link>
             </li>
             <li>
               <Link to="/about">
-                {ReactHtmlParser(buttons[3])}
+                {parse(buttons[3])}
               </Link>
             </li>
           </ul>
@@ -253,7 +253,7 @@ class Nav extends Component {
             <li>
               <AccessTimeIcon />
               <span>
-                {ReactHtmlParser(time)} / {ReactHtmlParser(day)}
+                {parse(time)} / {parse(day)}
               </span>
             </li>
             <li>

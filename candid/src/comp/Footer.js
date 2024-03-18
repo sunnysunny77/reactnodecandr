@@ -1,7 +1,7 @@
 import React from "react";
-import HomeIcon from "@material-ui/icons/Home";
+import HomeIcon from "@mui/icons-material/Home";
 import "./Footer.scss";
-import ReactHtmlParser from "react-html-parser";
+import parse from 'html-react-parser';
 import { Link } from "react-router-dom";
 function Footer(props) {
   let { ph, time, day, buttons } = props;
@@ -19,16 +19,16 @@ function Footer(props) {
           </Link>
         </li>
         <li className="none">
-          <Link to={"/" + buttons[0]}>{ReactHtmlParser(buttons[0])}</Link>
+          <Link to={"/" + buttons[0]}>{parse(buttons[0])}</Link>
         </li>
         <li className="none">
-          <Link to={"/" + buttons[1]}>{ReactHtmlParser(buttons[1])}</Link>
+          <Link to={"/" + buttons[1]}>{parse(buttons[1])}</Link>
         </li>
         <li className="none">
-          <Link to={"/" + buttons[2]}>{ReactHtmlParser(buttons[2])}</Link>
+          <Link to={"/" + buttons[2]}>{parse(buttons[2])}</Link>
         </li>
         <li className="none">
-          <Link to={"/" + buttons[3]}>{ReactHtmlParser(buttons[3])}</Link>
+          <Link to={"/" + buttons[3]}>{parse(buttons[3])}</Link>
         </li>
         <li className="block" id="imh">
           <Link to="/">
@@ -41,7 +41,7 @@ function Footer(props) {
           </Link>
         </li>
         <li className="block none">
-          {ReactHtmlParser(time)} / {ReactHtmlParser(day)}
+          {parse(time)} / {parse(day)}
         </li>
         <li className="block none">
           <a href={"tel:" + ph}>{ph}</a>
