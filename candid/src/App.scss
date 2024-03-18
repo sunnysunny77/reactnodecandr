@@ -63,10 +63,6 @@ main {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 227px);
-  @media only screen and (max-width: 1200px) { 
-    min-height: calc(100vh - 254px);
-  }
   @media only screen and (min-width: 1921px) {
     box-shadow: 1px 0 rgba($c4, 0.2), -1px 0 rgba($c4, 0.2);
   }

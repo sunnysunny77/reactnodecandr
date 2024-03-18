@@ -98,6 +98,7 @@ class Home extends Component {
       wi: "",
       hi: "",
     };
+    this.props.footer("loading");
   }
   componentDidMount() {
     axios.post('/hom').then((res) => {
@@ -105,6 +106,7 @@ class Home extends Component {
         res: res.data,
         load: false
       });
+      this.props.footer("load");
       this.vi(res.data.vid);
       this.resolution();
     })

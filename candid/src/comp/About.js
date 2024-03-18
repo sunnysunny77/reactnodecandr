@@ -16,6 +16,7 @@ export default class About extends React.Component {
       cba: null,
       load: true,
     };
+    this.props.footer("loading");
   }
   componentDidMount() {
     axios.post(`/abou`).then((res) => {
@@ -25,6 +26,7 @@ export default class About extends React.Component {
         abc: <Maps data={res.data.b.abc} />,
         load: false,
       });
+      this.props.footer("load");
     })
       .catch((error) => {
         alert(error);

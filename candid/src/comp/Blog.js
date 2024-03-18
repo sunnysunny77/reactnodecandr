@@ -47,6 +47,7 @@ export default class Blog extends React.Component {
       load: true,
       extension: null,
     };
+    this.props.footer("loading");
   }
   componentDidMount() {
     axios.get(`/ong`).then((res) => {
@@ -56,6 +57,7 @@ export default class Blog extends React.Component {
       });
       if (!res.data.doc.length) return this.postcount();
       this.tab(res.data.doc);
+      this.props.footer("load");
     })
       .catch((error) => {
         alert(error);

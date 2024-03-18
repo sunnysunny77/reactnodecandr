@@ -4,9 +4,9 @@ import "./Footer.scss";
 import parse from 'html-react-parser';
 import { Link } from "react-router-dom";
 function Footer(props) {
-  let { ph, time, day, buttons } = props;
+  let { footer, ph, time, day, buttons } = props;
   return (
-    <footer>
+    <footer className={footer}>
       <ul>
         <li className="block none">
           <Link to="/">

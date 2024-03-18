@@ -14,10 +14,12 @@ export default class Contactc extends Component {
       res: {},
       load: true,
     };
+    this.props.footer("loading");
   }
   componentDidMount() {
     axios.post(`/cont`).then((res) => {
       this.setState({ res: res.data, load: false });
+      this.props.footer("load");
     })
       .catch((error) => {
         alert(error);

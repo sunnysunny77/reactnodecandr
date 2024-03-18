@@ -20,6 +20,7 @@ function App() {
   const [time, setTime] = useState(null);
   const [day, setDay] = useState(null);
   const [load, setLoad] = useState(false);
+  const [footer, setFooter] = useState(null);
   const [buttons, setButtons] = useState([]);
   const [main, setMain] = useState("navRelative");
 
@@ -43,14 +44,14 @@ function App() {
         <Nav ph={ph} time={time} day={day} buttons={buttons} main={(x) => setMain(x)} />
         <main className={main} id="di">
           <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/about" element={<About />} />
+            <Route exact path="/" element={<Home  footer={(x) => setFooter(x)}/>} />
+            <Route path="/blog" element={<Blog footer={(x) => setFooter(x)}/>} />
+            <Route path="/gallery" element={<Gallery footer={(x) => setFooter(x)}/>} />
+            <Route path="/contact" element={<Contact footer={(x) => setFooter(x)}/>} />
+            <Route path="/about" element={<About footer={(x) => setFooter(x)}/>} />
           </Routes>
         </main>
-        <Footer ph={ph} time={time} day={day} buttons={buttons} />
+        <Footer footer={footer} ph={ph} time={time} day={day} buttons={buttons} />
       </React.Fragment>) : (
         <img
           id="loadfront"
