@@ -413,28 +413,13 @@
     font-size: inherit;
     font-weight: 500;
   }
-  .MuiFormControl-root-www {
-    width: 20%;
-    margin: 0 0 25px 25px;
-
+  .MuiFormControl-root {
     @media only screen and (max-width: 1200px) {
       display: flex;
-      justify-content: center;
-      width: calc(100% - 50px);
     }
   }
-  .selectContainer {
-    height: 177px;
-    margin: 50px 0 60px 0;
-  }
-  .react-select__indicator {
-    color: $c11;
-  }
-  .react-select__indicator:hover {
-    color: $c13;
-  }
   .react-select__menu-list,
-  .MuiFilledInput-multiline {
+  .MuiInputBase-multiline {
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-color: $c3 transparent;

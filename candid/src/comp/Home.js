@@ -26,40 +26,38 @@ import Select from "react-select";
 import parse from 'html-react-parser';
 
 const customStyles = {
-  placeholder: () => ({
-    padding: "10px",
+
+  menu: (provided, state) => ({
+    ...provided,
+    borderRadius: "0",
     backgroundColor: styles.c11,
-    borderTopRightRadius: 5,
+    margin: "25px 25px 0 25px",
+    width: "100%",
+    maxWidth: "261.11px",
+  }),
+  option: (provided, state) => ({
     color: styles.c13,
-  }),
-  menu: () => ({
-    backgroundColor: styles.c11,
-    textAlign: "center",
-    color: styles.c3,
-  }),
-  option: () => ({
-    fontFamily: styles.font3,
-    cursor: "pointer",
-    margin: "8px 0",
     fontSize: "medium",
+    margin: "5px 25px",
+    textAlign: "center",
+    cursor: "pointer",
   }),
-  singleValue: () => ({
-    color: styles.c3,
-    padding: "10px",
+  control: (provided, state) => ({
+    ...provided,
+    width: "100%",
+    maxWidth: "261.11px",
     backgroundColor: styles.c11,
-    borderTopRightRadius: 5,
+    borderRadius: "0 5px 0 0",
+    border: 0,
+    boxShadow: 'none',
+    margin: "auto auto 105px 25px",
   }),
-  control: () => ({
-    width: "fit-content",
-    color: styles.c3,
-    fontFamily: styles.font3,
-    fontWeight: 500,
-    fontSize: "1.2em",
-    marginLeft: "25px",
-    marginBottom: "10px",
-  }),
-  input: () => ({
-    color: "transparent",
+  dropdownIndicator: (provided, state) => ({
+    ...provided,
+      color: styles.c13,
+      "&:hover": {
+        color: styles.c2,
+      },
   }),
 };
 
@@ -535,26 +533,28 @@ class Home extends Component {
               <form
                 id="a1"
                 autoComplete="off"
+                onSubmit={this.submit}
                 style={{
                   width: "100%",
                   fontFamily: styles.font3,
                   color: styles.c11,
                 }}
-                onSubmit={this.submit}
               >
                 <label htmlFor="name" className="hiddentext">
                   Name
                 </label>
                 <TextField
                   id="name"
-                  className="MuiFormControl-root-www"
                   InputProps={{
+                    disableUnderline: true,
                     style: {
+                      fontFamily: styles.font3,
                       color: styles.c3,
                       backgroundColor: styles.c11,
                       borderRadius: 0,
-                      fontSize: "120%",
+                      fontSize: "inherit",
                       fontWeight: "500",
+                      margin: "0 25px 25px  25px",
                     },
                     startAdornment: (
                       <InputAdornment position="start">
@@ -573,14 +573,16 @@ class Home extends Component {
                 </label>
                 <TextField
                   id="email"
-                  className="MuiFormControl-root-www"
                   InputProps={{
+                    disableUnderline: true,
                     style: {
+                      fontFamily: styles.font3,
                       color: styles.c3,
                       backgroundColor: styles.c11,
                       borderRadius: 0,
-                      fontSize: "120%",
+                      fontSize: "inherit",
                       fontWeight: "500",
+                      margin: "0 25px 25px  25px",
                     },
                     startAdornment: (
                       <InputAdornment position="start">
@@ -603,17 +605,17 @@ class Home extends Component {
                 >
                   <TextField
                     id="phone"
-                    className="MuiFormControl-root-www"
-                    inputProps={{
-                      pattern: "[+]?[0-9]{3,15}",
-                    }}
                     InputProps={{
+                      pattern: "[+]?[0-9]{3,15}",
+                      disableUnderline: true,
                       style: {
+                        fontFamily: styles.font3,
                         color: styles.c3,
                         backgroundColor: styles.c11,
                         borderRadius: 0,
-                        fontSize: "120%",
+                        fontSize: "inherit",
                         fontWeight: "500",
+                        margin: "0 25px 25px 25px",
                       },
                       startAdornment: (
                         <InputAdornment position="start">
@@ -638,12 +640,13 @@ class Home extends Component {
                   <Select
                     inputId="select"
                     classNamePrefix="react-select"
-                    maxMenuHeight={100}
                     value={this.state.selectedOption}
                     onChange={this.handleChange}
                     options={this.state.res.options}
                     styles={customStyles}
                     placeholder={parse(this.state.res.buttons[3])}
+                    maxMenuHeight={62.5}
+    
                   />
                 </div>
                 <SubjectIcon
@@ -666,6 +669,7 @@ class Home extends Component {
                   InputProps={{
                     disableUnderline: true,
                     style: {
+                      fontFamily: styles.font3,
                       color: styles.c3,
                       display: "block",
                       width: "100%",
@@ -674,7 +678,7 @@ class Home extends Component {
                       borderRadius: 0,
                       overflowY: "auto",
                       overflowX: "hidden",
-                      fontSize: "120%",
+                      fontSize: "inherit",
                       fontWeight: "500",
                     },
                   }}
@@ -686,11 +690,12 @@ class Home extends Component {
                 />
                 <Button
                   style={{
+                    fontFamily: styles.font3,
                     color: styles.c11,
                     backgroundColor: styles.c3,
                     width: "100%",
                     height: "50px",
-                    fontSize: "120%",
+                    fontSize: "inherit",
                     fontWeight: "400",
                     paddingTop: "10px",
                     borderRadius: 0,

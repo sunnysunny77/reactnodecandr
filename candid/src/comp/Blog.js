@@ -266,21 +266,22 @@ export default class Blog extends React.Component {
                         color: styles.c11,
                       }}
                     >
+                      <SubjectIcon />
                       <label htmlFor="passs" className="hiddentext">
                         Password
                       </label>
-                      <SubjectIcon />
                       <TextField
                         id="passs"
                         autoComplete="true"
-                        className="MuiFormControl-root-com"
                         InputProps={{
+                          disableUnderline: true,
                           style: {
                             color: styles.c3,
                             fontSize: "inherit",
                             fontWeight: "500",
                             borderRadius: 0,
                             backgroundColor: styles.c11,
+                            fontFamily: styles.font3,
                           },
                           startAdornment: (
                             <InputAdornment position="start">
@@ -299,14 +300,15 @@ export default class Blog extends React.Component {
                       </label>
                       <TextField
                         id="title"
-                        className="MuiFormControl-root-com"
                         InputProps={{
+                          disableUnderline: true,
                           style: {
                             color: styles.c3,
                             fontSize: "inherit",
                             fontWeight: "500",
                             borderRadius: 0,
                             backgroundColor: styles.c11,
+                            fontFamily: styles.font3,
                           },
                           startAdornment: (
                             <InputAdornment position="start">
@@ -325,14 +327,15 @@ export default class Blog extends React.Component {
                       </label>
                       <TextField
                         id="name"
-                        className="MuiFormControl-root-com"
                         InputProps={{
+                          disableUnderline: true,
                           style: {
                             color: styles.c3,
                             fontSize: "inherit",
                             fontWeight: "500",
                             borderRadius: 0,
                             backgroundColor: styles.c11,
+                            fontFamily: styles.font3,
                           },
                           startAdornment: (
                             <InputAdornment position="start">
@@ -357,17 +360,16 @@ export default class Blog extends React.Component {
                         InputProps={{
                           disableUnderline: true,
                           style: {
+                            fontFamily: styles.font3,
                             color: styles.c3,
                             fontSize: "inherit",
                             fontWeight: "500",
-                            display: "block",
                             height: "135px",
                             backgroundColor: styles.c11,
                             overflowY: "auto",
                             overflowX: "hidden",
-                            paddingTop: "10px",
-                            marginTop: "25px",
                             borderRadius: 0,
+                            display: "block",
                           },
                         }}
                         variant="filled"
@@ -376,17 +378,13 @@ export default class Blog extends React.Component {
                         placeholder="Text:"
                         onChange={this.change}
                       />
-                      <div style={{ textAlign: "center", marginTop: "25px" }}>
-                        <label htmlFor="avatar">Upload a picture:</label>
-                        <br></br>
-                        <input
-                          id="avatar"
-                          className="custom-file-input"
-                          type="file"
-                          name="file"
-                          onChange={this.file}
-                        />
-                      </div>
+                      <label htmlFor="avatar">Upload a picture:</label>
+                      <input
+                        id="avatar"
+                        type="file"
+                        name="file"
+                        onChange={this.file}
+                      />
                       <Button
                         style={{
                           color: styles.c11,
@@ -396,7 +394,7 @@ export default class Blog extends React.Component {
                           fontSize: "inherit",
                           fontWeight: "400",
                           paddingTop: "10px",
-                          marginTop: "50px",
+                          marginTop: "25px",
                           borderRadius: 0,
                         }}
                         variant="contained"
@@ -442,14 +440,15 @@ export default class Blog extends React.Component {
                       <TextField
                         id="pass"
                         autoComplete="true"
-                        className="MuiFormControl-root-com"
                         InputProps={{
+                          disableUnderline: true,
                           style: {
                             color: styles.c3,
                             fontSize: "inherit",
                             fontWeight: "500",
                             borderRadius: 0,
                             backgroundColor: styles.c11,
+                            fontFamily: styles.font3,
                           },
                           startAdornment: (
                             <InputAdornment position="start">
@@ -468,14 +467,15 @@ export default class Blog extends React.Component {
                       </label>
                       <TextField
                         id="date"
-                        className="MuiFormControl-root-com"
                         InputProps={{
+                          disableUnderline: true,
                           style: {
                             color: styles.c3,
                             fontSize: "inherit",
                             fontWeight: "500",
                             borderRadius: 0,
                             backgroundColor: styles.c11,
+                            fontFamily: styles.font3,
                           },
                           startAdornment: (
                             <InputAdornment position="start">
@@ -498,7 +498,6 @@ export default class Blog extends React.Component {
                           fontSize: "inherit",
                           fontWeight: "400",
                           paddingTop: "10px",
-                          marginTop: "50px",
                           borderRadius: 0,
                         }}
                         variant="contained"

@@ -98,23 +98,37 @@
       font-weight: 500;
     }
   }
+  .MuiFormControl-root {
+    display: flex;
+    align-items: flex-end;
+    .MuiInputBase-root {
+      width: fit-content;
+      margin: auto 0 2.5px auto;
+      @media only screen and (max-width: 640px) {
+        margin: auto auto 25px auto;
+        width: calc(100% - 50px);
+      }
+    }
+  }
   .formAdd {
     width: 100%;
     background-color: $c5;
     background-image: url(./img/handmade-paper.png);
     background-blend-mode: color;
     color: $c1;
-    overflow: hidden;
-    svg:nth-child(2) {
-      float: left;
+    label[for="avatar"] {
+      display: block;
+      width: fit-content;
+      margin: 25px auto;
     }
-    .custom-file-input[type="file"] {
+    input[type="file"] {
       border: 1px solid $c9;
       border-radius: 3px;
-      margin-top: 10px;
+      margin: auto;
       padding: 4px 8px;
       color: $c3;
       background-color: $c1;
+      display: block;
       cursor: pointer;
       width: fit-content;
       &::file-selector-button {
@@ -123,28 +137,29 @@
         color: $c3;
         padding: 8px;
         border-radius: 3px;
-        margin-right: 10px;
       }
     }
-    .MuiFilledInput-multiline {
-      overflow-y: auto;
-      overflow-x: hidden;
-      scrollbar-color: $c3 transparent;
-      @media only screen and (max-width: 1200px) {
-        width: 90%;
-        margin-left: 5%;
+    .MuiFormControl-fullWidth {
+      display: inline-flex;
+      align-items: initial;
+      .MuiInputBase-root {
+        width: 100%;
+        margin: auto;
       }
-      &::-webkit-scrollbar {
-        width: 10px;
-      }
-      &::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      &::-webkit-scrollbar-thumb {
-        background: $c3;
-      }
-      &::-webkit-scrollbar-thumb:hover {
-        background: $c7;
+      .MuiInputBase-multiline {
+        scrollbar-color: $c3 transparent;
+        &::-webkit-scrollbar {
+          width: 10px;
+        }
+        &::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: $c3;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+          background: $c7;
+        }
       }
     }
   }
@@ -155,18 +170,12 @@
     background-image: url(./img/handmade-paper.png);
     background-blend-mode: color;
     color: $c1;
-    overflow: hidden;
-    padding-top: 50px;
-  }
-  .MuiFormControl-root-com {
-    float: right;
-    width: 40%;
-    padding-left: 60%;
-    @media only screen and (max-width: 1200px) {
-      margin: auto;
-      float: none;
-      width: 90%;
-      padding-left: 5%;
+    padding-top: 25px;
+    .MuiFormControl-root {
+      .MuiInputBase-root {
+        width: calc(100% - 50px);
+        margin: auto auto 25px auto;
+      }
     }
   }
 }
