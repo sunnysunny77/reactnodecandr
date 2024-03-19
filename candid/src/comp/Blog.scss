@@ -131,8 +131,9 @@
       color: $c3;
       background-color: $c1;
       display: block;
+      width: 75%;
+      max-width: 300px;
       cursor: pointer;
-      width: fit-content;
       &::file-selector-button {
         background-color: $c1;
         border: 1px solid $c3;
