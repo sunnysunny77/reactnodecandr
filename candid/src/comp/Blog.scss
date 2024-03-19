@@ -72,13 +72,15 @@
       padding: 0 1%;
       position: relative;
       z-index: 4;
+      width: 100%;
       td {
         font-size: inherit;
       }
+      hr {
+        width: 60%;
+      }
     }
-    hr {
-      width: 60%;
-    }
+   
   }
   .button {
     background-image: url(./img/handmade-paper.png);

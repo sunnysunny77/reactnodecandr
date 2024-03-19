@@ -34,38 +34,19 @@ header {
 
 /* mobile nav  */
 
-
-.burgerContainer {
-  width: 200px;
-  height: 90px;
+.burgerMenu {
   position: absolute;
-  .burgerMenu {
-    position: absolute;
-    z-index: 999;
-    padding: 28.5px 148.5px 28.5px 26.5px;
-    box-sizing: border-box;
-    height: fit-content;
-    @media only screen and (min-width: 1201px) {
-      display: none;
-    }
-    &:hover {
-      cursor: pointer;
-    }
+  z-index: 999;
+  padding: 28.5px 148.5px 28.5px 26.5px;
+  box-sizing: border-box;
+  height: fit-content;
+  @media only screen and (min-width: 1201px) {
+    display: none;
   }
-  .barsOut {
-    &.slide {
-      position: absolute;
-     top: 0;
-     right: 0;
-     bottom: 0;
-     left: 0;
-     z-index: 1000;
-    }
+  &:hover {
+    cursor: pointer;
   }
-
 }
-
-
 
 .mobileNav {
   position: absolute;

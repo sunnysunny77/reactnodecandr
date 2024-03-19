@@ -115,7 +115,8 @@ class Home extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevState.load !== this.state.load) {
       if (window.location.search === "?in=in") this.scr();
-      new Vivus("my-svg", { duration: 200 });
+
+     new Vivus(document.querySelector("#my-svg").children[0], { duration: 200 });
     }
   }
   scr = () => {
@@ -346,7 +347,7 @@ class Home extends Component {
             {this.state.w}
             <section className="welcome">
               <h1 id="welcomeOne">
-                {parse(this.state.res.svg)}
+                <div id="my-svg">{parse(this.state.res.svg)}</div>
                 &nbsp;
                 {parse(this.state.res.m1)}
               </h1>

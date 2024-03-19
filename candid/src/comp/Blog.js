@@ -176,12 +176,10 @@ export default class Blog extends React.Component {
   };
   tab = (x) => {
     this.setState({
-      txt: x.map((key, index) => {
-        const { _id, blogers, date, name, title, loc } = key;
+      txt: x.map((i, index) => {
+        const { _id, blogers, date, name, title, loc } = i;
         return (
-          <React.Fragment>
-            <table key={_id}>
-              <tbody key={_id + "0"}>
+          <React.Fragment key={_id}>
                 <tr key={_id + "1"}>
                   <td>{title}</td>
                 </tr>
@@ -196,7 +194,7 @@ export default class Blog extends React.Component {
                     {"" + date}
                   </td>
                 </tr>
-                <tr key={_id + "img"}>
+                <tr key={_id + "4"}>
                   <td>
                     <img
                       alt={title}
@@ -204,19 +202,15 @@ export default class Blog extends React.Component {
                     />
                   </td>
                 </tr>
-                <tr key={_id + "3"}>
+                <tr key={_id + "5"}>
                   <td>{name}:</td>
                 </tr>
-                <tr key={_id + "4"}>
+                <tr key={_id + "6"}>
                   <td>{blogers}</td>
                 </tr>
-              </tbody>
-            </table>
-            <br/>
-            <br/>
-            <hr/>
-            <br/>
-            <br/>
+                <tr key={_id + "7"}>
+                  <td><hr/></td>
+                </tr>
           </React.Fragment>
         );
       }),
@@ -238,10 +232,13 @@ export default class Blog extends React.Component {
                 <h1>{parse(this.state.buttons[0])}</h1>
             </div>
             <section className="blogCont">
-           
               <div className="blogResponse">
               <div className="wave0"></div>
-                {this.state.txt}
+              <table>
+                <tbody>
+                  {this.state.txt}
+                 </tbody>
+              </table>
               </div>
               <div style={{ backgroundColor: styles.c3 }}>
                 <StyledAccordion>

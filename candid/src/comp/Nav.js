@@ -38,7 +38,8 @@ class Nav extends Component {
     };
   }
   componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
+    document.body.addEventListener("click", this.barsOut, { passive: true });
+    window.addEventListener("scroll", this.handleScroll, { passive: true });
     if (window.screen.width > 1200) return this.setState({
       wi: "200",
       hi: "46",
@@ -49,6 +50,7 @@ class Nav extends Component {
     });
   }
   componentWillUnmount() {
+    document.body.removeEventListener("click", this.barsOut);
     window.removeEventListener("scroll", this.handleScroll);
   }
   handleScroll = () => {
@@ -61,73 +63,65 @@ class Nav extends Component {
     }
   };
   bars = () => {
-    this.setState({
-      dis: "slide",
-      bar1: {
-        width: "25px",
-        height: "3px",
-        backgroundColor: "black",
-        margin: "6px auto",
-        transition: "0.4s",
-        WebkitTransform: "rotate(-45deg) translate(-6px, 4px)",
-        transform: "rotate(-45deg) translate(-6px, 4px)",
-      },
-      bar2: {
-        width: "25px",
-        height: "3px",
-        backgroundColor: "black",
-        margin: "6px auto",
-        transition: "0.4s",
-        opacity: "0",
-      },
-      bar3: {
-        width: "25px",
-        height: "3px",
-        backgroundColor: "black",
-        margin: "6px auto",
-        transition: "0.4s",
-        WebkitTransform: "rotate(45deg) translate(-8px, -8px)",
-        transform: "rotate(45deg) translate(-8px, -8px)",
-      },
-    });
+   this.state.dis === "slide" ? this.setState({
+    dis: "out",
+    bar1: {
+      width: "25px",
+      height: "3px",
+      backgroundColor: "black",
+      margin: "6px auto",
+      transition: "0.4s",
+    },
+    bar2: {
+      width: "25px",
+      height: "3px",
+      backgroundColor: "black",
+      margin: "6px auto",
+      transition: "0.4s",
+    },
+    bar3: {
+      width: "25px",
+      height: "3px",
+      backgroundColor: "black",
+      margin: "6px auto",
+      transition: "0.4s",
+    }}) : this.setState({
+    dis: "slide",
+    bar1: {
+      width: "25px",
+      height: "3px",
+      backgroundColor: "black",
+      margin: "6px auto",
+      transition: "0.4s",
+      WebkitTransform: "rotate(-45deg) translate(-6px, 4px)",
+      transform: "rotate(-45deg) translate(-6px, 4px)",
+    },
+    bar2: {
+      width: "25px",
+      height: "3px",
+      backgroundColor: "black",
+      margin: "6px auto",
+      transition: "0.4s",
+      opacity: "0",
+    },
+    bar3: {
+      width: "25px",
+      height: "3px",
+      backgroundColor: "black",
+      margin: "6px auto",
+      transition: "0.4s",
+      WebkitTransform: "rotate(45deg) translate(-8px, -8px)",
+      transform: "rotate(45deg) translate(-8px, -8px)",
+    }});
   };
-  barsOut = () => {
-    this.setState({
-      dis: "out",
-      bar1: {
-        width: "25px",
-        height: "3px",
-        backgroundColor: "black",
-        margin: "6px auto",
-        transition: "0.4s",
-      },
-      bar2: {
-        width: "25px",
-        height: "3px",
-        backgroundColor: "black",
-        margin: "6px auto",
-        transition: "0.4s",
-      },
-      bar3: {
-        width: "25px",
-        height: "3px",
-        backgroundColor: "black",
-        margin: "6px auto",
-        transition: "0.4s",
-      },
-    })
-  }
   render() {
     let { ph, time, day, buttons } = this.props
     return (
       <React.Fragment>
-        <div className="burgerContainer">
-          <div className="burgerMenu" onClick={this.bars}>
-            <div style={this.state.bar1}></div>
-            <div style={this.state.bar2}></div>
-            <div style={this.state.bar3}></div>
-          </div>
-          <div className={`barsOut ${this.state.dis}`} onClick={this.barsOut}> </div>
+        <div className="burgerMenu" onClick={this.bars}>
+          <div style={this.state.bar1}></div>
+          <div style={this.state.bar2}></div>
+          <div style={this.state.bar3}></div>
         </div>
         <nav className={`mobileNav ${this.state.dis}`} >
           <ul>

@@ -31,8 +31,8 @@ export default class About extends React.Component {
       .catch((error) => {
         alert(error);
       });
-    window.addEventListener("scroll", this.handleScroll);
-    window.addEventListener("resize", this.handleScroll);
+    window.addEventListener("scroll", this.handleScroll, { passive: true });
+    window.addEventListener("resize", this.handleScroll, { passive: true });
   }
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
