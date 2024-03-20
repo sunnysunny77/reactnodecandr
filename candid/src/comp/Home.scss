@@ -81,9 +81,68 @@
   }
 }
 
+/* overlay */
+
+.overlay {
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  transform: translateX(100%);
+  will-change: transform;
+  transition: transform 0.5s cubic-bezier(0.03, 0.5, 0.25, 0.6);
+  padding-bottom: 56.25%;
+  background-color: $c1;
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    @media only screen and (min-width: 1201px) {
+      object-fit: cover;
+    }
+  }
+  .controlls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    &::after {
+      position: absolute;
+      content: "";
+      background-image: linear-gradient(-90deg, $c1 0%, $c6 50%);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+    }
+    button {
+      border: none;
+      background-color: transparent;
+      float: right;
+      font-size: 20px;
+      margin-right: 1.25rem;
+      margin-top: 1.25rem;
+      &:hover,
+      &:focus {
+        color: $c8;
+      }
+    }
+  }
+  &.fixed {
+    transform: translateX(0);
+  }
+}
+
 /* vid */
+
 .video {
-  text-align: center;
   margin: auto;
   width: 100%;
   position: relative;
@@ -92,6 +151,8 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
+  display: flex;
+  justify-content: center;
   @media only screen and (max-width: 1200px) {
     top: -90px;
     width: 90%;
@@ -103,68 +164,76 @@
     width: 80%;
     margin: 5% auto;
   }
-  .videoImg {
+  div {
     display: none;
-    margin: 0 2.5% 0 2.5%;
-    border-radius: 3.75px;
+    flex-direction: column;
+    width: 33%;
+    align-items: center;
+    max-width: 300px;
+    margin: 0 5%;
+    @media only screen and (max-width: 640px) {
+      width: 40%;
+    }
+  }
+  .videoImg {
+    width: 100%;
+    border-bottom-left-radius: 3.75px;
+    border-bottom-right-radius: 3.75px;
     box-shadow: 0 0 1.5px $c1;
-    width: 275px;
     height: inherit;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
     transition: filter 0.3s linear;
-    @media only screen and (max-width: 1200px) {
-      width: 35%;
-    }
-    @media only screen and (max-width: 640px) {
-      width: 39%;
-      border-radius: 2.5px;
-    }
-    &.flip {
+    &.grey {
       filter: grayscale(50%);
     }
   }
   .videoLink {
-    display: none;
-    background-color: $c9;
-    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: $c11;
+    border-top-left-radius: 3.75px;
+    border-top-right-radius: 3.75px;
     z-index: 990;
     font-family: $font3;
     color: $c3;
-    width: 275px;
-    margin-left: 2.5%;
     transition: 0.2s ease-in-out color;
     cursor: pointer;
     font-style: italic;
-    padding: 5px 0;
+    padding: 5px 5%;
+    box-sizing: border-box;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
     background-image: url(./img/handmade-paper.png);
     background-blend-mode: color-burn;
-    @media only screen and (max-width: 1200px) {
-      width: 35%;
-    }
     @media only screen and (max-width: 640px) {
-      width: 39%;
-      border-top-left-radius: 2.5px;
-      border-top-right-radius: 2.5px;
-      font-size: 90%;
+      flex-direction: column;
+      text-align: center;
     }
     &:hover {
       color: $c7;
     }
   }
+  .flex {
+    display: flex;
+  }
   #left {
     left: calc(52.5% - 600px);
+    transition: fill 0.2s ease-in-out color;
+    padding: 2.5%;
     @media only screen and (max-width: 1200px) {
       left: 1%;
     }
     @media only screen and (max-width: 640px) {
-      left: -6%;
+      left: -10%;
+      width: 6%;
     }
     &:hover {
       fill: $c7;
@@ -172,11 +241,14 @@
   }
   #right {
     right: calc(52.5% - 600px);
+    transition: fill 0.2s ease-in-out color;
+    padding: 2.5%;
     @media only screen and (max-width: 1200px) {
       right: 1%;
     }
     @media only screen and (max-width: 640px) {
-      right: -6%;
+      right: -10%;
+      width: 6%;
     }
     &:hover {
       fill: $c7;
@@ -197,65 +269,6 @@
     vertical-align: sub;
     font-size: 1.25em;
   }
-  .inline-block {
-    display: inline-block;
-  }
-  .overlay {
-    position: fixed;
-    overflow: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 999;
-    transform: translateX(100%);
-    will-change: transform;
-    transition: transform 0.5s cubic-bezier(0.03, 0.5, 0.25, 0.6);
-    padding-bottom: 56.25%;
-    background-color: $c1;
-    video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      @media only screen and (min-width: 1201px) {
-        object-fit: cover;
-      }
-    }
-    .controlls {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      &::after {
-        position: absolute;
-        content: "";
-        background-image: linear-gradient(-90deg, $c1 0%, $c6 50%);
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-      }
-      button {
-        border: none;
-        background-color: transparent;
-        float: right;
-        font-size: 20px;
-        margin-right: 1.25rem;
-        margin-top: 1.25rem;
-        &:hover,
-        &:focus {
-          color: $c8;
-        }
-      }
-    }
-    &.fixed {
-      transform: translateX(0);
-    }
-  }
 }
 
 /* info */
@@ -263,7 +276,7 @@
 .info {
   box-shadow: 0 0 7.5px $c2;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   @media only screen and (max-width: 992px) {
     padding-bottom: 5%;
@@ -276,24 +289,32 @@
     min-width: 285px;
     box-sizing: border-box;
     background-repeat: no-repeat;
-    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info1.png");
-    background-position: center;
+    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info1.jpg");
+    background-position: bottom;
     background-size: cover;
+    position: relative;
+    clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
     @media only screen and (max-width: 992px) {
       margin: 0;
       width: 100%;
-      min-height: unset;
-      min-width: unset;
-      padding-top: 70px;
-      background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info.png");
+      padding: 0;
+      height: 150px;
+      margin: 25px auto;
+      min-height: initial;
+      min-width: initial;
+      max-height: 150px;
+      max-width: 150px;
+      background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/info.jpg");
       background-position: center top;
       background-repeat: no-repeat;
       background-size: contain;
+      clip-path: circle(50%);
+      border: 5px solid $c13;
+      border-radius: 100%;
     }
   }
   .infoTwo {
-    margin-right: 8%;
-    width: 62.5%;
+    width: 57.7%;
     color: $c3;
     @media only screen and (max-width: 1200px) {
       margin-right: 5%;

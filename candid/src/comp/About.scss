@@ -123,14 +123,14 @@
     border-bottom-left-radius: 17%;
     filter: grayscale(100%);
     @media only screen and (max-width: 1365px) {
-      border: unset;
+      border: initial;
       border-bottom: 2px solid $c1;
       float: none;
       display: block;
       margin: 20px auto 90px auto;
       border-radius: 0;
       width: 25%;
-      height: unset;
+      height: initial;
       padding: 25%;
     }
   }
@@ -144,7 +144,7 @@
       padding-left: 0;
       width: 100%;
       margin: auto;
-      height: unset;
+      height: initial;
     }
   }
   button {

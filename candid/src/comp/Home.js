@@ -87,6 +87,7 @@ class Home extends Component {
       a: null,
       res: {},
       vi: null,
+      vii: null,
       count: 1,
       svg: null,
       load: true,
@@ -121,77 +122,6 @@ class Home extends Component {
   scr = () => {
     document.getElementById("enquiry").scrollIntoView({behavior: "smooth"});
   }
-  vi = (res) => {
-    this.setState({ vi: res.map((key, index) => {
-      const d = index === 0 ?  "inline-block": "";
-      const idOne = "videoOne-" + index + 1;
-      const idTwo = "videoTwo-" + index + 1;
-      return (
-        <React.Fragment key={index}>
-          <link rel="preload" href={key[0]} as="image" />
-          <span
-            className={parse("videoLink " + d + " d" + [index + 1])}
-            onClick={() => this.vid(idOne)}
-          >
-            {parse(key[2])}{" "}
-            <PlayCircleOutlineIcon />
-          </span>
-          <img
-            className={parse("videoImg " + d + " d" + [index + 1])}
-            src={key[0]}
-            alt={parse(key[2])}
-            width="275"
-            height="275"
-          />
-          <div id={idOne} className="overlay">  
-            <video loop playsInline>
-              <source src={key[1]}/>
-
-              Your browser does not support the video tag.
-            </video>
-            <div className="controlls">
-              <button onClick={() => {
-                document.body.style.overflow = "auto";
-                document.body.style.paddingRight = 0;
-                document.getElementById(idOne).classList.remove("fixed");
-                document.getElementById(idOne).children[0].pause();
-                }}> &#10006; </button>
-            </div>
-          </div>
-          <link rel="preload" href={key[3]} as="image" />
-          <span
-            className={parse("videoLink " + d + " d" + [index + 1])}
-            onClick={() => this.vid(idTwo)}
-          >
-            {parse(key[5])}{" "}
-            <PlayCircleOutlineIcon />
-          </span>
-          <img
-            className={parse("videoImg " + d + " d" + [index + 1])}
-            src={key[3]}
-            alt={parse(key[5])}
-            width="275"
-            height="275"
-          />
-          <div id={idTwo} className="overlay">  
-            <video loop playsInline>
-              <source src={key[4]}/>
-
-              Your browser does not support the video tag.
-            </video>
-            <div className="controlls">
-              <button onClick={() => {
-                 document.body.style.overflow = "auto";
-                 document.body.style.paddingRight = 0;
-                 document.getElementById(idTwo).classList.remove("fixed");
-                 document.getElementById(idTwo).children[0].pause();
-                }}> &#10006; </button>
-            </div>
-          </div>
-        </React.Fragment>
-    )})
-    })
-  }
   resolution = () => {
     let width = window.screen.width;
     width > 1200 ?
@@ -217,6 +147,87 @@ class Home extends Component {
       hi: "146",
     });
   };
+  vi = (res) => {
+    this.setState({ vi: res.map((key, index) => {
+      const d = index === 0 ?  "flex": "";
+      const idOne = "videoOne-" + index + 1;
+      const idTwo = "videoTwo-" + index + 1;
+      return (
+        <React.Fragment key={index}>
+          <div className={d + " d" + [index + 1]}>
+            <link rel="preload" href={key[0]} as="image" />
+            <span
+              className="videoLink"
+              onClick={() => this.vid(idOne)}
+            >
+              {key[2]}{" "}
+              <PlayCircleOutlineIcon />
+            </span>
+            <img
+              className="videoImg"
+              src={key[0]}
+              alt={key[2]}
+              width="275"
+              height="275"
+            />
+          </div>
+          <div className={d + " d" + [index + 1]}>
+            <link rel="preload" href={key[3]} as="image" />
+            <span
+              className="videoLink"
+              onClick={() => this.vid(idTwo)}
+            >
+              {key[5]}{" "}
+              <PlayCircleOutlineIcon />
+            </span>
+            <img
+              className="videoImg"
+              src={key[3]}
+              alt={key[5]}
+              width="275"
+              height="275"
+            />
+          </div>
+        </React.Fragment>
+      )
+    })})
+    this.setState({ vii: res.map((key, index) => {
+      const idOne = "videoOne-" + index + 1;
+      const idTwo = "videoTwo-" + index + 1;
+      return (
+        <React.Fragment key={index}>
+          <div id={idTwo} className="overlay">  
+            <video loop playsInline>
+              <source src={key[4]}/>
+              Your browser does not support the video tag.
+            </video>
+            <div className="controlls">
+              <button onClick={() => {
+                document.body.style.overflow = "auto";
+                document.body.style.paddingRight = 0;
+                document.getElementById(idTwo).classList.remove("fixed");
+                document.getElementById(idTwo).children[0].pause();
+                }}> &#10006; </button>
+            </div>
+          </div>
+          <div id={idOne} className="overlay">  
+            <video loop playsInline>
+              <source src={key[1]}/>\
+              Your browser does not support the video tag.
+            </video>
+            <div className="controlls">
+              <button onClick={() => {
+                document.body.style.overflow = "auto";
+                document.body.style.paddingRight = 0;
+                document.getElementById(idOne).classList.remove("fixed");
+                document.getElementById(idOne).children[0].pause();
+                }}> &#10006; </button>
+            </div>
+          </div>
+        </React.Fragment>
+      )
+    })})
+  }
   vid = (v) => {
     const overlay = document.getElementById(v); 
     overlay.children[0].load();
@@ -233,17 +244,17 @@ class Home extends Component {
     const addNewCount = document.getElementsByClassName("d" + newCount);
     if (newCount > 0 && newCount <= this.state.res.vid.length) {
       [...removeCount].forEach((item) => {
-        item.classList.remove("inline-block");
+        item.classList.remove("flex");
       });
       [...addNewCount].forEach((item) => {
-        item.classList.add("inline-block");
+        item.classList.add("flex");
       });
       this.setState({ count: newCount });
       const video = document.querySelectorAll(".videoImg");
       [...video].forEach((item) => {
-        item.classList.add("flip");
+        item.classList.add("grey");
         setTimeout(() => {
-          item.classList.remove("flip");
+          item.classList.remove("grey");
         }, 500)
       });
     }
@@ -253,34 +264,34 @@ class Home extends Component {
     const removeCount = document.getElementsByClassName("d" + count);
     if (count < this.state.res.vid.length) {
       [...removeCount].forEach((item) => {
-        item.classList.remove("inline-block");
+        item.classList.remove("flex");
       });
       const newCount = this.state.count + 1;
       const addNewCount = document.getElementsByClassName("d" + newCount);
       [...addNewCount].forEach((item) => {
-        item.classList.add("inline-block");
+        item.classList.add("flex");
       });
       this.setState({ count: newCount  });
     } else {
       [...removeCount].forEach((item) => {
-        item.classList.remove("inline-block");
+        item.classList.remove("flex");
       });
       const newCount = 1;
       const addNewCount = document.getElementsByClassName("d" + newCount);
       [...addNewCount].forEach((item) => {
-        item.classList.add("inline-block");
-        item.classList.add("flip");
+        item.classList.add("flex");
+        item.classList.add("grey");
         setTimeout(() => {
-          item.classList.remove("flip");
+          item.classList.remove("grey");
         }, 500)
       });
       this.setState({ count: newCount });
     }
     const video = document.querySelectorAll(".videoImg");
     [...video].forEach((item) => {
-      item.classList.add("flip");
+      item.classList.add("grey");
       setTimeout(() => {
-        item.classList.remove("flip");
+        item.classList.remove("grey");
       }, 500)
     });
   };
@@ -370,6 +381,7 @@ class Home extends Component {
                 ></img>
               </div>
             </Slider>
+            {this.state.vii}
             <section className="video">
               <svg
                 onClick={() => this.viddisplay(-1)}
