@@ -27,13 +27,15 @@
         }
       }
       p {
-        text-align: center;
         color: $c1;
         background-color: $c2;
         border: 2px solid $c2;
         border-radius: 2.5px;
         font-family: $font3;
-        word-wrap: break-word;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
         padding: 10px;
         background-image: url(./img/handmade-paper.png);
         background-blend-mode: hard-light;
@@ -43,6 +45,13 @@
         @media only screen and (max-width: 640px) {
           width: calc(92% - 24px);
           margin: auto;
+        }
+        span {
+          white-space: nowrap;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 35px;
         }
       }
     }
