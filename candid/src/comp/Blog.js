@@ -93,10 +93,7 @@ export default class Blog extends React.Component {
             <td>{name}:</td>
           </tr>
           <tr className="center">
-            <td>{blogers}</td>
-          </tr>
-          <tr>
-            <td><hr/></td>
+            <td>{blogers}<hr/></td>
           </tr>
         </React.Fragment>
       )})}) : this.setState({ table:  
