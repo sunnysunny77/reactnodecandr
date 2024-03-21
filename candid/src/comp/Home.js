@@ -38,7 +38,7 @@ const customStyles = {
   option: (provided, state) => ({
     color: styles.c13,
     fontSize: "medium",
-    margin: "5px 0",
+    margin: "4.5px 0",
     textAlign: "center",
     cursor: "pointer",
   }),
