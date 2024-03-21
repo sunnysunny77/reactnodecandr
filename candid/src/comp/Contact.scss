@@ -54,18 +54,29 @@
       margin-top: 0.83em;
       background-image: url(./img/handmade-paper.png);
       background-blend-mode: hard-light;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-direction: column;
       @media only screen and (max-width: 640px) {
         border-radius: 0;
         width: calc(92% - 24px);
         margin: 1em auto auto auto;
         min-width: initial;
-        text-align: center;
+      }
+      div {
+        height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
       }
       a {
         color: $c1;
         text-decoration: none;
-        margin: 10px 0;
-        display: inline-block;
+        height: 55px;
+        display: flex;
+        align-items: center;
         &:hover,
         &:focus {
           color: $c8;
@@ -76,6 +87,7 @@
         padding: 0 0 0 5px;
         font-size: 25px;
         float: none;
+        vertical-align: bottom;
         transition: 0.2s ease-in-out color;
         &:hover {
           color: $c8;

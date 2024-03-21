@@ -60,27 +60,21 @@ export default class Contactc extends Component {
                 <hr />
                 <p>
                   {parse(this.state.res.et)}
-                  <br></br>
-                  &nbsp;&nbsp;
                   <a href={"mailto:" + this.state.res.email}>
                     {this.state.res.email}
-                  </a>
-                  <br></br>
+                  </a> 
                   {parse(this.state.res.pt)}
-                  <br></br>
-                  &nbsp;&nbsp;
                   <a href={"tel:" + this.state.res.ph}>{this.state.res.ph}</a>
-                  <br></br>
                   {parse(this.state.res.it)}
-                  <br></br>
-                  &nbsp; <span> {parse(this.state.res.it2)}</span>
-                  <HelpOutlineIcon
-                    onClick={() => {
-                      var x = window.location.origin;
-                      window.location.replace(x + "?in=in");
-                    }}
-                  />
-                  <br></br>
+                  <div>
+                    <span> {parse(this.state.res.it2)}</span>
+                    <HelpOutlineIcon
+                      onClick={() => {
+                        var x = window.location.origin;
+                        window.location.replace(x + "?in=in");
+                      }}
+                    />
+                  </div>
                 </p>
               </div>
               <br className="clearFloat" />
