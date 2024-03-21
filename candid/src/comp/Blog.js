@@ -63,7 +63,7 @@ export default class Blog extends React.Component {
   };
   mapTable = (res) => {
     this.props.setTable(res);
-    res ? this.setState({ table: res.map((key, index) => {
+    res.length ? this.setState({ table: res.map((key, index) => {
       const { _id, blogers, date, name, title, loc } = key;
       return (
         <React.Fragment key={_id}>
