@@ -38,7 +38,7 @@ const customStyles = {
   option: (provided, state) => ({
     color: styles.c13,
     fontSize: "medium",
-    marginTop: "4.5px",
+    margin: "4px 0 10px 0",
     textAlign: "center",
     cursor: "pointer",
   }),
@@ -49,7 +49,7 @@ const customStyles = {
     borderRadius: "0 5px 0 0",
     border: 0,
     boxShadow: 'none',
-    margin: "auto 25px 105px 25px",
+    margin: "auto 25px 120px 25px",
   }),
   dropdownIndicator: (provided, state) => ({
     ...provided,
@@ -621,8 +621,7 @@ class Home extends Component {
                     options={this.state.res.options}
                     styles={customStyles}
                     placeholder={parse(this.state.res.buttons[3])}
-                    maxMenuHeight={62.5}
-    
+                    maxMenuHeight={70}
                   />
                 </div>
                 <SubjectIcon
