@@ -5,10 +5,7 @@ let mongoose = require("mongoose");
 let Papa = require("papaparse");
 let axios = require("axios");
 
-mongoose.connect("mongodb://localhost/bloga", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect("mongodb://localhost/bloga");
 
 let moment = require("moment");
 
@@ -47,7 +44,7 @@ app.use(function (req, res, next) {
   return next();
 });
 
-let sch = mongoose.Schema({
+let sch = new mongoose.Schema({
   date: String,
   blogers: String,
   name: String,
@@ -239,11 +236,11 @@ gallery();
 content();
 maps();
 
-app.post("/one", function (req, res) {
+app.post("/one", async function (req, res) {
   if (req.body.passw === "blogs") {
     let newdate = new Date();
     let date = moment(newdate).format("MMM Do YY' HH:mm:ss");
-    let id = mongoose.Types.ObjectId();
+    let id = new mongoose.Types.ObjectId();
     let ext = req.body.file.split(';')[0].split('/')[1];
     let blog = new mod({
       _id: id,
@@ -257,9 +254,9 @@ app.post("/one", function (req, res) {
       __dirname + "/public/pic/" + id + "." + ext,
       Buffer.from(req.body.file.split(';base64,').pop(), "base64")
     );
-    blog.save(async function () {
-      return res.json(await mod.find({}).sort({ date: -1 }).exec());
-    })
+    await blog.save();
+    return res.json(await mod.find().sort({ date: -1 }));
+    
   } else {
     return res.json({ e: "Incorrect password" });
   }
@@ -271,7 +268,7 @@ app.post("/two", async function (req, res) {
     if (doc.length) {
       fs.unlinkSync(__dirname + "/public" + doc[0].loc);
       await mod.deleteOne({ date: req.body.ddate });
-      return res.json(await mod.find({}).sort({ date: -1 }).exec());
+      return res.json(await mod.find().sort({ date: -1 }));
     } else {
       return res.json({ e: "Incorrect date" });
     }
