@@ -78,6 +78,14 @@
         font-size: inherit;
         width: 100%;
       }
+      tr {
+        display: flex;
+        margin: 10px auto;
+      }
+      img {
+        margin: auto 0;
+        display: inline-block;
+      }
       hr {
         width: 60%;
         margin: 25px auto;
@@ -85,7 +93,13 @@
       .center {
         text-align: center;
         padding-top: 50px;
+      }
+      .vertCenter {
         display: flex;
+        align-items: center;
+        img {
+          margin-right: 10px;
+        }
       }
     }
   }

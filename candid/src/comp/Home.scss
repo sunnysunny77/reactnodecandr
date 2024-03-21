@@ -161,8 +161,8 @@
     top: -4px;
     padding: 5% 0;
     background-color: $c12;
-    width: 80%;
     margin: 5% auto;
+    width: 87.5%;
   }
   div {
     display: none;
@@ -172,7 +172,8 @@
     max-width: 300px;
     margin: 0 5%;
     @media only screen and (max-width: 640px) {
-      width: 40%;
+      width: 42.5%;
+      margin: 0 2.5%;
     }
   }
   .videoImg {
@@ -226,32 +227,20 @@
   }
   #left {
     left: calc(52.5% - 600px);
-    transition: fill 0.2s ease-in-out color;
-    padding: 2.5%;
     @media only screen and (max-width: 1200px) {
       left: 1%;
     }
     @media only screen and (max-width: 640px) {
-      left: -10%;
-      width: 6%;
-    }
-    &:hover {
-      fill: $c7;
+      left: -6%;
     }
   }
   #right {
     right: calc(52.5% - 600px);
-    transition: fill 0.2s ease-in-out color;
-    padding: 2.5%;
     @media only screen and (max-width: 1200px) {
       right: 1%;
     }
     @media only screen and (max-width: 640px) {
-      right: -10%;
-      width: 6%;
-    }
-    &:hover {
-      fill: $c7;
+      right: -6%;
     }
   }
   #left,
@@ -260,9 +249,15 @@
     top: 65%;
     color: $c4;
     opacity: 0.75;
+    transition: fill 0.2s ease-in-out color;
+    padding: 7.5px;
     fill: $c4;
     @media only screen and (max-width: 640px) {
       top: 40%;
+      width: 6%;
+    }
+    &:hover {
+      fill: $c7;
     }
   }
   svg {

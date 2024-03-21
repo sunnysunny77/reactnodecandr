@@ -71,7 +71,7 @@ export default class Blog extends React.Component {
             <td>{title}</td>
           </tr>
           <tr>
-            <td>
+            <td className="vertCenter">
               <img
                 src="https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg"
                 alt="icon"
