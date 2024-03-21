@@ -10,7 +10,7 @@ export default class About extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      w: window.scrollTo(0, 0),
+      window: window.scrollTo(0, 0),
       res: {},
       abc: null,
       cba: null,
@@ -28,9 +28,9 @@ export default class About extends React.Component {
       });
       this.props.footer("load");
     })
-      .catch((error) => {
-        alert(error);
-      });
+    .catch((error) => {
+      alert(error);
+    });
     window.addEventListener("scroll", this.handleScroll, { passive: true });
     window.addEventListener("resize", this.handleScroll, { passive: true });
   }
@@ -39,8 +39,8 @@ export default class About extends React.Component {
     window.removeEventListener("resize", this.handleScroll);
   }
   handleScroll = () => {
-    if (window.innerWidth > 1200) return document.querySelector(".wave0").style.top = "40px";
-    if (window.innerWidth <= 1200) document.querySelector(".wave0").style.top = "0px";
+    if (window.innerWidth > 1200) return document.querySelector(".sticky").style.top = "40px";
+    if (window.innerWidth <= 1200) document.querySelector(".sticky").style.top = "0px";
   };
   render() {
     return (
@@ -53,15 +53,15 @@ export default class About extends React.Component {
           />
         ) : (
           <React.Fragment>
-            {this.state.w}
+            {this.state.window}
             <div className="headingCont">
               <h1>{parse(this.state.res.buttons[0])}</h1>
             </div>
             <section className="aboutContOne">
               <div className="grid">
                 <h2>
-                  {parse(this.state.res.hmap)}{" "}
-                  <ListAltIcon />{" "}
+                  {parse(this.state.res.hmap)}
+                  <ListAltIcon />
                 </h2>
                 <p>{parse(this.state.cba)}</p>
                 <hr />
@@ -70,8 +70,8 @@ export default class About extends React.Component {
             </section>
             <section className="aboutContTwo">
               <h2>
-                {parse(this.state.res.hm)}{" "}
-                <ListAltIcon />{" "}
+                {parse(this.state.res.hm)}
+                <ListAltIcon />
               </h2>
               <hr />
               <Wave>

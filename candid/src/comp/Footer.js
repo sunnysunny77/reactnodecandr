@@ -3,6 +3,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import "./Footer.scss";
 import parse from 'html-react-parser';
 import { Link } from "react-router-dom";
+
 function Footer(props) {
   let { footer, ph, time, day, buttons } = props;
   return (
@@ -10,7 +11,7 @@ function Footer(props) {
       <ul>
         <li className="block none">
           <Link to="/">
-            <span id="hl3" className="hiddentext">
+            <span id="hl3" className="hiddenText">
               Homepage Link
             </span>
             <HomeIcon aria-labelledby="hl3" role="link">

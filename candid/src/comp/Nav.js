@@ -32,25 +32,13 @@ class Nav extends Component {
         margin: "6px auto",
         transition: "0.4s",
       },
-      wi: "",
-      hi: "",
       dis: false
     };
   }
   componentDidMount() {
-    document.body.addEventListener("click", this.barsOut, { passive: true });
     window.addEventListener("scroll", this.handleScroll, { passive: true });
-    if (window.screen.width > 1200) return this.setState({
-      wi: "200",
-      hi: "46",
-    });
-    this.setState({
-      wi: "140",
-      hi: "32",
-    });
   }
   componentWillUnmount() {
-    document.body.removeEventListener("click", this.barsOut);
     window.removeEventListener("scroll", this.handleScroll);
   }
   handleScroll = () => {
@@ -129,7 +117,7 @@ class Nav extends Component {
             <li>
               <Link to="/">
                 <HomeIcon aria-labelledby="hl1" role="link" >Home</HomeIcon>
-                <span id="hl1" className="hiddentext">Homepage Link</span>
+                <span id="hl1" className="hiddenText">Homepage Link</span>
               </Link>
             </li>
             <li>
@@ -182,7 +170,7 @@ class Nav extends Component {
         </nav>
         <header>
           <Link to="/">
-            <img src="https://candid.s3.ap-southeast-2.amazonaws.com/logolarge.png" alt="Candid Logo" width={this.state.wi} height={this.state.hi}></img>
+            <img src="https://candid.s3.ap-southeast-2.amazonaws.com/logolarge.png" alt="Candid Logo" width="200" height="46"></img>
           </Link>
         </header>
         <nav className={`mainNav ${this.state.class}`}>
@@ -224,7 +212,7 @@ class Nav extends Component {
             <li>
               <Link to="/">
                 <HomeIcon aria-labelledby="hl2" role="link" >Home</HomeIcon>
-                <span id="hl2" className="hiddentext">Homepage Link</span>
+                <span id="hl2" className="hiddenText">Homepage Link</span>
               </Link>
             </li>
           </ul>

@@ -16,6 +16,7 @@ import Nav from "./comp/Nav";
 import Footer from "./comp/Footer";
 
 function App() {
+  const [table, setTable] = useState(null);
   const [ph, setPh] = useState(null);
   const [time, setTime] = useState(null);
   const [day, setDay] = useState(null);
@@ -23,7 +24,6 @@ function App() {
   const [footer, setFooter] = useState(null);
   const [buttons, setButtons] = useState([]);
   const [main, setMain] = useState("navRelative");
-
   useEffect(() => {
     axios
       .post('/nav')
@@ -41,20 +41,20 @@ function App() {
   return (
     <BrowserRouter>
       {load ? (<React.Fragment>
-        <Nav ph={ph} time={time} day={day} buttons={buttons} main={(x) => setMain(x)} />
+        <Nav ph={ph} time={time} day={day} buttons={buttons} main={(param) => setMain(param)} />
         <main className={main} id="di">
           <Routes>
-            <Route exact path="/" element={<Home  footer={(x) => setFooter(x)}/>} />
-            <Route path="/blog" element={<Blog footer={(x) => setFooter(x)}/>} />
-            <Route path="/gallery" element={<Gallery footer={(x) => setFooter(x)}/>} />
-            <Route path="/contact" element={<Contact footer={(x) => setFooter(x)}/>} />
-            <Route path="/about" element={<About footer={(x) => setFooter(x)}/>} />
+            <Route exact path="/" element={<Home  footer={(param) => setFooter(param)}/>} />
+            <Route path="/blog" element={<Blog table={table} setTable={(param) => setTable(param)} footer={(param) =>  setFooter(param)}/>} />
+            <Route path="/gallery" element={<Gallery footer={(param) => setFooter(param)}/>} />
+            <Route path="/contact" element={<Contact footer={(param) => setFooter(param)}/>} />
+            <Route path="/about" element={<About footer={(param) => setFooter(param)}/>} />
           </Routes>
         </main>
         <Footer footer={footer} ph={ph} time={time} day={day} buttons={buttons} />
       </React.Fragment>) : (
         <img
-          id="loadfront"
+          id="loadFront"
           src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
           alt="loading"
         />

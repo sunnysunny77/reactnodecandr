@@ -161,7 +161,7 @@
     transition: background-color 0.3s;
     &:hover {
       background-color: $c1;
-      border: 1PX solid  $c2;
+      border: 1px solid $c2;
       color: $c5;
     }
     &.btn {

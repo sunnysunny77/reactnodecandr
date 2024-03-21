@@ -19,7 +19,6 @@ import axios from "axios";
 import Resizer from "react-image-file-resizer";
 import parse from 'html-react-parser';
 
-
 const StyledAccordion =styled(Accordion)({
   margin: 0, 
   backgroundColor: styles.c3,
@@ -31,8 +30,7 @@ export default class Blog extends React.Component {
     this.state = {
       blogers: null,
       title: null,
-      txt: null,
-      data: null,
+      datalert: null,
       file: null,
       name: null,
       passw: "",
@@ -40,40 +38,74 @@ export default class Blog extends React.Component {
       ddate: null,
       disp0: { display: "none" },
       disp1: { display: "none" },
-      a: null,
-      a0: null,
-      w: window.scrollTo(0, 0),
+      alert: null,
+      alert0: null,
+      window: window.scrollTo(0, 0),
       buttons: [],
       load: true,
       extension: null,
+      table: null,
     };
     this.props.footer("loading");
   }
   componentDidMount() {
     axios.get(`/ong`).then((res) => {
+      this.mapTable(this.props.table || res.data.doc);
       this.setState({
         buttons: res.data.buttons,
         load: false,
       });
-      if (!res.data.doc.length) return this.postcount();
-      this.tab(res.data.doc);
       this.props.footer("load");
     })
-      .catch((error) => {
-        alert(error);
-      });
-  }
-  postcount = () => {
-    this.setState({
-      txt: (
-        <table>
-          <tr style={{ height: "35vh" }}>
-            <th> No posts yet </th>
-          </tr>
-        </table>
-      ),
+    .catch((error) => {
+      alert(error);
     });
-  }
+  };
+  mapTable = (res) => {
+    this.props.setTable(res);
+    res ? this.setState({ table: res.map((key, index) => {
+      const { _id, blogers, date, name, title, loc } = key;
+      return (
+        <React.Fragment key={_id}>
+          <tr>
+            <td>{title}</td>
+          </tr>
+          <tr>
+            <td>
+              <img
+                src="https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg"
+                alt="icon"
+                width="10"
+                height="10"
+              />
+              {"" + date}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img
+                alt={title}
+                src={"https://" + window.location.hostname + loc}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>{name}:</td>
+          </tr>
+          <tr className="center">
+            <td>{blogers}</td>
+          </tr>
+          <tr>
+            <td><hr/></td>
+          </tr>
+        </React.Fragment>
+      )})}) : this.setState({ table:  
+        <tr style={{ height: "35vh" }}>
+          <th> No posts yet </th>
+        </tr>
+      })
+    ;
+  };
   change = (event) => {
     const nam = event.target.name;
     const val = event.target.value;
@@ -99,7 +131,7 @@ export default class Blog extends React.Component {
       "base64"
     );
     this.setState({
-      a: "choose || jpg || png",
+      alert: "choose || jpg || png",
       disp0: { display: "block", lineHeight: "50px" },
       extension: extension,
     });
@@ -108,7 +140,7 @@ export default class Blog extends React.Component {
     event.preventDefault();
     const types = ["jpg", "JPG", "png", "PNG", "jpeg", "JPEG"];
     if (!types.includes(this.state.extension)) return this.setState({
-      a: "choose || jpg || png",
+      alert: "choose || jpg || png",
       disp0: { display: "block", lineHeight: "50px" },
     });
     if (this.state.passw && this.state.blogers && this.state.name && this.state.title && this.state.file) return axios.post(`/one`, {
@@ -118,102 +150,59 @@ export default class Blog extends React.Component {
       title: this.state.title,
       file: this.state.file,
     })
-      .then((res) => {
-        if (res.data.e) return this.setState({
-          a: res.data.e,
-          disp0: { display: "block", lineHeight: "50px" },
-        });
-        this.setState({
-          a: "Blog sent",
-          disp0: { display: "block", lineHeight: "50px" },
-          passw: null,
-          blogers: null,
-          name: null,
-          title: null,
-          file: null,
-        });
-        document.getElementById("a6").reset();
-        this.tab(res.data);
-      })
-      .catch((error) => {
-        this.setState({
-          a: error.response.statusText,
-          disp0: { display: "block", lineHeight: "50px" },
-        });
+    .then((res) => {
+      if (res.data.e) return this.setState({
+        alert: res.data.e,
+        disp0: { display: "block", lineHeight: "50px" },
       });
+      this.mapTable(res.data);
+      this.setState({
+        alert: "Blog sent",
+        disp0: { display: "block", lineHeight: "50px" },
+        passw: null,
+        blogers: null,
+        name: null,
+        title: null,
+        file: null,
+      });
+      document.getElementById("a6").reset();
+    })
+    .catch((error) => {
+      this.setState({
+        alert: error.response.statusText,
+        disp0: { display: "block", lineHeight: "50px" },
+      });
+    });
     this.setState({
-      a: "Blog from incomplete",
+      alert: "Blog from incomplete",
       disp0: { display: "block", lineHeight: "50px" },
     });
   };
-  submittwo = (event) => {
+  submitTwo = (event) => {
     event.preventDefault();
     axios.post(`/two`, {
       passw0: this.state.passw0,
       ddate: this.state.ddate,
     })
-      .then((res) => {
-        if (res.data.e) return this.setState({
-          a0: res.data.e,
-          disp1: { display: "block", lineHeight: "50px" },
-        });
-        this.setState({
-          a0: "Blog delete",
-          disp1: { display: "block", lineHeight: "50px" },
-          passw0: null,
-          ddate: null,
-        });
-        document.getElementById("a2").reset();
-        if (!res.data.length) return this.postcount();
-        this.tab(res.data);
-      })
-      .catch((error) => {
-        this.setState({
-          a0: error.response.statusText,
-          disp1: { display: "block", lineHeight: "50px" },
-        });
+    .then((res) => {
+      if (res.data.e) return this.setState({
+        alert0: res.data.e,
+        disp1: { display: "block", lineHeight: "50px" },
       });
-  };
-  tab = (x) => {
-    this.setState({
-      txt: x.map((i, index) => {
-        const { _id, blogers, date, name, title, loc } = i;
-        return (
-          <React.Fragment key={_id}>
-                <tr key={_id + "1"}>
-                  <td>{title}</td>
-                </tr>
-                <tr key={_id + "2"}>
-                  <td style={{ color: "rgba(147,112,219, 0.9)" }}>
-                    <img
-                      src="https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg"
-                      alt="icon"
-                      width="10"
-                      height="10"
-                    ></img>{" "}
-                    {"" + date}
-                  </td>
-                </tr>
-                <tr key={_id + "4"}>
-                  <td>
-                    <img
-                      alt={title}
-                      src={"https://" + window.location.hostname + loc}
-                    />
-                  </td>
-                </tr>
-                <tr key={_id + "5"}>
-                  <td>{name}:</td>
-                </tr>
-                <tr key={_id + "6"}>
-                  <td>{blogers}</td>
-                </tr>
-                <tr key={_id + "7"}>
-                  <td><hr/></td>
-                </tr>
-          </React.Fragment>
-        );
-      }),
+      this.mapTable(res.data);
+      this.setState({
+        alert0: "Blog delete",
+        disp1: { display: "block", lineHeight: "50px" },
+        passw0: null,
+        ddate: null,
+      });
+      document.getElementById("a2").reset();
+    })
+    .catch((error) => {
+      this.setState({
+        alert0: error.response.statusText,
+        disp1: { display: "block", lineHeight: "50px" },
+      });
     });
   };
   render() {
@@ -227,16 +216,16 @@ export default class Blog extends React.Component {
           />
         ) : (
           <React.Fragment>
-            {this.state.w}
+            {this.state.window}
             <div className="headingCont blogHeading">
                 <h1>{parse(this.state.buttons[0])}</h1>
             </div>
             <section className="blogCont">
               <div className="blogResponse">
-              <div className="wave0"></div>
+              <div className="sticky"></div>
               <table>
                 <tbody>
-                  {this.state.txt}
+                  {this.state.table}
                  </tbody>
               </table>
               </div>
@@ -264,7 +253,7 @@ export default class Blog extends React.Component {
                       }}
                     >
                       <SubjectIcon />
-                      <label htmlFor="passs" className="hiddentext">
+                      <label htmlFor="passs" className="hiddenText">
                         Password
                       </label>
                       <TextField
@@ -292,7 +281,7 @@ export default class Blog extends React.Component {
                         placeholder="Pass:"
                         onChange={this.change}
                       />
-                      <label htmlFor="title" className="hiddentext">
+                      <label htmlFor="title" className="hiddenText">
                         Title
                       </label>
                       <TextField
@@ -319,7 +308,7 @@ export default class Blog extends React.Component {
                         placeholder="Title:"
                         onChange={this.change}
                       />
-                      <label htmlFor="name" className="hiddentext">
+                      <label htmlFor="name" className="hiddenText">
                         Name
                       </label>
                       <TextField
@@ -346,7 +335,7 @@ export default class Blog extends React.Component {
                         placeholder="Name:"
                         onChange={this.change}
                       />
-                      <label htmlFor="text" className="hiddentext">
+                      <label htmlFor="text" className="hiddenText">
                         Text
                       </label>
                       <TextField
@@ -398,12 +387,11 @@ export default class Blog extends React.Component {
                         type="submit"
                         className="button"
                       >
-                        {" "}
                         {parse(this.state.buttons[3])}
                       </Button>
                       <div style={{ height: "50px" }}>
                         <div style={this.state.disp0}>
-                          <Alertm alert={this.state.a} />
+                          <Alertm alert={this.state.alert} />
                         </div>
                       </div>
                     </form>
@@ -423,7 +411,7 @@ export default class Blog extends React.Component {
                     <form
                       id="a2"
                       className="formRemove"
-                      onSubmit={this.submittwo}
+                      onSubmit={this.submitTwo}
                       autoComplete="off"
                       style={{
                         width: "100%",
@@ -431,7 +419,7 @@ export default class Blog extends React.Component {
                         color: styles.c11,
                       }}
                     >
-                      <label htmlFor="pass" className="hiddentext">
+                      <label htmlFor="pass" className="hiddenText">
                         Password
                       </label>
                       <TextField
@@ -459,7 +447,7 @@ export default class Blog extends React.Component {
                         placeholder="Pass:"
                         onChange={this.change}
                       />
-                      <label htmlFor="date" className="hiddentext">
+                      <label htmlFor="date" className="hiddenText">
                         Date
                       </label>
                       <TextField
@@ -501,12 +489,11 @@ export default class Blog extends React.Component {
                         className="button"
                         type="submit"
                       >
-                        {" "}
                         {parse(this.state.buttons[3])}
                       </Button>
                       <div style={{ height: "50px" }}>
                         <div style={this.state.disp1}>
-                          <Alertm alert={this.state.a0} />
+                          <Alertm alert={this.state.alert0} />
                         </div>
                       </div>
                     </form>

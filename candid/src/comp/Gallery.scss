@@ -32,7 +32,7 @@
     min-height: 100vh;
     margin: auto;
   }
-  .wave0 {
+  .sticky {
     height: 200px;
     @media only screen and (max-width: 1200px) {
       height: 60px;
@@ -55,39 +55,39 @@
   .image-gallery {
     width: 100%;
     margin: 0 auto;
-    .image-gallery-content { 
+    .image-gallery-content {
       width: 75%;
       margin: auto;
-    .image-gallery-slide-wrapper {
-      position: relative;
-      margin: auto;
-      padding-top: 56.25%;
-      .image-gallery-slides {
-        position: absolute;
+      .image-gallery-slide-wrapper {
+        position: relative;
         margin: auto;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        border: 2px solid $c2;
-        img {
-          height: 100%;
-          object-fit: cover;
+        padding-top: 56.25%;
+        .image-gallery-slides {
+          position: absolute;
+          margin: auto;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          border: 2px solid $c2;
+          img {
+            height: 100%;
+            object-fit: cover;
+          }
         }
       }
-    }
-    .fullscreen {
-      .image-gallery-swipe {
-        padding-top: initial;
-        .image-gallery-slides {
-          position: relative;
-          img {
-            object-fit: contain;
-            max-height: calc(100vh - 100px)
+      .fullscreen {
+        .image-gallery-swipe {
+          padding-top: initial;
+          .image-gallery-slides {
+            position: relative;
+            img {
+              object-fit: contain;
+              max-height: calc(100vh - 100px);
+            }
           }
         }
       }
     }
-  }
   }
 }

@@ -10,7 +10,7 @@ export default class Contactc extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      w: window.scrollTo(0, 0),
+      window: window.scrollTo(0, 0),
       res: {},
       load: true,
     };
@@ -21,9 +21,9 @@ export default class Contactc extends Component {
       this.setState({ res: res.data, load: false });
       this.props.footer("load");
     })
-      .catch((error) => {
-        alert(error);
-      });
+    .catch((error) => {
+      alert(error);
+    });
     window.addEventListener("scroll", this.handleScroll, { passive: true });
     window.addEventListener("resize", this.handleScroll, { passive: true });
   }
@@ -32,8 +32,8 @@ export default class Contactc extends Component {
     window.removeEventListener("resize", this.handleScroll);
   }
   handleScroll = () => {
-    if (window.innerWidth > 1200) return document.querySelector(".wave0").style.top = "40px";
-    if (window.innerWidth <= 1200) document.querySelector(".wave0").style.top = "0px";
+    if (window.innerWidth > 1200) return document.querySelector(".sticky").style.top = "40px";
+    if (window.innerWidth <= 1200) document.querySelector(".sticky").style.top = "0px";
   };
   render() {
     return (
@@ -46,7 +46,7 @@ export default class Contactc extends Component {
           />
         ) : (
           <React.Fragment>
-            {this.state.w}
+            {this.state.window}
             <div className="headingCont">
               <h1>{parse(this.state.res.buttons[0])}</h1>
             </div>
@@ -54,7 +54,7 @@ export default class Contactc extends Component {
               <div className="contactOne"></div>
               <div className="contactTwo">
                 <h2>
-                  {parse(this.state.res.h)}{" "}
+                  {parse(this.state.res.h)}
                   <ContactsIcon />
                 </h2>
                 <hr />
@@ -83,12 +83,12 @@ export default class Contactc extends Component {
                   <br></br>
                 </p>
               </div>
-              <br className="clearfloat" />
+              <br className="clearFloat" />
             </section>
             <section className="contactContTwo">
               <h2>
-                {parse(this.state.res.h2)}{" "}
-                <ContactsIcon />{" "}
+                {parse(this.state.res.h2)}
+                <ContactsIcon />
               </h2>
               <hr />
               <Wave>

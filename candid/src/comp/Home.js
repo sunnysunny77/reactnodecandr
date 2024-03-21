@@ -75,26 +75,22 @@ class Home extends Component {
         speed: 500,
         pauseOnHover: false,
         fade: true,
-        beforeChange: this.vidtoggle,
+        beforeChange: this.vidToggle,
       },
-      w: window.scrollTo(0, 0),
+      window: window.scrollTo(0, 0),
       disp: { display: "none" },
       name: null,
       email: null,
       phone: null,
       selectedOption: null,
       text: null,
-      a: null,
+      alert: null,
       res: {},
-      vi: null,
-      vii: null,
+      video: null,
+      overlay: null,
       count: 1,
       svg: null,
       load: true,
-      src0: "",
-      src1: "",
-      wi: "",
-      hi: "",
     };
     this.props.footer("loading");
   }
@@ -105,50 +101,23 @@ class Home extends Component {
         load: false
       });
       this.props.footer("load");
-      this.vi(res.data.vid);
-      this.resolution();
+      this.mapVideo(res.data.vid);
     })
-      .catch((error) => {
-        alert(error);
-      });
+    .catch((error) => {
+      alert(error);
+    });
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.load !== this.state.load) {
-      if (window.location.search === "?in=in") this.scr();
-
-     new Vivus(document.querySelector("#my-svg").children[0], { duration: 200 });
+      if (window.location.search === "?in=in") this.scrollIntoView();
+      new Vivus(document.querySelector("#my-svg").children[0], { duration: 200 });
     }
   }
-  scr = () => {
+  scrollIntoView = () => {
     document.getElementById("enquiry").scrollIntoView({behavior: "smooth"});
   }
-  resolution = () => {
-    let width = window.screen.width;
-    width > 1200 ?
-      this.setState({
-        src0: "https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg",
-        src1: "https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg",
-      })
-      :
-      this.setState({
-        src0: "https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg",
-        src1: "https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg",
-      });
-    if (width > 1200) return this.setState({
-      wi: "1200",
-      hi: "485",
-    });
-    if (width <= 1200 && width >= 576) return this.setState({
-      wi: "992",
-      hi: "410",
-    });
-    if (width < 576) this.setState({
-      wi: "360",
-      hi: "146",
-    });
-  };
-  vi = (res) => {
-    this.setState({ vi: res.map((key, index) => {
+  mapVideo = (res) => {
+    this.setState({ video: res.map((key, index) => {
       const d = index === 0 ?  "flex": "";
       const idOne = "videoOne-" + index + 1;
       const idTwo = "videoTwo-" + index + 1;
@@ -158,9 +127,9 @@ class Home extends Component {
             <link rel="preload" href={key[0]} as="image" />
             <span
               className="videoLink"
-              onClick={() => this.vid(idOne)}
+              onClick={() => this.overlay(idOne)}
             >
-              {key[2]}{" "}
+              {key[2]}
               <PlayCircleOutlineIcon />
             </span>
             <img
@@ -175,9 +144,9 @@ class Home extends Component {
             <link rel="preload" href={key[3]} as="image" />
             <span
               className="videoLink"
-              onClick={() => this.vid(idTwo)}
+              onClick={() => this.overlay(idTwo)}
             >
-              {key[5]}{" "}
+              {key[5]}
               <PlayCircleOutlineIcon />
             </span>
             <img
@@ -190,8 +159,7 @@ class Home extends Component {
           </div>
         </React.Fragment>
       )
-    })})
-    this.setState({ vii: res.map((key, index) => {
+    }), overlay: res.map((key, index) => {
       const idOne = "videoOne-" + index + 1;
       const idTwo = "videoTwo-" + index + 1;
       return (
@@ -228,8 +196,8 @@ class Home extends Component {
       )
     })})
   }
-  vid = (v) => {
-    const overlay = document.getElementById(v); 
+  overlay = (id) => {
+    const overlay = document.getElementById(id); 
     overlay.children[0].load();
     overlay.children[0].play();
     const width = window.innerWidth - document.body.offsetWidth;
@@ -237,10 +205,10 @@ class Home extends Component {
     document.body.style.paddingRight = `${width  }px`;
     overlay.classList.add("fixed");
   };
-  viddisplay = (v) => {
+  vidDisplay = (index) => {
     const count = this.state.count;
     const removeCount = document.getElementsByClassName("d" + count);
-    const newCount = this.state.count + v;
+    const newCount = this.state.count + index;
     const addNewCount = document.getElementsByClassName("d" + newCount);
     if (newCount > 0 && newCount <= this.state.res.vid.length) {
       [...removeCount].forEach((item) => {
@@ -259,7 +227,7 @@ class Home extends Component {
       });
     }
   };
-  vidtoggle = () => {
+  vidToggle = () => {
     const count = this.state.count;
     const removeCount = document.getElementsByClassName("d" + count);
     if (count < this.state.res.vid.length) {
@@ -306,7 +274,7 @@ class Home extends Component {
   submit = (event) => {
     event.preventDefault();
     this.setState({
-      a: "Waiting...",
+      alert: "Waiting...",
       disp: { display: "block", lineHeight: "50px" },
     });
     if (this.state.name && this.state.email && this.state.phone && this.state.selectedOption && this.state.text) return axios.post('/three', {
@@ -318,11 +286,11 @@ class Home extends Component {
     })
       .then((res) => {
         if (res.data.e) return this.setState({
-          a: res.data.e,
+          alert: res.data.e,
           disp: { display: "block", lineHeight: "50px" },
         });
         this.setState({
-          a: res.data.a,
+          alert: res.data.a,
           disp: { display: "block", lineHeight: "50px" },
           name: null,
           email: null,
@@ -334,12 +302,12 @@ class Home extends Component {
       })
       .catch((error) => {
         this.setState({
-          a: error.response.statusText,
+          alert: error.response.statusText,
           disp: { display: "block", lineHeight: "50px" },
         });
       });
     this.setState({
-      a: "Enquiry from incomplete",
+      alert: "Enquiry from incomplete",
       disp: { display: "block", lineHeight: "50px" },
     });
   };
@@ -354,37 +322,33 @@ class Home extends Component {
           />
         ) : (
           <React.Fragment>
-            {this.state.w}
+            {this.state.window}
             <section className="welcome">
               <h1 id="welcomeOne">
                 <div id="my-svg">{parse(this.state.res.svg)}</div>
                 &nbsp;
                 {parse(this.state.res.m1)}
               </h1>
-              <div id="welcomeTwo" onClick={this.scr}></div>
+              <div id="welcomeTwo" onClick={this.scrollIntoView}></div>
             </section>
             <Slider id="slide" {...this.state.settings}>
               <div>
-                <img
-                  src={this.state.src1}
-                  alt="Slider 1"
-                  width={this.state.wi}
-                  height={this.state.hi}
-                ></img>
+                <picture>
+                  <source media="(min-width:1199px)" srcSet="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg"/>
+                  <img src="https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg" width="992" height="401" alt="Slider 1"/>
+                </picture>    
               </div>
               <div>
-                <img
-                  src={this.state.src0}
-                  alt="Slider 2"
-                  width={this.state.wi}
-                  height={this.state.hi}
-                ></img>
+                <picture>
+                  <source media="(min-width:1199px)" srcSet="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg"/>
+                  <img src="https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg" width="992" height="401" alt="Slider 2"/>
+                </picture>
               </div>
             </Slider>
-            {this.state.vii}
+            {this.state.overlay}
             <section className="video">
               <svg
-                onClick={() => this.viddisplay(-1)}
+                onClick={() => this.vidDisplay(-1)}
                 id="left"
                 height="25px"
                 viewBox="0 0 500 500"
@@ -395,9 +359,9 @@ class Home extends Component {
                 <path d="m250.667969 336.332031c-4.097657 0-8.191407-1.554687-11.308594-4.691406l-85.332031-85.332031c-6.25-6.253906-6.25-16.386719 0-22.636719l85.332031-85.332031c6.25-6.25 16.382813-6.25 22.636719 0 6.25 6.25 6.25 16.382812 0 22.632812l-74.027344 74.027344 74.027344 74.027344c6.25 6.25 6.25 16.382812 0 22.632812-3.136719 3.117188-7.234375 4.671875-11.328125 4.671875zm0 0" />
                 <path d="m234.667969 469.667969c-129.386719 0-234.667969-105.28125-234.667969-234.667969s105.28125-234.667969 234.667969-234.667969c97.085937 0 182.804687 58.410157 218.410156 148.824219 3.242187 8.210938-.8125 17.492188-9.023437 20.753906-8.214844 3.203125-17.496094-.789062-20.757813-9.042968-30.742187-78.082032-104.789063-128.535157-188.628906-128.535157-111.746094 0-202.667969 90.925781-202.667969 202.667969s90.921875 202.667969 202.667969 202.667969c83.839843 0 157.886719-50.453125 188.628906-128.511719 3.242187-8.257812 12.523437-12.246094 20.757813-9.046875 8.210937 3.242187 12.265624 12.542969 9.023437 20.757813-35.605469 90.390624-121.324219 148.800781-218.410156 148.800781zm0 0" />
               </svg>
-              {this.state.vi}
+              {this.state.video}
               <svg
-                onClick={() => this.viddisplay(+1)}
+                onClick={() => this.vidDisplay(+1)}
                 id="right"
                 height="25px"
                 viewBox="0 0 500 500"
@@ -552,7 +516,7 @@ class Home extends Component {
                   color: styles.c11,
                 }}
               >
-                <label htmlFor="name" className="hiddentext">
+                <label htmlFor="name" className="hiddenText">
                   Name
                 </label>
                 <TextField
@@ -580,7 +544,7 @@ class Home extends Component {
                   placeholder="Name:"
                   onChange={this.change}
                 />
-                <label htmlFor="email" className="hiddentext">
+                <label htmlFor="email" className="hiddenText">
                   Email
                 </label>
                 <TextField
@@ -608,7 +572,7 @@ class Home extends Component {
                   placeholder="Email:"
                   onChange={this.change}
                 />
-                <label htmlFor="phone" className="hiddentext">
+                <label htmlFor="phone" className="hiddenText">
                   Phone
                 </label>
                 <Tooltip
@@ -646,7 +610,7 @@ class Home extends Component {
                   <ListIcon
                     style={{ color: styles.c11, marginLeft: "27.5px" }}
                   />
-                  <label htmlFor="select" className="hiddentext">
+                  <label htmlFor="select" className="hiddenText">
                     {parse(this.state.res.buttons[3])}
                   </label>
                   <Select
@@ -669,7 +633,7 @@ class Home extends Component {
                     display: "block",
                   }}
                 />
-                <label htmlFor="text" className="hiddentext">
+                <label htmlFor="text" className="hiddenText">
                   Text
                 </label>
                 <TextField
@@ -720,7 +684,7 @@ class Home extends Component {
                 </Button>
                 <div style={{ height: "50px" }}>
                   <div style={this.state.disp}>
-                    <Alertm alert={this.state.a} />
+                    <Alertm alert={this.state.alert} />
                   </div>
                 </div>
               </form>
