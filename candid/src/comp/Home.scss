@@ -249,9 +249,10 @@
     top: 65%;
     color: $c4;
     opacity: 0.75;
-    transition: fill 0.2s ease-in-out color;
+    transition: fill 0.2s ease-in-out;
     padding: 7.5px;
     fill: $c4;
+    width: fit-content;
     @media only screen and (max-width: 640px) {
       top: 40%;
       width: 6%;
