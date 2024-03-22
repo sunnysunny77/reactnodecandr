@@ -118,30 +118,34 @@
       width: 60%;
     }
   }
-  #pic {
-    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/about.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+  #picContainer {
+    position: relative;
+    clip-path: inset(10px 10px 25px round 25px 0);
     float: left;
     width: 450px;
     height: 300px;
-    border: 1px solid $c1;
-    border-top-right-radius: 25%;
-    border-bottom-right-radius: 25%;
-    border-top-left-radius: 17%;
-    border-bottom-left-radius: 17%;
-    filter: grayscale(100%);
+    background-color: $c1;
     @media only screen and (max-width: 1365px) {
-      border: initial;
-      border-bottom: 2px solid $c1;
       float: none;
-      display: block;
-      margin: 20px auto 90px auto;
-      border-radius: 0;
-      width: 25%;
+      margin: 10px auto 70px auto;
+      width:  initial;
       height: initial;
-      padding: 25%;
+      padding: 34%;
     }
+    #pic {
+      position: absolute;
+      top: 1px;
+      right: 1px;
+      bottom: 1px;
+      left: 1px;
+      background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/about.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(100%);
+      clip-path: inset(10px 10px 25px round 25px 0);
+  }
+ 
   }
   #picSpan {
     width: 50%;

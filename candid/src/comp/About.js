@@ -103,7 +103,9 @@ export default class About extends React.Component {
                     alt="Swirly text divider"
                   />
                   <h3>{parse(this.state.res.h2)}</h3>
-                  <span id="pic"></span>
+                  <div id="picContainer">
+                    <span id="pic"></span>
+                  </div>
                   <span id="picSpan">
                     {parse(this.state.res.span3)}
                   </span>
