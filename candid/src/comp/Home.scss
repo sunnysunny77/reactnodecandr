@@ -231,7 +231,7 @@
       left: 1%;
     }
     @media only screen and (max-width: 640px) {
-      left: -6%;
+      left: -4%;
     }
   }
   #right {
@@ -240,7 +240,7 @@
       right: 1%;
     }
     @media only screen and (max-width: 640px) {
-      right: -6%;
+      right: -4%;
     }
   }
   #left,
@@ -250,9 +250,10 @@
     color: $c4;
     opacity: 0.75;
     transition: fill 0.2s ease-in-out;
-    padding: 7.5px;
+    width: 25px;
+    height: 25px;
     fill: $c4;
-    width: fit-content;
+    padding: 10px 0;
     @media only screen and (max-width: 640px) {
       top: 40%;
       width: 6%;
