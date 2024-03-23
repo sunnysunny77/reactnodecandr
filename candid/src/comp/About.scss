@@ -181,9 +181,10 @@
   }
   #readMoreZero,
   #readMoreOne {
-    height: 0;
+    height: auto;
+    max-height: 0;
     overflow: hidden;
-    transition: height 1s;
+    transition: max-height 1s;
     text-align: justify;
     font-size: medium;
   }

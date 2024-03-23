@@ -31,17 +31,28 @@ export default class About extends React.Component {
     .catch((error) => {
       alert(error);
     });
+  
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.load !== this.state.load) {
     window.addEventListener("scroll", this.handleScroll, { passive: true });
     window.addEventListener("resize", this.handleScroll, { passive: true });
+    window.addEventListener("resize", this.handleHeight, { passive: true });
+    }
   }
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
     window.removeEventListener("resize", this.handleScroll);
+    window.removeEventListener("resize", this.handleHeight);
   }
   handleScroll = () => {
     if (window.innerWidth > 1200) return document.querySelector(".sticky").style.top = "40px";
     if (window.innerWidth <= 1200) document.querySelector(".sticky").style.top = "0px";
   };
+  handleHeight = () => {
+    const obj = document.getElementById("readMoreZero");
+    obj.style.maxHeight = obj.scrollHeight + "px";
+  }
   render() {
     return (
       <React.Fragment>
@@ -79,10 +90,10 @@ export default class About extends React.Component {
                   <h3>{parse(this.state.res.h1)}</h3>
                   <span id="topSpan">{parse(this.state.res.span1)}</span>
                   <button
-                    onClick={ function () {
+                    onClick={() => {
                       const obj = document.getElementById("readMoreZero");
-                      obj.style.height = obj.scrollHeight + "px";
-                 }}
+                      obj.style.maxHeight = obj.scrollHeight + "px";
+                    }}
                   >
                     {parse(this.state.res.buttons[1])}
                   </button>
@@ -91,7 +102,7 @@ export default class About extends React.Component {
                     <span>{parse(this.state.res.span2)}</span>
                     <button
                       onClick={() => {
-                        document.getElementById("readMoreZero").style.height = "0";
+                        document.getElementById("readMoreZero").style.maxHeight = "0";
                       }}
                     >
                       {parse(this.state.res.buttons[2])}
@@ -112,7 +123,7 @@ export default class About extends React.Component {
                     className="btn"
                     onClick={() => {
                       const obj = document.getElementById("readMoreOne");
-                      obj.style.height = obj.scrollHeight + "px";
+                      obj.style.maxHeight = obj.scrollHeight + "px";
                     }}
                   >
                     {parse(this.state.res.buttons[1])}
@@ -122,7 +133,7 @@ export default class About extends React.Component {
                     <span>{parse(this.state.res.span4)}</span>
                     <button
                       onClick={() => {
-                        document.getElementById("readMoreOne").style.height = "0";
+                        document.getElementById("readMoreOne").style.maxHeight = "0";
                       }}
                     >
                       {parse(this.state.res.buttons[2])}

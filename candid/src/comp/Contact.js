@@ -23,9 +23,13 @@ export default class Contactc extends Component {
     })
     .catch((error) => {
       alert(error);
-    });
-    window.addEventListener("scroll", this.handleScroll, { passive: true });
-    window.addEventListener("resize", this.handleScroll, { passive: true });
+    });  
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.load !== this.state.load) {
+      window.addEventListener("scroll", this.handleScroll, { passive: true });
+      window.addEventListener("resize", this.handleScroll, { passive: true });
+    }
   }
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
