@@ -213,7 +213,7 @@ class Home extends Component {
     const removeCount = document.querySelectorAll(".d" + count);
     const newCount = this.state.count + index;
     const addNewCount = document.querySelectorAll(".d" + newCount);
-    if (newCount > 0 && newCount <= this.state.res.vid.length) {
+    if (newCount > 0 && newCount <= this.state.res.video.length) {
       [...removeCount].forEach((item) => {
         item.classList.remove("flex");
       });
@@ -233,7 +233,7 @@ class Home extends Component {
   vidToggle = () => {
     const count = this.state.count;
     const removeCount = document.querySelectorAll(".d" + count);
-    if (count < this.state.res.vid.length) {
+    if (count < this.state.res.video.length) {
       [...removeCount].forEach((item) => {
         item.classList.remove("flex");
       });
