@@ -12,7 +12,7 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import BuildIcon from "@mui/icons-material/Build";
-import Alertm from "./Alertm.js";
+import Alert from "./Alert.js";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Button from "@mui/material/Button";
@@ -266,10 +266,10 @@ class Home extends Component {
       }, 500)
     });
   };
-  handleChange = (selectedOption) => {
+  handleChangeSelect = (selectedOption) => {
     this.setState({ selectedOption, disp: { display: "none" } });
   };
-  change = (event) => {
+  handleChange = (event) => {
     const nam = event.target.name;
     const val = event.target.value;
     this.setState({ [nam]: val, disp: { display: "none" } });
@@ -545,7 +545,7 @@ class Home extends Component {
                   type="text"
                   name="name"
                   placeholder="Name:"
-                  onChange={this.change}
+                  onChange={this.handleChange}
                 />
                 <label htmlFor="email" className="hiddenText">
                   Email
@@ -573,7 +573,7 @@ class Home extends Component {
                   type="email"
                   name="email"
                   placeholder="Email:"
-                  onChange={this.change}
+                  onChange={this.handleChange}
                 />
                 <label htmlFor="phone" className="hiddenText">
                   Phone
@@ -606,7 +606,7 @@ class Home extends Component {
                     type="tel"
                     name="phone"
                     placeholder="Phone:"
-                    onChange={this.change}
+                    onChange={this.handleChange}
                   />
                 </Tooltip>
                 <div className="selectContainer">
@@ -620,7 +620,7 @@ class Home extends Component {
                     inputId="select"
                     classNamePrefix="react-select"
                     value={this.state.selectedOption}
-                    onChange={this.handleChange}
+                    onChange={this.handleChangeSelect}
                     options={this.state.res.options}
                     styles={customStyles}
                     placeholder={parse(this.state.res.buttons[3])}
@@ -664,7 +664,7 @@ class Home extends Component {
                   type="text"
                   name="text"
                   placeholder="Text:"
-                  onChange={this.change}
+                  onChange={this.handleChange}
                 />
                 <Button
                   style={{
@@ -686,7 +686,7 @@ class Home extends Component {
                 </Button>
                 <div style={{ height: "50px" }}>
                   <div style={this.state.disp}>
-                    <Alertm alert={this.state.alert} />
+                    <Alert alert={this.state.alert} />
                   </div>
                 </div>
               </form>

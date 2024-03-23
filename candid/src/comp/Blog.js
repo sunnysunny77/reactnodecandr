@@ -1,7 +1,7 @@
 import React from "react";
 import "./Blog.scss";
 import styles from "./Blog.module.scss";
-import Alertm from "./Alertm.js";
+import Alert from "./Alert.js";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircle from "@mui/icons-material/AccountCircle";
@@ -30,16 +30,16 @@ export default class Blog extends React.Component {
     this.state = {
       blogers: null,
       title: null,
-      datalert: null,
+      datalertAdd: null,
       file: null,
       name: null,
-      passw: "",
-      passw0: "",
-      ddate: null,
-      disp0: { display: "none" },
-      disp1: { display: "none" },
-      alert: null,
-      alert0: null,
+      passAdd: "",
+      passRemove: "",
+      date: null,
+      dispAdd: { display: "none" },
+      dispRemove: { display: "none" },
+      alertAdd: null,
+      alertRemove: null,
       window: window.scrollTo(0, 0),
       buttons: [],
       load: true,
@@ -58,7 +58,7 @@ export default class Blog extends React.Component {
       this.props.footer("load");
     })
     .catch((error) => {
-      alert(error);
+      alertAdd(error);
     });
   };
   mapTable = (res) => {
@@ -108,8 +108,8 @@ export default class Blog extends React.Component {
     const val = event.target.value;
     this.setState({
       [nam]: val,
-      disp0: { display: "none" },
-      disp1: { display: "none" },
+      dispAdd: { display: "none" },
+      dispRemove: { display: "none" },
     });
   };
   file = (event) => {
@@ -123,25 +123,25 @@ export default class Blog extends React.Component {
       50,
       0,
       (uri) => {
-        this.setState({ file: uri, extension: extension, disp0: { display: "none" } });
+        this.setState({ file: uri, extension: extension, dispAdd: { display: "none" } });
       },
       "base64"
     );
     this.setState({
-      alert: "choose || jpg || png",
-      disp0: { display: "block", lineHeight: "50px" },
+      alertAdd: "choose || jpg || png",
+      dispAdd: { display: "block", lineHeight: "50px" },
       extension: extension,
     });
   };
-  submit = (event) => {
+  submitAdd = (event) => {
     event.preventDefault();
     const types = ["jpg", "JPG", "png", "PNG", "jpeg", "JPEG"];
     if (!types.includes(this.state.extension)) return this.setState({
-      alert: "choose || jpg || png",
-      disp0: { display: "block", lineHeight: "50px" },
+      alertAdd: "choose || jpg || png",
+      dispAdd: { display: "block", lineHeight: "50px" },
     });
-    if (this.state.passw && this.state.blogers && this.state.name && this.state.title && this.state.file) return axios.post(`/one`, {
-      passw: this.state.passw,
+    if (this.state.passAdd && this.state.blogers && this.state.name && this.state.title && this.state.file) return axios.post(`/one`, {
+      passAdd: this.state.passAdd,
       blogers: this.state.blogers,
       name: this.state.name,
       title: this.state.title,
@@ -149,56 +149,56 @@ export default class Blog extends React.Component {
     })
     .then((res) => {
       if (res.data.e) return this.setState({
-        alert: res.data.e,
-        disp0: { display: "block", lineHeight: "50px" },
+        alertAdd: res.data.e,
+        dispAdd: { display: "block", lineHeight: "50px" },
       });
       this.mapTable(res.data);
       this.setState({
-        alert: "Blog sent",
-        disp0: { display: "block", lineHeight: "50px" },
-        passw: null,
+        alertAdd: "Blog sent",
+        dispAdd: { display: "block", lineHeight: "50px" },
+        passAdd: null,
         blogers: null,
         name: null,
         title: null,
         file: null,
       });
-      document.getElementById("a6").reset();
+      document.getElementById("formAdd").reset();
     })
     .catch((error) => {
       this.setState({
-        alert: error.response.statusText,
-        disp0: { display: "block", lineHeight: "50px" },
+        alertAdd: error.response.statusText,
+        dispAdd: { display: "block", lineHeight: "50px" },
       });
     });
     this.setState({
-      alert: "Blog from incomplete",
-      disp0: { display: "block", lineHeight: "50px" },
+      alertAdd: "Blog from incomplete",
+      dispAdd: { display: "block", lineHeight: "50px" },
     });
   };
-  submitTwo = (event) => {
+  submitRemove = (event) => {
     event.preventDefault();
     axios.post(`/two`, {
-      passw0: this.state.passw0,
-      ddate: this.state.ddate,
+      passRemove: this.state.passRemove,
+      date: this.state.date,
     })
     .then((res) => {
       if (res.data.e) return this.setState({
-        alert0: res.data.e,
-        disp1: { display: "block", lineHeight: "50px" },
+        alertRemove: res.data.e,
+        dispRemove: { display: "block", lineHeight: "50px" },
       });
       this.mapTable(res.data);
       this.setState({
-        alert0: "Blog delete",
-        disp1: { display: "block", lineHeight: "50px" },
-        passw0: null,
-        ddate: null,
+        alertRemove: "Blog delete",
+        dispRemove: { display: "block", lineHeight: "50px" },
+        passRemove: null,
+        date: null,
       });
-      document.getElementById("a2").reset();
+      document.getElementById("formRemove").reset();
     })
     .catch((error) => {
       this.setState({
-        alert0: error.response.statusText,
-        disp1: { display: "block", lineHeight: "50px" },
+        alertRemove: error.response.statusText,
+        dispRemove: { display: "block", lineHeight: "50px" },
       });
     });
   };
@@ -239,9 +239,9 @@ export default class Blog extends React.Component {
                   </AccordionSummary>
                   <AccordionDetails>
                     <form
-                      id="a6"
+                      id="formAdd"
                       className="formAdd"
-                      onSubmit={this.submit}
+                      onSubmit={this.submitAdd}
                       autoComplete="off"
                       style={{
                         width: "100%",
@@ -251,7 +251,7 @@ export default class Blog extends React.Component {
                     >
                       <SubjectIcon />
                       <label htmlFor="passs" className="hiddenText">
-                        Password
+                        passAddord
                       </label>
                       <TextField
                         id="passs"
@@ -273,8 +273,8 @@ export default class Blog extends React.Component {
                           ),
                         }}
                         variant="filled"
-                        type="password"
-                        name="passw"
+                        type="passAddord"
+                        name="passAdd"
                         placeholder="Pass:"
                         onChange={this.change}
                       />
@@ -387,8 +387,8 @@ export default class Blog extends React.Component {
                         {parse(this.state.buttons[3])}
                       </Button>
                       <div style={{ height: "50px" }}>
-                        <div style={this.state.disp0}>
-                          <Alertm alert={this.state.alert} />
+                        <div style={this.state.dispAdd}>
+                          <Alert alert={this.state.alertAdd} />
                         </div>
                       </div>
                     </form>
@@ -406,9 +406,9 @@ export default class Blog extends React.Component {
                   </AccordionSummary>
                   <AccordionDetails>
                     <form
-                      id="a2"
+                      id="formRemove"
                       className="formRemove"
-                      onSubmit={this.submitTwo}
+                      onSubmit={this.submitRemove}
                       autoComplete="off"
                       style={{
                         width: "100%",
@@ -417,7 +417,7 @@ export default class Blog extends React.Component {
                       }}
                     >
                       <label htmlFor="pass" className="hiddenText">
-                        Password
+                        passAddord
                       </label>
                       <TextField
                         id="pass"
@@ -439,8 +439,8 @@ export default class Blog extends React.Component {
                           ),
                         }}
                         variant="filled"
-                        type="password"
-                        name="passw0"
+                        type="passAddord"
+                        name="passRemove"
                         placeholder="Pass:"
                         onChange={this.change}
                       />
@@ -467,7 +467,7 @@ export default class Blog extends React.Component {
                         }}
                         variant="filled"
                         type="text"
-                        name="ddate"
+                        name="date"
                         placeholder="Date:"
                         onChange={this.change}
                       />
@@ -489,8 +489,8 @@ export default class Blog extends React.Component {
                         {parse(this.state.buttons[3])}
                       </Button>
                       <div style={{ height: "50px" }}>
-                        <div style={this.state.disp1}>
-                          <Alertm alert={this.state.alert0} />
+                        <div style={this.state.dispRemove}>
+                          <Alert alert={this.state.alertRemove} />
                         </div>
                       </div>
                     </form>

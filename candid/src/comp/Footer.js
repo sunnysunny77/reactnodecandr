@@ -4,7 +4,7 @@ import "./Footer.scss";
 import parse from 'html-react-parser';
 import { Link } from "react-router-dom";
 
-function Footer(props) {
+const Footer = (props) => {
   let { footer, ph, time, day, buttons } = props;
   return (
     <footer className={footer}>

@@ -237,7 +237,7 @@ content();
 maps();
 
 app.post("/one", async function (req, res) {
-  if (req.body.passw === "blogs") {
+  if (req.body.passAdd === "blogs") {
     let newdate = new Date();
     let date = moment(newdate).format("MMM Do YY' HH:mm:ss");
     let id = new mongoose.Types.ObjectId();
@@ -263,11 +263,11 @@ app.post("/one", async function (req, res) {
 });
 
 app.post("/two", async function (req, res) {
-  if (req.body.passw0 === "blogs") {
-    let doc = await mod.find({ date: req.body.ddate });
+  if (req.body.passRemove === "blogs") {
+    let doc = await mod.find({ date: req.body.date });
     if (doc.length) {
       fs.unlinkSync(__dirname + "/public" + doc[0].loc);
-      await mod.deleteOne({ date: req.body.ddate });
+      await mod.deleteOne({ date: req.body.date });
       return res.json(await mod.find().sort({ date: -1 }));
     } else {
       return res.json({ e: "Incorrect date" });

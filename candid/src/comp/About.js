@@ -31,7 +31,6 @@ export default class About extends React.Component {
     .catch((error) => {
       alert(error);
     });
-  
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.load !== this.state.load) {
@@ -50,8 +49,7 @@ export default class About extends React.Component {
     if (window.innerWidth <= 1200) document.querySelector(".sticky").style.top = "0px";
   };
   handleHeight = () => {
-    const obj = document.getElementById("readMoreZero");
-   
+    const obj = document.getElementById("readMoreZero");  
     if (obj.offsetHeight > 0) {
       obj.style.maxHeight = obj.scrollHeight + "px";
       obj.style.transition = "none";
