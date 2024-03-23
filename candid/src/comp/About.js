@@ -49,7 +49,7 @@ export default class About extends React.Component {
     if (window.innerWidth <= 1200) document.querySelector(".sticky").style.top = "0px";
   };
   handleHeight = () => {
-    const obj = document.getElementById("readMoreZero");  
+    const obj = document.querySelector("#readMoreZero");  
     if (obj.offsetHeight > 0) {
       obj.style.maxHeight = obj.scrollHeight + "px";
       obj.style.transition = "none";
@@ -93,7 +93,7 @@ export default class About extends React.Component {
                   <span id="topSpan">{parse(this.state.res.span1)}</span>
                   <button
                     onClick={() => {
-                      const obj = document.getElementById("readMoreZero");
+                      const obj = document.querySelector("#readMoreZero");
                       obj.style.maxHeight = obj.scrollHeight + "px";
                     }}
                   >
@@ -104,7 +104,7 @@ export default class About extends React.Component {
                     <span>{parse(this.state.res.span2)}</span>
                     <button
                       onClick={() => {
-                        const obj = document.getElementById("readMoreZero");
+                        const obj = document.querySelector("#readMoreZero");
                         obj.style.maxHeight = "0";
                         obj.style.transition = "max-height 1s";
                       }}
@@ -126,7 +126,7 @@ export default class About extends React.Component {
                   <button
                     className="btn"
                     onClick={() => {
-                      const obj = document.getElementById("readMoreOne");
+                      const obj = document.querySelector("#readMoreOne");
                       obj.style.maxHeight = obj.scrollHeight + "px";
                     }}
                   >
@@ -137,7 +137,7 @@ export default class About extends React.Component {
                     <span>{parse(this.state.res.span4)}</span>
                     <button
                       onClick={() => {
-                        const obj = document.getElementById("readMoreOne");
+                        const obj = document.querySelector("#readMoreOne");
                         obj.style.maxHeight = "0";
                         obj.style.transition = "max-height 1s";
                       }}

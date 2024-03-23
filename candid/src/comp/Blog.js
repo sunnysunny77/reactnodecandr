@@ -162,7 +162,7 @@ export default class Blog extends React.Component {
         title: null,
         file: null,
       });
-      document.getElementById("formAdd").reset();
+      document.querySelector("#formAdd").reset();
     })
     .catch((error) => {
       this.setState({
@@ -193,7 +193,7 @@ export default class Blog extends React.Component {
         passRemove: null,
         date: null,
       });
-      document.getElementById("formRemove").reset();
+      document.querySelector("#formRemove").reset();
     })
     .catch((error) => {
       this.setState({

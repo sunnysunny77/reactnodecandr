@@ -117,13 +117,13 @@ class Home extends Component {
     }
   }
   scrollIntoView = () => {
-    document.getElementById("enquiry").scrollIntoView({behavior: "smooth"});
+    document.querySelector("#enquiry").scrollIntoView({behavior: "smooth"});
   }
   mapVideo = (res) => {
     this.setState({ video: res.map((key, index) => {
       const d = index === 0 ?  "flex": "";
-      const idOne = "videoOne-" + index + 1;
-      const idTwo = "videoTwo-" + index + 1;
+      const idOne = "#videoOne-" + index + 1;
+      const idTwo = "#videoTwo-" + index + 1;
       return (
         <React.Fragment key={index}>
           <div className={d + " d" + [index + 1]}>
@@ -167,20 +167,6 @@ class Home extends Component {
       const idTwo = "videoTwo-" + index + 1;
       return (
         <React.Fragment key={index}>
-          <div id={idTwo} className="overlay">  
-            <video loop playsInline>
-              <source src={key[4]}/>
-              Your browser does not support the video tag.
-            </video>
-            <div className="controlls">
-              <button onClick={() => {
-                document.body.style.overflow = "auto";
-                document.body.style.paddingRight = 0;
-                document.getElementById(idTwo).classList.remove("fixed");
-                document.getElementById(idTwo).children[0].pause();
-                }}> &#10006; </button>
-            </div>
-          </div>
           <div id={idOne} className="overlay">  
             <video loop playsInline>
               <source src={key[1]}/>\
@@ -190,8 +176,22 @@ class Home extends Component {
               <button onClick={() => {
                 document.body.style.overflow = "auto";
                 document.body.style.paddingRight = 0;
-                document.getElementById(idOne).classList.remove("fixed");
-                document.getElementById(idOne).children[0].pause();
+                document.querySelector(`#${idOne}`).classList.remove("fixed");
+                document.querySelector(`#${idOne}`).children[0].pause();
+                }}> &#10006; </button>
+            </div>
+          </div>
+          <div id={idTwo} className="overlay">  
+            <video loop playsInline>
+              <source src={key[4]}/>
+              Your browser does not support the video tag.
+            </video>
+            <div className="controlls">
+              <button onClick={() => {
+                document.body.style.overflow = "auto";
+                document.body.style.paddingRight = 0;
+                document.querySelector(`#${idTwo}`).classList.remove("fixed");
+                document.querySelector(`#${idTwo}`).children[0].pause();
                 }}> &#10006; </button>
             </div>
           </div>
@@ -200,7 +200,7 @@ class Home extends Component {
     })})
   }
   overlay = (id) => {
-    const overlay = document.getElementById(id); 
+    const overlay = document.querySelector(`${id}`); 
     overlay.children[0].load();
     overlay.children[0].play();
     const width = window.innerWidth - document.body.offsetWidth;
@@ -210,9 +210,9 @@ class Home extends Component {
   };
   vidDisplay = (index) => {
     const count = this.state.count;
-    const removeCount = document.getElementsByClassName("d" + count);
+    const removeCount = document.querySelectorAll(".d" + count);
     const newCount = this.state.count + index;
-    const addNewCount = document.getElementsByClassName("d" + newCount);
+    const addNewCount = document.querySelectorAll(".d" + newCount);
     if (newCount > 0 && newCount <= this.state.res.vid.length) {
       [...removeCount].forEach((item) => {
         item.classList.remove("flex");
@@ -232,13 +232,13 @@ class Home extends Component {
   };
   vidToggle = () => {
     const count = this.state.count;
-    const removeCount = document.getElementsByClassName("d" + count);
+    const removeCount = document.querySelectorAll(".d" + count);
     if (count < this.state.res.vid.length) {
       [...removeCount].forEach((item) => {
         item.classList.remove("flex");
       });
       const newCount = this.state.count + 1;
-      const addNewCount = document.getElementsByClassName("d" + newCount);
+      const addNewCount = document.querySelectorAll(".d" + newCount);
       [...addNewCount].forEach((item) => {
         item.classList.add("flex");
       });
@@ -248,7 +248,7 @@ class Home extends Component {
         item.classList.remove("flex");
       });
       const newCount = 1;
-      const addNewCount = document.getElementsByClassName("d" + newCount);
+      const addNewCount = document.querySelectorAll(".d" + newCount);
       [...addNewCount].forEach((item) => {
         item.classList.add("flex");
         item.classList.add("grey");
@@ -301,7 +301,7 @@ class Home extends Component {
           selectedOption: null,
           text: null,
         });
-        document.getElementById("a1").reset();
+        document.querySelector("#form").reset();
       })
       .catch((error) => {
         this.setState({
@@ -510,7 +510,7 @@ class Home extends Component {
               </div>
               <br></br>
               <form
-                id="a1"
+                id="form"
                 autoComplete="off"
                 onSubmit={this.submit}
                 style={{
