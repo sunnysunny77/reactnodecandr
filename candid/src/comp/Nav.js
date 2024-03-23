@@ -117,12 +117,13 @@ class Nav extends Component {
     let { ph, time, day, buttons } = this.props
     return (
       <React.Fragment>
-        <div className="burgerMenu">
-          <div style={this.state.bar1}></div>
-          <div style={this.state.bar2}></div>
-          <div style={this.state.bar3}></div>
-        </div>
+        <div className="burgerMenu"></div>
         <div className={`burgerMenuTrue ${this.state.dis}`}></div>
+        <div className="burgerMenuContainer">
+          <div className="bar" style={this.state.bar1}></div>
+          <div className="bar" style={this.state.bar2}></div>
+          <div className="bar" style={this.state.bar3}></div>
+        </div>
         <nav className={`mobileNav ${this.state.dis}`} >
           <ul>
             <hr></hr>

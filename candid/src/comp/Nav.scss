@@ -36,16 +36,9 @@ header {
 
 .burgerMenu {
   position: absolute;
-  z-index: 999;
-  padding: 28.5px 26.5px 28.5px 26.5px;
-  box-sizing: border-box;
-  height: fit-content;
-  @media only screen and (min-width: 1201px) {
-    display: none;
-  }
-  &:hover {
-    cursor: pointer;
-  }
+  z-index: 1000;
+  height: 90px;
+  width: 78px;
 }
 
 .burgerMenuTrue {
@@ -54,14 +47,29 @@ header {
   height: 90px;
   width: 78px;
   display: none;
+  &.true {
+    display: block;
+  }
+}
+
+.burgerMenu,
+.burgerMenuTrue {
   @media only screen and (min-width: 1201px) {
     display: none;
   }
   &:hover {
     cursor: pointer;
   }
-  &.true {
-    display: block;
+}
+
+.burgerMenuContainer {
+  position: absolute;
+  z-index: 998;
+  padding: 28.5px 26.5px 28.5px 26.5px;
+  box-sizing: border-box;
+  height: fit-content;
+  @media only screen and (min-width: 1201px) {
+    display: none;
   }
 }
 
