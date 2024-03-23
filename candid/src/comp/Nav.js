@@ -36,9 +36,11 @@ class Nav extends Component {
     };
   }
   componentDidMount() {
+    document.querySelector(".burgerMenu").addEventListener('click', this.menu);
     window.addEventListener("scroll", this.handleScroll, { passive: true });
   }
   componentWillUnmount() {
+    document.querySelector(".burgerMenu").removeEventListener('click', this.menu);
     window.removeEventListener("scroll", this.handleScroll);
   }
   handleScroll = () => {
@@ -50,67 +52,77 @@ class Nav extends Component {
       this.props.main("navRelative")
     }
   };
-  bars = () => {
-   this.state.dis === "slide" ? this.setState({
-    dis: "out",
-    bar1: {
-      width: "25px",
-      height: "3px",
-      backgroundColor: "black",
-      margin: "6px auto",
-      transition: "0.4s",
-    },
-    bar2: {
-      width: "25px",
-      height: "3px",
-      backgroundColor: "black",
-      margin: "6px auto",
-      transition: "0.4s",
-    },
-    bar3: {
-      width: "25px",
-      height: "3px",
-      backgroundColor: "black",
-      margin: "6px auto",
-      transition: "0.4s",
-    }}) : this.setState({
-    dis: "slide",
-    bar1: {
-      width: "25px",
-      height: "3px",
-      backgroundColor: "black",
-      margin: "6px auto",
-      transition: "0.4s",
-      WebkitTransform: "rotate(-45deg) translate(-6px, 4px)",
-      transform: "rotate(-45deg) translate(-6px, 4px)",
-    },
-    bar2: {
-      width: "25px",
-      height: "3px",
-      backgroundColor: "black",
-      margin: "6px auto",
-      transition: "0.4s",
-      opacity: "0",
-    },
-    bar3: {
-      width: "25px",
-      height: "3px",
-      backgroundColor: "black",
-      margin: "6px auto",
-      transition: "0.4s",
-      WebkitTransform: "rotate(45deg) translate(-8px, -8px)",
-      transform: "rotate(45deg) translate(-8px, -8px)",
-    }});
-  };
+  menu = () => {  
+    this.setState({
+      dis: true,
+      bar1: {
+        width: "25px",
+        height: "3px",
+        backgroundColor: "black",
+        margin: "6px auto",
+        transition: "0.4s",
+        WebkitTransform: "rotate(-45deg) translate(-6px, 4px)",
+        transform: "rotate(-45deg) translate(-6px, 4px)",
+      },
+      bar2: {
+        width: "25px",
+        height: "3px",
+        backgroundColor: "black",
+        margin: "6px auto",
+        transition: "0.4s",
+        opacity: "0",
+      },
+      bar3: {
+        width: "25px",
+        height: "3px",
+        backgroundColor: "black",
+        margin: "6px auto",
+        transition: "0.4s",
+        WebkitTransform: "rotate(45deg) translate(-8px, -8px)",
+        transform: "rotate(45deg) translate(-8px, -8px)",
+      }
+    })
+    document.body.addEventListener('click', this.menuClose);
+  }
+  menuClose = () => {
+    if (event.target.className !== "burgerMenu") { 
+      this.setState({
+        dis: false,
+        bar1: {
+          width: "25px",
+          height: "3px",
+          backgroundColor: "black",
+          margin: "6px auto",
+          transition: "0.4s",
+        },
+        bar2: {
+          width: "25px",
+          height: "3px",
+          backgroundColor: "black",
+          margin: "6px auto",
+          transition: "0.4s",
+        },
+        bar3: {
+          width: "25px",
+          height: "3px",
+          backgroundColor: "black",
+          margin: "6px auto",
+          transition: "0.4s",
+        }
+      })
+      document.body.removeEventListener('click', this.menuClose); 
+    }
+  }
   render() {
     let { ph, time, day, buttons } = this.props
     return (
       <React.Fragment>
-        <div className="burgerMenu" onClick={this.bars}>
+        <div className="burgerMenu">
           <div style={this.state.bar1}></div>
           <div style={this.state.bar2}></div>
           <div style={this.state.bar3}></div>
         </div>
+        <div className={`burgerMenuTrue ${this.state.dis}`}></div>
         <nav className={`mobileNav ${this.state.dis}`} >
           <ul>
             <hr></hr>

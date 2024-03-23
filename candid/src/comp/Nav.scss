@@ -37,7 +37,7 @@ header {
 .burgerMenu {
   position: absolute;
   z-index: 999;
-  padding: 28.5px 148.5px 28.5px 26.5px;
+  padding: 28.5px 26.5px 28.5px 26.5px;
   box-sizing: border-box;
   height: fit-content;
   @media only screen and (min-width: 1201px) {
@@ -45,6 +45,23 @@ header {
   }
   &:hover {
     cursor: pointer;
+  }
+}
+
+.burgerMenuTrue {
+  position: absolute;
+  z-index: 1000;
+  height: 90px;
+  width: 78px;
+  display: none;
+  @media only screen and (min-width: 1201px) {
+    display: none;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &.true {
+    display: block;
   }
 }
 
@@ -62,18 +79,15 @@ header {
   font-size: 5px;
   font-family: $font4;
   margin-top: 90px;
+  transition: transform 0.6s;
+  transform: translate(-202px);
   @media only screen and (min-width: 1201px) {
     visibility: hidden;
   }
-  &.slide {
-    animation: slide;
-    animation-duration: 0.6s;
-    animation-fill-mode: forwards;
+  &.true {
+    transform: translate(0);
   }
-  &.out {
-    animation: out;
-    animation-duration: 0.6s;
-  }
+
   ul {
     list-style-type: none;
     margin: 0;
@@ -187,23 +201,5 @@ header {
       height: 40px;
       transition: height 1s;
     }
-  }
-}
-
-@keyframes slide {
-  0% {
-    transform: translate(-202px);
-  }
-  100% {
-    transform: translate(0);
-  }
-}
-
-@keyframes out {
-  0% {
-    transform: translate(0);
-  }
-  100% {
-    transform: translate(-202px);
   }
 }
