@@ -51,7 +51,11 @@ export default class About extends React.Component {
   };
   handleHeight = () => {
     const obj = document.getElementById("readMoreZero");
-    obj.style.maxHeight = obj.scrollHeight + "px";
+   
+    if (obj.offsetHeight > 0) {
+      obj.style.maxHeight = obj.scrollHeight + "px";
+      obj.style.transition = "none";
+    }
   }
   render() {
     return (
@@ -102,7 +106,9 @@ export default class About extends React.Component {
                     <span>{parse(this.state.res.span2)}</span>
                     <button
                       onClick={() => {
-                        document.getElementById("readMoreZero").style.maxHeight = "0";
+                        const obj = document.getElementById("readMoreZero");
+                        obj.style.maxHeight = "0";
+                        obj.style.transition = "max-height 1s";
                       }}
                     >
                       {parse(this.state.res.buttons[2])}
@@ -133,7 +139,9 @@ export default class About extends React.Component {
                     <span>{parse(this.state.res.span4)}</span>
                     <button
                       onClick={() => {
-                        document.getElementById("readMoreOne").style.maxHeight = "0";
+                        const obj = document.getElementById("readMoreOne");
+                        obj.style.maxHeight = "0";
+                        obj.style.transition = "max-height 1s";
                       }}
                     >
                       {parse(this.state.res.buttons[2])}
