@@ -79,7 +79,6 @@ export default class About extends React.Component {
                   <h3>{parse(this.state.res.h1)}</h3>
                   <span id="topSpan">{parse(this.state.res.span1)}</span>
                   <button
-                    className="btn"
                     onClick={ function () {
                       const obj = document.getElementById("readMoreZero");
                       obj.style.height = obj.scrollHeight + "px";

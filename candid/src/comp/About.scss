@@ -95,12 +95,12 @@
     color: $c1;
     text-align: right;
     font-size: 90%;
-    padding-right: 7.5%;
     font-weight: 500;
+    margin: 0;
   }
   #topSpan {
-    width: 72.5%;
-    margin: auto;
+    width: 83%;
+    margin: 25px auto auto auto;
     display: block;
     text-align: center;
     @media only screen and (max-width: 640px) {
@@ -111,25 +111,27 @@
     display: inline-block;
   }
   img {
-    width: 30%;
+    width: 25%;
     display: block;
     margin: 8% auto;
-    @media only screen and (max-width: 1200px) {
-      width: 60%;
+    @media only screen and (max-width: 1365px) {
+      width: 66%;
     }
   }
   #picContainer {
     position: relative;
     clip-path: inset(10px 10px 25px round 25px 0);
     float: left;
-    width: 450px;
-    height: 300px;
+    width: 55%;
+    height: 379px;
     background-color: $c1;
+    left: -10px;
     @media only screen and (max-width: 1365px) {
       float: none;
       margin: 10px auto 70px auto;
-      width:  initial;
+      width: initial;
       height: initial;
+      left: initial;
       padding: 34%;
     }
     #pic {
@@ -144,15 +146,14 @@
       background-position: center;
       filter: grayscale(100%);
       clip-path: inset(10px 10px 25px round 25px 0);
-  }
- 
+    }
   }
   #picSpan {
-    width: 50%;
-    padding-left: 50px;
-    margin-top: 100px;
+    width: 40%;
+    padding-left: 5%;
+    margin-top: 25px;
     text-align: right;
-    height: 120px;
+    height: 244px;
     @media only screen and (max-width: 1365px) {
       padding-left: 0;
       width: 100%;
@@ -169,7 +170,7 @@
     border: 1px solid $c1;
     border-radius: 100px;
     display: block;
-    margin: 25px auto;
+    margin: 25px 2.5% 25px auto;
     cursor: pointer;
     transition: background-color 0.3s;
     &:hover {
@@ -177,11 +178,8 @@
       border: 1px solid $c2;
       color: $c5;
     }
-    &.btn {
-      margin-right: 4%;
-      @media only screen and (max-width: 1365px) {
-        margin-right: auto;
-      }
+    @media only screen and (max-width: 1365px) {
+      margin: 25px auto;
     }
   }
   #readMoreZero,
