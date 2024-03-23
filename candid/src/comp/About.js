@@ -137,7 +137,7 @@ export default class About extends React.Component {
                     <span>{parse(this.state.res.spanReadMoreTwo)}</span>
                     <button
                       onClick={() => {
-                        const obj = document.querySelector("#readMoretwo");
+                        const obj = document.querySelector("#readMoreTwo");
                         obj.style.maxHeight = "0";
                         obj.style.transition = "max-height 1s";
                       }}
