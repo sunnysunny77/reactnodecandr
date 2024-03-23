@@ -114,7 +114,7 @@ class Nav extends Component {
     }
   }
   render() {
-    let { ph, time, day, buttons } = this.props
+    let { phone, hours, days, buttons } = this.props
     return (
       <React.Fragment>
         <div className="burgerMenu"></div>
@@ -161,17 +161,17 @@ class Nav extends Component {
             </li>
             <li>
               <span>
-                {parse(time)}
+                {parse(hours)}
                 <br></br>
-                {parse(day)}
+                {parse(days)}
               </span>
             </li>
             <li>
               <PhoneIcon />
             </li>
             <li>
-              <a href={"tel:" + ph}>
-                {ph}
+              <a href={"tel:" + phone}>
+                {phone}
               </a>
             </li>
             <li>
@@ -212,14 +212,14 @@ class Nav extends Component {
           <ul>
             <li>
               <PhoneIcon />
-              <a href={"tel:" + ph}>
-                {ph}
+              <a href={"tel:" + phone}>
+                {phone}
               </a>
             </li>
             <li>
               <AccessTimeIcon />
               <span>
-                {parse(time)} / {parse(day)}
+                {parse(hours)} / {parse(days)}
               </span>
             </li>
             <li>

@@ -12,18 +12,18 @@ export default class About extends React.Component {
     this.state = {
       window: window.scrollTo(0, 0),
       res: {},
-      abc: null,
-      cba: null,
+      map: null,
+      mapNames: null,
       load: true,
     };
     this.props.footer("loading");
   }
   componentDidMount() {
-    axios.post(`/abou`).then((res) => {
+    axios.post(`/api-about`).then((res) => {
       this.setState({
         res: res.data.a,
-        cba: res.data.b.cba,
-        abc: <Maps data={res.data.b.abc} />,
+        mapNames: res.data.b.mapNames,
+        map: <Maps data={res.data.b.data} />,
         load: false,
       });
       this.props.footer("load");
@@ -73,38 +73,38 @@ export default class About extends React.Component {
             <section className="aboutContOne">
               <div className="grid">
                 <h2>
-                  {parse(this.state.res.hmap)}
+                  {parse(this.state.res.headingMap)}
                   <ListAltIcon />
                 </h2>
-                <p>{parse(this.state.cba)}</p>
+                <p>{parse(this.state.mapNames)}</p>
                 <hr />
               </div>
-              <div className="grid"> {this.state.abc} </div>
+              <div className="grid"> {this.state.map} </div>
             </section>
             <section className="aboutContTwo">
               <h2>
-                {parse(this.state.res.hm)}
+                {parse(this.state.res.headingMain)}
                 <ListAltIcon />
               </h2>
               <hr />
               <Wave>
                 <div className="prop">
-                  <h3>{parse(this.state.res.h1)}</h3>
-                  <span id="topSpan">{parse(this.state.res.span1)}</span>
+                  <h3>{parse(this.state.res.headingOne)}</h3>
+                  <span id="topSpan">{parse(this.state.res.spanOne)}</span>
                   <button
                     onClick={() => {
-                      const obj = document.querySelector("#readMoreZero");
+                      const obj = document.querySelector("#readMoreOne");
                       obj.style.maxHeight = obj.scrollHeight + "px";
                     }}
                   >
                     {parse(this.state.res.buttons[1])}
                   </button>
-                  <div id="readMoreZero">
+                  <div id="readMoreOne">
                     <hr />
-                    <span>{parse(this.state.res.span2)}</span>
+                    <span>{parse(this.state.res.spanReadMoreOne)}</span>
                     <button
                       onClick={() => {
-                        const obj = document.querySelector("#readMoreZero");
+                        const obj = document.querySelector("#readMoreOne");
                         obj.style.maxHeight = "0";
                         obj.style.transition = "max-height 1s";
                       }}
@@ -116,28 +116,28 @@ export default class About extends React.Component {
                     src="https://candid.s3-ap-southeast-2.amazonaws.com/breakp.png"
                     alt="Swirly text divider"
                   />
-                  <h3>{parse(this.state.res.h2)}</h3>
+                  <h3>{parse(this.state.res.headingTwo)}</h3>
                   <div id="picContainer">
                     <span id="pic"></span>
                   </div>
                   <span id="picSpan">
-                    {parse(this.state.res.span3)}
+                    {parse(this.state.res.spanTwo)}
                   </span>
                   <button
                     className="btn"
                     onClick={() => {
-                      const obj = document.querySelector("#readMoreOne");
+                      const obj = document.querySelector("#readMoreTwo");
                       obj.style.maxHeight = obj.scrollHeight + "px";
                     }}
                   >
                     {parse(this.state.res.buttons[1])}
                   </button>
-                  <div id="readMoreOne">
+                  <div id="readMoreTwo">
                     <hr />
-                    <span>{parse(this.state.res.span4)}</span>
+                    <span>{parse(this.state.res.spanReadMoreTwo)}</span>
                     <button
                       onClick={() => {
-                        const obj = document.querySelector("#readMoreOne");
+                        const obj = document.querySelector("#readMoretwo");
                         obj.style.maxHeight = "0";
                         obj.style.transition = "max-height 1s";
                       }}

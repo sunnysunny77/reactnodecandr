@@ -46,7 +46,7 @@ app.use(function (req, res, next) {
 
 let sch = new mongoose.Schema({
   date: String,
-  blogers: String,
+  blog: String,
   name: String,
   title: String,
   loc: String,
@@ -236,48 +236,111 @@ gallery();
 content();
 maps();
 
-app.post("/one", async function (req, res) {
-  if (req.body.passAdd === "blogs") {
-    let newdate = new Date();
-    let date = moment(newdate).format("MMM Do YY' HH:mm:ss");
-    let id = new mongoose.Types.ObjectId();
-    let ext = req.body.file.split(';')[0].split('/')[1];
-    let blog = new mod({
-      _id: id,
-      date: date,
-      blogers: req.body.blogers,
-      name: req.body.name,
-      title: req.body.title,
-      loc: "/pic/" + id + "." + ext,
+app.post("/api-init", function (req, res) {
+  if (parsedDataContent !== undefined && buttons !== undefined) {
+    return res.json({
+      phone: parsedDataContent.data[7][1],
+      hours: parsedDataContent.data[1][1],
+      days: parsedDataContent.data[2][1],
+      buttons: [buttons[0], buttons[1], buttons[2], buttons[3]],
     });
-    fs.writeFileSync(
-      __dirname + "/public/pic/" + id + "." + ext,
-      Buffer.from(req.body.file.split(';base64,').pop(), "base64")
-    );
-    await blog.save();
-    return res.json(await mod.find().sort({ date: -1 }));
-    
   } else {
-    return res.json({ e: "Incorrect password" });
+    return res.sendStatus(500);
   }
 });
 
-app.post("/two", async function (req, res) {
-  if (req.body.passRemove === "blogs") {
-    let doc = await mod.find({ date: req.body.date });
-    if (doc.length) {
-      fs.unlinkSync(__dirname + "/public" + doc[0].loc);
-      await mod.deleteOne({ date: req.body.date });
-      return res.json(await mod.find().sort({ date: -1 }));
-    } else {
-      return res.json({ e: "Incorrect date" });
-    }
+app.post("/api-home", function (req, res) {
+  if (
+    parsedDataContent !== undefined &&
+    buttons !== undefined &&
+    parsedDataVideo !== undefined &&
+    parsedDataForm !== undefined
+  ) {
+    return res.json({
+      message: parsedDataContent.data[21][1],
+      quoteHeading: parsedDataContent.data[22][1],
+      quote: parsedDataContent.data[23][1],
+      cardHeadingOne: parsedDataContent.data[24][1],
+      cardHeadingTwo: parsedDataContent.data[25][1],
+      cardHeadingThree: parsedDataContent.data[26][1],
+      cardHeadingFour: parsedDataContent.data[27][1],
+      cardHeadingFive: parsedDataContent.data[28][1],
+      cardHeadingSix: parsedDataContent.data[29][1],
+      cardOne: parsedDataContent.data[30][1],
+      cardTwo: parsedDataContent.data[31][1],
+      cardThree: parsedDataContent.data[32][1],
+      cardFour: parsedDataContent.data[33][1],
+      cardFive: parsedDataContent.data[34][1],
+      cardSix: parsedDataContent.data[35][1],
+      urlFour: parsedDataContent.data[36][1],
+      urlFive: parsedDataContent.data[37][1],
+      urlSix: parsedDataContent.data[38][1],
+      options: parsedDataForm,
+      svg: parsedDataContent.data[1][2],
+      buttons: [buttons[10], buttons[9], buttons[8], buttons[11]],
+      video: parsedDataVideo,
+    });
   } else {
-    return res.json({ e: "Incorrect password" });
+    return res.sendStatus(500);
   }
 });
 
-app.post("/three", function (req, res) {
+app.post("/api-gallery", function (req, res) {
+  if (parsedDataGallery !== undefined && buttons !== undefined) {
+    return res.json({ images: parsedDataGallery, buttons: [buttons[1]] });
+  } else {
+    return res.sendStatus(500);
+  }
+});
+
+app.post("/api-contact", function (req, res) {
+  if (parsedDataContent !== undefined && buttons !== undefined) {
+    return res.json({
+      headingOne: parsedDataContent.data[3][1],
+      emailTag: parsedDataContent.data[4][1],
+      email: parsedDataContent.data[5][1],
+      phoneTag: parsedDataContent.data[6][1],
+      phone: parsedDataContent.data[7][1],
+      enquiriesTagOne: parsedDataContent.data[8][1],
+      enquiriesTagTwo: parsedDataContent.data[9][1],
+      headingTwo: parsedDataContent.data[10][1],
+      availability: parsedDataContent.data[11][1],
+      buttons: [buttons[2]],
+    });
+  } else {
+    return res.sendStatus(500);
+  }
+});
+
+app.post("/api-about", function (req, res) {
+  if (
+    parsedDataMaps !== undefined &&
+    parsedDataContent !== undefined &&
+    buttons !== undefined
+  ) {
+    return res.json({
+      a: {
+        headingMap: parsedDataMaps[2],
+        headingMain: parsedDataContent.data[13][1],
+        headingOne: parsedDataContent.data[14][1],
+        spanOne: parsedDataContent.data[15][1],
+        spanReadMoreOne: parsedDataContent.data[16][1],
+        headingTwo: parsedDataContent.data[17][1],
+        spanTwo: parsedDataContent.data[18][1],
+        spanReadMoreTwo: parsedDataContent.data[19][1],
+        buttons: [buttons[3], buttons[4], buttons[5]],
+      },
+      b: {
+        mapNames: parsedDataMaps[0],
+        data: parsedDataMaps[1],
+      },
+    });
+  } else {
+    return res.sendStatus(500);
+  }
+});
+
+app.post("/api-form", function (req, res) {
   const SCOPES = [
     "https://www.googleapis.com/auth/gmail.readonly",
     "https://www.googleapis.com/auth/gmail.send",
@@ -362,7 +425,7 @@ app.post("/three", function (req, res) {
   }
 });
 
-app.get("/ong", async function (req, res) {
+app.get("/api-blog", async function (req, res) {
   let doc = await mod.find({}).sort({ date: -1 }).exec();
   if (buttons !== undefined) {
     return res.json({ doc: doc, buttons: [buttons[0], buttons[6], buttons[7], buttons[8]] });
@@ -371,107 +434,44 @@ app.get("/ong", async function (req, res) {
   }
 });
 
-app.post("/nav", function (req, res) {
-  if (parsedDataContent !== undefined && buttons !== undefined) {
-    return res.json({
-      ph: parsedDataContent.data[7][1],
-      time: parsedDataContent.data[1][1],
-      day: parsedDataContent.data[2][1],
-      buttons: [buttons[0], buttons[1], buttons[2], buttons[3]],
+app.post("/api-formAdd", async function (req, res) {
+  if (req.body.passAdd === "blogs") {
+    let newdate = new Date();
+    let date = moment(newdate).format("MMM Do YY' HH:mm:ss");
+    let id = new mongoose.Types.ObjectId();
+    let ext = req.body.file.split(';')[0].split('/')[1];
+    let blog = new mod({
+      _id: id,
+      date: date,
+      blog: req.body.blog,
+      name: req.body.name,
+      title: req.body.title,
+      loc: "/pic/" + id + "." + ext,
     });
+    fs.writeFileSync(
+      __dirname + "/public/pic/" + id + "." + ext,
+      Buffer.from(req.body.file.split(';base64,').pop(), "base64")
+    );
+    await blog.save();
+    return res.json(await mod.find().sort({ date: -1 }));
+    
   } else {
-    return res.sendStatus(500);
+    return res.json({ e: "Incorrect password" });
   }
 });
 
-app.post("/hom", function (req, res) {
-  if (
-    parsedDataContent !== undefined &&
-    buttons !== undefined &&
-    parsedDataVideo !== undefined &&
-    parsedDataForm !== undefined
-  ) {
-    return res.json({
-      m1: parsedDataContent.data[21][1],
-      qh: parsedDataContent.data[22][1],
-      q: parsedDataContent.data[23][1],
-      ch1: parsedDataContent.data[24][1],
-      ch2: parsedDataContent.data[25][1],
-      ch3: parsedDataContent.data[26][1],
-      ch4: parsedDataContent.data[27][1],
-      ch5: parsedDataContent.data[28][1],
-      ch6: parsedDataContent.data[29][1],
-      c1: parsedDataContent.data[30][1],
-      c2: parsedDataContent.data[31][1],
-      c3: parsedDataContent.data[32][1],
-      c4: parsedDataContent.data[33][1],
-      c5: parsedDataContent.data[34][1],
-      c6: parsedDataContent.data[35][1],
-      u4: parsedDataContent.data[36][1],
-      u5: parsedDataContent.data[37][1],
-      u6: parsedDataContent.data[38][1],
-      options: parsedDataForm,
-      svg: parsedDataContent.data[1][2],
-      buttons: [buttons[10], buttons[9], buttons[8], buttons[11]],
-      vid: parsedDataVideo,
-    });
+app.post("/api-formRemove", async function (req, res) {
+  if (req.body.passRemove === "blogs") {
+    let doc = await mod.find({ date: req.body.date });
+    if (doc.length) {
+      fs.unlinkSync(__dirname + "/public" + doc[0].loc);
+      await mod.deleteOne({ date: req.body.date });
+      return res.json(await mod.find().sort({ date: -1 }));
+    } else {
+      return res.json({ e: "Incorrect date" });
+    }
   } else {
-    return res.sendStatus(500);
-  }
-});
-
-app.post("/cont", function (req, res) {
-  if (parsedDataContent !== undefined && buttons !== undefined) {
-    return res.json({
-      h: parsedDataContent.data[3][1],
-      et: parsedDataContent.data[4][1],
-      email: parsedDataContent.data[5][1],
-      pt: parsedDataContent.data[6][1],
-      ph: parsedDataContent.data[7][1],
-      it: parsedDataContent.data[8][1],
-      it2: parsedDataContent.data[9][1],
-      h2: parsedDataContent.data[10][1],
-      avail: parsedDataContent.data[11][1],
-      buttons: [buttons[2]],
-    });
-  } else {
-    return res.sendStatus(500);
-  }
-});
-
-app.post("/abou", function (req, res) {
-  if (
-    parsedDataMaps !== undefined &&
-    parsedDataContent !== undefined &&
-    buttons !== undefined
-  ) {
-    return res.json({
-      a: {
-        hmap: parsedDataMaps[2],
-        hm: parsedDataContent.data[13][1],
-        h1: parsedDataContent.data[14][1],
-        span1: parsedDataContent.data[15][1],
-        span2: parsedDataContent.data[16][1],
-        h2: parsedDataContent.data[17][1],
-        span3: parsedDataContent.data[18][1],
-        span4: parsedDataContent.data[19][1],
-        buttons: [buttons[3], buttons[4], buttons[5]],
-      },
-      b: {
-        cba: parsedDataMaps[0],
-        abc: parsedDataMaps[1],
-      },
-    });
-  } else {
-    return res.sendStatus(500);
-  }
-});
-
-app.post("/g", function (req, res) {
-  if (parsedDataGallery !== undefined && buttons !== undefined) {
-    return res.json({ images: parsedDataGallery, buttons: [buttons[1]] });
-  } else {
-    return res.sendStatus(500);
+    return res.json({ e: "Incorrect password" });
   }
 });
 

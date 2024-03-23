@@ -98,13 +98,13 @@ class Home extends Component {
     this.props.footer("loading");
   }
   componentDidMount() {
-    axios.post('/hom').then((res) => {
+    axios.post('/api-home').then((res) => {
       this.setState({
         res: res.data,
         load: false
       });
       this.props.footer("load");
-      this.mapVideo(res.data.vid);
+      this.mapVideo(res.data.video);
     })
     .catch((error) => {
       alert(error);
@@ -112,7 +112,7 @@ class Home extends Component {
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.load !== this.state.load) {
-      if (window.location.search === "?in=in") this.scrollIntoView();
+      if (window.location.search === "?enquiries=enquiries") this.scrollIntoView();
       new Vivus(document.querySelector("#my-svg").children[0], { duration: 200 });
     }
   }
@@ -280,7 +280,7 @@ class Home extends Component {
       alert: "Waiting...",
       disp: { display: "block", lineHeight: "50px" },
     });
-    if (this.state.name && this.state.email && this.state.phone && this.state.selectedOption && this.state.text) return axios.post('/three', {
+    if (this.state.name && this.state.email && this.state.phone && this.state.selectedOption && this.state.text) return axios.post('/api-form', {
       name: this.state.name,
       email: this.state.email,
       phone: this.state.phone,
@@ -330,7 +330,7 @@ class Home extends Component {
               <h1 id="welcomeOne">
                 <div id="my-svg">{parse(this.state.res.svg)}</div>
                 &nbsp;
-                {parse(this.state.res.m1)}
+                {parse(this.state.res.message)}
               </h1>
               <div id="welcomeTwo" onClick={this.scrollIntoView}></div>
             </section>
@@ -380,7 +380,7 @@ class Home extends Component {
               <div className="infoOne"></div>
               <div className="infoTwo">
                 <h3>
-                  {parse(this.state.res.qh)}
+                  {parse(this.state.res.quoteHeading)}
                   <InfoIcon />
                 </h3>
                 <hr
@@ -390,7 +390,7 @@ class Home extends Component {
                   }}
                 />
                 <p>
-                  <q>{parse(this.state.res.q)}</q>
+                  <q>{parse(this.state.res.quote)}</q>
                 </p>
                 <hr
                   style={{
@@ -404,65 +404,65 @@ class Home extends Component {
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{parse(this.state.res.ch1)}</h3>
+                    <h3>{parse(this.state.res.cardHeadingOne)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card1.png"
-                      alt={parse(this.state.res.ch1)}
+                      alt={parse(this.state.res.cardHeadingOne)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{parse(this.state.res.c1)}</p>
+                <hr /><p>{parse(this.state.res.cardOne)}</p>
                 <StarBorderIcon />
                 <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{parse(this.state.res.ch2)}</h3>
+                    <h3>{parse(this.state.res.cardHeadingTwo)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card2.png"
-                      alt={parse(this.state.res.ch2)}
+                      alt={parse(this.state.res.cardHeadingTwo)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{parse(this.state.res.c2)}</p>
+                <hr /><p>{parse(this.state.res.cardTwo)}</p>
                 <WhatshotIcon />
                 <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{parse(this.state.res.ch3)}</h3>
+                    <h3>{parse(this.state.res.cardHeadingThree)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card3.png"
-                      alt={parse(this.state.res.ch3)}
+                      alt={parse(this.state.res.cardHeadingThree)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{parse(this.state.res.c3)}</p>
+                <hr /><p>{parse(this.state.res.cardThree)}</p>
                 <BuildIcon />
                 <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{parse(this.state.res.ch4)}</h3>
+                    <h3>{parse(this.state.res.cardHeadingFour)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card4.png"
-                      alt={parse(this.state.res.ch4)}
+                      alt={parse(this.state.res.cardHeadingFour)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{parse(this.state.res.c4)}</p>
-                <a target="4" href={this.state.res.u4}>
+                <hr /><p>{parse(this.state.res.cardFour)}</p>
+                <a target="4" href={this.state.res.urlFour}>
                   {parse(this.state.res.buttons[0])}
                 </a>
                 <FilterListIcon />
@@ -470,17 +470,17 @@ class Home extends Component {
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{parse(this.state.res.ch5)}</h3>
+                    <h3>{parse(this.state.res.cardHeadingFive)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card5.png"
-                      alt={parse(this.state.res.ch5)}
+                      alt={parse(this.state.res.cardHeadingFive)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{parse(this.state.res.c5)}</p>
-                <a target="5" href={this.state.res.u5}>
+                <hr /><p>{parse(this.state.res.cardFive)}</p>
+                <a target="5" href={this.state.res.urlFive}>
                   {parse(this.state.res.buttons[0])}
                 </a>
                 <FilterListIcon />
@@ -488,17 +488,17 @@ class Home extends Component {
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{parse(this.state.res.ch6)}</h3>
+                    <h3>{parse(this.state.res.cardHeadingSix)}</h3>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card6.png"
-                      alt={parse(this.state.res.ch6)}
+                      alt={parse(this.state.res.cardHeadingSix)}
                       width="50"
                       height="50"
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{parse(this.state.res.c6)}</p>
-                <a target="6" href={this.state.res.u6}>
+                <hr /><p>{parse(this.state.res.cardSix)}</p>
+                <a target="6" href={this.state.res.urlSix}>
                   {parse(this.state.res.buttons[0])}
                 </a>
                 <FilterListIcon />

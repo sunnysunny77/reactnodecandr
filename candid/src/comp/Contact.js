@@ -17,7 +17,7 @@ export default class Contactc extends Component {
     this.props.footer("loading");
   }
   componentDidMount() {
-    axios.post(`/cont`).then((res) => {
+    axios.post(`/api-contact`).then((res) => {
       this.setState({ res: res.data, load: false });
       this.props.footer("load");
     })
@@ -58,24 +58,24 @@ export default class Contactc extends Component {
               <div className="contactOne"></div>
               <div className="contactTwo">
                 <h2>
-                  {parse(this.state.res.h)}
+                  {parse(this.state.res.headingOne)}
                   <ContactsIcon />
                 </h2>
                 <hr />
                 <p>
-                  {parse(this.state.res.et)}
+                  {parse(this.state.res.emailTag)}
                   <a href={"mailto:" + this.state.res.email}>
                     {this.state.res.email}
                   </a> 
-                  {parse(this.state.res.pt)}
-                  <a href={"tel:" + this.state.res.ph}>{this.state.res.ph}</a>
-                  {parse(this.state.res.it)}
+                  {parse(this.state.res.phoneTag)}
+                  <a href={"tel:" + this.state.res.phone}>{this.state.res.phone}</a>
+                  {parse(this.state.res.enquiriesTagOne)}
                   <div>
-                    <span> {parse(this.state.res.it2)}</span>
+                    <span> {parse(this.state.res.enquiriesTagTwo)}</span>
                     <HelpOutlineIcon
                       onClick={() => {
                         var x = window.location.origin;
-                        window.location.replace(x + "?in=in");
+                        window.location.replace(x + "?enquiries=enquiries");
                       }}
                     />
                   </div>
@@ -85,13 +85,13 @@ export default class Contactc extends Component {
             </section>
             <section className="contactContTwo">
               <h2>
-                {parse(this.state.res.h2)}
+                {parse(this.state.res.headingTwo)}
                 <ContactsIcon />
               </h2>
               <hr />
               <Wave>
                 <div id="contactResponse" className="prop">
-                  {parse(this.state.res.avail)}
+                  {parse(this.state.res.availability)}
                 </div>
               </Wave>
             </section>

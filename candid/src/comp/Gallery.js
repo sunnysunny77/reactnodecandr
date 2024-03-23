@@ -15,15 +15,13 @@ export default class Galery extends Component {
     this.props.footer("loading");
   }
   componentDidMount() {
-    axios.post(`/g`).then((res) => {
+    axios.post(`/api-gallery`).then((res) => {
       this.setState({ res: res.data, load: false });
       this.props.footer("load");
     })
     .catch((error) => {
       alert(error);
     });
-    window.addEventListener("scroll", this.handleScroll, { passive: true });
-    window.addEventListener("resize", this.handleScroll, { passive: true });
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.load !== this.state.load) {

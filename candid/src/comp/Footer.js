@@ -5,7 +5,7 @@ import parse from 'html-react-parser';
 import { Link } from "react-router-dom";
 
 const Footer = (props) => {
-  let { footer, ph, time, day, buttons } = props;
+  let { footer, phone, hours, days, buttons } = props;
   return (
     <footer className={footer}>
       <ul>
@@ -42,10 +42,10 @@ const Footer = (props) => {
           </Link>
         </li>
         <li className="block none">
-          {parse(time)} / {parse(day)}
+          {parse(hours)} / {parse(days)}
         </li>
         <li className="block none">
-          <a href={"tel:" + ph}>{ph}</a>
+          <a href={"tel:" + phone}>{phone}</a>
         </li>
       </ul>
     </footer>

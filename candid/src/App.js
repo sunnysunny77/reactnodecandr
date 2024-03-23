@@ -17,20 +17,20 @@ import Footer from "./comp/Footer";
 
 function App() {
   const [table, setTable] = useState(null);
-  const [ph, setPh] = useState(null);
-  const [time, setTime] = useState(null);
-  const [day, setDay] = useState(null);
+  const [phone, setPhone] = useState(null);
+  const [hours, setHours] = useState(null);
+  const [days, setDays] = useState(null);
   const [load, setLoad] = useState(false);
   const [footer, setFooter] = useState(null);
   const [buttons, setButtons] = useState([]);
   const [main, setMain] = useState("navRelative");
   useEffect(() => {
     axios
-      .post('/nav')
+      .post('/api-init')
       .then((res) => {
-        setPh(res.data.ph);
-        setTime(res.data.time);
-        setDay(res.data.day);
+        setPhone(res.data.phone);
+        setHours(res.data.hours);
+        setDays(res.data.days);
         setButtons(res.data.buttons);
         setLoad(true);
       })
@@ -41,7 +41,7 @@ function App() {
   return (
     <BrowserRouter>
       {load ? (<React.Fragment>
-        <Nav ph={ph} time={time} day={day} buttons={buttons} main={(param) => setMain(param)} />
+        <Nav phone={phone} hours={hours} days={days} buttons={buttons} main={(param) => setMain(param)} />
         <main className={main} id="di">
           <Routes>
             <Route exact path="/" element={<Home  footer={(param) => setFooter(param)}/>} />
@@ -51,7 +51,7 @@ function App() {
             <Route path="/about" element={<About footer={(param) => setFooter(param)}/>} />
           </Routes>
         </main>
-        <Footer footer={footer} ph={ph} time={time} day={day} buttons={buttons} />
+        <Footer footer={footer} phone={phone} hours={hours} days={days} buttons={buttons} />
       </React.Fragment>) : (
         <img
           id="loadFront"

@@ -28,9 +28,9 @@ export default class Blog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      blogers: null,
+      blog: null,
       title: null,
-      datalertAdd: null,
+      data: null,
       file: null,
       name: null,
       passAdd: "",
@@ -49,8 +49,8 @@ export default class Blog extends React.Component {
     this.props.footer("loading");
   }
   componentDidMount() {
-    axios.get(`/ong`).then((res) => {
-      this.mapTable(this.props.table || res.data.doc);
+    axios.get(`/api-blog`).then((res) => {
+     this.mapTable(this.props.table || res.data.doc);
       this.setState({
         buttons: res.data.buttons,
         load: false,
@@ -58,13 +58,13 @@ export default class Blog extends React.Component {
       this.props.footer("load");
     })
     .catch((error) => {
-      alertAdd(error);
+      alert(error);
     });
   };
   mapTable = (res) => {
     this.props.setTable(res);
     res.length ? this.setState({ table: res.map((key, index) => {
-      const { _id, blogers, date, name, title, loc } = key;
+      const { _id, blog, date, name, title, loc } = key;
       return (
         <React.Fragment key={_id}>
           <tr>
@@ -93,7 +93,7 @@ export default class Blog extends React.Component {
             <td>{name}:</td>
           </tr>
           <tr className="center">
-            <td>{blogers}<hr/></td>
+            <td>{blog}<hr/></td>
           </tr>
         </React.Fragment>
       )})}) : this.setState({ table:  
@@ -140,9 +140,9 @@ export default class Blog extends React.Component {
       alertAdd: "choose || jpg || png",
       dispAdd: { display: "block", lineHeight: "50px" },
     });
-    if (this.state.passAdd && this.state.blogers && this.state.name && this.state.title && this.state.file) return axios.post(`/one`, {
+    if (this.state.passAdd && this.state.blog && this.state.name && this.state.title && this.state.file) return axios.post(`/api-formAdd`, {
       passAdd: this.state.passAdd,
-      blogers: this.state.blogers,
+      blog: this.state.blog,
       name: this.state.name,
       title: this.state.title,
       file: this.state.file,
@@ -157,7 +157,7 @@ export default class Blog extends React.Component {
         alertAdd: "Blog sent",
         dispAdd: { display: "block", lineHeight: "50px" },
         passAdd: null,
-        blogers: null,
+        blog: null,
         name: null,
         title: null,
         file: null,
@@ -177,7 +177,7 @@ export default class Blog extends React.Component {
   };
   submitRemove = (event) => {
     event.preventDefault();
-    axios.post(`/two`, {
+    axios.post(`/api-formRemove`, {
       passRemove: this.state.passRemove,
       date: this.state.date,
     })
@@ -357,7 +357,7 @@ export default class Blog extends React.Component {
                         }}
                         variant="filled"
                         type="text"
-                        name="blogers"
+                        name="blog"
                         placeholder="Text:"
                         onChange={this.change}
                       />
