@@ -25,6 +25,12 @@ export default class Galery extends Component {
     window.addEventListener("scroll", this.handleScroll, { passive: true });
     window.addEventListener("resize", this.handleScroll, { passive: true });
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.load !== this.state.load) {
+      window.addEventListener("scroll", this.handleScroll, { passive: true });
+      window.addEventListener("resize", this.handleScroll, { passive: true });
+    }
+  }
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
     window.removeEventListener("resize", this.handleScroll);
