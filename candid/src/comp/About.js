@@ -47,13 +47,16 @@ export default class About extends React.Component {
   handleScroll = () => {
     if (window.innerWidth > 1200) return document.querySelector(".sticky").style.top = "40px";
     if (window.innerWidth <= 1200) document.querySelector(".sticky").style.top = "0px";
-  };
-  handleHeight = () => {
-    const obj = document.querySelector("#readMoreZero");  
-    if (obj.offsetHeight > 0) {
+  }
+  height = (obj) => {
+    if (obj.offsetHeight > 0 && obj.offsetHeight !== obj.scrollHeight) {
       obj.style.maxHeight = obj.scrollHeight + "px";
       obj.style.transition = "none";
     }
+  }
+  handleHeight = () => {
+    this.height(document.querySelector("#readMoreOne"));
+    this.height(document.querySelector("#readMoreTwo"));
   }
   render() {
     return (
