@@ -99,13 +99,10 @@
     margin: 0;
   }
   #topSpan {
-    width: 83%;
+    width: 100%;
     margin: 25px auto auto auto;
     display: block;
     text-align: right;
-    @media only screen and (max-width: 1365px) {
-      width: 100%;
-    }
   }
   span {
     display: inline-block;
