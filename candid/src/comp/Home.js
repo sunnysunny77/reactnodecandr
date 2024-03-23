@@ -353,9 +353,7 @@ class Home extends Component {
               <svg
                 onClick={() => this.vidDisplay(-1)}
                 id="left"
-                height="25px"
-                viewBox="0 0 500 500"
-                width="25px"
+                viewBox="-150 -150 800 800"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path d="m474.667969 251h-309.335938c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h309.335938c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0" />
@@ -366,9 +364,7 @@ class Home extends Component {
               <svg
                 onClick={() => this.vidDisplay(+1)}
                 id="right"
-                height="25px"
-                viewBox="0 0 500 500"
-                width="25px"
+                viewBox="-150 -150 800 800"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path d="m325.332031 251h-309.332031c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h309.332031c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0" />

@@ -232,7 +232,7 @@
       left: 1%;
     }
     @media only screen and (max-width: 640px) {
-      left: -4%;
+      left: -7%;
     }
   }
   #right {
@@ -241,7 +241,7 @@
       right: 1%;
     }
     @media only screen and (max-width: 640px) {
-      right: -4%;
+      right: -7%;
     }
   }
   #left,
@@ -251,13 +251,12 @@
     color: $c4;
     opacity: 0.75;
     transition: fill 0.2s ease-in-out;
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
     fill: $c4;
-    padding: 10px 0;
     @media only screen and (max-width: 640px) {
       top: 40%;
-      width: 6%;
+      width: 12%;
     }
     &:hover {
       fill: $c7;
