@@ -84,9 +84,12 @@ function App() {
     }
   );
   useEffect(() => {
-    for (let source of imagesPreLoad[window.location.pathname]) {
+    const path = window.location.pathname;
+    for (let source of imagesPreLoad[path]) {
         const img = new Image();
         img.src = source;
+        imagesPreLoad[path] = [];
+        setImagesPreLoad({...imagesPreLoad})
         console.log(source)
     }
   }, [imagesPreLoad[window.location.pathname]]);
