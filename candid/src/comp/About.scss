@@ -113,6 +113,7 @@
     margin: 8% auto;
     @media only screen and (max-width: 1365px) {
       width: 66%;
+      margin: 17% auto;
     }
   }
   #picContainer {
@@ -122,13 +123,14 @@
     width: 55%;
     height: 379px;
     background-color: $c1;
-    left: -10px;
+    transform: scale(1.04);
     @media only screen and (max-width: 1365px) {
       float: none;
-      margin: 15px auto 70px auto;
+      margin: 20px auto 70px auto;
       width: initial;
       height: initial;
       left: initial;
+      transform: initial;
       padding: 34%;
     }
     #pic {
@@ -146,8 +148,8 @@
     }
   }
   #picSpan {
-    width: 40%;
-    padding-left: 5%;
+    width: 37.5%;
+    padding-left: 7.5%;
     margin-top: 25px;
     text-align: right;
     height: 244px;
