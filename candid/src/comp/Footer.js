@@ -19,11 +19,11 @@ const Footer = (props) => {
             </HomeIcon>
           </Link>
         </li>
-        <li className="/blog">
-          <Link to="/">{parse(buttons[0])}</Link>
+        <li className="none">
+          <Link to="/blog">{parse(buttons[0])}</Link>
         </li>
-        <li className="/gallery">
-          <Link to="/">{parse(buttons[1])}</Link>
+        <li className="none">
+          <Link to="/gallery">{parse(buttons[1])}</Link>
         </li>
         <li className="none">
           <Link to="/about">{parse(buttons[3])}</Link>
