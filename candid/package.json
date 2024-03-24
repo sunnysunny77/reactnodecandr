@@ -1,8 +1,8 @@
 {
   "proxy": "https://candidcleaning.sunnyhome.site/",
   "name": "candid",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.0.0",
+  "description": "MERN stack, React/JSX - NodeJS - Mongo, SASS, Material UI, Googleapis OAUTH email, Google drive used as CMS",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
@@ -26,7 +26,6 @@
     "axios": "^1.6.8",
     "html-react-parser": "^5.1.8",
     "mapbox-gl": "^2.15.0",
-    "preload-it": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-image-file-resizer": "^0.4.8",
