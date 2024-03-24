@@ -4,7 +4,7 @@ import Wave from "./Wave";
 import Maps from "./Maps.js";
 import axios from "axios";
 import ListAltIcon from "@mui/icons-material/ListAlt";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 export default class About extends React.Component {
   constructor(props) {
@@ -19,24 +19,26 @@ export default class About extends React.Component {
     this.props.footer("loading");
   }
   componentDidMount() {
-    axios.post(`/api-about`).then((res) => {
-      this.setState({
-        res: res.data.a,
-        mapNames: res.data.b.mapNames,
-        map: <Maps data={res.data.b.data} />,
-        load: false,
+    axios
+      .post(`/api-about`)
+      .then((res) => {
+        this.setState({
+          res: res.data.a,
+          mapNames: res.data.b.mapNames,
+          map: <Maps data={res.data.b.data} />,
+          load: false,
+        });
+        this.props.footer("load");
+      })
+      .catch((error) => {
+        alert(error);
       });
-      this.props.footer("load");
-    })
-    .catch((error) => {
-      alert(error);
-    });
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.load !== this.state.load) {
-    window.addEventListener("scroll", this.handleScroll, { passive: true });
-    window.addEventListener("resize", this.handleScroll, { passive: true });
-    window.addEventListener("resize", this.handleHeight, { passive: true });
+      window.addEventListener("scroll", this.handleScroll, { passive: true });
+      window.addEventListener("resize", this.handleScroll, { passive: true });
+      window.addEventListener("resize", this.handleHeight, { passive: true });
     }
   }
   componentWillUnmount() {
@@ -45,19 +47,21 @@ export default class About extends React.Component {
     window.removeEventListener("resize", this.handleHeight);
   }
   handleScroll = () => {
-    if (window.innerWidth > 1200) return document.querySelector(".sticky").style.top = "40px";
-    if (window.innerWidth <= 1200) document.querySelector(".sticky").style.top = "0px";
-  }
+    if (window.innerWidth > 1200)
+      return (document.querySelector(".sticky").style.top = "40px");
+    if (window.innerWidth <= 1200)
+      document.querySelector(".sticky").style.top = "0px";
+  };
   height = (obj) => {
     if (obj.offsetHeight > 0 && obj.offsetHeight !== obj.scrollHeight) {
       obj.style.maxHeight = obj.scrollHeight + "px";
       obj.style.transition = "none";
     }
-  }
+  };
   handleHeight = () => {
     this.height(document.querySelector("#readMoreOne"));
     this.height(document.querySelector("#readMoreTwo"));
-  }
+  };
   render() {
     return (
       <React.Fragment>
@@ -123,9 +127,7 @@ export default class About extends React.Component {
                   <div id="picContainer">
                     <span id="pic"></span>
                   </div>
-                  <span id="picSpan">
-                    {parse(this.state.res.spanTwo)}
-                  </span>
+                  <span id="picSpan">{parse(this.state.res.spanTwo)}</span>
                   <button
                     className="btn"
                     onClick={() => {

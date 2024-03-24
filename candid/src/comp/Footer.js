@@ -1,7 +1,7 @@
 import React from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import "./Footer.scss";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 
 const Footer = (props) => {
@@ -50,6 +50,6 @@ const Footer = (props) => {
       </ul>
     </footer>
   );
-}
+};
 
 export default Footer;

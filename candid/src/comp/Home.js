@@ -23,10 +23,9 @@ import SubjectIcon from "@mui/icons-material/Subject";
 import ListIcon from "@mui/icons-material/List";
 import Tooltip from "@mui/material/Tooltip";
 import Select from "react-select";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 const customStyles = {
-
   menu: (provided, state) => ({
     ...provided,
     borderRadius: "0",
@@ -51,15 +50,15 @@ const customStyles = {
     backgroundColor: styles.c11,
     borderRadius: "0 5px 0 0",
     border: 0,
-    boxShadow: 'none',
+    boxShadow: "none",
     margin: "auto 25px 140px 25px",
   }),
   dropdownIndicator: (provided, state) => ({
     ...provided,
-      color: styles.c13,
-      "&:hover": {
-        color: styles.c2,
-      },
+    color: styles.c13,
+    "&:hover": {
+      color: styles.c2,
+    },
   }),
 };
 
@@ -98,114 +97,130 @@ class Home extends Component {
     this.props.footer("loading");
   }
   componentDidMount() {
-    axios.post('/api-home').then((res) => {
-      this.setState({
-        res: res.data,
-        load: false
+    axios
+      .post("/api-home")
+      .then((res) => {
+        this.setState({
+          res: res.data,
+          load: false,
+        });
+        this.props.footer("load");
+        this.mapVideo(res.data.video);
+      })
+      .catch((error) => {
+        alert(error);
       });
-      this.props.footer("load");
-      this.mapVideo(res.data.video);
-    })
-    .catch((error) => {
-      alert(error);
-    });
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.load !== this.state.load) {
-      if (window.location.search === "?enquiries=enquiries") this.scrollIntoView();
-      new Vivus(document.querySelector("#my-svg").children[0], { duration: 200 });
+      if (window.location.search === "?enquiries=enquiries")
+        this.scrollIntoView();
+      new Vivus(document.querySelector("#my-svg").children[0], {
+        duration: 200,
+      });
     }
   }
   scrollIntoView = () => {
-    document.querySelector("#enquiry").scrollIntoView({behavior: "smooth"});
-  }
+    document.querySelector("#enquiry").scrollIntoView({ behavior: "smooth" });
+  };
   mapVideo = (res) => {
-    this.setState({ video: res.map((key, index) => {
-      const d = index === 0 ?  "flex": "";
-      const idOne = "#videoOne-" + index + 1;
-      const idTwo = "#videoTwo-" + index + 1;
-      return (
-        <React.Fragment key={index}>
-          <div className={d + " d" + [index + 1]}>
-            <link rel="preload" href={key[0]} as="image" />
-            <span
-              className="videoLink"
-              onClick={() => this.overlay(idOne)}
-            >
-              {key[2]}
-              <PlayCircleOutlineIcon />
-            </span>
-            <img
-              className="videoImg"
-              src={key[0]}
-              alt={key[2]}
-              width="275"
-              height="275"
-            />
-          </div>
-          <div className={d + " d" + [index + 1]}>
-            <link rel="preload" href={key[3]} as="image" />
-            <span
-              className="videoLink"
-              onClick={() => this.overlay(idTwo)}
-            >
-              {key[5]}
-              <PlayCircleOutlineIcon />
-            </span>
-            <img
-              className="videoImg"
-              src={key[3]}
-              alt={key[5]}
-              width="275"
-              height="275"
-            />
-          </div>
-        </React.Fragment>
-      )
-    }), overlay: res.map((key, index) => {
-      const idOne = "videoOne-" + index + 1;
-      const idTwo = "videoTwo-" + index + 1;
-      return (
-        <React.Fragment key={index}>
-          <div id={idOne} className="overlay">  
-            <video loop playsInline>
-              <source src={key[1]}/>\
-              Your browser does not support the video tag.
-            </video>
-            <div className="controlls">
-              <button onClick={() => {
-                document.body.style.overflow = "auto";
-                document.body.style.paddingRight = 0;
-                document.querySelector(`#${idOne}`).classList.remove("fixed");
-                document.querySelector(`#${idOne}`).children[0].pause();
-                }}> &#10006; </button>
+    this.setState({
+      video: res.map((key, index) => {
+        const d = index === 0 ? "flex" : "";
+        const idOne = "#videoOne-" + index + 1;
+        const idTwo = "#videoTwo-" + index + 1;
+        return (
+          <React.Fragment key={index}>
+            <div className={d + " d" + [index + 1]}>
+              <link rel="preload" href={key[0]} as="image" />
+              <span className="videoLink" onClick={() => this.overlay(idOne)}>
+                {key[2]}
+                <PlayCircleOutlineIcon />
+              </span>
+              <img
+                className="videoImg"
+                src={key[0]}
+                alt={key[2]}
+                width="275"
+                height="275"
+              />
             </div>
-          </div>
-          <div id={idTwo} className="overlay">  
-            <video loop playsInline>
-              <source src={key[4]}/>
-              Your browser does not support the video tag.
-            </video>
-            <div className="controlls">
-              <button onClick={() => {
-                document.body.style.overflow = "auto";
-                document.body.style.paddingRight = 0;
-                document.querySelector(`#${idTwo}`).classList.remove("fixed");
-                document.querySelector(`#${idTwo}`).children[0].pause();
-                }}> &#10006; </button>
+            <div className={d + " d" + [index + 1]}>
+              <link rel="preload" href={key[3]} as="image" />
+              <span className="videoLink" onClick={() => this.overlay(idTwo)}>
+                {key[5]}
+                <PlayCircleOutlineIcon />
+              </span>
+              <img
+                className="videoImg"
+                src={key[3]}
+                alt={key[5]}
+                width="275"
+                height="275"
+              />
             </div>
-          </div>
-        </React.Fragment>
-      )
-    })})
-  }
+          </React.Fragment>
+        );
+      }),
+      overlay: res.map((key, index) => {
+        const idOne = "videoOne-" + index + 1;
+        const idTwo = "videoTwo-" + index + 1;
+        return (
+          <React.Fragment key={index}>
+            <div id={idOne} className="overlay">
+              <video loop playsInline>
+                <source src={key[1]} />\ Your browser does not support the video
+                tag.
+              </video>
+              <div className="controlls">
+                <button
+                  onClick={() => {
+                    document.body.style.overflow = "auto";
+                    document.body.style.paddingRight = 0;
+                    document
+                      .querySelector(`#${idOne}`)
+                      .classList.remove("fixed");
+                    document.querySelector(`#${idOne}`).children[0].pause();
+                  }}
+                >
+                  {" "}
+                  &#10006;{" "}
+                </button>
+              </div>
+            </div>
+            <div id={idTwo} className="overlay">
+              <video loop playsInline>
+                <source src={key[4]} />
+                Your browser does not support the video tag.
+              </video>
+              <div className="controlls">
+                <button
+                  onClick={() => {
+                    document.body.style.overflow = "auto";
+                    document.body.style.paddingRight = 0;
+                    document
+                      .querySelector(`#${idTwo}`)
+                      .classList.remove("fixed");
+                    document.querySelector(`#${idTwo}`).children[0].pause();
+                  }}
+                >
+                  {" "}
+                  &#10006;{" "}
+                </button>
+              </div>
+            </div>
+          </React.Fragment>
+        );
+      }),
+    });
+  };
   overlay = (id) => {
-    const overlay = document.querySelector(`${id}`); 
+    const overlay = document.querySelector(`${id}`);
     overlay.children[0].load();
     overlay.children[0].play();
     const width = window.innerWidth - document.body.offsetWidth;
     document.body.style.overflow = "hidden";
-    document.body.style.paddingRight = `${width  }px`;
+    document.body.style.paddingRight = `${width}px`;
     overlay.classList.add("fixed");
   };
   vidDisplay = (index) => {
@@ -226,7 +241,7 @@ class Home extends Component {
         item.classList.add("grey");
         setTimeout(() => {
           item.classList.remove("grey");
-        }, 500)
+        }, 500);
       });
     }
   };
@@ -242,7 +257,7 @@ class Home extends Component {
       [...addNewCount].forEach((item) => {
         item.classList.add("flex");
       });
-      this.setState({ count: newCount  });
+      this.setState({ count: newCount });
     } else {
       [...removeCount].forEach((item) => {
         item.classList.remove("flex");
@@ -254,7 +269,7 @@ class Home extends Component {
         item.classList.add("grey");
         setTimeout(() => {
           item.classList.remove("grey");
-        }, 500)
+        }, 500);
       });
       this.setState({ count: newCount });
     }
@@ -263,7 +278,7 @@ class Home extends Component {
       item.classList.add("grey");
       setTimeout(() => {
         item.classList.remove("grey");
-      }, 500)
+      }, 500);
     });
   };
   handleChangeSelect = (selectedOption) => {
@@ -280,35 +295,44 @@ class Home extends Component {
       alert: "Waiting...",
       disp: { display: "block", lineHeight: "50px" },
     });
-    if (this.state.name && this.state.email && this.state.phone && this.state.selectedOption && this.state.text) return axios.post('/api-form', {
-      name: this.state.name,
-      email: this.state.email,
-      phone: this.state.phone,
-      selectedOption: this.state.selectedOption,
-      text: this.state.text,
-    })
-      .then((res) => {
-        if (res.data.e) return this.setState({
-          alert: res.data.e,
-          disp: { display: "block", lineHeight: "50px" },
+    if (
+      this.state.name &&
+      this.state.email &&
+      this.state.phone &&
+      this.state.selectedOption &&
+      this.state.text
+    )
+      return axios
+        .post("/api-form", {
+          name: this.state.name,
+          email: this.state.email,
+          phone: this.state.phone,
+          selectedOption: this.state.selectedOption,
+          text: this.state.text,
+        })
+        .then((res) => {
+          if (res.data.e)
+            return this.setState({
+              alert: res.data.e,
+              disp: { display: "block", lineHeight: "50px" },
+            });
+          this.setState({
+            alert: res.data.a,
+            disp: { display: "block", lineHeight: "50px" },
+            name: null,
+            email: null,
+            phone: null,
+            selectedOption: null,
+            text: null,
+          });
+          document.querySelector("#form").reset();
+        })
+        .catch((error) => {
+          this.setState({
+            alert: error.response.statusText,
+            disp: { display: "block", lineHeight: "50px" },
+          });
         });
-        this.setState({
-          alert: res.data.a,
-          disp: { display: "block", lineHeight: "50px" },
-          name: null,
-          email: null,
-          phone: null,
-          selectedOption: null,
-          text: null,
-        });
-        document.querySelector("#form").reset();
-      })
-      .catch((error) => {
-        this.setState({
-          alert: error.response.statusText,
-          disp: { display: "block", lineHeight: "50px" },
-        });
-      });
     this.setState({
       alert: "Enquiry from incomplete",
       disp: { display: "block", lineHeight: "50px" },
@@ -337,14 +361,30 @@ class Home extends Component {
             <Slider id="slide" {...this.state.settings}>
               <div>
                 <picture>
-                  <source media="(min-width:1199px)" srcSet="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg"/>
-                  <img src="https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg" width="992" height="401" alt="Slider 1"/>
-                </picture>    
+                  <source
+                    media="(min-width:1199px)"
+                    srcSet="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg"
+                  />
+                  <img
+                    src="https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg"
+                    width="992"
+                    height="401"
+                    alt="Slider 1"
+                  />
+                </picture>
               </div>
               <div>
                 <picture>
-                  <source media="(min-width:1199px)" srcSet="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg"/>
-                  <img src="https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg" width="992" height="401" alt="Slider 2"/>
+                  <source
+                    media="(min-width:1199px)"
+                    srcSet="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg"
+                  />
+                  <img
+                    src="https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg"
+                    width="992"
+                    height="401"
+                    alt="Slider 2"
+                  />
                 </picture>
               </div>
             </Slider>
@@ -409,7 +449,8 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{parse(this.state.res.cardOne)}</p>
+                <hr />
+                <p>{parse(this.state.res.cardOne)}</p>
                 <StarBorderIcon />
                 <FilterListIcon />
               </div>
@@ -425,7 +466,8 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{parse(this.state.res.cardTwo)}</p>
+                <hr />
+                <p>{parse(this.state.res.cardTwo)}</p>
                 <WhatshotIcon />
                 <FilterListIcon />
               </div>
@@ -441,7 +483,8 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{parse(this.state.res.cardThree)}</p>
+                <hr />
+                <p>{parse(this.state.res.cardThree)}</p>
                 <BuildIcon />
                 <FilterListIcon />
               </div>
@@ -457,7 +500,8 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{parse(this.state.res.cardFour)}</p>
+                <hr />
+                <p>{parse(this.state.res.cardFour)}</p>
                 <a target="4" href={this.state.res.urlFour}>
                   {parse(this.state.res.buttons[0])}
                 </a>
@@ -475,7 +519,8 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{parse(this.state.res.cardFive)}</p>
+                <hr />
+                <p>{parse(this.state.res.cardFive)}</p>
                 <a target="5" href={this.state.res.urlFive}>
                   {parse(this.state.res.buttons[0])}
                 </a>
@@ -493,7 +538,8 @@ class Home extends Component {
                     ></img>
                   </span>
                 </div>
-                <hr /><p>{parse(this.state.res.cardSix)}</p>
+                <hr />
+                <p>{parse(this.state.res.cardSix)}</p>
                 <a target="6" href={this.state.res.urlSix}>
                   {parse(this.state.res.buttons[0])}
                 </a>

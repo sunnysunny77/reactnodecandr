@@ -17,10 +17,10 @@ import { styled } from "@mui/material/styles";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import axios from "axios";
 import Resizer from "react-image-file-resizer";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
-const StyledAccordion =styled(Accordion)({
-  margin: 0, 
+const StyledAccordion = styled(Accordion)({
+  margin: 0,
   backgroundColor: styles.c3,
 });
 
@@ -49,59 +49,70 @@ export default class Blog extends React.Component {
     this.props.footer("loading");
   }
   componentDidMount() {
-    axios.get(`/api-blog`).then((res) => {
-     this.mapTable(this.props.table || res.data.doc);
-      this.setState({
-        buttons: res.data.buttons,
-        load: false,
+    axios
+      .get(`/api-blog`)
+      .then((res) => {
+        this.mapTable(this.props.table || res.data.doc);
+        this.setState({
+          buttons: res.data.buttons,
+          load: false,
+        });
+        this.props.footer("load");
+      })
+      .catch((error) => {
+        alert(error);
       });
-      this.props.footer("load");
-    })
-    .catch((error) => {
-      alert(error);
-    });
-  };
+  }
   mapTable = (res) => {
     this.props.setTable(res);
-    res.length ? this.setState({ table: res.map((key, index) => {
-      const { _id, blog, date, name, title, loc } = key;
-      return (
-        <React.Fragment key={_id}>
-          <tr>
-            <td>{title}</td>
-          </tr>
-          <tr>
-            <td className="vertCenter">
-              <img
-                src="https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg"
-                alt="icon"
-                width="10"
-                height="10"
-              />
-              {"" + date}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img
-                alt={title}
-                src={"https://" + window.location.hostname + loc}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>{name}:</td>
-          </tr>
-          <tr className="center">
-            <td>{blog}<hr/></td>
-          </tr>
-        </React.Fragment>
-      )})}) : this.setState({ table:  
-        <tr style={{ height: "35vh" }}>
-          <th> No posts yet </th>
-        </tr>
-      })
-    ;
+    res.length
+      ? this.setState({
+          table: res.map((key, index) => {
+            const { _id, blog, date, name, title, loc } = key;
+            return (
+              <React.Fragment key={_id}>
+                <tr>
+                  <td>{title}</td>
+                </tr>
+                <tr>
+                  <td className="vertCenter">
+                    <img
+                      src="https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg"
+                      alt="icon"
+                      width="10"
+                      height="10"
+                    />
+                    {"" + date}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img
+                      alt={title}
+                      src={"https://" + window.location.hostname + loc}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>{name}:</td>
+                </tr>
+                <tr className="center">
+                  <td>
+                    {blog}
+                    <hr />
+                  </td>
+                </tr>
+              </React.Fragment>
+            );
+          }),
+        })
+      : this.setState({
+          table: (
+            <tr style={{ height: "35vh" }}>
+              <th> No posts yet </th>
+            </tr>
+          ),
+        });
   };
   change = (event) => {
     const nam = event.target.name;
@@ -115,18 +126,23 @@ export default class Blog extends React.Component {
   file = (event) => {
     let extension = event.target.value.split(".").pop();
     const types = ["jpg", "JPG", "png", "PNG", "jpeg", "JPEG"];
-    if (types.includes(extension)) return Resizer.imageFileResizer(
-      event.target.files[0],
-      150,
-      150,
-      extension,
-      50,
-      0,
-      (uri) => {
-        this.setState({ file: uri, extension: extension, dispAdd: { display: "none" } });
-      },
-      "base64"
-    );
+    if (types.includes(extension))
+      return Resizer.imageFileResizer(
+        event.target.files[0],
+        150,
+        150,
+        extension,
+        50,
+        0,
+        (uri) => {
+          this.setState({
+            file: uri,
+            extension: extension,
+            dispAdd: { display: "none" },
+          });
+        },
+        "base64"
+      );
     this.setState({
       alertAdd: "choose || jpg || png",
       dispAdd: { display: "block", lineHeight: "50px" },
@@ -136,40 +152,50 @@ export default class Blog extends React.Component {
   submitAdd = (event) => {
     event.preventDefault();
     const types = ["jpg", "JPG", "png", "PNG", "jpeg", "JPEG"];
-    if (!types.includes(this.state.extension)) return this.setState({
-      alertAdd: "choose || jpg || png",
-      dispAdd: { display: "block", lineHeight: "50px" },
-    });
-    if (this.state.passAdd && this.state.blog && this.state.name && this.state.title && this.state.file) return axios.post(`/api-formAdd`, {
-      passAdd: this.state.passAdd,
-      blog: this.state.blog,
-      name: this.state.name,
-      title: this.state.title,
-      file: this.state.file,
-    })
-    .then((res) => {
-      if (res.data.e) return this.setState({
-        alertAdd: res.data.e,
+    if (!types.includes(this.state.extension))
+      return this.setState({
+        alertAdd: "choose || jpg || png",
         dispAdd: { display: "block", lineHeight: "50px" },
       });
-      this.mapTable(res.data);
-      this.setState({
-        alertAdd: "Blog sent",
-        dispAdd: { display: "block", lineHeight: "50px" },
-        passAdd: null,
-        blog: null,
-        name: null,
-        title: null,
-        file: null,
-      });
-      document.querySelector("#formAdd").reset();
-    })
-    .catch((error) => {
-      this.setState({
-        alertAdd: error.response.statusText,
-        dispAdd: { display: "block", lineHeight: "50px" },
-      });
-    });
+    if (
+      this.state.passAdd &&
+      this.state.blog &&
+      this.state.name &&
+      this.state.title &&
+      this.state.file
+    )
+      return axios
+        .post(`/api-formAdd`, {
+          passAdd: this.state.passAdd,
+          blog: this.state.blog,
+          name: this.state.name,
+          title: this.state.title,
+          file: this.state.file,
+        })
+        .then((res) => {
+          if (res.data.e)
+            return this.setState({
+              alertAdd: res.data.e,
+              dispAdd: { display: "block", lineHeight: "50px" },
+            });
+          this.mapTable(res.data);
+          this.setState({
+            alertAdd: "Blog sent",
+            dispAdd: { display: "block", lineHeight: "50px" },
+            passAdd: null,
+            blog: null,
+            name: null,
+            title: null,
+            file: null,
+          });
+          document.querySelector("#formAdd").reset();
+        })
+        .catch((error) => {
+          this.setState({
+            alertAdd: error.response.statusText,
+            dispAdd: { display: "block", lineHeight: "50px" },
+          });
+        });
     this.setState({
       alertAdd: "Blog from incomplete",
       dispAdd: { display: "block", lineHeight: "50px" },
@@ -177,30 +203,32 @@ export default class Blog extends React.Component {
   };
   submitRemove = (event) => {
     event.preventDefault();
-    axios.post(`/api-formRemove`, {
-      passRemove: this.state.passRemove,
-      date: this.state.date,
-    })
-    .then((res) => {
-      if (res.data.e) return this.setState({
-        alertRemove: res.data.e,
-        dispRemove: { display: "block", lineHeight: "50px" },
+    axios
+      .post(`/api-formRemove`, {
+        passRemove: this.state.passRemove,
+        date: this.state.date,
+      })
+      .then((res) => {
+        if (res.data.e)
+          return this.setState({
+            alertRemove: res.data.e,
+            dispRemove: { display: "block", lineHeight: "50px" },
+          });
+        this.mapTable(res.data);
+        this.setState({
+          alertRemove: "Blog delete",
+          dispRemove: { display: "block", lineHeight: "50px" },
+          passRemove: null,
+          date: null,
+        });
+        document.querySelector("#formRemove").reset();
+      })
+      .catch((error) => {
+        this.setState({
+          alertRemove: error.response.statusText,
+          dispRemove: { display: "block", lineHeight: "50px" },
+        });
       });
-      this.mapTable(res.data);
-      this.setState({
-        alertRemove: "Blog delete",
-        dispRemove: { display: "block", lineHeight: "50px" },
-        passRemove: null,
-        date: null,
-      });
-      document.querySelector("#formRemove").reset();
-    })
-    .catch((error) => {
-      this.setState({
-        alertRemove: error.response.statusText,
-        dispRemove: { display: "block", lineHeight: "50px" },
-      });
-    });
   };
   render() {
     return (
@@ -215,21 +243,21 @@ export default class Blog extends React.Component {
           <React.Fragment>
             {this.state.window}
             <div className="headingCont blogHeading">
-                <h1>{parse(this.state.buttons[0])}</h1>
+              <h1>{parse(this.state.buttons[0])}</h1>
             </div>
             <section className="blogCont">
               <div className="blogResponse">
-              <div className="sticky"></div>
-              <table>
-                <tbody>
-                  {this.state.table}
-                 </tbody>
-              </table>
+                <div className="sticky"></div>
+                <table>
+                  <tbody>{this.state.table}</tbody>
+                </table>
               </div>
               <div style={{ backgroundColor: styles.c3 }}>
                 <StyledAccordion>
                   <AccordionSummary
-                    expandIcon={<ExpandMoreIcon style={{ color: styles.c11 }} />}
+                    expandIcon={
+                      <ExpandMoreIcon style={{ color: styles.c11 }} />
+                    }
                     aria-controls="panel2a-content"
                     id="panel2a-header"
                   >
@@ -396,7 +424,9 @@ export default class Blog extends React.Component {
                 </StyledAccordion>
                 <StyledAccordion>
                   <AccordionSummary
-                    expandIcon={<ExpandMoreIcon style={{ color: styles.c11 }} />}
+                    expandIcon={
+                      <ExpandMoreIcon style={{ color: styles.c11 }} />
+                    }
                     aria-controls="panel2a-content"
                     id="panel2a-header"
                   >

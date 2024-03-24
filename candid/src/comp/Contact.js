@@ -4,7 +4,7 @@ import Wave from "./Wave";
 import ContactsIcon from "@mui/icons-material/Contacts";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import axios from "axios";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 export default class Contactc extends Component {
   constructor(props) {
@@ -17,13 +17,15 @@ export default class Contactc extends Component {
     this.props.footer("loading");
   }
   componentDidMount() {
-    axios.post(`/api-contact`).then((res) => {
-      this.setState({ res: res.data, load: false });
-      this.props.footer("load");
-    })
-    .catch((error) => {
-      alert(error);
-    });  
+    axios
+      .post(`/api-contact`)
+      .then((res) => {
+        this.setState({ res: res.data, load: false });
+        this.props.footer("load");
+      })
+      .catch((error) => {
+        alert(error);
+      });
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.load !== this.state.load) {
@@ -36,8 +38,10 @@ export default class Contactc extends Component {
     window.removeEventListener("resize", this.handleScroll);
   }
   handleScroll = () => {
-    if (window.innerWidth > 1200) return document.querySelector(".sticky").style.top = "40px";
-    if (window.innerWidth <= 1200) document.querySelector(".sticky").style.top = "0px";
+    if (window.innerWidth > 1200)
+      return (document.querySelector(".sticky").style.top = "40px");
+    if (window.innerWidth <= 1200)
+      document.querySelector(".sticky").style.top = "0px";
   };
   render() {
     return (
@@ -66,9 +70,11 @@ export default class Contactc extends Component {
                   {parse(this.state.res.emailTag)}
                   <a href={"mailto:" + this.state.res.email}>
                     {this.state.res.email}
-                  </a> 
+                  </a>
                   {parse(this.state.res.phoneTag)}
-                  <a href={"tel:" + this.state.res.phone}>{this.state.res.phone}</a>
+                  <a href={"tel:" + this.state.res.phone}>
+                    {this.state.res.phone}
+                  </a>
                   {parse(this.state.res.enquiriesTagOne)}
                   <span className="enquiries">
                     <span> {parse(this.state.res.enquiriesTagTwo)}</span>

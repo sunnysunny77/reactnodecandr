@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import PhoneIcon from "@mui/icons-material/Phone";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 class Nav extends Component {
   constructor(props) {
@@ -32,27 +32,29 @@ class Nav extends Component {
         margin: "6px auto",
         transition: "0.4s",
       },
-      dis: false
+      dis: false,
     };
   }
   componentDidMount() {
-    document.querySelector(".burgerMenu").addEventListener('click', this.menu);
+    document.querySelector(".burgerMenu").addEventListener("click", this.menu);
     window.addEventListener("scroll", this.handleScroll, { passive: true });
   }
   componentWillUnmount() {
-    document.querySelector(".burgerMenu").removeEventListener('click', this.menu);
+    document
+      .querySelector(".burgerMenu")
+      .removeEventListener("click", this.menu);
     window.removeEventListener("scroll", this.handleScroll);
   }
   handleScroll = () => {
     if (window.scrollY >= 90) {
-      this.setState({ class: "navFixed"});
-      this.props.main("navFixed")
+      this.setState({ class: "navFixed" });
+      this.props.main("navFixed");
     } else {
-      this.setState({ class: "navRelative"});
-      this.props.main("navRelative")
+      this.setState({ class: "navRelative" });
+      this.props.main("navRelative");
     }
   };
-  menu = () => {  
+  menu = () => {
     this.setState({
       dis: true,
       bar1: {
@@ -80,12 +82,12 @@ class Nav extends Component {
         transition: "0.4s",
         WebkitTransform: "rotate(45deg) translate(-8px, -8px)",
         transform: "rotate(45deg) translate(-8px, -8px)",
-      }
-    })
-    document.body.addEventListener('click', this.menuClose);
-  }
+      },
+    });
+    document.body.addEventListener("click", this.menuClose);
+  };
   menuClose = () => {
-    if (event.target.className !== "burgerMenu") { 
+    if (event.target.className !== "burgerMenu") {
       this.setState({
         dis: false,
         bar1: {
@@ -108,13 +110,13 @@ class Nav extends Component {
           backgroundColor: "black",
           margin: "6px auto",
           transition: "0.4s",
-        }
-      })
-      document.body.removeEventListener('click', this.menuClose); 
+        },
+      });
+      document.body.removeEventListener("click", this.menuClose);
     }
-  }
+  };
   render() {
-    let { phone, hours, days, buttons } = this.props
+    let { phone, hours, days, buttons } = this.props;
     return (
       <React.Fragment>
         <div className="burgerMenu"></div>
@@ -124,34 +126,30 @@ class Nav extends Component {
           <div className="bar" style={this.state.bar2}></div>
           <div className="bar" style={this.state.bar3}></div>
         </div>
-        <nav className={`mobileNav ${this.state.dis}`} >
+        <nav className={`mobileNav ${this.state.dis}`}>
           <ul>
             <hr></hr>
             <li>
               <Link to="/">
-                <HomeIcon aria-labelledby="hl1" role="link" >Home</HomeIcon>
-                <span id="hl1" className="hiddenText">Homepage Link</span>
+                <HomeIcon aria-labelledby="hl1" role="link">
+                  Home
+                </HomeIcon>
+                <span id="hl1" className="hiddenText">
+                  Homepage Link
+                </span>
               </Link>
             </li>
             <li>
-              <Link to="/blog">
-                {parse(buttons[0])}
-              </Link>
+              <Link to="/blog">{parse(buttons[0])}</Link>
             </li>
             <li>
-              <Link to="/gallery">
-                {parse(buttons[1])}
-              </Link>
+              <Link to="/gallery">{parse(buttons[1])}</Link>
             </li>
             <li>
-              <Link to="/about">
-                {parse(buttons[3])}
-              </Link>
+              <Link to="/about">{parse(buttons[3])}</Link>
             </li>
             <li>
-              <Link to="/contact">
-                {parse(buttons[2])}
-              </Link>
+              <Link to="/contact">{parse(buttons[2])}</Link>
             </li>
             <hr></hr>
           </ul>
@@ -170,51 +168,49 @@ class Nav extends Component {
               <PhoneIcon />
             </li>
             <li>
-              <a href={"tel:" + phone}>
-                {phone}
-              </a>
+              <a href={"tel:" + phone}>{phone}</a>
             </li>
             <li>
               <Link to="/">
-                <img src="https://candid.s3-ap-southeast-2.amazonaws.com/logos.png" alt="Candid Icon" width="60" height="60"></img>
+                <img
+                  src="https://candid.s3-ap-southeast-2.amazonaws.com/logos.png"
+                  alt="Candid Icon"
+                  width="60"
+                  height="60"
+                ></img>
               </Link>
             </li>
           </ul>
         </nav>
         <header>
           <Link to="/">
-            <img src="https://candid.s3.ap-southeast-2.amazonaws.com/logolarge.png" alt="Candid Logo" width="200" height="46"></img>
+            <img
+              src="https://candid.s3.ap-southeast-2.amazonaws.com/logolarge.png"
+              alt="Candid Logo"
+              width="200"
+              height="46"
+            ></img>
           </Link>
         </header>
         <nav className={`mainNav ${this.state.class}`}>
           <ul>
             <li>
-              <Link to="/blog">
-                {parse(buttons[0])}
-              </Link>
+              <Link to="/blog">{parse(buttons[0])}</Link>
             </li>
             <li>
-              <Link to="/gallery">
-                {parse(buttons[1])}
-              </Link>
+              <Link to="/gallery">{parse(buttons[1])}</Link>
             </li>
             <li>
-              <Link to="/about">
-                {parse(buttons[3])}
-              </Link>
+              <Link to="/about">{parse(buttons[3])}</Link>
             </li>
             <li>
-              <Link to="/contact">
-                {parse(buttons[2])}
-              </Link>
+              <Link to="/contact">{parse(buttons[2])}</Link>
             </li>
           </ul>
           <ul>
             <li>
               <PhoneIcon />
-              <a href={"tel:" + phone}>
-                {phone}
-              </a>
+              <a href={"tel:" + phone}>{phone}</a>
             </li>
             <li>
               <AccessTimeIcon />
@@ -224,8 +220,12 @@ class Nav extends Component {
             </li>
             <li>
               <Link to="/">
-                <HomeIcon aria-labelledby="hl2" role="link" >Home</HomeIcon>
-                <span id="hl2" className="hiddenText">Homepage Link</span>
+                <HomeIcon aria-labelledby="hl2" role="link">
+                  Home
+                </HomeIcon>
+                <span id="hl2" className="hiddenText">
+                  Homepage Link
+                </span>
               </Link>
             </li>
           </ul>
