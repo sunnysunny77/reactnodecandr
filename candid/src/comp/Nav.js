@@ -144,13 +144,13 @@ class Nav extends Component {
               </Link>
             </li>
             <li>
-              <Link to="/contact">
-                {parse(buttons[2])}
+              <Link to="/about">
+                {parse(buttons[3])}
               </Link>
             </li>
             <li>
-              <Link to="/about">
-                {parse(buttons[3])}
+              <Link to="/contact">
+                {parse(buttons[2])}
               </Link>
             </li>
             <hr></hr>
@@ -199,13 +199,13 @@ class Nav extends Component {
               </Link>
             </li>
             <li>
-              <Link to="/contact">
-                {parse(buttons[2])}
+              <Link to="/about">
+                {parse(buttons[3])}
               </Link>
             </li>
             <li>
-              <Link to="/about">
-                {parse(buttons[3])}
+              <Link to="/contact">
+                {parse(buttons[2])}
               </Link>
             </li>
           </ul>

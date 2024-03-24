@@ -125,8 +125,8 @@ function App() {
           <Route index element={<Home footer={(param) => setFooter(param)}/>} />
           <Route path="/blog" element={<Blog table={table} setTable={(param) => setTable(param)} footer={(param) =>  setFooter(param)}/>} />
           <Route path="/gallery" element={<Gallery footer={(param) => setFooter(param)}/>} />
-          <Route path="/contact" element={<Contact footer={(param) => setFooter(param)}/>} />
           <Route path="/about" element={<About footer={(param) => setFooter(param)}/>} />
+          <Route path="/contact" element={<Contact footer={(param) => setFooter(param)}/>} />
         </Route>
       </Routes>
     </BrowserRouter>
