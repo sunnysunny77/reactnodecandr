@@ -1,20 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
 
 const Preload = (props) => {
     let { imagesPreLoad } = props;
-    if (imagesPreLoad) useEffect(() => {
-        for (let source of imagesPreLoad) {
+    useEffect(() => {
+        for (let source of imagesPreLoad[window.location.pathname]) {
             const img = new Image();
             img.src = source;
         }
-    }, []);
-    return (
-        <img
-            id="loadFront"
-            src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
-            alt="loading"
-        />
-    );
+    }, [imagesPreLoad[window.location.pathname]]);
 }
 
 export default Preload;
