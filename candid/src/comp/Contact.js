@@ -70,7 +70,7 @@ export default class Contactc extends Component {
                   {parse(this.state.res.phoneTag)}
                   <a href={"tel:" + this.state.res.phone}>{this.state.res.phone}</a>
                   {parse(this.state.res.enquiriesTagOne)}
-                  <div>
+                  <span className="enquiries">
                     <span> {parse(this.state.res.enquiriesTagTwo)}</span>
                     <HelpOutlineIcon
                       onClick={() => {
@@ -78,7 +78,7 @@ export default class Contactc extends Component {
                         window.location.replace(x + "?enquiries=enquiries");
                       }}
                     />
-                  </div>
+                  </span>
                 </p>
               </div>
               <br className="clearFloat" />

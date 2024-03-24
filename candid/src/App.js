@@ -6,14 +6,14 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import Layout from "./comp/Layout";
+import Preload from "./comp/Preload";
 import Home from "./comp/Home";
 import Blog from "./comp/Blog";
 import Gallery from "./comp/Gallery";
 import Contact from "./comp/Contact";
 import About from "./comp/About";
 import axios from "axios";
-import Nav from "./comp/Nav";
-import Footer from "./comp/Footer";
 
 function App() {
   const [table, setTable] = useState(null);
@@ -21,45 +21,77 @@ function App() {
   const [hours, setHours] = useState(null);
   const [days, setDays] = useState(null);
   const [load, setLoad] = useState(false);
-  const [footer, setFooter] = useState(null);
+  const [footer, setFooter] = useState("loading");
   const [buttons, setButtons] = useState([]);
-  const [main, setMain] = useState("navRelative");
+  const [imagesPreLoad, setImagesPreLoad] = useState(
+    [
+      "https://candid.s3-ap-southeast-2.amazonaws.com/about.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/breakp.png",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/c1.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/c2.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/c3.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/c4.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/card2.png",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/card3.png",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/card4.png",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/card5.png",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/card6.png",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/cont.png",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/foot.png",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/info.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/info1.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/logolarge.png",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/logos.png",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/svg.svg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/v1.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/v2.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/v3.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/v4.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/v5.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/v6.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/welcome.png",
+    ]
+  );
   useEffect(() => {
     axios
-      .post('/api-init')
-      .then((res) => {
-        setPhone(res.data.phone);
-        setHours(res.data.hours);
-        setDays(res.data.days);
-        setButtons(res.data.buttons);
-        setLoad(true);
-      })
-      .catch((error) => {
-        alert(error);
-      });
+    .post('/api-init')
+    .then((res) => {
+      setPhone(res.data.phone);
+      setHours(res.data.hours);
+      setDays(res.data.days);
+      setButtons(res.data.buttons);
+      setLoad(true);
+    })
+    .catch((error) => {
+      alert(error);
+    });
   }, []);
   return (
     <BrowserRouter>
-      {load ? (<React.Fragment>
-        <Nav phone={phone} hours={hours} days={days} buttons={buttons} main={(param) => setMain(param)} />
-        <main className={main} id="di">
-          <Routes>
-            <Route exact path="/" element={<Home  footer={(param) => setFooter(param)}/>} />
-            <Route path="/blog" element={<Blog table={table} setTable={(param) => setTable(param)} footer={(param) =>  setFooter(param)}/>} />
-            <Route path="/gallery" element={<Gallery footer={(param) => setFooter(param)}/>} />
-            <Route path="/contact" element={<Contact footer={(param) => setFooter(param)}/>} />
-            <Route path="/about" element={<About footer={(param) => setFooter(param)}/>} />
-          </Routes>
-        </main>
-        <Footer footer={footer} phone={phone} hours={hours} days={days} buttons={buttons} />
-      </React.Fragment>) : (
-        <img
-          id="loadFront"
-          src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
-          alt="loading"
-        />
-      )}
-    </BrowserRouter>
+      <Routes>
+        { load ? 
+          (
+            <Route path="/" element={<Layout phone={phone} hours={hours} days={days} buttons={buttons} footer={footer} />}>
+              <Route index element={ <Home footer={(param) => setFooter(param)}/>} />
+              <Route path="/blog" element={<Blog table={table} setTable={(param) => setTable(param)} footer={(param) =>  setFooter(param)}/>} />
+              <Route path="/gallery" element={<Gallery footer={(param) => setFooter(param)}/>} />
+              <Route path="/contact" element={<Contact footer={(param) => setFooter(param)}/>} />
+              <Route path="/about" element={<About footer={(param) => setFooter(param)}/>} />
+            </Route>
+          ) : (
+            <React.Fragment>
+              <Route path="/*" element={ <Preload imagesPreLoad={imagesPreLoad}/>} />
+            </React.Fragment>
+          )
+        }
+    </Routes>
+  </BrowserRouter> 
   );
 }
 

@@ -327,11 +327,11 @@ class Home extends Component {
           <React.Fragment>
             {this.state.window}
             <section className="welcome">
-              <h1 id="welcomeOne">
+              <div id="welcomeOne">
                 <div id="my-svg">{parse(this.state.res.svg)}</div>
                 &nbsp;
                 {parse(this.state.res.message)}
-              </h1>
+              </div>
               <div id="welcomeTwo" onClick={this.scrollIntoView}></div>
             </section>
             <Slider id="slide" {...this.state.settings}>
@@ -375,10 +375,10 @@ class Home extends Component {
             <section className="info">
               <div className="infoOne"></div>
               <div className="infoTwo">
-                <h3>
+                <h1>
                   {parse(this.state.res.quoteHeading)}
                   <InfoIcon />
-                </h3>
+                </h1>
                 <hr
                   style={{
                     boxShadow: ` 0 5px 5px -5px ${styles.c2}`,
@@ -400,7 +400,7 @@ class Home extends Component {
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{parse(this.state.res.cardHeadingOne)}</h3>
+                    <h2>{parse(this.state.res.cardHeadingOne)}</h2>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card1.png"
                       alt={parse(this.state.res.cardHeadingOne)}
@@ -416,7 +416,7 @@ class Home extends Component {
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{parse(this.state.res.cardHeadingTwo)}</h3>
+                    <h2>{parse(this.state.res.cardHeadingTwo)}</h2>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card2.png"
                       alt={parse(this.state.res.cardHeadingTwo)}
@@ -432,7 +432,7 @@ class Home extends Component {
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{parse(this.state.res.cardHeadingThree)}</h3>
+                    <h2>{parse(this.state.res.cardHeadingThree)}</h2>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card3.png"
                       alt={parse(this.state.res.cardHeadingThree)}
@@ -448,7 +448,7 @@ class Home extends Component {
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{parse(this.state.res.cardHeadingFour)}</h3>
+                    <h2>{parse(this.state.res.cardHeadingFour)}</h2>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card4.png"
                       alt={parse(this.state.res.cardHeadingFour)}
@@ -466,7 +466,7 @@ class Home extends Component {
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{parse(this.state.res.cardHeadingFive)}</h3>
+                    <h2>{parse(this.state.res.cardHeadingFive)}</h2>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card5.png"
                       alt={parse(this.state.res.cardHeadingFive)}
@@ -484,7 +484,7 @@ class Home extends Component {
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h3>{parse(this.state.res.cardHeadingSix)}</h3>
+                    <h2>{parse(this.state.res.cardHeadingSix)}</h2>
                     <img
                       src="https://candid.s3-ap-southeast-2.amazonaws.com/card6.png"
                       alt={parse(this.state.res.cardHeadingSix)}
@@ -502,7 +502,7 @@ class Home extends Component {
             </section>
             <section id="enquiry" className="enquiry">
               <div className="headingCont">
-                <h3>{parse(this.state.res.buttons[1])}</h3>
+                <h2>{parse(this.state.res.buttons[1])}</h2>
               </div>
               <br></br>
               <form

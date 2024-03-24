@@ -26,6 +26,7 @@
     "axios": "^1.6.8",
     "html-react-parser": "^5.1.8",
     "mapbox-gl": "^2.15.0",
+    "preload-it": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-image-file-resizer": "^0.4.8",
