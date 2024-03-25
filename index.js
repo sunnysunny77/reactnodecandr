@@ -60,7 +60,9 @@ let parsedDataContent;
 let parsedDataMaps;
 let parsedDataForm;
 let parsedDataGallery;
+let parsedDataGalleryImages;
 let parsedDataVideo;
+let parsedDataVideoImages;
 let buttons;
 
 function video() {
@@ -73,7 +75,7 @@ function video() {
       if (parsedDataInital.data.length > 1) {
         let l = parsedDataInital.data.length - 1;
         let l0 = l % 2;
-        let parsedDataArray = [];
+        let parsedDataArray = [[],[]];
         if (l0 === 0) {
           for (let i = 1; i <= l / 2; i++) {
             if (
@@ -84,7 +86,7 @@ function video() {
               parsedDataInital.data[i * 2][1] &&
               parsedDataInital.data[i * 2][2]
             ) {
-              parsedDataArray.push([
+              parsedDataArray[0].push([
                 parsedDataInital.data[i * 2 - 1][0],
                 parsedDataInital.data[i * 2 - 1][1],
                 parsedDataInital.data[i * 2 - 1][2],
@@ -92,16 +94,28 @@ function video() {
                 parsedDataInital.data[i * 2][1],
                 parsedDataInital.data[i * 2][2],
               ]);
+              parsedDataArray[1].push(
+                parsedDataInital.data[i * 2 - 1][0],
+                parsedDataInital.data[i * 2][0],
+              );
             } else {
-              return (parsedDataVideo = undefined);
+              return (
+                (parsedDataVideo = undefined), (parsedDataVideoImages = undefined)
+              );
             }
           }
-          return parsedDataVideo = parsedDataArray;
+          return (
+            (parsedDataVideo = parsedDataArray[0]), (parsedDataVideoImages = parsedDataArray[1])
+          );
         } else {
-          return (parsedDataVideo = undefined);
+          return (
+            (parsedDataVideo = undefined), (parsedDataVideoImages = undefined)
+          );
         }
       } else {
-        return (parsedDataVideo = undefined);
+        return (
+          (parsedDataVideo = undefined), (parsedDataVideoImages = undefined)
+        );
       }
     })
     .catch(() => {
@@ -118,9 +132,9 @@ function gallery() {
       let parsedDataInital = Papa.parse(res.data, { skipEmptyLines: true });
       if (parsedDataInital.data.length > 1) {
         let l = parsedDataInital.data.length - 1;
-        let parsedDataArray = [];
+        let parsedDataArray = [[],[]];
         for (let i = 1; i <= l; i++) {
-          parsedDataArray.push({
+          parsedDataArray[0].push({
             original: parsedDataInital.data[i][0],
             thumbnail: parsedDataInital.data[i][0],
             originalAlt: parsedDataInital.data[i][0]
@@ -137,10 +151,17 @@ function gallery() {
                 .slice(0, -1)
                 .join(".") + ":Thumbnail",
           });
+          parsedDataArray[1].push(
+            parsedDataInital.data[i][0]
+          );
         }
-        return (parsedDataGallery = parsedDataArray);
+        return (
+          (parsedDataGallery = parsedDataArray[0]), (parsedDataGalleryImages = parsedDataArray[1])
+          );
       } else {
-        return (parsedDataGallery = undefined);
+        return (
+          (parsedDataGallery = undefined), (parsedDataGalleryImage = undefined)
+        );
       }
     })
     .catch(() => {
@@ -237,12 +258,69 @@ content();
 maps();
 
 app.post("/api-init", function (req, res) {
-  if (parsedDataContent !== undefined && buttons !== undefined) {
+  if (parsedDataContent !== undefined && buttons !== undefined && parsedDataVideoImages !== undefined && parsedDataGalleryImages !== undefined)  {
+    let images = { 
+        "/": [
+        parsedDataContent.data[18][4],
+        parsedDataContent.data[19][4],
+        parsedDataContent.data[20][4],
+        parsedDataContent.data[21][4],
+        parsedDataContent.data[22][4],
+        parsedDataContent.data[23][4],
+        parsedDataContent.data[24][4],
+        parsedDataContent.data[25][4],
+        parsedDataContent.data[26][4],
+        parsedDataContent.data[27][4],
+        parsedDataContent.data[28][4],
+        parsedDataContent.data[29][4],
+        "https://candid.s3-ap-southeast-2.amazonaws.com/welcome.png",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/foot.png",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/logolarge.png",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/logos.png",
+      ],
+      "/about": [
+        parsedDataContent.data[16][4],
+        "https://candid.s3-ap-southeast-2.amazonaws.com/breakp.png",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/svg.svg",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/foot.png",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/logolarge.png",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/logos.png",
+      ],
+      "/gallery": [
+        "https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/foot.png",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/logolarge.png",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/logos.png",
+      ],
+      "/contact": [
+        parsedDataContent.data[14][4],
+        "https://candid.s3-ap-southeast-2.amazonaws.com/svg.svg",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/foot.png",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/logolarge.png",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/logos.png",
+      ],
+      "/blog": [
+        "https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/foot.png",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/logolarge.png",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/logos.png",
+      ],
+    };
+    parsedDataVideoImages.forEach(element => {
+      images["/"].push(element);
+    });
+    parsedDataGalleryImages.forEach(element => {
+      images["/gallery"].push(element);
+    });
     return res.json({
       phone: parsedDataContent.data[7][1],
       hours: parsedDataContent.data[1][1],
       days: parsedDataContent.data[2][1],
       buttons: [buttons[0], buttons[1], buttons[2], buttons[3]],
+      images: images,
     });
   } else {
     return res.sendStatus(500);
