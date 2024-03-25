@@ -204,8 +204,7 @@ class Home extends Component {
                     document.querySelector(`#${idTwo}`).children[0].pause();
                   }}
                 >
-                  {" "}
-                  &#10006;{" "}
+                &#10006;
                 </button>
               </div>
             </div>
@@ -367,7 +366,7 @@ class Home extends Component {
                   />
                   <img
                     src={this.state.res.carouselOneDesktop}
-                    alt="Carousel one"
+                    alt={this.state.res.carouselOneAlt}
                   />
                 </picture>
               </div>
@@ -379,7 +378,7 @@ class Home extends Component {
                   />
                   <img
                      src={this.state.res.carouselTwoDesktop}
-                     alt="Carousel two"
+                     alt={this.state.res.carouselTwoAlt}
                   />
                 </picture>
               </div>
@@ -416,7 +415,7 @@ class Home extends Component {
                 />
                 <img
                   src={this.state.res.quoteDesktop}
-                  alt="Quote information image"
+                  alt={this.state.res.quoteAlt}
                 />
               </picture> 
               <div className="infoTwo">
@@ -448,7 +447,7 @@ class Home extends Component {
                     <h2>{parse(this.state.res.cardHeadingOne)}</h2>
                     <img
                       src={this.state.res.cardOneImage}
-                      alt={parse(this.state.res.cardHeadingOne)}
+                      alt={this.state.res.cardOneImageAlt}
                       width="50"
                       height="50"
                     ></img>
@@ -465,7 +464,7 @@ class Home extends Component {
                     <h2>{parse(this.state.res.cardHeadingTwo)}</h2>
                     <img
                       src={this.state.res.cardTwoImage}
-                      alt={parse(this.state.res.cardHeadingTwo)}
+                      alt={this.state.res.cardTwoImageAlt}
                       width="50"
                       height="50"
                     ></img>
@@ -482,7 +481,7 @@ class Home extends Component {
                     <h2>{parse(this.state.res.cardHeadingThree)}</h2>
                     <img
                       src={this.state.res.cardThreeImage}
-                      alt={parse(this.state.res.cardHeadingThree)}
+                      alt={this.state.res.cardThreeImageAlt}
                       width="50"
                       height="50"
                     ></img>
@@ -499,7 +498,7 @@ class Home extends Component {
                     <h2>{parse(this.state.res.cardHeadingFour)}</h2>
                     <img
                       src={this.state.res.cardFourImage}
-                      alt={parse(this.state.res.cardHeadingFour)}
+                      alt={this.state.res.cardFourImageAlt}
                       width="50"
                       height="50"
                     ></img>
@@ -518,7 +517,7 @@ class Home extends Component {
                     <h2>{parse(this.state.res.cardHeadingFive)}</h2>
                     <img
                       src={this.state.res.cardFiveImage}
-                      alt={parse(this.state.res.cardHeadingFive)}
+                      alt={this.state.res.cardFiveImageAlt}
                       width="50"
                       height="50"
                     ></img>
@@ -537,7 +536,7 @@ class Home extends Component {
                     <h2>{parse(this.state.res.cardHeadingSix)}</h2>
                     <img
                       src={this.state.res.cardSixImage}
-                      alt={parse(this.state.res.cardHeadingSix)}
+                      alt={this.state.res.cardSixImageAlt}
                       width="50"
                       height="50"
                     ></img>

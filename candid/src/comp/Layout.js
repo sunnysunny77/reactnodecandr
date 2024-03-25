@@ -5,7 +5,7 @@ import Footer from "./Footer";
 
 const Layout = (props) => {
   const [main, setMain] = useState("navRelative");
-  let { phone, hours, days, buttons, footer } = props;
+  let { phone, hours, days, buttons, footer, logoFooter, logoMobile, logoDesktop } = props;
   return (
     <>
       <Nav
@@ -13,6 +13,8 @@ const Layout = (props) => {
         hours={hours}
         days={days}
         buttons={buttons}
+        logoMobile={logoMobile}
+        logoDesktop={logoDesktop}
         main={(param) => setMain(param)}
       />
       <main className={main}>
@@ -24,6 +26,7 @@ const Layout = (props) => {
         hours={hours}
         days={days}
         buttons={buttons}
+        logoFooter={logoFooter}
       />
     </>
   );

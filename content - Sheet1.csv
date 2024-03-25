@@ -37,31 +37,31 @@ Enquiries tag 2 →,Click the querry icon,,Submitt →,SEND
 Heading 2 →,Availability,,Form →,Enquiry
 Availabilty →,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at metus quis metus mattis laoreet pretium eu tellus. Phasellus aliquet interdum orci, nec faucibus magna suscipit vitae. Aliquam egestas neque lectus, quis mattis nibh gravida eget. Nam fermentum mauris ut tempus laoreet. Ut orci turpis, tristique a massa nec, mattis rutrum sem. Aenean a tortor vitae sem consequat mollis ullamcorper ut augue. Sed elit neque, varius in tortor vitae, dictum interdum sem. Nam a gravida justo. Nam eget tellus quis ante vestibulum pulvinar id id lorem. Mauris nibh nisl, dignissim sed sapien in, suscipit aliquet orci. Ut et rutrum odio, ac suscipit metus. Ut feugiat volutpat sollicitudin. Suspendisse pellentesque nulla non tempor  condimentu.",,Card link→,URL
 About:,-,,Select Form→,Select type of cleaning:
-Heading Main →,Summary,,,
-Heading 1 →,From The Supervisor,,,
-Span 1 →,"My name is Naomi, over the last 14 years whilst I have been working within the cleaning industry, I experienced an increased frustration with how often cleaners were not provided with all the necessary procedures, training and realistic time frames to perform their work satisfactorily. Further exasperation watching greed and intense profit not shared with those doing the hard work, the cleaners! Eventually this vexation forced a realisation that I needed to be an independent business owner/operator to ensure the cleaners and clientele are cared for.  <br/><br/> <q>I created a business where the cleaners do benefit from their efforts, financially and personally. A happy cleaner means a happy client. Both are very important to me.</q> <br/><br/> So here I am! <br/><br/> <b>Welcome to CANDID CLEANING!</b>",,,
-Span Read More 1 →,"Candid Cleaning offers work to proven and experienced cleaners located in many metropolitan areas of Perth and we value the support of local community businesses. We also offer training and guidance to all our new and current cleaners to ensure each premise, and the occupants within, receive respect and consideration whist Candid Cleaning work towards maintaining your office and/or your investment. <br /> <br /> One of our priorities at Candid Cleaning is to assist in the elimination of toxic chemicals used in cleaning products and focus on a cleaning solution that is environmentally sound and certified without any harsh toxic chemicals, fumes or fragrances. The products used are designed to reduce cleaning time and get results where other products have failed. <br /> <br /> At Candid Cleaning our cleaners are genuinely happy, they respect the environment and they will look after your workspace as if it were their own.",,,
-Heading 2 →,Inductions,,,
-Span 2 →,Our Cleaners determination is to ensure that the job is done safely and properly every time and that hazards are reported to the management team so that we can all work towards a safe work environment and eliminate risks and hazards in the workplace.,,,
+Heading Main →,Summary,,Images ,Contact: ↓
+Heading 1 →,From The Supervisor,,,https://candid.s3-ap-southeast-2.amazonaws.com/contact.png
+Span 1 →,"My name is Naomi, over the last 14 years whilst I have been working within the cleaning industry, I experienced an increased frustration with how often cleaners were not provided with all the necessary procedures, training and realistic time frames to perform their work satisfactorily. Further exasperation watching greed and intense profit not shared with those doing the hard work, the cleaners! Eventually this vexation forced a realisation that I needed to be an independent business owner/operator to ensure the cleaners and clientele are cared for.  <br/><br/> <q>I created a business where the cleaners do benefit from their efforts, financially and personally. A happy cleaner means a happy client. Both are very important to me.</q> <br/><br/> So here I am! <br/><br/> <b>Welcome to CANDID CLEANING!</b>",https://www.scusd.edu/sites/main/files/main-images/camera_lense_0.jpeg,,About:
+Span Read More 1 →,"Candid Cleaning offers work to proven and experienced cleaners located in many metropolitan areas of Perth and we value the support of local community businesses. We also offer training and guidance to all our new and current cleaners to ensure each premise, and the occupants within, receive respect and consideration whist Candid Cleaning work towards maintaining your office and/or your investment. <br /> <br /> One of our priorities at Candid Cleaning is to assist in the elimination of toxic chemicals used in cleaning products and focus on a cleaning solution that is environmentally sound and certified without any harsh toxic chemicals, fumes or fragrances. The products used are designed to reduce cleaning time and get results where other products have failed. <br /> <br /> At Candid Cleaning our cleaners are genuinely happy, they respect the environment and they will look after your workspace as if it were their own.",,,https://candid.s3-ap-southeast-2.amazonaws.com/about.jpg
+Heading 2 →,Inductions,,,Home:
+Span 2 →,Our Cleaners determination is to ensure that the job is done safely and properly every time and that hazards are reported to the management team so that we can all work towards a safe work environment and eliminate risks and hazards in the workplace.,,Carousel One Mobile,https://candid.s3-ap-southeast-2.amazonaws.com/carouselOneMobile.jpg
 Span   Read More  2→,"
         <ul> 
             <li> Background </li> <li> Environment Management </li> <li> Training </li> <li> Do Not </li> <li> Do </li> <li> Other Information </li> <li> Equal Opportunity </li> <li> &amp; Harassment </li> <li> Basic equipment </li> <li> How to Sheet </li> <li> Safety At Work </li> <li> Law </li> <li> General Duties </li> <li> Consultation </li> <li> Hazard Management </li> <li> Chemicals </li> <li> Task Management </li> <li> Bins </li> <li> Electrical equipment </li> <li> Noise, Eyes Damage, infection </li> <li> &amp; Illness </li> <li> Needle Stick Injuries </li> <li> &amp; Slips, Trips </li> <li> &amp; Falls </li> <li> Working alone </li> <li> Manual Handling </li> <li> Backpack Vacuum Safety </li> <li> Incident/Accident Excuses </li> <li> Injury Management </li> <li> Incident/Injury Reporting </li> <li> Evacuation Procedures </li> <li> Fire Emergencies </li> <li> Equipment </li> <li> &amp; Machinery Checklist </li> <li> Vacuum Maintenance </li> <li> Work Right </li> <li> Operate Right </li> <li> Troubleshooting </li>
         </ul>
-",,,
-Home:,-,,,
-Message 1→,Welcome,,,
-Quote Heading→,Candid Ethos,,,
-Quote →,"I created a business where the cleaners do benefit from their efforts, financially and personally. As a happy cleaner means a happy client.",,,
-Card heading 1 →,Imperative,,,
-Card heading 2 →,Ecology,,,
-Card heading 3 →,Experience,,,
-Card heading 4 →,GECA,,,
-Card heading 5 →,NAC,,,
-Card heading 6 →,Enzymes,,,
-Card 1 →,To assist in the elimination of toxic chemicals. We focus on solutions that are certified and environmentally sound.,,,
-Card 2 →,"No harsh toxic chemicals, fumes or fragrances will be used. As chemicals can potentialy lower the quality of life.",,,
-Card 3 →,We employ proven and experienced cleaners in metropolitan Perth. We also will strive to support local businesses.,,,
-Card 4 →,Good Environmental Choice Australia products are better for the environment reducing any impact on human health.,,,
+",,Carousel One Desktop,https://candid.s3-ap-southeast-2.amazonaws.com/carouselOneDesktop.jpg
+Home:,-,,Carousel Two Mobile,https://candid.s3-ap-southeast-2.amazonaws.com/carouselTwoMobile.jpg
+Message 1→,Welcome,,Carousel Two Desktop,https://candid.s3-ap-southeast-2.amazonaws.com/carouselTwoDesktop.jpg
+Quote Heading→,Candid Ethos,,Quote mobile,https://candid.s3-ap-southeast-2.amazonaws.com/quoteMobile.jpg
+Quote →,"I created a business where the cleaners do benefit from their efforts, financially and personally. As a happy cleaner means a happy client.",,Quote Desktop,https://candid.s3-ap-southeast-2.amazonaws.com/quoteDesktop.jpg
+Card heading 1 →,Imperative,,Card 1 ,https://candid.s3-ap-southeast-2.amazonaws.com/imperative.png
+Card heading 2 →,Ecology,,Card 2 ,https://candid.s3-ap-southeast-2.amazonaws.com/ecology.png
+Card heading 3 →,Experience,,Card 3 ,https://candid.s3-ap-southeast-2.amazonaws.com/experience.png
+Card heading 4 →,GECA,,Card 4 ,https://candid.s3-ap-southeast-2.amazonaws.com/geca.png
+Card heading 5 →,NAC,,Card 5,https://candid.s3-ap-southeast-2.amazonaws.com/nac.png
+Card heading 6 →,Enzymes,,Card 6 ,https://candid.s3-ap-southeast-2.amazonaws.com/enzymes.png
+Card 1 →,To assist in the elimination of toxic chemicals. We focus on solutions that are certified and environmentally sound.,,,Logo:
+Card 2 →,"No harsh toxic chemicals, fumes or fragrances will be used. As chemicals can potentialy lower the quality of life.",,Logo Footer,https://candid.s3-ap-southeast-2.amazonaws.com/logoFooter.png
+Card 3 →,We employ proven and experienced cleaners in metropolitan Perth. We also will strive to support local businesses.,,Logo Mobile,https://candid.s3-ap-southeast-2.amazonaws.com/logoMobile.png
+Card 4 →,Good Environmental Choice Australia products are better for the environment reducing any impact on human health.,,Logo Desktop,https://candid.s3-ap-southeast-2.amazonaws.com/logoDesktop.png
 Card 5 →,We utilise National Asthma Council Australia’s Sensitive Choice™ products. For an allergy conscious solution.,,,
 Card 6 →,"Enzyme Wizard products are safe for humans, animals and plants. Incorporated into water and developed naturaly. ",,,
 URL 4 →,https://geca.eco/,,,

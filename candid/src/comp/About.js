@@ -120,12 +120,12 @@ export default class About extends React.Component {
                     </button>
                   </div>
                   <img id="divider"
-                    src="https://candid.s3-ap-southeast-2.amazonaws.com/breakp.png"
-                    alt="Swirly text divider"
+                    src="https://candid.s3-ap-southeast-2.amazonaws.com/divider.png"
+                    alt="Artisic Divider"
                   />
                   <h3>{parse(this.state.res.headingTwo)}</h3>
                   <div id="picContainer">
-                    <img alt="About" src={this.state.res.image} id="pic"></img>
+                    <img alt={this.state.res.imageAlt} src={this.state.res.image} id="pic"></img>
                   </div>
                   <span id="picSpan">{parse(this.state.res.spanTwo)}</span>
                   <button

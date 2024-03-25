@@ -16,7 +16,7 @@
   .sticky {
     position: sticky;
     height: 200px;
-    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg");
+    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -35,7 +35,7 @@
   .wave {
     opacity: 0.9;
     height: 130px;
-    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/svg.svg");
+    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg");
     animation: wave 15s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
   }
   @keyframes wave {

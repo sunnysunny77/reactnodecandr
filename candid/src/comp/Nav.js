@@ -116,7 +116,7 @@ class Nav extends Component {
     }
   };
   render() {
-    let { phone, hours, days, buttons } = this.props;
+    let { phone, hours, days, buttons, logoMobile, logoDesktop } = this.props;
     return (
       <React.Fragment>
         <div className="burgerMenu"></div>
@@ -173,10 +173,8 @@ class Nav extends Component {
             <li>
               <Link to="/">
                 <img
-                  src="https://candid.s3-ap-southeast-2.amazonaws.com/logos.png"
-                  alt="Candid Icon"
-                  width="60"
-                  height="60"
+                  src={logoDesktop[0]}
+                  alt={logoDesktop[1]}
                 ></img>
               </Link>
             </li>
@@ -185,10 +183,8 @@ class Nav extends Component {
         <header>
           <Link to="/">
             <img
-              src="https://candid.s3.ap-southeast-2.amazonaws.com/logolarge.png"
-              alt="Candid Logo"
-              width="200"
-              height="46"
+              src={logoMobile[0]}
+              alt={logoMobile[1]}
             ></img>
           </Link>
         </header>

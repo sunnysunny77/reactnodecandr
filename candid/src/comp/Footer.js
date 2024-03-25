@@ -5,7 +5,8 @@ import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 
 const Footer = (props) => {
-  let { footer, phone, hours, days, buttons } = props;
+  let { footer, phone, hours, days, buttons, logoFooter } = props;
+  console.log(logoFooter)
   return (
     <footer className={footer}>
       <ul>
@@ -34,8 +35,8 @@ const Footer = (props) => {
         <li className="block" id="imh">
           <Link to="/">
             <img
-              src="https://candid.s3-ap-southeast-2.amazonaws.com/foot.png"
-              alt="Candid Icon"
+              src={logoFooter[0]}
+              alt={logoFooter[1]}
               width="40"
               height="40"
             />

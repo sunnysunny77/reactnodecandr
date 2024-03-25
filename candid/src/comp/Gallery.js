@@ -58,7 +58,7 @@ export default class Galery extends Component {
             </div>
             <section id="galleryCont">
               <div className="sticky"></div>
-              <ImageGallery items={this.state.res.images} />
+              <ImageGallery showThumbnails={false} items={this.state.res.images} />
             </section>
           </React.Fragment>
         )}

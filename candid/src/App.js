@@ -29,6 +29,9 @@ function App() {
     "/blog": [
     ],
   });
+  const [logoFooter, setLogoFooter] = useState(null);
+  const [logoMobile, setLogoMobile] = useState(null);
+  const [logoDesktop, setLogoDesktop] = useState(null);
   useEffect(() => {
     const path = window.location.pathname;
     for (let source of imagesPreLoad[path]) {
@@ -36,9 +39,7 @@ function App() {
       img.src = source;
       imagesPreLoad[path] = [];
       setImagesPreLoad({ ...imagesPreLoad });
-      console.log(source);
     }
-
   }, [imagesPreLoad[window.location.pathname]]);
   useEffect(() => {
     axios
@@ -49,6 +50,9 @@ function App() {
         setDays(res.data.days);
         setButtons(res.data.buttons);
         setImagesPreLoad(res.data.images);
+        setLogoFooter([res.data.images["/"][0], res.data.logoFooterAlt]);
+        setLogoMobile([res.data.images["/"][1], res.data.logoMobileAlt]);
+        setLogoDesktop([res.data.images["/"][2], res.data.logoDesktopAlt]);
         setLoad(false);
       })
       .catch((error) => {
@@ -78,6 +82,9 @@ function App() {
               days={days}
               buttons={buttons}
               footer={footer}
+              logoFooter={logoFooter}
+              logoMobile={logoMobile}
+              logoDesktop={logoDesktop}
             />
           }
         >

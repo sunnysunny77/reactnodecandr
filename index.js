@@ -65,6 +65,14 @@ let parsedDataVideo;
 let parsedDataVideoImages;
 let buttons;
 
+function baseName(param) { 
+  return param.split("/")
+  .pop()
+  .split(".")
+  .slice(0, -1)
+  .join(".");
+ }
+
 function video() {
   axios
     .get(
@@ -136,20 +144,7 @@ function gallery() {
         for (let i = 1; i <= l; i++) {
           parsedDataArray[0].push({
             original: parsedDataInital.data[i][0],
-            thumbnail: parsedDataInital.data[i][0],
-            originalAlt: parsedDataInital.data[i][0]
-              .split("/")
-              .pop()
-              .split(".")
-              .slice(0, -1)
-              .join("."),
-            thumbnailAlt:
-              parsedDataInital.data[i][0]
-                .split("/")
-                .pop()
-                .split(".")
-                .slice(0, -1)
-                .join(".") + ":Thumbnail",
+            originalAlt: baseName(parsedDataInital.data[i][0]),
           });
           parsedDataArray[1].push(
             parsedDataInital.data[i][0]
@@ -261,6 +256,9 @@ app.post("/api-init", function (req, res) {
   if (parsedDataContent !== undefined && buttons !== undefined && parsedDataVideoImages !== undefined && parsedDataGalleryImages !== undefined)  {
     let images = { 
         "/": [
+        parsedDataContent.data[31][4],
+        parsedDataContent.data[33][4],
+        parsedDataContent.data[32][4],
         parsedDataContent.data[18][4],
         parsedDataContent.data[19][4],
         parsedDataContent.data[20][4],
@@ -274,39 +272,35 @@ app.post("/api-init", function (req, res) {
         parsedDataContent.data[28][4],
         parsedDataContent.data[29][4],
         "https://candid.s3-ap-southeast-2.amazonaws.com/welcome.png",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/foot.png",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/logolarge.png",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/logos.png",
       ],
       "/about": [
+        parsedDataContent.data[31][4],
+        parsedDataContent.data[33][4],
+        parsedDataContent.data[32][4],
         parsedDataContent.data[16][4],
-        "https://candid.s3-ap-southeast-2.amazonaws.com/breakp.png",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/svg.svg",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/foot.png",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/logolarge.png",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/logos.png",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/divider.png",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
       ],
       "/gallery": [
-        "https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/foot.png",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/logolarge.png",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/logos.png",
+        parsedDataContent.data[31][4],
+        parsedDataContent.data[33][4],
+        parsedDataContent.data[32][4],
+        "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
       ],
       "/contact": [
+        parsedDataContent.data[31][4],
+        parsedDataContent.data[33][4],
+        parsedDataContent.data[32][4],
         parsedDataContent.data[14][4],
-        "https://candid.s3-ap-southeast-2.amazonaws.com/svg.svg",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/foot.png",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/logolarge.png",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/logos.png",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg",
+        "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
       ],
       "/blog": [
-        "https://candid.s3-ap-southeast-2.amazonaws.com/ikon.jpg",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/svg0.svg",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/foot.png",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/logolarge.png",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/logos.png",
+        parsedDataContent.data[31][4],
+        parsedDataContent.data[33][4],
+        parsedDataContent.data[32][4],
+        "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
       ],
     };
     parsedDataVideoImages.forEach(element => {
@@ -320,6 +314,9 @@ app.post("/api-init", function (req, res) {
       hours: parsedDataContent.data[1][1],
       days: parsedDataContent.data[2][1],
       buttons: [buttons[0], buttons[1], buttons[2], buttons[3]],
+      logoFooterAlt: baseName(parsedDataContent.data[31][4]),
+      logoMobileAlt: baseName(parsedDataContent.data[33][4]), 
+      logoDesktopAlt: baseName(parsedDataContent.data[32][4]), 
       images: images,
     });
   } else {
@@ -367,8 +364,19 @@ app.post("/api-home", function (req, res) {
       cardFourImage: parsedDataContent.data[27][4],
       cardFiveImage: parsedDataContent.data[28][4],
       cardSixImage: parsedDataContent.data[29][4],
+      carouselOneAlt: baseName(parsedDataContent.data[19][4]),
+      carouselTwoAlt: baseName(parsedDataContent.data[21][4]),
+      quoteAlt: baseName(parsedDataContent.data[23][4]), 
+      cardOneImageAlt: baseName(parsedDataContent.data[24][4]), 
+      cardTwoImageAlt: baseName(parsedDataContent.data[25][4]),  
+      cardThreeImageAlt: baseName(parsedDataContent.data[26][4]),  
+      cardFourImageAlt: baseName(parsedDataContent.data[27][4]),  
+      cardFiveImageAlt: baseName(parsedDataContent.data[28][4]), 
+      cardSixImageAlt: baseName(parsedDataContent.data[29][4]),  
+
       buttons: [buttons[10], buttons[9], buttons[8], buttons[11]],
       video: parsedDataVideo,
+     
     });
   } else {
     return res.sendStatus(500);
@@ -396,6 +404,7 @@ app.post("/api-contact", function (req, res) {
       headingTwo: parsedDataContent.data[10][1],
       availability: parsedDataContent.data[11][1],
       image: parsedDataContent.data[14][4],
+      imageAlt: baseName(parsedDataContent.data[14][4]), 
       buttons: [buttons[2]],
     });
   } else {
@@ -420,6 +429,7 @@ app.post("/api-about", function (req, res) {
         spanTwo: parsedDataContent.data[18][1],
         spanReadMoreTwo: parsedDataContent.data[19][1],
         image: parsedDataContent.data[16][4],
+        imageAlt: baseName(parsedDataContent.data[16][4]),  
         buttons: [buttons[3], buttons[4], buttons[5]],
       },
       b: {
