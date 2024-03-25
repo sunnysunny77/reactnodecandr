@@ -416,6 +416,7 @@ class Home extends Component {
                 />
                 <img
                   src={this.state.res.quoteDesktop}
+                  alt="Quote information image"
                 />
               </picture> 
               <div className="infoTwo">

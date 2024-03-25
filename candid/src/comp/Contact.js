@@ -59,7 +59,7 @@ export default class Contactc extends Component {
               <h1>{parse(this.state.res.buttons[0])}</h1>
             </div>
             <section className="contactContOne">
-              <img src={this.state.res.image} className="contactOne"></img>
+              <img alt="Contact" src={this.state.res.image} className="contactOne"></img>
               <div className="contactTwo">
                 <h2>
                   {parse(this.state.res.headingOne)}

@@ -125,7 +125,7 @@ export default class About extends React.Component {
                   />
                   <h3>{parse(this.state.res.headingTwo)}</h3>
                   <div id="picContainer">
-                    <img src={this.state.res.image} id="pic"></img>
+                    <img alt="About" src={this.state.res.image} id="pic"></img>
                   </div>
                   <span id="picSpan">{parse(this.state.res.spanTwo)}</span>
                   <button
