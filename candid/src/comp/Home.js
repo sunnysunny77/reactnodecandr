@@ -367,6 +367,7 @@ class Home extends Component {
                   />
                   <img
                     src={this.state.res.carouselOneDesktop}
+                    alt="Carousel one"
                   />
                 </picture>
               </div>
@@ -378,6 +379,7 @@ class Home extends Component {
                   />
                   <img
                      src={this.state.res.carouselTwoDesktop}
+                     alt="Carousel two"
                   />
                 </picture>
               </div>
