@@ -119,13 +119,13 @@ export default class About extends React.Component {
                       {parse(this.state.res.buttons[2])}
                     </button>
                   </div>
-                  <img
+                  <img id="divider"
                     src="https://candid.s3-ap-southeast-2.amazonaws.com/breakp.png"
                     alt="Swirly text divider"
                   />
                   <h3>{parse(this.state.res.headingTwo)}</h3>
                   <div id="picContainer">
-                    <span id="pic"></span>
+                    <img src={this.state.res.image} id="pic"></img>
                   </div>
                   <span id="picSpan">{parse(this.state.res.spanTwo)}</span>
                   <button

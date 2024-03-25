@@ -362,28 +362,22 @@ class Home extends Component {
               <div>
                 <picture>
                   <source
-                    media="(min-width:1199px)"
-                    srcSet="https://candid.s3-ap-southeast-2.amazonaws.com/wel1.jpg"
+                    media="(max-width: 1200px)"
+                    srcSet={this.state.res.carouselOneMobile}
                   />
                   <img
-                    src="https://candid.s3-ap-southeast-2.amazonaws.com/wel1m.jpg"
-                    width="992"
-                    height="401"
-                    alt="Slider 1"
+                    src={this.state.res.carouselOneDesktop}
                   />
                 </picture>
               </div>
               <div>
                 <picture>
                   <source
-                    media="(min-width:1199px)"
-                    srcSet="https://candid.s3-ap-southeast-2.amazonaws.com/wel2.jpg"
+                    media="(max-width: 1200px)"
+                    srcSet={this.state.res.carouselTwoMobile}
                   />
                   <img
-                    src="https://candid.s3-ap-southeast-2.amazonaws.com/wel2m.jpg"
-                    width="992"
-                    height="401"
-                    alt="Slider 2"
+                     src={this.state.res.carouselTwoDesktop}
                   />
                 </picture>
               </div>
@@ -413,7 +407,15 @@ class Home extends Component {
               </svg>
             </section>
             <section className="info">
-              <div className="infoOne"></div>
+              <picture className="infoOne">
+                <source
+                  media="(max-width:992px)"
+                  srcSet={this.state.res.quoteMobile}
+                />
+                <img
+                  src={this.state.res.quoteDesktop}
+                />
+              </picture> 
               <div className="infoTwo">
                 <h1>
                   {parse(this.state.res.quoteHeading)}
@@ -442,7 +444,7 @@ class Home extends Component {
                   <span>
                     <h2>{parse(this.state.res.cardHeadingOne)}</h2>
                     <img
-                      src="https://candid.s3-ap-southeast-2.amazonaws.com/card1.png"
+                      src={this.state.res.cardOneImage}
                       alt={parse(this.state.res.cardHeadingOne)}
                       width="50"
                       height="50"
@@ -459,7 +461,7 @@ class Home extends Component {
                   <span>
                     <h2>{parse(this.state.res.cardHeadingTwo)}</h2>
                     <img
-                      src="https://candid.s3-ap-southeast-2.amazonaws.com/card2.png"
+                      src={this.state.res.cardTwoImage}
                       alt={parse(this.state.res.cardHeadingTwo)}
                       width="50"
                       height="50"
@@ -476,7 +478,7 @@ class Home extends Component {
                   <span>
                     <h2>{parse(this.state.res.cardHeadingThree)}</h2>
                     <img
-                      src="https://candid.s3-ap-southeast-2.amazonaws.com/card3.png"
+                      src={this.state.res.cardThreeImage}
                       alt={parse(this.state.res.cardHeadingThree)}
                       width="50"
                       height="50"
@@ -493,7 +495,7 @@ class Home extends Component {
                   <span>
                     <h2>{parse(this.state.res.cardHeadingFour)}</h2>
                     <img
-                      src="https://candid.s3-ap-southeast-2.amazonaws.com/card4.png"
+                      src={this.state.res.cardFourImage}
                       alt={parse(this.state.res.cardHeadingFour)}
                       width="50"
                       height="50"
@@ -512,7 +514,7 @@ class Home extends Component {
                   <span>
                     <h2>{parse(this.state.res.cardHeadingFive)}</h2>
                     <img
-                      src="https://candid.s3-ap-southeast-2.amazonaws.com/card5.png"
+                      src={this.state.res.cardFiveImage}
                       alt={parse(this.state.res.cardHeadingFive)}
                       width="50"
                       height="50"
@@ -531,7 +533,7 @@ class Home extends Component {
                   <span>
                     <h2>{parse(this.state.res.cardHeadingSix)}</h2>
                     <img
-                      src="https://candid.s3-ap-southeast-2.amazonaws.com/card6.png"
+                      src={this.state.res.cardSixImage}
                       alt={parse(this.state.res.cardHeadingSix)}
                       width="50"
                       height="50"

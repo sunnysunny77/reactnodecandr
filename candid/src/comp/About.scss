@@ -107,7 +107,7 @@
   span {
     display: inline-block;
   }
-  img {
+  #divider {
     width: 25%;
     display: block;
     margin: 8% auto;
@@ -138,13 +138,11 @@
     #pic {
       position: absolute;
       top: 1px;
-      right: 1px;
-      bottom: 1px;
       left: 1px;
-      background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/about.jpg");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
+      width: calc(100% - 2px);
+      height: calc(100% - 2px);
+      object-position: center;
+      object-fit: cover;
       filter: grayscale(100%);
       clip-path: inset(10px 10px 25px round 25px 0);
     }

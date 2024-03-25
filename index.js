@@ -277,6 +277,18 @@ app.post("/api-home", function (req, res) {
       urlSix: parsedDataContent.data[38][1],
       options: parsedDataForm,
       svg: parsedDataContent.data[1][2],
+      carouselOneMobile: parsedDataContent.data[18][4],
+      carouselOneDesktop: parsedDataContent.data[19][4],
+      carouselTwoMobile: parsedDataContent.data[20][4],
+      carouselTwoDesktop: parsedDataContent.data[21][4],
+      quoteMobile: parsedDataContent.data[22][4],
+      quoteDesktop: parsedDataContent.data[23][4],
+      cardOneImage: parsedDataContent.data[24][4],
+      cardTwoImage: parsedDataContent.data[25][4],
+      cardThreeImage: parsedDataContent.data[26][4],
+      cardFourImage: parsedDataContent.data[27][4],
+      cardFiveImage: parsedDataContent.data[28][4],
+      cardSixImage: parsedDataContent.data[29][4],
       buttons: [buttons[10], buttons[9], buttons[8], buttons[11]],
       video: parsedDataVideo,
     });
@@ -305,6 +317,7 @@ app.post("/api-contact", function (req, res) {
       enquiriesTagTwo: parsedDataContent.data[9][1],
       headingTwo: parsedDataContent.data[10][1],
       availability: parsedDataContent.data[11][1],
+      image: parsedDataContent.data[14][4],
       buttons: [buttons[2]],
     });
   } else {
@@ -328,6 +341,7 @@ app.post("/api-about", function (req, res) {
         headingTwo: parsedDataContent.data[17][1],
         spanTwo: parsedDataContent.data[18][1],
         spanReadMoreTwo: parsedDataContent.data[19][1],
+        image: parsedDataContent.data[16][4],
         buttons: [buttons[3], buttons[4], buttons[5]],
       },
       b: {

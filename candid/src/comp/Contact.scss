@@ -6,18 +6,17 @@
   width: 100%;
   .contactOne {
     float: left;
-    background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/cont.png");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 8%;
-    width: 8%;
+    object-position: center;
+    object-fit: cover;
+    width: 25%;
     margin-left: 4%;
     filter: grayscale(75%);
+    clip-path: circle(40%);
     @media only screen and (max-width: 640px) {
       float: none;
+      display: block;
       margin: 10% auto;
-      padding: 85px;
+      min-width: 200px;
     }
   }
   .contactTwo {
