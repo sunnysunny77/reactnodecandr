@@ -12,12 +12,10 @@ const Footer = (props) => {
       <ul>
         <li className="block none">
           <Link to="/">
-            <span id="hl3" className="hiddenText">
+            <span className="hiddenText">
               Homepage Link
             </span>
-            <HomeIcon aria-labelledby="hl3" role="link">
-              Home
-            </HomeIcon>
+            <HomeIcon />
           </Link>
         </li>
         <li className="none">
@@ -32,13 +30,11 @@ const Footer = (props) => {
         <li className="none">
           <Link to="/contact">{parse(buttons[2])}</Link>
         </li>
-        <li className="block" id="imh">
+        <li className="block" id="logoFooter">
           <Link to="/">
             <img
               src={logoFooter[0]}
               alt={logoFooter[1]}
-              width="40"
-              height="40"
             />
           </Link>
         </li>

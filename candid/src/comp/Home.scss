@@ -147,7 +147,7 @@
   margin: auto;
   width: 100%;
   position: relative;
-  top: -105px;
+  top: -125px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -170,8 +170,8 @@
     flex-direction: column;
     width: 33%;
     align-items: center;
-    max-width: 300px;
-    margin: 0 5%;
+    max-width: 375px;
+    margin: 0 3.3%;
     @media only screen and (max-width: 640px) {
       width: 42.5%;
       margin: 0 2.5%;
@@ -227,7 +227,7 @@
     display: flex;
   }
   #left {
-    left: calc(52.5% - 600px);
+    left: calc(50% - 600px);
     @media only screen and (max-width: 1200px) {
       left: 1%;
     }
@@ -236,7 +236,7 @@
     }
   }
   #right {
-    right: calc(52.5% - 600px);
+    right: calc(50% - 600px);
     @media only screen and (max-width: 1200px) {
       right: 1%;
     }
@@ -410,6 +410,10 @@
   }
   .cardTwo {
     align-self: flex-end;
+    img {
+      width: 50px;
+      height: 50px;
+    }
   }
 }
 

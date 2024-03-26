@@ -131,12 +131,10 @@ class Nav extends Component {
             <hr></hr>
             <li>
               <Link to="/">
-                <HomeIcon aria-labelledby="hl1" role="link">
-                  Home
-                </HomeIcon>
-                <span id="hl1" className="hiddenText">
+                <span className="hiddenText">
                   Homepage Link
                 </span>
+                <HomeIcon /> 
               </Link>
             </li>
             <li>
@@ -216,12 +214,10 @@ class Nav extends Component {
             </li>
             <li>
               <Link to="/">
-                <HomeIcon aria-labelledby="hl2" role="link">
-                  Home
-                </HomeIcon>
-                <span id="hl2" className="hiddenText">
+                <span className="hiddenText">
                   Homepage Link
                 </span>
+                <HomeIcon />
               </Link>
             </li>
           </ul>

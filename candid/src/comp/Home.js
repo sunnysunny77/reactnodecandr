@@ -141,8 +141,6 @@ class Home extends Component {
                 className="videoImg"
                 src={key[0]}
                 alt={key[2]}
-                width="275"
-                height="275"
               />
             </div>
             <div className={d + " d" + [index + 1]}>
@@ -155,8 +153,6 @@ class Home extends Component {
                 className="videoImg"
                 src={key[3]}
                 alt={key[5]}
-                width="275"
-                height="275"
               />
             </div>
           </React.Fragment>
@@ -448,8 +444,6 @@ class Home extends Component {
                     <img
                       src={this.state.res.cardOneImage}
                       alt={this.state.res.cardOneImageAlt}
-                      width="50"
-                      height="50"
                     ></img>
                   </span>
                 </div>
@@ -465,8 +459,6 @@ class Home extends Component {
                     <img
                       src={this.state.res.cardTwoImage}
                       alt={this.state.res.cardTwoImageAlt}
-                      width="50"
-                      height="50"
                     ></img>
                   </span>
                 </div>
@@ -482,8 +474,6 @@ class Home extends Component {
                     <img
                       src={this.state.res.cardThreeImage}
                       alt={this.state.res.cardThreeImageAlt}
-                      width="50"
-                      height="50"
                     ></img>
                   </span>
                 </div>
@@ -499,8 +489,6 @@ class Home extends Component {
                     <img
                       src={this.state.res.cardFourImage}
                       alt={this.state.res.cardFourImageAlt}
-                      width="50"
-                      height="50"
                     ></img>
                   </span>
                 </div>
@@ -518,8 +506,6 @@ class Home extends Component {
                     <img
                       src={this.state.res.cardFiveImage}
                       alt={this.state.res.cardFiveImageAlt}
-                      width="50"
-                      height="50"
                     ></img>
                   </span>
                 </div>
@@ -537,8 +523,6 @@ class Home extends Component {
                     <img
                       src={this.state.res.cardSixImage}
                       alt={this.state.res.cardSixImageAlt}
-                      width="50"
-                      height="50"
                     ></img>
                   </span>
                 </div>
