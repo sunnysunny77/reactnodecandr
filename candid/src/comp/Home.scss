@@ -181,7 +181,7 @@
     width: 100%;
     border-bottom-left-radius: 3.75px;
     border-bottom-right-radius: 3.75px;
-    box-shadow: 0 0 1.5px $c1;
+    box-shadow: 0 0 1px $c1;
     height: inherit;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -199,6 +199,7 @@
     align-items: center;
     flex-wrap: wrap;
     background-color: $c11;
+    box-shadow: 0 0 1px $c1;
     border-top-left-radius: 3.75px;
     border-top-right-radius: 3.75px;
     z-index: 990;
