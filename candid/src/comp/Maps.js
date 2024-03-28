@@ -49,9 +49,7 @@ export default class Maps extends Component {
       <MapGL
         style={{ width: "100%", height: "300px" }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
-        accessToken={
-          "pk.eyJ1Ijoic3N1bm55Nzc3IiwiYSI6ImNramU4cDlmYzAzbjEyc2xvYTR0ajhiMzcifQ.uHe7M4xAJcfbi5UfZdU6gQ"
-        }
+        accessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         latitude={this.state.viewport.latitude}
         longitude={this.state.viewport.longitude}
         zoom={this.state.viewport.zoom}
