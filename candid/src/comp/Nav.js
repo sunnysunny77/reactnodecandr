@@ -116,7 +116,7 @@ class Nav extends Component {
     }
   };
   render() {
-    let { phone, hours, days, buttons, logoMobile, logoDesktop } = this.props;
+    let { phone, hours, days, navigation, logoMobile, logoDesktop } = this.props;
     return (
       <React.Fragment>
         <div className="burgerMenu"></div>
@@ -138,16 +138,16 @@ class Nav extends Component {
               </Link>
             </li>
             <li>
-              <Link to="/blog">{parse(buttons[0])}</Link>
+              <Link to="/blog">{parse(navigation[0])}</Link>
             </li>
             <li>
-              <Link to="/gallery">{parse(buttons[1])}</Link>
+              <Link to="/gallery">{parse(navigation[1])}</Link>
             </li>
             <li>
-              <Link to="/about">{parse(buttons[3])}</Link>
+              <Link to="/about">{parse(navigation[2])}</Link>
             </li>
             <li>
-              <Link to="/contact">{parse(buttons[2])}</Link>
+              <Link to="/contact">{parse(navigation[3])}</Link>
             </li>
             <hr></hr>
           </ul>
@@ -171,8 +171,8 @@ class Nav extends Component {
             <li>
               <Link to="/">
                 <img
-                  src={logoDesktop[0]}
-                  alt={logoDesktop[1]}
+                  src={logoMobile[0]}
+                  alt={logoMobile[1]}
                 ></img>
               </Link>
             </li>
@@ -181,24 +181,24 @@ class Nav extends Component {
         <header>
           <Link to="/">
             <img
-              src={logoMobile[0]}
-              alt={logoMobile[1]}
+              src={logoDesktop[0]}
+              alt={logoDesktop[1]}
             ></img>
           </Link>
         </header>
         <nav className={`mainNav ${this.state.class}`}>
           <ul>
             <li>
-              <Link to="/blog">{parse(buttons[0])}</Link>
+              <Link to="/blog">{parse(navigation[0])}</Link>
             </li>
             <li>
-              <Link to="/gallery">{parse(buttons[1])}</Link>
+              <Link to="/gallery">{parse(navigation[1])}</Link>
             </li>
             <li>
-              <Link to="/about">{parse(buttons[3])}</Link>
+              <Link to="/about">{parse(navigation[2])}</Link>
             </li>
             <li>
-              <Link to="/contact">{parse(buttons[2])}</Link>
+              <Link to="/contact">{parse(navigation[3])}</Link>
             </li>
           </ul>
           <ul>

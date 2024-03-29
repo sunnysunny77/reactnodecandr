@@ -11,9 +11,9 @@ export default class About extends React.Component {
     super(props);
     this.state = {
       window: window.scrollTo(0, 0),
+      navigation: props.navigation,
       res: {},
       map: null,
-      mapNames: null,
       load: true,
     };
     this.props.footer("loading");
@@ -23,9 +23,8 @@ export default class About extends React.Component {
       .post(`/api-about`)
       .then((res) => {
         this.setState({
-          res: res.data.a,
-          mapNames: res.data.b.mapNames,
-          map: <Maps data={res.data.b.data} />,
+          res: res.data.A,
+          map: <Maps data={res.data.B.Data} />,
           load: false,
         });
         this.props.footer("load");
@@ -59,8 +58,8 @@ export default class About extends React.Component {
     }
   };
   handleHeight = () => {
-    this.height(document.querySelector("#readMoreOne"));
-    this.height(document.querySelector("#readMoreTwo"));
+    this.height(document.querySelector("#moreOne"));
+    this.height(document.querySelector("#moreTwo"));
   };
   render() {
     return (
@@ -75,79 +74,78 @@ export default class About extends React.Component {
           <React.Fragment>
             {this.state.window}
             <div className="headingCont">
-              <h1>{parse(this.state.res.buttons[0])}</h1>
+              <h1> {parse(this.state.navigation)} </h1>
             </div>
             <section className="aboutContOne">
               <div className="grid">
                 <h2>
-                  {parse(this.state.res.headingMap)}
+                  {parse(this.state.res.Heading_One)}
                   <ListAltIcon />
                 </h2>
-                <p>{parse(this.state.mapNames)}</p>
+                <p>{parse(this.state.res.Map_Names)}</p>
                 <hr />
               </div>
               <div className="grid"> {this.state.map} </div>
             </section>
             <section className="aboutContTwo">
               <h2>
-                {parse(this.state.res.headingMain)}
+                {parse(this.state.res.Heading_Two)}
                 <ListAltIcon />
               </h2>
               <hr />
               <Wave>
                 <div className="prop">
-                  <h3>{parse(this.state.res.headingOne)}</h3>
-                  <span id="topSpan">{parse(this.state.res.spanOne)}</span>
+                  <h3>{parse(this.state.res.Heading_Three)}</h3>
+                  <span id="spanOne">{parse(this.state.res.Span_One)}</span>
                   <button
                     onClick={() => {
-                      const obj = document.querySelector("#readMoreOne");
+                      const obj = document.querySelector("#moreOne");
                       obj.style.maxHeight = obj.scrollHeight + "px";
                     }}
                   >
-                    {parse(this.state.res.buttons[1])}
+                    {parse(this.state.res.More_Button)}
                   </button>
-                  <div id="readMoreOne">
+                  <div id="moreOne">
                     <hr />
-                    <span>{parse(this.state.res.spanReadMoreOne)}</span>
+                    <span>{parse(this.state.res.Span_One_More)}</span>
                     <button
                       onClick={() => {
-                        const obj = document.querySelector("#readMoreOne");
+                        const obj = document.querySelector("#moreOne");
                         obj.style.maxHeight = "0";
                         obj.style.transition = "max-height 1s";
                       }}
                     >
-                      {parse(this.state.res.buttons[2])}
+                      {parse(this.state.res.More_Close_Button)}
                     </button>
                   </div>
                   <img id="divider"
                     src="https://candid.s3-ap-southeast-2.amazonaws.com/divider.png"
                     alt="Artisic Divider"
                   />
-                  <h3>{parse(this.state.res.headingTwo)}</h3>
-                  <div id="picContainer">
-                    <img alt={this.state.res.imageAlt} src={this.state.res.image} id="pic"></img>
+                  <h3>{parse(this.state.res.Heading_Four)}</h3>
+                  <div id="imageContainer">
+                    <img alt={this.state.res.Image_Alt} src={this.state.res.Image} ></img>
                   </div>
-                  <span id="picSpan">{parse(this.state.res.spanTwo)}</span>
+                  <span id="spanTwo">{parse(this.state.res.Span_Two)}</span>
                   <button
-                    className="btn"
                     onClick={() => {
-                      const obj = document.querySelector("#readMoreTwo");
+                      const obj = document.querySelector("#moreTwo");
                       obj.style.maxHeight = obj.scrollHeight + "px";
                     }}
                   >
-                    {parse(this.state.res.buttons[1])}
+                    {parse(this.state.res.More_Button)}
                   </button>
-                  <div id="readMoreTwo">
+                  <div id="moreTwo">
                     <hr />
-                    <span>{parse(this.state.res.spanReadMoreTwo)}</span>
+                    <span>{parse(this.state.res.Span_Two_More)}</span>
                     <button
                       onClick={() => {
-                        const obj = document.querySelector("#readMoreTwo");
+                        const obj = document.querySelector("#moreTwo");
                         obj.style.maxHeight = "0";
                         obj.style.transition = "max-height 1s";
                       }}
                     >
-                      {parse(this.state.res.buttons[2])}
+                      {parse(this.state.res.More_Close_Button)}
                     </button>
                   </div>
                 </div>

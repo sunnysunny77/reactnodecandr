@@ -26,7 +26,7 @@ import Select from "react-select";
 import parse from "html-react-parser";
 
 const customStyles = {
-  menu: (provided, state) => ({
+  menu: (provided) => ({
     ...provided,
     borderRadius: "0",
     backgroundColor: styles.c11,
@@ -34,7 +34,7 @@ const customStyles = {
     width: "calc(100% - 50px)",
     maxWidth: "261.11px",
   }),
-  option: (provided, state) => ({
+  option: () => ({
     color: styles.c13,
     fontSize: "medium",
     height: "40px",
@@ -44,7 +44,7 @@ const customStyles = {
     justifyContent: "center",
     alignItems: "center",
   }),
-  control: (provided, state) => ({
+  control: (provided) => ({
     ...provided,
     maxWidth: "261.11px",
     backgroundColor: styles.c11,
@@ -53,7 +53,7 @@ const customStyles = {
     boxShadow: "none",
     margin: "auto 25px 140px 25px",
   }),
-  dropdownIndicator: (provided, state) => ({
+  dropdownIndicator: (provided) => ({
     ...provided,
     color: styles.c13,
     "&:hover": {
@@ -105,7 +105,7 @@ class Home extends Component {
           load: false,
         });
         this.props.footer("load");
-        this.mapVideo(res.data.video);
+        this.mapVideo(res.data.Video);
       })
       .catch((error) => {
         alert(error);
@@ -132,7 +132,6 @@ class Home extends Component {
         return (
           <React.Fragment key={index}>
             <div className={d + " d" + [index + 1]}>
-              <link rel="preload" href={key[0]} as="image" />
               <span className="videoLink" onClick={() => this.overlay(idOne)}>
                 {key[2]}
                 <PlayCircleOutlineIcon />
@@ -144,7 +143,6 @@ class Home extends Component {
               />
             </div>
             <div className={d + " d" + [index + 1]}>
-              <link rel="preload" href={key[3]} as="image" />
               <span className="videoLink" onClick={() => this.overlay(idTwo)}>
                 {key[5]}
                 <PlayCircleOutlineIcon />
@@ -223,7 +221,7 @@ class Home extends Component {
     const removeCount = document.querySelectorAll(".d" + count);
     const newCount = this.state.count + index;
     const addNewCount = document.querySelectorAll(".d" + newCount);
-    if (newCount > 0 && newCount <= this.state.res.video.length) {
+    if (newCount > 0 && newCount <= this.state.res.Video.length) {
       [...removeCount].forEach((item) => {
         item.classList.remove("flex");
       });
@@ -243,7 +241,7 @@ class Home extends Component {
   vidToggle = () => {
     const count = this.state.count;
     const removeCount = document.querySelectorAll(".d" + count);
-    if (count < this.state.res.video.length) {
+    if (count < this.state.res.Video.length) {
       [...removeCount].forEach((item) => {
         item.classList.remove("flex");
       });
@@ -347,9 +345,9 @@ class Home extends Component {
             {this.state.window}
             <section className="welcome">
               <div id="welcomeOne">
-                <div id="my-svg">{parse(this.state.res.svg)}</div>
+                <div id="my-svg">{parse(this.state.res.Home_Svg)}</div>
                 &nbsp;
-                {parse(this.state.res.message)}
+                {parse(this.state.res.Message)}
               </div>
               <div id="welcomeTwo" onClick={this.scrollIntoView}></div>
             </section>
@@ -358,11 +356,11 @@ class Home extends Component {
                 <picture>
                   <source
                     media="(max-width: 1200px)"
-                    srcSet={this.state.res.carouselOneMobile}
+                    srcSet={this.state.res.Carousel_One_Mobile}
                   />
                   <img
-                    src={this.state.res.carouselOneDesktop}
-                    alt={this.state.res.carouselOneAlt}
+                    src={this.state.res.Carousel_One_Desktop}
+                    alt={this.state.res.Carousel_One_Alt}
                   />
                 </picture>
               </div>
@@ -370,11 +368,11 @@ class Home extends Component {
                 <picture>
                   <source
                     media="(max-width: 1200px)"
-                    srcSet={this.state.res.carouselTwoMobile}
+                    srcSet={this.state.res.Carousel_Two_Mobile}
                   />
                   <img
-                     src={this.state.res.carouselTwoDesktop}
-                     alt={this.state.res.carouselTwoAlt}
+                     src={this.state.res.Carousel_Two_Desktop}
+                     alt={this.state.res.Carousel_Two_Alt}
                   />
                 </picture>
               </div>
@@ -407,16 +405,16 @@ class Home extends Component {
               <picture className="infoOne">
                 <source
                   media="(max-width:992px)"
-                  srcSet={this.state.res.quoteMobile}
+                  srcSet={this.state.res.Quote_Mobile}
                 />
                 <img
-                  src={this.state.res.quoteDesktop}
-                  alt={this.state.res.quoteAlt}
+                  src={this.state.res.Quote_Desktop}
+                  alt={this.state.res.Quote_Alt}
                 />
               </picture> 
               <div className="infoTwo">
                 <h1>
-                  {parse(this.state.res.quoteHeading)}
+                  {parse(this.state.res.Quote_Heading)}
                   <InfoIcon />
                 </h1>
                 <hr
@@ -426,7 +424,7 @@ class Home extends Component {
                   }}
                 />
                 <p>
-                  <q>{parse(this.state.res.quote)}</q>
+                  <q>{parse(this.state.res.Quote)}</q>
                 </p>
                 <hr
                   style={{
@@ -440,103 +438,103 @@ class Home extends Component {
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h2>{parse(this.state.res.cardHeadingOne)}</h2>
+                    <h2>{parse(this.state.res.Card_Heading_One)}</h2>
                     <img
-                      src={this.state.res.cardOneImage}
-                      alt={this.state.res.cardOneImageAlt}
+                      src={this.state.res.Card_One_Image}
+                      alt={this.state.res.Card_One_Image_Alt}
                     ></img>
                   </span>
                 </div>
                 <hr />
-                <p>{parse(this.state.res.cardOne)}</p>
+                <p>{parse(this.state.res.Card_One)}</p>
                 <StarBorderIcon />
                 <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h2>{parse(this.state.res.cardHeadingTwo)}</h2>
+                    <h2>{parse(this.state.res.Card_Heading_Two)}</h2>
                     <img
-                      src={this.state.res.cardTwoImage}
-                      alt={this.state.res.cardTwoImageAlt}
+                      src={this.state.res.Card_Two_Image}
+                      alt={this.state.res.Card_Two_Image_Alt}
                     ></img>
                   </span>
                 </div>
                 <hr />
-                <p>{parse(this.state.res.cardTwo)}</p>
+                <p>{parse(this.state.res.Card_Two)}</p>
                 <WhatshotIcon />
                 <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h2>{parse(this.state.res.cardHeadingThree)}</h2>
+                    <h2>{parse(this.state.res.Card_Heading_Three)}</h2>
                     <img
-                      src={this.state.res.cardThreeImage}
-                      alt={this.state.res.cardThreeImageAlt}
+                      src={this.state.res.Card_Three_Image}
+                      alt={this.state.res.Card_Three_Image_Alt}
                     ></img>
                   </span>
                 </div>
                 <hr />
-                <p>{parse(this.state.res.cardThree)}</p>
+                <p>{parse(this.state.res.Card_Three)}</p>
                 <BuildIcon />
                 <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h2>{parse(this.state.res.cardHeadingFour)}</h2>
+                    <h2>{parse(this.state.res.Card_Heading_Four)}</h2>
                     <img
-                      src={this.state.res.cardFourImage}
-                      alt={this.state.res.cardFourImageAlt}
+                      src={this.state.res.Card_Four_Image}
+                      alt={this.state.res.Card_Four_Image_Alt}
                     ></img>
                   </span>
                 </div>
                 <hr />
-                <p>{parse(this.state.res.cardFour)}</p>
-                <a target="4" href={this.state.res.urlFour}>
-                  {parse(this.state.res.buttons[0])}
+                <p>{parse(this.state.res.Card_Four)}</p>
+                <a target="4" href={this.state.res.Url_One}>
+                  {parse(this.state.res.Url_Button)}
                 </a>
                 <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h2>{parse(this.state.res.cardHeadingFive)}</h2>
+                    <h2>{parse(this.state.res.Card_Heading_Five)}</h2>
                     <img
-                      src={this.state.res.cardFiveImage}
-                      alt={this.state.res.cardFiveImageAlt}
+                      src={this.state.res.Card_Five_Image}
+                      alt={this.state.res.Card_Five_Image_Alt}
                     ></img>
                   </span>
                 </div>
                 <hr />
-                <p>{parse(this.state.res.cardFive)}</p>
-                <a target="5" href={this.state.res.urlFive}>
-                  {parse(this.state.res.buttons[0])}
+                <p>{parse(this.state.res.Card_Five)}</p>
+                <a target="5" href={this.state.res.Url_Two}>
+                  {parse(this.state.res.Url_Button)}
                 </a>
                 <FilterListIcon />
               </div>
               <div className="cardOne">
                 <div className="cardTwo">
                   <span>
-                    <h2>{parse(this.state.res.cardHeadingSix)}</h2>
+                    <h2>{parse(this.state.res.Card_Heading_Six)}</h2>
                     <img
-                      src={this.state.res.cardSixImage}
-                      alt={this.state.res.cardSixImageAlt}
+                      src={this.state.res.Card_Six_Image}
+                      alt={this.state.res.Card_Six_Image_Alt}
                     ></img>
                   </span>
                 </div>
                 <hr />
-                <p>{parse(this.state.res.cardSix)}</p>
-                <a target="6" href={this.state.res.urlSix}>
-                  {parse(this.state.res.buttons[0])}
+                <p>{parse(this.state.res.Card_Six)}</p>
+                <a target="6" href={this.state.res.Url_Three}>
+                  {parse(this.state.res.Url_Button)}
                 </a>
                 <FilterListIcon />
               </div>
             </section>
             <section id="enquiry" className="enquiry">
               <div className="headingCont">
-                <h2>{parse(this.state.res.buttons[1])}</h2>
+                <h2>{parse(this.state.res.Enquiries_Title)}</h2>
               </div>
               <br></br>
               <form
@@ -644,16 +642,16 @@ class Home extends Component {
                     style={{ color: styles.c11, marginLeft: "27.5px" }}
                   />
                   <label htmlFor="select" className="hiddenText">
-                    {parse(this.state.res.buttons[3])}
+                    {parse(this.state.res.Select_Placeholder)}
                   </label>
                   <Select
                     inputId="select"
                     classNamePrefix="react-select"
                     value={this.state.selectedOption}
                     onChange={this.handleChangeSelect}
-                    options={this.state.res.options}
+                    options={this.state.res.Select_Options}
                     styles={customStyles}
-                    placeholder={parse(this.state.res.buttons[3])}
+                    placeholder={parse(this.state.res.Select_Placeholder)}
                     maxMenuHeight={90}
                   />
                 </div>
@@ -712,7 +710,7 @@ class Home extends Component {
                   type="submit"
                   className="button"
                 >
-                  {parse(this.state.res.buttons[2])}
+                  {parse(this.state.res.Submitt_Form)}
                 </Button>
                 <div style={{ height: "50px" }}>
                   <div style={this.state.disp}>

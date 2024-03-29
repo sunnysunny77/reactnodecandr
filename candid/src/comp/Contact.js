@@ -12,6 +12,8 @@ export default class Contactc extends Component {
     this.state = {
       window: window.scrollTo(0, 0),
       res: {},
+      phone: props.phone,
+      navigation: props.navigation,
       load: true,
     };
     this.props.footer("loading");
@@ -56,28 +58,28 @@ export default class Contactc extends Component {
           <React.Fragment>
             {this.state.window}
             <div className="headingCont">
-              <h1>{parse(this.state.res.buttons[0])}</h1>
+              <h1> {parse(this.state.navigation)} </h1>
             </div>
             <section className="contactContOne">
-              <img alt={this.state.res.imageAlt} src={this.state.res.image} className="contactOne"></img>
+              <img alt={this.state.res.Image_Alt} src={this.state.res.Image} className="contactOne"></img>
               <div className="contactTwo">
                 <h2>
-                  {parse(this.state.res.headingOne)}
+                  {parse(this.state.res.Heading_One)}
                   <ContactsIcon />
                 </h2>
                 <hr />
                 <p>
-                  {parse(this.state.res.emailTag)}
-                  <a href={"mailto:" + this.state.res.email}>
-                    {this.state.res.email}
+                  {parse(this.state.res.Email_Tag)}
+                  <a href={"mailto:" + this.state.res.Email}>
+                    {this.state.res.Email}
                   </a>
-                  {parse(this.state.res.phoneTag)}
-                  <a href={"tel:" + this.state.res.phone}>
-                    {this.state.res.phone}
+                  {parse(this.state.res.Phone_Tag)}
+                  <a href={"tel:" + this.state.phone}>
+                    {this.state.phone}
                   </a>
-                  {parse(this.state.res.enquiriesTagOne)}
+                  {parse(this.state.res.Enquiries_Tag)}
                   <span className="enquiries">
-                    <span> {parse(this.state.res.enquiriesTagTwo)}</span>
+                    <span> {parse(this.state.res.Enquiries_Button)}</span>
                     <HelpOutlineIcon
                       onClick={() => {
                         var x = window.location.origin;
@@ -91,13 +93,13 @@ export default class Contactc extends Component {
             </section>
             <section className="contactContTwo">
               <h2>
-                {parse(this.state.res.headingTwo)}
+                {parse(this.state.res.Heading_Two)}
                 <ContactsIcon />
               </h2>
               <hr />
               <Wave>
                 <div id="contactResponse" className="prop">
-                  {parse(this.state.res.availability)}
+                  {parse(this.state.res.Availabilty)}
                 </div>
               </Wave>
             </section>

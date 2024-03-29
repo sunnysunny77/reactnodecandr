@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import "./Wave.scss";
 
 export default class Wave extends Component {

@@ -10,28 +10,23 @@ import About from "./comp/About";
 import axios from "axios";
 
 function App() {
-  const [table, setTable] = useState(null);
+  const [navigation, setNavigation] = useState([]);
   const [phone, setPhone] = useState(null);
   const [hours, setHours] = useState(null);
   const [days, setDays] = useState(null);
-  const [load, setLoad] = useState(true);
-  const [footer, setFooter] = useState("loading");
-  const [buttons, setButtons] = useState([]);
   const [imagesPreLoad, setImagesPreLoad] = useState({
-    "/": [
-    ],
-    "/about": [
-    ],
-    "/gallery": [
-    ],
-    "/contact": [
-    ],
-    "/blog": [
-    ],
+    "/": [],
+    "/about": [],
+    "/gallery": [],
+    "/contact": [],
+    "/blog": [],
   });
-  const [logoFooter, setLogoFooter] = useState(null);
   const [logoMobile, setLogoMobile] = useState(null);
   const [logoDesktop, setLogoDesktop] = useState(null);
+  const [logoFooter, setLogoFooter] = useState(null);
+  const [load, setLoad] = useState(true);
+  const [footer, setFooter] = useState("loading");
+  const [table, setTable] = useState(null);
   useEffect(() => {
     const path = window.location.pathname;
     for (let source of imagesPreLoad[path]) {
@@ -40,19 +35,22 @@ function App() {
       imagesPreLoad[path] = [];
       setImagesPreLoad({ ...imagesPreLoad });
     }
-  }, [imagesPreLoad[window.location.pathname]]);
+  }, [imagesPreLoad]);
   useEffect(() => {
     axios
       .post("/api-init")
       .then((res) => {
-        setPhone(res.data.phone);
-        setHours(res.data.hours);
-        setDays(res.data.days);
-        setButtons(res.data.buttons);
-        setImagesPreLoad(res.data.images);
-        setLogoFooter([res.data.images["/"][0], res.data.logoFooterAlt]);
-        setLogoMobile([res.data.images["/"][1], res.data.logoMobileAlt]);
-        setLogoDesktop([res.data.images["/"][2], res.data.logoDesktopAlt]);
+        setNavigation(res.data.Navigation);
+        setPhone(res.data.Phone);
+        setHours(res.data.Hours);
+        setDays(res.data.Days);
+        setImagesPreLoad(res.data.ImagesPreLoad);
+        setLogoMobile([res.data.ImagesPreLoad["/"][0], res.data.LogoMobileAlt]);
+        setLogoDesktop([
+          res.data.ImagesPreLoad["/"][1],
+          res.data.LogoDesktopAlt,
+        ]);
+        setLogoFooter([res.data.ImagesPreLoad["/"][2], res.data.LogoFooterAlt]);
         setLoad(false);
       })
       .catch((error) => {
@@ -80,7 +78,7 @@ function App() {
               phone={phone}
               hours={hours}
               days={days}
-              buttons={buttons}
+              navigation={navigation}
               footer={footer}
               logoFooter={logoFooter}
               logoMobile={logoMobile}
@@ -96,6 +94,7 @@ function App() {
             path="/blog"
             element={
               <Blog
+                navigation={navigation[0]}
                 table={table}
                 setTable={(param) => setTable(param)}
                 footer={(param) => setFooter(param)}
@@ -104,15 +103,31 @@ function App() {
           />
           <Route
             path="/gallery"
-            element={<Gallery footer={(param) => setFooter(param)} />}
+            element={
+              <Gallery
+                navigation={navigation[1]}
+                footer={(param) => setFooter(param)}
+              />
+            }
           />
           <Route
             path="/about"
-            element={<About footer={(param) => setFooter(param)} />}
+            element={
+              <About
+                navigation={navigation[2]}
+                footer={(param) => setFooter(param)}
+              />
+            }
           />
           <Route
             path="/contact"
-            element={<Contact footer={(param) => setFooter(param)} />}
+            element={
+              <Contact
+                phone={phone}
+                navigation={navigation[3]}
+                footer={(param) => setFooter(param)}
+              />
+            }
           />
         </Route>
       </Routes>

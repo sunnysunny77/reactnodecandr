@@ -37,7 +37,7 @@
         justify-content: center;
         flex-wrap: wrap;
         padding: 10px;
-        background-image: url(./img/handmade-paper.png);
+        background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
         background-blend-mode: hard-light;
         @media only screen and (max-width: 1200px) {
           border-radius: 0;
@@ -98,7 +98,7 @@
     font-weight: 500;
     margin: 0;
   }
-  #topSpan {
+  #spanOne {
     width: 100%;
     margin: 25px auto auto auto;
     display: block;
@@ -116,7 +116,7 @@
       margin: 17% auto;
     }
   }
-  #picContainer {
+  #imageContainer {
     position: relative;
     clip-path: inset(10px 10px 25px round 25px 0);
     float: left;
@@ -135,7 +135,7 @@
       transform: initial;
       
     }
-    #pic {
+    img {
       position: absolute;
       top: 1px;
       left: 1px;
@@ -147,7 +147,7 @@
       clip-path: inset(10px 10px 25px round 25px 0);
     }
   }
-  #picSpan {
+  #spanTwo {
     width: 37.5%;
     padding-left: 7.5%;
     margin-top: 25px;
@@ -181,8 +181,8 @@
       margin: 25px auto 25px 2.5%;
     }
   }
-  #readMoreOne,
-  #readMoreTwo {
+  #moreOne,
+  #moreTwo {
     height: auto;
     max-height: 0;
     overflow: hidden;

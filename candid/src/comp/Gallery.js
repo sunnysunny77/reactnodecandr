@@ -10,6 +10,7 @@ export default class Galery extends Component {
     this.state = {
       window: window.scrollTo(0, 0),
       res: {},
+      navigation: props.navigation,
       load: true,
     };
     this.props.footer("loading");
@@ -54,7 +55,7 @@ export default class Galery extends Component {
           <React.Fragment>
             {this.state.window}
             <div className="galleryHeading headingCont">
-              <h1> {parse(this.state.res.buttons[0])}</h1>
+              <h1> {parse(this.state.navigation)} </h1>
             </div>
             <section id="galleryCont">
               <div className="sticky"></div>

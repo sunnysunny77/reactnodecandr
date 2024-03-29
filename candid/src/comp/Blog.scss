@@ -21,7 +21,7 @@
   max-width: 1200px;
   width: calc(100% - 4px);
   margin: 0 auto 60px auto;
-  background-image: url(./img/handmade-paper.png);
+  background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
   background-blend-mode: color;
   @media only screen and (max-width: 1200px) {
     margin: auto;
@@ -97,7 +97,7 @@
     }
   }
   .button {
-    background-image: url(./img/handmade-paper.png);
+    background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
     background-blend-mode: color-burn;
   }
   .accordianHeading {
@@ -129,7 +129,7 @@
   .formAdd {
     width: 100%;
     background-color: $c5;
-    background-image: url(./img/handmade-paper.png);
+    background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
     background-blend-mode: color;
     color: $c1;
     label[for="avatar"] {
@@ -184,7 +184,7 @@
     width: 100%;
     margin: auto;
     background-color: $c5;
-    background-image: url(./img/handmade-paper.png);
+    background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
     background-blend-mode: color;
     color: $c1;
     padding-top: 25px;

@@ -1,12 +1,10 @@
-import React from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import "./Footer.scss";
 import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 
 const Footer = (props) => {
-  let { footer, phone, hours, days, buttons, logoFooter } = props;
-  console.log(logoFooter)
+  let { footer, phone, hours, days, navigation, logoFooter } = props;
   return (
     <footer className={footer}>
       <ul>
@@ -19,16 +17,16 @@ const Footer = (props) => {
           </Link>
         </li>
         <li className="none">
-          <Link to="/blog">{parse(buttons[0])}</Link>
+          <Link to="/blog">{parse(navigation[0])}</Link>
         </li>
         <li className="none">
-          <Link to="/gallery">{parse(buttons[1])}</Link>
+          <Link to="/gallery">{parse(navigation[1])}</Link>
         </li>
         <li className="none">
-          <Link to="/about">{parse(buttons[3])}</Link>
+          <Link to="/about">{parse(navigation[2])}</Link>
         </li>
         <li className="none">
-          <Link to="/contact">{parse(buttons[2])}</Link>
+          <Link to="/contact">{parse(navigation[3])}</Link>
         </li>
         <li className="block" id="logoFooter">
           <Link to="/">

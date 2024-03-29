@@ -41,6 +41,7 @@ export default class Blog extends React.Component {
       alertAdd: null,
       alertRemove: null,
       window: window.scrollTo(0, 0),
+      navigation: props.navigation,
       buttons: [],
       load: true,
       extension: null,
@@ -67,7 +68,7 @@ export default class Blog extends React.Component {
     this.props.setTable(res);
     res.length
       ? this.setState({
-          table: res.map((key, index) => {
+          table: res.map((key) => {
             const { _id, blog, date, name, title, loc } = key;
             return (
               <React.Fragment key={_id}>
@@ -235,7 +236,7 @@ export default class Blog extends React.Component {
           <React.Fragment>
             {this.state.window}
             <div className="headingCont blogHeading">
-              <h1>{parse(this.state.buttons[0])}</h1>
+              <h1>{parse(this.state.navigation)}</h1>
             </div>
             <section className="blogCont">
               <div className="blogResponse">
@@ -254,7 +255,7 @@ export default class Blog extends React.Component {
                     id="panel2a-header"
                   >
                     <div className="accordianHeading headingCont">
-                      <h2>{parse(this.state.buttons[1])}</h2>
+                      <h2>{parse(this.state.buttons[0])}</h2>
                     </div>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -404,7 +405,7 @@ export default class Blog extends React.Component {
                         type="submit"
                         className="button"
                       >
-                        {parse(this.state.buttons[3])}
+                         {parse(this.state.buttons[2])}
                       </Button>
                       <div style={{ height: "50px" }}>
                         <div style={this.state.dispAdd}>
@@ -423,7 +424,7 @@ export default class Blog extends React.Component {
                     id="panel2a-header"
                   >
                     <div className="accordianHeading headingCont">
-                      <h2>{parse(this.state.buttons[2])}</h2>
+                      <h2>{parse(this.state.buttons[1])}</h2>
                     </div>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -508,7 +509,7 @@ export default class Blog extends React.Component {
                         className="button"
                         type="submit"
                       >
-                        {parse(this.state.buttons[3])}
+                        {parse(this.state.buttons[2])}
                       </Button>
                       <div style={{ height: "50px" }}>
                         <div style={this.state.dispRemove}>

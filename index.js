@@ -2,8 +2,8 @@ let { google } = require("googleapis");
 let fs = require("fs");
 let readline = require("readline");
 let mongoose = require("mongoose");
-let Papa = require("papaparse");
-let axios = require("axios");
+const papa = require("papaparse");
+const request = require("request");
 
 mongoose.connect("mongodb://localhost/bloga");
 
@@ -56,15 +56,6 @@ let mod = mongoose.model("blogs", sch);
 
 app.use(express.static("public"));
 
-let parsedDataContent;
-let parsedDataMaps;
-let parsedDataForm;
-let parsedDataGallery;
-let parsedDataGalleryImages;
-let parsedDataVideo;
-let parsedDataVideoImages;
-let buttons;
-
 function baseName(param) { 
   return param.split("/")
   .pop()
@@ -73,376 +64,257 @@ function baseName(param) {
   .join(".");
  }
 
-function video() {
-  axios
-    .get(
-      `https://docs.google.com/spreadsheets/d/1tkby9LJ9HDOhvABilAriVZ5ILW42BFX2-9D2QxajWRk/gviz/tq?tqx=out:csv&sheet=data`
-    )
-    .then((res) => {
-      let parsedDataInital = Papa.parse(res.data, { skipEmptyLines: true });
-      if (parsedDataInital.data.length > 1) {
-        let l = parsedDataInital.data.length - 1;
-        let l0 = l % 2;
-        let parsedDataArray = [[],[]];
-        if (l0 === 0) {
-          for (let i = 1; i <= l / 2; i++) {
-            if (
-              parsedDataInital.data[i * 2 - 1][0] &&
-              parsedDataInital.data[i * 2 - 1][1] &&
-              parsedDataInital.data[i * 2 - 1][2] &&
-              parsedDataInital.data[i * 2][0] &&
-              parsedDataInital.data[i * 2][1] &&
-              parsedDataInital.data[i * 2][2]
-            ) {
-              parsedDataArray[0].push([
-                parsedDataInital.data[i * 2 - 1][0],
-                parsedDataInital.data[i * 2 - 1][1],
-                parsedDataInital.data[i * 2 - 1][2],
-                parsedDataInital.data[i * 2][0],
-                parsedDataInital.data[i * 2][1],
-                parsedDataInital.data[i * 2][2],
-              ]);
-              parsedDataArray[1].push(
-                parsedDataInital.data[i * 2 - 1][0],
-                parsedDataInital.data[i * 2][0],
-              );
-            } else {
-              return (
-                (parsedDataVideo = undefined), (parsedDataVideoImages = undefined)
-              );
-            }
-          }
-          return (
-            (parsedDataVideo = parsedDataArray[0]), (parsedDataVideoImages = parsedDataArray[1])
-          );
-        } else {
-          return (
-            (parsedDataVideo = undefined), (parsedDataVideoImages = undefined)
-          );
-        }
-      } else {
-        return (
-          (parsedDataVideo = undefined), (parsedDataVideoImages = undefined)
-        );
-      }
-    })
-    .catch(() => {
-      return sendStatus(500);
-    });
-}
+const options = {	skipEmptyLines: true, header: true };
 
-function gallery() {
-  axios
-    .get(
-      `https://docs.google.com/spreadsheets/d/1LjDGLbRSaQ4Y7ilLy0LMPpgUZN6ynI8QRg--a2ltLt4/gviz/tq?tqx=out:csv&sheet=data`
-    )
-    .then((res) => {
-      let parsedDataInital = Papa.parse(res.data, { skipEmptyLines: true });
-      if (parsedDataInital.data.length > 1) {
-        let l = parsedDataInital.data.length - 1;
-        let parsedDataArray = [[],[]];
-        for (let i = 1; i <= l; i++) {
-          parsedDataArray[0].push({
-            original: parsedDataInital.data[i][0],
-            originalAlt: baseName(parsedDataInital.data[i][0]),
-          });
-          parsedDataArray[1].push(
-            parsedDataInital.data[i][0]
-          );
-        }
-        return (
-          (parsedDataGallery = parsedDataArray[0]), (parsedDataGalleryImages = parsedDataArray[1])
-          );
-      } else {
-        return (
-          (parsedDataGallery = undefined), (parsedDataGalleryImage = undefined)
-        );
-      }
-    })
-    .catch(() => {
-      return sendStatus(500);
-    });
-}
+const dataStreamNavigation = request.get("https://docs.google.com/spreadsheets/d/19OUa1a2MebEPygCW44bLfVovtz_bgX5rXG4YwAv9hXg/gviz/tq?tqx=out:csv&sheet=data");
+const parseStreamNavigation  = papa.parse(papa.NODE_STREAM_INPUT, options);
+dataStreamNavigation.pipe(parseStreamNavigation);
+let dataNavigation = [];
 
-function content() {
-  axios
-    .get(
-      `https://docs.google.com/spreadsheets/d/1gLb1KAZd-dY1Jlw1z-JPVev1WkeOL_tIitvzkrW97dQ/gviz/tq?tqx=out:csv&sheet=data`
-    )
-    .then((res) => {
-      let parsedDataInital = Papa.parse(res.data, { skipEmptyLines: true });
-      if (parsedDataInital.data.length > 39) {
-        let l = parsedDataInital.data.length - 39;
-        let parsedDataArray = [];
-        for (let i = 1; i <= l; i++) {
-          parsedDataArray.push({
-            value: parsedDataInital.data[38 + i][1],
-            label: parsedDataInital.data[38 + i][1],
-          });
-        }
-        return (
-          (parsedDataContent = parsedDataInital),
-          (parsedDataForm = parsedDataArray),
-          (buttons = [
-            parsedDataInital.data[1][4],
-            parsedDataInital.data[2][4],
-            parsedDataInital.data[3][4],
-            parsedDataInital.data[4][4],
-            parsedDataInital.data[5][4],
-            parsedDataInital.data[6][4],
-            parsedDataInital.data[7][4],
-            parsedDataInital.data[8][4],
-            parsedDataInital.data[9][4],
-            parsedDataInital.data[10][4],
-            parsedDataInital.data[11][4],
-            parsedDataInital.data[12][4],
-          ])
-        );
-      } else {
-        return (
-          (parsedDataContent = undefined), (parsedDataForm = undefined), (buttons = undefined)
-        );
-      }
-    })
-    .catch(() => {
-      return sendStatus(500);
-    });
-}
+parseStreamNavigation.on("data", chunk => {
+  delete chunk.Title;
+  dataNavigation.push(chunk);
+});
 
-function maps() {
-  axios
-    .get(
-      `https://docs.google.com/spreadsheets/d/1BxHA12ZHfra6gva_mm7o3nlQREf45DsjeMYQ1Mpg5y8/gviz/tq?tqx=out:csv&sheet=data`
-    )
-    .then((res) => {
-      let parsedDataInital = Papa.parse(res.data, { skipEmptyLines: true });
-      if (parsedDataInital.data.length > 4) {
-        let parsedDataArray = [];
-        let l = parsedDataInital.data.length - 1;
-        for (let i = 0; i <= l; i++) {
-          if (i >= 3) {
-            parsedDataArray.push({
-              [i - 2]: {
-                type: "Feature",
-                geometry: {
-                  type: "Polygon",
-                  coordinates: [JSON.parse("[" + parsedDataInital.data[i][0] + "]")],
-                },
-              },
-            });
-          }
-        };
-        return (parsedDataMaps = [
-          parsedDataInital.data[1][0],
-          parsedDataArray,
-          parsedDataInital.data[1][1],
-        ]);
-      } else {
-        parsedDataMaps = undefined;
-        return;
-      }
-    })
-    .catch(() => {
-      return sendStatus(500);
-    });
-}
+const dataStreamContact = request.get("https://docs.google.com/spreadsheets/d/1LWkiENVo4pKwX2yCZePfsYgx9VvYVqrDsu5K5leI8is/gviz/tq?tqx=out:csv&sheet=data");
+const parseStreamContact = papa.parse(papa.NODE_STREAM_INPUT, options);
+dataStreamContact.pipe(parseStreamContact);
+let dataContact = [];
 
-video();
-gallery();
-content();
-maps();
+parseStreamContact.on("data", chunk => {
+  delete chunk.Title;
+  dataContact.push(chunk);
+});
+
+const dataStreamVideos = request.get("https://docs.google.com/spreadsheets/d/1yuPgYwDdJgMk-ANu2Orx_Ls4kuBVgrJcW1r6NjzQiBY/gviz/tq?tqx=out:csv&sheet=data");
+const parseStreamVideos  = papa.parse(papa.NODE_STREAM_INPUT, options);
+dataStreamVideos.pipe(parseStreamVideos);
+let dataVideos = [];
+
+parseStreamVideos.on("data", chunk => {
+   dataVideos.push(Object.values(chunk));
+});
+
+const dataStreamGallery = request.get("https://docs.google.com/spreadsheets/d/1LjDGLbRSaQ4Y7ilLy0LMPpgUZN6ynI8QRg--a2ltLt4/gviz/tq?tqx=out:csv&sheet=data");
+const parseStreamGallery  = papa.parse(papa.NODE_STREAM_INPUT, options);
+dataStreamGallery.pipe(parseStreamGallery);
+let dataGallery = [];
+
+parseStreamGallery.on("data", chunk => {
+  dataGallery.push({
+    original: Object.values(chunk),
+    originalAlt: baseName(String(Object.values(chunk))),
+  });
+});
+
+const dataStreamImages = request.get("https://docs.google.com/spreadsheets/d/1oFpWin6qWbZnGi8s47RzfqtI14MRBHafL4FUl0OHijk/gviz/tq?tqx=out:csv&sheet=data");
+const parseStreamImages  = papa.parse(papa.NODE_STREAM_INPUT, options);
+dataStreamImages.pipe(parseStreamImages);
+let dataImagesContact = [];
+let dataImagesAbout = [];
+let dataImagesHome = [];
+let dataImagesLogo = [];
+let imagesPreLoad =  {};
+
+parseStreamImages.on("data", chunk => {
+  delete chunk.Contact_Title;
+  delete chunk.About_Title;
+  delete chunk.Home_Title;
+  delete chunk.Logo_Title;
+  dataImagesContact.push({ Contact: chunk.Contact });
+  dataImagesAbout.push({ About: chunk.About });
+  dataImagesHome.push({ Home: chunk.Home });
+  dataImagesLogo.push({ Logo: chunk.Logo });
+});
+parseStreamImages.on("finish", () => {
+  imagesPreLoad = {
+    "/": [
+    dataImagesLogo[0].Logo,
+    dataImagesLogo[1].Logo,
+    dataImagesLogo[2].Logo,
+    dataImagesHome[0].Home,
+    dataImagesHome[1].Home,
+    dataImagesHome[2].Home,
+    dataImagesHome[3].Home,
+    dataImagesHome[4].Home,
+    dataImagesHome[5].Home,
+    dataImagesHome[6].Home,
+    dataImagesHome[7].Home,
+    dataImagesHome[8].Home,
+    dataImagesHome[9].Home,
+    dataImagesHome[10].Home,
+    dataImagesHome[11].Home,
+    "https://candid.s3-ap-southeast-2.amazonaws.com/welcome.png",
+    "https://candid.s3.ap-southeast-2.amazonaws.com/texture.png",
+    ],
+    "/about": [
+      dataImagesLogo[0].Logo,
+      dataImagesLogo[1].Logo,
+      dataImagesLogo[2].Logo,
+      dataImagesAbout[0].About,
+      "https://candid.s3-ap-southeast-2.amazonaws.com/divider.png",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
+      "https://candid.s3.ap-southeast-2.amazonaws.com/texture.png",
+    ],
+    "/gallery": [
+      dataImagesLogo[0].Logo,
+      dataImagesLogo[1].Logo,
+      dataImagesLogo[2].Logo,
+      "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
+      "https://candid.s3.ap-southeast-2.amazonaws.com/texture.png",
+    ],
+    "/contact": [
+      dataImagesLogo[0].Logo,
+      dataImagesLogo[1].Logo,
+      dataImagesLogo[2].Logo,
+      dataImagesContact[0].Contact,
+      "https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg",
+      "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
+      "https://candid.s3.ap-southeast-2.amazonaws.com/texture.png",
+    ],
+    "/blog": [
+      dataImagesLogo[0].Logo,
+      dataImagesLogo[1].Logo,
+      dataImagesLogo[2].Logo,
+      "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
+      "https://candid.s3.ap-southeast-2.amazonaws.com/texture.png",
+    ],
+  };
+  dataVideos.forEach(image => {
+    imagesPreLoad["/"].push(image[0], image[3]);
+  });
+  dataGallery.forEach(image => {
+    imagesPreLoad["/gallery"].push(image.original[0]);
+  });
+});
+
+const dataStreamHome = request.get("https://docs.google.com/spreadsheets/d/19IsSN9huwRRlCNUfWdvFSx6aMnBoAA8ZSEyQK6NjB7A/gviz/tq?tqx=out:csv&sheet=data");
+const parseStreamHome  = papa.parse(papa.NODE_STREAM_INPUT, options);
+dataStreamHome.pipe(parseStreamHome);
+let dataHome = [];
+
+parseStreamHome.on("data", chunk => {
+  delete chunk.Title;
+  dataHome.push(chunk);
+});
+
+const dataStreamSelectOptions = request.get("https://docs.google.com/spreadsheets/d/1oBVSxkf_Ep2XbJrhhc9J6byEfB8umgzL-rC9OOhL4X0/gviz/tq?tqx=out:csv&sheet=data");
+const parseStreamSelectOptions  = papa.parse(papa.NODE_STREAM_INPUT, options);
+dataStreamSelectOptions.pipe(parseStreamSelectOptions);
+let dataSelectOptions = [];
+
+parseStreamSelectOptions.on("data", chunk => {
+  dataSelectOptions.push({
+    "value": chunk.Select_Options,
+    "label": chunk.Select_Options,
+  });
+});
+
+const dataStreamBlog = request.get("https://docs.google.com/spreadsheets/d/10K5LaNIpqVSQ_ch0urNqN_s3YuyU7kUgXk3SZ_eXS9s/gviz/tq?tqx=out:csv&sheet=data");
+const parseStreamBlog = papa.parse(papa.NODE_STREAM_INPUT, options);
+dataStreamBlog.pipe(parseStreamBlog);
+let dataBlog = [];
+
+parseStreamBlog.on("data", chunk => {
+  delete chunk.Title;
+  dataBlog.push(chunk);
+});
+
+const dataStreamAbout = request.get("https://docs.google.com/spreadsheets/d/1v7TzLg2rShYbuDUokQkBy-IJjDCq49M_M5MjiQRBMfg/gviz/tq?tqx=out:csv&sheet=data");
+const parseStreamAbout  = papa.parse(papa.NODE_STREAM_INPUT, options);
+dataStreamAbout.pipe(parseStreamAbout);
+let dataAbout = [];
+
+parseStreamAbout.on("data", chunk => {
+  delete chunk.Title;
+  dataAbout.push(chunk);
+});
+
+const dataStreamMap = request.get("https://docs.google.com/spreadsheets/d/1BxHA12ZHfra6gva_mm7o3nlQREf45DsjeMYQ1Mpg5y8/gviz/tq?tqx=out:csv&sheet=data");
+const parseStreamMap  = papa.parse(papa.NODE_STREAM_INPUT, options);
+dataStreamMap.pipe(parseStreamMap);
+let dataMap = [];
+let index = 1;
+
+parseStreamMap.on("data", chunk => {
+  dataMap.push({
+    [index] : {
+      type: "Feature",
+      geometry: {
+        type: "Polygon",
+        coordinates: [JSON.parse("[" +  Object.values(chunk)+ "]")],
+      },
+    },
+  });
+  index++;
+});
 
 app.post("/api-init", function (req, res) {
-  if (parsedDataContent !== undefined && buttons !== undefined && parsedDataVideoImages !== undefined && parsedDataGalleryImages !== undefined)  {
-    let images = { 
-        "/": [
-        parsedDataContent.data[31][4],
-        parsedDataContent.data[33][4],
-        parsedDataContent.data[32][4],
-        parsedDataContent.data[18][4],
-        parsedDataContent.data[19][4],
-        parsedDataContent.data[20][4],
-        parsedDataContent.data[21][4],
-        parsedDataContent.data[22][4],
-        parsedDataContent.data[23][4],
-        parsedDataContent.data[24][4],
-        parsedDataContent.data[25][4],
-        parsedDataContent.data[26][4],
-        parsedDataContent.data[27][4],
-        parsedDataContent.data[28][4],
-        parsedDataContent.data[29][4],
-        "https://candid.s3-ap-southeast-2.amazonaws.com/welcome.png",
-      ],
-      "/about": [
-        parsedDataContent.data[31][4],
-        parsedDataContent.data[33][4],
-        parsedDataContent.data[32][4],
-        parsedDataContent.data[16][4],
-        "https://candid.s3-ap-southeast-2.amazonaws.com/divider.png",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
-      ],
-      "/gallery": [
-        parsedDataContent.data[31][4],
-        parsedDataContent.data[33][4],
-        parsedDataContent.data[32][4],
-        "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
-      ],
-      "/contact": [
-        parsedDataContent.data[31][4],
-        parsedDataContent.data[33][4],
-        parsedDataContent.data[32][4],
-        parsedDataContent.data[14][4],
-        "https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg",
-        "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
-      ],
-      "/blog": [
-        parsedDataContent.data[31][4],
-        parsedDataContent.data[33][4],
-        parsedDataContent.data[32][4],
-        "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
-      ],
-    };
-    parsedDataVideoImages.forEach(element => {
-      images["/"].push(element);
-    });
-    parsedDataGalleryImages.forEach(element => {
-      images["/gallery"].push(element);
-    });
-    return res.json({
-      phone: parsedDataContent.data[7][1],
-      hours: parsedDataContent.data[1][1],
-      days: parsedDataContent.data[2][1],
-      buttons: [buttons[0], buttons[1], buttons[2], buttons[3]],
-      logoFooterAlt: baseName(parsedDataContent.data[31][4]),
-      logoMobileAlt: baseName(parsedDataContent.data[33][4]), 
-      logoDesktopAlt: baseName(parsedDataContent.data[32][4]), 
-      images: images,
-    });
-  } else {
-    return res.sendStatus(500);
-  }
+  res.json({
+    Navigation: [dataNavigation[0].Navigation, dataNavigation[1].Navigation, dataNavigation[2].Navigation, dataNavigation[3].Navigation],
+    Phone: dataContact[4].Contact,
+    Hours: dataContact[9].Contact,
+    Days: dataContact[10].Contact,
+    ImagesPreLoad: imagesPreLoad,
+    LogoMobileAlt: baseName(dataImagesLogo[0].Logo), 
+    LogoDesktopAlt: baseName(dataImagesLogo[1].Logo),
+    LogoFooterAlt: baseName(dataImagesLogo[2].Logo),
+  });
 });
 
 app.post("/api-home", function (req, res) {
-  if (
-    parsedDataContent !== undefined &&
-    buttons !== undefined &&
-    parsedDataVideo !== undefined &&
-    parsedDataForm !== undefined
-  ) {
-    return res.json({
-      message: parsedDataContent.data[21][1],
-      quoteHeading: parsedDataContent.data[22][1],
-      quote: parsedDataContent.data[23][1],
-      cardHeadingOne: parsedDataContent.data[24][1],
-      cardHeadingTwo: parsedDataContent.data[25][1],
-      cardHeadingThree: parsedDataContent.data[26][1],
-      cardHeadingFour: parsedDataContent.data[27][1],
-      cardHeadingFive: parsedDataContent.data[28][1],
-      cardHeadingSix: parsedDataContent.data[29][1],
-      cardOne: parsedDataContent.data[30][1],
-      cardTwo: parsedDataContent.data[31][1],
-      cardThree: parsedDataContent.data[32][1],
-      cardFour: parsedDataContent.data[33][1],
-      cardFive: parsedDataContent.data[34][1],
-      cardSix: parsedDataContent.data[35][1],
-      urlFour: parsedDataContent.data[36][1],
-      urlFive: parsedDataContent.data[37][1],
-      urlSix: parsedDataContent.data[38][1],
-      options: parsedDataForm,
-      svg: parsedDataContent.data[1][2],
-      carouselOneMobile: parsedDataContent.data[18][4],
-      carouselOneDesktop: parsedDataContent.data[19][4],
-      carouselTwoMobile: parsedDataContent.data[20][4],
-      carouselTwoDesktop: parsedDataContent.data[21][4],
-      quoteMobile: parsedDataContent.data[22][4],
-      quoteDesktop: parsedDataContent.data[23][4],
-      cardOneImage: parsedDataContent.data[24][4],
-      cardTwoImage: parsedDataContent.data[25][4],
-      cardThreeImage: parsedDataContent.data[26][4],
-      cardFourImage: parsedDataContent.data[27][4],
-      cardFiveImage: parsedDataContent.data[28][4],
-      cardSixImage: parsedDataContent.data[29][4],
-      carouselOneAlt: baseName(parsedDataContent.data[19][4]),
-      carouselTwoAlt: baseName(parsedDataContent.data[21][4]),
-      quoteAlt: baseName(parsedDataContent.data[23][4]), 
-      cardOneImageAlt: baseName(parsedDataContent.data[24][4]), 
-      cardTwoImageAlt: baseName(parsedDataContent.data[25][4]),  
-      cardThreeImageAlt: baseName(parsedDataContent.data[26][4]),  
-      cardFourImageAlt: baseName(parsedDataContent.data[27][4]),  
-      cardFiveImageAlt: baseName(parsedDataContent.data[28][4]), 
-      cardSixImageAlt: baseName(parsedDataContent.data[29][4]),  
+  res.json({
+     Message: dataHome[0].Home,
+     Home_Svg: dataHome[1].Home,
+     Quote_Heading: dataHome[2].Home,
+     Quote: dataHome[3].Home,
+     Card_Heading_One: dataHome[4].Home,
+     Card_One: dataHome[5].Home,
+     Card_Heading_Two: dataHome[6].Home,
+     Card_Two: dataHome[7].Home,
+     Card_Heading_Three: dataHome[8].Home,
+     Card_Three: dataHome[9].Home,
+     Card_Heading_Four: dataHome[10].Home,
+     Card_Four: dataHome[11].Home,
+     Url_One: dataHome[12].Home,
+     Card_Heading_Five: dataHome[13].Home,
+     Card_Five: dataHome[14].Home,
+     Url_Two: dataHome[15].Home,
+     Card_Heading_Six: dataHome[16].Home,
+     Card_Six: dataHome[17].Home,
+     Url_Three: dataHome[18].Home,
+     Url_Button: dataHome[19].Home,
+     Enquiries_Title: dataHome[20].Home,
+     Select_Placeholder: dataHome[21].Home,
+     Submitt_Form: dataHome[22].Home,
+     Carousel_One_Mobile: dataImagesHome[0].Home,
+     Carousel_One_Desktop: dataImagesHome[1].Home,
+     Carousel_Two_Mobile: dataImagesHome[2].Home,
+     Carousel_Two_Desktop: dataImagesHome[3].Home,
+     Quote_Mobile: dataImagesHome[4].Home,
+     Quote_Desktop: dataImagesHome[5].Home,
+     Card_One_Image: dataImagesHome[6].Home,
+     Card_Two_Image: dataImagesHome[7].Home,
+     Card_Three_Image: dataImagesHome[8].Home,
+     Card_Four_Image: dataImagesHome[9].Home,
+     Card_Five_Image: dataImagesHome[10].Home,
+     Card_Six_Image: dataImagesHome[11].Home,
+     Carousel_One_Alt: baseName(dataImagesHome[0].Home),
+     Carousel_Two_Alt: baseName(dataImagesHome[1].Home),
+     Quote_Alt: baseName(dataImagesHome[4].Home), 
+     Card_One_Image_Alt: baseName(dataImagesHome[6].Home), 
+     Card_Two_Image_Alt: baseName(dataImagesHome[7].Home), 
+     Card_Three_Image_Alt: baseName(dataImagesHome[8].Home), 
+     Card_Four_Image_Alt: baseName(dataImagesHome[9].Home), 
+     Card_Five_Image_Alt: baseName(dataImagesHome[10].Home), 
+     Card_SixI_mageA_lt: baseName(dataImagesHome[11].Home),
+     Video: dataVideos,
+     Select_Options: dataSelectOptions,
+   });
+ });
 
-      buttons: [buttons[10], buttons[9], buttons[8], buttons[11]],
-      video: parsedDataVideo,
-     
-    });
-  } else {
-    return res.sendStatus(500);
-  }
-});
-
-app.post("/api-gallery", function (req, res) {
-  if (parsedDataGallery !== undefined && buttons !== undefined) {
-    return res.json({ images: parsedDataGallery, buttons: [buttons[1]] });
-  } else {
-    return res.sendStatus(500);
-  }
-});
-
-app.post("/api-contact", function (req, res) {
-  if (parsedDataContent !== undefined && buttons !== undefined) {
-    return res.json({
-      headingOne: parsedDataContent.data[3][1],
-      emailTag: parsedDataContent.data[4][1],
-      email: parsedDataContent.data[5][1],
-      phoneTag: parsedDataContent.data[6][1],
-      phone: parsedDataContent.data[7][1],
-      enquiriesTagOne: parsedDataContent.data[8][1],
-      enquiriesTagTwo: parsedDataContent.data[9][1],
-      headingTwo: parsedDataContent.data[10][1],
-      availability: parsedDataContent.data[11][1],
-      image: parsedDataContent.data[14][4],
-      imageAlt: baseName(parsedDataContent.data[14][4]), 
-      buttons: [buttons[2]],
-    });
-  } else {
-    return res.sendStatus(500);
-  }
-});
-
-app.post("/api-about", function (req, res) {
-  if (
-    parsedDataMaps !== undefined &&
-    parsedDataContent !== undefined &&
-    buttons !== undefined
-  ) {
-    return res.json({
-      a: {
-        headingMap: parsedDataMaps[2],
-        headingMain: parsedDataContent.data[13][1],
-        headingOne: parsedDataContent.data[14][1],
-        spanOne: parsedDataContent.data[15][1],
-        spanReadMoreOne: parsedDataContent.data[16][1],
-        headingTwo: parsedDataContent.data[17][1],
-        spanTwo: parsedDataContent.data[18][1],
-        spanReadMoreTwo: parsedDataContent.data[19][1],
-        image: parsedDataContent.data[16][4],
-        imageAlt: baseName(parsedDataContent.data[16][4]),  
-        buttons: [buttons[3], buttons[4], buttons[5]],
-      },
-      b: {
-        mapNames: parsedDataMaps[0],
-        data: parsedDataMaps[1],
-      },
-    });
-  } else {
-    return res.sendStatus(500);
-  }
-});
-
-app.post("/api-form", function (req, res) {
+ app.post("/api-form", function (req, res) {
   const SCOPES = [
     "https://www.googleapis.com/auth/gmail.readonly",
     "https://www.googleapis.com/auth/gmail.send",
@@ -495,7 +367,7 @@ app.post("/api-form", function (req, res) {
       "MIME-Version: 1.0\n",
       "Content-Transfer-Encoding: 7bit\n",
       "to: ",
-      parsedDataContent.data[5][1],
+      dataContact[2].Contact,
       "\n",
       "subject: ",
       "Candid Question",
@@ -516,7 +388,7 @@ app.post("/api-form", function (req, res) {
           raw: Buffer.from(str).toString("base64").replace(/\+/g, "-").replace(/\//g, "_"),
         },
       },
-      (err, result) => {
+      (err) => {
         if (err) {
           console.log("NODEMAILER - The API returned an error: " + err);
           return res.json({ e: "Error" });
@@ -529,11 +401,7 @@ app.post("/api-form", function (req, res) {
 
 app.get("/api-blog", async function (req, res) {
   let doc = await mod.find({}).sort({ date: -1 }).exec();
-  if (buttons !== undefined) {
-    return res.json({ doc: doc, buttons: [buttons[0], buttons[6], buttons[7], buttons[8]] });
-  } else {
-    return res.sendStatus(500);
-  }
+  return res.json({ doc: doc, buttons: [dataBlog[0].Blog, dataBlog[1].Blog, dataBlog[2].Blog] });
 });
 
 app.post("/api-formAdd", async function (req, res) {
@@ -577,10 +445,44 @@ app.post("/api-formRemove", async function (req, res) {
   }
 });
 
-app.get("/reset", function (req, res) {
-  res.json({ content: "reloaded" });
-  video();
-  gallery();
-  content();
-  maps();
+app.post("/api-gallery", function (req, res) {
+  res.json({ images: dataGallery });
+});
+
+app.post("/api-contact", function (req, res) {
+  res.json({
+    Heading_One: dataContact[0].Contact,
+    Email_Tag: dataContact[1].Contact,
+    Email: dataContact[2].Contact,
+    Phone_Tag: dataContact[3].Contact,
+    Enquiries_Tag: dataContact[5].Contact,
+    Enquiries_Button: dataContact[6].Contact,
+    Heading_Two: dataContact[7].Contact,
+    Availabilty: dataContact[8].Contact,
+    Image: dataImagesContact[0].Contact,
+    Image_Alt: baseName(dataImagesContact[0].Contact),
+  });
+});
+
+app.post("/api-about", function (req, res) {
+  res.json({
+    A: {
+      Heading_One: dataAbout[0].About,
+      Map_Names: dataAbout[1].About,
+      Heading_Two: dataAbout[2].About,
+      Heading_Three: dataAbout[3].About,
+      Span_One: dataAbout[4].About,
+      Span_One_More: dataAbout[5].About,
+      Heading_Four: dataAbout[6].About,
+      Span_Two: dataAbout[7].About,
+      Span_Two_More: dataAbout[8].About,
+      More_Button: dataAbout[9].About,
+      More_Close_Button: dataAbout[10].About,
+      Image: dataImagesAbout[0].About,
+      Image_Alt: baseName(dataImagesAbout[0].About),  
+    },
+    B: {
+      Data: dataMap,
+    },
+  });
 });

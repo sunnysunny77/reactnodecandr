@@ -170,7 +170,7 @@
     flex-direction: column;
     width: 33%;
     align-items: center;
-    max-width: 375px;
+    max-width: 300px;
     margin: 0 3.3%;
     @media only screen and (max-width: 640px) {
       width: 42.5%;
@@ -214,7 +214,7 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    background-image: url(./img/handmade-paper.png);
+    background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
     background-blend-mode: color-burn;
     @media only screen and (max-width: 640px) {
       flex-direction: column;
@@ -422,7 +422,7 @@
 
 .enquiry {
   background-color: $c5;
-  background-image: url(./img/handmade-paper.png);
+  background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
   background-blend-mode: color;
   h2 {
     font-family: $font1;
@@ -458,7 +458,7 @@
     }
   }
   .button {
-    background-image: url(./img/handmade-paper.png);
+    background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
     background-blend-mode: color-burn;
   }
 }
