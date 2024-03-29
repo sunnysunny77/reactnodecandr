@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
   const allowedOrigins = [
-    "https://candidcleaning.sunnyhome.site"
+    "https://candidcleaning.sunnyhome.site","https://localhost:3000"
   ];
   const origin = req.headers.origin;
   if (allowedOrigins.indexOf(origin) > -1) {
@@ -354,7 +354,7 @@ app.post("/api-home", function (req, res) {
 });
 
 app.get("/api-blog", async function (req, res) {
-  let doc = await mod.find({}).sort({ date: -1 }).exec();
+  let doc = await mod.find({}).sort({ date: -1 });
   return res.json({ doc: doc, buttons: [dataBlog[0].Blog, dataBlog[1].Blog, dataBlog[2].Blog] });
 });
 
@@ -400,7 +400,7 @@ app.post("/api-formRemove", async function (req, res) {
 });
 
 app.post("/api-gallery", function (req, res) {
-  res.json({ images: dataGallery });
+  res.json({ Images: dataGallery });
 });
 
 app.post("/api-contact", function (req, res) {
