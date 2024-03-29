@@ -1,7 +1,0 @@
-images ↓ Must be multiple of 2 400X400,Videos ↓ Must be multiple of 2,Names ↓ Must be multiple of 2
-https://candid.s3-ap-southeast-2.amazonaws.com/v1.jpg,https://candid.s3-ap-southeast-2.amazonaws.com/v1.mp4,Video Tutorial 
-https://candid.s3-ap-southeast-2.amazonaws.com/v2.jpg,https://candid.s3-ap-southeast-2.amazonaws.com/v2.mp4,Video Tutorial 
-https://candid.s3-ap-southeast-2.amazonaws.com/v3.jpg,https://candid.s3-ap-southeast-2.amazonaws.com/v3.mp4,Video Tutorial 
-https://candid.s3-ap-southeast-2.amazonaws.com/v4.jpg,https://candid.s3-ap-southeast-2.amazonaws.com/v4.mp4,Video Tutorial 
-https://candid.s3-ap-southeast-2.amazonaws.com/v5.jpg,https://candid.s3-ap-southeast-2.amazonaws.com/v5.mp4,Video Tutorial 
-https://candid.s3-ap-southeast-2.amazonaws.com/v6.jpg,https://candid.s3-ap-southeast-2.amazonaws.com/v6.mp4,Video Tutorial 
