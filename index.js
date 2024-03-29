@@ -1,13 +1,14 @@
-const { google } = require("googleapis");
+const google = require("googleapis");
 const fs = require("fs");
 const readline = require("readline");
 const mongoose = require("mongoose");
 const papa = require("papaparse");
 const request = require("request");
+const bodyParser = require("body-parser");
+const moment = require("moment");
+const express = require("express");
 
 mongoose.connect("mongodb://localhost/bloga");
-
-const moment = require("moment");
 
 const key = fs.readFileSync(__dirname + "/certsFiles/selfsigned.key");
 const cert = fs.readFileSync(__dirname + "/certsFiles/selfsigned.crt");
@@ -16,20 +17,15 @@ const credentials = {
   cert: cert,
 };
 
-const express = require("express");
 const app = express();
 const https = require("https").createServer(credentials, app);
 const httpsPort = 3005;
-
 https.listen(httpsPort, () => {
   console.log("Https server listing on port : " + httpsPort);
 });
 
-const bodyParser = require("body-parser");
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
 app.use(function (req, res, next) {
   const allowedOrigins = [
     "https://candidcleaning.sunnyhome.site"
@@ -43,6 +39,7 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Credentials", true);
   return next();
 });
+app.use(express.static("public"));
 
 const sch = new mongoose.Schema({
   date: String,
@@ -53,8 +50,6 @@ const sch = new mongoose.Schema({
 });
 
 const mod = mongoose.model("blogs", sch);
-
-app.use(express.static("public"));
 
 let dataNavigation = [];
 let dataContact = [];
