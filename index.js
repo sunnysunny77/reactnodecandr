@@ -9,6 +9,7 @@ const moment = require('moment')
 const express = require('express')
 
 mongoose.connect('mongodb://localhost/bloga')
+
 const pathKey = [__dirname, '/certsFiles/selfsigned.key']
 const certKey = [__dirname, '/certsFiles/selfsigned.crt']
 const key = fs.readFileSync(pathKey.join(''))
