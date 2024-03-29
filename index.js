@@ -267,7 +267,7 @@ app.post("/api-home", function (req, res) {
      Card_Three_Image_Alt: baseName(dataImages[8].Home), 
      Card_Four_Image_Alt: baseName(dataImages[9].Home), 
      Card_Five_Image_Alt: baseName(dataImages[10].Home), 
-     Card_SixI_mageA_lt: baseName(dataImages[11].Home),
+     Card_Six_Image_Alt: baseName(dataImages[11].Home),
      Video: dataVideos,
      Select_Options: dataSelectOptions,
    });
