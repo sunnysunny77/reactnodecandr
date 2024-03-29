@@ -20,12 +20,13 @@ footer {
   ul {
     list-style-type: none;
     text-align: center;
-    margin: auto;
+    margin: 10px auto;
     background-color: transparent;
     padding: 0;
     font-size: 20px;
     font-family: $font4;
     @media only screen and (min-width: 1200px) {
+      margin: auto;
       li.none {
         display: none;
       }
