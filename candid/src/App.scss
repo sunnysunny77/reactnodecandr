@@ -2,8 +2,17 @@
 
 body {
   margin: 0;
-  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: larger;
@@ -12,7 +21,6 @@ body {
   @media only screen and (max-width: 640px) {
     font-size: medium;
   }
-
 }
 
 code {
@@ -64,7 +72,9 @@ main {
   display: flex;
   flex-direction: column;
   @media only screen and (min-width: 1921px) {
-    box-shadow: 1px 0 rgba($c4, 0.2), -1px 0 rgba($c4, 0.2);
+    box-shadow:
+      1px 0 rgba($c4, 0.2),
+      -1px 0 rgba($c4, 0.2);
   }
   &::after {
     position: absolute;
@@ -75,7 +85,7 @@ main {
     bottom: 0;
     left: 0;
     z-index: -1;
-    @media only screen and (max-width: 1200px) { 
+    @media only screen and (max-width: 1200px) {
       right: 0;
     }
   }
@@ -93,7 +103,7 @@ main {
     width: 100%;
     background-color: $c3;
     background-image: linear-gradient(270deg, $c3 0%, $c6 45%, $c6 100%);
-    @media only screen and (max-width: 1200px) { 
+    @media only screen and (max-width: 1200px) {
       background-image: linear-gradient(270deg, $c3 0%, $c6 100%);
     }
     height: 40px;

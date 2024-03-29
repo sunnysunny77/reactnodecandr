@@ -136,22 +136,14 @@ class Home extends Component {
                 {key[2]}
                 <PlayCircleOutlineIcon />
               </span>
-              <img
-                className="videoImg"
-                src={key[0]}
-                alt={key[2]}
-              />
+              <img className="videoImg" src={key[0]} alt={key[2]} />
             </div>
             <div className={d + " d" + [index + 1]}>
               <span className="videoLink" onClick={() => this.overlay(idTwo)}>
                 {key[5]}
                 <PlayCircleOutlineIcon />
               </span>
-              <img
-                className="videoImg"
-                src={key[3]}
-                alt={key[5]}
-              />
+              <img className="videoImg" src={key[3]} alt={key[5]} />
             </div>
           </React.Fragment>
         );
@@ -177,8 +169,7 @@ class Home extends Component {
                     document.querySelector(`#${idOne}`).children[0].pause();
                   }}
                 >
-                  {" "}
-                  &#10006;{" "}
+                  &#10006;
                 </button>
               </div>
             </div>
@@ -198,7 +189,7 @@ class Home extends Component {
                     document.querySelector(`#${idTwo}`).children[0].pause();
                   }}
                 >
-                &#10006;
+                  &#10006;
                 </button>
               </div>
             </div>
@@ -371,8 +362,8 @@ class Home extends Component {
                     srcSet={this.state.res.Carousel_Two_Mobile}
                   />
                   <img
-                     src={this.state.res.Carousel_Two_Desktop}
-                     alt={this.state.res.Carousel_Two_Alt}
+                    src={this.state.res.Carousel_Two_Desktop}
+                    alt={this.state.res.Carousel_Two_Alt}
                   />
                 </picture>
               </div>
@@ -411,7 +402,7 @@ class Home extends Component {
                   src={this.state.res.Quote_Desktop}
                   alt={this.state.res.Quote_Alt}
                 />
-              </picture> 
+              </picture>
               <div className="infoTwo">
                 <h1>
                   {parse(this.state.res.Quote_Heading)}

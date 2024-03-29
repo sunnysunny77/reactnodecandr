@@ -118,13 +118,17 @@ export default class About extends React.Component {
                       {parse(this.state.res.More_Close_Button)}
                     </button>
                   </div>
-                  <img id="divider"
+                  <img
+                    id="divider"
                     src="https://candid.s3-ap-southeast-2.amazonaws.com/divider.png"
                     alt="Artisic Divider"
                   />
                   <h3>{parse(this.state.res.Heading_Four)}</h3>
                   <div id="imageContainer">
-                    <img alt={this.state.res.Image_Alt} src={this.state.res.Image} ></img>
+                    <img
+                      alt={this.state.res.Image_Alt}
+                      src={this.state.res.Image}
+                    ></img>
                   </div>
                   <span id="spanTwo">{parse(this.state.res.Span_Two)}</span>
                   <button

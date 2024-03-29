@@ -61,7 +61,11 @@ export default class Contactc extends Component {
               <h1> {parse(this.state.navigation)} </h1>
             </div>
             <section className="contactContOne">
-              <img alt={this.state.res.Image_Alt} src={this.state.res.Image} className="contactOne"></img>
+              <img
+                alt={this.state.res.Image_Alt}
+                src={this.state.res.Image}
+                className="contactOne"
+              ></img>
               <div className="contactTwo">
                 <h2>
                   {parse(this.state.res.Heading_One)}
@@ -74,9 +78,7 @@ export default class Contactc extends Component {
                     {this.state.res.Email}
                   </a>
                   {parse(this.state.res.Phone_Tag)}
-                  <a href={"tel:" + this.state.phone}>
-                    {this.state.phone}
-                  </a>
+                  <a href={"tel:" + this.state.phone}>{this.state.phone}</a>
                   {parse(this.state.res.Enquiries_Tag)}
                   <span className="enquiries">
                     <span> {parse(this.state.res.Enquiries_Button)}</span>

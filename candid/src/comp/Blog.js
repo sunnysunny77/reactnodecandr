@@ -134,7 +134,7 @@ export default class Blog extends React.Component {
             dispAdd: { display: "none" },
           });
         },
-        "base64"
+        "base64",
       );
     this.setState({
       alertAdd: "choose || jpg || png",
@@ -405,7 +405,7 @@ export default class Blog extends React.Component {
                         type="submit"
                         className="button"
                       >
-                         {parse(this.state.buttons[2])}
+                        {parse(this.state.buttons[2])}
                       </Button>
                       <div style={{ height: "50px" }}>
                         <div style={this.state.dispAdd}>

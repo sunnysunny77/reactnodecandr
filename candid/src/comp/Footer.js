@@ -10,9 +10,7 @@ const Footer = (props) => {
       <ul>
         <li className="block none">
           <Link to="/">
-            <span className="hiddenText">
-              Homepage Link
-            </span>
+            <span className="hiddenText">Homepage Link</span>
             <HomeIcon />
           </Link>
         </li>
@@ -30,10 +28,7 @@ const Footer = (props) => {
         </li>
         <li className="block" id="logoFooter">
           <Link to="/">
-            <img
-              src={logoFooter[0]}
-              alt={logoFooter[1]}
-            />
+            <img src={logoFooter[0]} alt={logoFooter[1]} />
           </Link>
         </li>
         <li className="block none">

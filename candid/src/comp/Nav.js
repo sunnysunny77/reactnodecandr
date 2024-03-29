@@ -116,7 +116,8 @@ class Nav extends Component {
     }
   };
   render() {
-    let { phone, hours, days, navigation, logoMobile, logoDesktop } = this.props;
+    let { phone, hours, days, navigation, logoMobile, logoDesktop } =
+      this.props;
     return (
       <React.Fragment>
         <div className="burgerMenu"></div>
@@ -131,10 +132,8 @@ class Nav extends Component {
             <hr></hr>
             <li>
               <Link to="/">
-                <span className="hiddenText">
-                  Homepage Link
-                </span>
-                <HomeIcon /> 
+                <span className="hiddenText">Homepage Link</span>
+                <HomeIcon />
               </Link>
             </li>
             <li>
@@ -170,20 +169,14 @@ class Nav extends Component {
             </li>
             <li>
               <Link to="/">
-                <img
-                  src={logoMobile[0]}
-                  alt={logoMobile[1]}
-                ></img>
+                <img src={logoMobile[0]} alt={logoMobile[1]}></img>
               </Link>
             </li>
           </ul>
         </nav>
         <header>
           <Link to="/">
-            <img
-              src={logoDesktop[0]}
-              alt={logoDesktop[1]}
-            ></img>
+            <img src={logoDesktop[0]} alt={logoDesktop[1]}></img>
           </Link>
         </header>
         <nav className={`mainNav ${this.state.class}`}>
@@ -214,9 +207,7 @@ class Nav extends Component {
             </li>
             <li>
               <Link to="/">
-                <span className="hiddenText">
-                  Homepage Link
-                </span>
+                <span className="hiddenText">Homepage Link</span>
                 <HomeIcon />
               </Link>
             </li>

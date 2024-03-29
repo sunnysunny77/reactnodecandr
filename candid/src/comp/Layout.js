@@ -5,7 +5,16 @@ import Footer from "./Footer";
 
 const Layout = (props) => {
   const [main, setMain] = useState("navRelative");
-  let { phone, hours, days, navigation, footer, logoFooter, logoMobile, logoDesktop } = props;
+  let {
+    phone,
+    hours,
+    days,
+    navigation,
+    footer,
+    logoFooter,
+    logoMobile,
+    logoDesktop,
+  } = props;
   return (
     <>
       <Nav
