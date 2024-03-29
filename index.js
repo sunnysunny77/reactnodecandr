@@ -1,40 +1,40 @@
-let { google } = require("googleapis");
-let fs = require("fs");
-let readline = require("readline");
-let mongoose = require("mongoose");
+const { google } = require("googleapis");
+const fs = require("fs");
+const readline = require("readline");
+const mongoose = require("mongoose");
 const papa = require("papaparse");
 const request = require("request");
 
 mongoose.connect("mongodb://localhost/bloga");
 
-let moment = require("moment");
+const moment = require("moment");
 
-let key = fs.readFileSync(__dirname + "/certsFiles/selfsigned.key");
-let cert = fs.readFileSync(__dirname + "/certsFiles/selfsigned.crt");
-let credentials = {
+const key = fs.readFileSync(__dirname + "/certsFiles/selfsigned.key");
+const cert = fs.readFileSync(__dirname + "/certsFiles/selfsigned.crt");
+const credentials = {
   key: key,
   cert: cert,
 };
 
-let express = require("express");
-let app = express();
-let https = require("https").createServer(credentials, app);
-let httpsPort = 3005;
+const express = require("express");
+const app = express();
+const https = require("https").createServer(credentials, app);
+const httpsPort = 3005;
 
 https.listen(httpsPort, () => {
   console.log("Https server listing on port : " + httpsPort);
 });
 
-let bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
-  let allowedOrigins = [
+  const allowedOrigins = [
     "https://candidcleaning.sunnyhome.site"
   ];
-  let origin = req.headers.origin;
+  const origin = req.headers.origin;
   if (allowedOrigins.indexOf(origin) > -1) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
@@ -44,7 +44,7 @@ app.use(function (req, res, next) {
   return next();
 });
 
-let sch = new mongoose.Schema({
+const sch = new mongoose.Schema({
   date: String,
   blog: String,
   name: String,
@@ -52,9 +52,46 @@ let sch = new mongoose.Schema({
   loc: String,
 });
 
-let mod = mongoose.model("blogs", sch);
+const mod = mongoose.model("blogs", sch);
 
 app.use(express.static("public"));
+
+let dataNavigation = [];
+let dataContact = [];
+let dataVideos = [];
+let dataGallery = [];
+let dataImages = [];
+let dataImagesPreLoad =  {
+  "/": [
+  "https://candid.s3-ap-southeast-2.amazonaws.com/welcome.png",
+  "https://candid.s3.ap-southeast-2.amazonaws.com/texture.png",
+  ],
+  "/about": [
+    "https://candid.s3-ap-southeast-2.amazonaws.com/divider.png",
+    "https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg",
+    "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
+    "https://candid.s3.ap-southeast-2.amazonaws.com/texture.png",
+  ],
+  "/gallery": [
+    "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
+    "https://candid.s3.ap-southeast-2.amazonaws.com/texture.png",
+  ],
+  "/contact": [
+    "https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg",
+    "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
+    "https://candid.s3.ap-southeast-2.amazonaws.com/texture.png",
+  ],
+  "/blog": [
+    "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
+    "https://candid.s3.ap-southeast-2.amazonaws.com/texture.png",
+  ],
+};
+let dataHome = [];
+let dataSelectOptions = [];
+let dataBlog = [];
+let dataAbout = [];
+let dataMap = [];
+let index = 1;
 
 function baseName(param) { 
   return param.split("/")
@@ -64,191 +101,113 @@ function baseName(param) {
   .join(".");
  }
 
-const options = {	skipEmptyLines: true, header: true };
+function init() { 
+  const options = { skipEmptyLines: true, header: true };
 
-const dataStreamNavigation = request.get("https://docs.google.com/spreadsheets/d/19OUa1a2MebEPygCW44bLfVovtz_bgX5rXG4YwAv9hXg/gviz/tq?tqx=out:csv&sheet=data");
-const parseStreamNavigation  = papa.parse(papa.NODE_STREAM_INPUT, options);
-dataStreamNavigation.pipe(parseStreamNavigation);
-let dataNavigation = [];
-
-parseStreamNavigation.on("data", chunk => {
-  delete chunk.Title;
-  dataNavigation.push(chunk);
-});
-
-const dataStreamContact = request.get("https://docs.google.com/spreadsheets/d/1LWkiENVo4pKwX2yCZePfsYgx9VvYVqrDsu5K5leI8is/gviz/tq?tqx=out:csv&sheet=data");
-const parseStreamContact = papa.parse(papa.NODE_STREAM_INPUT, options);
-dataStreamContact.pipe(parseStreamContact);
-let dataContact = [];
-
-parseStreamContact.on("data", chunk => {
-  delete chunk.Title;
-  dataContact.push(chunk);
-});
-
-const dataStreamVideos = request.get("https://docs.google.com/spreadsheets/d/1yuPgYwDdJgMk-ANu2Orx_Ls4kuBVgrJcW1r6NjzQiBY/gviz/tq?tqx=out:csv&sheet=data");
-const parseStreamVideos  = papa.parse(papa.NODE_STREAM_INPUT, options);
-dataStreamVideos.pipe(parseStreamVideos);
-let dataVideos = [];
-
-parseStreamVideos.on("data", chunk => {
-   dataVideos.push(Object.values(chunk));
-});
-
-const dataStreamGallery = request.get("https://docs.google.com/spreadsheets/d/1LjDGLbRSaQ4Y7ilLy0LMPpgUZN6ynI8QRg--a2ltLt4/gviz/tq?tqx=out:csv&sheet=data");
-const parseStreamGallery  = papa.parse(papa.NODE_STREAM_INPUT, options);
-dataStreamGallery.pipe(parseStreamGallery);
-let dataGallery = [];
-
-parseStreamGallery.on("data", chunk => {
-  dataGallery.push({
-    original: Object.values(chunk),
-    originalAlt: baseName(String(Object.values(chunk))),
+  const dataStreamNavigation = request.get("https://docs.google.com/spreadsheets/d/19OUa1a2MebEPygCW44bLfVovtz_bgX5rXG4YwAv9hXg/gviz/tq?tqx=out:csv&sheet=data");
+  const parseStreamNavigation  = papa.parse(papa.NODE_STREAM_INPUT, options);
+  dataStreamNavigation.pipe(parseStreamNavigation);
+  parseStreamNavigation.on("data", chunk => {
+    delete chunk.Title;
+    dataNavigation.push(chunk);
   });
-});
 
-const dataStreamImages = request.get("https://docs.google.com/spreadsheets/d/1oFpWin6qWbZnGi8s47RzfqtI14MRBHafL4FUl0OHijk/gviz/tq?tqx=out:csv&sheet=data");
-const parseStreamImages  = papa.parse(papa.NODE_STREAM_INPUT, options);
-dataStreamImages.pipe(parseStreamImages);
-let dataImagesContact = [];
-let dataImagesAbout = [];
-let dataImagesHome = [];
-let dataImagesLogo = [];
-let imagesPreLoad =  {};
-
-parseStreamImages.on("data", chunk => {
-  delete chunk.Contact_Title;
-  delete chunk.About_Title;
-  delete chunk.Home_Title;
-  delete chunk.Logo_Title;
-  dataImagesContact.push({ Contact: chunk.Contact });
-  dataImagesAbout.push({ About: chunk.About });
-  dataImagesHome.push({ Home: chunk.Home });
-  dataImagesLogo.push({ Logo: chunk.Logo });
-});
-parseStreamImages.on("finish", () => {
-  imagesPreLoad = {
-    "/": [
-    dataImagesLogo[0].Logo,
-    dataImagesLogo[1].Logo,
-    dataImagesLogo[2].Logo,
-    dataImagesHome[0].Home,
-    dataImagesHome[1].Home,
-    dataImagesHome[2].Home,
-    dataImagesHome[3].Home,
-    dataImagesHome[4].Home,
-    dataImagesHome[5].Home,
-    dataImagesHome[6].Home,
-    dataImagesHome[7].Home,
-    dataImagesHome[8].Home,
-    dataImagesHome[9].Home,
-    dataImagesHome[10].Home,
-    dataImagesHome[11].Home,
-    "https://candid.s3-ap-southeast-2.amazonaws.com/welcome.png",
-    "https://candid.s3.ap-southeast-2.amazonaws.com/texture.png",
-    ],
-    "/about": [
-      dataImagesLogo[0].Logo,
-      dataImagesLogo[1].Logo,
-      dataImagesLogo[2].Logo,
-      dataImagesAbout[0].About,
-      "https://candid.s3-ap-southeast-2.amazonaws.com/divider.png",
-      "https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg",
-      "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
-      "https://candid.s3.ap-southeast-2.amazonaws.com/texture.png",
-    ],
-    "/gallery": [
-      dataImagesLogo[0].Logo,
-      dataImagesLogo[1].Logo,
-      dataImagesLogo[2].Logo,
-      "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
-      "https://candid.s3.ap-southeast-2.amazonaws.com/texture.png",
-    ],
-    "/contact": [
-      dataImagesLogo[0].Logo,
-      dataImagesLogo[1].Logo,
-      dataImagesLogo[2].Logo,
-      dataImagesContact[0].Contact,
-      "https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg",
-      "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
-      "https://candid.s3.ap-southeast-2.amazonaws.com/texture.png",
-    ],
-    "/blog": [
-      dataImagesLogo[0].Logo,
-      dataImagesLogo[1].Logo,
-      dataImagesLogo[2].Logo,
-      "https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg",
-      "https://candid.s3.ap-southeast-2.amazonaws.com/texture.png",
-    ],
-  };
-  dataVideos.forEach(image => {
-    imagesPreLoad["/"].push(image[0], image[3]);
+  const dataStreamContact = request.get("https://docs.google.com/spreadsheets/d/1LWkiENVo4pKwX2yCZePfsYgx9VvYVqrDsu5K5leI8is/gviz/tq?tqx=out:csv&sheet=data");
+  const parseStreamContact = papa.parse(papa.NODE_STREAM_INPUT, options);
+  dataStreamContact.pipe(parseStreamContact);
+  parseStreamContact.on("data", chunk => {
+    delete chunk.Title;
+    dataContact.push(chunk);
   });
-  dataGallery.forEach(image => {
-    imagesPreLoad["/gallery"].push(image.original[0]);
+
+  const dataStreamVideos = request.get("https://docs.google.com/spreadsheets/d/1yuPgYwDdJgMk-ANu2Orx_Ls4kuBVgrJcW1r6NjzQiBY/gviz/tq?tqx=out:csv&sheet=data");
+  const parseStreamVideos  = papa.parse(papa.NODE_STREAM_INPUT, options);
+  dataStreamVideos.pipe(parseStreamVideos);
+  parseStreamVideos.on("data", chunk => {
+    dataVideos.push([chunk.Images_One, chunk.Videos_One, chunk.Names_One, chunk.Images_Two, chunk.Videos_Two, chunk.Names_Two]);
   });
-});
 
-const dataStreamHome = request.get("https://docs.google.com/spreadsheets/d/19IsSN9huwRRlCNUfWdvFSx6aMnBoAA8ZSEyQK6NjB7A/gviz/tq?tqx=out:csv&sheet=data");
-const parseStreamHome  = papa.parse(papa.NODE_STREAM_INPUT, options);
-dataStreamHome.pipe(parseStreamHome);
-let dataHome = [];
-
-parseStreamHome.on("data", chunk => {
-  delete chunk.Title;
-  dataHome.push(chunk);
-});
-
-const dataStreamSelectOptions = request.get("https://docs.google.com/spreadsheets/d/1oBVSxkf_Ep2XbJrhhc9J6byEfB8umgzL-rC9OOhL4X0/gviz/tq?tqx=out:csv&sheet=data");
-const parseStreamSelectOptions  = papa.parse(papa.NODE_STREAM_INPUT, options);
-dataStreamSelectOptions.pipe(parseStreamSelectOptions);
-let dataSelectOptions = [];
-
-parseStreamSelectOptions.on("data", chunk => {
-  dataSelectOptions.push({
-    "value": chunk.Select_Options,
-    "label": chunk.Select_Options,
+  const dataStreamGallery = request.get("https://docs.google.com/spreadsheets/d/1LjDGLbRSaQ4Y7ilLy0LMPpgUZN6ynI8QRg--a2ltLt4/gviz/tq?tqx=out:csv&sheet=data");
+  const parseStreamGallery  = papa.parse(papa.NODE_STREAM_INPUT, options);
+  dataStreamGallery.pipe(parseStreamGallery);
+  parseStreamGallery.on("data", chunk => {
+    dataGallery.push({
+      original: chunk.Images,
+      originalAlt: baseName(chunk.Images),
+    });
   });
-});
 
-const dataStreamBlog = request.get("https://docs.google.com/spreadsheets/d/10K5LaNIpqVSQ_ch0urNqN_s3YuyU7kUgXk3SZ_eXS9s/gviz/tq?tqx=out:csv&sheet=data");
-const parseStreamBlog = papa.parse(papa.NODE_STREAM_INPUT, options);
-dataStreamBlog.pipe(parseStreamBlog);
-let dataBlog = [];
+  const dataStreamImages = request.get("https://docs.google.com/spreadsheets/d/1oFpWin6qWbZnGi8s47RzfqtI14MRBHafL4FUl0OHijk/gviz/tq?tqx=out:csv&sheet=data");
+  const parseStreamImages  = papa.parse(papa.NODE_STREAM_INPUT, options);
+  dataStreamImages.pipe(parseStreamImages);
+  parseStreamImages.on("data", chunk => {
+    delete chunk.Contact_Title;
+    delete chunk.About_Title;
+    delete chunk.Home_Title;
+    delete chunk.Logo_Title;
+    dataImages.push(chunk);
+    if (chunk.Logo.length) dataImagesPreLoad["/"].unshift(chunk.Logo);
+    if (chunk.Home.length) dataImagesPreLoad["/"].push(chunk.Home)
+    if (chunk.Logo.length) dataImagesPreLoad["/about"].unshift(chunk.Logo);
+    if (chunk.About.length) dataImagesPreLoad["/about"].push(chunk.About)
+    if (chunk.Logo.length) dataImagesPreLoad["/gallery"].unshift(chunk.Logo);
+    if (chunk.Logo.length) dataImagesPreLoad["/contact"].unshift(chunk.Logo);
+    if (chunk.Contact.length) dataImagesPreLoad["/contact"].push(chunk.Contact)
+    if (chunk.Logo.length) dataImagesPreLoad["/blog"].unshift(chunk.Logo);
+  });
 
-parseStreamBlog.on("data", chunk => {
-  delete chunk.Title;
-  dataBlog.push(chunk);
-});
+  const dataStreamHome = request.get("https://docs.google.com/spreadsheets/d/19IsSN9huwRRlCNUfWdvFSx6aMnBoAA8ZSEyQK6NjB7A/gviz/tq?tqx=out:csv&sheet=data");
+  const parseStreamHome  = papa.parse(papa.NODE_STREAM_INPUT, options);
+  dataStreamHome.pipe(parseStreamHome);
+  parseStreamHome.on("data", chunk => {
+    delete chunk.Title;
+    dataHome.push(chunk);
+  });
 
-const dataStreamAbout = request.get("https://docs.google.com/spreadsheets/d/1v7TzLg2rShYbuDUokQkBy-IJjDCq49M_M5MjiQRBMfg/gviz/tq?tqx=out:csv&sheet=data");
-const parseStreamAbout  = papa.parse(papa.NODE_STREAM_INPUT, options);
-dataStreamAbout.pipe(parseStreamAbout);
-let dataAbout = [];
+  const dataStreamSelectOptions = request.get("https://docs.google.com/spreadsheets/d/1oBVSxkf_Ep2XbJrhhc9J6byEfB8umgzL-rC9OOhL4X0/gviz/tq?tqx=out:csv&sheet=data");
+  const parseStreamSelectOptions  = papa.parse(papa.NODE_STREAM_INPUT, options);
+  dataStreamSelectOptions.pipe(parseStreamSelectOptions);
+  parseStreamSelectOptions.on("data", chunk => {
+    dataSelectOptions.push({
+      "value": chunk.Select_Options,
+      "label": chunk.Select_Options,
+    });
+  });
 
-parseStreamAbout.on("data", chunk => {
-  delete chunk.Title;
-  dataAbout.push(chunk);
-});
+  const dataStreamBlog = request.get("https://docs.google.com/spreadsheets/d/10K5LaNIpqVSQ_ch0urNqN_s3YuyU7kUgXk3SZ_eXS9s/gviz/tq?tqx=out:csv&sheet=data");
+  const parseStreamBlog = papa.parse(papa.NODE_STREAM_INPUT, options);
+  dataStreamBlog.pipe(parseStreamBlog);
+  parseStreamBlog.on("data", chunk => {
+    delete chunk.Title;
+    dataBlog.push(chunk);
+  });
 
-const dataStreamMap = request.get("https://docs.google.com/spreadsheets/d/1BxHA12ZHfra6gva_mm7o3nlQREf45DsjeMYQ1Mpg5y8/gviz/tq?tqx=out:csv&sheet=data");
-const parseStreamMap  = papa.parse(papa.NODE_STREAM_INPUT, options);
-dataStreamMap.pipe(parseStreamMap);
-let dataMap = [];
-let index = 1;
+  const dataStreamAbout = request.get("https://docs.google.com/spreadsheets/d/1v7TzLg2rShYbuDUokQkBy-IJjDCq49M_M5MjiQRBMfg/gviz/tq?tqx=out:csv&sheet=data");
+  const parseStreamAbout  = papa.parse(papa.NODE_STREAM_INPUT, options);
+  dataStreamAbout.pipe(parseStreamAbout);
+  parseStreamAbout.on("data", chunk => {
+    delete chunk.Title;
+    dataAbout.push(chunk);
+  });
 
-parseStreamMap.on("data", chunk => {
-  dataMap.push({
-    [index] : {
-      type: "Feature",
-      geometry: {
-        type: "Polygon",
-        coordinates: [JSON.parse("[" +  Object.values(chunk)+ "]")],
+  const dataStreamMap = request.get("https://docs.google.com/spreadsheets/d/1BxHA12ZHfra6gva_mm7o3nlQREf45DsjeMYQ1Mpg5y8/gviz/tq?tqx=out:csv&sheet=data");
+  const parseStreamMap  = papa.parse(papa.NODE_STREAM_INPUT, options);
+  dataStreamMap.pipe(parseStreamMap);
+  parseStreamMap.on("data", chunk => {
+    dataMap.push({
+      [index] : {
+        type: "Feature",
+        geometry: {
+          type: "Polygon",
+          coordinates: [JSON.parse("[" +  chunk.Geo_Json_Array + "]")],
+        },
       },
-    },
+    });
+    index++;
   });
-  index++;
-});
+}
+
+init();
 
 app.post("/api-init", function (req, res) {
   res.json({
@@ -256,10 +215,10 @@ app.post("/api-init", function (req, res) {
     Phone: dataContact[4].Contact,
     Hours: dataContact[9].Contact,
     Days: dataContact[10].Contact,
-    ImagesPreLoad: imagesPreLoad,
-    LogoMobileAlt: baseName(dataImagesLogo[0].Logo), 
-    LogoDesktopAlt: baseName(dataImagesLogo[1].Logo),
-    LogoFooterAlt: baseName(dataImagesLogo[2].Logo),
+    ImagesPreLoad: dataImagesPreLoad,
+    LogoMobileAlt: baseName(dataImages[0].Logo), 
+    LogoDesktopAlt: baseName(dataImages[1].Logo),
+    LogoFooterAlt: baseName(dataImages[2].Logo),
   });
 });
 
@@ -288,27 +247,27 @@ app.post("/api-home", function (req, res) {
      Enquiries_Title: dataHome[20].Home,
      Select_Placeholder: dataHome[21].Home,
      Submitt_Form: dataHome[22].Home,
-     Carousel_One_Mobile: dataImagesHome[0].Home,
-     Carousel_One_Desktop: dataImagesHome[1].Home,
-     Carousel_Two_Mobile: dataImagesHome[2].Home,
-     Carousel_Two_Desktop: dataImagesHome[3].Home,
-     Quote_Mobile: dataImagesHome[4].Home,
-     Quote_Desktop: dataImagesHome[5].Home,
-     Card_One_Image: dataImagesHome[6].Home,
-     Card_Two_Image: dataImagesHome[7].Home,
-     Card_Three_Image: dataImagesHome[8].Home,
-     Card_Four_Image: dataImagesHome[9].Home,
-     Card_Five_Image: dataImagesHome[10].Home,
-     Card_Six_Image: dataImagesHome[11].Home,
-     Carousel_One_Alt: baseName(dataImagesHome[0].Home),
-     Carousel_Two_Alt: baseName(dataImagesHome[1].Home),
-     Quote_Alt: baseName(dataImagesHome[4].Home), 
-     Card_One_Image_Alt: baseName(dataImagesHome[6].Home), 
-     Card_Two_Image_Alt: baseName(dataImagesHome[7].Home), 
-     Card_Three_Image_Alt: baseName(dataImagesHome[8].Home), 
-     Card_Four_Image_Alt: baseName(dataImagesHome[9].Home), 
-     Card_Five_Image_Alt: baseName(dataImagesHome[10].Home), 
-     Card_SixI_mageA_lt: baseName(dataImagesHome[11].Home),
+     Carousel_One_Mobile: dataImages[0].Home,
+     Carousel_One_Desktop: dataImages[1].Home,
+     Carousel_Two_Mobile: dataImages[2].Home,
+     Carousel_Two_Desktop: dataImages[3].Home,
+     Quote_Mobile: dataImages[4].Home,
+     Quote_Desktop: dataImages[5].Home,
+     Card_One_Image: dataImages[6].Home,
+     Card_Two_Image: dataImages[7].Home,
+     Card_Three_Image: dataImages[8].Home,
+     Card_Four_Image: dataImages[9].Home,
+     Card_Five_Image: dataImages[10].Home,
+     Card_Six_Image: dataImages[11].Home,
+     Carousel_One_Alt: baseName(dataImages[0].Home),
+     Carousel_Two_Alt: baseName(dataImages[1].Home),
+     Quote_Alt: baseName(dataImages[4].Home), 
+     Card_One_Image_Alt: baseName(dataImages[6].Home), 
+     Card_Two_Image_Alt: baseName(dataImages[7].Home), 
+     Card_Three_Image_Alt: baseName(dataImages[8].Home), 
+     Card_Four_Image_Alt: baseName(dataImages[9].Home), 
+     Card_Five_Image_Alt: baseName(dataImages[10].Home), 
+     Card_SixI_mageA_lt: baseName(dataImages[11].Home),
      Video: dataVideos,
      Select_Options: dataSelectOptions,
    });
@@ -459,8 +418,8 @@ app.post("/api-contact", function (req, res) {
     Enquiries_Button: dataContact[6].Contact,
     Heading_Two: dataContact[7].Contact,
     Availabilty: dataContact[8].Contact,
-    Image: dataImagesContact[0].Contact,
-    Image_Alt: baseName(dataImagesContact[0].Contact),
+    Image: dataImages[0].Contact,
+    Image_Alt: baseName(dataImages[0].Contact),
   });
 });
 
@@ -478,11 +437,16 @@ app.post("/api-about", function (req, res) {
       Span_Two_More: dataAbout[8].About,
       More_Button: dataAbout[9].About,
       More_Close_Button: dataAbout[10].About,
-      Image: dataImagesAbout[0].About,
-      Image_Alt: baseName(dataImagesAbout[0].About),  
+      Image: dataImages[0].About,
+      Image_Alt: baseName(dataImages[0].About),  
     },
     B: {
       Data: dataMap,
     },
   });
+});
+
+app.get("/reset", function (req, res) {
+  init();
+  res.json({ content: "reloaded" });
 });
