@@ -42,7 +42,7 @@ export default class Blog extends React.Component {
       alertRemove: null,
       window: window.scrollTo(0, 0),
       navigation: props.navigation,
-      buttons: [],
+      res: {},
       load: true,
       extension: null,
       table: null
@@ -54,9 +54,9 @@ export default class Blog extends React.Component {
     axios
       .get('/api-blog')
       .then((res) => {
-        this.mapTable(this.props.table || res.data.doc)
+        this.mapTable(this.props.table || res.data.Results)
         this.setState({
-          buttons: res.data.buttons,
+          res: res.data.Blog,
           load: false
         })
         this.props.footer('load')
@@ -269,7 +269,7 @@ export default class Blog extends React.Component {
                     id="panel2a-header"
                   >
                     <div className="accordianHeading headingCont">
-                      <h2>{parse(this.state.buttons[0])}</h2>
+                      <h2>{parse(this.state.res.Blog_Add_Title)}</h2>
                     </div>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -419,7 +419,7 @@ export default class Blog extends React.Component {
                         type="submit"
                         className="button"
                       >
-                        {parse(this.state.buttons[2])}
+                        {parse(this.state.res.Submitt_Form)}
                       </Button>
                       <div style={{ height: '50px' }}>
                         <div style={this.state.dispAdd}>
@@ -438,7 +438,7 @@ export default class Blog extends React.Component {
                     id="panel2a-header"
                   >
                     <div className="accordianHeading headingCont">
-                      <h2>{parse(this.state.buttons[1])}</h2>
+                      <h2>{parse(this.state.res.Blog_Remove_Title)}</h2>
                     </div>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -523,7 +523,7 @@ export default class Blog extends React.Component {
                         className="button"
                         type="submit"
                       >
-                        {parse(this.state.buttons[2])}
+                        {parse(this.state.res.Submitt_Form)}
                       </Button>
                       <div style={{ height: '50px' }}>
                         <div style={this.state.dispRemove}>

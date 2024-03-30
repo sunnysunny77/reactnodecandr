@@ -356,8 +356,7 @@ app.post('/api-form', function (req, res) {
 })
 
 app.get('/api-blog', async function (req, res) {
-  const doc = await Mod.find({}).sort({ date: -1 })
-  return res.json({ doc, buttons: [dataBlog[0].Blog, dataBlog[1].Blog, dataBlog[2].Blog] })
+  return res.json({ Results: await Mod.find({}).sort({ date: -1 }), Blog: { Blog_Add_Title: dataBlog[0].Blog, Blog_Remove_Title: dataBlog[1].Blog, Submitt_Form: dataBlog[2].Blog } })
 })
 
 app.post('/api-formAdd', async function (req, res) {
@@ -389,9 +388,9 @@ app.post('/api-formAdd', async function (req, res) {
 
 app.post('/api-formRemove', async function (req, res) {
   if (req.body.passRemove === 'blogs') {
-    const doc = await Mod.find({ date: req.body.date })
-    if (doc.length) {
-      const path = [__dirname, '/public', doc[0].loc]
+    const results = await Mod.find({ date: req.body.date })
+    if (results.length) {
+      const path = [__dirname, '/public', results[0].loc]
       fs.unlinkSync(path.join(''))
       await Mod.deleteOne({ date: req.body.date })
       return res.json(await Mod.find().sort({ date: -1 }))
