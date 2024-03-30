@@ -191,6 +191,10 @@
     -moz-user-select: none;
     user-select: none;
     transition: filter 0.3s linear;
+    @media only screen and (max-width: 640px) {
+      object-fit: cover;
+      height: 50vw;
+    }
     &.grey {
       filter: grayscale(50%);
     }
