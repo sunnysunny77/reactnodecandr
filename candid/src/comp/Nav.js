@@ -1,123 +1,129 @@
-import React, { Component } from "react";
-import "./Nav.scss";
-import { Link } from "react-router-dom";
-import HomeIcon from "@mui/icons-material/Home";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import PhoneIcon from "@mui/icons-material/Phone";
-import parse from "html-react-parser";
+import React, { Component } from 'react'
+import './Nav.scss'
+import { Link } from 'react-router-dom'
+import HomeIcon from '@mui/icons-material/Home'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import PhoneIcon from '@mui/icons-material/Phone'
+import parse from 'html-react-parser'
 
 class Nav extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
-      class: "navRelative",
+      class: 'navRelative',
       bar1: {
-        width: "25px",
-        height: "3px",
-        backgroundColor: "black",
-        margin: "6px auto",
-        transition: "0.4s",
+        width: '25px',
+        height: '3px',
+        backgroundColor: 'black',
+        margin: '6px auto',
+        transition: '0.4s'
       },
       bar2: {
-        width: "25px",
-        height: "3px",
-        backgroundColor: "black",
-        margin: "6px auto",
-        transition: "0.4s",
+        width: '25px',
+        height: '3px',
+        backgroundColor: 'black',
+        margin: '6px auto',
+        transition: '0.4s'
       },
       bar3: {
-        width: "25px",
-        height: "3px",
-        backgroundColor: "black",
-        margin: "6px auto",
-        transition: "0.4s",
+        width: '25px',
+        height: '3px',
+        backgroundColor: 'black',
+        margin: '6px auto',
+        transition: '0.4s'
       },
-      dis: false,
-    };
+      dis: false
+    }
   }
-  componentDidMount() {
-    document.querySelector(".burgerMenu").addEventListener("click", this.menu);
-    window.addEventListener("scroll", this.handleScroll, { passive: true });
+
+  componentDidMount () {
+    document.querySelector('.burgerMenu').addEventListener('click', this.menu)
+    window.addEventListener('scroll', this.handleScroll, { passive: true })
   }
-  componentWillUnmount() {
+
+  componentWillUnmount () {
     document
-      .querySelector(".burgerMenu")
-      .removeEventListener("click", this.menu);
-    window.removeEventListener("scroll", this.handleScroll);
+      .querySelector('.burgerMenu')
+      .removeEventListener('click', this.menu)
+    window.removeEventListener('scroll', this.handleScroll)
   }
+
   handleScroll = () => {
     if (window.scrollY >= 90) {
-      this.setState({ class: "navFixed" });
-      this.props.main("navFixed");
+      this.setState({ class: 'navFixed' })
+      this.props.main('navFixed')
     } else {
-      this.setState({ class: "navRelative" });
-      this.props.main("navRelative");
+      this.setState({ class: 'navRelative' })
+      this.props.main('navRelative')
     }
-  };
+  }
+
   menu = () => {
     this.setState({
       dis: true,
       bar1: {
-        width: "25px",
-        height: "3px",
-        backgroundColor: "black",
-        margin: "6px auto",
-        transition: "0.4s",
-        WebkitTransform: "rotate(-45deg) translate(-6px, 4px)",
-        transform: "rotate(-45deg) translate(-6px, 4px)",
+        width: '25px',
+        height: '3px',
+        backgroundColor: 'black',
+        margin: '6px auto',
+        transition: '0.4s',
+        WebkitTransform: 'rotate(-45deg) translate(-6px, 4px)',
+        transform: 'rotate(-45deg) translate(-6px, 4px)'
       },
       bar2: {
-        width: "25px",
-        height: "3px",
-        backgroundColor: "black",
-        margin: "6px auto",
-        transition: "0.4s",
-        opacity: "0",
+        width: '25px',
+        height: '3px',
+        backgroundColor: 'black',
+        margin: '6px auto',
+        transition: '0.4s',
+        opacity: '0'
       },
       bar3: {
-        width: "25px",
-        height: "3px",
-        backgroundColor: "black",
-        margin: "6px auto",
-        transition: "0.4s",
-        WebkitTransform: "rotate(45deg) translate(-8px, -8px)",
-        transform: "rotate(45deg) translate(-8px, -8px)",
-      },
-    });
-    document.body.addEventListener("click", this.menuClose);
-  };
+        width: '25px',
+        height: '3px',
+        backgroundColor: 'black',
+        margin: '6px auto',
+        transition: '0.4s',
+        WebkitTransform: 'rotate(45deg) translate(-8px, -8px)',
+        transform: 'rotate(45deg) translate(-8px, -8px)'
+      }
+    })
+    document.body.addEventListener('click', this.menuClose)
+  }
+
   menuClose = () => {
-    if (event.target.className !== "burgerMenu") {
+    if (event.target.className !== 'burgerMenu') {
       this.setState({
         dis: false,
         bar1: {
-          width: "25px",
-          height: "3px",
-          backgroundColor: "black",
-          margin: "6px auto",
-          transition: "0.4s",
+          width: '25px',
+          height: '3px',
+          backgroundColor: 'black',
+          margin: '6px auto',
+          transition: '0.4s'
         },
         bar2: {
-          width: "25px",
-          height: "3px",
-          backgroundColor: "black",
-          margin: "6px auto",
-          transition: "0.4s",
+          width: '25px',
+          height: '3px',
+          backgroundColor: 'black',
+          margin: '6px auto',
+          transition: '0.4s'
         },
         bar3: {
-          width: "25px",
-          height: "3px",
-          backgroundColor: "black",
-          margin: "6px auto",
-          transition: "0.4s",
-        },
-      });
-      document.body.removeEventListener("click", this.menuClose);
+          width: '25px',
+          height: '3px',
+          backgroundColor: 'black',
+          margin: '6px auto',
+          transition: '0.4s'
+        }
+      })
+      document.body.removeEventListener('click', this.menuClose)
     }
-  };
-  render() {
-    let { phone, hours, days, navigation, logoMobile, logoDesktop } =
-      this.props;
+  }
+
+  render () {
+    const { phone, hours, days, navigation, logoMobile, logoDesktop } =
+      this.props
     return (
       <React.Fragment>
         <div className="burgerMenu"></div>
@@ -165,7 +171,7 @@ class Nav extends Component {
               <PhoneIcon />
             </li>
             <li>
-              <a href={"tel:" + phone}>{phone}</a>
+              <a href={'tel:' + phone}>{phone}</a>
             </li>
             <li>
               <Link to="/">
@@ -197,7 +203,7 @@ class Nav extends Component {
           <ul>
             <li>
               <PhoneIcon />
-              <a href={"tel:" + phone}>{phone}</a>
+              <a href={'tel:' + phone}>{phone}</a>
             </li>
             <li>
               <AccessTimeIcon />
@@ -214,8 +220,8 @@ class Nav extends Component {
           </ul>
         </nav>
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default Nav;
+export default Nav

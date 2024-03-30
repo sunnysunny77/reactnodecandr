@@ -1,43 +1,43 @@
-import React from "react";
-import "./Blog.scss";
-import styles from "./Blog.module.scss";
-import Alert from "./Alert.js";
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import SubjectIcon from "@mui/icons-material/Subject";
-import TitleIcon from "@mui/icons-material/Title";
-import Button from "@mui/material/Button";
-import LockOpenIcon from "@mui/icons-material/LockOpen";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import { styled } from "@mui/material/styles";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import axios from "axios";
-import Resizer from "react-image-file-resizer";
-import parse from "html-react-parser";
+import React from 'react'
+import './Blog.scss'
+import styles from './Blog.module.scss'
+import Alert from './Alert.js'
+import TextField from '@mui/material/TextField'
+import InputAdornment from '@mui/material/InputAdornment'
+import AccountCircle from '@mui/icons-material/AccountCircle'
+import SubjectIcon from '@mui/icons-material/Subject'
+import TitleIcon from '@mui/icons-material/Title'
+import Button from '@mui/material/Button'
+import LockOpenIcon from '@mui/icons-material/LockOpen'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import Accordion from '@mui/material/Accordion'
+import AccordionSummary from '@mui/material/AccordionSummary'
+import AccordionDetails from '@mui/material/AccordionDetails'
+import { styled } from '@mui/material/styles'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import axios from 'axios'
+import Resizer from 'react-image-file-resizer'
+import parse from 'html-react-parser'
 
 const StyledAccordion = styled(Accordion)({
   margin: 0,
-  backgroundColor: styles.c3,
-});
+  backgroundColor: styles.c3
+})
 
 export default class Blog extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       blog: null,
       title: null,
       data: null,
       file: null,
       name: null,
-      passAdd: "",
-      passRemove: "",
+      passAdd: '',
+      passRemove: '',
       date: null,
-      dispAdd: { display: "none" },
-      dispRemove: { display: "none" },
+      dispAdd: { display: 'none' },
+      dispRemove: { display: 'none' },
       alertAdd: null,
       alertRemove: null,
       window: window.scrollTo(0, 0),
@@ -45,32 +45,34 @@ export default class Blog extends React.Component {
       buttons: [],
       load: true,
       extension: null,
-      table: null,
-    };
-    this.props.footer("loading");
+      table: null
+    }
+    this.props.footer('loading')
   }
-  componentDidMount() {
+
+  componentDidMount () {
     axios
-      .get(`/api-blog`)
+      .get('/api-blog')
       .then((res) => {
-        this.mapTable(this.props.table || res.data.doc);
+        this.mapTable(this.props.table || res.data.doc)
         this.setState({
           buttons: res.data.buttons,
-          load: false,
-        });
-        this.props.footer("load");
+          load: false
+        })
+        this.props.footer('load')
       })
       .catch((error) => {
-        alert(error);
-      });
+        alert(error)
+      })
   }
+
   mapTable = (res) => {
-    this.props.setTable(res);
+    this.props.setTable(res)
     res.length
       ? this.setState({
-          table: res.map((key) => {
-            const { _id, blog, date, name, title, loc } = key;
-            return (
+        table: res.map((key) => {
+          const { _id, blog, date, name, title, loc } = key
+          return (
               <React.Fragment key={_id}>
                 <tr>
                   <td>{title}</td>
@@ -82,7 +84,7 @@ export default class Blog extends React.Component {
                   <td>
                     <img
                       alt={title}
-                      src={"https://" + window.location.hostname + loc}
+                      src={'https://' + window.location.hostname + loc}
                     />
                   </td>
                 </tr>
@@ -96,30 +98,32 @@ export default class Blog extends React.Component {
                   </td>
                 </tr>
               </React.Fragment>
-            );
-          }),
+          )
         })
+      })
       : this.setState({
-          table: (
-            <tr style={{ height: "35vh" }}>
+        table: (
+            <tr style={{ height: '35vh' }}>
               <th> No posts yet </th>
             </tr>
-          ),
-        });
-  };
+        )
+      })
+  }
+
   change = (event) => {
-    const nam = event.target.name;
-    const val = event.target.value;
+    const nam = event.target.name
+    const val = event.target.value
     this.setState({
       [nam]: val,
-      dispAdd: { display: "none" },
-      dispRemove: { display: "none" },
-    });
-  };
+      dispAdd: { display: 'none' },
+      dispRemove: { display: 'none' }
+    })
+  }
+
   file = (event) => {
-    let extension = event.target.value.split(".").pop();
-    const types = ["jpg", "JPG", "png", "PNG", "jpeg", "JPEG"];
-    if (types.includes(extension))
+    const extension = event.target.value.split('.').pop()
+    const types = ['jpg', 'JPG', 'png', 'PNG', 'jpeg', 'JPEG']
+    if (types.includes(extension)) {
       return Resizer.imageFileResizer(
         event.target.files[0],
         150,
@@ -130,109 +134,119 @@ export default class Blog extends React.Component {
         (uri) => {
           this.setState({
             file: uri,
-            extension: extension,
-            dispAdd: { display: "none" },
-          });
+            extension,
+            dispAdd: { display: 'none' }
+          })
         },
-        "base64",
-      );
+        'base64'
+      )
+    }
     this.setState({
-      alertAdd: "choose || jpg || png",
-      dispAdd: { display: "block", lineHeight: "50px" },
-      extension: extension,
-    });
-  };
+      alertAdd: 'choose || jpg || png',
+      dispAdd: { display: 'block', lineHeight: '50px' },
+      extension
+    })
+  }
+
   submitAdd = (event) => {
-    event.preventDefault();
-    const types = ["jpg", "JPG", "png", "PNG", "jpeg", "JPEG"];
-    if (!types.includes(this.state.extension))
+    event.preventDefault()
+    const types = ['jpg', 'JPG', 'png', 'PNG', 'jpeg', 'JPEG']
+    if (!types.includes(this.state.extension)) {
       return this.setState({
-        alertAdd: "choose || jpg || png",
-        dispAdd: { display: "block", lineHeight: "50px" },
-      });
+        alertAdd: 'choose || jpg || png',
+        dispAdd: { display: 'block', lineHeight: '50px' }
+      })
+    }
     if (
       this.state.passAdd &&
       this.state.blog &&
       this.state.name &&
       this.state.title &&
       this.state.file
-    )
+    ) {
       return axios
-        .post(`/api-formAdd`, {
+        .post('/api-formAdd', {
           passAdd: this.state.passAdd,
           blog: this.state.blog,
           name: this.state.name,
           title: this.state.title,
-          file: this.state.file,
+          file: this.state.file
         })
         .then((res) => {
-          if (res.data.e)
+          if (res.data.e) {
             return this.setState({
               alertAdd: res.data.e,
-              dispAdd: { display: "block", lineHeight: "50px" },
-            });
-          this.mapTable(res.data);
+              dispAdd: { display: 'block', lineHeight: '50px' }
+            })
+          }
+          this.mapTable(res.data)
           this.setState({
-            alertAdd: "Blog sent",
-            dispAdd: { display: "block", lineHeight: "50px" },
+            alertAdd: 'Blog sent',
+            dispAdd: { display: 'block', lineHeight: '50px' },
             passAdd: null,
             blog: null,
             name: null,
             title: null,
-            file: null,
-          });
-          document.querySelector("#formAdd").reset();
+            file: null
+          })
+          document.querySelector('#formAdd').reset()
         })
         .catch((error) => {
           this.setState({
             alertAdd: error.response.statusText,
-            dispAdd: { display: "block", lineHeight: "50px" },
-          });
-        });
+            dispAdd: { display: 'block', lineHeight: '50px' }
+          })
+        })
+    }
     this.setState({
-      alertAdd: "Blog from incomplete",
-      dispAdd: { display: "block", lineHeight: "50px" },
-    });
-  };
+      alertAdd: 'Blog from incomplete',
+      dispAdd: { display: 'block', lineHeight: '50px' }
+    })
+  }
+
   submitRemove = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     axios
-      .post(`/api-formRemove`, {
+      .post('/api-formRemove', {
         passRemove: this.state.passRemove,
-        date: this.state.date,
+        date: this.state.date
       })
       .then((res) => {
-        if (res.data.e)
+        if (res.data.e) {
           return this.setState({
             alertRemove: res.data.e,
-            dispRemove: { display: "block", lineHeight: "50px" },
-          });
-        this.mapTable(res.data);
+            dispRemove: { display: 'block', lineHeight: '50px' }
+          })
+        }
+        this.mapTable(res.data)
         this.setState({
-          alertRemove: "Blog delete",
-          dispRemove: { display: "block", lineHeight: "50px" },
+          alertRemove: 'Blog delete',
+          dispRemove: { display: 'block', lineHeight: '50px' },
           passRemove: null,
-          date: null,
-        });
-        document.querySelector("#formRemove").reset();
+          date: null
+        })
+        document.querySelector('#formRemove').reset()
       })
       .catch((error) => {
         this.setState({
           alertRemove: error.response.statusText,
-          dispRemove: { display: "block", lineHeight: "50px" },
-        });
-      });
-  };
-  render() {
+          dispRemove: { display: 'block', lineHeight: '50px' }
+        })
+      })
+  }
+
+  render () {
     return (
       <React.Fragment>
-        {this.state.load ? (
+        {this.state.load
+          ? (
           <img
             id="load"
             src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
             alt="loading"
           />
-        ) : (
+            )
+          : (
           <React.Fragment>
             {this.state.window}
             <div className="headingCont blogHeading">
@@ -265,9 +279,9 @@ export default class Blog extends React.Component {
                       onSubmit={this.submitAdd}
                       autoComplete="off"
                       style={{
-                        width: "100%",
+                        width: '100%',
                         fontFamily: styles.font3,
-                        color: styles.c11,
+                        color: styles.c11
                       }}
                     >
                       <SubjectIcon />
@@ -281,17 +295,17 @@ export default class Blog extends React.Component {
                           disableUnderline: true,
                           style: {
                             color: styles.c3,
-                            fontSize: "inherit",
-                            fontWeight: "500",
+                            fontSize: 'inherit',
+                            fontWeight: '500',
                             borderRadius: 0,
                             backgroundColor: styles.c11,
-                            fontFamily: styles.font3,
+                            fontFamily: styles.font3
                           },
                           startAdornment: (
                             <InputAdornment position="start">
                               <LockOpenIcon />
                             </InputAdornment>
-                          ),
+                          )
                         }}
                         variant="filled"
                         type="passAddord"
@@ -308,17 +322,17 @@ export default class Blog extends React.Component {
                           disableUnderline: true,
                           style: {
                             color: styles.c3,
-                            fontSize: "inherit",
-                            fontWeight: "500",
+                            fontSize: 'inherit',
+                            fontWeight: '500',
                             borderRadius: 0,
                             backgroundColor: styles.c11,
-                            fontFamily: styles.font3,
+                            fontFamily: styles.font3
                           },
                           startAdornment: (
                             <InputAdornment position="start">
                               <TitleIcon />
                             </InputAdornment>
-                          ),
+                          )
                         }}
                         variant="filled"
                         type="text"
@@ -335,17 +349,17 @@ export default class Blog extends React.Component {
                           disableUnderline: true,
                           style: {
                             color: styles.c3,
-                            fontSize: "inherit",
-                            fontWeight: "500",
+                            fontSize: 'inherit',
+                            fontWeight: '500',
                             borderRadius: 0,
                             backgroundColor: styles.c11,
-                            fontFamily: styles.font3,
+                            fontFamily: styles.font3
                           },
                           startAdornment: (
                             <InputAdornment position="start">
                               <AccountCircle />
                             </InputAdornment>
-                          ),
+                          )
                         }}
                         variant="filled"
                         type="text"
@@ -366,15 +380,15 @@ export default class Blog extends React.Component {
                           style: {
                             fontFamily: styles.font3,
                             color: styles.c3,
-                            fontSize: "inherit",
-                            fontWeight: "500",
-                            height: "135px",
+                            fontSize: 'inherit',
+                            fontWeight: '500',
+                            height: '135px',
                             backgroundColor: styles.c11,
-                            overflowY: "auto",
-                            overflowX: "hidden",
+                            overflowY: 'auto',
+                            overflowX: 'hidden',
                             borderRadius: 0,
-                            display: "block",
-                          },
+                            display: 'block'
+                          }
                         }}
                         variant="filled"
                         type="text"
@@ -393,13 +407,13 @@ export default class Blog extends React.Component {
                         style={{
                           color: styles.c11,
                           backgroundColor: styles.c3,
-                          width: "100%",
-                          height: "50px",
-                          fontSize: "inherit",
-                          fontWeight: "400",
-                          paddingTop: "10px",
-                          marginTop: "25px",
-                          borderRadius: 0,
+                          width: '100%',
+                          height: '50px',
+                          fontSize: 'inherit',
+                          fontWeight: '400',
+                          paddingTop: '10px',
+                          marginTop: '25px',
+                          borderRadius: 0
                         }}
                         variant="contained"
                         type="submit"
@@ -407,7 +421,7 @@ export default class Blog extends React.Component {
                       >
                         {parse(this.state.buttons[2])}
                       </Button>
-                      <div style={{ height: "50px" }}>
+                      <div style={{ height: '50px' }}>
                         <div style={this.state.dispAdd}>
                           <Alert alert={this.state.alertAdd} />
                         </div>
@@ -434,9 +448,9 @@ export default class Blog extends React.Component {
                       onSubmit={this.submitRemove}
                       autoComplete="off"
                       style={{
-                        width: "100%",
+                        width: '100%',
                         fontFamily: styles.font3,
-                        color: styles.c11,
+                        color: styles.c11
                       }}
                     >
                       <label htmlFor="pass" className="hiddenText">
@@ -449,17 +463,17 @@ export default class Blog extends React.Component {
                           disableUnderline: true,
                           style: {
                             color: styles.c3,
-                            fontSize: "inherit",
-                            fontWeight: "500",
+                            fontSize: 'inherit',
+                            fontWeight: '500',
                             borderRadius: 0,
                             backgroundColor: styles.c11,
-                            fontFamily: styles.font3,
+                            fontFamily: styles.font3
                           },
                           startAdornment: (
                             <InputAdornment position="start">
                               <LockOpenIcon />
                             </InputAdornment>
-                          ),
+                          )
                         }}
                         variant="filled"
                         type="passAddord"
@@ -476,17 +490,17 @@ export default class Blog extends React.Component {
                           disableUnderline: true,
                           style: {
                             color: styles.c3,
-                            fontSize: "inherit",
-                            fontWeight: "500",
+                            fontSize: 'inherit',
+                            fontWeight: '500',
                             borderRadius: 0,
                             backgroundColor: styles.c11,
-                            fontFamily: styles.font3,
+                            fontFamily: styles.font3
                           },
                           startAdornment: (
                             <InputAdornment position="start">
                               <AccessTimeIcon />
                             </InputAdornment>
-                          ),
+                          )
                         }}
                         variant="filled"
                         type="text"
@@ -498,12 +512,12 @@ export default class Blog extends React.Component {
                         style={{
                           color: styles.c11,
                           backgroundColor: styles.c3,
-                          width: "100%",
-                          height: "50px",
-                          fontSize: "inherit",
-                          fontWeight: "400",
-                          paddingTop: "10px",
-                          borderRadius: 0,
+                          width: '100%',
+                          height: '50px',
+                          fontSize: 'inherit',
+                          fontWeight: '400',
+                          paddingTop: '10px',
+                          borderRadius: 0
                         }}
                         variant="contained"
                         className="button"
@@ -511,7 +525,7 @@ export default class Blog extends React.Component {
                       >
                         {parse(this.state.buttons[2])}
                       </Button>
-                      <div style={{ height: "50px" }}>
+                      <div style={{ height: '50px' }}>
                         <div style={this.state.dispRemove}>
                           <Alert alert={this.state.alertRemove} />
                         </div>
@@ -522,8 +536,8 @@ export default class Blog extends React.Component {
               </div>
             </section>
           </React.Fragment>
-        )}
+            )}
       </React.Fragment>
-    );
+    )
   }
 }

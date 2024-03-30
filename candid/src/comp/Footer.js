@@ -1,10 +1,11 @@
-import HomeIcon from "@mui/icons-material/Home";
-import "./Footer.scss";
-import parse from "html-react-parser";
-import { Link } from "react-router-dom";
+import React from 'react'
+import HomeIcon from '@mui/icons-material/Home'
+import './Footer.scss'
+import parse from 'html-react-parser'
+import { Link } from 'react-router-dom'
 
 const Footer = (props) => {
-  let { footer, phone, hours, days, navigation, logoFooter } = props;
+  const { footer, phone, hours, days, navigation, logoFooter } = props
   return (
     <footer className={footer}>
       <ul>
@@ -35,11 +36,11 @@ const Footer = (props) => {
           {parse(hours)} / {parse(days)}
         </li>
         <li className="block none">
-          <a href={"tel:" + phone}>{phone}</a>
+          <a href={'tel:' + phone}>{phone}</a>
         </li>
       </ul>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

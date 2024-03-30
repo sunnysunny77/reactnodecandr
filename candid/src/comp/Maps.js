@@ -1,53 +1,55 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import MapGL, {
   NavigationControl,
   FullscreenControl,
   Source,
-  Layer,
-} from "@urbica/react-map-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
+  Layer
+} from '@urbica/react-map-gl'
+import 'mapbox-gl/dist/mapbox-gl.css'
 
 export default class Maps extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       viewport: {
         latitude: -31.9590544,
         longitude: 115.8353351,
-        zoom: 9,
+        zoom: 9
       },
       data: props.data,
-      map: null,
-    };
+      map: null
+    }
   }
-  componentDidMount() {
+
+  componentDidMount () {
     this.setState({
       map: this.state.data.map((key, index) => {
         return (
           <React.Fragment key={index}>
             <Source
-              id={"data" + index}
+              id={'data' + index}
               type="geojson"
               data={this.state.data[index][index + 1]}
             />
             <Layer
-              id={"data" + index}
+              id={'data' + index}
               type="fill"
-              source={"data" + index}
+              source={'data' + index}
               paint={{
-                "fill-color": "#088",
-                "fill-opacity": 0.8,
+                'fill-color': '#088',
+                'fill-opacity': 0.8
               }}
             />
           </React.Fragment>
-        );
-      }),
-    });
+        )
+      })
+    })
   }
-  render() {
+
+  render () {
     return (
       <MapGL
-        style={{ width: "100%", height: "300px" }}
+        style={{ width: '100%', height: '300px' }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
         accessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         latitude={this.state.viewport.latitude}
@@ -56,9 +58,9 @@ export default class Maps extends Component {
         onViewportChange={(viewport) => this.setState({ viewport })}
       >
         <NavigationControl showCompass showZoom position="top-right" />
-        <FullscreenControl container={document.querySelector("cont")} />
+        <FullscreenControl container={document.querySelector('cont')} />
         {this.state.map}
       </MapGL>
-    );
+    )
   }
 }

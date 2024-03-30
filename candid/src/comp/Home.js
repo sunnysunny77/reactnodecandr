@@ -1,70 +1,70 @@
-import React, { Component } from "react";
-import Slider from "react-slick";
-import Vivus from "vivus";
-import "./Home.scss";
-import styles from "./Home.module.scss";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import axios from "axios";
-import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
-import InfoIcon from "@mui/icons-material/Info";
-import StarBorderIcon from "@mui/icons-material/StarBorder";
-import WhatshotIcon from "@mui/icons-material/Whatshot";
-import FilterListIcon from "@mui/icons-material/FilterList";
-import BuildIcon from "@mui/icons-material/Build";
-import Alert from "./Alert.js";
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
-import Button from "@mui/material/Button";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import PhoneIcon from "@mui/icons-material/Phone";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import SubjectIcon from "@mui/icons-material/Subject";
-import ListIcon from "@mui/icons-material/List";
-import Tooltip from "@mui/material/Tooltip";
-import Select from "react-select";
-import parse from "html-react-parser";
+import React, { Component } from 'react'
+import Slider from 'react-slick'
+import Vivus from 'vivus'
+import './Home.scss'
+import styles from './Home.module.scss'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import axios from 'axios'
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline'
+import InfoIcon from '@mui/icons-material/Info'
+import StarBorderIcon from '@mui/icons-material/StarBorder'
+import WhatshotIcon from '@mui/icons-material/Whatshot'
+import FilterListIcon from '@mui/icons-material/FilterList'
+import BuildIcon from '@mui/icons-material/Build'
+import Alert from './Alert.js'
+import TextField from '@mui/material/TextField'
+import InputAdornment from '@mui/material/InputAdornment'
+import Button from '@mui/material/Button'
+import AccountCircle from '@mui/icons-material/AccountCircle'
+import PhoneIcon from '@mui/icons-material/Phone'
+import MailOutlineIcon from '@mui/icons-material/MailOutline'
+import SubjectIcon from '@mui/icons-material/Subject'
+import ListIcon from '@mui/icons-material/List'
+import Tooltip from '@mui/material/Tooltip'
+import Select from 'react-select'
+import parse from 'html-react-parser'
 
 const customStyles = {
   menu: (provided) => ({
     ...provided,
-    borderRadius: "0",
+    borderRadius: '0',
     backgroundColor: styles.c11,
-    margin: "25px 25px 0 25px",
-    width: "calc(100% - 50px)",
-    maxWidth: "261.11px",
+    margin: '25px 25px 0 25px',
+    width: 'calc(100% - 50px)',
+    maxWidth: '261.11px'
   }),
   option: () => ({
     color: styles.c13,
-    fontSize: "medium",
-    height: "40px",
-    textAlign: "center",
-    cursor: "pointer",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    fontSize: 'medium',
+    height: '40px',
+    textAlign: 'center',
+    cursor: 'pointer',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   }),
   control: (provided) => ({
     ...provided,
-    maxWidth: "261.11px",
+    maxWidth: '261.11px',
     backgroundColor: styles.c11,
-    borderRadius: "0 5px 0 0",
+    borderRadius: '0 5px 0 0',
     border: 0,
-    boxShadow: "none",
-    margin: "auto 25px 140px 25px",
+    boxShadow: 'none',
+    margin: 'auto 25px 140px 25px'
   }),
   dropdownIndicator: (provided) => ({
     ...provided,
     color: styles.c13,
-    "&:hover": {
-      color: styles.c2,
-    },
-  }),
-};
+    '&:hover': {
+      color: styles.c2
+    }
+  })
+}
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       settings: {
         dots: false,
@@ -77,10 +77,10 @@ class Home extends Component {
         speed: 500,
         pauseOnHover: false,
         fade: true,
-        beforeChange: this.vidToggle,
+        beforeChange: this.vidToggle
       },
       window: window.scrollTo(0, 0),
-      disp: { display: "none" },
+      disp: { display: 'none' },
       name: null,
       email: null,
       phone: null,
@@ -92,53 +92,57 @@ class Home extends Component {
       overlay: null,
       count: 1,
       svg: null,
-      load: true,
-    };
-    this.props.footer("loading");
+      load: true
+    }
+    this.props.footer('loading')
   }
-  componentDidMount() {
+
+  componentDidMount () {
     axios
-      .post("/api-home")
+      .post('/api-home')
       .then((res) => {
         this.setState({
           res: res.data,
-          load: false,
-        });
-        this.props.footer("load");
-        this.mapVideo(res.data.Video);
+          load: false
+        })
+        this.props.footer('load')
+        this.mapVideo(res.data.Video)
       })
       .catch((error) => {
-        alert(error);
-      });
+        alert(error)
+      })
   }
-  componentDidUpdate(prevProps, prevState) {
+
+  componentDidUpdate (prevProps, prevState) {
     if (prevState.load !== this.state.load) {
-      if (window.location.search === "?enquiries=enquiries")
-        this.scrollIntoView();
-      new Vivus(document.querySelector("#my-svg").children[0], {
-        duration: 200,
-      });
+      if (window.location.search === '?enquiries=enquiries') { this.scrollIntoView() }
+      const myVivus = new Vivus(document.querySelector('#my-svg').children[0], {
+        duration: 200
+      })
+      myVivus.play()
     }
   }
+
   scrollIntoView = () => {
-    document.querySelector("#enquiry").scrollIntoView({ behavior: "smooth" });
-  };
+    document.querySelector('#enquiry').scrollIntoView({ behavior: 'smooth' })
+  }
+
   mapVideo = (res) => {
     this.setState({
       video: res.map((key, index) => {
-        const d = index === 0 ? "flex" : "";
-        const idOne = "#videoOne-" + index + 1;
-        const idTwo = "#videoTwo-" + index + 1;
+        const d = index === 0 ? 'flex' : ''
+        const idOne = '#videoOne-' + index + 1
+        const idTwo = '#videoTwo-' + index + 1
         return (
           <React.Fragment key={index}>
-            <div className={d + " d" + [index + 1]}>
+            <div className={d + ' d' + [index + 1]}>
               <span className="videoLink" onClick={() => this.overlay(idOne)}>
                 {key[2]}
                 <PlayCircleOutlineIcon />
               </span>
               <img className="videoImg" src={key[0]} alt={key[2]} />
             </div>
-            <div className={d + " d" + [index + 1]}>
+            <div className={d + ' d' + [index + 1]}>
               <span className="videoLink" onClick={() => this.overlay(idTwo)}>
                 {key[5]}
                 <PlayCircleOutlineIcon />
@@ -146,11 +150,11 @@ class Home extends Component {
               <img className="videoImg" src={key[3]} alt={key[5]} />
             </div>
           </React.Fragment>
-        );
+        )
       }),
       overlay: res.map((key, index) => {
-        const idOne = "videoOne-" + index + 1;
-        const idTwo = "videoTwo-" + index + 1;
+        const idOne = 'videoOne-' + index + 1
+        const idTwo = 'videoTwo-' + index + 1
         return (
           <React.Fragment key={index}>
             <div id={idOne} className="overlay">
@@ -161,12 +165,12 @@ class Home extends Component {
               <div className="controlls">
                 <button
                   onClick={() => {
-                    document.body.style.overflow = "auto";
-                    document.body.style.paddingRight = 0;
+                    document.body.style.overflow = 'auto'
+                    document.body.style.paddingRight = 0
                     document
                       .querySelector(`#${idOne}`)
-                      .classList.remove("fixed");
-                    document.querySelector(`#${idOne}`).children[0].pause();
+                      .classList.remove('fixed')
+                    document.querySelector(`#${idOne}`).children[0].pause()
                   }}
                 >
                   &#10006;
@@ -181,12 +185,12 @@ class Home extends Component {
               <div className="controlls">
                 <button
                   onClick={() => {
-                    document.body.style.overflow = "auto";
-                    document.body.style.paddingRight = 0;
+                    document.body.style.overflow = 'auto'
+                    document.body.style.paddingRight = 0
                     document
                       .querySelector(`#${idTwo}`)
-                      .classList.remove("fixed");
-                    document.querySelector(`#${idTwo}`).children[0].pause();
+                      .classList.remove('fixed')
+                    document.querySelector(`#${idTwo}`).children[0].pause()
                   }}
                 >
                   &#10006;
@@ -194,144 +198,155 @@ class Home extends Component {
               </div>
             </div>
           </React.Fragment>
-        );
-      }),
-    });
-  };
+        )
+      })
+    })
+  }
+
   overlay = (id) => {
-    const overlay = document.querySelector(`${id}`);
-    overlay.children[0].load();
-    overlay.children[0].play();
-    const width = window.innerWidth - document.body.offsetWidth;
-    document.body.style.overflow = "hidden";
-    document.body.style.paddingRight = `${width}px`;
-    overlay.classList.add("fixed");
-  };
+    const overlay = document.querySelector(`${id}`)
+    overlay.children[0].load()
+    overlay.children[0].play()
+    const width = window.innerWidth - document.body.offsetWidth
+    document.body.style.overflow = 'hidden'
+    document.body.style.paddingRight = `${width}px`
+    overlay.classList.add('fixed')
+  }
+
   vidDisplay = (index) => {
-    const count = this.state.count;
-    const removeCount = document.querySelectorAll(".d" + count);
-    const newCount = this.state.count + index;
-    const addNewCount = document.querySelectorAll(".d" + newCount);
+    const count = this.state.count
+    const removeCount = document.querySelectorAll('.d' + count)
+    const newCount = this.state.count + index
+    const addNewCount = document.querySelectorAll('.d' + newCount)
     if (newCount > 0 && newCount <= this.state.res.Video.length) {
       [...removeCount].forEach((item) => {
-        item.classList.remove("flex");
+        item.classList.remove('flex')
       });
       [...addNewCount].forEach((item) => {
-        item.classList.add("flex");
-      });
-      this.setState({ count: newCount });
-      const video = document.querySelectorAll(".videoImg");
+        item.classList.add('flex')
+      })
+      this.setState({ count: newCount })
+      const video = document.querySelectorAll('.videoImg');
       [...video].forEach((item) => {
-        item.classList.add("grey");
+        item.classList.add('grey')
         setTimeout(() => {
-          item.classList.remove("grey");
-        }, 500);
-      });
+          item.classList.remove('grey')
+        }, 500)
+      })
     }
-  };
+  }
+
   vidToggle = () => {
-    const count = this.state.count;
-    const removeCount = document.querySelectorAll(".d" + count);
+    const count = this.state.count
+    const removeCount = document.querySelectorAll('.d' + count)
     if (count < this.state.res.Video.length) {
       [...removeCount].forEach((item) => {
-        item.classList.remove("flex");
-      });
-      const newCount = this.state.count + 1;
-      const addNewCount = document.querySelectorAll(".d" + newCount);
+        item.classList.remove('flex')
+      })
+      const newCount = this.state.count + 1
+      const addNewCount = document.querySelectorAll('.d' + newCount);
       [...addNewCount].forEach((item) => {
-        item.classList.add("flex");
-      });
-      this.setState({ count: newCount });
+        item.classList.add('flex')
+      })
+      this.setState({ count: newCount })
     } else {
       [...removeCount].forEach((item) => {
-        item.classList.remove("flex");
-      });
-      const newCount = 1;
-      const addNewCount = document.querySelectorAll(".d" + newCount);
+        item.classList.remove('flex')
+      })
+      const newCount = 1
+      const addNewCount = document.querySelectorAll('.d' + newCount);
       [...addNewCount].forEach((item) => {
-        item.classList.add("flex");
-        item.classList.add("grey");
+        item.classList.add('flex')
+        item.classList.add('grey')
         setTimeout(() => {
-          item.classList.remove("grey");
-        }, 500);
-      });
-      this.setState({ count: newCount });
+          item.classList.remove('grey')
+        }, 500)
+      })
+      this.setState({ count: newCount })
     }
-    const video = document.querySelectorAll(".videoImg");
+    const video = document.querySelectorAll('.videoImg');
     [...video].forEach((item) => {
-      item.classList.add("grey");
+      item.classList.add('grey')
       setTimeout(() => {
-        item.classList.remove("grey");
-      }, 500);
-    });
-  };
+        item.classList.remove('grey')
+      }, 500)
+    })
+  }
+
   handleChangeSelect = (selectedOption) => {
-    this.setState({ selectedOption, disp: { display: "none" } });
-  };
+    this.setState({ selectedOption, disp: { display: 'none' } })
+  }
+
   handleChange = (event) => {
-    const nam = event.target.name;
-    const val = event.target.value;
-    this.setState({ [nam]: val, disp: { display: "none" } });
-  };
+    const nam = event.target.name
+    const val = event.target.value
+    this.setState({ [nam]: val, disp: { display: 'none' } })
+  }
+
   submit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     this.setState({
-      alert: "Waiting...",
-      disp: { display: "block", lineHeight: "50px" },
-    });
+      alert: 'Waiting...',
+      disp: { display: 'block', lineHeight: '50px' }
+    })
     if (
       this.state.name &&
       this.state.email &&
       this.state.phone &&
       this.state.selectedOption &&
       this.state.text
-    )
+    ) {
       return axios
-        .post("/api-form", {
+        .post('/api-form', {
           name: this.state.name,
           email: this.state.email,
           phone: this.state.phone,
           selectedOption: this.state.selectedOption,
-          text: this.state.text,
+          text: this.state.text
         })
         .then((res) => {
-          if (res.data.e)
+          if (res.data.e) {
             return this.setState({
               alert: res.data.e,
-              disp: { display: "block", lineHeight: "50px" },
-            });
+              disp: { display: 'block', lineHeight: '50px' }
+            })
+          }
           this.setState({
             alert: res.data.a,
-            disp: { display: "block", lineHeight: "50px" },
+            disp: { display: 'block', lineHeight: '50px' },
             name: null,
             email: null,
             phone: null,
             selectedOption: null,
-            text: null,
-          });
-          document.querySelector("#form").reset();
+            text: null
+          })
+          document.querySelector('#form').reset()
         })
         .catch((error) => {
           this.setState({
             alert: error.response.statusText,
-            disp: { display: "block", lineHeight: "50px" },
-          });
-        });
+            disp: { display: 'block', lineHeight: '50px' }
+          })
+        })
+    }
     this.setState({
-      alert: "Enquiry from incomplete",
-      disp: { display: "block", lineHeight: "50px" },
-    });
-  };
-  render() {
+      alert: 'Enquiry from incomplete',
+      disp: { display: 'block', lineHeight: '50px' }
+    })
+  }
+
+  render () {
     return (
       <React.Fragment>
-        {this.state.load ? (
+        {this.state.load
+          ? (
           <img
             id="load"
             src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
             alt="loading"
           />
-        ) : (
+            )
+          : (
           <React.Fragment>
             {this.state.window}
             <section className="welcome">
@@ -411,7 +426,7 @@ class Home extends Component {
                 <hr
                   style={{
                     boxShadow: ` 0 5px 5px -5px ${styles.c2}`,
-                    border: "7.5px solid transparent",
+                    border: '7.5px solid transparent'
                   }}
                 />
                 <p>
@@ -420,7 +435,7 @@ class Home extends Component {
                 <hr
                   style={{
                     boxShadow: `0 -5px 5px -5px ${styles.c2}`,
-                    border: "7.5px solid transparent",
+                    border: '7.5px solid transparent'
                   }}
                 />
               </div>
@@ -533,9 +548,9 @@ class Home extends Component {
                 autoComplete="off"
                 onSubmit={this.submit}
                 style={{
-                  width: "100%",
+                  width: '100%',
                   fontFamily: styles.font3,
-                  color: styles.c11,
+                  color: styles.c11
                 }}
               >
                 <label htmlFor="name" className="hiddenText">
@@ -550,15 +565,15 @@ class Home extends Component {
                       color: styles.c3,
                       backgroundColor: styles.c11,
                       borderRadius: 0,
-                      fontSize: "inherit",
-                      fontWeight: "500",
-                      margin: "0 25px 25px  25px",
+                      fontSize: 'inherit',
+                      fontWeight: '500',
+                      margin: '0 25px 25px  25px'
                     },
                     startAdornment: (
                       <InputAdornment position="start">
                         <AccountCircle />
                       </InputAdornment>
-                    ),
+                    )
                   }}
                   variant="filled"
                   type="text"
@@ -578,15 +593,15 @@ class Home extends Component {
                       color: styles.c3,
                       backgroundColor: styles.c11,
                       borderRadius: 0,
-                      fontSize: "inherit",
-                      fontWeight: "500",
-                      margin: "0 25px 25px  25px",
+                      fontSize: 'inherit',
+                      fontWeight: '500',
+                      margin: '0 25px 25px  25px'
                     },
                     startAdornment: (
                       <InputAdornment position="start">
                         <MailOutlineIcon />
                       </InputAdornment>
-                    ),
+                    )
                   }}
                   variant="filled"
                   type="email"
@@ -604,22 +619,22 @@ class Home extends Component {
                   <TextField
                     id="phone"
                     InputProps={{
-                      pattern: "[+]?[0-9]{3,15}",
+                      pattern: '[+]?[0-9]{3,15}',
                       disableUnderline: true,
                       style: {
                         fontFamily: styles.font3,
                         color: styles.c3,
                         backgroundColor: styles.c11,
                         borderRadius: 0,
-                        fontSize: "inherit",
-                        fontWeight: "500",
-                        margin: "0 25px 25px 25px",
+                        fontSize: 'inherit',
+                        fontWeight: '500',
+                        margin: '0 25px 25px 25px'
                       },
                       startAdornment: (
                         <InputAdornment position="start">
                           <PhoneIcon />
                         </InputAdornment>
-                      ),
+                      )
                     }}
                     variant="filled"
                     type="tel"
@@ -630,7 +645,7 @@ class Home extends Component {
                 </Tooltip>
                 <div className="selectContainer">
                   <ListIcon
-                    style={{ color: styles.c11, marginLeft: "27.5px" }}
+                    style={{ color: styles.c11, marginLeft: '27.5px' }}
                   />
                   <label htmlFor="select" className="hiddenText">
                     {parse(this.state.res.Select_Placeholder)}
@@ -649,9 +664,9 @@ class Home extends Component {
                 <SubjectIcon
                   style={{
                     color: styles.c11,
-                    marginLeft: "12.5px",
-                    marginBottom: "7.5px",
-                    display: "block",
+                    marginLeft: '12.5px',
+                    marginBottom: '7.5px',
+                    display: 'block'
                   }}
                 />
                 <label htmlFor="text" className="hiddenText">
@@ -668,16 +683,16 @@ class Home extends Component {
                     style: {
                       fontFamily: styles.font3,
                       color: styles.c3,
-                      display: "block",
-                      width: "100%",
-                      height: "150px",
+                      display: 'block',
+                      width: '100%',
+                      height: '150px',
                       backgroundColor: styles.c11,
                       borderRadius: 0,
-                      overflowY: "auto",
-                      overflowX: "hidden",
-                      fontSize: "inherit",
-                      fontWeight: "500",
-                    },
+                      overflowY: 'auto',
+                      overflowX: 'hidden',
+                      fontSize: 'inherit',
+                      fontWeight: '500'
+                    }
                   }}
                   variant="filled"
                   type="text"
@@ -690,12 +705,12 @@ class Home extends Component {
                     fontFamily: styles.font3,
                     color: styles.c11,
                     backgroundColor: styles.c3,
-                    width: "100%",
-                    height: "50px",
-                    fontSize: "inherit",
-                    fontWeight: "400",
-                    paddingTop: "10px",
-                    borderRadius: 0,
+                    width: '100%',
+                    height: '50px',
+                    fontSize: 'inherit',
+                    fontWeight: '400',
+                    paddingTop: '10px',
+                    borderRadius: 0
                   }}
                   variant="contained"
                   type="submit"
@@ -703,7 +718,7 @@ class Home extends Component {
                 >
                   {parse(this.state.res.Submitt_Form)}
                 </Button>
-                <div style={{ height: "50px" }}>
+                <div style={{ height: '50px' }}>
                   <div style={this.state.disp}>
                     <Alert alert={this.state.alert} />
                   </div>
@@ -711,10 +726,10 @@ class Home extends Component {
               </form>
             </section>
           </React.Fragment>
-        )}
+            )}
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default Home;
+export default Home

@@ -1,62 +1,62 @@
-import React, { useState, useEffect } from "react";
-import "./App.scss";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./comp/Layout";
-import Home from "./comp/Home";
-import Blog from "./comp/Blog";
-import Gallery from "./comp/Gallery";
-import Contact from "./comp/Contact";
-import About from "./comp/About";
-import axios from "axios";
+import React, { useState, useEffect } from 'react'
+import './App.scss'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Layout from './comp/Layout'
+import Home from './comp/Home'
+import Blog from './comp/Blog'
+import Gallery from './comp/Gallery'
+import Contact from './comp/Contact'
+import About from './comp/About'
+import axios from 'axios'
 
-function App() {
-  const [navigation, setNavigation] = useState([]);
-  const [phone, setPhone] = useState(null);
-  const [hours, setHours] = useState(null);
-  const [days, setDays] = useState(null);
+function App () {
+  const [navigation, setNavigation] = useState([])
+  const [phone, setPhone] = useState(null)
+  const [hours, setHours] = useState(null)
+  const [days, setDays] = useState(null)
   const [imagesPreLoad, setImagesPreLoad] = useState({
-    "/": [],
-    "/about": [],
-    "/gallery": [],
-    "/contact": [],
-    "/blog": [],
-  });
-  const [logoMobile, setLogoMobile] = useState(null);
-  const [logoDesktop, setLogoDesktop] = useState(null);
-  const [logoFooter, setLogoFooter] = useState(null);
-  const [load, setLoad] = useState(true);
-  const [footer, setFooter] = useState("loading");
-  const [table, setTable] = useState(null);
+    '/': [],
+    '/about': [],
+    '/gallery': [],
+    '/contact': [],
+    '/blog': []
+  })
+  const [logoMobile, setLogoMobile] = useState(null)
+  const [logoDesktop, setLogoDesktop] = useState(null)
+  const [logoFooter, setLogoFooter] = useState(null)
+  const [load, setLoad] = useState(true)
+  const [footer, setFooter] = useState('loading')
+  const [table, setTable] = useState(null)
   useEffect(() => {
-    const path = window.location.pathname;
-    for (let source of imagesPreLoad[path]) {
-      const img = new Image();
-      img.src = source;
-      imagesPreLoad[path] = [];
-      setImagesPreLoad({ ...imagesPreLoad });
+    const path = window.location.pathname
+    for (const source of imagesPreLoad[path]) {
+      const img = new Image()
+      img.src = source
+      imagesPreLoad[path] = []
+      setImagesPreLoad({ ...imagesPreLoad })
     }
-  }, [imagesPreLoad]);
+  }, [imagesPreLoad])
   useEffect(() => {
     axios
-      .post("/api-init")
+      .post('/api-init')
       .then((res) => {
-        setNavigation(res.data.Navigation);
-        setPhone(res.data.Phone);
-        setHours(res.data.Hours);
-        setDays(res.data.Days);
-        setImagesPreLoad(res.data.ImagesPreLoad);
-        setLogoMobile([res.data.ImagesPreLoad["/"][0], res.data.LogoMobileAlt]);
+        setNavigation(res.data.Navigation)
+        setPhone(res.data.Phone)
+        setHours(res.data.Hours)
+        setDays(res.data.Days)
+        setImagesPreLoad(res.data.ImagesPreLoad)
+        setLogoMobile([res.data.ImagesPreLoad['/'][0], res.data.LogoMobileAlt])
         setLogoDesktop([
-          res.data.ImagesPreLoad["/"][1],
-          res.data.LogoDesktopAlt,
-        ]);
-        setLogoFooter([res.data.ImagesPreLoad["/"][2], res.data.LogoFooterAlt]);
-        setLoad(false);
+          res.data.ImagesPreLoad['/'][1],
+          res.data.LogoDesktopAlt
+        ])
+        setLogoFooter([res.data.ImagesPreLoad['/'][2], res.data.LogoFooterAlt])
+        setLoad(false)
       })
       .catch((error) => {
-        alert(error);
-      });
-  }, []);
+        alert(error)
+      })
+  }, [])
   if (load) {
     return (
       <React.Fragment>
@@ -66,7 +66,7 @@ function App() {
           alt="loading"
         />
       </React.Fragment>
-    );
+    )
   }
   return (
     <BrowserRouter>
@@ -132,7 +132,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,76 +1,83 @@
-import React from "react";
-import "./About.scss";
-import Wave from "./Wave";
-import Maps from "./Maps.js";
-import axios from "axios";
-import ListAltIcon from "@mui/icons-material/ListAlt";
-import parse from "html-react-parser";
+import React from 'react'
+import './About.scss'
+import Wave from './Wave'
+import Maps from './Maps.js'
+import axios from 'axios'
+import ListAltIcon from '@mui/icons-material/ListAlt'
+import parse from 'html-react-parser'
 
 export default class About extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       window: window.scrollTo(0, 0),
       navigation: props.navigation,
       res: {},
       map: null,
-      load: true,
-    };
-    this.props.footer("loading");
+      load: true
+    }
+    this.props.footer('loading')
   }
-  componentDidMount() {
+
+  componentDidMount () {
     axios
-      .post(`/api-about`)
+      .post('/api-about')
       .then((res) => {
         this.setState({
           res: res.data.A,
           map: <Maps data={res.data.B.Data} />,
-          load: false,
-        });
-        this.props.footer("load");
+          load: false
+        })
+        this.props.footer('load')
       })
       .catch((error) => {
-        alert(error);
-      });
+        alert(error)
+      })
   }
-  componentDidUpdate(prevProps, prevState) {
+
+  componentDidUpdate (prevProps, prevState) {
     if (prevState.load !== this.state.load) {
-      window.addEventListener("scroll", this.handleScroll, { passive: true });
-      window.addEventListener("resize", this.handleScroll, { passive: true });
-      window.addEventListener("resize", this.handleHeight, { passive: true });
+      window.addEventListener('scroll', this.handleScroll, { passive: true })
+      window.addEventListener('resize', this.handleScroll, { passive: true })
+      window.addEventListener('resize', this.handleHeight, { passive: true })
     }
   }
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
-    window.removeEventListener("resize", this.handleScroll);
-    window.removeEventListener("resize", this.handleHeight);
+
+  componentWillUnmount () {
+    window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('resize', this.handleScroll)
+    window.removeEventListener('resize', this.handleHeight)
   }
+
   handleScroll = () => {
-    if (window.innerWidth > 1200)
-      return (document.querySelector(".sticky").style.top = "40px");
-    if (window.innerWidth <= 1200)
-      document.querySelector(".sticky").style.top = "0px";
-  };
+    if (window.innerWidth > 1200) { return (document.querySelector('.sticky').style.top = '40px') }
+    if (window.innerWidth <= 1200) { document.querySelector('.sticky').style.top = '0px' }
+  }
+
   height = (obj) => {
     if (obj.offsetHeight > 0 && obj.offsetHeight !== obj.scrollHeight) {
-      obj.style.maxHeight = obj.scrollHeight + "px";
-      obj.style.transition = "none";
+      obj.style.maxHeight = obj.scrollHeight + 'px'
+      obj.style.transition = 'none'
     }
-  };
+  }
+
   handleHeight = () => {
-    this.height(document.querySelector("#moreOne"));
-    this.height(document.querySelector("#moreTwo"));
-  };
-  render() {
+    this.height(document.querySelector('#moreOne'))
+    this.height(document.querySelector('#moreTwo'))
+  }
+
+  render () {
     return (
       <React.Fragment>
-        {this.state.load ? (
+        {this.state.load
+          ? (
           <img
             id="load"
             src="https://candid.s3-ap-southeast-2.amazonaws.com/load.gif"
             alt="loading"
           />
-        ) : (
+            )
+          : (
           <React.Fragment>
             {this.state.window}
             <div className="headingCont">
@@ -99,8 +106,8 @@ export default class About extends React.Component {
                   <span id="spanOne">{parse(this.state.res.Span_One)}</span>
                   <button
                     onClick={() => {
-                      const obj = document.querySelector("#moreOne");
-                      obj.style.maxHeight = obj.scrollHeight + "px";
+                      const obj = document.querySelector('#moreOne')
+                      obj.style.maxHeight = obj.scrollHeight + 'px'
                     }}
                   >
                     {parse(this.state.res.More_Button)}
@@ -110,9 +117,9 @@ export default class About extends React.Component {
                     <span>{parse(this.state.res.Span_One_More)}</span>
                     <button
                       onClick={() => {
-                        const obj = document.querySelector("#moreOne");
-                        obj.style.maxHeight = "0";
-                        obj.style.transition = "max-height 1s";
+                        const obj = document.querySelector('#moreOne')
+                        obj.style.maxHeight = '0'
+                        obj.style.transition = 'max-height 1s'
                       }}
                     >
                       {parse(this.state.res.More_Close_Button)}
@@ -133,8 +140,8 @@ export default class About extends React.Component {
                   <span id="spanTwo">{parse(this.state.res.Span_Two)}</span>
                   <button
                     onClick={() => {
-                      const obj = document.querySelector("#moreTwo");
-                      obj.style.maxHeight = obj.scrollHeight + "px";
+                      const obj = document.querySelector('#moreTwo')
+                      obj.style.maxHeight = obj.scrollHeight + 'px'
                     }}
                   >
                     {parse(this.state.res.More_Button)}
@@ -144,9 +151,9 @@ export default class About extends React.Component {
                     <span>{parse(this.state.res.Span_Two_More)}</span>
                     <button
                       onClick={() => {
-                        const obj = document.querySelector("#moreTwo");
-                        obj.style.maxHeight = "0";
-                        obj.style.transition = "max-height 1s";
+                        const obj = document.querySelector('#moreTwo')
+                        obj.style.maxHeight = '0'
+                        obj.style.transition = 'max-height 1s'
                       }}
                     >
                       {parse(this.state.res.More_Close_Button)}
@@ -156,8 +163,8 @@ export default class About extends React.Component {
               </Wave>
             </section>
           </React.Fragment>
-        )}
+            )}
       </React.Fragment>
-    );
+    )
   }
 }

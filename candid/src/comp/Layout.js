@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { Outlet } from "react-router-dom";
-import Nav from "./Nav";
-import Footer from "./Footer";
+import React, { useState } from 'react'
+import { Outlet } from 'react-router-dom'
+import Nav from './Nav'
+import Footer from './Footer'
 
 const Layout = (props) => {
-  const [main, setMain] = useState("navRelative");
-  let {
+  const [main, setMain] = useState('navRelative')
+  const {
     phone,
     hours,
     days,
@@ -13,8 +13,8 @@ const Layout = (props) => {
     footer,
     logoFooter,
     logoMobile,
-    logoDesktop,
-  } = props;
+    logoDesktop
+  } = props
   return (
     <>
       <Nav
@@ -38,7 +38,7 @@ const Layout = (props) => {
         logoFooter={logoFooter}
       />
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout
