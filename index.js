@@ -446,5 +446,5 @@ app.post('/api-about', function (req, res) {
 
 app.get('/reset', function (req, res) {
   init()
-  res.json({ content: 'reloaded' })
+  res.json({ Content: 'reloaded' })
 })
