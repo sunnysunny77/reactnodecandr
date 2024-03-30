@@ -159,11 +159,13 @@
     width: 90%;
   }
   @media only screen and (max-width: 640px) {
-    top: -4px;
+    top: 0;
     padding: 5% 0;
     background-color: $c12;
-    margin: 5% auto;
-    width: 87.5%;
+    margin: auto;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
   }
   div {
     display: none;
@@ -173,8 +175,9 @@
     max-width: 300px;
     margin: 0 3.3%;
     @media only screen and (max-width: 640px) {
-      width: 42.5%;
-      margin: 0 2.5%;
+      width: 72.5%;
+      margin: 5% 0;
+      max-width: initial;
     }
   }
   .videoImg {
@@ -216,10 +219,6 @@
     user-select: none;
     background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
     background-blend-mode: color-burn;
-    @media only screen and (max-width: 640px) {
-      flex-direction: column;
-      text-align: center;
-    }
     &:hover {
       color: $c7;
     }
@@ -233,7 +232,7 @@
       left: 1%;
     }
     @media only screen and (max-width: 640px) {
-      left: -7%;
+      left: 0.5%;
     }
   }
   #right {
@@ -242,7 +241,7 @@
       right: 1%;
     }
     @media only screen and (max-width: 640px) {
-      right: -7%;
+      right: 0.5%;
     }
   }
   #left,
@@ -256,7 +255,7 @@
     height: 40px;
     fill: $c4;
     @media only screen and (max-width: 640px) {
-      top: 40%;
+      top: initial;
       width: 12%;
     }
     &:hover {
