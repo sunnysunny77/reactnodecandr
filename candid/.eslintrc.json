@@ -2,10 +2,12 @@
     "root": true,
     "env": {
         "browser": true,
-        "es2021": true
+        "commonjs": true,
+        "es2021": true,
+        "node": true
     },
     "extends": [
-        "eslint:standard",
+        "standard",
         "plugin:react/recommended"
     ],
     "parserOptions": {
@@ -20,5 +22,10 @@
     },
     "plugins": [
         "react"
-    ]    
+    ],
+    "settings": {
+        "react": {
+          "version": "detect"
+        }
+    }
 }

@@ -127,13 +127,13 @@ class Nav extends Component {
     return (
       <React.Fragment>
         <div className="burgerMenu"></div>
-        <div className={`burgerMenuTrue ${this.state.dis}`}></div>
+        <div className={'burgerMenuTrue ' + this.state.dis}></div>
         <div className="burgerMenuContainer">
           <div className="bar" style={this.state.bar1}></div>
           <div className="bar" style={this.state.bar2}></div>
           <div className="bar" style={this.state.bar3}></div>
         </div>
-        <nav className={`mobileNav ${this.state.dis}`}>
+        <nav className={'mobileNav ' + this.state.dis}>
           <ul>
             <hr></hr>
             <li>
@@ -185,7 +185,7 @@ class Nav extends Component {
             <img src={logoDesktop[0]} alt={logoDesktop[1]}></img>
           </Link>
         </header>
-        <nav className={`mainNav ${this.state.class}`}>
+        <nav className={'mainNav ' + this.state.class}>
           <ul>
             <li>
               <Link to="/blog">{parse(navigation[0])}</Link>
