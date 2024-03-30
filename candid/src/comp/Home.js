@@ -305,14 +305,14 @@ class Home extends Component {
           text: this.state.text
         })
         .then((res) => {
-          if (res.data.e) {
+          if (res.data.Error) {
             return this.setState({
-              alert: res.data.e,
+              alert: res.data.Error,
               disp: { display: 'block', lineHeight: '50px' }
             })
           }
           this.setState({
-            alert: res.data.a,
+            alert: res.data.Alert,
             disp: { display: 'block', lineHeight: '50px' },
             name: null,
             email: null,

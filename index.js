@@ -347,9 +347,9 @@ app.post('/api-form', function (req, res) {
       (err) => {
         if (err) {
           console.log('NODEMAILER - The API returned an error: ' + err)
-          return res.json({ e: 'Error' })
+          return res.json({ Error: err })
         }
-        return res.json({ a: 'Enquiry email sent' })
+        return res.json({ Alert: 'Enquiry email sent' })
       }
     )
   }
@@ -383,7 +383,7 @@ app.post('/api-formAdd', async function (req, res) {
     await blog.save()
     return res.json(await Mod.find().sort({ date: -1 }))
   } else {
-    return res.json({ e: 'Incorrect password' })
+    return res.json({ Error: 'Incorrect password' })
   }
 })
 
@@ -396,10 +396,10 @@ app.post('/api-formRemove', async function (req, res) {
       await Mod.deleteOne({ date: req.body.date })
       return res.json(await Mod.find().sort({ date: -1 }))
     } else {
-      return res.json({ e: 'Incorrect date' })
+      return res.json({ Error: 'Incorrect date' })
     }
   } else {
-    return res.json({ e: 'Incorrect password' })
+    return res.json({ Error: 'Incorrect password' })
   }
 })
 

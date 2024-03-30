@@ -173,9 +173,9 @@ export default class Blog extends React.Component {
           file: this.state.file
         })
         .then((res) => {
-          if (res.data.e) {
+          if (res.data.Error) {
             return this.setState({
-              alertAdd: res.data.e,
+              alertAdd: res.data.Error,
               dispAdd: { display: 'block', lineHeight: '50px' }
             })
           }
@@ -212,9 +212,9 @@ export default class Blog extends React.Component {
         date: this.state.date
       })
       .then((res) => {
-        if (res.data.e) {
+        if (res.data.Error) {
           return this.setState({
-            alertRemove: res.data.e,
+            alertRemove: res.data.Error,
             dispRemove: { display: 'block', lineHeight: '50px' }
           })
         }
