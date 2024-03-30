@@ -53,43 +53,6 @@ const sch = new mongoose.Schema({
 
 const Mod = mongoose.model('blogs', sch)
 
-const dataNavigation = []
-const dataContact = []
-const dataVideos = []
-const dataGallery = []
-const dataImages = []
-const dataImagesPreLoad = {
-  '/': [
-    'https://candid.s3-ap-southeast-2.amazonaws.com/welcome.png',
-    'https://candid.s3.ap-southeast-2.amazonaws.com/texture.png'
-  ],
-  '/about': [
-    'https://candid.s3-ap-southeast-2.amazonaws.com/divider.png',
-    'https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg',
-    'https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg',
-    'https://candid.s3.ap-southeast-2.amazonaws.com/texture.png'
-  ],
-  '/gallery': [
-    'https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg',
-    'https://candid.s3.ap-southeast-2.amazonaws.com/texture.png'
-  ],
-  '/contact': [
-    'https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg',
-    'https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg',
-    'https://candid.s3.ap-southeast-2.amazonaws.com/texture.png'
-  ],
-  '/blog': [
-    'https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg',
-    'https://candid.s3.ap-southeast-2.amazonaws.com/texture.png'
-  ]
-}
-const dataHome = []
-const dataSelectOptions = []
-const dataBlog = []
-const dataAbout = []
-const dataMap = []
-let index = 1
-
 function baseName (param) {
   return param.split('/')
     .pop()
@@ -97,6 +60,47 @@ function baseName (param) {
     .slice(0, -1)
     .join('.')
 }
+
+function imagesStatic () {
+  return {
+    '/': [
+      'https://candid.s3-ap-southeast-2.amazonaws.com/welcome.png',
+      'https://candid.s3.ap-southeast-2.amazonaws.com/texture.png'
+    ],
+    '/about': [
+      'https://candid.s3-ap-southeast-2.amazonaws.com/divider.png',
+      'https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg',
+      'https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg',
+      'https://candid.s3.ap-southeast-2.amazonaws.com/texture.png'
+    ],
+    '/gallery': [
+      'https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg',
+      'https://candid.s3.ap-southeast-2.amazonaws.com/texture.png'
+    ],
+    '/contact': [
+      'https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg',
+      'https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg',
+      'https://candid.s3.ap-southeast-2.amazonaws.com/texture.png'
+    ],
+    '/blog': [
+      'https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg',
+      'https://candid.s3.ap-southeast-2.amazonaws.com/texture.png'
+    ]
+  }
+}
+
+let dataNavigation = []
+let dataContact = []
+let dataVideos = []
+let dataGallery = []
+let dataImages = []
+let dataImagesPreLoad = imagesStatic()
+let dataHome = []
+let dataSelectOptions = []
+let dataBlog = []
+let dataAbout = []
+let dataMap = []
+let index = 1
 
 function init () {
   const options = { skipEmptyLines: true, header: true }
@@ -445,6 +449,18 @@ app.post('/api-about', function (req, res) {
 })
 
 app.get('/reset', function (req, res) {
+  dataNavigation = []
+  dataContact = []
+  dataVideos = []
+  dataGallery = []
+  dataImages = []
+  dataImagesPreLoad = imagesStatic()
+  dataHome = []
+  dataSelectOptions = []
+  dataBlog = []
+  dataAbout = []
+  dataMap = []
+  index = 1
   init()
   res.json({ Content: 'reloaded' })
 })
