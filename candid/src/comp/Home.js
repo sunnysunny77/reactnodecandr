@@ -216,23 +216,26 @@ class Home extends Component {
   vidDisplay = (index) => {
     const count = this.state.count
     const removeCount = document.querySelectorAll('.d' + count)
-    const newCount = this.state.count + index
+    const newCount = count + index
     const addNewCount = document.querySelectorAll('.d' + newCount)
     if (newCount > 0 && newCount <= this.state.res.Video.length) {
       [...removeCount].forEach((item) => {
-        item.classList.remove('flex')
+        item.children[1].classList.add('grey')
+        setTimeout(() => {
+          item.classList.remove('flex')
+          item.children[1].classList.remove('grey')
+        }, 300)
       });
       [...addNewCount].forEach((item) => {
-        item.classList.add('flex')
+        setTimeout(() => {
+          item.classList.add('flex')
+          item.children[1].classList.add('grey')
+          setTimeout(() => {
+            item.children[1].classList.remove('grey')
+          }, 300)
+        }, 300)
       })
       this.setState({ count: newCount })
-      const video = document.querySelectorAll('.videoImg');
-      [...video].forEach((item) => {
-        item.classList.add('grey')
-        setTimeout(() => {
-          item.classList.remove('grey')
-        }, 500)
-      })
     }
   }
 
@@ -241,36 +244,45 @@ class Home extends Component {
     const removeCount = document.querySelectorAll('.d' + count)
     if (count < this.state.res.Video.length) {
       [...removeCount].forEach((item) => {
-        item.classList.remove('flex')
+        item.children[1].classList.add('grey')
+        setTimeout(() => {
+          item.classList.remove('flex')
+          item.children[1].classList.remove('grey')
+        }, 300)
       })
-      const newCount = this.state.count + 1
+      const newCount = count + 1
       const addNewCount = document.querySelectorAll('.d' + newCount);
       [...addNewCount].forEach((item) => {
-        item.classList.add('flex')
+        setTimeout(() => {
+          item.classList.add('flex')
+          item.children[1].classList.add('grey')
+          setTimeout(() => {
+            item.children[1].classList.remove('grey')
+          }, 300)
+        }, 300)
       })
       this.setState({ count: newCount })
     } else {
       [...removeCount].forEach((item) => {
-        item.classList.remove('flex')
+        item.children[1].classList.add('grey')
+        setTimeout(() => {
+          item.classList.remove('flex')
+          item.children[1].classList.remove('grey')
+        }, 300)
       })
       const newCount = 1
       const addNewCount = document.querySelectorAll('.d' + newCount);
       [...addNewCount].forEach((item) => {
-        item.classList.add('flex')
-        item.classList.add('grey')
         setTimeout(() => {
-          item.classList.remove('grey')
-        }, 500)
+          item.classList.add('flex')
+          item.children[1].classList.add('grey')
+          setTimeout(() => {
+            item.children[1].classList.remove('grey')
+          }, 300)
+        }, 300)
       })
       this.setState({ count: newCount })
     }
-    const video = document.querySelectorAll('.videoImg');
-    [...video].forEach((item) => {
-      item.classList.add('grey')
-      setTimeout(() => {
-        item.classList.remove('grey')
-      }, 500)
-    })
   }
 
   handleChangeSelect = (selectedOption) => {
