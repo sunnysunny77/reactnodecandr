@@ -266,9 +266,10 @@
       top: initial;
       width: 12%;
     }
-    @media only screen and (max-width: 1200px) {
-      &:hover {
-        fill: $c7;
+    &:hover {
+      fill: $c7;
+      @media only screen and (max-width: 1200px) {
+        fill: $c4;
       }
     }
   }
