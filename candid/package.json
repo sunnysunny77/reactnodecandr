@@ -1,6 +1,6 @@
 {
   "proxy": "https://candidcleaning.sunnyhome.site",
-  "name": "candid",
+  "name": "reactnodecandr",
   "version": "2.0.0",
   "description": "MERN stack, React/JSX - NodeJS - Mongo, SASS, Material UI, Googleapis OAUTH email, Google drive used as CMS",
   "main": "index.js",
