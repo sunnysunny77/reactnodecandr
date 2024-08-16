@@ -67,19 +67,6 @@ class Home extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      settings: {
-        dots: false,
-        infinite: true,
-        autoplaySpeed: 15000,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        autoplay: true,
-        speed: 500,
-        pauseOnHover: false,
-        fade: true,
-        beforeChange: this.toggle
-      },
       window: window.scrollTo(0, 0),
       disp: { display: 'none' },
       name: null,
@@ -93,7 +80,20 @@ class Home extends Component {
       overlayExpanded: null,
       count: 1,
       svg: null,
-      load: true
+      load: true,
+      settings: {
+        dots: false,
+        infinite: true,
+        autoplaySpeed: 15000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        autoplay: true,
+        speed: 500,
+        pauseOnHover: false,
+        fade: true,
+        beforeChange: this.toggleBefore
+      }
     }
     this.props.footer('loading')
   }
@@ -182,10 +182,17 @@ class Home extends Component {
     overlay.classList.add('fixed')
   }
 
-  toggleClick = (index) => {
+  toggle = (index) => {
     const count = this.state.count
+    let newCount
+    if (index === -1 && count === 1) {
+      newCount = this.state.res.Overlay.length
+    } else if (index === 1 && count === this.state.res.Overlay.length) {
+      newCount = 1
+    } else {
+      newCount = count + index
+    }
     const removeCount = document.querySelectorAll('.d' + count)
-    const newCount = count + index
     const addNewCount = document.querySelectorAll('.d' + newCount)
     if (newCount > 0 && newCount <= this.state.res.Overlay.length) {
       [...removeCount].forEach((item) => {
@@ -208,39 +215,24 @@ class Home extends Component {
     }
   }
 
-  toggle = () => {
+  toggleBefore = () => {
     const count = this.state.count
-    const removeCount = document.querySelectorAll('.d' + count)
-    if (count < this.state.res.Overlay.length) {
-      [...removeCount].forEach((item) => {
-        item.classList.add('grey')
-        setTimeout(() => {
-          item.classList.remove('flex')
-          item.classList.remove('grey')
-        }, 300)
-      })
-      const newCount = count + 1
-      const addNewCount = document.querySelectorAll('.d' + newCount);
-      [...addNewCount].forEach((item) => {
-        setTimeout(() => {
-          item.classList.add('flex')
-          item.classList.add('grey')
-          setTimeout(() => {
-            item.classList.remove('grey')
-          }, 300)
-        }, 300)
-      })
-      this.setState({ count: newCount })
+    let newCount
+    if (count === this.state.res.Overlay.length) {
+      newCount = 1
     } else {
+      newCount = count + 1
+    }
+    const removeCount = document.querySelectorAll('.d' + count)
+    const addNewCount = document.querySelectorAll('.d' + newCount)
+    if (newCount > 0 && newCount <= this.state.res.Overlay.length) {
       [...removeCount].forEach((item) => {
         item.classList.add('grey')
         setTimeout(() => {
           item.classList.remove('flex')
           item.classList.remove('grey')
         }, 300)
-      })
-      const newCount = 1
-      const addNewCount = document.querySelectorAll('.d' + newCount);
+      });
       [...addNewCount].forEach((item) => {
         setTimeout(() => {
           item.classList.add('flex')
@@ -367,7 +359,7 @@ class Home extends Component {
             {this.state.overlayExpanded}
             <section className="overlay">
               <svg
-                onClick={() => this.toggleClick(-1)}
+                onClick={() => this.toggle(-1)}
                 id="left"
                 viewBox="-150 -150 800 800"
                 xmlns="http://www.w3.org/2000/svg"
@@ -378,7 +370,7 @@ class Home extends Component {
               </svg>
               {this.state.overlay}
               <svg
-                onClick={() => this.toggleClick(+1)}
+                onClick={() => this.toggle(+1)}
                 id="right"
                 viewBox="-150 -150 800 800"
                 xmlns="http://www.w3.org/2000/svg"
