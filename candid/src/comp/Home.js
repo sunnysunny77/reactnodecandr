@@ -136,11 +136,11 @@ class Home extends Component {
         return (
           <div className={'containerImg ' + d + ' d' + [index + 1]} onClick={() => this.overlay(id)} key={index}>
             <div className="fillImg">
-              <img className="overlayImg" src={key[0]} />
+              <img className="overlayImg" src={key[0]} alt={'after-' + (index + 1)} />
             </div>
             <ExpandIcon className={'expandImg ' + d + ' d' + [index + 1]} />
             <div className="fillImg">
-              <img className="overlayImg" src={key[1]} />
+              <img className="overlayImg" src={key[1]} alt={'before-' + (index + 1)} />
             </div>
           </div>
         )
@@ -165,8 +165,8 @@ class Home extends Component {
               >
                 &#10006;
               </CloseIcon>
-              <img className="overlayImg" src={key[1]} />
-              <img className="overlayImg" src={key[0]} />
+              <img className="overlayImg" src={key[1]} alt={'before-' + (index + 1)} />
+              <img className="overlayImg" src={key[0]} alt={'after-' + (index + 1)} />
             </div>
           </React.Fragment>
         )
