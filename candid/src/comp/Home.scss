@@ -86,7 +86,7 @@
 
 /* overlay */
 
-.overlay {
+.overlayExpanded {
   position: fixed;
   overflow: auto;
   top: 0;
@@ -97,55 +97,49 @@
   transform: translateX(100%);
   will-change: transform;
   transition: transform 0.5s cubic-bezier(0.03, 0.5, 0.25, 0.6);
-  padding-bottom: 56.25%;
   background-color: $c1;
-  video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    @media only screen and (min-width: 1201px) {
-      object-fit: cover;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  > * {
+    will-change: opacity;
+    opacity: 0;
+    transition:
+      opacity 0.5s cubic-bezier(0.03, 0.5, 0.25, 0.6),
+      transform 0.5s cubic-bezier(0.03, 0.5, 0.25, 0.6);
   }
-  .controlls {
+  img {
+    max-height: 75%;
+    max-width: 45%;
+    border: 2px solid $c2;
+    box-sizing: border-box;
+  }
+  svg {
+    border: none;
+    background-color: transparent;
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    &::after {
-      position: absolute;
-      content: "";
-      background-image: linear-gradient(-90deg, $c1 0%, $c6 50%);
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -1;
-    }
-    button {
-      border: none;
-      background-color: transparent;
-      float: right;
-      font-size: 20px;
-      margin-right: 1.25rem;
-      margin-top: 1.25rem;
-      &:hover,
-      &:focus {
-        color: $c8;
-      }
+    right: 0;
+    font-size: 20px;
+    margin-right: 1.25rem;
+    margin-top: 1.25rem;
+    &:hover,
+    &:focus {
+      color: $c8;
     }
   }
   &.fixed {
     transform: translateX(0);
+    > * {
+      opacity: 1;
+    }
   }
 }
 
 /* vid */
 
-.video {
+.overlay {
   margin: auto;
   width: 100%;
   position: relative;
@@ -161,34 +155,63 @@
     width: 90%;
   }
   @media only screen and (max-width: 640px) {
-    top: 0;
-    padding: 5% 0;
-    background-color: $c12;
-    margin: auto;
     width: 100%;
-    flex-direction: column;
+    top: 0;
     align-items: center;
   }
-  div {
+  .containerImg {
     display: none;
-    flex-direction: column;
-    width: 33%;
-    align-items: center;
+    width: 100%;
+    @media only screen and (max-width: 640px) {
+      padding: 5% 0;
+      background-color: $c12;
+      margin: auto;
+    }
+    &.grey img {
+      filter: grayscale(75%);
+      opacity: 0.9;
+    }
+  }
+  .expandImg {
+    vertical-align: sub;
+    font-size: 1em;
+    color: $c4;
+    display: none;
+    align-self: flex-end;
+    cursor: pointer;
+    margin: 0 0 20px 0;
+    @media only screen and (max-width: 640px) {
+      margin: 20px 0;
+      align-self: initial;
+    }
+    &:hover {
+      color: $c7;
+      @media only screen and (max-width: 1200px) {
+        color: $c4;
+      }
+    }
+  }
+  .fillImg {
     max-width: 300px;
+    max-height: 300px;
     margin: 0 3.3%;
+    width: 33%;
     background-color: $c6;
+    display: flex;
     box-shadow: 0 0 1px $c1;
     border-radius: 3.75px;
     overflow: hidden;
+    cursor: pointer;
     @media only screen and (max-width: 640px) {
       width: 72.5%;
       margin: 5% 0;
       max-width: initial;
     }
   }
-  .videoImg {
+  .overlayImg {
     width: 100%;
-    height: inherit;
+    object-position: center;
+    object-fit: cover;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -197,42 +220,21 @@
       filter 0.3s linear,
       opacity 0.3s linear;
     opacity: 1;
+    will-change: opacity, filter;
+    background-image: linear-gradient(-90deg, $c1 0%, $c6 50%);
     filter: grayscale(0%);
     @media only screen and (max-width: 640px) {
       object-fit: cover;
       height: 50vw;
     }
-    &.grey {
-      filter: grayscale(75%);
-      opacity: 0.9;
-    }
-  }
-  .videoLink {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    background-color: $c11;
-    font-family: $font3;
-    color: $c3;
-    transition: 0.2s ease-in-out color;
-    cursor: pointer;
-    font-style: italic;
-    padding: 5px 5%;
-    box-sizing: border-box;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
-    background-blend-mode: color-burn;
-    &:hover {
-      color: $c7;
-    }
   }
   .flex {
     display: flex;
+    justify-content: center;
+    @media only screen and (max-width: 640px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
   #left {
     left: calc(50% - 600px);
@@ -256,12 +258,12 @@
   #right {
     position: absolute;
     top: 65%;
-    color: $c4;
     opacity: 0.75;
     transition: fill 0.2s ease-in-out;
     width: 40px;
     height: 40px;
     fill: $c4;
+    cursor: pointer;
     @media only screen and (max-width: 640px) {
       top: initial;
       width: 12%;
@@ -272,10 +274,6 @@
         fill: $c4;
       }
     }
-  }
-  svg {
-    vertical-align: sub;
-    font-size: 1.25em;
   }
 }
 

@@ -6,8 +6,9 @@ import styles from './Home.module.scss'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import axios from 'axios'
-import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline'
+import CloseIcon from '@mui/icons-material/Close'
 import InfoIcon from '@mui/icons-material/Info'
+import ExpandIcon from '@mui/icons-material/Expand'
 import StarBorderIcon from '@mui/icons-material/StarBorder'
 import WhatshotIcon from '@mui/icons-material/Whatshot'
 import FilterListIcon from '@mui/icons-material/FilterList'
@@ -77,7 +78,7 @@ class Home extends Component {
         speed: 500,
         pauseOnHover: false,
         fade: true,
-        beforeChange: this.vidToggle
+        beforeChange: this.toggle
       },
       window: window.scrollTo(0, 0),
       disp: { display: 'none' },
@@ -88,8 +89,8 @@ class Home extends Component {
       text: null,
       alert: null,
       res: {},
-      video: null,
       overlay: null,
+      overlayExpanded: null,
       count: 1,
       svg: null,
       load: true
@@ -106,7 +107,7 @@ class Home extends Component {
           load: false
         })
         this.props.footer('load')
-        this.mapVideo(res.data.Video)
+        this.mapOverlay(res.data.Overlay)
       })
       .catch((error) => {
         alert(error)
@@ -127,75 +128,45 @@ class Home extends Component {
     document.querySelector('#enquiry').scrollIntoView({ behavior: 'smooth' })
   }
 
-  mapVideo = (res) => {
+  mapOverlay = (res) => {
     this.setState({
-      video: res.map((key, index) => {
+      overlay: res.map((key, index) => {
         const d = index === 0 ? 'flex' : ''
-        const idOne = '#videoOne-' + index + 1
-        const idTwo = '#videoTwo-' + index + 1
+        const id = '#overlay' + index + 1
         return (
-          <React.Fragment key={index}>
-            <div className={d + ' d' + [index + 1]}>
-              <span className="videoLink" onClick={() => this.overlay(idOne)}>
-                {key[2]}
-                <PlayCircleOutlineIcon />
-              </span>
-              <img className="videoImg" src={key[0]} alt={key[2]} />
+          <div className={'containerImg ' + d + ' d' + [index + 1]} onClick={() => this.overlay(id)} key={index}>
+            <div className="fillImg">
+              <img className="overlayImg" src={key[0]} />
             </div>
-            <div className={d + ' d' + [index + 1]}>
-              <span className="videoLink" onClick={() => this.overlay(idTwo)}>
-                {key[5]}
-                <PlayCircleOutlineIcon />
-              </span>
-              <img className="videoImg" src={key[3]} alt={key[5]} />
+            <ExpandIcon className={'expandImg ' + d + ' d' + [index + 1]} />
+            <div className="fillImg">
+              <img className="overlayImg" src={key[1]} />
             </div>
-          </React.Fragment>
+          </div>
         )
       }),
-      overlay: res.map((key, index) => {
-        const idOne = 'videoOne-' + index + 1
-        const idTwo = 'videoTwo-' + index + 1
+      overlayExpanded: res.map((key, index) => {
+        const id = 'overlay' + index + 1
+        if (index % 1 === 1) {
+          return false
+        }
         return (
           <React.Fragment key={index}>
-            <div id={idOne} className="overlay">
-              <video loop playsInline>
-                <source src={key[1]} />\ Your browser does not support the video
-                tag.
-              </video>
-              <div className="controlls">
-                <button
-                  onClick={() => {
-                    document.body.style.overflow = 'auto'
-                    document.body.style.paddingRight = 0
-                    document
-                      .querySelector(`#${idOne}`)
-                      .classList.remove('fixed')
-                    document.querySelector(`#${idOne}`).children[0].pause()
-                  }}
-                >
-                  &#10006;
-                </button>
-              </div>
-            </div>
-            <div id={idTwo} className="overlay">
-              <video loop playsInline>
-                <source src={key[4]} />
-                Your browser does not support the video tag.
-              </video>
-              <div className="controlls">
-                <button
-                  onClick={() => {
-                    document.body.style.overflow = 'auto'
-                    document.body.style.paddingRight = 0
-                    document
-                      .querySelector(`#${idTwo}`)
-                      .classList.remove('fixed')
-                    document.querySelector(`#${idTwo}`).children[0].pause()
-                  }}
-                >
-                  &#10006;
-                </button>
-              </div>
+            <div id={id} className="overlayExpanded">
+            <CloseIcon
+              className={id}
+                onClick={() => {
+                  document.body.style.overflow = 'auto'
+                  document.body.style.paddingRight = 0
+                  document
+                    .querySelector(`#${id}`)
+                    .classList.remove('fixed')
+                }}
+              >
+                &#10006;
+              </CloseIcon>
+              <img className="overlayImg" src={key[1]} />
+              <img className="overlayImg" src={key[0]} />
             </div>
           </React.Fragment>
         )
@@ -205,33 +176,31 @@ class Home extends Component {
 
   overlay = (id) => {
     const overlay = document.querySelector(`${id}`)
-    overlay.children[0].load()
-    overlay.children[0].play()
     const width = window.innerWidth - document.body.offsetWidth
     document.body.style.overflow = 'hidden'
     document.body.style.paddingRight = `${width}px`
     overlay.classList.add('fixed')
   }
 
-  vidDisplay = (index) => {
+  toggleClick = (index) => {
     const count = this.state.count
     const removeCount = document.querySelectorAll('.d' + count)
     const newCount = count + index
     const addNewCount = document.querySelectorAll('.d' + newCount)
-    if (newCount > 0 && newCount <= this.state.res.Video.length) {
+    if (newCount > 0 && newCount <= this.state.res.Overlay.length) {
       [...removeCount].forEach((item) => {
-        item.children[1].classList.add('grey')
+        item.classList.add('grey')
         setTimeout(() => {
           item.classList.remove('flex')
-          item.children[1].classList.remove('grey')
+          item.classList.remove('grey')
         }, 300)
       });
       [...addNewCount].forEach((item) => {
         setTimeout(() => {
           item.classList.add('flex')
-          item.children[1].classList.add('grey')
+          item.classList.add('grey')
           setTimeout(() => {
-            item.children[1].classList.remove('grey')
+            item.classList.remove('grey')
           }, 300)
         }, 300)
       })
@@ -239,15 +208,15 @@ class Home extends Component {
     }
   }
 
-  vidToggle = () => {
+  toggle = () => {
     const count = this.state.count
     const removeCount = document.querySelectorAll('.d' + count)
-    if (count < this.state.res.Video.length) {
+    if (count < this.state.res.Overlay.length) {
       [...removeCount].forEach((item) => {
-        item.children[1].classList.add('grey')
+        item.classList.add('grey')
         setTimeout(() => {
           item.classList.remove('flex')
-          item.children[1].classList.remove('grey')
+          item.classList.remove('grey')
         }, 300)
       })
       const newCount = count + 1
@@ -255,19 +224,19 @@ class Home extends Component {
       [...addNewCount].forEach((item) => {
         setTimeout(() => {
           item.classList.add('flex')
-          item.children[1].classList.add('grey')
+          item.classList.add('grey')
           setTimeout(() => {
-            item.children[1].classList.remove('grey')
+            item.classList.remove('grey')
           }, 300)
         }, 300)
       })
       this.setState({ count: newCount })
     } else {
       [...removeCount].forEach((item) => {
-        item.children[1].classList.add('grey')
+        item.classList.add('grey')
         setTimeout(() => {
           item.classList.remove('flex')
-          item.children[1].classList.remove('grey')
+          item.classList.remove('grey')
         }, 300)
       })
       const newCount = 1
@@ -275,9 +244,9 @@ class Home extends Component {
       [...addNewCount].forEach((item) => {
         setTimeout(() => {
           item.classList.add('flex')
-          item.children[1].classList.add('grey')
+          item.classList.add('grey')
           setTimeout(() => {
-            item.children[1].classList.remove('grey')
+            item.classList.remove('grey')
           }, 300)
         }, 300)
       })
@@ -395,10 +364,10 @@ class Home extends Component {
                 </picture>
               </div>
             </Slider>
-            {this.state.overlay}
-            <section className="video">
+            {this.state.overlayExpanded}
+            <section className="overlay">
               <svg
-                onClick={() => this.vidDisplay(-1)}
+                onClick={() => this.toggleClick(-1)}
                 id="left"
                 viewBox="-150 -150 800 800"
                 xmlns="http://www.w3.org/2000/svg"
@@ -407,9 +376,9 @@ class Home extends Component {
                 <path d="m250.667969 336.332031c-4.097657 0-8.191407-1.554687-11.308594-4.691406l-85.332031-85.332031c-6.25-6.253906-6.25-16.386719 0-22.636719l85.332031-85.332031c6.25-6.25 16.382813-6.25 22.636719 0 6.25 6.25 6.25 16.382812 0 22.632812l-74.027344 74.027344 74.027344 74.027344c6.25 6.25 6.25 16.382812 0 22.632812-3.136719 3.117188-7.234375 4.671875-11.328125 4.671875zm0 0" />
                 <path d="m234.667969 469.667969c-129.386719 0-234.667969-105.28125-234.667969-234.667969s105.28125-234.667969 234.667969-234.667969c97.085937 0 182.804687 58.410157 218.410156 148.824219 3.242187 8.210938-.8125 17.492188-9.023437 20.753906-8.214844 3.203125-17.496094-.789062-20.757813-9.042968-30.742187-78.082032-104.789063-128.535157-188.628906-128.535157-111.746094 0-202.667969 90.925781-202.667969 202.667969s90.921875 202.667969 202.667969 202.667969c83.839843 0 157.886719-50.453125 188.628906-128.511719 3.242187-8.257812 12.523437-12.246094 20.757813-9.046875 8.210937 3.242187 12.265624 12.542969 9.023437 20.757813-35.605469 90.390624-121.324219 148.800781-218.410156 148.800781zm0 0" />
               </svg>
-              {this.state.video}
+              {this.state.overlay}
               <svg
-                onClick={() => this.vidDisplay(+1)}
+                onClick={() => this.toggleClick(+1)}
                 id="right"
                 viewBox="-150 -150 800 800"
                 xmlns="http://www.w3.org/2000/svg"

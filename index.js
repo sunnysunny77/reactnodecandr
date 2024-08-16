@@ -91,7 +91,7 @@ function imagesStatic () {
 
 let dataNavigation = []
 let dataContact = []
-let dataVideos = []
+let dataOverlay = []
 let dataGallery = []
 let dataImages = []
 let dataImagesPreLoad = imagesStatic()
@@ -121,11 +121,11 @@ function init () {
     dataContact.push(chunk)
   })
 
-  const dataStreamVideos = request.get('https://docs.google.com/spreadsheets/d/1yuPgYwDdJgMk-ANu2Orx_Ls4kuBVgrJcW1r6NjzQiBY/gviz/tq?tqx=out:csv&sheet=data')
-  const parseStreamVideos = papa.parse(papa.NODE_STREAM_INPUT, options)
-  dataStreamVideos.pipe(parseStreamVideos)
-  parseStreamVideos.on('data', chunk => {
-    dataVideos.push([chunk.Images_One, chunk.Videos_One, chunk.Names_One, chunk.Images_Two, chunk.Videos_Two, chunk.Names_Two])
+  const dataStreamOverlay = request.get('https://docs.google.com/spreadsheets/d/1yuPgYwDdJgMk-ANu2Orx_Ls4kuBVgrJcW1r6NjzQiBY/gviz/tq?tqx=out:csv&sheet=data')
+  const parseStreamOverlay = papa.parse(papa.NODE_STREAM_INPUT, options)
+  dataStreamOverlay.pipe(parseStreamOverlay)
+  parseStreamOverlay.on('data', chunk => {
+    dataOverlay.push([chunk.Images_One, chunk.Images_Two])
   })
 
   const dataStreamGallery = request.get('https://docs.google.com/spreadsheets/d/1LjDGLbRSaQ4Y7ilLy0LMPpgUZN6ynI8QRg--a2ltLt4/gviz/tq?tqx=out:csv&sheet=data')
@@ -269,7 +269,7 @@ app.post('/api-home', function (req, res) {
     Card_Four_Image_Alt: baseName(dataImages[9].Home),
     Card_Five_Image_Alt: baseName(dataImages[10].Home),
     Card_Six_Image_Alt: baseName(dataImages[11].Home),
-    Video: dataVideos,
+    Overlay: dataOverlay,
     Select_Options: dataSelectOptions
   })
 })
@@ -451,7 +451,7 @@ app.post('/api-about', function (req, res) {
 app.get('/reset', function (req, res) {
   dataNavigation = []
   dataContact = []
-  dataVideos = []
+  dataOverlay = []
   dataGallery = []
   dataImages = []
   dataImagesPreLoad = imagesStatic()
