@@ -134,12 +134,12 @@ class Home extends Component {
         const d = index === 0 ? 'flex' : ''
         const id = '#overlay' + index + 1
         return (
-          <div className={'containerImg ' + d + ' d' + [index + 1]} onClick={() => this.overlay(id)} key={index}>
-            <div className="fillImg">
+          <div className={'containerImg ' + d + ' d' + [index + 1]} key={index}>
+            <div className="fillImg" onClick={() => this.overlay(id)}>
               <img className="overlayImg" src={key[0]} alt={'after-' + (index + 1)} />
             </div>
-            <ExpandIcon className={'expandImg ' + d + ' d' + [index + 1]} />
-            <div className="fillImg">
+            <ExpandIcon className={'expandImg ' + d + ' d' + [index + 1]} onClick={() => this.overlay(id)} />
+            <div className="fillImg" onClick={() => this.overlay(id)}>
               <img className="overlayImg" src={key[1]} alt={'before-' + (index + 1)} />
             </div>
           </div>
@@ -153,20 +153,26 @@ class Home extends Component {
         return (
           <React.Fragment key={index}>
             <div id={id} className="overlayExpanded">
-            <CloseIcon
-              className={id}
-                onClick={() => {
-                  document.body.style.overflow = 'auto'
-                  document.body.style.paddingRight = 0
-                  document
-                    .querySelector(`#${id}`)
-                    .classList.remove('fixed')
-                }}
-              >
-                &#10006;
-              </CloseIcon>
-              <img className="overlayImg" src={key[1]} alt={'before-' + (index + 1)} />
-              <img className="overlayImg" src={key[0]} alt={'after-' + (index + 1)} />
+              <div className="overlayCont">
+                <div className="headingCont overlayHeading">
+                    <CloseIcon
+                    className={id}
+                      onClick={() => {
+                        document.body.style.overflow = 'auto'
+                        document.body.style.paddingRight = 0
+                        document
+                          .querySelector(`#${id}`)
+                          .classList.remove('fixed')
+                      }}
+                    >
+                      &#10006;
+                    </CloseIcon>
+                </div>
+                <div className="imageCont">
+                  <img className="overlayImg" src={key[1]} alt={'before-' + (index + 1)} />
+                  <img className="overlayImg" src={key[0]} alt={'after-' + (index + 1)} />
+                </div>
+              </div>
             </div>
           </React.Fragment>
         )
