@@ -1,13 +1,9 @@
 @import "../Variables.scss";
 
-.heightContainer {
-  height: 100vh;
-}
-
 /* silde */
 
 .slick-slide img {
-  max-width: 1100px;
+  max-width: 1000px;
   height: 100%;
   min-height: 300px;
   width: 100%;
@@ -16,13 +12,16 @@
   object-position: left;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
+  @media only screen and (max-width: 1200px) {
+    max-width: initial;
+  }
 }
 
 /* welcome */
 
 .welcome {
   position: absolute;
-  margin: 2% 0 0 calc(52% - 550px);
+  margin: 2% 0 0 calc(52% - 500px);
   z-index: 997;
   font-size: x-large;
   animation: slide1;
@@ -93,7 +92,7 @@
 
 .overlayExpanded {
   position: fixed;
-  overflow: auto;
+  overflow: hidden;
   top: 0;
   right: 0;
   bottom: 0;
@@ -110,15 +109,18 @@
   > * {
     will-change: opacity;
     opacity: 0;
-    transition:
-      opacity 0.5s cubic-bezier(0.03, 0.5, 0.25, 0.6)
+    transition: opacity 0.5s cubic-bezier(0.03, 0.5, 0.25, 0.6);
+  }
+  @media only screen and (max-width: 640px) {
+    overflow-y: auto;
+    overflow-x: hidden;
   }
   .overlayCont {
     max-width: 1100px;
     width: 100%;
     @media only screen and (max-width: 1200px) {
+      max-width: initial;
       height: 100%;
-      max-width: 1200px;
     }
   }
   .overlayHeading {
@@ -127,6 +129,10 @@
     @media only screen and (max-width: 1200px) {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
+    }
+    @media only screen and (max-width: 640px) {
+      position: sticky;
+      top: 0;
     }
   }
   .imageCont {
@@ -143,9 +149,12 @@
     height: 60vh;
     padding: 50px 0;
     @media only screen and (max-width: 1200px) {
-      height: initial;
-      min-height: calc(100% - 40px);
+      height: calc(100% - 140px);
+      border: none;
+    }
+    @media only screen and (max-width: 640px) {
       padding: 0 0 50px 0;
+      height: initial;
     }
   }
   img {
@@ -205,48 +214,53 @@
   }
   .containerImg {
     display: none;
-    width: 100%;
+    width: 50%;
+    margin: auto;
+    max-width: 775px;
+    cursor: pointer;
+    @media only screen and (max-width: 1200px) {
+      width: 72.5%;
+    }
     @media only screen and (max-width: 640px) {
-      padding: 5% 0;
       background-color: $c12;
-      margin: auto;
+      margin: 7.5% auto;
+      width: 75%;
     }
     &.grey img {
       filter: grayscale(75%);
       opacity: 0.9;
     }
-  }
-  .expandImg {
-    vertical-align: sub;
-    font-size: 1em;
-    color: $c4;
-    display: none;
-    align-self: center;
-    cursor: pointer;
-    margin: 0 0 20px 0;
-    @media only screen and (max-width: 640px) {
-      margin: 20px 0;
-
-    }
-    &:hover {
+    &:hover .expandImg {
       color: $c7;
       @media only screen and (max-width: 1200px) {
         color: $c4;
       }
     }
   }
+  .expandImg {
+    vertical-align: sub;
+    font-size: 1em;
+    color: $c13;
+    display: none;
+    align-self: flex-end;
+    margin: 0 auto;
+    @media only screen and (max-width: 1200px) {
+      align-self: center;
+    }
+    @media only screen and (max-width: 640px) {
+      margin: 20px 0;
+    }
+  }
   .fillImg {
     max-width: 300px;
-    margin: 0 3.3%;
-    width: 33%;
+    width: 40%;
     background-color: $c6;
     display: flex;
     box-shadow: 0 0 1px $c1;
     border-radius: 3.75px;
     overflow: hidden;
-    cursor: pointer;
     @media only screen and (max-width: 640px) {
-      width: 72.5%;
+      width: 100%;
       margin: 5% 0;
       max-width: initial;
     }
@@ -278,7 +292,7 @@
     }
   }
   #left {
-    left: calc(50% - 600px);
+    left: calc(50% - 500px);
     @media only screen and (max-width: 1200px) {
       left: 1%;
     }
@@ -287,7 +301,7 @@
     }
   }
   #right {
-    right: calc(50% - 600px);
+    right: calc(50% - 500px);
     @media only screen and (max-width: 1200px) {
       right: 1%;
     }

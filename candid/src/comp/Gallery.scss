@@ -3,7 +3,7 @@
 
 .galleryHeading {
   max-width: 1204px;
-  margin: 60px auto auto auto;
+  margin: 80px auto auto auto;
   border-top-left-radius: 11px;
   border-top-right-radius: 11px;
   @media only screen and (max-width: 1200px) {
@@ -23,7 +23,7 @@
   flex-direction: column;
   width: calc(100% - 4px);
   max-width: 1200px;
-  margin: 0 auto 60px auto;
+  margin: 0 auto 80px auto;
   position: relative;
   background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
   background-blend-mode: color;

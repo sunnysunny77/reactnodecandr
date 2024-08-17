@@ -134,12 +134,12 @@ class Home extends Component {
         const d = index === 0 ? 'flex' : ''
         const id = '#overlay' + index + 1
         return (
-          <div className={'containerImg ' + d + ' d' + [index + 1]} key={index}>
-            <div className="fillImg" onClick={() => this.overlay(id)}>
+          <div className={'containerImg ' + d + ' d' + [index + 1]} key={index} onClick={() => this.overlay(id)} >
+            <div className="fillImg" >
               <img className="overlayImg" src={key[0]} alt={'after-' + (index + 1)} />
             </div>
-            <ExpandIcon className={'expandImg ' + d + ' d' + [index + 1]} onClick={() => this.overlay(id)} />
-            <div className="fillImg" onClick={() => this.overlay(id)}>
+            <ExpandIcon className={'expandImg ' + d + ' d' + [index + 1]} />
+            <div className="fillImg">
               <img className="overlayImg" src={key[1]} alt={'before-' + (index + 1)} />
             </div>
           </div>
