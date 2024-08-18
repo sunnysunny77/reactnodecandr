@@ -6,6 +6,7 @@ import styles from './Home.module.scss'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import axios from 'axios'
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight'
 import CloseIcon from '@mui/icons-material/Close'
 import InfoIcon from '@mui/icons-material/Info'
 import ExpandIcon from '@mui/icons-material/Expand'
@@ -116,6 +117,7 @@ class Home extends Component {
 
   componentDidUpdate (prevProps, prevState) {
     if (prevState.load !== this.state.load) {
+      this.overlay()
       if (window.location.search === '?enquiries=enquiries') { this.scrollIntoView() }
       const myVivus = new Vivus(document.querySelector('#my-svg').children[0], {
         duration: 200
@@ -128,13 +130,57 @@ class Home extends Component {
     document.querySelector('#enquiry').scrollIntoView({ behavior: 'smooth' })
   }
 
+  overlay = () => {
+    const overlayOpen = document.querySelectorAll('.overlayOpen')
+    const overlayExpanded = document.querySelectorAll('.overlayExpanded')
+    for (const [i, item] of overlayOpen.entries()) {
+      item.setAttribute('aria-label', `${overlayExpanded[i].id}`)
+      item.setAttribute('aria-expanded', false)
+      item.setAttribute('aria-controls', `${overlayExpanded[i].id}`)
+      item.addEventListener('click', (event) => {
+        overlayExpanded[i].classList.add('fixed')
+        overlayExpanded[i].setAttribute('aria-expanded', true)
+        overlayOpen[i].setAttribute('aria-expanded', true)
+        document.body.style.paddingRight = `${
+          window.innerWidth - overlayExpanded[i].offsetWidth
+        }px`
+        document.body.classList.add('overflow-hidden')
+      })
+      overlayExpanded[i].querySelector('.overlayClose').addEventListener('click', (event) => {
+        document.body.style.paddingRight = 0
+        overlayExpanded[i].classList.remove('fixed') ||
+        overlayExpanded[i].classList.remove('fixed-delay')
+        document.body.classList.remove('overflow-hidden')
+        overlayExpanded[i].setAttribute('aria-expanded', false)
+        overlayExpanded[i].setAttribute('aria-expanded', false)
+      })
+      overlayExpanded[i].querySelector('.overlayNext').addEventListener('click', (event) => {
+        let index = i
+        document.body.style.paddingRight = 0
+        overlayExpanded[i].classList.remove('fixed') ||
+        overlayExpanded[i].classList.remove('fixed-delay')
+        document.body.classList.remove('overflow-hidden')
+        overlayExpanded[i].setAttribute('aria-expanded', false)
+        overlayOpen[i].setAttribute('aria-expanded', false)
+        if (i === overlayExpanded.length - 1) {
+          index = -1
+        }
+        document.body.style.paddingRight = `${
+          window.innerWidth - document.body.offsetWidth
+        }px`
+        document.body.classList.add('overflow-hidden')
+        overlayExpanded[index + 1].classList.add('fixed-delay')
+        overlayOpen[index + 1].setAttribute('aria-expanded', true)
+      })
+    }
+  }
+
   mapOverlay = (res) => {
     this.setState({
       overlay: res.map((key, index) => {
         const d = index === 0 ? 'flex' : ''
-        const id = '#overlay' + index + 1
         return (
-          <div className={'containerImg ' + d + ' d' + [index + 1]} key={index} onClick={() => this.overlay(id)} >
+          <div className={'containerImg overlayOpen ' + d + ' d' + [index + 1]} key={index} >
             <div className="fillImg" >
               <img className="overlayImg" src={key[0]} alt={'after-' + (index + 1)} />
             </div>
@@ -153,24 +199,16 @@ class Home extends Component {
         return (
           <React.Fragment key={index}>
             <div id={id} className="overlayExpanded">
-              <div className="overlayCont">
-                <div className="headingCont overlayHeading">
-                    <CloseIcon
-                    className={id}
-                      onClick={() => {
-                        document.body.style.overflow = 'auto'
-                        document.body.style.paddingRight = 0
-                        document
-                          .querySelector(`#${id}`)
-                          .classList.remove('fixed')
-                      }}
-                    >
-                      &#10006;
-                    </CloseIcon>
-                </div>
                 <div className="imageCont">
+                  <div className="headingCont overlayHeading">
+                      <CloseIcon className="overlayClose" >
+                        &#10006;
+                      </CloseIcon>
+                  </div>
                   <img className="overlayImg" src={key[1]} alt={'before-' + (index + 1)} />
                   <img className="overlayImg" src={key[0]} alt={'after-' + (index + 1)} />
+                  <div className="buttonCont">
+                  <KeyboardDoubleArrowRightIcon className="overlayNext" />
                 </div>
               </div>
             </div>
@@ -178,14 +216,6 @@ class Home extends Component {
         )
       })
     })
-  }
-
-  overlay = (id) => {
-    const overlay = document.querySelector(`${id}`)
-    const width = window.innerWidth - document.body.offsetWidth
-    document.body.style.overflow = 'hidden'
-    document.body.style.paddingRight = `${width}px`
-    overlay.classList.add('fixed')
   }
 
   toggle = (index) => {
