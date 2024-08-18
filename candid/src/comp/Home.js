@@ -338,7 +338,7 @@ class Home extends Component {
               <div>
                 <picture>
                   <source
-                    media="(max-width: 1200px)"
+                    media="(max-width: 993px)"
                     srcSet={this.state.res.Carousel_One_Mobile}
                   />
                   <img
@@ -350,7 +350,7 @@ class Home extends Component {
               <div>
                 <picture>
                   <source
-                    media="(max-width: 1200px)"
+                    media="(max-width: 993px)"
                     srcSet={this.state.res.Carousel_Two_Mobile}
                   />
                   <img
