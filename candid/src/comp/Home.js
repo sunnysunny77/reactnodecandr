@@ -92,8 +92,7 @@ class Home extends Component {
         autoplay: true,
         speed: 500,
         pauseOnHover: false,
-        fade: true,
-        beforeChange: this.toggleBefore
+        fade: true
       }
     }
     this.props.footer('loading')
@@ -227,37 +226,6 @@ class Home extends Component {
       newCount = 1
     } else {
       newCount = count + index
-    }
-    const removeCount = document.querySelectorAll('.d' + count)
-    const addNewCount = document.querySelectorAll('.d' + newCount)
-    if (newCount > 0 && newCount <= this.state.res.Overlay.length) {
-      [...removeCount].forEach((item) => {
-        item.classList.add('grey')
-        setTimeout(() => {
-          item.classList.remove('flex')
-          item.classList.remove('grey')
-        }, 300)
-      });
-      [...addNewCount].forEach((item) => {
-        setTimeout(() => {
-          item.classList.add('flex')
-          item.classList.add('grey')
-          setTimeout(() => {
-            item.classList.remove('grey')
-          }, 300)
-        }, 300)
-      })
-      this.setState({ count: newCount })
-    }
-  }
-
-  toggleBefore = () => {
-    const count = this.state.count
-    let newCount
-    if (count === this.state.res.Overlay.length) {
-      newCount = 1
-    } else {
-      newCount = count + 1
     }
     const removeCount = document.querySelectorAll('.d' + count)
     const addNewCount = document.querySelectorAll('.d' + newCount)
