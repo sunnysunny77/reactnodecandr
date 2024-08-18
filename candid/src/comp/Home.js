@@ -116,12 +116,19 @@ class Home extends Component {
 
   componentDidUpdate (prevProps, prevState) {
     if (prevState.load !== this.state.load) {
-      this.overlay()
-      if (window.location.search === '?enquiries=enquiries') { this.scrollIntoView() }
-      const myVivus = new Vivus(document.querySelector('#my-svg').children[0], {
-        duration: 200
-      })
-      myVivus.play()
+      this.vivus()
+      this.overlayInit()
+    }
+  }
+
+  componentWillUnmount () {
+    const open = document.querySelectorAll('.overlayOpen')
+    const close = document.querySelectorAll('.overlayClose')
+    const next = document.querySelectorAll('.overlayNext')
+    for (let i = 0; i < open.length; i++) {
+      open[i].removeEventListener('click', this.overlayOpen)
+      close[i].removeEventListener('click', this.overlayClose)
+      next[i].removeEventListener('click', this.overlayNext)
     }
   }
 
@@ -129,49 +136,84 @@ class Home extends Component {
     document.querySelector('#enquiry').scrollIntoView({ behavior: 'smooth' })
   }
 
-  overlay = () => {
-    const overlayOpen = document.querySelectorAll('.overlayOpen')
-    const overlayExpanded = document.querySelectorAll('.overlayExpanded')
-    for (const [i, item] of overlayOpen.entries()) {
-      item.setAttribute('aria-label', `${overlayExpanded[i].id}`)
-      item.setAttribute('aria-expanded', false)
-      item.setAttribute('aria-controls', `${overlayExpanded[i].id}`)
-      item.addEventListener('click', (event) => {
-        overlayExpanded[i].classList.add('fixed')
-        overlayExpanded[i].setAttribute('aria-expanded', true)
-        overlayOpen[i].setAttribute('aria-expanded', true)
-        document.body.style.paddingRight = `${
-          window.innerWidth - overlayExpanded[i].offsetWidth
-        }px`
-        document.body.classList.add('overflow-hidden')
-      })
-      overlayExpanded[i].querySelector('.overlayClose').addEventListener('click', (event) => {
-        document.body.style.paddingRight = 0
-        overlayExpanded[i].classList.remove('fixed') ||
-        overlayExpanded[i].classList.remove('fixed-delay')
-        document.body.classList.remove('overflow-hidden')
-        overlayExpanded[i].setAttribute('aria-expanded', false)
-        overlayExpanded[i].setAttribute('aria-expanded', false)
-      })
-      overlayExpanded[i].querySelector('.overlayNext').addEventListener('click', (event) => {
-        let index = i
-        document.body.style.paddingRight = 0
-        overlayExpanded[i].classList.remove('fixed') ||
-        overlayExpanded[i].classList.remove('fixed-delay')
-        document.body.classList.remove('overflow-hidden')
-        overlayExpanded[i].setAttribute('aria-expanded', false)
-        overlayOpen[i].setAttribute('aria-expanded', false)
-        if (i === overlayExpanded.length - 1) {
-          index = -1
-        }
-        document.body.style.paddingRight = `${
-          window.innerWidth - document.body.offsetWidth
-        }px`
-        document.body.classList.add('overflow-hidden')
-        overlayExpanded[index + 1].classList.add('fixed-delay')
-        overlayOpen[index + 1].setAttribute('aria-expanded', true)
-      })
+  vivus = () => {
+    if (window.location.search === '?enquiries=enquiries') { this.scrollIntoView() }
+    const myVivus = new Vivus(document.querySelector('#my-svg').children[0], {
+      duration: 200
+    })
+    myVivus.play()
+  }
+
+  overlayInit = () => {
+    const obj = document.querySelectorAll('.overlayExpanded')
+    const open = document.querySelectorAll('.overlayOpen')
+    const close = document.querySelectorAll('.overlayClose')
+    const next = document.querySelectorAll('.overlayNext')
+    for (let i = 0; i < open.length; i++) {
+      open[i].setAttribute('aria-expanded', false)
+      open[i].setAttribute('aria-controls', `${obj[i].id}`)
+      close[i].setAttribute('target', 'open' + i)
+      close[i].setAttribute('controlls', `${obj[i].id}`)
+      next[i].setAttribute('target_previous', 'open' + i)
+      next[i].setAttribute('controlls_previous', `${obj[i].id}`)
+      if (i === obj.length - 1) {
+        next[i].setAttribute('target_current', 'open0')
+        next[i].setAttribute('controlls_current', `${obj[0].id}`)
+      } else {
+        const index = i + 1
+        next[i].setAttribute('target_current', 'open' + index)
+        next[i].setAttribute('controlls_current', `${obj[index].id}`)
+      }
+      open[i].addEventListener('click', this.overlayOpen)
+      close[i].addEventListener('click', this.overlayClose)
+      next[i].addEventListener('click', this.overlayNext)
     }
+  }
+
+  overlayOpen = (event) => {
+    const target = event.currentTarget.getAttribute('aria-controls')
+    const obj = document.querySelector(`#${target}`)
+    obj.classList.add('fixed')
+    event.currentTarget.setAttribute('aria-expanded', true)
+    obj.setAttribute('aria-expanded', true)
+    document.body.style.paddingRight = `${
+      window.innerWidth - obj.offsetWidth
+    }px`
+    document.body.classList.add('overflow-hidden')
+  }
+
+  overlayClose = (event) => {
+    const target = event.currentTarget.getAttribute('target')
+    const controlls = event.currentTarget.getAttribute('controlls')
+    const obj = document.querySelector(`#${controlls}`)
+    document.body.style.paddingRight = 0
+    obj.classList.remove('fixed') ||
+    obj.classList.remove('fixed-delay')
+    document.body.classList.remove('overflow-hidden')
+    obj.setAttribute('aria-expanded', false)
+    document.querySelector(`#${target}`).setAttribute('aria-expanded', false)
+  }
+
+  overlayNext = (event) => {
+    const targetPrevious = event.currentTarget.getAttribute('target_previous')
+    const controllsPrevious = event.currentTarget.getAttribute('controlls_previous')
+    const targetCurrent = event.currentTarget.getAttribute('target_current')
+    const controllsCurrent = event.currentTarget.getAttribute('controlls_current')
+    const objPrevious = document.querySelector(`#${controllsPrevious}`)
+    const objCurrent = document.querySelector(`#${controllsCurrent}`)
+    document.body.style.paddingRight = 0
+    objPrevious.classList.remove('fixed') ||
+    objPrevious.classList.remove('fixed-delay')
+    document.body.classList.remove('overflow-hidden')
+    objPrevious.setAttribute('aria-expanded', false)
+    document.querySelector(`#${targetPrevious}`).setAttribute('aria-expanded', false)
+    document.body.style.paddingRight = `${
+      window.innerWidth - document.body.offsetWidth
+    }px`
+    document.body.classList.add('overflow-hidden')
+    objCurrent.classList.add('fixed-delay')
+    objCurrent.setAttribute('aria-expanded', true)
+    document.querySelector(`#${targetCurrent}`).setAttribute('aria-expanded', false)
   }
 
   mapOverlay = (res) => {
@@ -179,7 +221,7 @@ class Home extends Component {
       overlay: res.map((key, index) => {
         const d = index === 0 ? 'flex' : ''
         return (
-          <div className={'containerImg overlayOpen ' + d + ' d' + [index + 1]} key={index} >
+          <div id={'open' + index} className={'containerImg overlayOpen ' + d + ' d' + [index + 1]} key={index} >
             <div className="fillImg" >
               <img className="overlayImg" src={key[0]} alt={'after-' + (index + 1)} />
             </div>
@@ -191,7 +233,7 @@ class Home extends Component {
         )
       }),
       overlayExpanded: res.map((key, index) => {
-        const id = 'overlay' + index + 1
+        const id = 'overlay' + index
         if (index % 1 === 1) {
           return false
         }
