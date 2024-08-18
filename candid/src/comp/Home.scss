@@ -3,7 +3,7 @@
 /* silde */
 
 .slick-slide img {
-  max-width: 1000px;
+  max-width: 1200px;
   height: calc(100vh - 575px);
   min-height: 300px;
   width: 100%;
@@ -21,7 +21,7 @@
 
 .welcome {
   position: absolute;
-  margin: 2% 0 0 calc(52% - 500px);
+  margin: 2% 0 0 calc(52% - 600px);
   z-index: 997;
   font-size: x-large;
   animation: slide1;
@@ -238,9 +238,8 @@
   }
   .containerImg {
     display: none;
-    width: 50%;
+    width: 775px;
     margin: auto;
-    max-width: 775px;
     cursor: pointer;
     @media only screen and (max-width: 1200px) {
       width: 72.5%;
