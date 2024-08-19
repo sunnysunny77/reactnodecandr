@@ -54,8 +54,11 @@
   }
   .image-gallery {
     .image-gallery-content {
-      width: 75%;
+      width: 85%;
       margin: auto;
+      @media only screen and (max-width: 1200px) {
+        width: 92.5%;
+      }
       .image-gallery-slide-wrapper {
         position: relative;
         margin: auto;

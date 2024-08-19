@@ -12,6 +12,7 @@
   object-position: left;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
+  box-shadow: 0 0 2px $c6;
   @media only screen and (max-width: 1200px) {
     max-width: initial;
     height: 40vh;
@@ -278,13 +279,36 @@
     width: 40%;
     background-color: $c6;
     display: flex;
-    box-shadow: 0 0 1px $c1;
-    border-radius: 3.75px;
+    box-shadow: 0 0 2px $c6;
     overflow: hidden;
     @media only screen and (max-width: 640px) {
       width: 100%;
       margin: 5% 0;
       max-width: initial;
+    }
+  }
+  .fillImg:nth-child(1) {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 25px;
+    @media only screen and (max-width: 640px) {
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      border-bottom-right-radius: 25px;
+      border-bottom-left-radius: 25px;
+    }
+  }
+  .fillImg:nth-child(3) {
+    border-top-right-radius: 25px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 5px;
+    @media only screen and (max-width: 640px) {
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      border-bottom-right-radius: 25px;
+      border-bottom-left-radius: 25px;
     }
   }
   .overlayImg {
