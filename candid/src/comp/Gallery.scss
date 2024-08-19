@@ -30,7 +30,7 @@
   @media only screen and (max-width: 1200px) {
     min-height: 100vh;
     margin: auto;
-    padding-bottom: 0;
+    padding-bottom: 80px;
   }
   .sticky {
     height: 200px;
@@ -38,6 +38,9 @@
     position: sticky;
     top: 0;
     z-index: 0;
+    @media only screen and (max-width: 1200px) {
+      height: 100px;
+    }
     &::after {
       content: "";
       display: block;
@@ -60,8 +63,9 @@
       object-fit: cover;
       border: 2px solid $c2;
       box-sizing: border-box;
-      @media only screen and (max-width: 1200px) {
-        height: 66vh;
+      @media only screen and (max-width: 640px) {
+        height: 55vh;
+        min-height: initial;
       }
     }
     .slick-next,
