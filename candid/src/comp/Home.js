@@ -149,6 +149,7 @@ class Home extends Component {
     const open = document.querySelectorAll('.overlayOpen')
     const close = document.querySelectorAll('.overlayClose')
     const next = document.querySelectorAll('.overlayNext')
+    const backdrop = document.querySelectorAll('.overlayBackdrop')
     for (let i = 0; i < open.length; i++) {
       open[i].setAttribute('aria-expanded', false)
       open[i].setAttribute('aria-controls', `${obj[i].id}`)
@@ -156,6 +157,7 @@ class Home extends Component {
       close[i].setAttribute('controlls', `${obj[i].id}`)
       next[i].setAttribute('target_previous', 'open' + i)
       next[i].setAttribute('controlls_previous', `${obj[i].id}`)
+      obj[i].setAttribute('backdrop', `${backdrop[i].id}`)
       if (i === obj.length - 1) {
         next[i].setAttribute('target_current', 'open0')
         next[i].setAttribute('controlls_current', `${obj[0].id}`)
@@ -173,11 +175,13 @@ class Home extends Component {
   overlayOpen = (event) => {
     const target = event.currentTarget.getAttribute('aria-controls')
     const obj = document.querySelector(`#${target}`)
+    const backdrop = obj.getAttribute('backdrop')
+    document.querySelector(`#${backdrop}`).classList.add('overlay-transition')
     obj.classList.add('fixed')
     event.currentTarget.setAttribute('aria-expanded', true)
     obj.setAttribute('aria-expanded', true)
     document.body.style.paddingRight = `${
-      window.innerWidth - obj.offsetWidth
+      window.innerWidth - document.body.offsetWidth
     }px`
     document.body.classList.add('overflow-hidden')
   }
@@ -192,6 +196,9 @@ class Home extends Component {
     document.body.classList.remove('overflow-hidden')
     obj.setAttribute('aria-expanded', false)
     document.querySelector(`#${target}`).setAttribute('aria-expanded', false)
+    for (const item of document.querySelectorAll('.overlayBackdrop')) {
+      item.classList.remove('overlay-transition')
+    }
   }
 
   overlayNext = (event) => {
@@ -233,13 +240,12 @@ class Home extends Component {
         )
       }),
       overlayExpanded: res.map((key, index) => {
-        const id = 'overlay' + index
         if (index % 1 === 1) {
           return false
         }
         return (
-          <React.Fragment key={index}>
-            <div id={id} className="overlayExpanded">
+          <div className="overflow-hidden" key={index}>
+            <div id={'overlay' + index} className="overlayExpanded">
                 <div className="imageCont">
                   <div className="headingCont overlayHeading">
                       <CloseIcon className="overlayClose" >
@@ -253,7 +259,8 @@ class Home extends Component {
                 </div>
               </div>
             </div>
-          </React.Fragment>
+            <div id={'overlayBackdrop' + index} className="overlayBackdrop"></div>
+          </div>
         )
       })
     })

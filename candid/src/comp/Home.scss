@@ -94,7 +94,6 @@
 
 .overlayExpanded {
   position: fixed;
-  overflow: hidden;
   top: 0;
   right: 0;
   bottom: 0;
@@ -211,6 +210,25 @@
       opacity: 1;
     }
   }
+}
+
+/* overlay backdrop */
+
+.overlayBackdrop {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: transparentize($c5, 0.95);
+	transition: background-color 0.5s cubic-bezier(0.66, 0.01, 0.27, 0.84);;
+	z-index: 998;
+  box-sizing: border-box;
+	transform: translateX(100%);
+	&.overlay-transition {
+		transform: translateX(0);
+		background-color: transparentize($c5, 0.75);
+	}
 }
 
 /* overlay */
