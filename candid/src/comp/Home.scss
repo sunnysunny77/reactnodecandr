@@ -96,9 +96,9 @@
   position: fixed;
   overflow: hidden;
   top: 0;
-  right: 0;
+  right: -2px;
   bottom: 0;
-  left: 0;
+  left: -2px;
   z-index: 999;
   transform: translateX(100%);
   will-change: transform;
