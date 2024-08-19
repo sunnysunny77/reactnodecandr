@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import './Gallery.scss'
-import ImageGallery from 'react-image-gallery'
 import axios from 'axios'
 import parse from 'html-react-parser'
+import Slider from 'react-slick'
 
 export default class Galery extends Component {
   constructor (props) {
@@ -11,7 +11,15 @@ export default class Galery extends Component {
       window: window.scrollTo(0, 0),
       res: {},
       navigation: props.navigation,
-      load: true
+      load: true,
+      settings: {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      },
+      gallery: null
     }
     this.props.footer('loading')
   }
@@ -32,6 +40,7 @@ export default class Galery extends Component {
     if (prevState.load !== this.state.load) {
       window.addEventListener('scroll', this.handleScroll, { passive: true })
       window.addEventListener('resize', this.handleScroll, { passive: true })
+      this.gallery()
     }
   }
 
@@ -43,6 +52,23 @@ export default class Galery extends Component {
   handleScroll = () => {
     if (window.innerWidth > 1200) { return (document.querySelector('.sticky').style.top = '40px') }
     if (window.innerWidth <= 1200) { document.querySelector('.sticky').style.top = '0px' }
+  }
+
+  gallery = () => {
+    this.setState({
+      gallery: this.state.res.Images.map((key, index) => {
+        return (
+          <React.Fragment key={index}>
+            <div>
+                <img
+                  src={key.original}
+                  alt={key.originalAlt}
+                />
+            </div>
+          </React.Fragment>
+        )
+      })
+    })
   }
 
   render () {
@@ -64,10 +90,9 @@ export default class Galery extends Component {
             </div>
             <section id="galleryCont">
               <div className="sticky"></div>
-              <ImageGallery
-                showThumbnails={false}
-                items={this.state.res.Images}
-              />
+              <Slider className="slickGallery" {...this.state.settings}>
+                {this.state.gallery}
+              </Slider>
             </section>
           </React.Fragment>
             )}

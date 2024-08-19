@@ -8,6 +8,8 @@ import Gallery from './comp/Gallery'
 import Contact from './comp/Contact'
 import About from './comp/About'
 import axios from 'axios'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 function App () {
   const [navigation, setNavigation] = useState([])

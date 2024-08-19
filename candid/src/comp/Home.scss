@@ -2,7 +2,7 @@
 
 /* silde */
 
-.slick-slide img {
+.slideHome img {
   max-width: 1200px;
   height: calc(100vh - 485px);
   min-height: 400px;
@@ -343,7 +343,7 @@
     background-image: linear-gradient(-90deg, $c1 0%, $c6 50%);
     filter: grayscale(0%);
     @media only screen and (max-width: 640px) {
-      height: 60vw;
+      height: 70vw;
     }
   }
   .flex {

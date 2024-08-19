@@ -3,8 +3,6 @@ import Slider from 'react-slick'
 import Vivus from 'vivus'
 import './Home.scss'
 import styles from './Home.module.scss'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
 import axios from 'axios'
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight'
 import CloseIcon from '@mui/icons-material/Close'
@@ -383,7 +381,7 @@ class Home extends Component {
               </div>
               <div id="welcomeTwo" onClick={this.scrollIntoView}></div>
             </section>
-            <Slider id="slide" {...this.state.settings}>
+            <Slider className="slideHome" {...this.state.settings}>
               <div>
                 <picture>
                   <source
