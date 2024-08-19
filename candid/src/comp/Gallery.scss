@@ -17,7 +17,6 @@
   border-left: 2px solid $c2;
   border-right: 2px solid $c2;
   border-bottom: 2px solid $c2;
-  padding-bottom: 140px;
   display: flex;
   flex-direction: column;
   width: calc(100% - 4px);
@@ -29,8 +28,7 @@
   min-height: calc(100vh - 90px);
   @media only screen and (max-width: 1200px) {
     min-height: 100vh;
-    margin: auto;
-    padding-bottom: 80px;
+    margin: 0;
   }
   .sticky {
     height: 200px;
@@ -38,8 +36,8 @@
     position: sticky;
     top: 0;
     z-index: 0;
-    @media only screen and (max-width: 1200px) {
-      height: 100px;
+    @media only screen and (max-width: 640px) {
+      height: 150px;
     }
     &::after {
       content: "";
@@ -56,30 +54,39 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    .imgGalleryCont {
+      padding: 39vh 0;
+      position: relative;
+      height: 100%;
+      @media only screen and (max-width: 640px) {
+        padding: 33vh 0;
+      }
+    }
     img {
-      max-width: 100%;
-      min-height: 600px;
-      height: 75vh;
-      object-fit: cover;
+      height: 100%;
+      width: 100%;
       border: 2px solid $c2;
       box-sizing: border-box;
-      @media only screen and (max-width: 640px) {
-        height: 55vh;
-        min-height: initial;
-      }
+      position: absolute;
+      object-fit: cover;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
     }
     .slick-next,
     .slick-prev {
       position: static;
     }
+    .slick-dots {
+      position: static;
+      width: 100%;
+      margin-bottom: 65px;
+    }
     .slick-list {
       width: calc(80% - 40px);
       margin: 0 5%;
-    }
-    .slick-slide {
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
   }
 }

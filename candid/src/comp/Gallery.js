@@ -58,14 +58,12 @@ export default class Galery extends Component {
     this.setState({
       gallery: this.state.res.Images.map((key, index) => {
         return (
-          <React.Fragment key={index}>
-            <div>
-                <img
-                  src={key.original}
-                  alt={key.originalAlt}
-                />
-            </div>
-          </React.Fragment>
+          <div className="imgGalleryCont" key={index}>
+            <img
+              src={key.original}
+              alt={key.originalAlt}
+            />
+          </div>
         )
       })
     })
