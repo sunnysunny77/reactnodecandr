@@ -244,16 +244,18 @@ class Home extends Component {
         return (
           <div className="overflow-hidden" key={index}>
             <div id={'overlay' + index} className="overlayExpanded">
-                <div className="imageCont">
+              <div className="overlayInner">
                   <div className="headingCont overlayHeading">
-                      <CloseIcon className="overlayClose" >
-                        &#10006;
-                      </CloseIcon>
+                    <CloseIcon className="overlayClose" >
+                      &#10006;
+                    </CloseIcon>
                   </div>
-                  <img className="overlayImg" src={key[1]} alt={'before-' + (index + 1)} />
-                  <img className="overlayImg" src={key[0]} alt={'after-' + (index + 1)} />
-                  <div className="buttonCont">
-                  <KeyboardDoubleArrowRightIcon className="overlayNext" />
+                  <div className="scrollCont">
+                    <img className="overlayImg" src={key[1]} alt={'before-' + (index + 1)} />
+                    <img className="overlayImg" src={key[0]} alt={'after-' + (index + 1)} />
+                </div>
+                <div className="buttonCont">
+                    <KeyboardDoubleArrowRightIcon className="overlayNext" />
                 </div>
               </div>
             </div>

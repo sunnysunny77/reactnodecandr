@@ -108,17 +108,16 @@
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(-90deg, $c6 50%, $c1 50%);
+
   > * {
     will-change: opacity;
     opacity: 0;
     transition: opacity 0.5s cubic-bezier(0.03, 0.5, 0.25, 0.6);
   }
-  .imageCont {
+  .overlayInner {
     background-color: $c5;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
     background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
     background-blend-mode: color;
     border-top-left-radius: 15px;
@@ -165,16 +164,39 @@
       color: $c6;
     }
   }
-  img {
-    max-height: 100%;
-    width: 42.5%;
-    box-shadow: 0 0 1px $c1;
-    border-radius: 3.75px;
-    object-fit: cover;
-    margin: 50px 0;
-    @media only screen and (max-width: 640px) {
-      width: 80%;
-      margin: 50px 0 0 0;
+  .scrollCont {
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    scrollbar-color: $c13 transparent;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $c13;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    img {
+      max-height: 100%;
+      width: 42.5%;
+      box-shadow: 0 0 1px $c1;
+      border-radius: 3.75px;
+      object-fit: cover;
+      margin: 50px 0;
+      @media only screen and (max-width: 640px) {
+        width: 80%;
+      }
+      &:nth-child(1) {
+        @media only screen and (max-width: 640px) {
+          margin: 50px 0 0 0;
+        }
+      }
     }
   }
   .buttonCont {
@@ -185,9 +207,6 @@
     justify-content: flex-end;
     align-items: center;
     align-self: flex-end;
-    @media only screen and (max-width: 640px) {
-      margin: 50px 0 0 0;
-    }
   }
   .overlayNext {
     border: none;
@@ -221,20 +240,20 @@
 /* overlay backdrop */
 
 .overlayBackdrop {
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-color: transparentize($c5, 0.95);
-	transition: background-color 0.5s cubic-bezier(0.66, 0.01, 0.27, 0.84);;
-	z-index: 998;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: transparentize($c5, 0.95);
+  transition: background-color 0.5s cubic-bezier(0.66, 0.01, 0.27, 0.84);
+  z-index: 998;
   box-sizing: border-box;
-	transform: translateX(100%);
-	&.overlay-transition {
-		transform: translateX(0);
-		background-color: transparentize($c5, 0.75);
-	}
+  transform: translateX(100%);
+  &.overlay-transition {
+    transform: translateX(0);
+    background-color: transparentize($c5, 0.75);
+  }
 }
 
 /* overlay */
@@ -585,9 +604,6 @@
     }
     &::-webkit-scrollbar-track {
       background: transparent;
-    }
-    &::-webkit-scrollbar-thumb:hover {
-      background: $c7;
     }
   }
   .button {

@@ -65,9 +65,6 @@
     &::-webkit-scrollbar-thumb {
       background: $c3;
     }
-    &::-webkit-scrollbar-thumb:hover {
-      background: $c7;
-    }
     table {
       padding: 0 20px;
       position: relative;
@@ -175,9 +172,6 @@
         }
         &::-webkit-scrollbar-thumb {
           background: $c3;
-        }
-        &::-webkit-scrollbar-thumb:hover {
-          background: $c7;
         }
       }
     }
