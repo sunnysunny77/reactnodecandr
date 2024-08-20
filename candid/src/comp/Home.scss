@@ -156,10 +156,13 @@
     background-color: transparent;
     font-size: 20px;
     padding: 10px;
+    transition: color 0.2s ease-in-out;
     color: $c6;
-    &:hover,
-    &:focus {
+    &:hover {
       color: $c8;
+    }
+    &:focus {
+      color: $c6;
     }
   }
   img {
@@ -189,12 +192,15 @@
   .overlayNext {
     border: none;
     background-color: transparent;
+    transition: color 0.2s ease-in-out;
     font-size: 20px;
     padding: 10px;
     color: $c6;
-    &:hover,
-    &:focus {
+    &:hover {
       color: $c8;
+    }
+    &:focus {
+      color: $c6;
     }
   }
   &.fixed {
@@ -272,9 +278,9 @@
     }
     &:hover .expandImg {
       color: $c7;
-      @media only screen and (max-width: 1200px) {
-        color: $c4;
-      }
+    }
+    &:focus .expandImg {
+      color: $c4;
     }
   }
   .expandImg {
@@ -283,6 +289,7 @@
     color: $c13;
     display: none;
     align-self: flex-end;
+    transition: color 0.2s ease-in-out;
     margin: 0 auto;
     @media only screen and (max-width: 1200px) {
       align-self: center;
@@ -388,9 +395,9 @@
     }
     &:hover {
       fill: $c7;
-      @media only screen and (max-width: 1200px) {
-        fill: $c4;
-      }
+    }
+    &:focus {
+      fill: $c4;
     }
   }
 }
