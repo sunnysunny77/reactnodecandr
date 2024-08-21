@@ -149,12 +149,15 @@ class Home extends Component {
     const next = document.querySelectorAll('.overlayNext')
     const backdrop = document.querySelectorAll('.overlayBackdrop')
     for (let i = 0; i < open.length; i++) {
+      open[i].setAttribute('role', 'button')
       open[i].setAttribute('aria-expanded', false)
       open[i].setAttribute('aria-controls', `${obj[i].id}`)
       close[i].setAttribute('target', 'open' + i)
       close[i].setAttribute('controlls', `${obj[i].id}`)
+      close[i].setAttribute('role', 'button')
       next[i].setAttribute('target_previous', 'open' + i)
       next[i].setAttribute('controlls_previous', `${obj[i].id}`)
+      next[i].setAttribute('role', 'button')
       obj[i].setAttribute('backdrop', `${backdrop[i].id}`)
       if (i === obj.length - 1) {
         next[i].setAttribute('target_current', 'open0')
