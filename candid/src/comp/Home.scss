@@ -56,10 +56,12 @@
     }
     #my-svg svg {
       stroke: $c3;
-      stroke-width: 13;
+      stroke-width: 3px;
       fill: none;
       vertical-align: bottom;
       overflow: visible;
+      width: 35px;
+      height: 35px;
       @media only screen and (max-width: 1200px) {
         width: 25px;
         height: 25px;

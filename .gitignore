@@ -1,2 +1,4 @@
 node_modules
 /candid/build
+selfsigned.key
+selfsigned.crt

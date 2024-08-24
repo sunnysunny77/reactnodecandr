@@ -137,7 +137,7 @@ class Home extends Component {
   vivus = () => {
     if (window.location.search === '?enquiries=enquiries') { this.scrollIntoView() }
     const myVivus = new Vivus(document.querySelector('#my-svg').children[0], {
-      duration: 200
+      duration: 100
     })
     myVivus.play()
   }
