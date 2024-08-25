@@ -4,8 +4,8 @@
 
 .slideHome img {
   max-width: 1200px;
-  height: calc(100vh - 485px);
-  min-height: 350px;
+  height: calc(100vh - 500px);
+  min-height: 380px;
   width: 100%;
   margin: auto;
   object-fit: cover;
@@ -300,7 +300,8 @@
   }
   .containerImg {
     display: none;
-    width: 775px;
+    max-width: 700px;
+    width: 42%;
     margin: auto;
     cursor: pointer;
     @media only screen and (max-width: 1200px) {
@@ -354,7 +355,7 @@
     border-top-right-radius: 5px;
     border-top-left-radius: 25px;
     border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 25px;
+    border-bottom-left-radius: 75px;
     @media only screen and (max-width: 640px) {
       border-top-right-radius: 5px;
       border-top-left-radius: 5px;
@@ -365,7 +366,7 @@
   .fillImg:nth-child(3) {
     border-top-right-radius: 25px;
     border-top-left-radius: 5px;
-    border-bottom-right-radius: 25px;
+    border-bottom-right-radius: 75px;
     border-bottom-left-radius: 5px;
     @media only screen and (max-width: 640px) {
       border-top-right-radius: 5px;
