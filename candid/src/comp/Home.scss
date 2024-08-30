@@ -518,7 +518,7 @@
   }
   .cardCont {
     max-width: 1312px;
-    padding: 125px 2%;
+    padding: 200px 2%;
     z-index: 998;
     clear: both;
     display: flex;
@@ -526,6 +526,9 @@
     flex-wrap: wrap;
     overflow: hidden;
     margin: auto;
+    @media only screen and (max-width: 992px) {
+      padding: 125px 2%;
+    }
     span img {
       margin-left: 10px;
       vertical-align: middle;
