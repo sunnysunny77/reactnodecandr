@@ -512,74 +512,80 @@
 /* card */
 
 .card {
-  max-width: 1312px;
-  padding: 125px 2%;
-  z-index: 998;
-  clear: both;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  overflow: hidden;
-  margin: auto;
-  span img {
-    margin-left: 10px;
-    vertical-align: middle;
+  background-image: linear-gradient(-90deg, $c6 0%, $c1 75%);
+  @media only screen and (max-width: 992px) {
+    background-image: initial;
   }
-  hr {
-    width: 100%;
-  }
-  p {
-    margin: 0 auto 3% auto;
-    padding: 0 15px;
-    text-align: center;
-    font-family: $font3;
-    font-weight: 500;
-    text-shadow: 0 0 0.5px $c9;
-  }
-  h2 {
-    margin: 0;
-    padding: 0;
-    font-size: inherit;
-    font-family: $font2;
-    font-weight: 500;
-    display: inline;
-  }
-  .cardOne {
-    max-width: 339px;
-    margin: auto;
-    color: $c3;
-    padding: 15px;
-    height: fit-content;
+  .cardCont {
+    max-width: 1312px;
+    padding: 125px 2%;
+    z-index: 998;
+    clear: both;
     display: flex;
-    flex-direction: column;
-    a {
-      color: $c2;
-      float: left;
-      margin-left: 30px;
-      width: 30px;
-      font-weight: 900;
-      font-size: 15px;
-      height: 24px;
-      &:hover {
-        color: $c8;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+    margin: auto;
+    span img {
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+    hr {
+      width: 100%;
+    }
+    p {
+      margin: 0 auto 3% auto;
+      padding: 0 15px;
+      text-align: center;
+      font-family: $font3;
+      font-weight: 500;
+      text-shadow: 0 0 0.5px $c9;
+    }
+    h2 {
+      margin: 0;
+      padding: 0;
+      font-size: inherit;
+      font-family: $font2;
+      font-weight: 500;
+      display: inline;
+    }
+    .cardOne {
+      max-width: 339px;
+      margin: auto;
+      color: $c3;
+      padding: 15px;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      a {
+        color: $c2;
+        float: left;
+        margin-left: 30px;
+        width: 30px;
+        font-weight: 900;
+        font-size: 15px;
+        height: 24px;
+        &:hover {
+          color: $c8;
+        }
+      }
+      svg:nth-child(4) {
+        color: $c2;
+        float: left;
+        margin-left: 30px;
+      }
+      svg:nth-child(5) {
+        color: $c3;
+        font-size: 50px;
+        align-self: center;
       }
     }
-    svg:nth-child(4) {
-      color: $c2;
-      float: left;
-      margin-left: 30px;
-    }
-    svg:nth-child(5) {
-      color: $c3;
-      font-size: 50px;
-      align-self: center;
-    }
-  }
-  .cardTwo {
-    align-self: flex-end;
-    img {
-      width: 50px;
-      height: 50px;
+    .cardTwo {
+      align-self: flex-end;
+      img {
+        width: 50px;
+        height: 50px;
+      }
     }
   }
 }

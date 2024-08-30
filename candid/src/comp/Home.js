@@ -470,101 +470,103 @@ class Home extends Component {
               </div>
             </section>
             <section className="card">
-              <div className="cardOne">
-                <div className="cardTwo">
-                  <span>
-                    <h2>{parse(this.state.res.Card_Heading_One)}</h2>
-                    <img
-                      src={this.state.res.Card_One_Image}
-                      alt={this.state.res.Card_One_Image_Alt}
-                    ></img>
-                  </span>
+              <div className="cardCont">
+                <div className="cardOne">
+                  <div className="cardTwo">
+                    <span>
+                      <h2>{parse(this.state.res.Card_Heading_One)}</h2>
+                      <img
+                        src={this.state.res.Card_One_Image}
+                        alt={this.state.res.Card_One_Image_Alt}
+                      ></img>
+                    </span>
+                  </div>
+                  <hr />
+                  <p>{parse(this.state.res.Card_One)}</p>
+                  <StarBorderIcon />
+                  <FilterListIcon />
                 </div>
-                <hr />
-                <p>{parse(this.state.res.Card_One)}</p>
-                <StarBorderIcon />
-                <FilterListIcon />
-              </div>
-              <div className="cardOne">
-                <div className="cardTwo">
-                  <span>
-                    <h2>{parse(this.state.res.Card_Heading_Two)}</h2>
-                    <img
-                      src={this.state.res.Card_Two_Image}
-                      alt={this.state.res.Card_Two_Image_Alt}
-                    ></img>
-                  </span>
+                <div className="cardOne">
+                  <div className="cardTwo">
+                    <span>
+                      <h2>{parse(this.state.res.Card_Heading_Two)}</h2>
+                      <img
+                        src={this.state.res.Card_Two_Image}
+                        alt={this.state.res.Card_Two_Image_Alt}
+                      ></img>
+                    </span>
+                  </div>
+                  <hr />
+                  <p>{parse(this.state.res.Card_Two)}</p>
+                  <WhatshotIcon />
+                  <FilterListIcon />
                 </div>
-                <hr />
-                <p>{parse(this.state.res.Card_Two)}</p>
-                <WhatshotIcon />
-                <FilterListIcon />
-              </div>
-              <div className="cardOne">
-                <div className="cardTwo">
-                  <span>
-                    <h2>{parse(this.state.res.Card_Heading_Three)}</h2>
-                    <img
-                      src={this.state.res.Card_Three_Image}
-                      alt={this.state.res.Card_Three_Image_Alt}
-                    ></img>
-                  </span>
+                <div className="cardOne">
+                  <div className="cardTwo">
+                    <span>
+                      <h2>{parse(this.state.res.Card_Heading_Three)}</h2>
+                      <img
+                        src={this.state.res.Card_Three_Image}
+                        alt={this.state.res.Card_Three_Image_Alt}
+                      ></img>
+                    </span>
+                  </div>
+                  <hr />
+                  <p>{parse(this.state.res.Card_Three)}</p>
+                  <BuildIcon />
+                  <FilterListIcon />
                 </div>
-                <hr />
-                <p>{parse(this.state.res.Card_Three)}</p>
-                <BuildIcon />
-                <FilterListIcon />
-              </div>
-              <div className="cardOne">
-                <div className="cardTwo">
-                  <span>
-                    <h2>{parse(this.state.res.Card_Heading_Four)}</h2>
-                    <img
-                      src={this.state.res.Card_Four_Image}
-                      alt={this.state.res.Card_Four_Image_Alt}
-                    ></img>
-                  </span>
+                <div className="cardOne">
+                  <div className="cardTwo">
+                    <span>
+                      <h2>{parse(this.state.res.Card_Heading_Four)}</h2>
+                      <img
+                        src={this.state.res.Card_Four_Image}
+                        alt={this.state.res.Card_Four_Image_Alt}
+                      ></img>
+                    </span>
+                  </div>
+                  <hr />
+                  <p>{parse(this.state.res.Card_Four)}</p>
+                  <a target="4" href={this.state.res.Url_One}>
+                    {parse(this.state.res.Url_Button)}
+                  </a>
+                  <FilterListIcon />
                 </div>
-                <hr />
-                <p>{parse(this.state.res.Card_Four)}</p>
-                <a target="4" href={this.state.res.Url_One}>
-                  {parse(this.state.res.Url_Button)}
-                </a>
-                <FilterListIcon />
-              </div>
-              <div className="cardOne">
-                <div className="cardTwo">
-                  <span>
-                    <h2>{parse(this.state.res.Card_Heading_Five)}</h2>
-                    <img
-                      src={this.state.res.Card_Five_Image}
-                      alt={this.state.res.Card_Five_Image_Alt}
-                    ></img>
-                  </span>
+                <div className="cardOne">
+                  <div className="cardTwo">
+                    <span>
+                      <h2>{parse(this.state.res.Card_Heading_Five)}</h2>
+                      <img
+                        src={this.state.res.Card_Five_Image}
+                        alt={this.state.res.Card_Five_Image_Alt}
+                      ></img>
+                    </span>
+                  </div>
+                  <hr />
+                  <p>{parse(this.state.res.Card_Five)}</p>
+                  <a target="5" href={this.state.res.Url_Two}>
+                    {parse(this.state.res.Url_Button)}
+                  </a>
+                  <FilterListIcon />
                 </div>
-                <hr />
-                <p>{parse(this.state.res.Card_Five)}</p>
-                <a target="5" href={this.state.res.Url_Two}>
-                  {parse(this.state.res.Url_Button)}
-                </a>
-                <FilterListIcon />
-              </div>
-              <div className="cardOne">
-                <div className="cardTwo">
-                  <span>
-                    <h2>{parse(this.state.res.Card_Heading_Six)}</h2>
-                    <img
-                      src={this.state.res.Card_Six_Image}
-                      alt={this.state.res.Card_Six_Image_Alt}
-                    ></img>
-                  </span>
+                <div className="cardOne">
+                  <div className="cardTwo">
+                    <span>
+                      <h2>{parse(this.state.res.Card_Heading_Six)}</h2>
+                      <img
+                        src={this.state.res.Card_Six_Image}
+                        alt={this.state.res.Card_Six_Image_Alt}
+                      ></img>
+                    </span>
+                  </div>
+                  <hr />
+                  <p>{parse(this.state.res.Card_Six)}</p>
+                  <a target="6" href={this.state.res.Url_Three}>
+                    {parse(this.state.res.Url_Button)}
+                  </a>
+                  <FilterListIcon />
                 </div>
-                <hr />
-                <p>{parse(this.state.res.Card_Six)}</p>
-                <a target="6" href={this.state.res.Url_Three}>
-                  {parse(this.state.res.Url_Button)}
-                </a>
-                <FilterListIcon />
               </div>
             </section>
             <section id="enquiry" className="enquiry">
