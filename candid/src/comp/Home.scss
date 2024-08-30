@@ -289,7 +289,7 @@
   position: relative;
   z-index: 0;
   padding: 220px 0;
-  background-image: linear-gradient(-90deg, $c6 50%, $c1 50%);
+  background-image: linear-gradient(-90deg, lighten( $c6, 0.25%) 50%, lighten( $c6, 1.5%)  50%);
   @media only screen and (max-width: 1200px) {
     padding: 17% 0;
   }
