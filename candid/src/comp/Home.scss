@@ -280,22 +280,23 @@
 .overlay {
   margin: auto;
   width: 100%;
-  position: relative;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
   display: flex;
   justify-content: center;
-  margin: 220px auto;
+  position: relative;
+  z-index: 0;
+  padding: 220px 0;
+  background-image: linear-gradient(-90deg, $c6 50%, $c1 50%);
   @media only screen and (max-width: 1200px) {
-    width: 90%;
-    margin: 17% auto;
+    padding: 17% 0;
   }
   @media only screen and (max-width: 640px) {
-    width: 100%;
+    background-image: initial;
     align-items: center;
-    margin: 3% auto;
+    padding: 3% 0;
   }
   .containerImg {
     display: none;
@@ -329,9 +330,7 @@
     align-self: flex-end;
     transition: color 0.2s ease-in-out;
     margin: 0 auto;
-    @media only screen and (max-width: 1200px) {
-      align-self: center;
-    }
+    align-self: center;
     @media only screen and (max-width: 640px) {
       margin: 20px 0;
     }
@@ -350,10 +349,7 @@
     }
   }
   .fillImg:nth-child(1) {
-    border-top-right-radius: 5px;
-    border-top-left-radius: 25px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 25px;
+    border-radius: 12px;
     @media only screen and (max-width: 640px) {
       border-top-right-radius: 5px;
       border-top-left-radius: 5px;
@@ -362,10 +358,7 @@
     }
   }
   .fillImg:nth-child(3) {
-    border-top-right-radius: 25px;
-    border-top-left-radius: 5px;
-    border-bottom-right-radius: 25px;
-    border-bottom-left-radius: 5px;
+    border-radius: 12px;
     @media only screen and (max-width: 640px) {
       border-top-right-radius: 5px;
       border-top-left-radius: 5px;
@@ -400,18 +393,18 @@
     }
   }
   #left {
-    left: calc(50% - 500px);
+    left: 12%;
     @media only screen and (max-width: 1200px) {
-      left: 1%;
+      left: 3%;
     }
     @media only screen and (max-width: 640px) {
       left: 0.5%;
     }
   }
   #right {
-    right: calc(50% - 500px);
+    right: 12%;
     @media only screen and (max-width: 1200px) {
-      right: 1%;
+      right: 3%;
     }
     @media only screen and (max-width: 640px) {
       right: 0.5%;
@@ -447,6 +440,8 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  position: relative;
+  z-index: 1;
   @media only screen and (max-width: 992px) {
     padding-bottom: 5%;
     flex-direction: column-reverse;
