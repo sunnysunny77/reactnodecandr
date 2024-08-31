@@ -14,7 +14,8 @@
     height: calc(100vh - 90px);
   }
   @media only screen and (max-width: 640px) {
-    height: 40vh;
+    height: 56vh;
+    object-position: right bottom;
   }
 }
 
