@@ -391,7 +391,7 @@ class Home extends Component {
                   />
                 </picture>
                 <div className="slideP">
-                  <div>
+                  <div className="welcome">
                     <div id="welcomeOne">
                       <div id="my-svg">{parse(this.state.res.Home_Svg)}</div>
                       &nbsp;
@@ -416,7 +416,7 @@ class Home extends Component {
                   />
                 </picture>
                 <div className="slideP">
-                  <div>
+                  <div className="welcome">
                     <div id="welcomeOne">
                       <div id="my-svg">{parse(this.state.res.Home_Svg)}</div>
                       &nbsp;
