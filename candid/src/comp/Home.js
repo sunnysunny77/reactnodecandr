@@ -378,14 +378,6 @@ class Home extends Component {
           : (
           <React.Fragment>
             {this.state.window}
-            <section className="welcome">
-              <div id="welcomeOne">
-                <div id="my-svg">{parse(this.state.res.Home_Svg)}</div>
-                &nbsp;
-                {parse(this.state.res.Message)}
-              </div>
-              <div id="welcomeTwo" onClick={this.scrollIntoView}></div>
-            </section>
             <Slider className="slideHome" {...this.state.settings}>
               <div>
                 <picture>
@@ -399,8 +391,16 @@ class Home extends Component {
                   />
                 </picture>
                 <div className="slideP">
+                  <div>
+                    <div id="welcomeOne">
+                      <div id="my-svg">{parse(this.state.res.Home_Svg)}</div>
+                      &nbsp;
+                      {parse(this.state.res.Message)}
+                    </div>
+                    <div id="welcomeTwo" onClick={this.scrollIntoView}></div>
+                  </div>
                   <p>
-                  {parse(this.state.res.Carousel_One)}
+                    {parse(this.state.res.Carousel_One)}
                   </p>
                 </div>
               </div>
@@ -416,6 +416,14 @@ class Home extends Component {
                   />
                 </picture>
                 <div className="slideP">
+                  <div>
+                    <div id="welcomeOne">
+                      <div id="my-svg">{parse(this.state.res.Home_Svg)}</div>
+                      &nbsp;
+                      {parse(this.state.res.Message)}
+                    </div>
+                    <div id="welcomeTwo" onClick={this.scrollIntoView}></div>
+                  </div>
                   <p>
                     {parse(this.state.res.Carousel_Two)}
                   </p>

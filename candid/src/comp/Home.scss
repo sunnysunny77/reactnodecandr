@@ -6,7 +6,6 @@
   img {
     height: calc(100vh - 150px);
     width: 100%;
-    min-height: 260px;
     box-shadow: 0 0 7.5px $c2;
     margin: auto;
     object-fit: cover;
@@ -26,41 +25,20 @@
     background-color: transparentize($c6, 0.75);
     margin: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
     p {
-      width: 66%;
       color: $c5;
       font-size: clamp(20px, 3vw, 30px);
       font-weight: 500;
-      max-width: 400px;
+      align-self: center;
+      width: 90%;
+      margin: 0 auto;
     }
-  }
-}
-
-/* welcome */
-
-.welcome {
-  position: absolute;
-  margin: 2% 0 0 5%;
-  z-index: 997;
-  font-size: x-large;
-  animation: slide1;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  display: flex;
-  right: 0;
-  left: 0;
-  flex-direction: column;
-  @media only screen and (max-width: 1200px) {
-    margin: 20px auto auto 4%;
-  }
-  @media only screen and (max-width: 640px) {
-    font-size: small;
   }
   #welcomeOne {
     font-family: $font3;
-    margin: 0;
+    margin: 25px 0 0 80px;
     padding: 2px 4px;
     font-weight: 500;
     color: $c3;
@@ -69,6 +47,9 @@
     line-height: 35px;
     display: flex;
     width: fit-content;
+    @media only screen and (max-width: 1200px) {
+      margin: 25px 0 0 25px;
+    }
     @media only screen and (max-width: 640px) {
       line-height: 25px;
     }
@@ -89,7 +70,7 @@
   #welcomeTwo {
     background-color: $c9;
     border-radius: 5px;
-    margin: 8px auto auto 0;
+    margin: 8px 0 0 80px;
     padding: 47px 80px;
     background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/welcome.png);
     background-size: cover;
@@ -100,6 +81,9 @@
       background-color 0.3s linear;
     transform: translate(0, 0);
     width: fit-content;
+    @media only screen and (max-width: 1200px) {
+      margin: 8px 0 0 25px;
+    }
     @media only screen and (max-width: 640px) {
       padding: 35px 59px;
     }
@@ -109,6 +93,7 @@
     }
   }
 }
+
 
 /* overlay expanded */
 
