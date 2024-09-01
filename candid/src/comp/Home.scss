@@ -12,7 +12,8 @@
     object-position: right center;
     @media only screen and (max-width: 1200px) {
       height: calc(100vh - 90px);
-      object-position: right bottom;
+      object-position: center;
+      min-height: 425px;
     }
   }
   .slideP {
