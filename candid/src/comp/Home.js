@@ -398,6 +398,11 @@ class Home extends Component {
                     alt={this.state.res.Carousel_One_Alt}
                   />
                 </picture>
+                <div className="slideP">
+                  <p>
+                  {parse(this.state.res.Carousel_One)}
+                  </p>
+                </div>
               </div>
               <div>
                 <picture>
@@ -410,6 +415,11 @@ class Home extends Component {
                     alt={this.state.res.Carousel_Two_Alt}
                   />
                 </picture>
+                <div className="slideP">
+                  <p>
+                    {parse(this.state.res.Carousel_Two)}
+                  </p>
+                </div>
               </div>
             </Slider>
             {this.state.overlayExpanded}
