@@ -23,7 +23,7 @@
     bottom: 0;
     left: 0;
     text-align: center;
-    background-color: transparentize($c6, 0.75);
+    background-color: transparentize($c6, 0.88);
     margin: 0;
     display: flex;
     align-items: flex-start;
@@ -39,10 +39,10 @@
   .welcome {
     width: 100%;
   }
-  #welcomeOne {
+  .welcomeOne {
     font-family: $font3;
     margin: 25px 0 0 80px;
-    padding: 2px 4px;
+    padding: 2px 8px;
     font-weight: 500;
     color: $c3;
     background-color: $c9;
@@ -56,7 +56,7 @@
     @media only screen and (max-width: 640px) {
       line-height: 25px;
     }
-    #my-svg svg {
+    .my-svg svg {
       stroke: $c3;
       stroke-width: 3px;
       fill: none;
@@ -70,7 +70,7 @@
       }
     }
   }
-  #welcomeTwo {
+  .welcomeTwo {
     background-color: $c9;
     border-radius: 5px;
     margin: 8px 0 0 80px;
@@ -96,7 +96,6 @@
     }
   }
 }
-
 
 /* overlay expanded */
 
@@ -332,7 +331,7 @@
   }
   .expandImg {
     vertical-align: sub;
-    font-size: 1em;
+    font-size: 1.25em;
     color: $c13;
     display: none;
     align-self: flex-end;
@@ -340,13 +339,13 @@
     margin: 0 auto;
     align-self: center;
     @media only screen and (max-width: 640px) {
-      margin: 20px 0;
+      font-size: 1.5em;
+      margin: 30px auto;
     }
   }
   .fillImg {
     max-width: 300px;
     width: 40%;
-    background-color: $c6;
     display: flex;
     box-shadow: 0 0 2px $c6;
     overflow: hidden;
@@ -354,24 +353,6 @@
       width: 100%;
       margin: 5% 0;
       max-width: initial;
-    }
-  }
-  .fillImg:nth-child(1) {
-    border-radius: 12px;
-    @media only screen and (max-width: 640px) {
-      border-top-right-radius: 5px;
-      border-top-left-radius: 5px;
-      border-bottom-right-radius: 25px;
-      border-bottom-left-radius: 25px;
-    }
-  }
-  .fillImg:nth-child(3) {
-    border-radius: 12px;
-    @media only screen and (max-width: 640px) {
-      border-top-right-radius: 5px;
-      border-top-left-radius: 5px;
-      border-bottom-right-radius: 25px;
-      border-bottom-left-radius: 25px;
     }
   }
   .overlayImg {
@@ -386,10 +367,10 @@
       opacity 0.3s linear;
     opacity: 1;
     will-change: opacity, filter;
-    background-image: linear-gradient(-90deg, $c1 0%, $c6 50%);
+    clip-path: inset(0 10px 0 round 25px 0);
     filter: grayscale(0%);
     @media only screen and (max-width: 640px) {
-      height: 70vw;
+      height: 66vw;
     }
   }
   .flex {

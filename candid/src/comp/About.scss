@@ -118,15 +118,14 @@
   }
   #imageContainer {
     position: relative;
-    clip-path: inset(10px 10px 25px round 25px 0);
+    clip-path: inset(0 10px 0 round 25px 0);
     float: left;
     width: 55%;
     height: 379px;
     background-color: $c1;
-    transform: scale(1.04);
     @media only screen and (max-width: 1365px) {
       float: none;
-      margin: 20px auto 70px auto;
+      margin: 25px auto 45px auto;
       width: 100%;
       height: 66vw;
       max-width: 625px;
@@ -143,7 +142,7 @@
       object-position: center;
       object-fit: cover;
       filter: grayscale(100%);
-      clip-path: inset(10px 10px 25px round 25px 0);
+      clip-path: inset(0 10px 0 round 25px 0);
     }
   }
   #spanTwo {
@@ -151,7 +150,7 @@
     padding-left: 7.5%;
     margin-top: 25px;
     text-align: right;
-    height: 244px;
+    height: 268px;
     @media only screen and (max-width: 1365px) {
       padding-left: 0;
       width: 100%;

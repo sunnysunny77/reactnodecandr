@@ -83,7 +83,7 @@ class Home extends Component {
       settings: {
         dots: false,
         infinite: true,
-        autoplaySpeed: 15000,
+        autoplaySpeed: 6000,
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
@@ -137,7 +137,7 @@ class Home extends Component {
   vivus = () => {
     if (window.location.search === '?enquiries=enquiries') { this.scrollIntoView() }
     const myVivus = new Vivus(document.querySelector('#my-svg').children[0], {
-      duration: 100
+      duration: 80
     })
     myVivus.play()
   }
@@ -392,12 +392,12 @@ class Home extends Component {
                 </picture>
                 <div className="slideP">
                   <div className="welcome">
-                    <div id="welcomeOne">
-                      <div id="my-svg">{parse(this.state.res.Home_Svg)}</div>
+                    <div className="welcomeOne">
+                      <div id="my-svg" className="my-svg">{parse(this.state.res.Home_Svg)}</div>
                       &nbsp;
                       {parse(this.state.res.Message)}
                     </div>
-                    <div id="welcomeTwo" onClick={this.scrollIntoView}></div>
+                    <div className="welcomeTwo" onClick={this.scrollIntoView}></div>
                   </div>
                   <p>
                     {parse(this.state.res.Carousel_One)}
@@ -417,12 +417,12 @@ class Home extends Component {
                 </picture>
                 <div className="slideP">
                   <div className="welcome">
-                    <div id="welcomeOne">
-                      <div id="my-svg">{parse(this.state.res.Home_Svg)}</div>
+                    <div className="welcomeOne">
+                      <div className="my-svg">{parse(this.state.res.Home_Svg)}</div>
                       &nbsp;
                       {parse(this.state.res.Message)}
                     </div>
-                    <div id="welcomeTwo" onClick={this.scrollIntoView}></div>
+                    <div className="welcomeTwo" onClick={this.scrollIntoView}></div>
                   </div>
                   <p>
                     {parse(this.state.res.Carousel_Two)}
