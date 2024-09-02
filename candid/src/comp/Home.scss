@@ -347,8 +347,8 @@
     max-width: 300px;
     width: 40%;
     display: flex;
-    box-shadow: 0 0 2px $c6;
     overflow: hidden;
+    clip-path: inset(0 10px 0 round 25px 0);
     @media only screen and (max-width: 640px) {
       width: 100%;
       margin: 5% 0;
@@ -367,7 +367,6 @@
       opacity 0.3s linear;
     opacity: 1;
     will-change: opacity, filter;
-    clip-path: inset(0 10px 0 round 25px 0);
     filter: grayscale(0%);
     @media only screen and (max-width: 640px) {
       height: 66vw;
