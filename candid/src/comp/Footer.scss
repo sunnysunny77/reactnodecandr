@@ -2,9 +2,8 @@
 
 footer {
   width: 100%;
-  background-image: linear-gradient(180deg, $c1 70%, $c6 95%);
-  border-top: solid $c4 2px;
-  border-bottom: solid $c4 2px;
+  border-top: solid $c2 2px;
+  border-bottom: solid $c2 2px;
   margin-top: 4px;
   margin-bottom: 4px;
   display: none;
@@ -41,6 +40,7 @@ footer {
       display: inline-block;
       height: 23px;
       padding: 0 5px;
+      color: $c3;
       img {
         vertical-align: middle;
         @media only screen and (min-width: 1200px) {
@@ -54,9 +54,12 @@ footer {
         border: none;
         text-decoration: none;
         &:hover {
-          color: $c10;
+          color: $c5;
           cursor: pointer;
         }
+      }
+      svg {
+        fill: $c3;
       }
       &#logoFooter {
         height: initial;

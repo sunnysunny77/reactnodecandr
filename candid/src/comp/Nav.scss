@@ -5,31 +5,45 @@
 header {
   width: 100%;
   height: 90px;
-  background-image: linear-gradient(-90deg, $c1 0%, $c6 75%);
+  background-image: linear-gradient(-90deg, $c1 0%, $c4 75%);
+  display: flex;
+  align-items: center;
+  @media only screen and (max-width: 1200px) {
+    justify-content: flex-end;
+  }
   a {
     padding-right: initial;
-    position: relative;
     display: block;
-    top: 24px;
-    width: 200px;
-    height: 46px;
-    margin-left: 85px;
     float: none;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $c6;
+    font-weight: 500;
+    font-size: clamp(14px, 4.5vw, 23px);
+    margin: auto auto auto 85px;
     @media only screen and (max-width: 1200px) {
-      float: right;
-      top: 32px;
-      margin-right: 20px;
-      margin-left: 0;
-      max-width: 140px;
-      width: 55%;
-      height: 32px;
+      flex-direction: row-reverse;
+      margin: auto 12px auto 0;
+      width: calc(100% - 90px);
     }
     @media only screen and (min-width: 1921px) {
       margin-left: calc(50vw - 960px);
     }
     img {
-      width: 100%;
-      height: auto;
+      display: flex;
+      width: 25%;
+      max-width: 60px;
+      min-width: 45px;
+      margin: 0 3px 0 0;
+      @media only screen and (max-width: 1200px) {
+        margin: 0 0 0 3px;
+      }
+
+    }
+    span {
+      margin: 3px 0 0 0;
+      text-align: right;
     }
   }
 }
@@ -73,14 +87,17 @@ header {
   @media only screen and (min-width: 1201px) {
     display: none;
   }
+  .bar {
+    background-color: $c3;
+  }
 }
 
 .mobileNav {
   position: absolute;
   width: 200px;
-  background-image: linear-gradient(-90deg, $c1 0%, $c6 50%);
-  border-right: 1.5px solid $c9;
-  border-bottom: 1.5px solid $c9;
+  background-color: $c1;
+  border-right: 1.5px solid $c2;
+  border-bottom: 1.5px solid $c2;
   animation-duration: 0.6s;
   animation-fill-mode: forwards;
   z-index: 998;
@@ -91,8 +108,19 @@ header {
   margin-top: 90px;
   transition: transform 0.6s;
   transform: translate(-202px);
+  padding: 0 0 1rem 0;
   @media only screen and (min-width: 1201px) {
-    visibility: hidden;
+    display: none;
+  }
+  &::before {
+    position: absolute;
+    content: " ";
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(-90deg, $c1 0%, $c4 100%);
+    z-index: -1;
   }
   &.true {
     transform: translate(0);
@@ -116,11 +144,12 @@ header {
       outline: none;
       padding: 10px 0;
       &:hover {
-        color: $c10;
+        color: $c5;
       }
     }
     svg {
       padding: 10px 0;
+      fill: $c3;
     }
   }
   ul:nth-child(1) li:nth-child(2) {
@@ -129,6 +158,10 @@ header {
       margin-right: 20px;
       font-size: 24px;
       padding: 0;
+      fill: $c3;
+      &:hover {
+        fill: $c5;
+      }
     }
   }
   ul:nth-child(2) {
@@ -146,8 +179,6 @@ header {
   width: 100%;
   height: 60px;
   background-color: $c3;
-  background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
-  background-blend-mode: color-burn;
   z-index: 999;
   color: $c1;
   font-family: $font4;
@@ -189,13 +220,13 @@ header {
     a {
       text-decoration: none;
       color: $c1;
-      background-color: $c3;
+      background-color: transparent;
       border: none;
       cursor: pointer;
       outline: none;
       margin: 0 19px;
       &:hover {
-        color: $c10;
+        color: $c5;
       }
     }
   }

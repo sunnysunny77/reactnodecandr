@@ -1,10 +1,12 @@
 @import "../Variables.scss";
 
 .blogHeading {
+  width: 100%;
   max-width: 1204px;
   margin: 80px auto 0 auto;
   border-top-left-radius: 11px;
   border-top-right-radius: 11px;
+  background-color: $c3;
   @media only screen and (max-width: 1200px) {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -14,22 +16,19 @@
 
 .blogCont {
   width: 100%;
-  border-left: 2px solid $c2;
-  border-right: 2px solid $c2;
-  border-bottom: 2px solid $c2;
-  background-color: $c5;
+  border-left: 2px solid $c3;
+  border-right: 2px solid $c3;
+  border-bottom: 2px solid $c3;
   max-width: 1200px;
   width: calc(100% - 4px);
   margin: 0 auto 80px auto;
-  background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
-  background-blend-mode: color;
   @media only screen and (max-width: 1200px) {
     margin: auto;
   }
   .blogResponse {
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-color: $c3 $c1;
-    color: $c1;
+    color: $c6;
     position: relative;
     overscroll-behavior: none;
     min-height: calc(100vh - 160px);
@@ -38,13 +37,11 @@
     }
     .sticky {
       height: 200px;
-      @media only screen and (max-width: 1200px) {
-        height: 60px;
-      }
       overflow: visible;
       position: sticky;
       top: 0;
       z-index: 3;
+      opacity: 0.2;
       &::after {
         content: "";
         display: block;
@@ -95,10 +92,6 @@
       }
     }
   }
-  .button {
-    background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
-    background-blend-mode: color-burn;
-  }
   .accordianHeading {
     border-top-left-radius: 11px;
     border-top-right-radius: 11px;
@@ -113,6 +106,15 @@
       font-weight: 500;
     }
   }
+  .MuiButtonBase-root {
+    background-color: $c3;
+  }
+  .MuiAccordionDetails-root {
+    padding: 0;
+  }
+  .MuiPaper-root.MuiAccordion-root {
+    margin: 0;
+  }
   .MuiFormControl-root {
     display: flex;
     align-items: flex-end;
@@ -125,19 +127,24 @@
       }
     }
   }
+  form {
+    input::-webkit-input-placeholder,
+    input::placeholder,
+    textarea::-webkit-input-placeholder,
+    textarea::placeholder {
+      color: $c6;
+      opacity: 1;
+    }
+  }
   .formAdd {
     width: 100%;
-    background-color: $c5;
-    background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
-    background-blend-mode: color;
-    color: $c1;
     label[for="avatar"] {
       display: block;
       width: fit-content;
       margin: 25px auto;
     }
     input[type="file"] {
-      border: 1px solid $c9;
+      border: 1px solid $c2;
       border-radius: 3px;
       margin: auto;
       padding: 4px 8px;
@@ -155,34 +162,32 @@
         border-radius: 3px;
       }
     }
-    .MuiFormControl-fullWidth {
-      display: inline-flex;
-      align-items: initial;
-      .MuiInputBase-root {
-        width: 100%;
-        margin: auto;
+    .MuiInputBase-root {
+      @media only screen and (max-width: 640px) {
+        width: calc(100% - 50px);
+        margin: auto auto 25px auto;
       }
-      .MuiInputBase-multiline {
-        scrollbar-color: $c3 transparent;
-        &::-webkit-scrollbar {
-          width: 10px;
-        }
-        &::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        &::-webkit-scrollbar-thumb {
-          background: $c3;
-        }
+    }
+    .MuiInputBase-multiline {
+      scrollbar-color: $c3 $c1;
+      width: 100%;
+      @media only screen and (max-width: 640px) {
+        width: calc(100% - 50px);
+      }
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+      &::-webkit-scrollbar-track {
+        background: $c1;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: $c3;
       }
     }
   }
   .formRemove {
     width: 100%;
     margin: auto;
-    background-color: $c5;
-    background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
-    background-blend-mode: color;
-    color: $c1;
     padding-top: 25px;
     .MuiFormControl-root {
       .MuiInputBase-root {

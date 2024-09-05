@@ -5,7 +5,7 @@ import parse from 'html-react-parser'
 import { Link } from 'react-router-dom'
 
 const Footer = (props) => {
-  const { footer, phone, hours, days, navigation, logoFooter } = props
+  const { footer, phone, hours, days, navigation, logo } = props
   return (
     <footer className={footer}>
       <ul>
@@ -29,7 +29,7 @@ const Footer = (props) => {
         </li>
         <li className="block" id="logoFooter">
           <Link to="/">
-            <img src={logoFooter[0]} alt={logoFooter[1]} />
+            <img src={logo[0]} alt={logo[1]} />
           </Link>
         </li>
         <li className="block none">

@@ -20,8 +20,7 @@ import Resizer from 'react-image-file-resizer'
 import parse from 'html-react-parser'
 
 const StyledAccordion = styled(Accordion)({
-  margin: 0,
-  backgroundColor: styles.c3
+  backgroundColor: styles.c4
 })
 
 export default class Blog extends React.Component {
@@ -249,7 +248,7 @@ export default class Blog extends React.Component {
           : (
           <React.Fragment>
             {this.state.window}
-            <div className="headingCont blogHeading">
+            <div className="blogHeading">
               <h1>{parse(this.state.navigation)}</h1>
             </div>
             <section className="blogCont">
@@ -259,281 +258,276 @@ export default class Blog extends React.Component {
                   <tbody>{this.state.table}</tbody>
                 </table>
               </div>
-              <div style={{ backgroundColor: styles.c3 }}>
-                <StyledAccordion>
-                  <AccordionSummary
-                    expandIcon={
-                      <ExpandMoreIcon style={{ color: styles.c11 }} />
-                    }
-                    aria-controls="panel2a-content"
-                    id="panel2a-header"
+              <StyledAccordion>
+                <AccordionSummary
+                  expandIcon={
+                    <ExpandMoreIcon style={{ color: styles.c1 }} />
+                  }
+                  aria-controls="panel2a-content"
+                  id="panel2a-header"
+                >
+                  <div className="accordianHeading headingCont">
+                    <h2>{parse(this.state.res.Blog_Add_Title)}</h2>
+                  </div>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <form
+                    id="formAdd"
+                    className="formAdd"
+                    onSubmit={this.submitAdd}
+                    autoComplete="off"
+                    style={{
+                      width: '100%',
+                      fontFamily: styles.font3,
+                      color: styles.c6
+                    }}
                   >
-                    <div className="accordianHeading headingCont">
-                      <h2>{parse(this.state.res.Blog_Add_Title)}</h2>
-                    </div>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <form
-                      id="formAdd"
-                      className="formAdd"
-                      onSubmit={this.submitAdd}
-                      autoComplete="off"
-                      style={{
-                        width: '100%',
-                        fontFamily: styles.font3,
-                        color: styles.c11
-                      }}
-                    >
-                      <SubjectIcon />
-                      <label htmlFor="passs" className="hiddenText">
-                        passAddord
-                      </label>
-                      <TextField
-                        id="passs"
-                        autoComplete="true"
-                        InputProps={{
-                          disableUnderline: true,
-                          style: {
-                            color: styles.c3,
-                            fontSize: 'inherit',
-                            fontWeight: '500',
-                            borderRadius: 0,
-                            backgroundColor: styles.c11,
-                            fontFamily: styles.font3
-                          },
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <LockOpenIcon />
-                            </InputAdornment>
-                          )
-                        }}
-                        variant="filled"
-                        type="passAddord"
-                        name="passAdd"
-                        placeholder="Pass:"
-                        onChange={this.change}
-                      />
-                      <label htmlFor="title" className="hiddenText">
-                        Title
-                      </label>
-                      <TextField
-                        id="title"
-                        InputProps={{
-                          disableUnderline: true,
-                          style: {
-                            color: styles.c3,
-                            fontSize: 'inherit',
-                            fontWeight: '500',
-                            borderRadius: 0,
-                            backgroundColor: styles.c11,
-                            fontFamily: styles.font3
-                          },
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <TitleIcon />
-                            </InputAdornment>
-                          )
-                        }}
-                        variant="filled"
-                        type="text"
-                        name="title"
-                        placeholder="Title:"
-                        onChange={this.change}
-                      />
-                      <label htmlFor="name" className="hiddenText">
-                        Name
-                      </label>
-                      <TextField
-                        id="name"
-                        InputProps={{
-                          disableUnderline: true,
-                          style: {
-                            color: styles.c3,
-                            fontSize: 'inherit',
-                            fontWeight: '500',
-                            borderRadius: 0,
-                            backgroundColor: styles.c11,
-                            fontFamily: styles.font3
-                          },
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <AccountCircle />
-                            </InputAdornment>
-                          )
-                        }}
-                        variant="filled"
-                        type="text"
-                        name="name"
-                        placeholder="Name:"
-                        onChange={this.change}
-                      />
-                      <label htmlFor="text" className="hiddenText">
-                        Text
-                      </label>
-                      <TextField
-                        id="text"
-                        multiline
-                        minRows="20"
-                        fullWidth={true}
-                        InputProps={{
-                          disableUnderline: true,
-                          style: {
-                            fontFamily: styles.font3,
-                            color: styles.c3,
-                            fontSize: 'inherit',
-                            fontWeight: '500',
-                            height: '135px',
-                            backgroundColor: styles.c11,
-                            overflowY: 'auto',
-                            overflowX: 'hidden',
-                            borderRadius: 0,
-                            display: 'block'
-                          }
-                        }}
-                        variant="filled"
-                        type="text"
-                        name="blog"
-                        placeholder="Text:"
-                        onChange={this.change}
-                      />
-                      <label htmlFor="avatar">Upload a picture:</label>
-                      <input
-                        id="avatar"
-                        type="file"
-                        name="file"
-                        onChange={this.file}
-                      />
-                      <Button
-                        style={{
-                          color: styles.c11,
-                          backgroundColor: styles.c3,
-                          width: '100%',
-                          height: '50px',
+                    <SubjectIcon style={{ color: styles.c3 }} />
+                    <label htmlFor="passs" className="hiddenText">
+                      passAddord
+                    </label>
+                    <TextField
+                      id="passs"
+                      autoComplete="true"
+                      InputProps={{
+                        disableUnderline: true,
+                        style: {
+                          color: styles.c6,
                           fontSize: 'inherit',
-                          fontWeight: '400',
-                          paddingTop: '10px',
-                          marginTop: '25px',
-                          borderRadius: 0
-                        }}
-                        variant="contained"
-                        type="submit"
-                        className="button"
-                      >
-                        {parse(this.state.res.Submitt_Form)}
-                      </Button>
-                      <div style={{ height: '50px' }}>
-                        <div style={this.state.dispAdd}>
-                          <Alert alert={this.state.alertAdd} />
-                        </div>
+                          fontWeight: '500',
+                          borderRadius: 0,
+                          backgroundColor: styles.c1,
+                          fontFamily: styles.font3
+                        },
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <LockOpenIcon style={{ color: styles.c3 }} />
+                          </InputAdornment>
+                        )
+                      }}
+                      variant="filled"
+                      type="passAddord"
+                      name="passAdd"
+                      placeholder="Pass:"
+                      onChange={this.change}
+                    />
+                    <label htmlFor="title" className="hiddenText">
+                      Title
+                    </label>
+                    <TextField
+                      id="title"
+                      InputProps={{
+                        disableUnderline: true,
+                        style: {
+                          color: styles.c6,
+                          fontSize: 'inherit',
+                          fontWeight: '500',
+                          borderRadius: 0,
+                          backgroundColor: styles.c1,
+                          fontFamily: styles.font3
+                        },
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <TitleIcon style={{ color: styles.c3 }} />
+                          </InputAdornment>
+                        )
+                      }}
+                      variant="filled"
+                      type="text"
+                      name="title"
+                      placeholder="Title:"
+                      onChange={this.change}
+                    />
+                    <label htmlFor="name" className="hiddenText">
+                      Name
+                    </label>
+                    <TextField
+                      id="name"
+                      InputProps={{
+                        disableUnderline: true,
+                        style: {
+                          color: styles.c6,
+                          fontSize: 'inherit',
+                          fontWeight: '500',
+                          borderRadius: 0,
+                          backgroundColor: styles.c1,
+                          fontFamily: styles.font3
+                        },
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <AccountCircle style={{ color: styles.c3 }} />
+                          </InputAdornment>
+                        )
+                      }}
+                      variant="filled"
+                      type="text"
+                      name="name"
+                      placeholder="Name:"
+                      onChange={this.change}
+                    />
+                    <label htmlFor="text" className="hiddenText">
+                      Text
+                    </label>
+                    <TextField
+                      id="text"
+                      multiline
+                      minRows="20"
+                      InputProps={{
+                        disableUnderline: true,
+                        style: {
+                          fontFamily: styles.font3,
+                          color: styles.c6,
+                          fontSize: 'inherit',
+                          fontWeight: '500',
+                          height: '135px',
+                          backgroundColor: styles.c1,
+                          overflowY: 'auto',
+                          overflowX: 'hidden',
+                          borderRadius: 0,
+                          display: 'block'
+                        }
+                      }}
+                      variant="filled"
+                      type="text"
+                      name="blog"
+                      placeholder="Text:"
+                      onChange={this.change}
+                    />
+                    <label htmlFor="avatar">Upload a picture:</label>
+                    <input
+                      id="avatar"
+                      type="file"
+                      name="file"
+                      onChange={this.file}
+                    />
+                    <Button
+                      style={{
+                        color: styles.c1,
+                        backgroundColor: styles.c3,
+                        width: '100%',
+                        height: '50px',
+                        fontSize: 'inherit',
+                        fontWeight: '400',
+                        paddingTop: '10px',
+                        marginTop: '25px',
+                        borderRadius: 0
+                      }}
+                      variant="contained"
+                      type="submit"
+                    >
+                      {parse(this.state.res.Submitt_Form)}
+                    </Button>
+                    <div style={{ height: '50px' }}>
+                      <div style={this.state.dispAdd}>
+                        <Alert alert={this.state.alertAdd} />
                       </div>
-                    </form>
-                  </AccordionDetails>
-                </StyledAccordion>
-                <StyledAccordion>
-                  <AccordionSummary
-                    expandIcon={
-                      <ExpandMoreIcon style={{ color: styles.c11 }} />
-                    }
-                    aria-controls="panel2a-content"
-                    id="panel2a-header"
+                    </div>
+                  </form>
+                </AccordionDetails>
+              </StyledAccordion>
+              <StyledAccordion>
+                <AccordionSummary
+                  expandIcon={
+                    <ExpandMoreIcon style={{ color: styles.c1 }} />
+                  }
+                  aria-controls="panel2a-content"
+                  id="panel2a-header"
+                >
+                  <div className="accordianHeading headingCont">
+                    <h2>{parse(this.state.res.Blog_Remove_Title)}</h2>
+                  </div>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <form
+                    id="formRemove"
+                    className="formRemove"
+                    onSubmit={this.submitRemove}
+                    autoComplete="off"
+                    style={{
+                      width: '100%',
+                      fontFamily: styles.font3,
+                      color: styles.c6
+                    }}
                   >
-                    <div className="accordianHeading headingCont">
-                      <h2>{parse(this.state.res.Blog_Remove_Title)}</h2>
-                    </div>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <form
-                      id="formRemove"
-                      className="formRemove"
-                      onSubmit={this.submitRemove}
-                      autoComplete="off"
-                      style={{
-                        width: '100%',
-                        fontFamily: styles.font3,
-                        color: styles.c11
-                      }}
-                    >
-                      <label htmlFor="pass" className="hiddenText">
-                        passAddord
-                      </label>
-                      <TextField
-                        id="pass"
-                        autoComplete="true"
-                        InputProps={{
-                          disableUnderline: true,
-                          style: {
-                            color: styles.c3,
-                            fontSize: 'inherit',
-                            fontWeight: '500',
-                            borderRadius: 0,
-                            backgroundColor: styles.c11,
-                            fontFamily: styles.font3
-                          },
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <LockOpenIcon />
-                            </InputAdornment>
-                          )
-                        }}
-                        variant="filled"
-                        type="passAddord"
-                        name="passRemove"
-                        placeholder="Pass:"
-                        onChange={this.change}
-                      />
-                      <label htmlFor="date" className="hiddenText">
-                        Date
-                      </label>
-                      <TextField
-                        id="date"
-                        InputProps={{
-                          disableUnderline: true,
-                          style: {
-                            color: styles.c3,
-                            fontSize: 'inherit',
-                            fontWeight: '500',
-                            borderRadius: 0,
-                            backgroundColor: styles.c11,
-                            fontFamily: styles.font3
-                          },
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <AccessTimeIcon />
-                            </InputAdornment>
-                          )
-                        }}
-                        variant="filled"
-                        type="text"
-                        name="date"
-                        placeholder="Date:"
-                        onChange={this.change}
-                      />
-                      <Button
-                        style={{
-                          color: styles.c11,
-                          backgroundColor: styles.c3,
-                          width: '100%',
-                          height: '50px',
+                    <label htmlFor="pass" className="hiddenText">
+                      passAddord
+                    </label>
+                    <TextField
+                      id="pass"
+                      autoComplete="true"
+                      InputProps={{
+                        disableUnderline: true,
+                        style: {
+                          color: styles.c6,
                           fontSize: 'inherit',
-                          fontWeight: '400',
-                          paddingTop: '10px',
-                          borderRadius: 0
-                        }}
-                        variant="contained"
-                        className="button"
-                        type="submit"
-                      >
-                        {parse(this.state.res.Submitt_Form)}
-                      </Button>
-                      <div style={{ height: '50px' }}>
-                        <div style={this.state.dispRemove}>
-                          <Alert alert={this.state.alertRemove} />
-                        </div>
+                          fontWeight: '500',
+                          borderRadius: 0,
+                          backgroundColor: styles.c1,
+                          fontFamily: styles.font3
+                        },
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <LockOpenIcon style={{ color: styles.c3 }} />
+                          </InputAdornment>
+                        )
+                      }}
+                      variant="filled"
+                      type="passAddord"
+                      name="passRemove"
+                      placeholder="Pass:"
+                      onChange={this.change}
+                    />
+                    <label htmlFor="date" className="hiddenText">
+                      Date
+                    </label>
+                    <TextField
+                      id="date"
+                      InputProps={{
+                        disableUnderline: true,
+                        style: {
+                          color: styles.c6,
+                          fontSize: 'inherit',
+                          fontWeight: '500',
+                          borderRadius: 0,
+                          backgroundColor: styles.c1,
+                          fontFamily: styles.font3
+                        },
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <AccessTimeIcon style={{ color: styles.c3 }} />
+                          </InputAdornment>
+                        )
+                      }}
+                      variant="filled"
+                      type="text"
+                      name="date"
+                      placeholder="Date:"
+                      onChange={this.change}
+                    />
+                    <Button
+                      style={{
+                        color: styles.c1,
+                        backgroundColor: styles.c3,
+                        width: '100%',
+                        height: '50px',
+                        fontSize: 'inherit',
+                        fontWeight: '400',
+                        paddingTop: '10px',
+                        borderRadius: 0
+                      }}
+                      variant="contained"
+                      type="submit"
+                    >
+                      {parse(this.state.res.Submitt_Form)}
+                    </Button>
+                    <div style={{ height: '50px' }}>
+                      <div style={this.state.dispRemove}>
+                        <Alert alert={this.state.alertRemove} />
                       </div>
-                    </form>
-                  </AccordionDetails>
-                </StyledAccordion>
-              </div>
+                    </div>
+                  </form>
+                </AccordionDetails>
+              </StyledAccordion>
             </section>
           </React.Fragment>
             )}

@@ -11,9 +11,7 @@ const Layout = (props) => {
     days,
     navigation,
     footer,
-    logoFooter,
-    logoMobile,
-    logoDesktop
+    logo
   } = props
   return (
     <>
@@ -22,8 +20,7 @@ const Layout = (props) => {
         hours={hours}
         days={days}
         navigation={navigation}
-        logoMobile={logoMobile}
-        logoDesktop={logoDesktop}
+        logo={logo}
         main={(param) => setMain(param)}
       />
       <main className={main}>
@@ -35,7 +32,7 @@ const Layout = (props) => {
         hours={hours}
         days={days}
         navigation={navigation}
-        logoFooter={logoFooter}
+        logo={logo}
       />
     </>
   )

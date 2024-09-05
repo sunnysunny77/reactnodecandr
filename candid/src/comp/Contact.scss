@@ -10,7 +10,7 @@
     object-fit: cover;
     width: 25%;
     margin-left: 4%;
-    filter: grayscale(75%);
+    filter: grayscale(50%);
     clip-path: circle(40%);
     @media only screen and (max-width: 640px) {
       float: none;
@@ -37,23 +37,21 @@
       margin: auto;
       font-weight: 500;
       svg {
-        color: $c2;
+        color: $c3;
         margin-right: 25px;
         float: right;
         font-size: 24px;
       }
     }
     p {
-      color: $c1;
-      background-color: $c2;
+      color: $c3;
+      background-color: $c4;
       border: 2px solid $c2;
       border-radius: 2.5px;
       padding: 10px;
       font-family: $font3;
       min-width: 355px;
       margin-top: 0.83em;
-      background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
-      background-blend-mode: hard-light;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
@@ -72,25 +70,25 @@
         width: 100%;
       }
       a {
-        color: $c1;
+        color: $c3;
         text-decoration: none;
         height: 55px;
         display: flex;
         align-items: center;
         &:hover,
         &:focus {
-          color: $c8;
+          color: $c5;
         }
       }
       svg {
-        color: $c1;
+        color: $c3;
         padding: 0 0 0 5px;
         font-size: 25px;
         float: none;
         vertical-align: bottom;
         transition: 0.2s ease-in-out color;
         &:hover {
-          color: $c8;
+          color: $c5;
           cursor: pointer;
         }
       }
@@ -110,7 +108,7 @@
     margin: auto;
     font-weight: 500;
     svg {
-      color: $c2;
+      color: $c3;
       margin-right: 25px;
       float: right;
       font-size: 24px;

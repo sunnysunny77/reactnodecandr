@@ -14,21 +14,18 @@ class Nav extends Component {
       bar1: {
         width: '25px',
         height: '3px',
-        backgroundColor: 'black',
         margin: '6px auto',
         transition: '0.4s'
       },
       bar2: {
         width: '25px',
         height: '3px',
-        backgroundColor: 'black',
         margin: '6px auto',
         transition: '0.4s'
       },
       bar3: {
         width: '25px',
         height: '3px',
-        backgroundColor: 'black',
         margin: '6px auto',
         transition: '0.4s'
       },
@@ -64,7 +61,6 @@ class Nav extends Component {
       bar1: {
         width: '25px',
         height: '3px',
-        backgroundColor: 'black',
         margin: '6px auto',
         transition: '0.4s',
         WebkitTransform: 'rotate(-45deg) translate(-6px, 4px)',
@@ -73,7 +69,6 @@ class Nav extends Component {
       bar2: {
         width: '25px',
         height: '3px',
-        backgroundColor: 'black',
         margin: '6px auto',
         transition: '0.4s',
         opacity: '0'
@@ -81,11 +76,10 @@ class Nav extends Component {
       bar3: {
         width: '25px',
         height: '3px',
-        backgroundColor: 'black',
         margin: '6px auto',
         transition: '0.4s',
-        WebkitTransform: 'rotate(45deg) translate(-8px, -8px)',
-        transform: 'rotate(45deg) translate(-8px, -8px)'
+        WebkitTransform: 'rotate(45deg) translate(-7.5px, -7.5px)',
+        transform: 'rotate(45deg) translate(-7.5px, -7.5px)'
       }
     })
     document.body.addEventListener('click', this.menuClose)
@@ -98,21 +92,18 @@ class Nav extends Component {
         bar1: {
           width: '25px',
           height: '3px',
-          backgroundColor: 'black',
           margin: '6px auto',
           transition: '0.4s'
         },
         bar2: {
           width: '25px',
           height: '3px',
-          backgroundColor: 'black',
           margin: '6px auto',
           transition: '0.4s'
         },
         bar3: {
           width: '25px',
           height: '3px',
-          backgroundColor: 'black',
           margin: '6px auto',
           transition: '0.4s'
         }
@@ -122,7 +113,7 @@ class Nav extends Component {
   }
 
   render () {
-    const { phone, hours, days, navigation, logoMobile, logoDesktop } =
+    const { phone, hours, days, navigation, logo } =
       this.props
     return (
       <React.Fragment>
@@ -173,16 +164,11 @@ class Nav extends Component {
             <li>
               <a href={'tel:' + phone}>{phone}</a>
             </li>
-            <li>
-              <Link to="/">
-                <img src={logoMobile[0]} alt={logoMobile[1]}></img>
-              </Link>
-            </li>
           </ul>
         </nav>
         <header>
           <Link to="/">
-            <img src={logoDesktop[0]} alt={logoDesktop[1]}></img>
+            <img src={logo[0]} alt={logo[1]}></img><span>Candid Cleaning</span>
           </Link>
         </header>
         <nav className={'mainNav ' + this.state.class}>

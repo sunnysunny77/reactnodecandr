@@ -23,9 +23,8 @@ function App () {
     '/contact': [],
     '/blog': []
   })
-  const [logoMobile, setLogoMobile] = useState(null)
-  const [logoDesktop, setLogoDesktop] = useState(null)
-  const [logoFooter, setLogoFooter] = useState(null)
+  const [logo, setLogo] = useState(null)
+
   const [load, setLoad] = useState(true)
   const [footer, setFooter] = useState('loading')
   const [table, setTable] = useState(null)
@@ -47,12 +46,11 @@ function App () {
         setHours(res.data.Hours)
         setDays(res.data.Days)
         setImagesPreLoad(res.data.ImagesPreLoad)
-        setLogoMobile([res.data.ImagesPreLoad['/'][0], res.data.LogoMobileAlt])
-        setLogoDesktop([
-          res.data.ImagesPreLoad['/'][1],
-          res.data.LogoDesktopAlt
+        console.log(res.data.logoAlt)
+        setLogo([
+          res.data.ImagesPreLoad['/'][0],
+          res.data.LogoAlt
         ])
-        setLogoFooter([res.data.ImagesPreLoad['/'][2], res.data.LogoFooterAlt])
         setLoad(false)
       })
       .catch((error) => {
@@ -82,9 +80,7 @@ function App () {
               days={days}
               navigation={navigation}
               footer={footer}
-              logoFooter={logoFooter}
-              logoMobile={logoMobile}
-              logoDesktop={logoDesktop}
+              logo={logo}
             />
           }
         >

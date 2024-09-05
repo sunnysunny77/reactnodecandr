@@ -83,7 +83,7 @@ export default class Galery extends Component {
           : (
           <React.Fragment>
             {this.state.window}
-            <div className="galleryHeading headingCont">
+            <div className="galleryHeading">
               <h1> {parse(this.state.navigation)} </h1>
             </div>
             <section id="galleryCont">

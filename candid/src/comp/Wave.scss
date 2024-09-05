@@ -1,13 +1,10 @@
 @import "../Variables.scss";
 
 .svg {
-  color: $c1;
-  background-color: $c5;
-  border: 2px solid $c2;
+  color: $c3;
+  border: 2px solid $c3;
   max-width: 1200px;
   margin: auto auto 80px auto;
-  background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
-  background-blend-mode: color;
   contain: paint;
   @media only screen and (max-width: 1365px) {
     width: 92%;
@@ -20,7 +17,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    opacity: 0.9;
+    opacity: 0.2;
     width: 100%;
   }
   .prop {
@@ -33,7 +30,7 @@
     z-index: 999;
   }
   .wave {
-    opacity: 0.9;
+    opacity: 0.2;
     height: 130px;
     background-image: url("https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg");
     animation: wave 15s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;

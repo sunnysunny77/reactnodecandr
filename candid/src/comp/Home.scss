@@ -23,13 +23,13 @@
     bottom: 0;
     left: 0;
     text-align: center;
-    background-color: transparentize($c6, 0.88);
+    background-color: transparentize($c3, 0.88);
     margin: 0;
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
     p {
-      color: $c5;
+      color: $c3;
       font-size: clamp(20px, 3vw, 30px);
       font-weight: 500;
       width: 80%;
@@ -45,7 +45,7 @@
     padding: 2px 8px;
     font-weight: 500;
     color: $c3;
-    background-color: $c9;
+    background-color: $c1;
     border-radius: 5px;
     line-height: 35px;
     display: flex;
@@ -71,7 +71,7 @@
     }
   }
   .welcomeTwo {
-    background-color: $c9;
+    background-color: $c1;
     border-radius: 5px;
     margin: 8px 0 0 80px;
     padding: 47px 80px;
@@ -92,7 +92,7 @@
     }
     &:hover {
       transform: translate(4%, 2%);
-      background-color: $c8;
+      background-color: $c5;
     }
   }
 }
@@ -114,20 +114,30 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(-90deg, $c6 50%, $c1 50%);
   overflow-y: scroll;
   overflow-x: hidden;
   width: 100%;
-  scrollbar-color: $c13 transparent;
+  scrollbar-color: $c3 transparent;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
+  color: $c3;
+  &::before {
+    position: absolute;
+    content: " ";
+    top: 0;
+    right: 0;
+    left: 50%;
+    bottom: 0;
+    background-color: $c4;
+    z-index: -0;
+  }
   &::-webkit-scrollbar {
     width: 10px;
   }
   &::-webkit-scrollbar-thumb {
-    background: $c13;
+    background: $c3;
   }
   &::-webkit-scrollbar-track {
     background: transparent;
@@ -141,11 +151,9 @@
     transition: opacity 0.5s cubic-bezier(0.03, 0.5, 0.25, 0.6);
   }
   .overlayInner {
-    background-color: $c5;
+    background-color: $c4;
     display: flex;
     flex-wrap: wrap;
-    background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
-    background-blend-mode: color;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     width: 90%;
@@ -168,6 +176,7 @@
     align-self: flex-start;
     border-top-left-radius: 11px;
     border-top-right-radius: 11px;
+    background-color: $c4;
     @media only screen and (max-width: 768px) {
       position: sticky;
       top: 0;
@@ -180,20 +189,17 @@
     background-color: transparent;
     font-size: 20px;
     padding: 10px;
+    color: $c3;
     transition: color 0.2s ease-in-out;
-    color: $c6;
     &:hover {
-      color: $c8;
-    }
-    &:focus {
-      color: $c6;
+      color: $c5;
     }
   }
   .scrollCont {
     overflow-y: auto;
     overflow-x: hidden;
     width: 100%;
-    scrollbar-color: $c13 transparent;
+    scrollbar-color: $c3 transparent;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -202,7 +208,7 @@
       width: 10px;
     }
     &::-webkit-scrollbar-thumb {
-      background: $c13;
+      background: $c3;
     }
     &::-webkit-scrollbar-track {
       background: transparent;
@@ -213,20 +219,25 @@
       box-shadow: 0 0 1px $c1;
       border-radius: 3.75px;
       object-fit: cover;
-      margin: 50px 0;
+      margin: 12px 0;
       @media only screen and (max-width: 768px) {
         width: 80%;
         max-height: initial;
       }
       &:nth-child(1) {
         @media only screen and (max-width: 768px) {
-          margin: 50px 0 0 0;
+          margin: 25px 0;
+        }
+      }
+      &:nth-child(2) {
+        @media only screen and (max-width: 768px) {
+          margin: 0 0 25px 0;
         }
       }
     }
   }
   .buttonCont {
-    background-color: $c13;
+    background-color: $c4;
     width: 100%;
     height: 40px;
     display: flex;
@@ -240,12 +251,9 @@
     transition: color 0.2s ease-in-out;
     font-size: 20px;
     padding: 10px;
-    color: $c6;
+    color: $c3;
     &:hover {
-      color: $c8;
-    }
-    &:focus {
-      color: $c6;
+      color: $c5;
     }
   }
   &.fixed {
@@ -271,14 +279,14 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: transparentize($c5, 0.95);
+  background-color: $c4;
   transition: background-color 0.5s cubic-bezier(0.66, 0.01, 0.27, 0.84);
   z-index: 998;
   box-sizing: border-box;
   transform: translateX(100%);
   &.overlay-transition {
     transform: translateX(0);
-    background-color: transparentize($c5, 0.75);
+    background-color: $c4;
   }
 }
 
@@ -296,12 +304,10 @@
   position: relative;
   z-index: 0;
   padding: 220px 0;
-  background-image: linear-gradient(90deg, $c6 0%, $c1 75%);
   @media only screen and (max-width: 1200px) {
     padding: 17% 0;
   }
   @media only screen and (max-width: 640px) {
-    background-image: initial;
     align-items: center;
     padding: 3% 0;
   }
@@ -314,7 +320,6 @@
       width: 72.5%;
     }
     @media only screen and (max-width: 640px) {
-      background-color: $c12;
       margin: 7.5% auto;
       width: 75%;
     }
@@ -323,21 +328,19 @@
       opacity: 0.9;
     }
     &:hover .expandImg {
-      color: $c7;
-    }
-    &:focus .expandImg {
-      color: $c4;
+      fill: $c5;
     }
   }
   .expandImg {
     vertical-align: sub;
     font-size: 1.25em;
-    color: $c13;
+    color: $c3;
     display: none;
     align-self: flex-end;
     transition: color 0.2s ease-in-out;
     margin: 0 auto;
     align-self: center;
+    fill: $c3;
     @media only screen and (max-width: 640px) {
       font-size: 1.5em;
       margin: 30px auto;
@@ -406,17 +409,14 @@
     transition: fill 0.2s ease-in-out;
     width: 40px;
     height: 40px;
-    fill: $c4;
+    fill: $c3;
     cursor: pointer;
     @media only screen and (max-width: 640px) {
       top: initial;
       width: 12%;
     }
     &:hover {
-      fill: $c7;
-    }
-    &:focus {
-      fill: $c4;
+      fill: $c5;
     }
   }
 }
@@ -430,6 +430,7 @@
   align-items: center;
   position: relative;
   z-index: 1;
+  background-image: linear-gradient(-90deg, $c1 12%, $c4 100%);
   @media only screen and (max-width: 992px) {
     padding-bottom: 5%;
     flex-direction: column-reverse;
@@ -453,7 +454,7 @@
         object-position: center;
         object-fit: contain;
         clip-path: initial;
-        border: 2px solid $c13;
+        box-shadow: 0 0 7.5px $c2;
         border-radius: 100%;
       }
     }
@@ -470,7 +471,7 @@
       width: 90%;
     }
     svg {
-      color: $c2;
+      color: $c3;
       margin: 0 10px;
     }
     h1 {
@@ -500,10 +501,6 @@
 /* card */
 
 .card {
-  background-image: linear-gradient(90deg, $c6 0%, $c1 75%);
-  @media only screen and (max-width: 992px) {
-    background-image: initial;
-  }
   .cardCont {
     max-width: 1312px;
     padding: 200px 2%;
@@ -530,7 +527,7 @@
       text-align: center;
       font-family: $font3;
       font-weight: 500;
-      text-shadow: 0 0 0.5px $c9;
+      text-shadow: 0 0 0.5px $c2;
     }
     h2 {
       margin: 0;
@@ -539,6 +536,7 @@
       font-family: $font2;
       font-weight: 500;
       display: inline;
+      color: $c3;
     }
     .cardOne {
       max-width: 339px;
@@ -549,7 +547,7 @@
       display: flex;
       flex-direction: column;
       a {
-        color: $c2;
+        color: $c3;
         float: left;
         margin-left: 30px;
         width: 30px;
@@ -557,11 +555,11 @@
         font-size: 15px;
         height: 24px;
         &:hover {
-          color: $c8;
+          color: $c5;
         }
       }
       svg:nth-child(4) {
-        color: $c2;
+        color: $c3;
         float: left;
         margin-left: 30px;
       }
@@ -584,18 +582,26 @@
 /* enq */
 
 .enquiry {
-  background-color: $c5;
-  background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
-  background-blend-mode: color;
+  background-color: $c4;
   h2 {
     font-family: $font1;
     color: $c1;
-    float: right;
+    background-color: $c3;
+    height: 40px;
+    width: calc(100% - 20px);
+    text-align: end;
     margin: 0;
     padding-right: 20px;
     line-height: 40px;
     font-size: inherit;
     font-weight: 500;
+  }
+  input::-webkit-input-placeholder,
+  input::placeholder,
+  textarea::-webkit-input-placeholder,
+  textarea::placeholder {
+    color: $c6;
+    opacity: 1;
   }
   .MuiFormControl-root {
     @media only screen and (max-width: 1200px) {
@@ -616,10 +622,6 @@
     &::-webkit-scrollbar-track {
       background: transparent;
     }
-  }
-  .button {
-    background-image: url(https://candid.s3.ap-southeast-2.amazonaws.com/texture.png);
-    background-blend-mode: color-burn;
   }
 }
 

@@ -64,27 +64,21 @@ function baseName (param) {
 function imagesStatic () {
   return {
     '/': [
-      'https://candid.s3-ap-southeast-2.amazonaws.com/welcome.png',
-      'https://candid.s3.ap-southeast-2.amazonaws.com/texture.png'
+      'https://candid.s3-ap-southeast-2.amazonaws.com/welcome.png'
     ],
     '/about': [
-      'https://candid.s3-ap-southeast-2.amazonaws.com/divider.png',
       'https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg',
-      'https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg',
-      'https://candid.s3.ap-southeast-2.amazonaws.com/texture.png'
+      'https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg'
     ],
     '/gallery': [
-      'https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg',
-      'https://candid.s3.ap-southeast-2.amazonaws.com/texture.png'
+      'https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg'
     ],
     '/contact': [
       'https://candid.s3-ap-southeast-2.amazonaws.com/wave.svg',
-      'https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg',
-      'https://candid.s3.ap-southeast-2.amazonaws.com/texture.png'
+      'https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg'
     ],
     '/blog': [
-      'https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg',
-      'https://candid.s3.ap-southeast-2.amazonaws.com/texture.png'
+      'https://candid.s3-ap-southeast-2.amazonaws.com/stickyTop.svg'
     ]
   }
 }
@@ -217,9 +211,7 @@ app.post('/api-init', function (req, res) {
     Hours: dataContact[9].Contact,
     Days: dataContact[10].Contact,
     ImagesPreLoad: dataImagesPreLoad,
-    LogoMobileAlt: baseName(dataImages[0].Logo),
-    LogoDesktopAlt: baseName(dataImages[1].Logo),
-    LogoFooterAlt: baseName(dataImages[2].Logo)
+    LogoAlt: baseName(dataImages[0].Logo)
   })
 })
 
