@@ -17,7 +17,7 @@ header {
     text-decoration: none;
     color: $c6;
     font-weight: 500;
-    font-size: clamp(14px, 4.5vw, 23px);
+    font-size: clamp(14px, 4vw, 23px);
     margin: auto auto auto 85px;
     @include max_xl {
       flex-direction: row-reverse;
