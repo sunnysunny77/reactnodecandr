@@ -154,7 +154,7 @@ header {
       fill: $c3;
     }
   }
-  ul:nth-child(1) li:nth-child(2) {
+  ul:nth-child(2) li:nth-child(1) {
     text-align: right;
     svg {
       margin-right: 20px;
@@ -166,7 +166,7 @@ header {
       }
     }
   }
-  ul:nth-child(2) {
+  ul:nth-child(4) {
     span {
       color: $c3;
       text-decoration: none;
