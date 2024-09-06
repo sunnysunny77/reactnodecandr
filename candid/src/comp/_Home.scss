@@ -8,7 +8,7 @@
     margin: auto;
     object-fit: cover;
     object-position: right center;
-    @media only screen and (max-width: 1200px) {
+    @include max_xl {
       height: calc(100vh - 90px);
       object-position: center;
       min-height: 425px;
@@ -48,10 +48,10 @@
     line-height: 35px;
     display: flex;
     width: fit-content;
-    @media only screen and (max-width: 1200px) {
+    @include max_xl {
       margin: 25px 0 0 25px;
     }
-    @media only screen and (max-width: 640px) {
+    @include max_sm {
       line-height: 25px;
     }
     .my-svg svg {
@@ -62,7 +62,7 @@
       overflow: visible;
       width: 35px;
       height: 35px;
-      @media only screen and (max-width: 640px) {
+      @include max_sm {
         width: 25px;
         height: 25px;
       }
@@ -82,10 +82,10 @@
       background-color 0.3s linear;
     transform: translate(0, 0);
     width: fit-content;
-    @media only screen and (max-width: 1200px) {
+    @include max_xl {
       margin: 8px 0 0 25px;
     }
-    @media only screen and (max-width: 640px) {
+    @include max_sm {
       padding: 35px 59px;
     }
     &:hover {
@@ -140,7 +140,7 @@
   &::-webkit-scrollbar-track {
     background: $c4;
   }
-  @media only screen and (max-width: 768px) {
+  @include max_md {
     overflow-y: hidden;
   }
   > * {
@@ -156,7 +156,7 @@
     border-top-right-radius: 15px;
     width: 90%;
     max-width: 1000px;
-    @media only screen and (max-width: 768px) {
+    @include max_md {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
       width: 100%;
@@ -176,7 +176,7 @@
     border-top-right-radius: 11px;
     background-color: $c4;
     width: 100%;
-    @media only screen and (max-width: 768px) {
+    @include max_md {
       position: sticky;
       top: 0;
       border-top-left-radius: 0;
@@ -219,17 +219,17 @@
       border-radius: 3.75px;
       object-fit: cover;
       margin: 12px 0;
-      @media only screen and (max-width: 768px) {
+      @include max_md {
         width: 80%;
         max-height: initial;
       }
       &:nth-child(1) {
-        @media only screen and (max-width: 768px) {
+        @include max_md {
           margin: 25px 0;
         }
       }
       &:nth-child(2) {
-        @media only screen and (max-width: 768px) {
+        @include max_md {
           margin: 0 0 25px 0;
         }
       }
@@ -303,10 +303,10 @@
   position: relative;
   z-index: 0;
   padding: 220px 0;
-  @media only screen and (max-width: 1200px) {
+  @include max_xl {
     padding: 17% 0;
   }
-  @media only screen and (max-width: 640px) {
+  @include max_sm {
     align-items: center;
     padding: 3% 0;
   }
@@ -315,10 +315,10 @@
     width: 46%;
     margin: auto;
     cursor: pointer;
-    @media only screen and (max-width: 1200px) {
+    @include max_xl {
       width: 72.5%;
     }
-    @media only screen and (max-width: 640px) {
+    @include max_sm {
       margin: 7.5% auto;
       width: 75%;
     }
@@ -339,7 +339,7 @@
     margin: 0 auto;
     align-self: center;    
     transition: 0.2s ease-in-out fill;
-    @media only screen and (max-width: 640px) {
+    @include max_sm {
       font-size: 1.5em;
       margin: 30px auto;
     }
@@ -350,7 +350,7 @@
     display: flex;
     overflow: hidden;
     clip-path: inset(0 10px 0 round 25px 0);
-    @media only screen and (max-width: 640px) {
+    @include max_sm {
       width: 100%;
       margin: 5% 0;
       max-width: initial;
@@ -369,33 +369,33 @@
     opacity: 1;
     will-change: opacity, filter;
     filter: grayscale(0%);
-    @media only screen and (max-width: 640px) {
+    @include max_sm {
       height: 66vw;
     }
   }
   .flex {
     display: flex;
     justify-content: center;
-    @media only screen and (max-width: 640px) {
+    @include max_sm {
       flex-direction: column;
       align-items: center;
     }
   }
   #left {
     left: 12%;
-    @media only screen and (max-width: 1200px) {
+    @include max_xl {
       left: 3%;
     }
-    @media only screen and (max-width: 640px) {
+    @include max_sm {
       left: 0.5%;
     }
   }
   #right {
     right: 12%;
-    @media only screen and (max-width: 1200px) {
+    @include max_xl {
       right: 3%;
     }
-    @media only screen and (max-width: 640px) {
+    @include max_sm {
       right: 0.5%;
     }
   }
@@ -408,7 +408,7 @@
     height: 40px;
     cursor: pointer;
     transition: 0.2s ease-in-out fill;
-    @media only screen and (max-width: 640px) {
+    @include max_sm {
       top: initial;
       width: 12%;
     }
@@ -428,7 +428,7 @@
   position: relative;
   z-index: 1;
   background-image: linear-gradient(-90deg, $c1 12%, $c4 100%);
-  @media only screen and (max-width: 992px) {
+  @include max_lg {
     padding:  0 0 5% 0;
     flex-direction: column-reverse;
   }
@@ -443,7 +443,7 @@
       object-fit: cover;
       position: relative;
       clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
-      @media only screen and (max-width: 992px) {
+      @include max_lg {
         margin: 25px auto;
         width: 150px;
         height: 150px;
@@ -459,10 +459,10 @@
   .infoTwo {
     width: 57.7%;
     color: $c3;
-    @media only screen and (max-width: 1200px) {
+    @include max_xl {
       margin: 0 5% 0 0;
     }
-    @media only screen and (max-width: 992px) {
+    @include max_lg {
       margin: 0;
       padding: 5% 0 0 0;
       width: 90%;
@@ -485,7 +485,7 @@
       text-align: center;
       font-style: oblique;
       font-family: $font4;
-      @media only screen and (max-width: 1200px) {
+      @include max_xl {
         br {
           display: none;
         }
@@ -506,7 +506,7 @@
   flex-wrap: wrap;
   overflow: hidden;
   margin: auto;
-  @media only screen and (max-width: 992px) {
+  @include max_lg {
     padding: 125px 2%;
   }
   span img {
@@ -600,7 +600,7 @@
   }
   .MuiFormControl-root {
     margin: 0 25px 25px 25px;
-    @media only screen and (max-width: 993px) {
+    @include max_md {
       width: calc(100% - 50px);
     }
   }

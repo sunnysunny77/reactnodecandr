@@ -8,7 +8,7 @@
     &:nth-child(1) {
       width: 36%;
       padding: 0 4% 0 4%;
-      @media only screen and (max-width: 640px) {
+      @include max_sm {
         width: 100%;
         padding: 0;
       }
@@ -18,7 +18,7 @@
         margin: 0 0 0 10px;
         font-size: inherit;
         font-weight: 500;
-        @media only screen and (max-width: 640px) {
+        @include max_sm {
           margin: 0 0 8px 10px;
         }
         svg {
@@ -38,10 +38,10 @@
         justify-content: center;
         flex-wrap: wrap;
         padding: 10px;
-        @media only screen and (max-width: 1200px) {
+        @include max_xl {
           border-radius: 0;
         }
-        @media only screen and (max-width: 640px) {
+        @include max_sm {
           width: calc(92% - 24px);
           margin: auto;
         }
@@ -57,13 +57,13 @@
     &:nth-child(2) {
       width: 52%;
       padding: 0 4% 0 0;
-      @media only screen and (max-width: 640px) {
+      @include max_sm {
         width: 92%;
         padding: 0;
       }
       div {
         border-radius: 10px;
-        @media only screen and (max-width: 640px) {
+        @include max_sm {
           border-radius: 0;
         }
       }
@@ -114,7 +114,7 @@
     width: 55%;
     height: 379px;
     background-color: $c3;
-    @media only screen and (max-width: 1365px) {
+    @include max_xxl {
       float: none;
       margin: 25px auto 45px auto;
       width: 100%;
@@ -140,7 +140,7 @@
     margin: 25px 0 0 0;
     text-align: right;
     height: 268px;
-    @media only screen and (max-width: 1365px) {
+    @include max_xxl {
       padding: 0;
       width: 100%;
       margin: auto;
@@ -163,7 +163,7 @@
       background-color: $c3;
       color: $c1;
     }
-    @media only screen and (max-width: 1365px) {
+    @include max_xxl {
       margin: 25px auto 25px 2.5%;
     }
   }

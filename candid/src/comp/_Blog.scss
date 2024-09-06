@@ -5,7 +5,7 @@
   border-top-left-radius: 11px;
   border-top-right-radius: 11px;
   background-color: $c3;
-  @media only screen and (max-width: 1200px) {
+  @include max_xl {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     margin: auto;
@@ -20,7 +20,7 @@
   max-width: 1200px;
   width: calc(100% - 4px);
   margin: 0 auto 80px auto;
-  @media only screen and (max-width: 1200px) {
+  @include max_xl {
     margin: auto;
   }
   .blogResponse {
@@ -30,7 +30,7 @@
     position: relative;
     overscroll-behavior: none;
     min-height: calc(100vh - 160px);
-    @media only screen and (max-width: 1200px) {
+    @include max_xl {
       min-height: 100vh;
     }
     .sticky {
@@ -132,7 +132,7 @@
       display: flex;
       align-items: flex-end;
       margin: auto 0 2.5px auto;
-      @media only screen and (max-width: 640px) {
+      @include max_sm {
         width: calc(100% - 50px);
         margin: 25px 25px 0 25px;
         .MuiInputBase-root {
@@ -143,7 +143,7 @@
     .MuiFormControl-fullWidth {
       margin: 25px 0 0 0;
       width: 100%;
-      @media only screen and (max-width: 640px) {
+      @include max_sm {
         width: calc(100% - 50px);
         margin: 25px 25px 0 25px;
       }

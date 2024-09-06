@@ -4,7 +4,7 @@ footer {
   border-bottom: solid $c2 2px;
   margin: 4px 0;
   display: none;
-  @media only screen and (min-width: 1200px) {
+  @include min_xl {
     height: 65px;
   }
   &.load {
@@ -21,13 +21,13 @@ footer {
     padding: 0;
     font-size: 20px;
     font-family: $font4;
-    @media only screen and (min-width: 1200px) {
+    @include min_xl {
       margin: auto;
       li.none {
         display: none;
       }
     }
-    @media only screen and (max-width: 640px) {
+    @include max_sm {
       font-size: medium;
     }
     .block {
@@ -46,7 +46,7 @@ footer {
       }
       img {
         vertical-align: middle;
-        @media only screen and (min-width: 1200px) {
+        @include min_xl {
           padding: 2.5px;
         }
       }

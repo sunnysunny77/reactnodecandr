@@ -4,7 +4,7 @@
   max-width: 1200px;
   margin: auto auto 80px auto;
   contain: paint;
-  @media only screen and (max-width: 1365px) {
+  @include max_xxl {
     width: 92%;
     margin: 4% auto 4% auto;
   }

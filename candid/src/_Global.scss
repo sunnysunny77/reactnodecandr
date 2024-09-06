@@ -6,7 +6,7 @@ body {
   font-family: $font4;
   overflow-y: scroll;
   min-height: 100vh;
-  @media only screen and (max-width: 640px) {
+  @include max_sm {
     font-size: medium;
   }
 }
@@ -20,7 +20,7 @@ main {
   margin: auto;
   display: flex;
   flex-direction: column;
-  @media only screen and (min-width: 1921px) {
+  @include min_hd {
     box-shadow:
       1px 0 rgba($c2, 0.2),
       -1px 0 rgba($c2, 0.2);
@@ -49,11 +49,11 @@ main {
     position: absolute;
     top: 0;
     right: 40px;
-    @media only screen and (max-width: 1200px) {
+    @include max_xl {
       top: -90px;
     }
   }
-  @media only screen and (min-width: 1201px) {
+  @include min_xl {
     &.navRelative {
       padding-top: 0;
     }
@@ -84,7 +84,7 @@ main {
   position: absolute;
   top: 150px;
   right: 40px;
-  @media only screen and (max-width: 1200px) {
+  @include max_xl {
     top: 0;
   }
 }

@@ -5,7 +5,7 @@
   border-top-right-radius: 11px;
   background-color: $c3;
   width: 100%;
-  @media only screen and (max-width: 1200px) {
+  @include max_xl {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     margin: auto;
@@ -23,7 +23,7 @@
   margin: 0 auto 80px auto;
   position: relative;
   min-height: calc(100vh - 90px);
-  @media only screen and (max-width: 1200px) {
+  @include max_xl {
     min-height: 100vh;
     margin: 0;
   }
@@ -34,7 +34,7 @@
     top: 0;
     z-index: 0;
     opacity: 0.2;
-    @media only screen and (max-width: 640px) {
+    @include max_sm {
       height: 150px;
     }
     &::after {
@@ -57,7 +57,7 @@
       padding: 39vh 0;
       position: relative;
       height: 100%;
-      @media only screen and (max-width: 640px) {
+      @include max_sm {
         padding: 33vh 0;
       }
     }

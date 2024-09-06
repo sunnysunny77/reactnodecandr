@@ -10,7 +10,7 @@
     margin: 0 0 0 4%;
     filter: grayscale(50%);
     clip-path: circle(40%);
-    @media only screen and (max-width: 640px) {
+    @include max_sm {
       float: none;
       display: block;
       margin: 10% auto;
@@ -20,7 +20,7 @@
   .contactTwo {
     float: right;
     margin: 0 8% 0 0;
-    @media only screen and (max-width: 640px) {
+    @include max_sm {
       float: none;
       margin: auto;
       text-align: left;
@@ -52,7 +52,7 @@
       align-items: flex-start;
       justify-content: space-between;
       flex-direction: column;
-      @media only screen and (max-width: 640px) {
+      @include max_sm {
         border-radius: 0;
         width: calc(92% - 24px);
         margin: 1em auto auto auto;
