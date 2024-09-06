@@ -5,10 +5,14 @@
   border-top-left-radius: 11px;
   border-top-right-radius: 11px;
   background-color: $c3;
+  @include max_xxl {
+    width: 92%;
+  }
   @include max_xl {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     margin: auto;
+    width: 100%;
   }
 }
 
@@ -20,8 +24,12 @@
   max-width: 1200px;
   width: calc(100% - 4px);
   margin: 0 auto 80px auto;
+  @include max_xxl {
+    width: calc(92% - 4px);
+  }
   @include max_xl {
     margin: auto;
+    width: calc(100% - 4px);
   }
   .blogResponse {
     overflow-y: auto;

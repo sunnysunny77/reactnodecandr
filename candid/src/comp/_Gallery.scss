@@ -5,10 +5,14 @@
   border-top-right-radius: 11px;
   background-color: $c3;
   width: 100%;
+  @include max_xxl {
+    width: 92%;
+  }
   @include max_xl {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     margin: auto;
+    width: 100%;
   }
 }
 
@@ -23,9 +27,13 @@
   margin: 0 auto 80px auto;
   position: relative;
   min-height: calc(100vh - 90px);
+  @include max_xxl {
+    width: calc(92% - 4px);
+  }
   @include max_xl {
     min-height: 100vh;
     margin: 0;
+    width: calc(100% - 4px);
   }
   .sticky {
     height: 200px;
