@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './Nav.scss'
 import { Link } from 'react-router-dom'
 import HomeIcon from '@mui/icons-material/Home'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'

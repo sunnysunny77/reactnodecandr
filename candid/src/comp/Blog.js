@@ -1,5 +1,4 @@
 import React from 'react'
-import './Blog.scss'
 import styles from './Blog.module.scss'
 import Alert from './Alert.js'
 import TextField from '@mui/material/TextField'

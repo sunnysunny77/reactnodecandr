@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './Gallery.scss'
 import axios from 'axios'
 import parse from 'html-react-parser'
 import Slider from 'react-slick'

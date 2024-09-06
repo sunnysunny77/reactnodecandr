@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Slider from 'react-slick'
 import Vivus from 'vivus'
-import './Home.scss'
 import styles from './Home.module.scss'
 import axios from 'axios'
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight'

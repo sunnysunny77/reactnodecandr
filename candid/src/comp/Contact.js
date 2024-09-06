@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './Contact.scss'
 import Wave from './Wave'
 import ContactsIcon from '@mui/icons-material/Contacts'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'

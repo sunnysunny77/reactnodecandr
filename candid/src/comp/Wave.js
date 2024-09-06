@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './Wave.scss'
 
 export default class Wave extends Component {
   render () {

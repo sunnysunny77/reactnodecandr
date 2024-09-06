@@ -1,5 +1,3 @@
-@import "../Variables.scss";
-
 .blogHeading {
   width: 100%;
   max-width: 1204px;
@@ -54,7 +52,7 @@
       }
     }
     &::-webkit-scrollbar {
-      width: 10px;
+      width: 15px;
     }
     &::-webkit-scrollbar-track {
       background: $c1;
@@ -169,13 +167,13 @@
       }
     }
     .MuiInputBase-multiline {
-      scrollbar-color: $c3 $c1;
+      scrollbar-color: $c3 transparent;
       width: 100%;
       @media only screen and (max-width: 640px) {
         width: calc(100% - 50px);
       }
       &::-webkit-scrollbar {
-        width: 10px;
+        width: 15px;
       }
       &::-webkit-scrollbar-track {
         background: $c1;
