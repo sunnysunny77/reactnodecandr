@@ -550,8 +550,7 @@
       font-size: 15px;
       height: 24px;
       transition: 0.2s ease-in-out color;
-      &:hover,
-      &:focus {
+      &:hover {
         color: $c5;
       }
     }

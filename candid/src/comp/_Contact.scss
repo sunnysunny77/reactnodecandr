@@ -82,8 +82,7 @@
         display: flex;
         align-items: center;
         transition: 0.2s ease-in-out color;
-        &:hover,
-        &:focus {
+        &:hover {
           color: $c5;
         }
       }

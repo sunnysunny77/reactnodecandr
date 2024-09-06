@@ -145,8 +145,7 @@ header {
       outline: none;
       padding: 10px 0;
       transition: 0.2s ease-in-out color;
-      &:hover,
-      &:focus {
+      &:hover {
         color: $c5;
       }
     }
@@ -235,8 +234,7 @@ header {
       outline: none;
       margin: 0 19px;
       transition: 0.2s ease-in-out color;
-      &:hover,
-      &:focus {
+      &:hover {
         color: $c5;
       }
     }
