@@ -125,8 +125,8 @@ class Nav extends Component {
           <div className="bar" style={this.state.bar3}></div>
         </div>
         <nav className={'mobileNav ' + this.state.dis}>
+          <hr></hr>
           <ul>
-            <hr></hr>
             <li>
               <Link to="/">
                 <span className="hiddenText">Homepage Link</span>
@@ -145,8 +145,8 @@ class Nav extends Component {
             <li>
               <Link to="/contact">{parse(navigation[3])}</Link>
             </li>
-            <hr></hr>
           </ul>
+          <hr></hr>
           <ul>
             <li>
               <AccessTimeIcon />
