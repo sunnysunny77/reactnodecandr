@@ -13,6 +13,10 @@
     border-top-right-radius: 0;
     margin: auto;
     width: 100%;
+    background-color: $c4;
+    h1 {
+      color: $c3;
+    }
   }
 }
 
@@ -33,7 +37,8 @@
   @include max_xl {
     min-height: 100vh;
     margin: 0;
-    width: calc(100% - 4px);
+    width: 100%;
+    border: none;
   }
   .sticky {
     height: 200px;
@@ -76,7 +81,7 @@
       box-sizing: border-box;
       position: absolute;
       object-fit: contain;
-      margin:  auto;
+      margin: auto;
       top: 0;
       right: 0;
       bottom: 0;
@@ -85,8 +90,8 @@
     .slick-next,
     .slick-prev {
       position: static;
-      &::before{
-      color: $c3;
+      &::before {
+        color: $c3;
       }
     }
     .slick-dots {
