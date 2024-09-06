@@ -1,4 +1,4 @@
-.contactContOne {
+.detailsContainer {
   margin: 80px auto;
   max-width: 1200px;
   width: 100%;
@@ -7,7 +7,7 @@
     object-position: center;
     object-fit: cover;
     width: 25%;
-    margin-left: 4%;
+    margin: 0 0 0 4%;
     filter: grayscale(50%);
     clip-path: circle(40%);
     @media only screen and (max-width: 640px) {
@@ -19,7 +19,7 @@
   }
   .contactTwo {
     float: right;
-    margin-right: 8%;
+    margin: 0 8% 0 0;
     @media only screen and (max-width: 640px) {
       float: none;
       margin: auto;
@@ -30,13 +30,11 @@
       width: calc(100% - 10px);
       font-family: $font2;
       color: $c3;
-      margin-left: 10px;
+      margin: 0 0 0 10px;
       font-size: inherit;
-      margin: auto;
       font-weight: 500;
       svg {
-        color: $c3;
-        margin-right: 25px;
+        margin: 0 25px 0 0;
         float: right;
         font-size: 24px;
       }
@@ -49,7 +47,7 @@
       padding: 10px;
       font-family: $font3;
       min-width: 355px;
-      margin-top: 0.83em;
+      margin: 0.83em 0 0 0;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
@@ -66,6 +64,16 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
+        svg {
+          padding: 0 0 0 5px;
+          font-size: 25px;
+          vertical-align: bottom;
+          cursor: pointer;
+          transition: 0.2s ease-in-out fill;
+          &:hover {
+            fill: $c5;
+          }
+        }
       }
       a {
         color: $c3;
@@ -73,41 +81,28 @@
         height: 55px;
         display: flex;
         align-items: center;
+        transition: 0.2s ease-in-out color;
         &:hover,
         &:focus {
           color: $c5;
-        }
-      }
-      svg {
-        color: $c3;
-        padding: 0 0 0 5px;
-        font-size: 25px;
-        float: none;
-        vertical-align: bottom;
-        transition: 0.2s ease-in-out color;
-        &:hover {
-          color: $c5;
-          cursor: pointer;
         }
       }
     }
   }
 }
 
-.contactContTwo {
+.contactContainer {
   max-width: 1200px;
   margin: auto;
   h2 {
     width: calc(100% - 10px);
     font-family: $font2;
     color: $c3;
-    margin-left: 10px;
     font-size: inherit;
-    margin: auto;
     font-weight: 500;
+    margin: 0 0 0 10px;
     svg {
-      color: $c3;
-      margin-right: 25px;
+      margin: 0 25px 0 0;
       float: right;
       font-size: 24px;
     }

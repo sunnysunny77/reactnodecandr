@@ -57,7 +57,7 @@ export default class Galery extends Component {
     this.setState({
       gallery: this.state.res.Images.map((key, index) => {
         return (
-          <div className="imgGalleryCont" key={index}>
+          <div className="imggalleryContainer" key={index}>
             <img
               src={key.original}
               alt={key.originalAlt}
@@ -85,7 +85,7 @@ export default class Galery extends Component {
             <div className="galleryHeading">
               <h1> {parse(this.state.navigation)} </h1>
             </div>
-            <section id="galleryCont">
+            <section id="galleryContainer">
               <div className="sticky"></div>
               <Slider className="slickGallery" {...this.state.settings}>
                 {this.state.gallery}

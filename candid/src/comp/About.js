@@ -79,10 +79,10 @@ export default class About extends React.Component {
           : (
           <React.Fragment>
             {this.state.window}
-            <div className="headingCont">
+            <div className="headingContainer">
               <h1> {parse(this.state.navigation)} </h1>
             </div>
-            <section className="aboutContOne">
+            <section className="mapContainer">
               <div className="grid">
                 <h2>
                   {parse(this.state.res.Heading_One)}
@@ -93,7 +93,7 @@ export default class About extends React.Component {
               </div>
               <div className="grid"> {this.state.map} </div>
             </section>
-            <section className="aboutContTwo">
+            <section className="aboutContainer">
               <h2>
                 {parse(this.state.res.Heading_Two)}
                 <ListAltIcon />

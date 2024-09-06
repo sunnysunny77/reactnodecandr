@@ -46,7 +46,6 @@ function App () {
         setHours(res.data.Hours)
         setDays(res.data.Days)
         setImagesPreLoad(res.data.ImagesPreLoad)
-        console.log(res.data.logoAlt)
         setLogo([
           res.data.ImagesPreLoad['/'][0],
           res.data.LogoAlt

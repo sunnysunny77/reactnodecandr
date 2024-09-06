@@ -52,7 +52,8 @@ const customStyles = {
     boxShadow: 'none',
     margin: 'auto 25px 140px 25px',
     backgroundColor: styles.c1,
-    color: styles.c6
+    color: styles.c6,
+    cursor: 'pointer'
   }),
   dropdownIndicator: (provided) => ({
     ...provided,
@@ -242,7 +243,7 @@ class Home extends Component {
       overlay: res.map((key, index) => {
         const d = index === 0 ? 'flex' : ''
         return (
-          <div id={'open' + index} className={'containerImg overlayOpen ' + d + ' d' + [index + 1]} key={index} >
+          <div id={'open' + index} className={'imgContainer overlayOpen ' + d + ' d' + [index + 1]} key={index} >
             <div className="fillImg" >
               <img className="overlayImg" src={key[0]} alt={'after-' + (index + 1)} />
             </div>
@@ -261,14 +262,14 @@ class Home extends Component {
           <div className="overflow-hidden" key={index}>
             <div id={'overlay' + index} className="overlayExpanded">
               <div className="overlayInner">
-                  <div className="headingCont overlayHeading">
+                  <div className="overlayHeading">
                     <CloseIcon className="overlayClose" />
                   </div>
-                  <div className="scrollCont">
+                  <div className="scrollContainer">
                     <img className="overlayImg" src={key[1]} alt={'before-' + (index + 1)} />
                     <img className="overlayImg" src={key[0]} alt={'after-' + (index + 1)} />
                 </div>
-                <div className="buttonCont">
+                <div className="buttonContainer">
                     <KeyboardDoubleArrowRightIcon className="overlayNext" />
                 </div>
               </div>
@@ -402,7 +403,7 @@ class Home extends Component {
                   />
                 </picture>
                 <div className="slideP">
-                  <div className="welcome">
+                  <div className="welcomeContainer">
                     <div className="welcomeOne">
                       <div id="my-svg" className="my-svg">{parse(this.state.res.Home_Svg)}</div>
                       &nbsp;
@@ -427,7 +428,7 @@ class Home extends Component {
                   />
                 </picture>
                 <div className="slideP">
-                  <div className="welcome">
+                  <div className="welcomeContainer">
                     <div className="welcomeOne">
                       <div className="my-svg">{parse(this.state.res.Home_Svg)}</div>
                       &nbsp;
@@ -442,7 +443,7 @@ class Home extends Component {
               </div>
             </Slider>
             {this.state.overlayExpanded}
-            <section className="overlay">
+            <section className="overlayContainer">
               <svg
                 onClick={() => this.toggle(-1)}
                 id="left"
@@ -465,7 +466,7 @@ class Home extends Component {
                 <path d="m256 469.667969c-97.089844 0-182.804688-58.410157-218.410156-148.824219-3.242188-8.191406.808594-17.492188 9.023437-20.734375 8.191407-3.199219 17.515625.789063 20.757813 9.046875 30.742187 78.058594 104.789062 128.511719 188.628906 128.511719 111.742188 0 202.667969-90.925781 202.667969-202.667969s-90.925781-202.667969-202.667969-202.667969c-83.839844 0-157.886719 50.453125-188.628906 128.511719-3.265625 8.257812-12.566406 12.246094-20.757813 9.046875-8.214843-3.242187-12.265625-12.542969-9.023437-20.734375 35.605468-90.414062 121.320312-148.824219 218.410156-148.824219 129.386719 0 234.667969 105.28125 234.667969 234.667969s-105.28125 234.667969-234.667969 234.667969zm0 0" />
               </svg>
             </section>
-            <section className="info">
+            <section className="infoContainer">
               <picture className="infoOne">
                 <source
                   media="(max-width:992px)"
@@ -498,107 +499,105 @@ class Home extends Component {
                 />
               </div>
             </section>
-            <section className="card">
-              <div className="cardCont">
-                <div className="cardOne">
-                  <div className="cardTwo">
-                    <span>
-                      <h2>{parse(this.state.res.Card_Heading_One)}</h2>
-                      <img
-                        src={this.state.res.Card_One_Image}
-                        alt={this.state.res.Card_One_Image_Alt}
-                      ></img>
-                    </span>
-                  </div>
-                  <hr />
-                  <p>{parse(this.state.res.Card_One)}</p>
-                  <StarBorderIcon />
-                  <FilterListIcon />
+            <section className="cardContainer">
+              <div className="cardOne">
+                <div className="cardTwo">
+                  <span>
+                    <h2>{parse(this.state.res.Card_Heading_One)}</h2>
+                    <img
+                      src={this.state.res.Card_One_Image}
+                      alt={this.state.res.Card_One_Image_Alt}
+                    ></img>
+                  </span>
                 </div>
-                <div className="cardOne">
-                  <div className="cardTwo">
-                    <span>
-                      <h2>{parse(this.state.res.Card_Heading_Two)}</h2>
-                      <img
-                        src={this.state.res.Card_Two_Image}
-                        alt={this.state.res.Card_Two_Image_Alt}
-                      ></img>
-                    </span>
-                  </div>
-                  <hr />
-                  <p>{parse(this.state.res.Card_Two)}</p>
-                  <WhatshotIcon />
-                  <FilterListIcon />
+                <hr />
+                <p>{parse(this.state.res.Card_One)}</p>
+                <StarBorderIcon />
+                <FilterListIcon />
+              </div>
+              <div className="cardOne">
+                <div className="cardTwo">
+                  <span>
+                    <h2>{parse(this.state.res.Card_Heading_Two)}</h2>
+                    <img
+                      src={this.state.res.Card_Two_Image}
+                      alt={this.state.res.Card_Two_Image_Alt}
+                    ></img>
+                  </span>
                 </div>
-                <div className="cardOne">
-                  <div className="cardTwo">
-                    <span>
-                      <h2>{parse(this.state.res.Card_Heading_Three)}</h2>
-                      <img
-                        src={this.state.res.Card_Three_Image}
-                        alt={this.state.res.Card_Three_Image_Alt}
-                      ></img>
-                    </span>
-                  </div>
-                  <hr />
-                  <p>{parse(this.state.res.Card_Three)}</p>
-                  <BuildIcon />
-                  <FilterListIcon />
+                <hr />
+                <p>{parse(this.state.res.Card_Two)}</p>
+                <WhatshotIcon />
+                <FilterListIcon />
+              </div>
+              <div className="cardOne">
+                <div className="cardTwo">
+                  <span>
+                    <h2>{parse(this.state.res.Card_Heading_Three)}</h2>
+                    <img
+                      src={this.state.res.Card_Three_Image}
+                      alt={this.state.res.Card_Three_Image_Alt}
+                    ></img>
+                  </span>
                 </div>
-                <div className="cardOne">
-                  <div className="cardTwo">
-                    <span>
-                      <h2>{parse(this.state.res.Card_Heading_Four)}</h2>
-                      <img
-                        src={this.state.res.Card_Four_Image}
-                        alt={this.state.res.Card_Four_Image_Alt}
-                      ></img>
-                    </span>
-                  </div>
-                  <hr />
-                  <p>{parse(this.state.res.Card_Four)}</p>
-                  <a target="4" href={this.state.res.Url_One}>
-                    {parse(this.state.res.Url_Button)}
-                  </a>
-                  <FilterListIcon />
+                <hr />
+                <p>{parse(this.state.res.Card_Three)}</p>
+                <BuildIcon />
+                <FilterListIcon />
+              </div>
+              <div className="cardOne">
+                <div className="cardTwo">
+                  <span>
+                    <h2>{parse(this.state.res.Card_Heading_Four)}</h2>
+                    <img
+                      src={this.state.res.Card_Four_Image}
+                      alt={this.state.res.Card_Four_Image_Alt}
+                    ></img>
+                  </span>
                 </div>
-                <div className="cardOne">
-                  <div className="cardTwo">
-                    <span>
-                      <h2>{parse(this.state.res.Card_Heading_Five)}</h2>
-                      <img
-                        src={this.state.res.Card_Five_Image}
-                        alt={this.state.res.Card_Five_Image_Alt}
-                      ></img>
-                    </span>
-                  </div>
-                  <hr />
-                  <p>{parse(this.state.res.Card_Five)}</p>
-                  <a target="5" href={this.state.res.Url_Two}>
-                    {parse(this.state.res.Url_Button)}
-                  </a>
-                  <FilterListIcon />
+                <hr />
+                <p>{parse(this.state.res.Card_Four)}</p>
+                <a target="4" href={this.state.res.Url_One}>
+                  {parse(this.state.res.Url_Button)}
+                </a>
+                <FilterListIcon />
+              </div>
+              <div className="cardOne">
+                <div className="cardTwo">
+                  <span>
+                    <h2>{parse(this.state.res.Card_Heading_Five)}</h2>
+                    <img
+                      src={this.state.res.Card_Five_Image}
+                      alt={this.state.res.Card_Five_Image_Alt}
+                    ></img>
+                  </span>
                 </div>
-                <div className="cardOne">
-                  <div className="cardTwo">
-                    <span>
-                      <h2>{parse(this.state.res.Card_Heading_Six)}</h2>
-                      <img
-                        src={this.state.res.Card_Six_Image}
-                        alt={this.state.res.Card_Six_Image_Alt}
-                      ></img>
-                    </span>
-                  </div>
-                  <hr />
-                  <p>{parse(this.state.res.Card_Six)}</p>
-                  <a target="6" href={this.state.res.Url_Three}>
-                    {parse(this.state.res.Url_Button)}
-                  </a>
-                  <FilterListIcon />
+                <hr />
+                <p>{parse(this.state.res.Card_Five)}</p>
+                <a target="5" href={this.state.res.Url_Two}>
+                  {parse(this.state.res.Url_Button)}
+                </a>
+                <FilterListIcon />
+              </div>
+              <div className="cardOne">
+                <div className="cardTwo">
+                  <span>
+                    <h2>{parse(this.state.res.Card_Heading_Six)}</h2>
+                    <img
+                      src={this.state.res.Card_Six_Image}
+                      alt={this.state.res.Card_Six_Image_Alt}
+                    ></img>
+                  </span>
                 </div>
+                <hr />
+                <p>{parse(this.state.res.Card_Six)}</p>
+                <a target="6" href={this.state.res.Url_Three}>
+                  {parse(this.state.res.Url_Button)}
+                </a>
+                <FilterListIcon />
               </div>
             </section>
-            <section id="enquiry" className="enquiry">
+            <section id="enquiry" className="enquiryContainer">
               <h2>{parse(this.state.res.Enquiries_Title)}</h2>
               <br></br>
               <form
@@ -623,12 +622,11 @@ class Home extends Component {
                       backgroundColor: styles.c1,
                       borderRadius: 0,
                       fontSize: 'inherit',
-                      fontWeight: '500',
-                      margin: '0 25px 25px  25px'
+                      fontWeight: '500'
                     },
                     startAdornment: (
                       <InputAdornment position="start">
-                        <AccountCircle style={{ color: styles.c3 }} />
+                        <AccountCircle/>
                       </InputAdornment>
                     )
                   }}
@@ -651,12 +649,11 @@ class Home extends Component {
                       backgroundColor: styles.c1,
                       borderRadius: 0,
                       fontSize: 'inherit',
-                      fontWeight: '500',
-                      margin: '0 25px 25px  25px'
+                      fontWeight: '500'
                     },
                     startAdornment: (
                       <InputAdornment position="start">
-                        <MailOutlineIcon style={{ color: styles.c3 }} />
+                        <MailOutlineIcon/>
                       </InputAdornment>
                     )
                   }}
@@ -684,12 +681,11 @@ class Home extends Component {
                         backgroundColor: styles.c1,
                         borderRadius: 0,
                         fontSize: 'inherit',
-                        fontWeight: '500',
-                        margin: '0 25px 25px 25px'
+                        fontWeight: '500'
                       },
                       startAdornment: (
                         <InputAdornment position="start">
-                          <PhoneIcon style={{ color: styles.c3 }} />
+                          <PhoneIcon/>
                         </InputAdornment>
                       )
                     }}
@@ -741,7 +737,6 @@ class Home extends Component {
                       fontFamily: styles.font3,
                       color: styles.c6,
                       display: 'block',
-                      width: '100%',
                       height: '150px',
                       backgroundColor: styles.c1,
                       borderRadius: 0,

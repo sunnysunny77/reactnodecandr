@@ -34,7 +34,7 @@
       margin: 0 auto;
     }
   }
-  .welcome {
+  .welcomeContainer {
     width: 100%;
   }
   .welcomeOne {
@@ -112,10 +112,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   width: 100%;
-  scrollbar-color: $c3 transparent;
+  scrollbar-color: $c3 $c4;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -138,7 +138,7 @@
     background: $c3;
   }
   &::-webkit-scrollbar-track {
-    background: transparent;
+    background: $c4;
   }
   @media only screen and (max-width: 768px) {
     overflow-y: hidden;
@@ -175,6 +175,7 @@
     border-top-left-radius: 11px;
     border-top-right-radius: 11px;
     background-color: $c4;
+    width: 100%;
     @media only screen and (max-width: 768px) {
       position: sticky;
       top: 0;
@@ -187,13 +188,13 @@
     background-color: transparent;
     font-size: 20px;
     padding: 10px;
-    color: $c3;
-    transition: color 0.2s ease-in-out;
+    transition: 0.2s ease-in-out fill;
+    cursor: pointer;
     &:hover {
-      color: $c5;
+      fill: $c5;
     }
   }
-  .scrollCont {
+  .scrollContainer {
     overflow-y: auto;
     overflow-x: hidden;
     width: 100%;
@@ -234,7 +235,7 @@
       }
     }
   }
-  .buttonCont {
+  .buttonContainer {
     background-color: $c4;
     width: 100%;
     height: 40px;
@@ -246,12 +247,12 @@
   .overlayNext {
     border: none;
     background-color: transparent;
-    transition: color 0.2s ease-in-out;
     font-size: 20px;
     padding: 10px;
-    color: $c3;
+    transition: 0.2s ease-in-out fill;
+    cursor: pointer;
     &:hover {
-      color: $c5;
+      fill: $c5;
     }
   }
   &.fixed {
@@ -290,7 +291,7 @@
 
 /* overlay */
 
-.overlay {
+.overlayContainer {
   margin: auto;
   width: 100%;
   -webkit-touch-callout: none;
@@ -309,7 +310,7 @@
     align-items: center;
     padding: 3% 0;
   }
-  .containerImg {
+  .imgContainer {
     display: none;
     width: 46%;
     margin: auto;
@@ -335,10 +336,9 @@
     color: $c3;
     display: none;
     align-self: flex-end;
-    transition: color 0.2s ease-in-out;
     margin: 0 auto;
-    align-self: center;
-    fill: $c3;
+    align-self: center;    
+    transition: 0.2s ease-in-out fill;
     @media only screen and (max-width: 640px) {
       font-size: 1.5em;
       margin: 30px auto;
@@ -404,11 +404,10 @@
     position: absolute;
     top: 50%;
     opacity: 0.75;
-    transition: fill 0.2s ease-in-out;
     width: 40px;
     height: 40px;
-    fill: $c3;
     cursor: pointer;
+    transition: 0.2s ease-in-out fill;
     @media only screen and (max-width: 640px) {
       top: initial;
       width: 12%;
@@ -421,7 +420,7 @@
 
 /* info */
 
-.info {
+.infoContainer {
   box-shadow: 0 0 7.5px $c2;
   display: flex;
   justify-content: space-evenly;
@@ -430,7 +429,7 @@
   z-index: 1;
   background-image: linear-gradient(-90deg, $c1 12%, $c4 100%);
   @media only screen and (max-width: 992px) {
-    padding-bottom: 5%;
+    padding:  0 0 5% 0;
     flex-direction: column-reverse;
   }
   .infoOne {
@@ -461,15 +460,14 @@
     width: 57.7%;
     color: $c3;
     @media only screen and (max-width: 1200px) {
-      margin-right: 5%;
+      margin: 0 5% 0 0;
     }
     @media only screen and (max-width: 992px) {
       margin: 0;
-      padding-top: 5%;
+      padding: 5% 0 0 0;
       width: 90%;
     }
     svg {
-      color: $c3;
       margin: 0 10px;
     }
     h1 {
@@ -498,88 +496,87 @@
 
 /* card */
 
-.card {
-  .cardCont {
-    max-width: 1312px;
-    padding: 200px 2%;
-    z-index: 998;
-    clear: both;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    overflow: hidden;
+.cardContainer {
+  max-width: 1312px;
+  padding: 200px 2%;
+  z-index: 998;
+  clear: both;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: hidden;
+  margin: auto;
+  @media only screen and (max-width: 992px) {
+    padding: 125px 2%;
+  }
+  span img {
+    margin: 0 0 0 10px;
+    vertical-align: middle;
+  }
+  hr {
+    width: 100%;
+  }
+  p {
+    margin: 0 auto 3% auto;
+    padding: 0 15px;
+    text-align: center;
+    font-family: $font3;
+    font-weight: 500;
+    text-shadow: 0 0 0.5px $c2;
+  }
+  h2 {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-family: $font2;
+    font-weight: 500;
+    display: inline;
+    color: $c3;
+  }
+  .cardOne {
+    max-width: 339px;
     margin: auto;
-    @media only screen and (max-width: 992px) {
-      padding: 125px 2%;
-    }
-    span img {
-      margin-left: 10px;
-      vertical-align: middle;
-    }
-    hr {
-      width: 100%;
-    }
-    p {
-      margin: 0 auto 3% auto;
-      padding: 0 15px;
-      text-align: center;
-      font-family: $font3;
-      font-weight: 500;
-      text-shadow: 0 0 0.5px $c2;
-    }
-    h2 {
-      margin: 0;
-      padding: 0;
-      font-size: inherit;
-      font-family: $font2;
-      font-weight: 500;
-      display: inline;
+    color: $c3;
+    padding: 15px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    a {
       color: $c3;
-    }
-    .cardOne {
-      max-width: 339px;
-      margin: auto;
-      color: $c3;
-      padding: 15px;
-      height: fit-content;
-      display: flex;
-      flex-direction: column;
-      a {
-        color: $c3;
-        float: left;
-        margin-left: 30px;
-        width: 30px;
-        font-weight: 900;
-        font-size: 15px;
-        height: 24px;
-        &:hover {
-          color: $c5;
-        }
-      }
-      svg:nth-child(4) {
-        color: $c3;
-        float: left;
-        margin-left: 30px;
-      }
-      svg:nth-child(5) {
-        color: $c3;
-        font-size: 50px;
-        align-self: center;
+      float: left;
+      margin: 0 0 0 30px;
+      width: 30px;
+      font-weight: 900;
+      font-size: 15px;
+      height: 24px;
+      transition: 0.2s ease-in-out color;
+      &:hover,
+      &:focus {
+        color: $c5;
       }
     }
-    .cardTwo {
-      align-self: flex-end;
-      img {
-        width: 50px;
-        height: 50px;
-      }
+    svg:nth-child(4) {
+      float: left;
+      margin: 0 0 0 30px;
+    }
+    svg:nth-child(5) {
+      font-size: 50px;
+      align-self: center;
+    }
+  }
+  .cardTwo {
+    align-self: flex-end;
+    img {
+      width: 50px;
+      height: 50px;
     }
   }
 }
 
+
 /* enq */
 
-.enquiry {
+.enquiryContainer {
   background-color: $c4;
   h2 {
     font-family: $font1;
@@ -589,7 +586,7 @@
     width: calc(100% - 20px);
     text-align: end;
     margin: 0;
-    padding-right: 20px;
+    padding: 0 20px 0 0;
     line-height: 40px;
     font-size: inherit;
     font-weight: 500;
@@ -602,9 +599,14 @@
     opacity: 1;
   }
   .MuiFormControl-root {
-    @media only screen and (max-width: 1200px) {
-      display: flex;
+    margin: 0 25px 25px 25px;
+    @media only screen and (max-width: 993px) {
+      width: calc(100% - 50px);
     }
+  }
+  .MuiFormControl-fullWidth {
+    margin: 0;
+    width: 100%;
   }
   .react-select__menu-list,
   .MuiInputBase-multiline {

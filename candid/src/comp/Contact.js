@@ -61,10 +61,10 @@ export default class Contactc extends Component {
           : (
           <React.Fragment>
             {this.state.window}
-            <div className="headingCont">
+            <div className="headingContainer">
               <h1> {parse(this.state.navigation)} </h1>
             </div>
-            <section className="contactContOne">
+            <section className="detailsContainer">
               <img
                 alt={this.state.res.Image_Alt}
                 src={this.state.res.Image}
@@ -95,9 +95,8 @@ export default class Contactc extends Component {
                   </span>
                 </p>
               </div>
-              <br className="clearFloat" />
             </section>
-            <section className="contactContTwo">
+            <section className="contactContainer">
               <h2>
                 {parse(this.state.res.Heading_Two)}
                 <ContactsIcon />

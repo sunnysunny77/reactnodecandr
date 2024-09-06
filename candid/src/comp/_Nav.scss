@@ -10,7 +10,6 @@ header {
     justify-content: flex-end;
   }
   a {
-    padding-right: initial;
     display: block;
     float: none;
     display: flex;
@@ -26,7 +25,7 @@ header {
       width: calc(100% - 90px);
     }
     @media only screen and (min-width: 1921px) {
-      margin-left: calc(50vw - 960px);
+      margin: 0 0 0 calc(50vw - 960px);
     }
     img {
       display: flex;
@@ -103,7 +102,7 @@ header {
   transform: translate(-202px);
   font-size: 5px;
   font-family: $font4;
-  margin-top: 90px;
+  margin: 90px 0 0 0;
   transition: transform 0.6s;
   transform: translate(-202px);
   padding: 0 0 1rem 0;
@@ -131,7 +130,7 @@ header {
     margin: 0;
     padding: 0;
     hr {
-      margin-top: 0;
+      margin: 0;
     }
     a {
       width: 100%;
@@ -143,22 +142,23 @@ header {
       text-decoration: none;
       outline: none;
       padding: 10px 0;
-      &:hover {
+      transition: 0.2s ease-in-out color;
+      &:hover,
+      &:focus {
         color: $c5;
       }
     }
     svg {
       padding: 10px 0;
-      fill: $c3;
     }
   }
   ul:nth-child(2) li:nth-child(1) {
     text-align: right;
     svg {
-      margin-right: 20px;
+      margin: 0 20px 0 0;
       font-size: 24px;
       padding: 0;
-      fill: $c3;
+      transition: 0.2s ease-in-out fill;
       &:hover {
         fill: $c5;
       }
@@ -195,12 +195,12 @@ header {
     margin: 0;
     padding: 0;
     &:nth-child(1) {
-      padding-left: 50px;
+      padding: 0 0 0 50px;
       width: 475px;
       display: flex;
       justify-content: space-around;
       @media only screen and (min-width: 1921px) {
-        padding-left: calc(50vw - 910px);
+        padding: 0 0 0 calc(50vw - 910px);
       }
     }
     &:nth-child(2) {
@@ -208,7 +208,7 @@ header {
         display: inline;
       }
       @media only screen and (min-width: 1921px) {
-        padding-right: calc(50vw - 960px);
+        padding: 0 calc(50vw - 960px) 0 0;
       }
       span {
         margin: 0 19px;
@@ -225,7 +225,9 @@ header {
       cursor: pointer;
       outline: none;
       margin: 0 19px;
-      &:hover {
+      transition: 0.2s ease-in-out color;
+      &:hover,
+      &:focus {
         color: $c5;
       }
     }

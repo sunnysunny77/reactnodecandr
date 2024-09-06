@@ -250,7 +250,7 @@ export default class Blog extends React.Component {
             <div className="blogHeading">
               <h1>{parse(this.state.navigation)}</h1>
             </div>
-            <section className="blogCont">
+            <section className="blogContainer">
               <div className="blogResponse">
                 <div className="sticky"></div>
                 <table>
@@ -260,12 +260,12 @@ export default class Blog extends React.Component {
               <StyledAccordion>
                 <AccordionSummary
                   expandIcon={
-                    <ExpandMoreIcon style={{ color: styles.c1 }} />
+                    <ExpandMoreIcon />
                   }
                   aria-controls="panel2a-content"
                   id="panel2a-header"
                 >
-                  <div className="accordianHeading headingCont">
+                  <div className="accordianHeading">
                     <h2>{parse(this.state.res.Blog_Add_Title)}</h2>
                   </div>
                 </AccordionSummary>
@@ -275,13 +275,8 @@ export default class Blog extends React.Component {
                     className="formAdd"
                     onSubmit={this.submitAdd}
                     autoComplete="off"
-                    style={{
-                      width: '100%',
-                      fontFamily: styles.font3,
-                      color: styles.c6
-                    }}
                   >
-                    <SubjectIcon style={{ color: styles.c3 }} />
+                    <SubjectIcon/>
                     <label htmlFor="passs" className="hiddenText">
                       passAddord
                     </label>
@@ -300,7 +295,7 @@ export default class Blog extends React.Component {
                         },
                         startAdornment: (
                           <InputAdornment position="start">
-                            <LockOpenIcon style={{ color: styles.c3 }} />
+                            <LockOpenIcon/>
                           </InputAdornment>
                         )
                       }}
@@ -327,7 +322,7 @@ export default class Blog extends React.Component {
                         },
                         startAdornment: (
                           <InputAdornment position="start">
-                            <TitleIcon style={{ color: styles.c3 }} />
+                            <TitleIcon/>
                           </InputAdornment>
                         )
                       }}
@@ -354,7 +349,7 @@ export default class Blog extends React.Component {
                         },
                         startAdornment: (
                           <InputAdornment position="start">
-                            <AccountCircle style={{ color: styles.c3 }} />
+                            <AccountCircle/>
                           </InputAdornment>
                         )
                       }}
@@ -371,6 +366,7 @@ export default class Blog extends React.Component {
                       id="text"
                       multiline
                       minRows="20"
+                      fullWidth={true}
                       InputProps={{
                         disableUnderline: true,
                         style: {
@@ -427,12 +423,12 @@ export default class Blog extends React.Component {
               <StyledAccordion>
                 <AccordionSummary
                   expandIcon={
-                    <ExpandMoreIcon style={{ color: styles.c1 }} />
+                    <ExpandMoreIcon />
                   }
                   aria-controls="panel2a-content"
                   id="panel2a-header"
                 >
-                  <div className="accordianHeading headingCont">
+                  <div className="accordianHeading">
                     <h2>{parse(this.state.res.Blog_Remove_Title)}</h2>
                   </div>
                 </AccordionSummary>
@@ -441,12 +437,6 @@ export default class Blog extends React.Component {
                     id="formRemove"
                     className="formRemove"
                     onSubmit={this.submitRemove}
-                    autoComplete="off"
-                    style={{
-                      width: '100%',
-                      fontFamily: styles.font3,
-                      color: styles.c6
-                    }}
                   >
                     <label htmlFor="pass" className="hiddenText">
                       passAddord
@@ -466,7 +456,7 @@ export default class Blog extends React.Component {
                         },
                         startAdornment: (
                           <InputAdornment position="start">
-                            <LockOpenIcon style={{ color: styles.c3 }} />
+                            <LockOpenIcon/>
                           </InputAdornment>
                         )
                       }}
@@ -493,7 +483,7 @@ export default class Blog extends React.Component {
                         },
                         startAdornment: (
                           <InputAdornment position="start">
-                            <AccessTimeIcon style={{ color: styles.c3 }} />
+                            <AccessTimeIcon/>
                           </InputAdornment>
                         )
                       }}

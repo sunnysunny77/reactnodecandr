@@ -12,7 +12,7 @@
   }
 }
 
-#galleryCont {
+#galleryContainer {
   border-left: 2px solid $c3;
   border-right: 2px solid $c3;
   border-bottom: 2px solid $c3;
@@ -53,7 +53,7 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    .imgGalleryCont {
+    .imggalleryContainer {
       padding: 39vh 0;
       position: relative;
       height: 100%;
@@ -84,7 +84,7 @@
     .slick-dots {
       position: static;
       width: 100%;
-      margin-bottom: 65px;
+      margin: 0 0 65px 0;
     }
     .slick-list {
       width: calc(80% - 40px);

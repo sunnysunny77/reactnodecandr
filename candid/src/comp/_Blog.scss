@@ -12,7 +12,7 @@
   }
 }
 
-.blogCont {
+.blogContainer {
   width: 100%;
   border-left: 2px solid $c3;
   border-right: 2px solid $c3;
@@ -65,7 +65,7 @@
       position: relative;
       z-index: 4;
       width: 100%;
-      margin-bottom: 50px;
+      margin: 0 0 50px 0;
       td {
         font-size: inherit;
         width: 100%;
@@ -86,13 +86,14 @@
       }
       .center {
         text-align: center;
-        padding-top: 50px;
+        padding: 50px 0 0 0;
       }
     }
   }
   .accordianHeading {
     border-top-left-radius: 11px;
     border-top-right-radius: 11px;
+    width: 100%;
     h2 {
       line-height: 40px;
       font-family: $font1;
@@ -100,9 +101,12 @@
       float: right;
       font-size: inherit;
       margin: 0;
-      padding-right: 20px;
+      padding: 0 20px 0 0;
       font-weight: 500;
     }
+  }
+  .MuiAccordionSummary-expandIconWrapper svg {
+    fill: $c1;
   }
   .MuiButtonBase-root {
     background-color: $c3;
@@ -113,25 +117,50 @@
   .MuiPaper-root.MuiAccordion-root {
     margin: 0;
   }
-  .MuiFormControl-root {
-    display: flex;
-    align-items: flex-end;
-    .MuiInputBase-root {
-      width: fit-content;
-      margin: auto 0 2.5px auto;
-      @media only screen and (max-width: 640px) {
-        margin: auto auto 25px auto;
-        width: calc(100% - 50px);
-      }
-    }
-  }
   form {
+    font-family: $font3;
+    color: $c6;
+    width: 100%;
     input::-webkit-input-placeholder,
     input::placeholder,
     textarea::-webkit-input-placeholder,
     textarea::placeholder {
       color: $c6;
       opacity: 1;
+    }
+    .MuiFormControl-root {
+      display: flex;
+      align-items: flex-end;
+      margin: auto 0 2.5px auto;
+      @media only screen and (max-width: 640px) {
+        width: calc(100% - 50px);
+        margin: 25px 25px 0 25px;
+        .MuiInputBase-root {
+          width: 100%;
+        }
+      }
+    }
+    .MuiFormControl-fullWidth {
+      margin: 25px 0 0 0;
+      width: 100%;
+      @media only screen and (max-width: 640px) {
+        width: calc(100% - 50px);
+        margin: 25px 25px 0 25px;
+      }
+    }
+    .MuiInputBase-multiline {
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-color: $c3 transparent;
+      &::-webkit-scrollbar {
+        width: 15px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: $c3;
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
     }
   }
   .formAdd {
@@ -158,39 +187,19 @@
         color: $c3;
         padding: 8px;
         border-radius: 3px;
-      }
-    }
-    .MuiInputBase-root {
-      @media only screen and (max-width: 640px) {
-        width: calc(100% - 50px);
-        margin: auto auto 25px auto;
-      }
-    }
-    .MuiInputBase-multiline {
-      scrollbar-color: $c3 transparent;
-      width: 100%;
-      @media only screen and (max-width: 640px) {
-        width: calc(100% - 50px);
-      }
-      &::-webkit-scrollbar {
-        width: 15px;
-      }
-      &::-webkit-scrollbar-track {
-        background: $c1;
-      }
-      &::-webkit-scrollbar-thumb {
-        background: $c3;
+        cursor: pointer;
       }
     }
   }
   .formRemove {
     width: 100%;
     margin: auto;
-    padding-top: 25px;
+    padding: 25px 0 0 0;
     .MuiFormControl-root {
+      width: calc(100% - 50px);
+      margin: 0 25px 25px 25px;
       .MuiInputBase-root {
-        width: calc(100% - 50px);
-        margin: auto auto 25px auto;
+        width: 100%;
       }
     }
   }

@@ -1,4 +1,4 @@
-.aboutContOne {
+.mapContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,13 +15,16 @@
       h2 {
         font-family: $font2;
         color: $c3;
-        margin-left: 10px;
+        margin: 0 0 0 10px;
         font-size: inherit;
         font-weight: 500;
+        @media only screen and (max-width: 640px) {
+          margin: 0 0 8px 10px;
+        }
         svg {
           vertical-align: sub;
           float: right;
-          margin-right: 25px;
+          margin: 0 25px 0 0;
         }
       }
       p {
@@ -53,7 +56,7 @@
     }
     &:nth-child(2) {
       width: 52%;
-      padding-right: 4%;
+      padding: 0 4% 0 0;
       @media only screen and (max-width: 640px) {
         width: 92%;
         padding: 0;
@@ -68,7 +71,7 @@
   }
 }
 
-.aboutContTwo {
+.aboutContainer {
   margin: 20px auto auto auto;
   width: 100%;
   max-width: 1200px;
@@ -76,14 +79,12 @@
     font-family: $font2;
     font-size: inherit;
     color: $c3;
-    margin-left: 10px;
-    margin: auto;
+    margin: 0 0 0 10px;
     width: calc(100% - 10px);
     font-weight: 500;
     svg {
       float: right;
-      color: $c3;
-      margin-right: 25px;
+      margin: 0 25px 0 0;
     }
   }
   h3 {
@@ -135,12 +136,12 @@
   }
   #spanTwo {
     width: 37.5%;
-    padding-left: 7.5%;
-    margin-top: 25px;
+    padding:  0 0 0 7.5%;
+    margin: 25px 0 0 0;
     text-align: right;
     height: 268px;
     @media only screen and (max-width: 1365px) {
-      padding-left: 0;
+      padding: 0;
       width: 100%;
       margin: auto;
       height: initial;
@@ -164,6 +165,11 @@
     }
     @media only screen and (max-width: 1365px) {
       margin: 25px auto 25px 2.5%;
+    }
+  }
+  #moreOne {
+    hr {
+      margin: 8px 0 23px 0;
     }
   }
   #moreOne,
