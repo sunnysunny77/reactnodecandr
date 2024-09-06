@@ -36,7 +36,6 @@ header {
       @media only screen and (max-width: 1200px) {
         margin: 0 0 0 3px;
       }
-
     }
     span {
       margin: 3px 0 0 0;
@@ -215,6 +214,13 @@ header {
       }
       svg {
         vertical-align: text-bottom;
+        fill: $c1;
+      }
+      li:nth-child(3) svg {
+        transition: 0.2s ease-in-out fill;
+        &:hover {
+          fill: $c5;
+        }
       }
     }
     a {
@@ -230,6 +236,9 @@ header {
       &:focus {
         color: $c5;
       }
+    }
+    svg {
+      fill: $c1;
     }
   }
   @media only screen and (min-width: 1201px) {
