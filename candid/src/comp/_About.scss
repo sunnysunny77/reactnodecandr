@@ -109,7 +109,7 @@
   }
   #imageContainer {
     position: relative;
-    clip-path: inset(0 10px 0 round 25px 0);
+    clip-path: inset(0 0 0 round 25px 0);
     float: left;
     width: 55%;
     height: 379px;
@@ -131,7 +131,7 @@
       object-position: center;
       object-fit: cover;
       filter: grayscale(100%);
-      clip-path: inset(0 10px 0 round 25px 0);
+      clip-path: inset(0 0 0 round 25px 0);
     }
   }
   #spanTwo {
