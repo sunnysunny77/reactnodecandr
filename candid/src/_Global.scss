@@ -24,6 +24,7 @@ main {
     box-shadow:
       1px 0 rgba($c2, 0.2),
       -1px 0 rgba($c2, 0.2);
+      min-height: calc(100vh - 219px);
   }
   h1 {
     font-family: $font1;

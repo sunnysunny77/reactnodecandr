@@ -351,6 +351,7 @@
     clip-path: inset(0 0.5px 0 round 26px 0);
     position: relative;
     height: 22.5vw;
+    max-height: 432px;
     background-color: $c3;
     @include max_xl {
       height: 32vw;
