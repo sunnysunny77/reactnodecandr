@@ -392,58 +392,52 @@ class Home extends Component {
           : (
           <React.Fragment>
             {this.state.window}
-            <Slider className="slideHome" {...this.state.settings}>
-              <div>
-                <picture>
-                  <source
-                    media="(max-width: 993px)"
-                    srcSet={this.state.res.Carousel_One_Mobile}
-                  />
-                  <img
-                    src={this.state.res.Carousel_One_Desktop}
-                    alt={this.state.res.Carousel_One_Alt}
-                  />
-                </picture>
-                <div className="slideP">
-                  <div className="welcomeContainer">
-                    <div className="welcomeOne">
-                      <div id="my-svg" className="my-svg">{parse(this.state.res.Home_Svg)}</div>
-                      &nbsp;
-                      {parse(this.state.res.Message)}
-                    </div>
-                    <div className="welcomeTwo" onClick={this.scrollIntoView}></div>
-                  </div>
-                  <p>
-                    {parse(this.state.res.Carousel_One)}
-                  </p>
+            <div className="slideOuter">
+              <div className="welcomeContainer">
+                <div className="welcomeOne">
+                  <div id="my-svg" className="my-svg">{parse(this.state.res.Home_Svg)}</div>
+                  &nbsp;
+                  {parse(this.state.res.Message)}
                 </div>
+                <div className="welcomeTwo" onClick={this.scrollIntoView}></div>
               </div>
-              <div>
-                <picture>
-                  <source
-                    media="(max-width: 993px)"
-                    srcSet={this.state.res.Carousel_Two_Mobile}
-                  />
-                  <img
-                    src={this.state.res.Carousel_Two_Desktop}
-                    alt={this.state.res.Carousel_Two_Alt}
-                  />
-                </picture>
-                <div className="slideP">
-                  <div className="welcomeContainer">
-                    <div className="welcomeOne">
-                      <div className="my-svg">{parse(this.state.res.Home_Svg)}</div>
-                      &nbsp;
-                      {parse(this.state.res.Message)}
-                    </div>
-                    <div className="welcomeTwo" onClick={this.scrollIntoView}></div>
+              <Slider className="slideHome" {...this.state.settings}>
+                <div>
+                  <picture>
+                    <source
+                      media="(max-width: 993px)"
+                      srcSet={this.state.res.Carousel_One_Mobile}
+                    />
+                    <img
+                      src={this.state.res.Carousel_One_Desktop}
+                      alt={this.state.res.Carousel_One_Alt}
+                    />
+                  </picture>
+                  <div className="slideP">
+                    <p>
+                      {parse(this.state.res.Carousel_One)}
+                    </p>
                   </div>
-                  <p>
-                    {parse(this.state.res.Carousel_Two)}
-                  </p>
                 </div>
-              </div>
-            </Slider>
+                <div>
+                  <picture>
+                    <source
+                      media="(max-width: 993px)"
+                      srcSet={this.state.res.Carousel_Two_Mobile}
+                    />
+                    <img
+                      src={this.state.res.Carousel_Two_Desktop}
+                      alt={this.state.res.Carousel_Two_Alt}
+                    />
+                  </picture>
+                  <div className="slideP">
+                    <p>
+                      {parse(this.state.res.Carousel_Two)}
+                    </p>
+                  </div>
+                </div>
+              </Slider>
+            </div>
             {this.state.overlayExpanded}
             <section className="overlayContainer">
               <svg

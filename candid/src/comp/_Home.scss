@@ -1,41 +1,12 @@
 /* silde */
 
-.slideHome {
-  img {
-    height: calc(100vh - 150px);
-    width: 100%;
-    box-shadow: 0 0 7.5px $c2;
-    margin: auto;
-    object-fit: cover;
-    object-position: right center;
-    @include max_xl {
-      height: calc(100vh - 90px);
-      object-position: center;
-      min-height: 425px;
-    }
-  }
-  .slideP {
+.slideOuter {
+  position: relative;
+  .welcomeContainer {
     position: absolute;
     top: 0;
-    right: 0;
-    bottom: 0;
     left: 0;
-    text-align: center;
-    background-color: transparentize($c3, 0.88);
-    margin: 0;
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    p {
-      color: $c3;
-      font-size: clamp(20px, 3vw, 30px);
-      font-weight: 500;
-      width: 80%;
-      margin: 0 auto;
-    }
-  }
-  .welcomeContainer {
-    width: 100%;
+    z-index: 1;
   }
   .welcomeOne {
     font-family: $font3;
@@ -91,6 +62,42 @@
     &:hover {
       transform: translate(4%, 2%);
       background-color: $c5;
+    }
+  }
+}
+.slideHome {
+  img {
+    width: 100%;
+    box-shadow: 0 0 7.5px $c2;
+    margin: auto;
+    object-fit: cover;
+    object-position: right center;
+    height: calc(100vh - 150px);
+    @include max_xl {
+      height: calc(100vh - 90px);
+      min-height: 425px;
+      object-position: center;
+    }
+  }
+  .slideP {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    background-color: transparentize($c3, 0.88);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    p {
+      color: $c3;
+      font-size: clamp(20px, 3vw, 30px);
+      font-weight: 500;
+      width: 80%;
+      padding: 8.75% 0 0 0;
+      margin: auto;
     }
   }
 }
