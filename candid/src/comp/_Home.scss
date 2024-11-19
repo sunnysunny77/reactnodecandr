@@ -73,9 +73,9 @@
     object-fit: cover;
     object-position: right center;
     height: calc(100vh - 150px);
+    min-height: 425px;
     @include max_xl {
       height: calc(100vh - 90px);
-      min-height: 425px;
       object-position: center;
     }
   }
