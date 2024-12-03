@@ -392,7 +392,14 @@ class Home extends Component {
           <React.Fragment>
             {this.state.window}
             <div className="slideOuter">
-              <div className="scrollIntoView" onClick={this.scrollIntoView}></div>
+              <div
+                className="scrollIntoView"
+                onClick={() => {
+                  const x = window.location.origin
+                  window.location.replace(x + '?enquiries=enquiries')
+                }}
+              >
+              </div>
               <Slider className="slideHome" {...this.state.settings}>
                 <div>
                   <picture>
