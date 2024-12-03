@@ -395,8 +395,7 @@ class Home extends Component {
               <div
                 className="scrollIntoView"
                 onClick={() => {
-                  const x = window.location.origin
-                  window.location.replace(x + '?enquiries=enquiries')
+                  document.querySelector('#enquiry').scrollIntoView({ behavior: 'smooth' })
                 }}
               >
               </div>
