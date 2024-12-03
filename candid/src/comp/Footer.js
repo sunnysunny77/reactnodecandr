@@ -26,16 +26,16 @@ const Footer = (props) => {
         <li className="none">
           <Link to="/contact">{parse(navigation[3])}</Link>
         </li>
-        <li className="block" id="logoFooter">
-          <Link to="/">
-            <img src={logo[0]} alt={logo[1]} />
-          </Link>
-        </li>
         <li className="block none">
           {parse(hours)} / {parse(days)}
         </li>
         <li className="block none">
           <a href={'tel:' + phone}>{phone}</a>
+        </li>
+        <li className="block" id="logoFooter">
+          <Link to="/">
+            <img src={logo[0]} alt={logo[1]} />
+          </Link>
         </li>
       </ul>
     </footer>

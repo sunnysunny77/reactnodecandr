@@ -18,10 +18,16 @@ footer {
     text-align: center;
     margin: 10px auto;
     background-color: transparent;
-    padding: 0;
+    padding: 15px 0;
     font-size: 20px;
     font-family: $font4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
     @media only screen and (min-width: 1200px) {
+      padding: 0;
       margin: auto;
       li.none {
         display: none;
@@ -32,10 +38,11 @@ footer {
     }
     .block {
       display: block;
+      width: 100%;
     }
     li {
       display: inline-block;
-      height: 23px;
+      height: 28px;
       padding: 0 5px;
       color: $c3;
       svg {
@@ -46,6 +53,7 @@ footer {
       }
       img {
         vertical-align: middle;
+        width: 87%;
         @media only screen and (min-width: 1200px) {
           padding: 2.5px;
         }
@@ -57,6 +65,9 @@ footer {
         border: none;
         text-decoration: none;
         transition: 0.2s ease-in-out color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         &:hover {
           color: $c5;
         }

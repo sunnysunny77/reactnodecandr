@@ -19,6 +19,7 @@ header {
     @include max_xl {
       width: calc(100% - 90.5px);
       margin: auto auto auto 12.5px;
+      align-items: flex-start;
     }
     @include min_hd {
       margin: 0 0 0 calc(50vw - 960px);

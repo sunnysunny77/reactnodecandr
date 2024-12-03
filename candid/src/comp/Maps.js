@@ -36,7 +36,7 @@ export default class Maps extends Component {
               type="fill"
               source={'data' + index}
               paint={{
-                'fill-color': '#088',
+                'fill-color': '#0b4aae',
                 'fill-opacity': 0.8
               }}
             />
@@ -50,7 +50,7 @@ export default class Maps extends Component {
     return (
       <MapGL
         style={{ width: '100%', height: '300px' }}
-        mapStyle="mapbox://styles/mapbox/streets-v9"
+        mapStyle="mapbox://styles/mapbox/outdoors-v12"
         accessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         latitude={this.state.viewport.latitude}
         longitude={this.state.viewport.longitude}

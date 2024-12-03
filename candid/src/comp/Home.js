@@ -128,6 +128,7 @@ class Home extends Component {
 
   componentDidUpdate (prevProps, prevState) {
     if (prevState.load !== this.state.load) {
+      this.scrollIntoView()
       this.vivus()
       this.overlayInit()
     }
@@ -145,15 +146,13 @@ class Home extends Component {
   }
 
   scrollIntoView = () => {
-    document.querySelector('#enquiry').scrollIntoView({ behavior: 'smooth' })
+    if (window.location.search === '?enquiries=enquiries') { document.querySelector('#enquiry').scrollIntoView({ behavior: 'smooth' }) }
   }
 
   vivus = () => {
-    if (window.location.search === '?enquiries=enquiries') { this.scrollIntoView() }
-    const myVivus = new Vivus(document.querySelector('#my-svg').children[0], {
+    new Vivus(document.querySelector('.my-svg').querySelector('svg'), {
       duration: 80
-    })
-    myVivus.play()
+    }).play()
   }
 
   overlayInit = () => {
@@ -301,7 +300,7 @@ class Home extends Component {
         setTimeout(() => {
           item.classList.remove('flex')
           item.classList.remove('grey')
-        }, 300)
+        }, 150)
       });
       [...addNewCount].forEach((item) => {
         setTimeout(() => {
@@ -309,8 +308,8 @@ class Home extends Component {
           item.classList.add('grey')
           setTimeout(() => {
             item.classList.remove('grey')
-          }, 300)
-        }, 300)
+          }, 150)
+        }, 150)
       })
       this.setState({ count: newCount })
     }
@@ -393,14 +392,7 @@ class Home extends Component {
           <React.Fragment>
             {this.state.window}
             <div className="slideOuter">
-              <div className="welcomeContainer">
-                <div className="welcomeOne">
-                  <div id="my-svg" className="my-svg">{parse(this.state.res.Home_Svg)}</div>
-                  &nbsp;
-                  {parse(this.state.res.Message)}
-                </div>
-                <div className="welcomeTwo" onClick={this.scrollIntoView}></div>
-              </div>
+              <div className="scrollIntoView" onClick={this.scrollIntoView}></div>
               <Slider className="slideHome" {...this.state.settings}>
                 <div>
                   <picture>
@@ -415,6 +407,7 @@ class Home extends Component {
                   </picture>
                   <div className="slideP">
                     <p>
+                      <span id="my-svg" className="my-svg">{parse(this.state.res.Home_Svg)}</span>
                       {parse(this.state.res.Carousel_One)}
                     </p>
                   </div>
@@ -432,6 +425,7 @@ class Home extends Component {
                   </picture>
                   <div className="slideP">
                     <p>
+                      <span id="my-svg" className="my-svg">{parse(this.state.res.Home_Svg)}</span>
                       {parse(this.state.res.Carousel_Two)}
                     </p>
                   </div>
