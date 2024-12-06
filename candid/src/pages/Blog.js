@@ -187,7 +187,6 @@ export default class Blog extends React.Component {
             title: '',
             file: null
           })
-          document.querySelector('#formAdd').reset()
         })
         .catch((error) => {
           this.setState({
@@ -223,7 +222,6 @@ export default class Blog extends React.Component {
           passRemove: '',
           date: ''
         })
-        document.querySelector('#formRemove').reset()
       })
       .catch((error) => {
         this.setState({
