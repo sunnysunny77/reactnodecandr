@@ -185,7 +185,7 @@ export default class Blog extends React.Component {
             blog: '',
             name: '',
             title: '',
-            file: null
+            file: ''
           })
         })
         .catch((error) => {
@@ -395,6 +395,7 @@ export default class Blog extends React.Component {
                       id="avatar"
                       type="file"
                       name="file"
+                      value=''
                       onChange={this.file}
                     />
                     <Button
