@@ -11,7 +11,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder'
 import WhatshotIcon from '@mui/icons-material/Whatshot'
 import FilterListIcon from '@mui/icons-material/FilterList'
 import BuildIcon from '@mui/icons-material/Build'
-import Alert from './Alert.js'
+import Alert from '../components/Alert.js'
 import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
 import Button from '@mui/material/Button'
@@ -356,13 +356,12 @@ class Home extends Component {
           this.setState({
             alert: res.data.Alert,
             disp: { display: 'block', lineHeight: '50px' },
-            name: null,
-            email: null,
-            phone: null,
-            selectedOption: null,
-            text: null
+            name: '',
+            email: '',
+            phone: '',
+            selectedOption: '',
+            text: ''
           })
-          document.querySelector('#form').reset()
         })
         .catch((error) => {
           this.setState({
@@ -629,6 +628,7 @@ class Home extends Component {
                   variant="filled"
                   type="text"
                   name="name"
+                  value={this.state.name}
                   placeholder="Name:"
                   onChange={this.handleChange}
                 />
@@ -656,6 +656,7 @@ class Home extends Component {
                   variant="filled"
                   type="email"
                   name="email"
+                  value={this.state.email}
                   placeholder="Email:"
                   onChange={this.handleChange}
                 />
@@ -688,6 +689,7 @@ class Home extends Component {
                     variant="filled"
                     type="tel"
                     name="phone"
+                    value={this.state.phone}
                     placeholder="Phone:"
                     onChange={this.handleChange}
                   />
@@ -745,6 +747,7 @@ class Home extends Component {
                   variant="filled"
                   type="text"
                   name="text"
+                  value={this.state.text}
                   placeholder="Text:"
                   onChange={this.handleChange}
                 />

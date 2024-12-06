@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Wave from './Wave'
+import Wave from '../components/Wave'
 import ContactsIcon from '@mui/icons-material/Contacts'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import axios from 'axios'

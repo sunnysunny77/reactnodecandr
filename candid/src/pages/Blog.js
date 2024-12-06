@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Blog.module.scss'
-import Alert from './Alert.js'
+import Alert from '../components/Alert.js'
 import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
 import AccountCircle from '@mui/icons-material/AccountCircle'
@@ -31,8 +31,8 @@ export default class Blog extends React.Component {
       data: null,
       file: null,
       name: null,
-      passAdd: '',
-      passRemove: '',
+      passAdd: null,
+      passRemove: null,
       date: null,
       dispAdd: { display: 'none' },
       dispRemove: { display: 'none' },
@@ -181,10 +181,10 @@ export default class Blog extends React.Component {
           this.setState({
             alertAdd: 'Blog sent',
             dispAdd: { display: 'block', lineHeight: '50px' },
-            passAdd: null,
-            blog: null,
-            name: null,
-            title: null,
+            passAdd: '',
+            blog: '',
+            name: '',
+            title: '',
             file: null
           })
           document.querySelector('#formAdd').reset()
@@ -220,8 +220,8 @@ export default class Blog extends React.Component {
         this.setState({
           alertRemove: 'Blog delete',
           dispRemove: { display: 'block', lineHeight: '50px' },
-          passRemove: null,
-          date: null
+          passRemove: '',
+          date: ''
         })
         document.querySelector('#formRemove').reset()
       })
@@ -300,8 +300,9 @@ export default class Blog extends React.Component {
                         )
                       }}
                       variant="filled"
-                      type="passAddord"
+                      type="password"
                       name="passAdd"
+                      value={this.state.passAdd}
                       placeholder="Pass:"
                       onChange={this.change}
                     />
@@ -330,6 +331,7 @@ export default class Blog extends React.Component {
                       type="text"
                       name="title"
                       placeholder="Title:"
+                      value={this.state.title}
                       onChange={this.change}
                     />
                     <label htmlFor="name" className="hiddenText">
@@ -356,6 +358,7 @@ export default class Blog extends React.Component {
                       variant="filled"
                       type="text"
                       name="name"
+                      value={this.state.name}
                       placeholder="Name:"
                       onChange={this.change}
                     />
@@ -385,6 +388,7 @@ export default class Blog extends React.Component {
                       variant="filled"
                       type="text"
                       name="blog"
+                      value={this.state.blog}
                       placeholder="Text:"
                       onChange={this.change}
                     />
@@ -461,8 +465,9 @@ export default class Blog extends React.Component {
                         )
                       }}
                       variant="filled"
-                      type="passAddord"
+                      type="password"
                       name="passRemove"
+                      value={this.state.passRemove}
                       placeholder="Pass:"
                       onChange={this.change}
                     />
@@ -490,6 +495,7 @@ export default class Blog extends React.Component {
                       variant="filled"
                       type="text"
                       name="date"
+                      value={this.state.date}
                       placeholder="Date:"
                       onChange={this.change}
                     />
