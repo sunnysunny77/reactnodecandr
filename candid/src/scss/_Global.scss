@@ -27,13 +27,6 @@ main {
       -1px 0 rgba($c2, 0.2);
       min-height: calc(100vh - 219px);
   }
-  &.navRelative {
-    padding-top: 0;
-  }
-  &.navFixed {
-    padding-top: 90px;
-  }
-
   h1 {
     font-family: $font1;
     color: $c1;

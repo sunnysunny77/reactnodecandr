@@ -108,10 +108,8 @@ class Nav extends Component {
   handleScroll = () => {
     if (window.scrollY >= 90) {
       this.setState({ class: 'hasAnimation' })
-      this.props.main('navFixed')
     } else {
       this.setState({ class: '' })
-      this.props.main('navRelative')
     }
   }
 
