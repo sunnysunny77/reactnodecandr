@@ -9,7 +9,7 @@ class Nav extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      class: 'navRelative',
+      class: '',
       bar1: {
         width: '25px',
         height: '3px',
@@ -33,81 +33,85 @@ class Nav extends Component {
   }
 
   componentDidMount () {
-    document.querySelector('.burgerMenu').addEventListener('click', this.menu)
+    document.querySelector('.clickBurger').addEventListener('click', this.menu)
     window.addEventListener('scroll', this.handleScroll, { passive: true })
+    document.body.addEventListener('click', this.menuClose)
   }
 
   componentWillUnmount () {
-    document
-      .querySelector('.burgerMenu')
-      .removeEventListener('click', this.menu)
+    document.querySelector('.clickBurger').removeEventListener('click', this.menu)
     window.removeEventListener('scroll', this.handleScroll)
+    document.body.removeEventListener('click', this.menuClose)
   }
 
-  handleScroll = () => {
-    if (window.scrollY >= 90) {
-      this.setState({ class: 'navFixed' })
-      this.props.main('navFixed')
-    } else {
-      this.setState({ class: 'navRelative' })
-      this.props.main('navRelative')
-    }
-  }
-
-  menu = () => {
+  setDis = () => {
     this.setState({
-      dis: true,
+      dis: false,
       bar1: {
         width: '25px',
         height: '3px',
         margin: '6px auto',
-        transition: '0.4s',
-        WebkitTransform: 'rotate(-45deg) translate(-6px, 4px)',
-        transform: 'rotate(-45deg) translate(-6px, 4px)'
+        transition: '0.4s'
       },
       bar2: {
         width: '25px',
         height: '3px',
         margin: '6px auto',
-        transition: '0.4s',
-        opacity: '0'
+        transition: '0.4s'
       },
       bar3: {
         width: '25px',
         height: '3px',
         margin: '6px auto',
-        transition: '0.4s',
-        WebkitTransform: 'rotate(45deg) translate(-7.5px, -7.5px)',
-        transform: 'rotate(45deg) translate(-7.5px, -7.5px)'
+        transition: '0.4s'
       }
     })
-    document.body.addEventListener('click', this.menuClose)
   }
 
-  menuClose = () => {
-    if (event.target.className !== 'burgerMenu') {
-      this.setState({
-        dis: false,
+  menu = (event) => {
+    !this.state.dis
+      ? this.setState({
+        dis: true,
         bar1: {
           width: '25px',
           height: '3px',
           margin: '6px auto',
-          transition: '0.4s'
+          transition: '0.4s',
+          WebkitTransform: 'rotate(-45deg) translate(-6px, 4px)',
+          transform: 'rotate(-45deg) translate(-6px, 4px)'
         },
         bar2: {
           width: '25px',
           height: '3px',
           margin: '6px auto',
-          transition: '0.4s'
+          transition: '0.4s',
+          opacity: '0'
         },
         bar3: {
           width: '25px',
           height: '3px',
           margin: '6px auto',
-          transition: '0.4s'
+          transition: '0.4s',
+          WebkitTransform: 'rotate(45deg) translate(-7.5px, -7.5px)',
+          transform: 'rotate(45deg) translate(-7.5px, -7.5px)'
         }
       })
-      document.body.removeEventListener('click', this.menuClose)
+      : this.setDis()
+  }
+
+  menuClose = (event) => {
+    if (!event.target.classList.contains('clickBurger')) {
+      this.setDis()
+    }
+  }
+
+  handleScroll = () => {
+    if (window.scrollY >= 90) {
+      this.setState({ class: 'hasAnimation' })
+      this.props.main('navFixed')
+    } else {
+      this.setState({ class: '' })
+      this.props.main('navRelative')
     }
   }
 
@@ -115,96 +119,64 @@ class Nav extends Component {
     const { phone, hours, days, navigation, logo } =
       this.props
     return (
-      <React.Fragment>
-        <nav className={'mobileNav ' + this.state.dis}>
-          <hr></hr>
-          <ul>
-            <li>
-              <Link to="/">
-                <span className="hiddenText">Homepage Link</span>
-                <HomeIcon />
-              </Link>
-            </li>
-            <li>
-              <Link to="/blog">{parse(navigation[0])}</Link>
-            </li>
-            <li>
-              <Link to="/gallery">{parse(navigation[1])}</Link>
-            </li>
-            <li>
-              <Link to="/about">{parse(navigation[2])}</Link>
-            </li>
-            <li>
-              <Link to="/contact">{parse(navigation[3])}</Link>
-            </li>
-          </ul>
-          <hr></hr>
-          <ul>
-            <li>
-              <AccessTimeIcon />
-            </li>
-            <li>
-              <span>
-                {parse(hours)}
-                <br></br>
-                {parse(days)}
-              </span>
-            </li>
-            <li>
-              <PhoneIcon />
-            </li>
-            <li>
-              <a href={'tel:' + phone}>{phone}</a>
-            </li>
-          </ul>
-        </nav>
-        <div className="burgerMenu"></div>
-        <div className={'burgerMenuTrue ' + this.state.dis}></div>
-        <div className="burgerMenuContainer">
-          <div className="bar" style={this.state.bar1}></div>
-          <div className="bar" style={this.state.bar2}></div>
-          <div className="bar" style={this.state.bar3}></div>
+      <>
+        <div className="overflow-hidden">
+          <nav className={`${this.state.dis}`}>
+            <ul>
+              <li>
+                <Link to="/">
+                  <span className="hiddenText">Homepage Link</span>
+                  <HomeIcon id="svg" />
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog">{parse(navigation[0])}</Link>
+              </li>
+              <li>
+                <Link to="/gallery">{parse(navigation[1])}</Link>
+              </li>
+              <li>
+                <Link to="/about">{parse(navigation[2])}</Link>
+              </li>
+              <li>
+                <Link to="/contact">{parse(navigation[3])}</Link>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <AccessTimeIcon />
+              </li>
+              <li>
+                <p>
+                  {parse(hours)}
+                  <br></br>
+                  {parse(days)}
+                </p>
+              </li>
+              <li>
+                <PhoneIcon />
+              </li>
+              <li>
+                <a href={'tel:' + phone}>{phone}</a>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <header>
+        <header className={`${this.state.class}`} >
           <Link to="/">
-            <img src={logo[0]} alt={logo[1]}></img><span>Candid Cleaning</span>
+            <img src={logo[0]} alt={logo[1]}></img>
+            <div>Candid Cleaning</div>
           </Link>
+          <div className="burger">
+            <div>
+              <div className="bar" style={this.state.bar1}></div>
+              <div className="bar" style={this.state.bar2}></div>
+              <div className="bar" style={this.state.bar3}></div>
+            </div>
+            <div className="clickBurger"></div>
+          </div>
         </header>
-        <nav className={'mainNav ' + this.state.class}>
-          <ul>
-            <li>
-              <Link to="/blog">{parse(navigation[0])}</Link>
-            </li>
-            <li>
-              <Link to="/gallery">{parse(navigation[1])}</Link>
-            </li>
-            <li>
-              <Link to="/about">{parse(navigation[2])}</Link>
-            </li>
-            <li>
-              <Link to="/contact">{parse(navigation[3])}</Link>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <PhoneIcon />
-              <a href={'tel:' + phone}>{phone}</a>
-            </li>
-            <li>
-              <AccessTimeIcon />
-              <span>
-                {parse(hours)} / {parse(days)}
-              </span>
-            </li>
-            <li>
-              <Link to="/">
-                <span className="hiddenText">Homepage Link</span>
-                <HomeIcon />
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </React.Fragment>
+      </>
     )
   }
 }

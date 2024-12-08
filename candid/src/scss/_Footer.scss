@@ -4,9 +4,6 @@ footer {
   border-bottom: solid $c2 2px;
   margin: 4px 0;
   display: none;
-  @media only screen and (min-width: 1200px) {
-    height: 65px;
-  }
   &.load {
     display: block;
   }
@@ -15,71 +12,19 @@ footer {
   }
   ul {
     list-style-type: none;
-    text-align: center;
-    margin: 10px auto;
-    background-color: transparent;
-    padding: 15px 0;
-    font-size: 20px;
-    font-family: $font4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    height: 100%;
-    @media only screen and (min-width: 1200px) {
-      padding: 0;
-      margin: auto;
-      li.none {
-        display: none;
-      }
-    }
-    @include max_sm {
-      font-size: medium;
-    }
-    .block {
-      display: block;
-      width: 100%;
-    }
+    padding: 0;
     li {
-      display: inline-block;
-      height: 28px;
-      padding: 0 5px;
-      color: $c3;
-      svg {
-        transition: 0.2s ease-in-out fill;
-        &:hover {
-          fill: $c5;
-        }
-      }
-      img {
-        vertical-align: middle;
-        width: 87%;
-        @media only screen and (min-width: 1200px) {
-          padding: 2.5px;
-        }
-      }
-      a {
-        color: $c3;
-        cursor: pointer;
-        background-color: transparent;
-        border: none;
-        text-decoration: none;
-        transition: 0.2s ease-in-out color;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        &:hover {
-          color: $c5;
-        }
-      }
-      &#logoFooter {
-        height: initial;
-        a {
-          display: block;
-          width: fit-content;
-          margin: auto;
-        }
-      }
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
+  }
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: auto;
   }
 }

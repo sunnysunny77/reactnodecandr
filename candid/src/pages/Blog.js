@@ -26,14 +26,13 @@ export default class Blog extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      blog: null,
-      title: null,
-      data: null,
-      file: null,
-      name: null,
-      passAdd: null,
-      passRemove: null,
-      date: null,
+      blog: '',
+      title: '',
+      file: '',
+      name: '',
+      passAdd: '',
+      passRemove: '',
+      date: '',
       dispAdd: { display: 'none' },
       dispRemove: { display: 'none' },
       alertAdd: null,

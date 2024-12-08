@@ -20,12 +20,20 @@ main {
   margin: auto;
   display: flex;
   flex-direction: column;
+  padding-top: 0;
   @include min_hd {
     box-shadow:
       1px 0 rgba($c2, 0.2),
       -1px 0 rgba($c2, 0.2);
       min-height: calc(100vh - 219px);
   }
+  &.navRelative {
+    padding-top: 0;
+  }
+  &.navFixed {
+    padding-top: 90px;
+  }
+
   h1 {
     font-family: $font1;
     color: $c1;
@@ -44,24 +52,7 @@ main {
       color: $c3;
     }
   }
-  #load {
-    height: 40px;
-    width: 40px;
-    position: absolute;
-    top: 0;
-    right: 40px;
-    @include max_xl {
-      top: -90px;
-    }
-  }
-  @include min_xl {
-    &.navRelative {
-      padding-top: 0;
-    }
-    &.navFixed {
-      padding-top: 40px;
-    }
-  }
+
 }
 
 .overflow-hidden {
@@ -79,15 +70,13 @@ main {
   padding: 0;
 }
 
-#loadFront {
+#loadFront,
+#load {
   height: 40px;
   width: 40px;
   position: absolute;
-  top: 150px;
-  right: 40px;
-  @include max_xl {
-    top: 0;
-  }
+  top: 25px;
+  right: 90px;
 }
 
 hr {

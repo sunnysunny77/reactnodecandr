@@ -1,11 +1,23 @@
-/* header  */
-
 header {
   width: 100%;
   height: 90px;
   background-image: linear-gradient(-90deg, $c1 0%, $c4 75%);
+  background-color: $c1;
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 997;
+  transition: height 0.34s ease-in;
+  &.hasAnimation {
+    position: fixed;
+    height: 75px;
+    img { 
+      width: 50px;
+
+    }
+  }
   a {
     display: block;
     float: none;
@@ -13,245 +25,96 @@ header {
     align-items: center;
     text-decoration: none;
     color: $c6;
+    margin: 0 0 0 15px;
     font-weight: 500;
     font-size: clamp(14px, 4vw, 23px);
-    margin: auto auto auto 85px;
-    @include max_xl {
-      width: calc(100% - 90.5px);
-      margin: auto auto auto 12.5px;
-      align-items: flex-start;
-    }
     @include min_hd {
       margin: 0 0 0 calc(50vw - 960px);
     }
     img {
+      transition: width 0.34s ease-in;
       display: flex;
-      width: 25%;
-      max-width: 60px;
-      min-width: 45px;
-      margin: 0 3px 0 0;
-      @include max_xl {
-        margin: 0 0 0 3px;
-      }
-    }
-    span {
-      margin: 3px 0 0 0;
-      @include max_xl {
-        margin: 12px 0 0 0;
-      }
+      width: 60px;
+      margin: 0 0 0 3px;
     }
   }
 }
 
-/* mobile nav  */
-
-.burgerMenu {
-  position: absolute;
-  z-index: 1000;
-  height: 90px;
-  width: 78px;
-  right: 0;
-}
-
-.burgerMenuTrue {
-  position: absolute;
-  z-index: 1000;
-  height: 90px;
-  width: 78px;
-  display: none;
-  right: 0;
-  &.true {
-    display: block;
-  }
-}
-
-.burgerMenu,
-.burgerMenuTrue {
-  @include min_xl {
-    display: none;
+.burger {
+  width: 90px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  .clickBurger {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
   }
   &:hover {
     cursor: pointer;
   }
 }
 
-.burgerMenuContainer {
-  position: absolute;
-  z-index: 998;
-  padding: 28.5px 26.5px 28.5px 26.5px;
-  box-sizing: border-box;
-  height: fit-content;
-  right: 0;
-  @include min_xl {
-    display: none;
-  }
-  .bar {
-    background-color: $c3;
-  }
+.bar {
+  background-color: $c3;
 }
 
-.mobileNav {
-  position: absolute;
+nav {
+  position: fixed;
   width: 200px;
   background-color: $c1;
-  border-right: 1.5px solid $c2;
-  border-bottom: 1.5px solid $c2;
+  background-image: linear-gradient(0deg, $c4 60%, $c1 100%);
   animation-duration: 0.6s;
   animation-fill-mode: forwards;
-  z-index: 998;
+  z-index: 996;
+  right: 0;
   text-align: center;
-  transform: translate(-202px);
-  font-size: 5px;
+  transform: translate(100%);
   font-family: $font4;
-  margin: 90px 0 0 0;
+  padding: 150px 0 0 0;
   transition: transform 0.6s;
-  transform: translate(-202px);
-  padding: 0 0 1rem 0;
-  @include min_xl {
-    display: none;
-  }
-  &::before {
-    position: absolute;
-    content: " ";
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-image: linear-gradient(-90deg, $c1 0%, $c4 100%);
-    z-index: -1;
-  }
+  height: 100ch;
   &.true {
     transform: translate(0);
   }
-  hr {
-    margin: 0;
-  }
+
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    hr {
-      margin: 0;
-    }
+    color: $c3;
+    font-size: 17px;
     a {
+      height: 25px;
       width: 100%;
-      font-size: initial;
-      color: $c3;
       cursor: pointer;
       border: none;
       display: block;
       text-decoration: none;
       outline: none;
       padding: 10px 0;
+      color: inherit;
       transition: 0.2s ease-in-out color;
       &:hover {
         color: $c5;
       }
     }
-    svg {
+    p {
+      color: inherit;
       padding: 10px 0;
+      margin: 0;
+      font-size: inherit;
     }
-  }
-  ul:nth-child(2) li:nth-child(1) {
-    text-align: right;
-    svg {
-      margin: 0 20px 0 0;
-      font-size: 24px;
-      padding: 0;
+    #svg {
       transition: 0.2s ease-in-out fill;
       &:hover {
         fill: $c5;
       }
-    }
-  }
-  ul:nth-child(4) {
-    span {
-      color: $c3;
-      text-decoration: none;
-      font-size: initial;
-    }
-  }
-}
-
-/* main nav  */
-
-.mainNav {
-  width: 100%;
-  height: 60px;
-  background-color: $c3;
-  z-index: 999;
-  color: $c1;
-  font-family: $font4;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: height 1s;
-  @include max_xl {
-    display: none;
-  }
-  ul {
-    font-size: 17.5px;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    &:nth-child(1) {
-      padding: 0 0 0 50px;
-      width: 475px;
-      display: flex;
-      justify-content: space-around;
-      @include min_hd {
-        padding: 0 0 0 calc(50vw - 910px);
-      }
-    }
-    &:nth-child(2) {
-      li {
-        display: inline;
-      }
-      @include min_hd {
-        padding: 0 calc(50vw - 960px) 0 0;
-      }
-      span {
-        margin: 0 19px;
-      }
-      svg {
-        vertical-align: text-bottom;
-        fill: $c1;
-      }
-      li:nth-child(3) svg {
-        transition: 0.2s ease-in-out fill;
-        &:hover {
-          fill: $c5;
-        }
-      }
-    }
-    a {
-      text-decoration: none;
-      color: $c1;
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-      outline: none;
-      margin: 0 19px;
-      transition: 0.2s ease-in-out color;
-      &:hover {
-        color: $c5;
-      }
-    }
-    svg {
-      fill: $c1;
-    }
-  }
-  @include min_xl {
-    &.navRelative {
-      position: relative;
-      height: 60px;
-      transition: height 0.25s;
-    }
-    &.navFixed {
-      position: fixed;
-      top: 0;
-      height: 40px;
-      transition: height 1s;
     }
   }
 }

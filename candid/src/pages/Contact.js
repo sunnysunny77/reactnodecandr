@@ -30,23 +30,6 @@ export default class Contactc extends Component {
       })
   }
 
-  componentDidUpdate (prevProps, prevState) {
-    if (prevState.load !== this.state.load) {
-      window.addEventListener('scroll', this.handleScroll, { passive: true })
-      window.addEventListener('resize', this.handleScroll, { passive: true })
-    }
-  }
-
-  componentWillUnmount () {
-    window.removeEventListener('scroll', this.handleScroll)
-    window.removeEventListener('resize', this.handleScroll)
-  }
-
-  handleScroll = () => {
-    if (window.innerWidth > 1200) { return (document.querySelector('.sticky').style.top = '40px') }
-    if (window.innerWidth <= 1200) { document.querySelector('.sticky').style.top = '0px' }
-  }
-
   render () {
     return (
       <React.Fragment>

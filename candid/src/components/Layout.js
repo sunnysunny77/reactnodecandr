@@ -28,10 +28,6 @@ const Layout = (props) => {
       </main>
       <Footer
         footer={footer}
-        phone={phone}
-        hours={hours}
-        days={days}
-        navigation={navigation}
         logo={logo}
       />
     </>
