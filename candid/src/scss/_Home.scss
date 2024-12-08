@@ -41,17 +41,14 @@
     margin: auto;
     object-fit: cover;
     object-position: right center;
-    height: calc(100vh - 150px);
+    height: calc(100vh - 125px);
     min-height: 425px;
     border-bottom-left-radius: 50%;
-    margin-bottom: 60px;
-    @include max_xl {
-      border-bottom-left-radius: 25%;
-      height: calc(75vh - 105px);
-      margin-bottom: 15px;
-    }
+    margin-bottom: 65px;
     @include max_md {
-      height: calc(33vh - 105px);
+      height: 50vh;
+      border-bottom-left-radius: 25%;
+      margin-bottom: 15px;
     }
   }
   .slideP {

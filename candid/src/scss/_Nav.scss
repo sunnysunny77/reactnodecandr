@@ -1,6 +1,6 @@
 header {
   width: 100%;
-  height: 75px;
+  height: 65px;
   background-image: linear-gradient(-90deg, $c1 0%, $c4 75%);
   background-color: $c1;
   display: flex;
@@ -9,8 +9,12 @@ header {
   position: sticky;
   top: 0;
   z-index: 997;
+  padding: 5px 0;
+  transition: padding 0.2s ease;
+  will-change: padding;
   &.hasAnimation {
-   a {
+    padding: 0;
+    a {
       transform: scale(0.95);
     }
   }
@@ -24,15 +28,16 @@ header {
     margin: 0 0 0 15px;
     font-weight: 500;
     font-size: clamp(14px, 4vw, 23px);
+    display: flex;
+    transition: transform 0.2s ease;
     transform: scale(1);
-    transition: transform 0.34s;
     will-change: transform;
     @include min_hd {
       margin: 0 0 0 calc(50vw - 960px);
     }
     img {
       display: flex;
-      width: 60px;
+      width: 50px;
       margin: 0 0 0 3px;
     }
   }

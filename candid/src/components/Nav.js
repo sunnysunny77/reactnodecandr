@@ -106,7 +106,7 @@ class Nav extends Component {
   }
 
   handleScroll = () => {
-    if (window.scrollY >= 90) {
+    if (window.scrollY > document.querySelector('main').offsetTop) {
       this.setState({ class: 'hasAnimation' })
     } else {
       this.setState({ class: '' })
