@@ -11,7 +11,6 @@ export default class Contactc extends Component {
     this.state = {
       window: window.scrollTo(0, 0),
       res: {},
-      phone: props.phone,
       navigation: props.navigation,
       load: true
     }
@@ -60,12 +59,15 @@ export default class Contactc extends Component {
                 </h2>
                 <hr />
                 <p>
+                  <span className="hours">
+                  {parse(this.state.res.Hours)}
+                  </span>
                   {parse(this.state.res.Email_Tag)}
                   <a href={'mailto:' + this.state.res.Email}>
                     {this.state.res.Email}
                   </a>
                   {parse(this.state.res.Phone_Tag)}
-                  <a href={'tel:' + this.state.phone}>{this.state.phone}</a>
+                  <a href={'tel:' + this.state.res.Phone}>{this.state.res.Phone}</a>
                   {parse(this.state.res.Enquiries_Tag)}
                   <span className="enquiries">
                     <span> {parse(this.state.res.Enquiries_Button)}</span>

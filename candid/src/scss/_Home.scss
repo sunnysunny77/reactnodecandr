@@ -46,7 +46,8 @@
     border-bottom-left-radius: 50%;
     margin-bottom: 65px;
     @include max_md {
-      border-bottom-left-radius: 25%;
+      border-bottom-left-radius: 5%;
+      border-bottom-right-radius: 5%;
       margin-bottom: 15px;
       height: calc(100vh - 95px);
       object-position: right top;
@@ -353,7 +354,7 @@
       width: 100%;
       margin: 5% 0;
       max-width: initial;
-      height: 60vw;
+      height: 59vw;
     }
   }
   .overlayImg {

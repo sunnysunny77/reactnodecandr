@@ -5,9 +5,6 @@ import Footer from '../components/Footer'
 
 const Layout = (props) => {
   const {
-    phone,
-    hours,
-    days,
     navigation,
     footer,
     logo
@@ -15,9 +12,6 @@ const Layout = (props) => {
   return (
     <>
       <Nav
-        phone={phone}
-        hours={hours}
-        days={days}
         navigation={navigation}
         logo={logo}
       />

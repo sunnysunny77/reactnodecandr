@@ -207,9 +207,6 @@ init()
 app.post('/api-init', function (req, res) {
   res.json({
     Navigation: [dataNavigation[0].Navigation, dataNavigation[1].Navigation, dataNavigation[2].Navigation, dataNavigation[3].Navigation],
-    Phone: dataContact[4].Contact,
-    Hours: dataContact[9].Contact,
-    Days: dataContact[10].Contact,
     ImagesPreLoad: dataImagesPreLoad,
     LogoAlt: baseName(dataImages[0].Logo)
   })
@@ -411,6 +408,8 @@ app.post('/api-contact', function (req, res) {
     Phone_Tag: dataContact[3].Contact,
     Enquiries_Tag: dataContact[5].Contact,
     Enquiries_Button: dataContact[6].Contact,
+    Phone: dataContact[4].Contact,
+    Hours: dataContact[9].Contact,
     Heading_Two: dataContact[7].Contact,
     Availabilty: dataContact[8].Contact,
     Image: dataImages[0].Contact,

@@ -13,9 +13,6 @@ import 'slick-carousel/slick/slick-theme.css'
 
 function App () {
   const [navigation, setNavigation] = useState([])
-  const [phone, setPhone] = useState(null)
-  const [hours, setHours] = useState(null)
-  const [days, setDays] = useState(null)
   const [imagesPreLoad, setImagesPreLoad] = useState({
     '/': [],
     '/about': [],
@@ -42,9 +39,6 @@ function App () {
       .post('/api-init')
       .then((res) => {
         setNavigation(res.data.Navigation)
-        setPhone(res.data.Phone)
-        setHours(res.data.Hours)
-        setDays(res.data.Days)
         setImagesPreLoad(res.data.ImagesPreLoad)
         setLogo([
           res.data.ImagesPreLoad['/'][0],
@@ -74,9 +68,6 @@ function App () {
           path="/"
           element={
             <Layout
-              phone={phone}
-              hours={hours}
-              days={days}
               navigation={navigation}
               footer={footer}
               logo={logo}
@@ -120,7 +111,6 @@ function App () {
             path="/contact"
             element={
               <Contact
-                phone={phone}
                 navigation={navigation[3]}
                 footer={(param) => setFooter(param)}
               />

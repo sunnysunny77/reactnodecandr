@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import HomeIcon from '@mui/icons-material/Home'
-import AccessTimeIcon from '@mui/icons-material/AccessTime'
-import PhoneIcon from '@mui/icons-material/Phone'
 import parse from 'html-react-parser'
 
 class Nav extends Component {
@@ -114,7 +112,7 @@ class Nav extends Component {
   }
 
   render () {
-    const { phone, hours, days, navigation, logo } =
+    const { navigation, logo } =
       this.props
     return (
       <>
@@ -138,24 +136,6 @@ class Nav extends Component {
               </li>
               <li>
                 <Link to="/contact">{parse(navigation[3])}</Link>
-              </li>
-            </ul>
-            <ul>
-              <li>
-                <AccessTimeIcon />
-              </li>
-              <li>
-                <p>
-                  {parse(hours)}
-                  <br></br>
-                  {parse(days)}
-                </p>
-              </li>
-              <li>
-                <PhoneIcon />
-              </li>
-              <li>
-                <a href={'tel:' + phone}>{phone}</a>
               </li>
             </ul>
           </nav>
