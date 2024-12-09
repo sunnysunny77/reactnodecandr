@@ -42,13 +42,14 @@
     object-fit: cover;
     object-position: right center;
     height: calc(100vh - 125px);
-    min-height: 425px;
+    min-height: 255px;
     border-bottom-left-radius: 50%;
     margin-bottom: 65px;
     @include max_md {
-      height: 50vh;
       border-bottom-left-radius: 25%;
       margin-bottom: 15px;
+      height: calc(100vh - 95px);
+      object-position: right top;
     }
   }
   .slideP {
@@ -352,7 +353,7 @@
       width: 100%;
       margin: 5% 0;
       max-width: initial;
-      height: 66vw;
+      height: 60vw;
     }
   }
   .overlayImg {

@@ -10,7 +10,7 @@ header {
   top: 0;
   z-index: 997;
   padding: 5px 0;
-  transition: padding 0.2s ease;
+  transition: padding 0.4s ease;
   will-change: padding;
   &.hasAnimation {
     padding: 0;
@@ -29,7 +29,7 @@ header {
     font-weight: 500;
     font-size: clamp(14px, 4vw, 23px);
     display: flex;
-    transition: transform 0.2s ease;
+    transition: transform 0.4s ease;
     transform: scale(1);
     will-change: transform;
     @include min_hd {
