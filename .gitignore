@@ -4,3 +4,4 @@ selfsigned.key
 selfsigned.crt
 /token.json
 /credentials.json
+/public
